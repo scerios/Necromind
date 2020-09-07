@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace NecromindLibrary.models
 {
+    /// <summary>
+    /// Represents a Boss character.
+    /// </summary>
     public class BossModel : KillableModel
     {
     }

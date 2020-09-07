@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace NecromindLibrary.models
 {
+    /// <summary>
+    /// Represents a monster.
+    /// </summary>
     public class MonsterModel : KillableModel
     {
 

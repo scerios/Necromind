@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace NecromindLibrary.models
 {
     /// <summary>
-    /// Base class for any character
+    /// Base class for any character.
     /// </summary>
     public class CharacterModel
     {

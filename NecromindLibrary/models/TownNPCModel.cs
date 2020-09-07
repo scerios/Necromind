@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace NecromindLibrary.models
 {
+    /// <summary>
+    /// Represents a friendly NPC which can give quests.
+    /// </summary>
     public class TownNPCModel : CharacterModel
     {
-        public QuestModel Quests { get; set; }
+        /// <summary>
+        /// A list of quests the NPC might provide.
+        /// </summary>
+        public List<QuestModel> Quests { get; set; }
     }
 }

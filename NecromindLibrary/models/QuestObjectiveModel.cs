@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace NecromindLibrary.models
 {
+    /// <summary>
+    /// Represents a quest objective.
+    /// </summary>
     public class QuestObjectiveModel : ItemModel
     {
 
