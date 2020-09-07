@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Necromind
+namespace NecromindUI
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace Necromind
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Necromind());
         }
     }
 }

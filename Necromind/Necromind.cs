@@ -9,11 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Necromind
+namespace NecromindUI
 {
-    public partial class Form1 : Form
+    public partial class Necromind : Form
     {
-        public Form1()
+        public Necromind()
         {
             InitializeComponent();
         }

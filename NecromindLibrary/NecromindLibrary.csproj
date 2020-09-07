@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,6 +45,7 @@
     <Compile Include="models\ArmorModel.cs" />
     <Compile Include="models\BossModel.cs" />
     <Compile Include="models\CharacterModel.cs" />
+    <Compile Include="models\Helper.cs" />
     <Compile Include="models\HeroModel.cs" />
     <Compile Include="models\ItemModel.cs" />
     <Compile Include="models\KillableModel.cs" />

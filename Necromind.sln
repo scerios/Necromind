@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Necromind", "Necromind\Necromind.csproj", "{03E075B0-593A-4CBE-8058-655149D9E9C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NecromindUI", "Necromind\NecromindUI.csproj", "{03E075B0-593A-4CBE-8058-655149D9E9C4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NecromindLibrary", "NecromindLibrary\NecromindLibrary.csproj", "{A48B74E6-C8A6-4043-8C89-1A6B90181B65}"
 EndProject
