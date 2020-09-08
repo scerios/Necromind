@@ -17,7 +17,7 @@ namespace NecromindLibrary.models
         /// </summary>
         /// <param name="name">Reference name of the connection string.</param>
         /// <returns>The connection string which was referenced by name.</returns>
-        public static string GetConnectionString(string name)
+        public static string GetConnectionStringByName(string name)
         {
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }

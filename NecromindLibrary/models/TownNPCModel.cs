@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace NecromindLibrary.models
         /// <summary>
         /// A list of quests the NPC might provide.
         /// </summary>
+        [Column("quest_ids")]
         public List<QuestModel> Quests { get; set; }
     }
 }

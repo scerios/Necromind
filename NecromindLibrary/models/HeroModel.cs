@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,22 +15,27 @@ namespace NecromindLibrary.models
         /// <summary>
         /// How much experience points the hero currently has.
         /// </summary>
+        [Column("experiencepoints")]
         public int ExperiencePoints { get; set; }
         /// <summary>
         /// At how much experience points is the next level.
         /// </summary>
+        [Column("next_level_at")]
         public int NextLevelAt { get; set; }
         /// <summary>
         /// A list of active quests.
         /// </summary>
-        public List<QuestModel> Quests { get; set; }
+        [Column("quest_ids")]
+        public string QuestsIds { get; set; }
         /// <summary>
         /// A weapon currently equipped.
         /// </summary>
-        public WeaponModel WeaponSlot { get; set; }
+        [Column("weapon_id")]
+        public int WeaponId { get; set; }
         /// <summary>
         /// An armor currently equipped.
         /// </summary>
-        public ArmorModel ArmorSlot { get; set; }
+        [Column("armor_id")]
+        public int ArmorId { get; set; }
     }
 }
