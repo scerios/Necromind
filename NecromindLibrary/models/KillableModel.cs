@@ -15,12 +15,12 @@ namespace NecromindLibrary.models
         /// <summary>
         /// How many health points the character currently has.
         /// </summary>
-        [Column("hitpoints")]
+        [Column("hit_points")]
         public int HitPoints { get; set; }
         /// <summary>
         /// How many health point is the maximum for the character.
         /// </summary>
-        [Column("hitpoints_max")]
+        [Column("hit_points_max")]
         public int HitPointsMax { get; set; }
         /// <summary>
         /// How much damage the character can deal.

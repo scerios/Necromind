@@ -15,7 +15,7 @@ namespace NecromindLibrary.models
         /// <summary>
         /// How much experience points the hero currently has.
         /// </summary>
-        [Column("experiencepoints")]
+        [Column("experience_points")]
         public int ExperiencePoints { get; set; }
         /// <summary>
         /// At how much experience points is the next level.

@@ -26,6 +26,11 @@ namespace NecromindLibrary.helpers
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
 
+        /// <summary>
+        /// Sets the Dapper TypeMap to the specific object so class fields will be mapped correctly with their database properties correctly.
+        /// eg: hit_points_max => HitPointsMax
+        /// </summary>
+        /// <param name="classType">Type of class which needs to be mapped.</param>
         public static void SetDapperMapperToModelByName(ClassTypes classType)
         {
             switch (classType.ToString())
