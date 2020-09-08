@@ -92,10 +92,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="enums\ClassTypes.cs" />
     <Compile Include="models\ArmorModel.cs" />
     <Compile Include="models\BossModel.cs" />
     <Compile Include="models\CharacterModel.cs" />
-    <Compile Include="models\Helper.cs" />
+    <Compile Include="helpers\DBConnectionHelper.cs" />
     <Compile Include="models\HeroModel.cs" />
     <Compile Include="models\ItemModel.cs" />
     <Compile Include="models\KillableModel.cs" />

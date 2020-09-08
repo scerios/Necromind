@@ -1,6 +1,8 @@
 ﻿using Dapper;
 using MySql.Data.MySqlClient;
+using NecromindLibrary.helpers;
 using NecromindLibrary.models;
+using NecromindLibrary.enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,24 +19,27 @@ namespace NecromindLibrary.repository
         public static List<HeroModel> GetAllSavedHeroes()
         {
             List<HeroModel> heroes = new List<HeroModel>();
-            using (IDbConnection connection = new MySqlConnection(Helper.GetConnectionStringByName("Necromind")))
+            using (IDbConnection connection = new MySqlConnection(DBConnectionHelper.GetConnectionStringByName("Necromind")))
             {
-                SqlMapper.SetTypeMap(
-                    typeof(HeroModel),
-                    new CustomPropertyTypeMap(
-                        typeof(HeroModel),
-                        (type, columnName) =>
-                        type.GetProperties().FirstOrDefault(prop =>
-                        prop.GetCustomAttributes(false)
-                        .OfType<ColumnAttribute>()
-                        .Any(attr => attr.Name == columnName))
-                        )
-                    );
+                DBConnectionHelper.SetDapperMapperToModelByName(ClassTypes.Hero);
                 var sql = "SELECT * FROM hero";
                 heroes = connection.Query<HeroModel>(sql).ToList();
             }
 
             return heroes;
+        }
+
+        public static List<QuestModel> GetQuestForHeroById(int heroId, string questIds)
+        {
+            List<QuestModel> quests = new List<QuestModel>();
+            using (IDbConnection connection = new MySqlConnection(DBConnectionHelper.GetConnectionStringByName("Necromind")))
+            {
+                DBConnectionHelper.SetDapperMapperToModelByName(ClassTypes.Quest);
+                var sql = $"SELECT * FROM quest WHERE id IN ({ questIds })";
+                quests = connection.Query<QuestModel>(sql).ToList();
+            }
+
+            return quests;
         }
     }
 }

@@ -23,14 +23,19 @@ namespace NecromindUI
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Necromind_Load(object sender, EventArgs e)
         {
             try
             {
                 List<HeroModel> heroes = DataAccess.GetAllSavedHeroes();
                 foreach (HeroModel hero in heroes)
                 {
-                    Console.WriteLine(hero.ExperiencePoints);
+                    Console.WriteLine("Max hitpoints: " + hero.HitPointsMax + ", Items in bag: " + hero.ItemIds);
+                    List<QuestModel> quests = DataAccess.GetQuestForHeroById(hero.Id, hero.QuestsIds);
+                    foreach (QuestModel quest in quests)
+                    {
+                        Console.WriteLine($"Active quests for { hero.Name }: " + quest.Name);
+                    }
                 }
             }
             catch (SqlException exception)

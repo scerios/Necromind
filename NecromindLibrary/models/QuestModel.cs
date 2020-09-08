@@ -30,7 +30,7 @@ namespace NecromindLibrary.models
         /// <summary>
         /// How much experience points the quest gives upon completition.
         /// </summary>
-        [Column("experience_reward")]
+        [Column("reward_experience")]
         public int ExperienceReward { get; set; }
         /// <summary>
         /// Items the quest may gives upon completition.
