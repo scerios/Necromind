@@ -39,6 +39,16 @@ namespace NecromindLibrary.repository
             }
         }
 
+        public static void DeleteHeroById(int id)
+        {
+            using (IDbConnection connection = new MySqlConnection(DBConnectionHelper.GetConnectionStringByName(databaseName)))
+            {
+                var parameters = new { id = id };
+                var sql = "DELETE FROM hero WHERE id = @id";
+                connection.Execute(sql, parameters);
+            }
+        }
+
         /// <summary>
         /// Gets all the saved heroes from the database as HeroDTO so the load saved hero buttons can be created.
         /// </summary>

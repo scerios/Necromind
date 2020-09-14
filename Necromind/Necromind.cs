@@ -19,9 +19,9 @@ namespace NecromindUI
 {
     public partial class Necromind : Form
     {
-        public static Dictionary<string, Panel> Panels = new Dictionary<string, Panel>();
-        public static Dictionary<string, Label> Labels = new Dictionary<string, Label>();
-        private bool IsLoadButtonsLoaded = false;
+        public static Dictionary<string, Panel> panels = new Dictionary<string, Panel>();
+        public static Dictionary<string, Label> labels = new Dictionary<string, Label>();
+        private bool isLoadButtonsLoaded = false;
 
         public Necromind()
         {
@@ -40,50 +40,52 @@ namespace NecromindUI
 
         private void setUpMenu()
         {
-            Panels.Add("menu", panelMenu);
-            Panels.Add("newGame", panelNewGame);
-            Panels.Add("loadGame", panelLoadGame);
-            Panels.Add("game", panelGame);
+            panels.Add("menu", panelMenu);
+            panels.Add("newGame", panelNewGame);
+            panels.Add("loadGame", panelLoadGame);
+            panels.Add("game", panelGame);
         }
 
         private void setLabels()
         {
-            Labels.Add("health", labelHeroHealthValue);
-            Labels.Add("gold", labelHeroGoldValue);
-            Labels.Add("XP", labelHeroXPValue);
-            Labels.Add("level", labelHeroLevelValue);
-            Labels.Add("damage", labelHeroDamageValue);
-            Labels.Add("defense", labelHeroDefenseValue);
+            labels.Add("health", labelHeroHealthValue);
+            labels.Add("gold", labelHeroGoldValue);
+            labels.Add("XP", labelHeroXPValue);
+            labels.Add("level", labelHeroLevelValue);
+            labels.Add("damage", labelHeroDamageValue);
+            labels.Add("defense", labelHeroDefenseValue);
         }
 
         private void showMainMenu()
         {
-            Panels["menu"].BringToFront();
+            panels["menu"].BringToFront();
         }
 
         private void btnNewGame_Click(object sender, EventArgs e)
         {
-            Panels["newGame"].BringToFront();
+            panels["newGame"].BringToFront();
         }
 
         private void btnCreateNewHero_Click(object sender, EventArgs e)
         {
             int insertedId = DataAccess.CreateNewHero(textBoxNewHeroName.Text);
             HeroModel hero = DataAccess.GetHeroById(insertedId);
-            UIHelper.SetHeroDetails(hero, Labels, groupBoxHeroDetails);
-            Panels["game"].BringToFront();
-            IsLoadButtonsLoaded = false;
+            UIHelper.SetHeroDetails(hero, labels, groupBoxHeroDetails);
+
+            textBoxNewHeroName.Text = "";
+            panels["game"].BringToFront();
+            isLoadButtonsLoaded = false;
         }
 
         private void btnLoadGame_Click(object sender, EventArgs e)
         {
-            if (!IsLoadButtonsLoaded)
+            if (!isLoadButtonsLoaded)
             {
                 List<HeroDTO> heroes = DataAccess.GetAllHeroesAsDTO();
-                UIHelper.ShowAllLoadedHeroes(heroes, Panels, Labels, groupBoxHeroDetails);
-                IsLoadButtonsLoaded = true;
+                UIHelper.ShowAllLoadedHeroes(heroes, panels, labels, groupBoxHeroDetails);
+                isLoadButtonsLoaded = true;
             }
-            Panels["loadGame"].BringToFront();
+            panels["loadGame"].BringToFront();
         }
 
         private void btnBackFromNewGame_Click(object sender, EventArgs e)
@@ -99,7 +101,7 @@ namespace NecromindUI
         private void btnBackFromGame_Click(object sender, EventArgs e)
         {
             showMainMenu();
-            UIHelper.ResetGame(Labels, groupBoxHeroDetails);
+            UIHelper.ResetGame(labels, groupBoxHeroDetails);
         }
     }
 }

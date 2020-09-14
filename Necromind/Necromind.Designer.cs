@@ -126,6 +126,7 @@
             // 
             this.btnCreateNewHero.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCreateNewHero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.btnCreateNewHero.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnCreateNewHero.FlatAppearance.BorderSize = 0;
             this.btnCreateNewHero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateNewHero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
@@ -333,10 +334,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.ClientSize = new System.Drawing.Size(984, 661);
-            this.Controls.Add(this.panelNewGame);
-            this.Controls.Add(this.panelGame);
             this.Controls.Add(this.panelLoadGame);
             this.Controls.Add(this.panelMenu);
+            this.Controls.Add(this.panelNewGame);
+            this.Controls.Add(this.panelGame);
             this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1000, 700);
