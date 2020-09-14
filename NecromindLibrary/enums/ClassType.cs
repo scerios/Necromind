@@ -7,9 +7,15 @@ using System.Threading.Tasks;
 
 namespace NecromindLibrary.enums
 {
-    public enum ClassTypes
+    public enum ClassType
     {
+        Armor,
+        Boss,
         Hero,
-        Quest
+        Monster,
+        Potion,
+        Quest,
+        TownNPC,
+        Weapon
     }
 }

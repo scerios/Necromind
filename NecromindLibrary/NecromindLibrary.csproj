@@ -92,7 +92,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="enums\ClassTypes.cs" />
+    <Compile Include="enums\ClassType.cs" />
     <Compile Include="models\ArmorModel.cs" />
     <Compile Include="models\BossModel.cs" />
     <Compile Include="models\CharacterModel.cs" />

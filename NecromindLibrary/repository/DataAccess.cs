@@ -21,7 +21,7 @@ namespace NecromindLibrary.repository
             List<HeroModel> heroes = new List<HeroModel>();
             using (IDbConnection connection = new MySqlConnection(DBConnectionHelper.GetConnectionStringByName("Necromind")))
             {
-                DBConnectionHelper.SetDapperMapperToModelByName(ClassTypes.Hero);
+                DBConnectionHelper.SetDapperMapperToModelByName(ClassType.Hero);
                 var sql = "SELECT * FROM hero";
                 heroes = connection.Query<HeroModel>(sql).ToList();
             }
@@ -34,7 +34,7 @@ namespace NecromindLibrary.repository
             List<QuestModel> quests = new List<QuestModel>();
             using (IDbConnection connection = new MySqlConnection(DBConnectionHelper.GetConnectionStringByName("Necromind")))
             {
-                DBConnectionHelper.SetDapperMapperToModelByName(ClassTypes.Quest);
+                DBConnectionHelper.SetDapperMapperToModelByName(ClassType.Quest);
                 var sql = $"SELECT * FROM quest WHERE id IN ({ questIds })";
                 quests = connection.Query<QuestModel>(sql).ToList();
             }

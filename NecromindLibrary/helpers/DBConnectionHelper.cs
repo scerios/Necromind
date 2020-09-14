@@ -31,7 +31,7 @@ namespace NecromindLibrary.helpers
         /// eg: hit_points_max => HitPointsMax
         /// </summary>
         /// <param name="classType">Type of class which needs to be mapped.</param>
-        public static void SetDapperMapperToModelByName(ClassTypes classType)
+        public static void SetDapperMapperToModelByName(ClassType classType)
         {
             switch (classType.ToString())
             {
