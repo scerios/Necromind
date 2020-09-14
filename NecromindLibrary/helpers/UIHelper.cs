@@ -137,12 +137,12 @@ namespace NecromindLibrary.helpers
                 heroDetails.Text = heroDetails.Text.Replace("{HERO}", hero.Name);
             }
             
-            labels["labelHealth"].Text = hero.HitPointsMax.ToString() + " / " + hero.HitPoints.ToString();
-            labels["labelGold"].Text = hero.Gold.ToString();
-            labels["labelXP"].Text = hero.ExperiencePoints.ToString() + " / " + hero.NextLevelAt.ToString();
-            labels["labelLevel"].Text = hero.Level.ToString();
-            labels["labelDamage"].Text = hero.Damage.ToString();
-            labels["labelDefense"].Text = hero.Defense.ToString();
+            labels["health"].Text = hero.HitPointsMax.ToString() + " / " + hero.HitPoints.ToString();
+            labels["gold"].Text = hero.Gold.ToString();
+            labels["XP"].Text = hero.ExperiencePoints.ToString() + " / " + hero.NextLevelAt.ToString();
+            labels["level"].Text = hero.Level.ToString();
+            labels["damage"].Text = hero.Damage.ToString();
+            labels["defense"].Text = hero.Defense.ToString();
         }
     }
 }

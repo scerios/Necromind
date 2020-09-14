@@ -34,7 +34,7 @@ namespace NecromindUI
         private void startGame()
         {
             setUpMenu();
-            loadLabels();
+            setLabels();
             showMainMenu();
         }
 
@@ -46,14 +46,14 @@ namespace NecromindUI
             panels.Add("game", panelGame);
         }
 
-        private void loadLabels()
+        private void setLabels()
         {
-            labels.Add("labelHealth", labelHeroHealthValue);
-            labels.Add("labelGold", labelHeroGoldValue);
-            labels.Add("labelXP", labelHeroXPValue);
-            labels.Add("labelLevel", labelHeroLevelValue);
-            labels.Add("labelDamage", labelHeroDamageValue);
-            labels.Add("labelDefense", labelHeroDefenseValue);
+            labels.Add("health", labelHeroHealthValue);
+            labels.Add("gold", labelHeroGoldValue);
+            labels.Add("XP", labelHeroXPValue);
+            labels.Add("level", labelHeroLevelValue);
+            labels.Add("damage", labelHeroDamageValue);
+            labels.Add("defense", labelHeroDefenseValue);
         }
 
         private void showMainMenu()
