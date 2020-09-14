@@ -25,12 +25,12 @@ namespace NecromindLibrary.helpers
         public static void ResetGame(Dictionary<string, Label> labels, GroupBox heroDetails)
         {
             heroDetails.Text = "{HERO}'s Details";
-            labels["labelHealth"].Text = "";
-            labels["labelGold"].Text = "";
-            labels["labelXP"].Text = "";
-            labels["labelLevel"].Text = "";
-            labels["labelDamage"].Text = "";
-            labels["labelDefense"].Text = "";
+            labels["health"].Text = "";
+            labels["gold"].Text = "";
+            labels["XP"].Text = "";
+            labels["level"].Text = "";
+            labels["damage"].Text = "";
+            labels["defense"].Text = "";
         }
 
         /// <summary>

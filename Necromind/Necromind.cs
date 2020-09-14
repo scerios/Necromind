@@ -66,9 +66,9 @@ namespace NecromindUI
             panels["newGame"].BringToFront();
         }
 
-        private void btnCreateNewCharacter_Click(object sender, EventArgs e)
+        private void btnCreateNewHero_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnLoadGame_Click(object sender, EventArgs e)

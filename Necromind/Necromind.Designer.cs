@@ -33,8 +33,8 @@
             this.btnLoadGame = new System.Windows.Forms.Button();
             this.btnNewGame = new System.Windows.Forms.Button();
             this.panelNewGame = new System.Windows.Forms.Panel();
-            this.textBoxNewCharacterName = new System.Windows.Forms.TextBox();
-            this.btnCreateNewCharacter = new System.Windows.Forms.Button();
+            this.textBoxNewHeroName = new System.Windows.Forms.TextBox();
+            this.btnCreateNewHero = new System.Windows.Forms.Button();
             this.btnBackFromNewGame = new System.Windows.Forms.Button();
             this.panelLoadGame = new System.Windows.Forms.Panel();
             this.btnBackFromLoadGame = new System.Windows.Forms.Button();
@@ -104,8 +104,8 @@
             // 
             // panelNewGame
             // 
-            this.panelNewGame.Controls.Add(this.textBoxNewCharacterName);
-            this.panelNewGame.Controls.Add(this.btnCreateNewCharacter);
+            this.panelNewGame.Controls.Add(this.textBoxNewHeroName);
+            this.panelNewGame.Controls.Add(this.btnCreateNewHero);
             this.panelNewGame.Controls.Add(this.btnBackFromNewGame);
             this.panelNewGame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelNewGame.Location = new System.Drawing.Point(0, 0);
@@ -113,29 +113,29 @@
             this.panelNewGame.Size = new System.Drawing.Size(984, 661);
             this.panelNewGame.TabIndex = 14;
             // 
-            // textBoxNewCharacterName
+            // textBoxNewHeroName
             // 
-            this.textBoxNewCharacterName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxNewCharacterName.Location = new System.Drawing.Point(430, 100);
-            this.textBoxNewCharacterName.Multiline = true;
-            this.textBoxNewCharacterName.Name = "textBoxNewCharacterName";
-            this.textBoxNewCharacterName.Size = new System.Drawing.Size(100, 25);
-            this.textBoxNewCharacterName.TabIndex = 2;
+            this.textBoxNewHeroName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxNewHeroName.Location = new System.Drawing.Point(430, 100);
+            this.textBoxNewHeroName.Multiline = true;
+            this.textBoxNewHeroName.Name = "textBoxNewHeroName";
+            this.textBoxNewHeroName.Size = new System.Drawing.Size(100, 25);
+            this.textBoxNewHeroName.TabIndex = 2;
             // 
-            // btnCreateNewCharacter
+            // btnCreateNewHero
             // 
-            this.btnCreateNewCharacter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCreateNewCharacter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.btnCreateNewCharacter.FlatAppearance.BorderSize = 0;
-            this.btnCreateNewCharacter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreateNewCharacter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnCreateNewCharacter.Location = new System.Drawing.Point(430, 140);
-            this.btnCreateNewCharacter.Name = "btnCreateNewCharacter";
-            this.btnCreateNewCharacter.Size = new System.Drawing.Size(100, 25);
-            this.btnCreateNewCharacter.TabIndex = 1;
-            this.btnCreateNewCharacter.Text = "Create";
-            this.btnCreateNewCharacter.UseVisualStyleBackColor = false;
-            this.btnCreateNewCharacter.Click += new System.EventHandler(this.btnCreateNewCharacter_Click);
+            this.btnCreateNewHero.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCreateNewHero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.btnCreateNewHero.FlatAppearance.BorderSize = 0;
+            this.btnCreateNewHero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreateNewHero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnCreateNewHero.Location = new System.Drawing.Point(430, 140);
+            this.btnCreateNewHero.Name = "btnCreateNewHero";
+            this.btnCreateNewHero.Size = new System.Drawing.Size(100, 25);
+            this.btnCreateNewHero.TabIndex = 1;
+            this.btnCreateNewHero.Text = "Create";
+            this.btnCreateNewHero.UseVisualStyleBackColor = false;
+            this.btnCreateNewHero.Click += new System.EventHandler(this.btnCreateNewHero_Click);
             // 
             // btnBackFromNewGame
             // 
@@ -333,10 +333,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.ClientSize = new System.Drawing.Size(984, 661);
-            this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelNewGame);
             this.Controls.Add(this.panelGame);
             this.Controls.Add(this.panelLoadGame);
+            this.Controls.Add(this.panelMenu);
             this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1000, 700);
@@ -360,8 +360,8 @@
         private System.Windows.Forms.Button btnNewGame;
         private System.Windows.Forms.Button btnLoadGame;
         private System.Windows.Forms.Panel panelNewGame;
-        private System.Windows.Forms.TextBox textBoxNewCharacterName;
-        private System.Windows.Forms.Button btnCreateNewCharacter;
+        private System.Windows.Forms.TextBox textBoxNewHeroName;
+        private System.Windows.Forms.Button btnCreateNewHero;
         private System.Windows.Forms.Button btnBackFromNewGame;
         private System.Windows.Forms.Panel panelLoadGame;
         private System.Windows.Forms.Panel panelGame;
