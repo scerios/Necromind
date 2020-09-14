@@ -11,15 +11,18 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.CodeDom;
+using System.Configuration;
 
 namespace NecromindLibrary.repository
 {
     public static class DataAccess
     {
+        private static string databaseName = ConfigurationManager.AppSettings["databaseName"];
         public static List<HeroModel> GetAllSavedHeroes()
         {
             List<HeroModel> heroes = new List<HeroModel>();
-            using (IDbConnection connection = new MySqlConnection(DBConnectionHelper.GetConnectionStringByName("Necromind")))
+            using (IDbConnection connection = new MySqlConnection(DBConnectionHelper.GetConnectionStringByName(databaseName)))
             {
                 DBConnectionHelper.SetDapperMapperToModelByName(ClassType.Hero);
                 var sql = "SELECT * FROM hero";
@@ -32,7 +35,7 @@ namespace NecromindLibrary.repository
         public static List<QuestModel> GetQuestForHeroById(int heroId, string questIds)
         {
             List<QuestModel> quests = new List<QuestModel>();
-            using (IDbConnection connection = new MySqlConnection(DBConnectionHelper.GetConnectionStringByName("Necromind")))
+            using (IDbConnection connection = new MySqlConnection(DBConnectionHelper.GetConnectionStringByName(databaseName)))
             {
                 DBConnectionHelper.SetDapperMapperToModelByName(ClassType.Quest);
                 var sql = $"SELECT * FROM quest WHERE id IN ({ questIds })";
