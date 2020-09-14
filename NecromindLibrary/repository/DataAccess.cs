@@ -22,6 +22,24 @@ namespace NecromindLibrary.repository
         private static string databaseName = ConfigurationManager.AppSettings["databaseName"];
 
         /// <summary>
+        /// Creates a new hero with the given name and returns the inserted ID.
+        /// </summary>
+        /// <param name="name">Name of the hero.</param>
+        /// <returns>Returns the inserted ID as an int.</returns>
+        public static int CreateNewHero(string name)
+        {
+            using (IDbConnection connection = new MySqlConnection(DBConnectionHelper.GetConnectionStringByName(databaseName)))
+            {
+                var parameters = new { name = name };
+                var sql = "INSERT INTO hero (name) VALUES (@name)";
+                connection.Execute(sql, parameters);
+
+                sql = "SELECT LAST_INSERT_ID()";
+                return connection.QuerySingle<int>(sql);
+            }
+        }
+
+        /// <summary>
         /// Gets all the saved heroes from the database as HeroDTO so the load saved hero buttons can be created.
         /// </summary>
         /// <returns>A list of all the saved heroes as HeroDTOs.</returns>

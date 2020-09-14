@@ -68,7 +68,11 @@ namespace NecromindUI
 
         private void btnCreateNewHero_Click(object sender, EventArgs e)
         {
-
+            int insertedId = DataAccess.CreateNewHero(textBoxNewHeroName.Text);
+            HeroModel hero = DataAccess.GetHeroById(insertedId);
+            UIHelper.SetHeroDetails(hero, labels, groupBoxHeroDetails);
+            panels["game"].BringToFront();
+            isLoadButtonsLoaded = false;
         }
 
         private void btnLoadGame_Click(object sender, EventArgs e)

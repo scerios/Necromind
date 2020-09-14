@@ -126,7 +126,7 @@ namespace NecromindLibrary.helpers
         /// <param name="hero">A hero model.</param>
         /// <param name="labels">A dictionary of labels.</param>
         /// <param name="heroDetails">A group box of hero details.</param>
-        private static void SetHeroDetails(HeroModel hero, Dictionary<string, Label> labels, GroupBox heroDetails)
+        public static void SetHeroDetails(HeroModel hero, Dictionary<string, Label> labels, GroupBox heroDetails)
         {
             if (hero.Name.EndsWith("s") || hero.Name.EndsWith("S"))
             {
