@@ -27,7 +27,7 @@ namespace NecromindLibrary.helpers
         }
 
         /// <summary>
-        /// Sets the Dapper TypeMap to the specific object so class fields will be mapped correctly with their database properties correctly.
+        /// Sets the Dapper TypeMap to the specific object so class fields will be mapped correctly with their database properties.
         /// eg: hit_points_max => HitPointsMax
         /// </summary>
         /// <param name="classType">Type of class which needs to be mapped.</param>
@@ -35,12 +35,76 @@ namespace NecromindLibrary.helpers
         {
             switch (classType.ToString())
             {
+                case "Armor":
+
+                    SqlMapper.SetTypeMap(
+                    typeof(ArmorModel),
+                    new CustomPropertyTypeMap(
+                        typeof(ArmorModel),
+                        (type, columnName) =>
+                        type.GetProperties().FirstOrDefault(prop =>
+                        prop.GetCustomAttributes(false)
+                        .OfType<ColumnAttribute>()
+                        .Any(attr => attr.Name == columnName))
+                        )
+                    );
+
+                    break;
+
+                case "Boss":
+
+                    SqlMapper.SetTypeMap(
+                    typeof(BossModel),
+                    new CustomPropertyTypeMap(
+                        typeof(BossModel),
+                        (type, columnName) =>
+                        type.GetProperties().FirstOrDefault(prop =>
+                        prop.GetCustomAttributes(false)
+                        .OfType<ColumnAttribute>()
+                        .Any(attr => attr.Name == columnName))
+                        )
+                    );
+
+                    break;
+
                 case "Hero":
 
                     SqlMapper.SetTypeMap(
                     typeof(HeroModel),
                     new CustomPropertyTypeMap(
                         typeof(HeroModel),
+                        (type, columnName) =>
+                        type.GetProperties().FirstOrDefault(prop =>
+                        prop.GetCustomAttributes(false)
+                        .OfType<ColumnAttribute>()
+                        .Any(attr => attr.Name == columnName))
+                        )
+                    );
+
+                    break;
+
+                case "Monster":
+
+                    SqlMapper.SetTypeMap(
+                    typeof(MonsterModel),
+                    new CustomPropertyTypeMap(
+                        typeof(MonsterModel),
+                        (type, columnName) =>
+                        type.GetProperties().FirstOrDefault(prop =>
+                        prop.GetCustomAttributes(false)
+                        .OfType<ColumnAttribute>()
+                        .Any(attr => attr.Name == columnName))
+                        )
+                    );
+
+                    break;
+
+                case "Potion":
+
+                    SqlMapper.SetTypeMap(
+                    typeof(PotionModel),
+                    new CustomPropertyTypeMap(
+                        typeof(PotionModel),
                         (type, columnName) =>
                         type.GetProperties().FirstOrDefault(prop =>
                         prop.GetCustomAttributes(false)
@@ -64,6 +128,38 @@ namespace NecromindLibrary.helpers
                             .Any(attr => attr.Name == columnName))
                             )
                         );
+
+                    break;
+
+                case "TownNPC":
+
+                    SqlMapper.SetTypeMap(
+                    typeof(TownNPCModel),
+                    new CustomPropertyTypeMap(
+                        typeof(TownNPCModel),
+                        (type, columnName) =>
+                        type.GetProperties().FirstOrDefault(prop =>
+                        prop.GetCustomAttributes(false)
+                        .OfType<ColumnAttribute>()
+                        .Any(attr => attr.Name == columnName))
+                        )
+                    );
+
+                    break;
+
+                case "Weapon":
+
+                    SqlMapper.SetTypeMap(
+                    typeof(WeaponModel),
+                    new CustomPropertyTypeMap(
+                        typeof(WeaponModel),
+                        (type, columnName) =>
+                        type.GetProperties().FirstOrDefault(prop =>
+                        prop.GetCustomAttributes(false)
+                        .OfType<ColumnAttribute>()
+                        .Any(attr => attr.Name == columnName))
+                        )
+                    );
 
                     break;
             }
