@@ -1,4 +1,6 @@
-﻿using NecromindLibrary.models;
+﻿using NecromindLibrary.dto;
+using NecromindLibrary.helpers;
+using NecromindLibrary.models;
 using NecromindLibrary.repository;
 using System;
 using System.Collections.Generic;
@@ -17,31 +19,83 @@ namespace NecromindUI
 {
     public partial class Necromind : Form
     {
+        public static Dictionary<string, Panel> panels = new Dictionary<string, Panel>();
+        public static Dictionary<string, Label> labels = new Dictionary<string, Label>();
+        private bool isLoadButtonsLoaded = false;
+
         public Necromind()
         {
+            // Forces Visual Studio to show error messages in english.
             if (Debugger.IsAttached) CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.GetCultureInfo("en-US");
             InitializeComponent();
+            startGame();
         }
 
-        private void Necromind_Load(object sender, EventArgs e)
+        private void startGame()
         {
-            try
+            setUpMenu();
+            loadLabels();
+            showMainMenu();
+        }
+
+        private void setUpMenu()
+        {
+            panels.Add("menu", panelMenu);
+            panels.Add("newGame", panelNewGame);
+            panels.Add("loadGame", panelLoadGame);
+            panels.Add("game", panelGame);
+        }
+
+        private void loadLabels()
+        {
+            labels.Add("labelHealth", labelHeroHealthValue);
+            labels.Add("labelGold", labelHeroGoldValue);
+            labels.Add("labelXP", labelHeroXPValue);
+            labels.Add("labelLevel", labelHeroLevelValue);
+            labels.Add("labelDamage", labelHeroDamageValue);
+            labels.Add("labelDefense", labelHeroDefenseValue);
+        }
+
+        private void showMainMenu()
+        {
+            panels["menu"].BringToFront();
+        }
+
+        private void btnNewGame_Click(object sender, EventArgs e)
+        {
+            panels["newGame"].BringToFront();
+        }
+
+        private void btnCreateNewCharacter_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnLoadGame_Click(object sender, EventArgs e)
+        {
+            if (!isLoadButtonsLoaded)
             {
-                List<HeroModel> heroes = DataAccess.GetAllSavedHeroes();
-                foreach (HeroModel hero in heroes)
-                {
-                    Console.WriteLine("Max hitpoints: " + hero.HitPointsMax + ", Items in bag: " + hero.ItemIds);
-                    List<QuestModel> quests = DataAccess.GetQuestForHeroById(hero.Id, hero.QuestsIds);
-                    foreach (QuestModel quest in quests)
-                    {
-                        Console.WriteLine($"Active quests for { hero.Name }: " + quest.Name);
-                    }
-                }
+                List<HeroDTO> heroes = DataAccess.GetAllHeroesAsDTO();
+                UIHelper.ShowAllLoadedHeroes(heroes, panels, labels, groupBoxHeroDetails);
+                isLoadButtonsLoaded = true;
             }
-            catch (SqlException exception)
-            {
-                Console.WriteLine(exception.Message);
-            }
+            panels["loadGame"].BringToFront();
+        }
+
+        private void btnBackFromNewGame_Click(object sender, EventArgs e)
+        {
+            showMainMenu();
+        }
+
+        private void btnBackFromLoadGame_Click(object sender, EventArgs e)
+        {
+            showMainMenu();
+        }
+
+        private void btnBackFromGame_Click(object sender, EventArgs e)
+        {
+            showMainMenu();
+            UIHelper.ResetGame(labels, groupBoxHeroDetails);
         }
     }
 }

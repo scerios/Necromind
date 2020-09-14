@@ -41,18 +41,18 @@
             this.panelGame = new System.Windows.Forms.Panel();
             this.btnBackFromGame = new System.Windows.Forms.Button();
             this.groupBoxHeroDetails = new System.Windows.Forms.GroupBox();
+            this.labelHeroDefenseValue = new System.Windows.Forms.Label();
+            this.labelHeroDamageValue = new System.Windows.Forms.Label();
+            this.labelHeroLevelValue = new System.Windows.Forms.Label();
+            this.labelHeroXPValue = new System.Windows.Forms.Label();
+            this.labelHeroGoldValue = new System.Windows.Forms.Label();
+            this.labelHeroHealthValue = new System.Windows.Forms.Label();
+            this.labelHeroDefense = new System.Windows.Forms.Label();
+            this.labelHeroDamage = new System.Windows.Forms.Label();
+            this.labelHeroLevel = new System.Windows.Forms.Label();
             this.labelHeroXP = new System.Windows.Forms.Label();
             this.labelHeroGold = new System.Windows.Forms.Label();
             this.labelHeroHealth = new System.Windows.Forms.Label();
-            this.labelHeroLevel = new System.Windows.Forms.Label();
-            this.labelHeroAttack = new System.Windows.Forms.Label();
-            this.labelHeroDefense = new System.Windows.Forms.Label();
-            this.labelHeroHealthValue = new System.Windows.Forms.Label();
-            this.labelHeroGoldValue = new System.Windows.Forms.Label();
-            this.labelHeroXPValue = new System.Windows.Forms.Label();
-            this.labelHeroLevelValue = new System.Windows.Forms.Label();
-            this.labelHeroAttackValue = new System.Windows.Forms.Label();
-            this.labelHeroDefenseValue = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelNewGame.SuspendLayout();
             this.panelLoadGame.SuspendLayout();
@@ -84,6 +84,7 @@
             this.btnLoadGame.TabIndex = 13;
             this.btnLoadGame.Text = "Load";
             this.btnLoadGame.UseVisualStyleBackColor = false;
+            this.btnLoadGame.Click += new System.EventHandler(this.btnLoadGame_Click);
             // 
             // btnNewGame
             // 
@@ -99,6 +100,7 @@
             this.btnNewGame.TabIndex = 12;
             this.btnNewGame.Text = "New Game";
             this.btnNewGame.UseVisualStyleBackColor = false;
+            this.btnNewGame.Click += new System.EventHandler(this.btnNewGame_Click);
             // 
             // panelNewGame
             // 
@@ -133,6 +135,7 @@
             this.btnCreateNewCharacter.TabIndex = 1;
             this.btnCreateNewCharacter.Text = "Create";
             this.btnCreateNewCharacter.UseVisualStyleBackColor = false;
+            this.btnCreateNewCharacter.Click += new System.EventHandler(this.btnCreateNewCharacter_Click);
             // 
             // btnBackFromNewGame
             // 
@@ -147,6 +150,7 @@
             this.btnBackFromNewGame.TabIndex = 0;
             this.btnBackFromNewGame.Text = "Back";
             this.btnBackFromNewGame.UseVisualStyleBackColor = false;
+            this.btnBackFromNewGame.Click += new System.EventHandler(this.btnBackFromNewGame_Click);
             // 
             // panelLoadGame
             // 
@@ -170,6 +174,7 @@
             this.btnBackFromLoadGame.TabIndex = 1;
             this.btnBackFromLoadGame.Text = "Back";
             this.btnBackFromLoadGame.UseVisualStyleBackColor = false;
+            this.btnBackFromLoadGame.Click += new System.EventHandler(this.btnBackFromLoadGame_Click);
             // 
             // panelGame
             // 
@@ -194,18 +199,19 @@
             this.btnBackFromGame.TabIndex = 2;
             this.btnBackFromGame.Text = "Back";
             this.btnBackFromGame.UseVisualStyleBackColor = false;
+            this.btnBackFromGame.Click += new System.EventHandler(this.btnBackFromGame_Click);
             // 
             // groupBoxHeroDetails
             // 
             this.groupBoxHeroDetails.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBoxHeroDetails.Controls.Add(this.labelHeroDefenseValue);
-            this.groupBoxHeroDetails.Controls.Add(this.labelHeroAttackValue);
+            this.groupBoxHeroDetails.Controls.Add(this.labelHeroDamageValue);
             this.groupBoxHeroDetails.Controls.Add(this.labelHeroLevelValue);
             this.groupBoxHeroDetails.Controls.Add(this.labelHeroXPValue);
             this.groupBoxHeroDetails.Controls.Add(this.labelHeroGoldValue);
             this.groupBoxHeroDetails.Controls.Add(this.labelHeroHealthValue);
             this.groupBoxHeroDetails.Controls.Add(this.labelHeroDefense);
-            this.groupBoxHeroDetails.Controls.Add(this.labelHeroAttack);
+            this.groupBoxHeroDetails.Controls.Add(this.labelHeroDamage);
             this.groupBoxHeroDetails.Controls.Add(this.labelHeroLevel);
             this.groupBoxHeroDetails.Controls.Add(this.labelHeroXP);
             this.groupBoxHeroDetails.Controls.Add(this.labelHeroGold);
@@ -218,6 +224,81 @@
             this.groupBoxHeroDetails.TabIndex = 0;
             this.groupBoxHeroDetails.TabStop = false;
             this.groupBoxHeroDetails.Text = "{HERO}\'s Details";
+            // 
+            // labelHeroDefenseValue
+            // 
+            this.labelHeroDefenseValue.Location = new System.Drawing.Point(101, 148);
+            this.labelHeroDefenseValue.Name = "labelHeroDefenseValue";
+            this.labelHeroDefenseValue.Size = new System.Drawing.Size(80, 20);
+            this.labelHeroDefenseValue.TabIndex = 11;
+            this.labelHeroDefenseValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelHeroDamageValue
+            // 
+            this.labelHeroDamageValue.Location = new System.Drawing.Point(100, 125);
+            this.labelHeroDamageValue.Name = "labelHeroDamageValue";
+            this.labelHeroDamageValue.Size = new System.Drawing.Size(80, 20);
+            this.labelHeroDamageValue.TabIndex = 10;
+            this.labelHeroDamageValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelHeroLevelValue
+            // 
+            this.labelHeroLevelValue.Location = new System.Drawing.Point(100, 100);
+            this.labelHeroLevelValue.Name = "labelHeroLevelValue";
+            this.labelHeroLevelValue.Size = new System.Drawing.Size(80, 20);
+            this.labelHeroLevelValue.TabIndex = 9;
+            this.labelHeroLevelValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelHeroXPValue
+            // 
+            this.labelHeroXPValue.Location = new System.Drawing.Point(100, 75);
+            this.labelHeroXPValue.Name = "labelHeroXPValue";
+            this.labelHeroXPValue.Size = new System.Drawing.Size(80, 20);
+            this.labelHeroXPValue.TabIndex = 8;
+            this.labelHeroXPValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelHeroGoldValue
+            // 
+            this.labelHeroGoldValue.Location = new System.Drawing.Point(100, 50);
+            this.labelHeroGoldValue.Name = "labelHeroGoldValue";
+            this.labelHeroGoldValue.Size = new System.Drawing.Size(80, 20);
+            this.labelHeroGoldValue.TabIndex = 7;
+            this.labelHeroGoldValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelHeroHealthValue
+            // 
+            this.labelHeroHealthValue.Location = new System.Drawing.Point(100, 25);
+            this.labelHeroHealthValue.Name = "labelHeroHealthValue";
+            this.labelHeroHealthValue.Size = new System.Drawing.Size(80, 20);
+            this.labelHeroHealthValue.TabIndex = 6;
+            this.labelHeroHealthValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelHeroDefense
+            // 
+            this.labelHeroDefense.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelHeroDefense.Location = new System.Drawing.Point(10, 150);
+            this.labelHeroDefense.Name = "labelHeroDefense";
+            this.labelHeroDefense.Size = new System.Drawing.Size(80, 20);
+            this.labelHeroDefense.TabIndex = 5;
+            this.labelHeroDefense.Text = "Defense:";
+            // 
+            // labelHeroDamage
+            // 
+            this.labelHeroDamage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelHeroDamage.Location = new System.Drawing.Point(10, 125);
+            this.labelHeroDamage.Name = "labelHeroDamage";
+            this.labelHeroDamage.Size = new System.Drawing.Size(80, 20);
+            this.labelHeroDamage.TabIndex = 4;
+            this.labelHeroDamage.Text = "Damage:";
+            // 
+            // labelHeroLevel
+            // 
+            this.labelHeroLevel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelHeroLevel.Location = new System.Drawing.Point(10, 100);
+            this.labelHeroLevel.Name = "labelHeroLevel";
+            this.labelHeroLevel.Size = new System.Drawing.Size(80, 20);
+            this.labelHeroLevel.TabIndex = 3;
+            this.labelHeroLevel.Text = "Level:";
             // 
             // labelHeroXP
             // 
@@ -246,91 +327,16 @@
             this.labelHeroHealth.TabIndex = 0;
             this.labelHeroHealth.Text = "Health:";
             // 
-            // labelHeroLevel
-            // 
-            this.labelHeroLevel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelHeroLevel.Location = new System.Drawing.Point(10, 100);
-            this.labelHeroLevel.Name = "labelHeroLevel";
-            this.labelHeroLevel.Size = new System.Drawing.Size(80, 20);
-            this.labelHeroLevel.TabIndex = 3;
-            this.labelHeroLevel.Text = "Level:";
-            // 
-            // labelHeroAttack
-            // 
-            this.labelHeroAttack.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelHeroAttack.Location = new System.Drawing.Point(10, 125);
-            this.labelHeroAttack.Name = "labelHeroAttack";
-            this.labelHeroAttack.Size = new System.Drawing.Size(80, 20);
-            this.labelHeroAttack.TabIndex = 4;
-            this.labelHeroAttack.Text = "Attack:";
-            // 
-            // labelHeroDefense
-            // 
-            this.labelHeroDefense.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelHeroDefense.Location = new System.Drawing.Point(10, 150);
-            this.labelHeroDefense.Name = "labelHeroDefense";
-            this.labelHeroDefense.Size = new System.Drawing.Size(80, 20);
-            this.labelHeroDefense.TabIndex = 5;
-            this.labelHeroDefense.Text = "Defense:";
-            // 
-            // labelHeroHealthValue
-            // 
-            this.labelHeroHealthValue.Location = new System.Drawing.Point(100, 25);
-            this.labelHeroHealthValue.Name = "labelHeroHealthValue";
-            this.labelHeroHealthValue.Size = new System.Drawing.Size(80, 20);
-            this.labelHeroHealthValue.TabIndex = 6;
-            this.labelHeroHealthValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelHeroGoldValue
-            // 
-            this.labelHeroGoldValue.Location = new System.Drawing.Point(100, 50);
-            this.labelHeroGoldValue.Name = "labelHeroGoldValue";
-            this.labelHeroGoldValue.Size = new System.Drawing.Size(80, 20);
-            this.labelHeroGoldValue.TabIndex = 7;
-            this.labelHeroGoldValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelHeroXPValue
-            // 
-            this.labelHeroXPValue.Location = new System.Drawing.Point(100, 75);
-            this.labelHeroXPValue.Name = "labelHeroXPValue";
-            this.labelHeroXPValue.Size = new System.Drawing.Size(80, 20);
-            this.labelHeroXPValue.TabIndex = 8;
-            this.labelHeroXPValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelHeroLevelValue
-            // 
-            this.labelHeroLevelValue.Location = new System.Drawing.Point(100, 100);
-            this.labelHeroLevelValue.Name = "labelHeroLevelValue";
-            this.labelHeroLevelValue.Size = new System.Drawing.Size(80, 20);
-            this.labelHeroLevelValue.TabIndex = 9;
-            this.labelHeroLevelValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelHeroAttackValue
-            // 
-            this.labelHeroAttackValue.Location = new System.Drawing.Point(100, 125);
-            this.labelHeroAttackValue.Name = "labelHeroAttackValue";
-            this.labelHeroAttackValue.Size = new System.Drawing.Size(80, 20);
-            this.labelHeroAttackValue.TabIndex = 10;
-            this.labelHeroAttackValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelHeroDefenseValue
-            // 
-            this.labelHeroDefenseValue.Location = new System.Drawing.Point(101, 148);
-            this.labelHeroDefenseValue.Name = "labelHeroDefenseValue";
-            this.labelHeroDefenseValue.Size = new System.Drawing.Size(80, 20);
-            this.labelHeroDefenseValue.TabIndex = 11;
-            this.labelHeroDefenseValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // Necromind
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.ClientSize = new System.Drawing.Size(984, 661);
-            this.Controls.Add(this.panelGame);
-            this.Controls.Add(this.panelLoadGame);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelNewGame);
+            this.Controls.Add(this.panelGame);
+            this.Controls.Add(this.panelLoadGame);
             this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1000, 700);
@@ -338,7 +344,6 @@
             this.Name = "Necromind";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Necromind";
-            this.Load += new System.EventHandler(this.Necromind_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelNewGame.ResumeLayout(false);
             this.panelNewGame.PerformLayout();
@@ -368,13 +373,13 @@
         private System.Windows.Forms.Label labelHeroHealth;
         private System.Windows.Forms.Label labelHeroLevel;
         private System.Windows.Forms.Label labelHeroDefenseValue;
-        private System.Windows.Forms.Label labelHeroAttackValue;
+        private System.Windows.Forms.Label labelHeroDamageValue;
         private System.Windows.Forms.Label labelHeroLevelValue;
         private System.Windows.Forms.Label labelHeroXPValue;
         private System.Windows.Forms.Label labelHeroGoldValue;
         private System.Windows.Forms.Label labelHeroHealthValue;
         private System.Windows.Forms.Label labelHeroDefense;
-        private System.Windows.Forms.Label labelHeroAttack;
+        private System.Windows.Forms.Label labelHeroDamage;
     }
 }
 

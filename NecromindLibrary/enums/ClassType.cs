@@ -12,6 +12,7 @@ namespace NecromindLibrary.enums
         Armor,
         Boss,
         Hero,
+        HeroDTO,
         Monster,
         Potion,
         Quest,

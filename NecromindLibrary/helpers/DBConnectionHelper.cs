@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using NecromindLibrary.dto;
 using NecromindLibrary.enums;
 using NecromindLibrary.models;
 using System;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 namespace NecromindLibrary.helpers
 {
     /// <summary>
-    /// Collection of helper methods.
+    /// Collection of database handler helper methods.
     /// </summary>
     public static class DBConnectionHelper
     {
@@ -73,6 +74,22 @@ namespace NecromindLibrary.helpers
                     typeof(HeroModel),
                     new CustomPropertyTypeMap(
                         typeof(HeroModel),
+                        (type, columnName) =>
+                        type.GetProperties().FirstOrDefault(prop =>
+                        prop.GetCustomAttributes(false)
+                        .OfType<ColumnAttribute>()
+                        .Any(attr => attr.Name == columnName))
+                        )
+                    );
+
+                    break;
+
+                case "HeroDTO":
+
+                    SqlMapper.SetTypeMap(
+                    typeof(HeroDTO),
+                    new CustomPropertyTypeMap(
+                        typeof(HeroDTO),
                         (type, columnName) =>
                         type.GetProperties().FirstOrDefault(prop =>
                         prop.GetCustomAttributes(false)
