@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace NecromindUI
 {
@@ -35,7 +36,9 @@ namespace NecromindUI
         {
             setUpMenu();
             setLabels();
+            //applyCustomStyleToRichTextBox();
             showMainMenu();
+            //panels["confirmDelete"].BringToFront();
         }
 
         private void setUpMenu()
@@ -44,6 +47,7 @@ namespace NecromindUI
             panels.Add("newGame", panelNewGame);
             panels.Add("loadGame", panelLoadGame);
             panels.Add("game", panelGame);
+            panels.Add("confirmDelete", panelConfirmDelete);
         }
 
         private void setLabels()
@@ -54,6 +58,14 @@ namespace NecromindUI
             labels.Add("level", labelHeroLevelValue);
             labels.Add("damage", labelHeroDamageValue);
             labels.Add("defense", labelHeroDefenseValue);
+        }
+
+        private void applyCustomStyleToRichTextBox()
+        {
+            richTextBoxConfirmDelete.SelectAll();
+            richTextBoxConfirmDelete.SelectionAlignment = HorizontalAlignment.Center;
+            richTextBoxConfirmDelete.Select(26, 6);
+            richTextBoxConfirmDelete.SelectionColor = Color.FromArgb(214, 48, 49);
         }
 
         private void showMainMenu()
@@ -82,7 +94,7 @@ namespace NecromindUI
             if (!isLoadButtonsLoaded)
             {
                 List<HeroDTO> heroes = DataAccess.GetAllHeroesAsDTO();
-                UIHelper.ShowAllLoadedHeroes(heroes, panels, labels, groupBoxHeroDetails);
+                UIHelper.ShowAllLoadedHeroes(heroes, panels, labels, groupBoxHeroDetails, textBoxConfirmDelete, richTextBoxConfirmDelete);
                 isLoadButtonsLoaded = true;
             }
             panels["loadGame"].BringToFront();

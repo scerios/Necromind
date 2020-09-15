@@ -39,6 +39,10 @@ namespace NecromindLibrary.repository
             }
         }
 
+        /// <summary>
+        /// Deletes a hero from the database by the hero ID.
+        /// </summary>
+        /// <param name="id">ID of hero.</param>
         public static void DeleteHeroById(int id)
         {
             using (IDbConnection connection = new MySqlConnection(DBConnectionHelper.GetConnectionStringByName(databaseName)))

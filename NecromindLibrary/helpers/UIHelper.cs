@@ -43,7 +43,8 @@ namespace NecromindLibrary.helpers
         /// <param name="panels">A dictionary of panels.</param>
         /// <param name="labels">A dictionary of labels.</param>
         /// <param name="heroDetails">A group box of hero details.</param>
-        public static void ShowAllLoadedHeroes(List<HeroDTO> heroes, Dictionary<string, Panel> panels, Dictionary<string, Label> labels, GroupBox heroDetails)
+        public static void ShowAllLoadedHeroes(List<HeroDTO> heroes, Dictionary<string, Panel> panels, Dictionary<string, Label> labels, 
+                                                GroupBox heroDetails, TextBox textBoxConfirmDelete, RichTextBox richTextBoxConfirmDelete)
         {
             heroesAsDTO = heroes;
             int btnLoadHeroLocX = 430;
@@ -105,7 +106,7 @@ namespace NecromindLibrary.helpers
 
                 btnDeleteHero.Click += (s, ev) =>
                 {
-                    DeleteHeroByIdBtn(hero, panels, labels, heroDetails);
+                    DeleteHeroByIdBtn(hero, panels, labels, heroDetails, textBoxConfirmDelete, richTextBoxConfirmDelete);
                 };
 
                 btnLocY += 40;
@@ -133,19 +134,60 @@ namespace NecromindLibrary.helpers
         /// </summary>
         /// <param name="hero">A hero as HeroDTO.</param>
         /// <param name="panels">A dictionary of panels.</param>
-        /// <param name="btnLoadHero">A button which loads the hero upon clicking.</param>
-        /// <param name="btnDeleteHero">A button which deletes the hero upon clicking.</param>
-        private static void DeleteHeroByIdBtn(HeroDTO hero, Dictionary<string, Panel> panels, Dictionary<string, Label> labels, GroupBox heroDetails)
+        /// <param name="labels">A dictionary of labels.</param>
+        /// <param name="heroDetails">A group box of hero details.</param>
+        private static void DeleteHeroByIdBtn(HeroDTO hero, Dictionary<string, Panel> panels, Dictionary<string, Label> labels,
+                                                GroupBox heroDetails, TextBox textBoxConfirmDelete, RichTextBox richTextBoxConfirmDelete)
         {
-            heroesAsDTO.Remove(hero);
-            DataAccess.DeleteHeroById(hero.Id);
-
-            foreach(Button createdButton in createdButtons)
+            foreach (Control control in panels["loadGame"].Controls)
             {
-                panels["loadGame"].Controls.Remove(createdButton);
+                control.Enabled = false;
             }
 
-            ShowAllLoadedHeroes(heroesAsDTO, panels, labels, heroDetails);
+            richTextBoxConfirmDelete.Text = richTextBoxConfirmDelete.Text.Replace("{HERO}", hero.Name);
+            richTextBoxConfirmDelete.SelectAll();
+            richTextBoxConfirmDelete.SelectionAlignment = HorizontalAlignment.Center;
+            richTextBoxConfirmDelete.Select(26, 6);
+            richTextBoxConfirmDelete.SelectionColor = Color.FromArgb(214, 48, 49);
+            textBoxConfirmDelete.Focus();
+            panels["confirmDelete"].BringToFront();
+
+            textBoxConfirmDelete.KeyPress += (s, ev) =>
+            {
+                if (ev.KeyChar == (char)13)
+                {
+                    if (textBoxConfirmDelete.Text == hero.Name)
+                    {
+                        heroesAsDTO.Remove(hero);
+                        DataAccess.DeleteHeroById(hero.Id);
+
+                        foreach (Button createdButton in createdButtons)
+                        {
+                            panels["loadGame"].Controls.Remove(createdButton);
+                        }
+
+                        foreach (Control control in panels["loadGame"].Controls)
+                        {
+                            control.Enabled = true;
+                        }
+
+                        ShowAllLoadedHeroes(heroesAsDTO, panels, labels, heroDetails, textBoxConfirmDelete, richTextBoxConfirmDelete);
+                        panels["confirmDelete"].SendToBack();
+                        richTextBoxConfirmDelete.Text = richTextBoxConfirmDelete.Text.Replace(hero.Name, "{HERO}");
+                    }
+                }
+
+                if (ev.KeyChar == (char)27)
+                {
+                    foreach (Control control in panels["loadGame"].Controls)
+                    {
+                        control.Enabled = true;
+                    }
+
+                    panels["confirmDelete"].SendToBack();
+                    richTextBoxConfirmDelete.Text = richTextBoxConfirmDelete.Text.Replace(hero.Name, "{HERO}");
+                }
+            };
         }
 
         /// <summary>

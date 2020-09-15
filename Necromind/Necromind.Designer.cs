@@ -1,4 +1,7 @@
-﻿namespace NecromindUI
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace NecromindUI
 {
     partial class Necromind
     {
@@ -37,6 +40,9 @@
             this.btnCreateNewHero = new System.Windows.Forms.Button();
             this.btnBackFromNewGame = new System.Windows.Forms.Button();
             this.panelLoadGame = new System.Windows.Forms.Panel();
+            this.panelConfirmDelete = new System.Windows.Forms.Panel();
+            this.richTextBoxConfirmDelete = new System.Windows.Forms.RichTextBox();
+            this.textBoxConfirmDelete = new System.Windows.Forms.TextBox();
             this.btnBackFromLoadGame = new System.Windows.Forms.Button();
             this.panelGame = new System.Windows.Forms.Panel();
             this.btnBackFromGame = new System.Windows.Forms.Button();
@@ -56,6 +62,7 @@
             this.panelMenu.SuspendLayout();
             this.panelNewGame.SuspendLayout();
             this.panelLoadGame.SuspendLayout();
+            this.panelConfirmDelete.SuspendLayout();
             this.panelGame.SuspendLayout();
             this.groupBoxHeroDetails.SuspendLayout();
             this.SuspendLayout();
@@ -161,6 +168,38 @@
             this.panelLoadGame.Name = "panelLoadGame";
             this.panelLoadGame.Size = new System.Drawing.Size(984, 661);
             this.panelLoadGame.TabIndex = 15;
+            // 
+            // panelConfirmDelete
+            // 
+            this.panelConfirmDelete.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelConfirmDelete.Controls.Add(this.richTextBoxConfirmDelete);
+            this.panelConfirmDelete.Controls.Add(this.textBoxConfirmDelete);
+            this.panelConfirmDelete.Location = new System.Drawing.Point(342, 180);
+            this.panelConfirmDelete.Name = "panelConfirmDelete";
+            this.panelConfirmDelete.Size = new System.Drawing.Size(300, 130);
+            this.panelConfirmDelete.TabIndex = 2;
+            // 
+            // richTextBoxConfirmDelete
+            // 
+            this.richTextBoxConfirmDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.richTextBoxConfirmDelete.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxConfirmDelete.Cursor = System.Windows.Forms.Cursors.Default;
+            this.richTextBoxConfirmDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.richTextBoxConfirmDelete.Location = new System.Drawing.Point(21, 22);
+            this.richTextBoxConfirmDelete.Name = "richTextBoxConfirmDelete";
+            this.richTextBoxConfirmDelete.ReadOnly = true;
+            this.richTextBoxConfirmDelete.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.richTextBoxConfirmDelete.Size = new System.Drawing.Size(264, 70);
+            this.richTextBoxConfirmDelete.TabIndex = 3;
+            this.richTextBoxConfirmDelete.Text = "Are you sure your want to DELETE\n{HERO}? \nTo confirm you must enter\nthe hero\'s name.\n";
+            // 
+            // textBoxConfirmDelete
+            // 
+            this.textBoxConfirmDelete.Location = new System.Drawing.Point(87, 101);
+            this.textBoxConfirmDelete.Multiline = true;
+            this.textBoxConfirmDelete.Name = "textBoxConfirmDelete";
+            this.textBoxConfirmDelete.Size = new System.Drawing.Size(125, 25);
+            this.textBoxConfirmDelete.TabIndex = 1;
             // 
             // btnBackFromLoadGame
             // 
@@ -338,6 +377,7 @@
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelNewGame);
             this.Controls.Add(this.panelGame);
+            this.Controls.Add(this.panelConfirmDelete);
             this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1000, 700);
@@ -349,6 +389,8 @@
             this.panelNewGame.ResumeLayout(false);
             this.panelNewGame.PerformLayout();
             this.panelLoadGame.ResumeLayout(false);
+            this.panelConfirmDelete.ResumeLayout(false);
+            this.panelConfirmDelete.PerformLayout();
             this.panelGame.ResumeLayout(false);
             this.groupBoxHeroDetails.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -381,6 +423,9 @@
         private System.Windows.Forms.Label labelHeroHealthValue;
         private System.Windows.Forms.Label labelHeroDefense;
         private System.Windows.Forms.Label labelHeroDamage;
+        private System.Windows.Forms.Panel panelConfirmDelete;
+        private System.Windows.Forms.RichTextBox richTextBoxConfirmDelete;
+        private System.Windows.Forms.TextBox textBoxConfirmDelete;
     }
 }
 
