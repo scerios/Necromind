@@ -17,6 +17,9 @@ namespace NecromindLibrary.helpers
     /// </summary>
     public static class UIHelper
     {
+        private static List<Button> createdButtons = new List<Button>();
+        private static List<HeroDTO> heroesAsDTO;
+
         /// <summary>
         /// Resets the game panel to the original values.
         /// </summary>
@@ -42,6 +45,7 @@ namespace NecromindLibrary.helpers
         /// <param name="heroDetails">A group box of hero details.</param>
         public static void ShowAllLoadedHeroes(List<HeroDTO> heroes, Dictionary<string, Panel> panels, Dictionary<string, Label> labels, GroupBox heroDetails)
         {
+            heroesAsDTO = heroes;
             int btnLoadHeroLocX = 430;
             int btnDeleteHeroLocX = 540;
             int btnLocY = 100;
@@ -68,10 +72,14 @@ namespace NecromindLibrary.helpers
                     FlatStyle.Flat
                 );
 
+                createdButtons.Add(btnLoadHero);
+
                 btnLoadHero.Click += (s, ev) =>
                 {
                     LoadHeroByIdBtn(hero.Id, panels, labels, heroDetails);
                 };
+
+                panels["loadGame"].Controls.Add(btnLoadHero);
 
                 // Blue-ish color (exactly like the window background)
                 Color btnDeleteHeroColor = new Color();
@@ -93,14 +101,15 @@ namespace NecromindLibrary.helpers
                     FlatStyle.Flat
                 );
 
+                createdButtons.Add(btnDeleteHero);
+
                 btnDeleteHero.Click += (s, ev) =>
                 {
-                    DeleteHeroByIdBtn(hero.Id, panels, labels, heroDetails, btnLoadHero, btnDeleteHero);
+                    DeleteHeroByIdBtn(hero, panels, labels, heroDetails);
                 };
 
                 btnLocY += 40;
 
-                panels["loadGame"].Controls.Add(btnLoadHero);
                 panels["loadGame"].Controls.Add(btnDeleteHero);
             }
         }
@@ -122,19 +131,21 @@ namespace NecromindLibrary.helpers
         /// <summary>
         /// Deletes a hero by ID then reloads the loadGame panel.
         /// </summary>
-        /// <param name="id">ID of hero.</param>
+        /// <param name="hero">A hero as HeroDTO.</param>
         /// <param name="panels">A dictionary of panels.</param>
-        /// <param name="labels">A dictionary of labels.</param>
-        /// <param name="heroDetails">A group box of hero details.</param>
-        private static void DeleteHeroByIdBtn(int id, Dictionary<string, Panel> panels, Dictionary<string, Label> labels, GroupBox heroDetails, Button btnLoadHero, Button btnDeleteHero)
+        /// <param name="btnLoadHero">A button which loads the hero upon clicking.</param>
+        /// <param name="btnDeleteHero">A button which deletes the hero upon clicking.</param>
+        private static void DeleteHeroByIdBtn(HeroDTO hero, Dictionary<string, Panel> panels, Dictionary<string, Label> labels, GroupBox heroDetails)
         {
-            DataAccess.DeleteHeroById(id);
+            heroesAsDTO.Remove(hero);
+            DataAccess.DeleteHeroById(hero.Id);
 
-            panels["loadGame"].Controls.Remove(btnLoadHero);
-            panels["loadGame"].Controls.Remove(btnDeleteHero);
+            foreach(Button createdButton in createdButtons)
+            {
+                panels["loadGame"].Controls.Remove(createdButton);
+            }
 
-            //List<HeroDTO> heroes = DataAccess.GetAllHeroesAsDTO();
-            //ShowAllLoadedHeroes(heroes, panels, labels, heroDetails);
+            ShowAllLoadedHeroes(heroesAsDTO, panels, labels, heroDetails);
         }
 
         /// <summary>
