@@ -36,9 +36,7 @@ namespace NecromindUI
         {
             setUpMenu();
             setLabels();
-            //applyCustomStyleToRichTextBox();
             showMainMenu();
-            //panels["confirmDelete"].BringToFront();
         }
 
         private void setUpMenu()
@@ -58,14 +56,6 @@ namespace NecromindUI
             labels.Add("level", labelHeroLevelValue);
             labels.Add("damage", labelHeroDamageValue);
             labels.Add("defense", labelHeroDefenseValue);
-        }
-
-        private void applyCustomStyleToRichTextBox()
-        {
-            richTextBoxConfirmDelete.SelectAll();
-            richTextBoxConfirmDelete.SelectionAlignment = HorizontalAlignment.Center;
-            richTextBoxConfirmDelete.Select(26, 6);
-            richTextBoxConfirmDelete.SelectionColor = Color.FromArgb(214, 48, 49);
         }
 
         private void showMainMenu()

@@ -3,6 +3,7 @@ using NecromindLibrary.models;
 using NecromindLibrary.repository;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,10 @@ namespace NecromindLibrary.helpers
     /// </summary>
     public static class UIHelper
     {
-        private static List<Button> createdButtons = new List<Button>();
+        // Placeholder convention for hero's name
+        private static readonly string heroPlaceholder = ConfigurationManager.AppSettings["heroPlaceholder"];
+
+        private static List<Button> createdButtons;
         private static List<HeroDTO> heroesAsDTO;
 
         /// <summary>
@@ -27,7 +31,7 @@ namespace NecromindLibrary.helpers
         /// <param name="heroDetails">A group box of hero details.</param>
         public static void ResetGame(Dictionary<string, Label> labels, GroupBox heroDetails)
         {
-            heroDetails.Text = "{HERO}'s Details";
+            heroDetails.Text = heroPlaceholder + "'s Details";
             labels["health"].Text = "";
             labels["gold"].Text = "";
             labels["XP"].Text = "";
@@ -47,20 +51,14 @@ namespace NecromindLibrary.helpers
                                                 GroupBox heroDetails, TextBox textBoxConfirmDelete, RichTextBox richTextBoxConfirmDelete)
         {
             heroesAsDTO = heroes;
+            createdButtons = new List<Button>();
+
             int btnLoadHeroLocX = 430;
             int btnDeleteHeroLocX = 540;
             int btnLocY = 100;
 
             foreach (HeroDTO hero in heroes)
             {
-                // Orange background color
-                Color btnLoadHeroColor = new Color();
-                btnLoadHeroColor = Color.FromArgb(211, 84, 0);
-
-                // Soft gray-ish white color
-                Color btnLoadHeroTextColor = new Color();
-                btnLoadHeroTextColor = Color.FromArgb(229, 232, 232);
-
                 Button btnLoadHero = CreateButton(
                     hero.Name,
                     "btnLoad" + hero.Name,
@@ -68,8 +66,8 @@ namespace NecromindLibrary.helpers
                     25,
                     btnLoadHeroLocX,
                     btnLocY,
-                    btnLoadHeroColor,
-                    btnLoadHeroTextColor,
+                    Color.FromArgb(211, 84, 0), // Orange color
+                    Color.FromArgb(229, 232, 232), // Soft gray-ish white color
                     FlatStyle.Flat
                 );
 
@@ -82,14 +80,6 @@ namespace NecromindLibrary.helpers
 
                 panels["loadGame"].Controls.Add(btnLoadHero);
 
-                // Blue-ish color (exactly like the window background)
-                Color btnDeleteHeroColor = new Color();
-                btnDeleteHeroColor = Color.FromArgb(23, 32, 42);
-
-                // Red color
-                Color btnDeleteHeroTextColor = new Color();
-                btnDeleteHeroTextColor = Color.FromArgb(214, 48, 49);
-
                 Button btnDeleteHero = CreateButton(
                     "X",
                     "btnDelete" + hero.Name,
@@ -97,8 +87,8 @@ namespace NecromindLibrary.helpers
                     25,
                     btnDeleteHeroLocX,
                     btnLocY,
-                    btnDeleteHeroColor,
-                    btnDeleteHeroTextColor,
+                    Color.FromArgb(23, 32, 42), // Blue-ish color (exactly like the window background)
+                    Color.FromArgb(214, 48, 49), // Red color
                     FlatStyle.Flat
                 );
 
@@ -136,6 +126,8 @@ namespace NecromindLibrary.helpers
         /// <param name="panels">A dictionary of panels.</param>
         /// <param name="labels">A dictionary of labels.</param>
         /// <param name="heroDetails">A group box of hero details.</param>
+        /// <param name="textBoxConfirmDelete">A text box for the user to enter the name of the hero.</param>
+        /// <param name="richTextBoxConfirmDelete">A rich text box which shows warning message with custom style to the user.</param>
         private static void DeleteHeroByIdBtn(HeroDTO hero, Dictionary<string, Panel> panels, Dictionary<string, Label> labels,
                                                 GroupBox heroDetails, TextBox textBoxConfirmDelete, RichTextBox richTextBoxConfirmDelete)
         {
@@ -144,16 +136,13 @@ namespace NecromindLibrary.helpers
                 control.Enabled = false;
             }
 
-            richTextBoxConfirmDelete.Text = richTextBoxConfirmDelete.Text.Replace("{HERO}", hero.Name);
-            richTextBoxConfirmDelete.SelectAll();
-            richTextBoxConfirmDelete.SelectionAlignment = HorizontalAlignment.Center;
-            richTextBoxConfirmDelete.Select(26, 6);
-            richTextBoxConfirmDelete.SelectionColor = Color.FromArgb(214, 48, 49);
+            ApplyCustomStyleToRichTextConfirmDelete(hero, richTextBoxConfirmDelete);
             textBoxConfirmDelete.Focus();
             panels["confirmDelete"].BringToFront();
 
             textBoxConfirmDelete.KeyPress += (s, ev) =>
             {
+                // If ENTER is pressed
                 if (ev.KeyChar == (char)13)
                 {
                     if (textBoxConfirmDelete.Text == hero.Name)
@@ -166,28 +155,63 @@ namespace NecromindLibrary.helpers
                             panels["loadGame"].Controls.Remove(createdButton);
                         }
 
-                        foreach (Control control in panels["loadGame"].Controls)
-                        {
-                            control.Enabled = true;
-                        }
-
                         ShowAllLoadedHeroes(heroesAsDTO, panels, labels, heroDetails, textBoxConfirmDelete, richTextBoxConfirmDelete);
-                        panels["confirmDelete"].SendToBack();
-                        richTextBoxConfirmDelete.Text = richTextBoxConfirmDelete.Text.Replace(hero.Name, "{HERO}");
+                        HideConfirmDeletePanel(hero, panels, textBoxConfirmDelete, richTextBoxConfirmDelete);
                     }
                 }
 
+                // If ESCAPE is pressed
                 if (ev.KeyChar == (char)27)
                 {
-                    foreach (Control control in panels["loadGame"].Controls)
-                    {
-                        control.Enabled = true;
-                    }
-
-                    panels["confirmDelete"].SendToBack();
-                    richTextBoxConfirmDelete.Text = richTextBoxConfirmDelete.Text.Replace(hero.Name, "{HERO}");
+                    HideConfirmDeletePanel(hero, panels, textBoxConfirmDelete, richTextBoxConfirmDelete);
                 }
             };
+        }
+
+        /// <summary>
+        /// Hides and resets the confirm delete panel and restores controls on the load game panel. 
+        /// </summary>
+        /// <param name="hero">A hero as HeroDTO</param>
+        /// <param name="panels">>A dictionary of panels.</param>
+        /// <param name="textBoxConfirmDelete">A text box for the user to enter the name of the hero.</param>
+        /// <param name="richTextBoxConfirmDelete">A rich text box which shows warning message with custom style to the user.</param>
+        private static void HideConfirmDeletePanel(HeroDTO hero, Dictionary<string, Panel> panels, TextBox textBoxConfirmDelete, RichTextBox richTextBoxConfirmDelete)
+        {
+            foreach (Control control in panels["loadGame"].Controls)
+            {
+                control.Enabled = true;
+            }
+
+            panels["confirmDelete"].SendToBack();
+            richTextBoxConfirmDelete.Text = richTextBoxConfirmDelete.Text.Replace(hero.Name, heroPlaceholder);
+        }
+
+        /// <summary>
+        /// Applies custom style to rich text confirm delete.
+        /// </summary>
+        /// <param name="hero">A hero as HeroDTO.</param>
+        /// <param name="richTextBoxConfirmDelete">A rich text box which shows warning message with custom style to the user.</param>
+        private static void ApplyCustomStyleToRichTextConfirmDelete(HeroDTO hero, RichTextBox richTextBoxConfirmDelete)
+        {
+            richTextBoxConfirmDelete.Text = richTextBoxConfirmDelete.Text.Replace(heroPlaceholder, hero.Name);
+
+            int startPositionOfEnter = richTextBoxConfirmDelete.Text.IndexOf("ENTER");
+            int startPositionOfEsc = richTextBoxConfirmDelete.Text.IndexOf("ESC");
+
+            Font font = richTextBoxConfirmDelete.Font;
+            FontStyle bold = FontStyle.Bold;
+
+            richTextBoxConfirmDelete.SelectAll();
+            richTextBoxConfirmDelete.SelectionAlignment = HorizontalAlignment.Center;
+            richTextBoxConfirmDelete.Select(26, 6);
+            richTextBoxConfirmDelete.SelectionColor = Color.FromArgb(214, 48, 49); // Red color
+            richTextBoxConfirmDelete.SelectionFont = new Font(font, bold);
+            richTextBoxConfirmDelete.Select(startPositionOfEnter, 5);
+            richTextBoxConfirmDelete.SelectionColor = Color.FromArgb(0, 184, 148); // Green color
+            richTextBoxConfirmDelete.SelectionFont = new Font(font, bold);
+            richTextBoxConfirmDelete.Select(startPositionOfEsc, 3);
+            richTextBoxConfirmDelete.SelectionColor = Color.FromArgb(253, 203, 110); // Yellow color
+            richTextBoxConfirmDelete.SelectionFont = new Font(font, bold);
         }
 
         /// <summary>
@@ -213,7 +237,7 @@ namespace NecromindLibrary.helpers
             button.BackColor = backColor;
             button.ForeColor = foreColor;
             button.FlatStyle = style;
-            button.Font = new Font("Courier New", 10);
+            button.Font = new Font(ConfigurationManager.AppSettings["fontStyle"], 10);
             button.Anchor = AnchorStyles.None;
             button.FlatAppearance.BorderSize = 0;
 
@@ -230,11 +254,11 @@ namespace NecromindLibrary.helpers
         {
             if (hero.Name.EndsWith("s") || hero.Name.EndsWith("S"))
             {
-                heroDetails.Text = heroDetails.Text.Replace("{HERO}'s", hero.Name + "'");
+                heroDetails.Text = heroDetails.Text.Replace(heroPlaceholder + "'s", hero.Name + "'");
             } 
             else
             {
-                heroDetails.Text = heroDetails.Text.Replace("{HERO}", hero.Name);
+                heroDetails.Text = heroDetails.Text.Replace(heroPlaceholder, hero.Name);
             }
             
             labels["health"].Text = hero.HitPointsMax.ToString() + " / " + hero.HitPoints.ToString();
