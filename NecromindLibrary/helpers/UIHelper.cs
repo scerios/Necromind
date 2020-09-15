@@ -183,6 +183,7 @@ namespace NecromindLibrary.helpers
             }
 
             panels["confirmDelete"].SendToBack();
+            textBoxConfirmDelete.Text = "";
             richTextBoxConfirmDelete.Text = richTextBoxConfirmDelete.Text.Replace(hero.Name, heroPlaceholder);
         }
 
