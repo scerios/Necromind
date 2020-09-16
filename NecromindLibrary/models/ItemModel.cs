@@ -35,7 +35,7 @@ namespace NecromindLibrary.models
         /// <summary>
         /// Decides if the item can be sold to merchant or not.
         /// </summary>
-        [Column("sellable")]
-        public bool canBeSold { get; set; }
+        [Column("is_sellable")]
+        public bool isSellable { get; set; }
     }
 }
