@@ -25,8 +25,13 @@ namespace NecromindLibrary.models
         /// <summary>
         /// A list of active quests.
         /// </summary>
-        [Column("quest_ids")]
-        public string QuestsIds { get; set; }
+        [Column("active_quest_ids")]
+        public string ActiveQuestsIds { get; set; }
+        /// <summary>
+        /// A list of completed quests.
+        /// </summary>
+        [Column("completed_quest_ids")]
+        public string CompletedQuestsIds { get; set; }
         /// <summary>
         /// A weapon currently equipped.
         /// </summary>
