@@ -124,9 +124,8 @@ namespace NecromindUI
             // 
             this.textBoxNewHeroName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxNewHeroName.Location = new System.Drawing.Point(430, 100);
-            this.textBoxNewHeroName.Multiline = true;
             this.textBoxNewHeroName.Name = "textBoxNewHeroName";
-            this.textBoxNewHeroName.Size = new System.Drawing.Size(100, 25);
+            this.textBoxNewHeroName.Size = new System.Drawing.Size(100, 22);
             this.textBoxNewHeroName.TabIndex = 2;
             this.textBoxNewHeroName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNewHeroName_KeyPress);
             // 

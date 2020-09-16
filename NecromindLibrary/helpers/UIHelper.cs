@@ -19,7 +19,7 @@ namespace NecromindLibrary.helpers
     public static class UIHelper
     {
         // Placeholder convention for hero's name
-        private static readonly string heroPlaceholder = ConfigurationManager.AppSettings["heroPlaceholder"];
+        private static readonly string heroNamePlaceholder = ConfigurationManager.AppSettings["heroNamePlaceholder"];
 
         private static List<Button> createdButtons;
         private static List<HeroDTO> heroesAsDTO;
@@ -31,7 +31,7 @@ namespace NecromindLibrary.helpers
         /// <param name="heroDetails">A group box of hero details.</param>
         public static void ResetGame(Dictionary<string, Label> labels, GroupBox heroDetails)
         {
-            heroDetails.Text = heroPlaceholder + "'s Details";
+            heroDetails.Text = heroNamePlaceholder + "'s Details";
             labels["heroHealth"].Text = "";
             labels["heroGold"].Text = "";
             labels["heroXP"].Text = "";
@@ -189,7 +189,7 @@ namespace NecromindLibrary.helpers
 
             panels["confirmDelete"].SendToBack();
             textBoxConfirmDelete.Text = "";
-            richTextBoxConfirmDelete.Text = richTextBoxConfirmDelete.Text.Replace(hero.Name, heroPlaceholder);
+            richTextBoxConfirmDelete.Text = richTextBoxConfirmDelete.Text.Replace(hero.Name, heroNamePlaceholder);
         }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace NecromindLibrary.helpers
         /// <param name="richTextBoxConfirmDelete">A rich text box which shows warning message with custom style to the user.</param>
         private static void ApplyCustomStyleToRichTextConfirmDelete(HeroDTO hero, RichTextBox richTextBoxConfirmDelete)
         {
-            richTextBoxConfirmDelete.Text = richTextBoxConfirmDelete.Text.Replace(heroPlaceholder, hero.Name);
+            richTextBoxConfirmDelete.Text = richTextBoxConfirmDelete.Text.Replace(heroNamePlaceholder, hero.Name);
 
             int startPositionOfEnter = richTextBoxConfirmDelete.Text.IndexOf("ENTER");
             int startPositionOfEsc = richTextBoxConfirmDelete.Text.IndexOf("ESC");
@@ -260,11 +260,11 @@ namespace NecromindLibrary.helpers
         {
             if (hero.Name.EndsWith("s") || hero.Name.EndsWith("S"))
             {
-                heroDetails.Text = heroDetails.Text.Replace(heroPlaceholder + "'s", hero.Name + "'");
+                heroDetails.Text = heroDetails.Text.Replace(heroNamePlaceholder + "'s", hero.Name + "'");
             } 
             else
             {
-                heroDetails.Text = heroDetails.Text.Replace(heroPlaceholder, hero.Name);
+                heroDetails.Text = heroDetails.Text.Replace(heroNamePlaceholder, hero.Name);
             }
             
             labels["heroHealth"].Text = hero.HitPointsMax.ToString() + " / " + hero.HitPoints.ToString();

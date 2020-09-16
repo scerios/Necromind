@@ -65,9 +65,37 @@ namespace NecromindUI
         private void btnNewGame_Click(object sender, EventArgs e)
         {
             panels["newGame"].BringToFront();
+            textBoxNewHeroName.Focus();
         }
 
         private void btnCreateNewHero_Click(object sender, EventArgs e)
+        {
+            List<HeroDTO> heroes = DataAccess.GetAllHeroesAsDTO();
+            if (heroes.Count == 0)
+            {
+                createNewHero();
+            }
+            else if (heroes.Count() == 1 && heroes.First().Id == 0) // Failed to connect to DB
+            {
+                MessageBox.Show(heroes.First().Name);
+            }
+            else
+            {
+                if (isNameAlreadyTaken(heroes))
+                {
+                    MessageBox.Show("This name is already taken. Choose another one.");
+                }
+                else
+                {
+                    createNewHero();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Creates a new hero with the user given name.
+        /// </summary>
+        private void createNewHero()
         {
             int insertedId = DataAccess.CreateNewHero(textBoxNewHeroName.Text);
 
@@ -78,11 +106,32 @@ namespace NecromindUI
 
                 textBoxNewHeroName.Text = "";
                 panels["game"].BringToFront();
-            } 
+            }
             else
             {
                 showMainMenu();
             }
+        }
+
+        /// <summary>
+        /// Checks among all the heroes if the user given name is already taken.
+        /// </summary>
+        /// <param name="heroes">A list of heroes as HeroDTO.</param>
+        /// <returns>True if name already taken. False otherwise.</returns>
+        private bool isNameAlreadyTaken(List<HeroDTO> heroes)
+        {
+            bool isNameAlreadyTaken = false;
+
+            foreach (HeroDTO hero in heroes)
+            {
+                if (hero.Name == textBoxNewHeroName.Text)
+                {
+                    isNameAlreadyTaken = true;
+                    break;
+                }
+            }
+
+            return isNameAlreadyTaken;
         }
 
         private void textBoxNewHeroName_KeyPress(object sender, KeyPressEventArgs e)
