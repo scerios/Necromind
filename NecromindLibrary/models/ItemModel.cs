@@ -22,5 +22,20 @@ namespace NecromindLibrary.models
         /// </summary>
         [Column("name")]
         public string Name { get; set; }
+        /// <summary>
+        /// Buying price of the item.
+        /// </summary>
+        [Column("buy_price")]
+        public int buyPrice { get; set; }
+        /// <summary>
+        /// Selling price of the item.
+        /// </summary>
+        [Column("sell_price")]
+        public int sellPrice { get; set; }
+        /// <summary>
+        /// Decides if the item can be sold to merchant or not.
+        /// </summary>
+        [Column("sellable")]
+        public bool canBeSold { get; set; }
     }
 }
