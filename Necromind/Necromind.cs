@@ -22,7 +22,6 @@ namespace NecromindUI
     {
         public static Dictionary<string, Panel> panels = new Dictionary<string, Panel>();
         public static Dictionary<string, Label> labels = new Dictionary<string, Label>();
-        private bool isLoadButtonsLoaded = false;
 
         public Necromind()
         {
@@ -50,12 +49,12 @@ namespace NecromindUI
 
         private void setLabels()
         {
-            labels.Add("health", labelHeroHealthValue);
-            labels.Add("gold", labelHeroGoldValue);
-            labels.Add("XP", labelHeroXPValue);
-            labels.Add("level", labelHeroLevelValue);
-            labels.Add("damage", labelHeroDamageValue);
-            labels.Add("defense", labelHeroDefenseValue);
+            labels.Add("heroHealth", labelHeroHealthValue);
+            labels.Add("heroGold", labelHeroGoldValue);
+            labels.Add("heroXP", labelHeroXPValue);
+            labels.Add("heroLevel", labelHeroLevelValue);
+            labels.Add("heroDamage", labelHeroDamageValue);
+            labels.Add("heroDefense", labelHeroDefenseValue);
         }
 
         private void showMainMenu()
@@ -71,23 +70,46 @@ namespace NecromindUI
         private void btnCreateNewHero_Click(object sender, EventArgs e)
         {
             int insertedId = DataAccess.CreateNewHero(textBoxNewHeroName.Text);
-            HeroModel hero = DataAccess.GetHeroById(insertedId);
-            UIHelper.SetHeroDetails(hero, labels, groupBoxHeroDetails);
 
-            textBoxNewHeroName.Text = "";
-            panels["game"].BringToFront();
-            isLoadButtonsLoaded = false;
+            if (insertedId > 0)
+            {
+                HeroModel hero = DataAccess.GetHeroById(insertedId);
+                UIHelper.SetHeroDetails(hero, labels, groupBoxHeroDetails);
+
+                textBoxNewHeroName.Text = "";
+                panels["game"].BringToFront();
+            } 
+            else
+            {
+                showMainMenu();
+            }
+        }
+
+        private void textBoxNewHeroName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // If ENTER is pressed
+            if (e.KeyChar == (char)13)
+            {
+                btnCreateNewHero_Click(sender, new EventArgs());
+            }
         }
 
         private void btnLoadGame_Click(object sender, EventArgs e)
         {
-            if (!isLoadButtonsLoaded)
+            List<HeroDTO> heroes = DataAccess.GetAllHeroesAsDTO();
+            if (heroes.Count == 0)
             {
-                List<HeroDTO> heroes = DataAccess.GetAllHeroesAsDTO();
-                UIHelper.ShowAllLoadedHeroes(heroes, panels, labels, groupBoxHeroDetails, textBoxConfirmDelete, richTextBoxConfirmDelete);
-                isLoadButtonsLoaded = true;
+                MessageBox.Show("There's no hero yet to load. Create a new one first!");
             }
-            panels["loadGame"].BringToFront();
+            else if (heroes.Count() == 1 && heroes.First().Id == 0) // Failed to connect to DB
+            {
+                MessageBox.Show(heroes.First().Name);
+            }
+            else
+            {
+                UIHelper.ShowAllLoadedHeroes(heroes, panels, labels, groupBoxHeroDetails, textBoxConfirmDelete, richTextBoxConfirmDelete);
+                panels["loadGame"].BringToFront();
+            }
         }
 
         private void btnBackFromNewGame_Click(object sender, EventArgs e)

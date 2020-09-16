@@ -32,12 +32,12 @@ namespace NecromindLibrary.helpers
         public static void ResetGame(Dictionary<string, Label> labels, GroupBox heroDetails)
         {
             heroDetails.Text = heroPlaceholder + "'s Details";
-            labels["health"].Text = "";
-            labels["gold"].Text = "";
-            labels["XP"].Text = "";
-            labels["level"].Text = "";
-            labels["damage"].Text = "";
-            labels["defense"].Text = "";
+            labels["heroHealth"].Text = "";
+            labels["heroGold"].Text = "";
+            labels["heroXP"].Text = "";
+            labels["heroLevel"].Text = "";
+            labels["heroDamage"].Text = "";
+            labels["heroDefense"].Text = "";
         }
 
         /// <summary>
@@ -147,16 +147,21 @@ namespace NecromindLibrary.helpers
                 {
                     if (textBoxConfirmDelete.Text == hero.Name)
                     {
-                        heroesAsDTO.Remove(hero);
-                        DataAccess.DeleteHeroById(hero.Id);
-
-                        foreach (Button createdButton in createdButtons)
+                        if(DataAccess.TryDeleteHeroById(hero.Id))
                         {
-                            panels["loadGame"].Controls.Remove(createdButton);
-                        }
+                            heroesAsDTO.Remove(hero);
+                            foreach (Button createdButton in createdButtons)
+                            {
+                                panels["loadGame"].Controls.Remove(createdButton);
+                            }
 
-                        ShowAllLoadedHeroes(heroesAsDTO, panels, labels, heroDetails, textBoxConfirmDelete, richTextBoxConfirmDelete);
-                        HideConfirmDeletePanel(hero, panels, textBoxConfirmDelete, richTextBoxConfirmDelete);
+                            ShowAllLoadedHeroes(heroesAsDTO, panels, labels, heroDetails, textBoxConfirmDelete, richTextBoxConfirmDelete);
+                            HideConfirmDeletePanel(hero, panels, textBoxConfirmDelete, richTextBoxConfirmDelete);
+                            if (heroesAsDTO.Count() == 0)
+                            {
+                                panels["menu"].BringToFront();
+                            }
+                        }
                     }
                 }
 
@@ -262,12 +267,12 @@ namespace NecromindLibrary.helpers
                 heroDetails.Text = heroDetails.Text.Replace(heroPlaceholder, hero.Name);
             }
             
-            labels["health"].Text = hero.HitPointsMax.ToString() + " / " + hero.HitPoints.ToString();
-            labels["gold"].Text = hero.Gold.ToString();
-            labels["XP"].Text = hero.ExperiencePoints.ToString() + " / " + hero.NextLevelAt.ToString();
-            labels["level"].Text = hero.Level.ToString();
-            labels["damage"].Text = hero.Damage.ToString();
-            labels["defense"].Text = hero.Defense.ToString();
+            labels["heroHealth"].Text = hero.HitPointsMax.ToString() + " / " + hero.HitPoints.ToString();
+            labels["heroGold"].Text = hero.Gold.ToString();
+            labels["heroXP"].Text = hero.ExperiencePoints.ToString() + " / " + hero.NextLevelAt.ToString();
+            labels["heroLevel"].Text = hero.Level.ToString();
+            labels["heroDamage"].Text = hero.Damage.ToString();
+            labels["heroDefense"].Text = hero.Defense.ToString();
         }
     }
 }
