@@ -99,7 +99,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dto\HeroDTO.cs" />
+    <Compile Include="dtos\HeroDTO.cs" />
     <Compile Include="enums\ClassType.cs" />
     <Compile Include="helpers\UIHelper.cs" />
     <Compile Include="models\ArmorModel.cs" />

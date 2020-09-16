@@ -1,4 +1,4 @@
-﻿using NecromindLibrary.dto;
+﻿using NecromindLibrary.dtos;
 using NecromindLibrary.helpers;
 using NecromindLibrary.models;
 using NecromindLibrary.repository;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NecromindLibrary.dto
+namespace NecromindLibrary.dtos
 {
     public class HeroDTO
     {

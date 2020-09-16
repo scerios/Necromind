@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.CodeDom;
 using System.Configuration;
-using NecromindLibrary.dto;
+using NecromindLibrary.dtos;
 using System.Windows.Forms;
 
 namespace NecromindLibrary.repository
