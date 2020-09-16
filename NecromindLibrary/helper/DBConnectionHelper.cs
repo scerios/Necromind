@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using NecromindLibrary.dto;
 using NecromindLibrary.enums;
-using NecromindLibrary.models;
+using NecromindLibrary.model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NecromindLibrary.helpers
+namespace NecromindLibrary.helper
 {
     /// <summary>
     /// Collection of database handler helper methods.

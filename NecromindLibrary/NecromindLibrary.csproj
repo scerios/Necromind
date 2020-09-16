@@ -99,28 +99,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dtos\HeroDTO.cs" />
+    <Compile Include="dto\HeroDTO.cs" />
     <Compile Include="enums\ClassType.cs" />
-    <Compile Include="helpers\UIHelper.cs" />
-    <Compile Include="models\ArmorModel.cs" />
-    <Compile Include="models\BossModel.cs" />
-    <Compile Include="models\CharacterModel.cs" />
-    <Compile Include="helpers\DBConnectionHelper.cs" />
-    <Compile Include="models\HeroModel.cs" />
-    <Compile Include="models\ItemModel.cs" />
-    <Compile Include="models\KillableModel.cs" />
-    <Compile Include="models\MonsterModel.cs" />
-    <Compile Include="models\PotionModel.cs" />
-    <Compile Include="models\QuestModel.cs" />
-    <Compile Include="models\QuestObjectiveModel.cs" />
-    <Compile Include="models\TownNPCModel.cs" />
-    <Compile Include="models\WeaponModel.cs" />
+    <Compile Include="helper\UIHelper.cs" />
+    <Compile Include="model\ArmorModel.cs" />
+    <Compile Include="model\BossModel.cs" />
+    <Compile Include="model\CharacterModel.cs" />
+    <Compile Include="helper\DBConnectionHelper.cs" />
+    <Compile Include="model\HeroModel.cs" />
+    <Compile Include="model\ItemModel.cs" />
+    <Compile Include="model\KillableModel.cs" />
+    <Compile Include="model\MonsterModel.cs" />
+    <Compile Include="model\PotionModel.cs" />
+    <Compile Include="model\QuestModel.cs" />
+    <Compile Include="model\QuestObjectiveModel.cs" />
+    <Compile Include="model\TownNPCModel.cs" />
+    <Compile Include="model\WeaponModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="repository\DataAccess.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="service\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,5 +1,5 @@
-﻿using NecromindLibrary.dtos;
-using NecromindLibrary.models;
+﻿using NecromindLibrary.dto;
+using NecromindLibrary.model;
 using NecromindLibrary.repository;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NecromindLibrary.helpers
+namespace NecromindLibrary.helper
 {
     /// <summary>
     /// Collection of UI handler helper methods.

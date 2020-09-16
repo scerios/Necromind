@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using MySql.Data.MySqlClient;
-using NecromindLibrary.helpers;
-using NecromindLibrary.models;
+using NecromindLibrary.helper;
+using NecromindLibrary.model;
 using NecromindLibrary.enums;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.CodeDom;
 using System.Configuration;
-using NecromindLibrary.dtos;
+using NecromindLibrary.dto;
 using System.Windows.Forms;
 
 namespace NecromindLibrary.repository

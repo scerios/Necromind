@@ -5,17 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NecromindLibrary.models
+namespace NecromindLibrary.model
 {
     /// <summary>
-    /// Represents a piece of armor.
+    /// Represents a potion which can refill some health.
     /// </summary>
-    public class ArmorModel : ItemModel
+    public class PotionModel : ItemModel
     {
         /// <summary>
-        /// How much defense the armor provides.
+        /// Amount of health returned by the potion.
         /// </summary>
-        [Column("defense")]
-        public int Defense { get; set; }
+        [Column("health_value")]
+        public int HealthValue { get; set; }
     }
 }

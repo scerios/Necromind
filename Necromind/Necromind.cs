@@ -1,6 +1,6 @@
-﻿using NecromindLibrary.dtos;
-using NecromindLibrary.helpers;
-using NecromindLibrary.models;
+﻿using NecromindLibrary.dto;
+using NecromindLibrary.helper;
+using NecromindLibrary.model;
 using NecromindLibrary.repository;
 using System;
 using System.Collections.Generic;
