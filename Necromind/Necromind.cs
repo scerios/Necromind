@@ -4,17 +4,10 @@ using NecromindLibrary.model;
 using NecromindLibrary.repository;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace NecromindUI
 {
@@ -22,6 +15,7 @@ namespace NecromindUI
     {
         public static Dictionary<string, Panel> panels = new Dictionary<string, Panel>();
         public static Dictionary<string, Label> labels = new Dictionary<string, Label>();
+        public static HeroModel hero;
 
         public Necromind()
         {

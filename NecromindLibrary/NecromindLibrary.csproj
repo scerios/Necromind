@@ -117,14 +117,13 @@
     <Compile Include="model\WeaponModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="repository\DataAccess.cs" />
+    <Compile Include="service\IBattle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="service\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

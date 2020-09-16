@@ -1,14 +1,10 @@
 ﻿using NecromindLibrary.dto;
 using NecromindLibrary.model;
 using NecromindLibrary.repository;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NecromindLibrary.helper
@@ -23,6 +19,7 @@ namespace NecromindLibrary.helper
 
         private static List<Button> createdButtons;
         private static List<HeroDTO> heroesAsDTO;
+        public static HeroModel hero;
 
         /// <summary>
         /// Resets the game panel to the original values.
@@ -114,7 +111,7 @@ namespace NecromindLibrary.helper
         /// <param name="heroDetails">A group box of hero details.</param>
         private static void LoadHeroByIdBtn(int id, Dictionary<string, Panel> panels, Dictionary<string, Label> labels, GroupBox heroDetails)
         {
-            HeroModel hero = DataAccess.GetHeroById(id);
+            hero = DataAccess.GetHeroById(id);
             SetHeroDetails(hero, labels, heroDetails);
             panels["game"].BringToFront();
         }
@@ -273,6 +270,11 @@ namespace NecromindLibrary.helper
             labels["heroLevel"].Text = hero.Level.ToString();
             labels["heroDamage"].Text = hero.Damage.ToString();
             labels["heroDefense"].Text = hero.Defense.ToString();
+        }
+
+        public static HeroModel GetHero()
+        {
+            return hero;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NecromindLibrary.repository;
+using NecromindLibrary.service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace NecromindLibrary.model
     /// <summary>
     /// Represents a Hero.
     /// </summary>
-    public class HeroModel : KillableModel
+    public class HeroModel : KillableModel, IBattle
     {
         /// <summary>
         /// How much experience points the hero currently has.
@@ -42,5 +44,15 @@ namespace NecromindLibrary.model
         /// </summary>
         [Column("armor_id")]
         public int ArmorId { get; set; }
+
+        /// <summary>
+        /// Attacks the target KillableModel and returns the value which the target will be damaged.
+        /// </summary>
+        /// <param name="model">A KillableModel which will be attacked.</param>
+        /// <returns>The actual damage as an int.</returns>
+        public int AttackTarget(KillableModel model)
+        {
+            return this.Damage - model.Defense;
+        }
     }
 }

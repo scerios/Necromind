@@ -2,13 +2,9 @@
 using NecromindLibrary.dto;
 using NecromindLibrary.enums;
 using NecromindLibrary.model;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Configuration;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NecromindLibrary.helper
 {
