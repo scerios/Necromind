@@ -102,6 +102,7 @@
     <Compile Include="dto\HeroDTO.cs" />
     <Compile Include="enums\ClassType.cs" />
     <Compile Include="helper\UIHelper.cs" />
+    <Compile Include="model\UIHandler.cs" />
     <Compile Include="model\ArmorModel.cs" />
     <Compile Include="model\BossModel.cs" />
     <Compile Include="model\CharacterModel.cs" />

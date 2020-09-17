@@ -43,7 +43,7 @@ namespace NecromindUI
             this.btnBackFromLoadGame = new System.Windows.Forms.Button();
             this.panelConfirmDelete = new System.Windows.Forms.Panel();
             this.richTextBoxConfirmDelete = new System.Windows.Forms.RichTextBox();
-            this.textBoxConfirmDelete = new System.Windows.Forms.TextBox();
+            this.textBoxDeleteHeroName = new System.Windows.Forms.TextBox();
             this.panelGame = new System.Windows.Forms.Panel();
             this.groupBoxCharacterDetails = new System.Windows.Forms.GroupBox();
             this.groupBoxCharacterItems = new System.Windows.Forms.GroupBox();
@@ -196,7 +196,7 @@ namespace NecromindUI
             // 
             this.panelConfirmDelete.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelConfirmDelete.Controls.Add(this.richTextBoxConfirmDelete);
-            this.panelConfirmDelete.Controls.Add(this.textBoxConfirmDelete);
+            this.panelConfirmDelete.Controls.Add(this.textBoxDeleteHeroName);
             this.panelConfirmDelete.Location = new System.Drawing.Point(380, 180);
             this.panelConfirmDelete.Name = "panelConfirmDelete";
             this.panelConfirmDelete.Size = new System.Drawing.Size(300, 178);
@@ -217,13 +217,13 @@ namespace NecromindUI
             this.richTextBoxConfirmDelete.Text = "Are you sure your want to DELETE\n{HERO}?\nTo confirm you must enter\nthe hero\'s nam" +
     "e, then press\nENTER.\nTo cancel: press ESC.";
             // 
-            // textBoxConfirmDelete
+            // textBoxDeleteHeroName
             // 
-            this.textBoxConfirmDelete.Location = new System.Drawing.Point(87, 137);
-            this.textBoxConfirmDelete.Multiline = true;
-            this.textBoxConfirmDelete.Name = "textBoxConfirmDelete";
-            this.textBoxConfirmDelete.Size = new System.Drawing.Size(125, 25);
-            this.textBoxConfirmDelete.TabIndex = 1;
+            this.textBoxDeleteHeroName.Location = new System.Drawing.Point(87, 137);
+            this.textBoxDeleteHeroName.Multiline = true;
+            this.textBoxDeleteHeroName.Name = "textBoxDeleteHeroName";
+            this.textBoxDeleteHeroName.Size = new System.Drawing.Size(125, 25);
+            this.textBoxDeleteHeroName.TabIndex = 1;
             // 
             // panelGame
             // 
@@ -507,7 +507,7 @@ namespace NecromindUI
         private System.Windows.Forms.Label labelHeroDamage;
         private System.Windows.Forms.Panel panelConfirmDelete;
         private System.Windows.Forms.RichTextBox richTextBoxConfirmDelete;
-        private System.Windows.Forms.TextBox textBoxConfirmDelete;
+        private System.Windows.Forms.TextBox textBoxDeleteHeroName;
         private Panel panelGameMenu;
         private GroupBox groupBoxCharacterDetails;
         private GroupBox groupBoxCharacterItems;

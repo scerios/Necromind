@@ -1,20 +1,19 @@
-﻿using NecromindLibrary.dto;
-using NecromindLibrary.helper;
-using NecromindLibrary.model;
-using NecromindLibrary.repository;
+﻿using NecromindLibrary.model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace NecromindUI
 {
     public partial class Necromind : Form
     {
-        public static Dictionary<string, Panel> panels = new Dictionary<string, Panel>();
-        public static Dictionary<string, Label> labels = new Dictionary<string, Label>();
+        private static Dictionary<string, Panel> Panels = new Dictionary<string, Panel>();
+        private static Dictionary<string, Label> Labels = new Dictionary<string, Label>();
+        private static Dictionary<string, TextBox> TextBoxes = new Dictionary<string, TextBox>();
+        private static Dictionary<string, GroupBox> GroupBoxes = new Dictionary<string, GroupBox>();
+        private readonly UIHandler UIHandler = new UIHandler();
 
         public Necromind()
         {
@@ -26,44 +25,66 @@ namespace NecromindUI
 
         private void startGame()
         {
-            setUpMenu();
+            setPanels();
             setLabels();
+            setTextBoxes();
+            setGroupBoxes();
+            sendAllUIToLibrary();
             showMainMenu();
         }
 
-        private void setUpMenu()
+        private void setPanels()
         {
-            panels.Add("menu", panelMenu);
-            panels.Add("newGame", panelNewGame);
-            panels.Add("loadGame", panelLoadGame);
-            panels.Add("game", panelGame);
-            panels.Add("confirmDelete", panelConfirmDelete);
+            Panels.Add("menu", panelMenu);
+            Panels.Add("newGame", panelNewGame);
+            Panels.Add("loadGame", panelLoadGame);
+            Panels.Add("game", panelGame);
+            Panels.Add("confirmDelete", panelConfirmDelete);
         }
 
         private void setLabels()
         {
-            labels.Add("heroHealth", labelHeroHealthValue);
-            labels.Add("heroGold", labelHeroGoldValue);
-            labels.Add("heroXP", labelHeroXPValue);
-            labels.Add("heroLevel", labelHeroLevelValue);
-            labels.Add("heroDamage", labelHeroDamageValue);
-            labels.Add("heroDefense", labelHeroDefenseValue);
+            Labels.Add("heroHealth", labelHeroHealthValue);
+            Labels.Add("heroGold", labelHeroGoldValue);
+            Labels.Add("heroXP", labelHeroXPValue);
+            Labels.Add("heroLevel", labelHeroLevelValue);
+            Labels.Add("heroDamage", labelHeroDamageValue);
+            Labels.Add("heroDefense", labelHeroDefenseValue);
+        }
+
+        private void setTextBoxes()
+        {
+            TextBoxes.Add("newHeroName", textBoxNewHeroName);
+            TextBoxes.Add("deleteHeroName", textBoxDeleteHeroName);
+        }
+
+        private void setGroupBoxes()
+        {
+            GroupBoxes.Add("heroDetails", groupBoxHeroDetails);
+            GroupBoxes.Add("heroItems", groupBoxHeroItems);
+            GroupBoxes.Add("characterDetails", groupBoxCharacterDetails);
+            GroupBoxes.Add("characterItems", groupBoxCharacterItems);
+        }
+
+        private void sendAllUIToLibrary()
+        {
+            UIHandler.TakeAllUI(Panels, Labels, TextBoxes, GroupBoxes, richTextBoxConfirmDelete);
         }
 
         private void showMainMenu()
         {
-            panels["menu"].BringToFront();
+            Panels["menu"].BringToFront();
         }
 
         private void btnNewGame_Click(object sender, EventArgs e)
         {
-            panels["newGame"].BringToFront();
+            Panels["newGame"].BringToFront();
             textBoxNewHeroName.Focus();
         }
 
         private void btnCreateNewHero_Click(object sender, EventArgs e)
         {
-            UIHelper.CreateNewHero(panels, labels, textBoxNewHeroName, groupBoxHeroDetails);
+            UIHandler.CreateNewHero();
         }
 
         private void textBoxNewHeroName_KeyPress(object sender, KeyPressEventArgs e)
@@ -77,7 +98,7 @@ namespace NecromindUI
 
         private void btnLoadGame_Click(object sender, EventArgs e)
         {
-            UIHelper.ShowAllLoadedHeroes(panels, labels, groupBoxHeroDetails, textBoxConfirmDelete, richTextBoxConfirmDelete);
+            UIHandler.ShowAllLoadedHeroes();
         }
 
         private void btnBackFromNewGame_Click(object sender, EventArgs e)
@@ -93,7 +114,7 @@ namespace NecromindUI
         private void btnBackFromGame_Click(object sender, EventArgs e)
         {
             showMainMenu();
-            UIHelper.ResetGame(labels, groupBoxHeroDetails);
+            UIHandler.ResetGame();
         }
     }
 }
