@@ -19,7 +19,7 @@ namespace NecromindLibrary.helper
 
         private static List<Button> createdButtons;
         private static List<HeroDTO> heroesAsDTO;
-        public static HeroModel hero;
+        private static HeroModel hero;
 
         /// <summary>
         /// Resets the game panel to the original values.
@@ -38,67 +38,136 @@ namespace NecromindLibrary.helper
         }
 
         /// <summary>
-        /// Creates a button for each saved heroes and adds an event to load any of them upon click event. 
+        /// Creates a new hero if the name is not already taken.
         /// </summary>
-        /// <param name="heroes">A list of HeroDTOs.</param>
         /// <param name="panels">A dictionary of panels.</param>
         /// <param name="labels">A dictionary of labels.</param>
+        /// <param name="heroName">A textbox where the new hero's name is written by the user.</param>
         /// <param name="heroDetails">A group box of hero details.</param>
-        public static void ShowAllLoadedHeroes(List<HeroDTO> heroes, Dictionary<string, Panel> panels, Dictionary<string, Label> labels, 
-                                                GroupBox heroDetails, TextBox textBoxConfirmDelete, RichTextBox richTextBoxConfirmDelete)
+        public static void CreateNewHero(Dictionary<string, Panel> panels, Dictionary<string, Label> labels, TextBox heroName, GroupBox heroDetails)
         {
-            heroesAsDTO = heroes;
-            createdButtons = new List<Button>();
+            if (!IsNameAlreadyTaken(DataAccess.GetAllHeroesAsDTO(), heroName))
+            {
+                int insertedId = DataAccess.CreateNewHero(heroName.Text);
 
-            int btnLoadHeroLocX = 430;
-            int btnDeleteHeroLocX = 540;
-            int btnLocY = 100;
+                if (insertedId > 0)
+                {
+                    hero = DataAccess.GetHeroById(insertedId);
+                    SetHeroDetails(hero, labels, heroDetails);
+
+                    heroName.Text = "";
+                    panels["game"].BringToFront();
+                }
+                else
+                {
+                    MessageBox.Show("Couldn't connect to the database. Please try again.");
+                }
+            }
+            else
+            {
+                MessageBox.Show($"{ heroName.Text } is already taken. Please pick another one.");
+                heroName.Text = "";
+            }
+            
+        }
+
+        /// <summary>
+        /// Checks among all the heroes if the user given name is already taken.
+        /// </summary>
+        /// <param name="heroes">A list of heroes as HeroDTO.</param>
+        /// <returns>True if name already taken. False otherwise.</returns>
+        private static bool IsNameAlreadyTaken(List<HeroDTO> heroes, TextBox heroName)
+        {
+            bool isNameAlreadyTaken = false;
 
             foreach (HeroDTO hero in heroes)
             {
-                Button btnLoadHero = CreateButton(
-                    hero.Name,
-                    "btnLoad" + hero.Name,
-                    100,
-                    25,
-                    btnLoadHeroLocX,
-                    btnLocY,
-                    Color.FromArgb(211, 84, 0), // Orange color
-                    Color.FromArgb(229, 232, 232), // Soft gray-ish white color
-                    FlatStyle.Flat
-                );
-
-                createdButtons.Add(btnLoadHero);
-
-                btnLoadHero.Click += (s, ev) =>
+                if (hero.Name == heroName.Text)
                 {
-                    LoadHeroByIdBtn(hero.Id, panels, labels, heroDetails);
-                };
+                    isNameAlreadyTaken = true;
+                    break;
+                }
+            }
 
-                panels["loadGame"].Controls.Add(btnLoadHero);
+            return isNameAlreadyTaken;
+        }
 
-                Button btnDeleteHero = CreateButton(
-                    "X",
-                    "btnDelete" + hero.Name,
-                    25,
-                    25,
-                    btnDeleteHeroLocX,
-                    btnLocY,
-                    Color.FromArgb(23, 32, 42), // Blue-ish color (exactly like the window background)
-                    Color.FromArgb(214, 48, 49), // Red color
-                    FlatStyle.Flat
-                );
+        /// <summary>
+        /// Creates a button for each saved heroes and adds an event to load any of them upon click event. 
+        /// </summary>
+        /// <param name="panels">A dictionary of panels.</param>
+        /// <param name="labels">A dictionary of labels.</param>
+        /// <param name="heroDetails">A group box of hero details.</param>
+        /// <param name="heroToDelete">A textbox where the user enters the hero's name which should be deleted.</param>
+        /// <param name="textConfirmDelete">A rich textbox with custom style to show user info about deleting hero.</param>
+        public static void ShowAllLoadedHeroes(Dictionary<string, Panel> panels, Dictionary<string, Label> labels, GroupBox heroDetails, TextBox heroToDelete, RichTextBox textConfirmDelete)
+        {
+            List<HeroDTO> heroes = DataAccess.GetAllHeroesAsDTO();
 
-                createdButtons.Add(btnDeleteHero);
+            if (heroes.Count == 0)
+            {
+                MessageBox.Show("There's no hero yet to load. Create a new one first!");
+            }
+            else if (heroes.Count() == 1 && heroes.First().Id == 0) // Failed to connect to DB
+            {
+                MessageBox.Show(heroes.First().Name);
+            }
+            else
+            {
+                heroesAsDTO = heroes;
+                createdButtons = new List<Button>();
 
-                btnDeleteHero.Click += (s, ev) =>
+                int btnLoadHeroLocX = 430;
+                int btnDeleteHeroLocX = 540;
+                int btnLocY = 100;
+
+                foreach (HeroDTO hero in heroes)
                 {
-                    DeleteHeroByIdBtn(hero, panels, labels, heroDetails, textBoxConfirmDelete, richTextBoxConfirmDelete);
-                };
+                    Button btnLoadHero = CreateButton(
+                        hero.Name,
+                        "btnLoad" + hero.Name,
+                        100,
+                        25,
+                        btnLoadHeroLocX,
+                        btnLocY,
+                        Color.FromArgb(211, 84, 0), // Orange color
+                        Color.FromArgb(229, 232, 232), // Soft gray-ish white color
+                        FlatStyle.Flat
+                    );
 
-                btnLocY += 40;
+                    createdButtons.Add(btnLoadHero);
 
-                panels["loadGame"].Controls.Add(btnDeleteHero);
+                    btnLoadHero.Click += (s, ev) =>
+                    {
+                        LoadHeroByIdBtn(hero.Id, panels, labels, heroDetails);
+                    };
+
+                    panels["loadGame"].Controls.Add(btnLoadHero);
+
+                    Button btnDeleteHero = CreateButton(
+                        "X",
+                        "btnDelete" + hero.Name,
+                        25,
+                        25,
+                        btnDeleteHeroLocX,
+                        btnLocY,
+                        Color.FromArgb(23, 32, 42), // Blue-ish color (exactly like the window background)
+                        Color.FromArgb(214, 48, 49), // Red color
+                        FlatStyle.Flat
+                    );
+
+                    createdButtons.Add(btnDeleteHero);
+
+                    btnDeleteHero.Click += (s, ev) =>
+                    {
+                        DeleteHeroByIdBtn(hero, panels, labels, heroDetails, heroToDelete, textConfirmDelete);
+                    };
+
+                    btnLocY += 40;
+
+                    panels["loadGame"].Controls.Add(btnDeleteHero);
+                }
+                    panels["loadGame"].BringToFront();
             }
         }
 
@@ -123,26 +192,26 @@ namespace NecromindLibrary.helper
         /// <param name="panels">A dictionary of panels.</param>
         /// <param name="labels">A dictionary of labels.</param>
         /// <param name="heroDetails">A group box of hero details.</param>
-        /// <param name="textBoxConfirmDelete">A text box for the user to enter the name of the hero.</param>
-        /// <param name="richTextBoxConfirmDelete">A rich text box which shows warning message with custom style to the user.</param>
+        /// <param name="heroToDelete">A textbox where the user enters the hero's name which should be deleted.</param>
+        /// <param name="textConfirmDelete">A rich textbox with custom style to show user info about deleting hero.</param>
         private static void DeleteHeroByIdBtn(HeroDTO hero, Dictionary<string, Panel> panels, Dictionary<string, Label> labels,
-                                                GroupBox heroDetails, TextBox textBoxConfirmDelete, RichTextBox richTextBoxConfirmDelete)
+                                                GroupBox heroDetails, TextBox heroToDelete, RichTextBox textConfirmDelete)
         {
             foreach (Control control in panels["loadGame"].Controls)
             {
                 control.Enabled = false;
             }
 
-            ApplyCustomStyleToRichTextConfirmDelete(hero, richTextBoxConfirmDelete);
-            textBoxConfirmDelete.Focus();
+            ApplyCustomStyleToRichTextConfirmDelete(hero, textConfirmDelete);
+            heroToDelete.Focus();
             panels["confirmDelete"].BringToFront();
 
-            textBoxConfirmDelete.KeyPress += (s, ev) =>
+            heroToDelete.KeyPress += (s, ev) =>
             {
                 // If ENTER is pressed
                 if (ev.KeyChar == (char)13)
                 {
-                    if (textBoxConfirmDelete.Text == hero.Name)
+                    if (heroToDelete.Text == hero.Name)
                     {
                         if(DataAccess.TryDeleteHeroById(hero.Id))
                         {
@@ -152,8 +221,8 @@ namespace NecromindLibrary.helper
                                 panels["loadGame"].Controls.Remove(createdButton);
                             }
 
-                            ShowAllLoadedHeroes(heroesAsDTO, panels, labels, heroDetails, textBoxConfirmDelete, richTextBoxConfirmDelete);
-                            HideConfirmDeletePanel(hero, panels, textBoxConfirmDelete, richTextBoxConfirmDelete);
+                            ShowAllLoadedHeroes(panels, labels, heroDetails, heroToDelete, textConfirmDelete);
+                            HideConfirmDeletePanel(hero, panels, heroToDelete, textConfirmDelete);
                             if (heroesAsDTO.Count() == 0)
                             {
                                 panels["menu"].BringToFront();
@@ -165,7 +234,7 @@ namespace NecromindLibrary.helper
                 // If ESCAPE is pressed
                 if (ev.KeyChar == (char)27)
                 {
-                    HideConfirmDeletePanel(hero, panels, textBoxConfirmDelete, richTextBoxConfirmDelete);
+                    HideConfirmDeletePanel(hero, panels, heroToDelete, textConfirmDelete);
                 }
             };
         }
@@ -270,11 +339,6 @@ namespace NecromindLibrary.helper
             labels["heroLevel"].Text = hero.Level.ToString();
             labels["heroDamage"].Text = hero.Damage.ToString();
             labels["heroDefense"].Text = hero.Defense.ToString();
-        }
-
-        public static HeroModel GetHero()
-        {
-            return hero;
         }
     }
 }

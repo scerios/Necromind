@@ -46,13 +46,13 @@ namespace NecromindLibrary.model
         public int ArmorId { get; set; }
 
         /// <summary>
-        /// Attacks the target KillableModel and returns the value which the target will be damaged.
+        /// Attacks the target KillableModel and returns the attacked target hitpoints after the damage was done.
         /// </summary>
         /// <param name="model">A KillableModel which will be attacked.</param>
-        /// <returns>The actual damage as an int.</returns>
+        /// <returns>The hitpoints of attacked KillableModel as an int.</returns>
         public int AttackTarget(KillableModel model)
         {
-            return this.Damage - model.Defense;
+            return model.HitPoints - (this.Damage - model.Defense);
         }
     }
 }

@@ -15,7 +15,6 @@ namespace NecromindUI
     {
         public static Dictionary<string, Panel> panels = new Dictionary<string, Panel>();
         public static Dictionary<string, Label> labels = new Dictionary<string, Label>();
-        public static HeroModel hero;
 
         public Necromind()
         {
@@ -64,68 +63,7 @@ namespace NecromindUI
 
         private void btnCreateNewHero_Click(object sender, EventArgs e)
         {
-            List<HeroDTO> heroes = DataAccess.GetAllHeroesAsDTO();
-            if (heroes.Count == 0)
-            {
-                createNewHero();
-            }
-            else if (heroes.Count() == 1 && heroes.First().Id == 0) // Failed to connect to DB
-            {
-                MessageBox.Show(heroes.First().Name);
-            }
-            else
-            {
-                if (isNameAlreadyTaken(heroes))
-                {
-                    MessageBox.Show("This name is already taken. Choose another one.");
-                }
-                else
-                {
-                    createNewHero();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Creates a new hero with the user given name.
-        /// </summary>
-        private void createNewHero()
-        {
-            int insertedId = DataAccess.CreateNewHero(textBoxNewHeroName.Text);
-
-            if (insertedId > 0)
-            {
-                HeroModel hero = DataAccess.GetHeroById(insertedId);
-                UIHelper.SetHeroDetails(hero, labels, groupBoxHeroDetails);
-
-                textBoxNewHeroName.Text = "";
-                panels["game"].BringToFront();
-            }
-            else
-            {
-                showMainMenu();
-            }
-        }
-
-        /// <summary>
-        /// Checks among all the heroes if the user given name is already taken.
-        /// </summary>
-        /// <param name="heroes">A list of heroes as HeroDTO.</param>
-        /// <returns>True if name already taken. False otherwise.</returns>
-        private bool isNameAlreadyTaken(List<HeroDTO> heroes)
-        {
-            bool isNameAlreadyTaken = false;
-
-            foreach (HeroDTO hero in heroes)
-            {
-                if (hero.Name == textBoxNewHeroName.Text)
-                {
-                    isNameAlreadyTaken = true;
-                    break;
-                }
-            }
-
-            return isNameAlreadyTaken;
+            UIHelper.CreateNewHero(panels, labels, textBoxNewHeroName, groupBoxHeroDetails);
         }
 
         private void textBoxNewHeroName_KeyPress(object sender, KeyPressEventArgs e)
@@ -139,20 +77,7 @@ namespace NecromindUI
 
         private void btnLoadGame_Click(object sender, EventArgs e)
         {
-            List<HeroDTO> heroes = DataAccess.GetAllHeroesAsDTO();
-            if (heroes.Count == 0)
-            {
-                MessageBox.Show("There's no hero yet to load. Create a new one first!");
-            }
-            else if (heroes.Count() == 1 && heroes.First().Id == 0) // Failed to connect to DB
-            {
-                MessageBox.Show(heroes.First().Name);
-            }
-            else
-            {
-                UIHelper.ShowAllLoadedHeroes(heroes, panels, labels, groupBoxHeroDetails, textBoxConfirmDelete, richTextBoxConfirmDelete);
-                panels["loadGame"].BringToFront();
-            }
+            UIHelper.ShowAllLoadedHeroes(panels, labels, groupBoxHeroDetails, textBoxConfirmDelete, richTextBoxConfirmDelete);
         }
 
         private void btnBackFromNewGame_Click(object sender, EventArgs e)

@@ -45,6 +45,12 @@ namespace NecromindUI
             this.richTextBoxConfirmDelete = new System.Windows.Forms.RichTextBox();
             this.textBoxConfirmDelete = new System.Windows.Forms.TextBox();
             this.panelGame = new System.Windows.Forms.Panel();
+            this.groupBoxCharacterDetails = new System.Windows.Forms.GroupBox();
+            this.groupBoxCharacterItems = new System.Windows.Forms.GroupBox();
+            this.listBoxCharacterItems = new System.Windows.Forms.ListBox();
+            this.groupBoxHeroItems = new System.Windows.Forms.GroupBox();
+            this.listBoxHeroItems = new System.Windows.Forms.ListBox();
+            this.panelGameMenu = new System.Windows.Forms.Panel();
             this.btnBackFromGame = new System.Windows.Forms.Button();
             this.groupBoxHeroDetails = new System.Windows.Forms.GroupBox();
             this.labelHeroDefenseValue = new System.Windows.Forms.Label();
@@ -59,20 +65,14 @@ namespace NecromindUI
             this.labelHeroXP = new System.Windows.Forms.Label();
             this.labelHeroGold = new System.Windows.Forms.Label();
             this.labelHeroHealth = new System.Windows.Forms.Label();
-            this.panelGameMenu = new System.Windows.Forms.Panel();
-            this.groupBoxHeroItems = new System.Windows.Forms.GroupBox();
-            this.listBoxHeroItems = new System.Windows.Forms.ListBox();
-            this.groupBoxCharacterItems = new System.Windows.Forms.GroupBox();
-            this.listBoxCharacterItems = new System.Windows.Forms.ListBox();
-            this.groupBoxCharacterDetails = new System.Windows.Forms.GroupBox();
             this.panelMenu.SuspendLayout();
             this.panelNewGame.SuspendLayout();
             this.panelLoadGame.SuspendLayout();
             this.panelConfirmDelete.SuspendLayout();
             this.panelGame.SuspendLayout();
-            this.groupBoxHeroDetails.SuspendLayout();
-            this.groupBoxHeroItems.SuspendLayout();
             this.groupBoxCharacterItems.SuspendLayout();
+            this.groupBoxHeroItems.SuspendLayout();
+            this.groupBoxHeroDetails.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -160,7 +160,7 @@ namespace NecromindUI
             this.btnBackFromNewGame.FlatAppearance.BorderSize = 0;
             this.btnBackFromNewGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBackFromNewGame.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnBackFromNewGame.Location = new System.Drawing.Point(70, 20);
+            this.btnBackFromNewGame.Location = new System.Drawing.Point(20, 20);
             this.btnBackFromNewGame.Name = "btnBackFromNewGame";
             this.btnBackFromNewGame.Size = new System.Drawing.Size(100, 25);
             this.btnBackFromNewGame.TabIndex = 0;
@@ -184,7 +184,7 @@ namespace NecromindUI
             this.btnBackFromLoadGame.FlatAppearance.BorderSize = 0;
             this.btnBackFromLoadGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBackFromLoadGame.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnBackFromLoadGame.Location = new System.Drawing.Point(70, 20);
+            this.btnBackFromLoadGame.Location = new System.Drawing.Point(20, 20);
             this.btnBackFromLoadGame.Name = "btnBackFromLoadGame";
             this.btnBackFromLoadGame.Size = new System.Drawing.Size(100, 25);
             this.btnBackFromLoadGame.TabIndex = 1;
@@ -197,7 +197,7 @@ namespace NecromindUI
             this.panelConfirmDelete.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelConfirmDelete.Controls.Add(this.richTextBoxConfirmDelete);
             this.panelConfirmDelete.Controls.Add(this.textBoxConfirmDelete);
-            this.panelConfirmDelete.Location = new System.Drawing.Point(342, 180);
+            this.panelConfirmDelete.Location = new System.Drawing.Point(380, 180);
             this.panelConfirmDelete.Name = "panelConfirmDelete";
             this.panelConfirmDelete.Size = new System.Drawing.Size(300, 178);
             this.panelConfirmDelete.TabIndex = 2;
@@ -238,6 +238,72 @@ namespace NecromindUI
             this.panelGame.Name = "panelGame";
             this.panelGame.Size = new System.Drawing.Size(1084, 661);
             this.panelGame.TabIndex = 16;
+            // 
+            // groupBoxCharacterDetails
+            // 
+            this.groupBoxCharacterDetails.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBoxCharacterDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBoxCharacterDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.groupBoxCharacterDetails.Location = new System.Drawing.Point(698, 55);
+            this.groupBoxCharacterDetails.Name = "groupBoxCharacterDetails";
+            this.groupBoxCharacterDetails.Size = new System.Drawing.Size(235, 181);
+            this.groupBoxCharacterDetails.TabIndex = 12;
+            this.groupBoxCharacterDetails.TabStop = false;
+            this.groupBoxCharacterDetails.Text = "{CHARACTER}\'s Details";
+            // 
+            // groupBoxCharacterItems
+            // 
+            this.groupBoxCharacterItems.Controls.Add(this.listBoxCharacterItems);
+            this.groupBoxCharacterItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.groupBoxCharacterItems.Location = new System.Drawing.Point(480, 55);
+            this.groupBoxCharacterItems.Name = "groupBoxCharacterItems";
+            this.groupBoxCharacterItems.Size = new System.Drawing.Size(212, 181);
+            this.groupBoxCharacterItems.TabIndex = 5;
+            this.groupBoxCharacterItems.TabStop = false;
+            this.groupBoxCharacterItems.Text = "{CHARACTER}\'s Items";
+            // 
+            // listBoxCharacterItems
+            // 
+            this.listBoxCharacterItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.listBoxCharacterItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxCharacterItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.listBoxCharacterItems.FormattingEnabled = true;
+            this.listBoxCharacterItems.ItemHeight = 16;
+            this.listBoxCharacterItems.Location = new System.Drawing.Point(6, 26);
+            this.listBoxCharacterItems.Name = "listBoxCharacterItems";
+            this.listBoxCharacterItems.Size = new System.Drawing.Size(200, 144);
+            this.listBoxCharacterItems.TabIndex = 0;
+            // 
+            // groupBoxHeroItems
+            // 
+            this.groupBoxHeroItems.Controls.Add(this.listBoxHeroItems);
+            this.groupBoxHeroItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.groupBoxHeroItems.Location = new System.Drawing.Point(262, 55);
+            this.groupBoxHeroItems.Name = "groupBoxHeroItems";
+            this.groupBoxHeroItems.Size = new System.Drawing.Size(212, 181);
+            this.groupBoxHeroItems.TabIndex = 4;
+            this.groupBoxHeroItems.TabStop = false;
+            this.groupBoxHeroItems.Text = "{HERO}\'s Items";
+            // 
+            // listBoxHeroItems
+            // 
+            this.listBoxHeroItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.listBoxHeroItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxHeroItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.listBoxHeroItems.FormattingEnabled = true;
+            this.listBoxHeroItems.ItemHeight = 16;
+            this.listBoxHeroItems.Location = new System.Drawing.Point(6, 26);
+            this.listBoxHeroItems.Name = "listBoxHeroItems";
+            this.listBoxHeroItems.Size = new System.Drawing.Size(200, 144);
+            this.listBoxHeroItems.TabIndex = 0;
+            // 
+            // panelGameMenu
+            // 
+            this.panelGameMenu.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelGameMenu.Location = new System.Drawing.Point(955, 0);
+            this.panelGameMenu.Name = "panelGameMenu";
+            this.panelGameMenu.Size = new System.Drawing.Size(129, 661);
+            this.panelGameMenu.TabIndex = 3;
             // 
             // btnBackFromGame
             // 
@@ -380,72 +446,6 @@ namespace NecromindUI
             this.labelHeroHealth.TabIndex = 0;
             this.labelHeroHealth.Text = "Health:";
             // 
-            // panelGameMenu
-            // 
-            this.panelGameMenu.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelGameMenu.Location = new System.Drawing.Point(955, 0);
-            this.panelGameMenu.Name = "panelGameMenu";
-            this.panelGameMenu.Size = new System.Drawing.Size(129, 661);
-            this.panelGameMenu.TabIndex = 3;
-            // 
-            // groupBoxHeroItems
-            // 
-            this.groupBoxHeroItems.Controls.Add(this.listBoxHeroItems);
-            this.groupBoxHeroItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.groupBoxHeroItems.Location = new System.Drawing.Point(262, 55);
-            this.groupBoxHeroItems.Name = "groupBoxHeroItems";
-            this.groupBoxHeroItems.Size = new System.Drawing.Size(212, 181);
-            this.groupBoxHeroItems.TabIndex = 4;
-            this.groupBoxHeroItems.TabStop = false;
-            this.groupBoxHeroItems.Text = "{HERO}\'s Items";
-            // 
-            // listBoxHeroItems
-            // 
-            this.listBoxHeroItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.listBoxHeroItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBoxHeroItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.listBoxHeroItems.FormattingEnabled = true;
-            this.listBoxHeroItems.ItemHeight = 16;
-            this.listBoxHeroItems.Location = new System.Drawing.Point(6, 26);
-            this.listBoxHeroItems.Name = "listBoxHeroItems";
-            this.listBoxHeroItems.Size = new System.Drawing.Size(200, 144);
-            this.listBoxHeroItems.TabIndex = 0;
-            // 
-            // groupBoxCharacterItems
-            // 
-            this.groupBoxCharacterItems.Controls.Add(this.listBoxCharacterItems);
-            this.groupBoxCharacterItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.groupBoxCharacterItems.Location = new System.Drawing.Point(480, 55);
-            this.groupBoxCharacterItems.Name = "groupBoxCharacterItems";
-            this.groupBoxCharacterItems.Size = new System.Drawing.Size(212, 181);
-            this.groupBoxCharacterItems.TabIndex = 5;
-            this.groupBoxCharacterItems.TabStop = false;
-            this.groupBoxCharacterItems.Text = "{CHARACTER}\'s Items";
-            // 
-            // listBoxCharacterItems
-            // 
-            this.listBoxCharacterItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.listBoxCharacterItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBoxCharacterItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.listBoxCharacterItems.FormattingEnabled = true;
-            this.listBoxCharacterItems.ItemHeight = 16;
-            this.listBoxCharacterItems.Location = new System.Drawing.Point(6, 26);
-            this.listBoxCharacterItems.Name = "listBoxCharacterItems";
-            this.listBoxCharacterItems.Size = new System.Drawing.Size(200, 144);
-            this.listBoxCharacterItems.TabIndex = 0;
-            // 
-            // groupBoxCharacterDetails
-            // 
-            this.groupBoxCharacterDetails.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBoxCharacterDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBoxCharacterDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.groupBoxCharacterDetails.Location = new System.Drawing.Point(698, 55);
-            this.groupBoxCharacterDetails.Name = "groupBoxCharacterDetails";
-            this.groupBoxCharacterDetails.Size = new System.Drawing.Size(235, 181);
-            this.groupBoxCharacterDetails.TabIndex = 12;
-            this.groupBoxCharacterDetails.TabStop = false;
-            this.groupBoxCharacterDetails.Text = "{CHARACTER}\'s Details";
-            // 
             // Necromind
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -454,9 +454,9 @@ namespace NecromindUI
             this.ClientSize = new System.Drawing.Size(1084, 661);
             this.Controls.Add(this.panelGame);
             this.Controls.Add(this.panelLoadGame);
-            this.Controls.Add(this.panelConfirmDelete);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelNewGame);
+            this.Controls.Add(this.panelConfirmDelete);
             this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -472,9 +472,9 @@ namespace NecromindUI
             this.panelConfirmDelete.ResumeLayout(false);
             this.panelConfirmDelete.PerformLayout();
             this.panelGame.ResumeLayout(false);
-            this.groupBoxHeroDetails.ResumeLayout(false);
-            this.groupBoxHeroItems.ResumeLayout(false);
             this.groupBoxCharacterItems.ResumeLayout(false);
+            this.groupBoxHeroItems.ResumeLayout(false);
+            this.groupBoxHeroDetails.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
