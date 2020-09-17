@@ -1,11 +1,5 @@
-﻿using NecromindLibrary.repository;
-using NecromindLibrary.service;
-using System;
-using System.Collections.Generic;
+﻿using NecromindLibrary.service;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NecromindLibrary.model
 {
@@ -49,7 +43,7 @@ namespace NecromindLibrary.model
         /// Attacks the target KillableModel and returns the attacked target hitpoints after the damage was done.
         /// </summary>
         /// <param name="model">A KillableModel which will be attacked.</param>
-        /// <returns>The hitpoints of attacked KillableModel as an int.</returns>
+        /// <returns>The hitpoints of attacked KillableModel after attack as an int.</returns>
         public int AttackTarget(KillableModel model)
         {
             return model.HitPoints - (this.Damage - model.Defense);

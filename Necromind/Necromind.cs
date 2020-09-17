@@ -1,4 +1,4 @@
-﻿using NecromindLibrary.model;
+﻿using NecromindLibrary.service;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,7 +13,6 @@ namespace NecromindUI
         private static Dictionary<string, Label> Labels = new Dictionary<string, Label>();
         private static Dictionary<string, TextBox> TextBoxes = new Dictionary<string, TextBox>();
         private static Dictionary<string, GroupBox> GroupBoxes = new Dictionary<string, GroupBox>();
-        private readonly UIHandler UIHandler = new UIHandler();
 
         public Necromind()
         {

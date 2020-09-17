@@ -1,5 +1,6 @@
 ﻿using NecromindLibrary.dto;
 using NecromindLibrary.helper;
+using NecromindLibrary.model;
 using NecromindLibrary.repository;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,30 +8,30 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace NecromindLibrary.model
+namespace NecromindLibrary.service
 {
     /// <summary>
     /// Collection of UI handler methods.
     /// </summary>
-    public class UIHandler
+    public static class UIHandler
     {
         // Placeholder convention for hero's name
         public static string HeroNamePlaceholder { get; private set; } = ConfigurationManager.AppSettings["heroNamePlaceholder"];
 
         // All the needed UI
-        public Dictionary<string, Label> Labels { get; private set; }
-        public Dictionary<string, Panel> Panels { get; private set; }
-        public Dictionary<string, TextBox> TextBoxes { get; private set; }
-        public Dictionary<string, GroupBox> GroupBoxes { get; private set; }
-        public RichTextBox ConfirmDeleteText { get; private set; }
+        public static Dictionary<string, Label> Labels { get; private set; }
+        public static Dictionary<string, Panel> Panels { get; private set; }
+        public static Dictionary<string, TextBox> TextBoxes { get; private set; }
+        public static Dictionary<string, GroupBox> GroupBoxes { get; private set; }
+        public static RichTextBox ConfirmDeleteText { get; private set; }
 
         // List of dynamically created buttons while loading saved heroes
-        public List<Button> CreatedButtons { get; private set; } = new List<Button>();
+        public static List<Button> CreatedButtons { get; private set; } = new List<Button>();
         // List of all the loaded heroes as DTOs
-        public List<HeroDTO> HeroesAsDTO { get; private set; } = new List<HeroDTO>();
+        public static List<HeroDTO> HeroesAsDTO { get; private set; } = new List<HeroDTO>();
 
         // The hero which is currently being played
-        public HeroModel Hero { get; private set; }
+        public static HeroModel Hero { get; private set; }
 
         /// <summary>
         /// Takes all the needed UI from the NecromindUI and stores them as static variables.
@@ -40,7 +41,7 @@ namespace NecromindLibrary.model
         /// <param name="textBoxes">A dictionary of textboxes.</param>
         /// <param name="groupBoxes">A dictionary of groupboxes</param>
         /// <param name="confirmDeleteText">The rich textbox to confirm deleting a hero.</param>
-        public void TakeAllUI(Dictionary<string, Panel> panels, Dictionary<string, Label> labels, Dictionary<string, TextBox> textBoxes,
+        public static void TakeAllUI(Dictionary<string, Panel> panels, Dictionary<string, Label> labels, Dictionary<string, TextBox> textBoxes,
             Dictionary<string, GroupBox> groupBoxes, RichTextBox confirmDeleteText)
         {
             Panels = panels;
@@ -53,7 +54,7 @@ namespace NecromindLibrary.model
         /// <summary>
         /// Resets the game panel to the original values.
         /// </summary>
-        public void ResetGame()
+        public static void ResetGame()
         {
             GroupBoxes["heroDetails"].Text = HeroNamePlaceholder + "'s Details";
             GroupBoxes["heroItems"].Text = HeroNamePlaceholder + "'s Items";
@@ -68,7 +69,7 @@ namespace NecromindLibrary.model
         /// <summary>
         /// Creates a new hero if the name is not already taken.
         /// </summary>
-        public void CreateNewHero()
+        public static void CreateNewHero()
         {
             TextBox newHeroName = TextBoxes["newHeroName"];
 
@@ -100,7 +101,7 @@ namespace NecromindLibrary.model
         /// <summary>
         /// Creates a button for each saved heroes and adds an event to load any of them upon click event. 
         /// </summary>
-        public void ShowAllLoadedHeroes()
+        public static void ShowAllLoadedHeroes()
         {
             HeroesAsDTO = DataAccess.GetAllHeroesAsDTO();
 
@@ -173,7 +174,7 @@ namespace NecromindLibrary.model
         /// Gets all the information from the database of a single hero by its ID, sets all the needed labels in the game panel and brings the game panel to the front.
         /// </summary>
         /// <param name="id">ID of hero.</param>
-        private void LoadHeroByIdBtn(int id)
+        private static void LoadHeroByIdBtn(int id)
         {
             Hero = DataAccess.GetHeroById(id);
             SetHeroDetails();
@@ -184,7 +185,7 @@ namespace NecromindLibrary.model
         /// Deletes a hero by ID then reloads the loadGame panel.
         /// </summary>
         /// <param name="hero">A hero as HeroDTO.</param>
-        private void DeleteHeroByIdBtn(HeroDTO hero)
+        private static void DeleteHeroByIdBtn(HeroDTO hero)
         {
             TextBox deleteHeroName = TextBoxes["deleteHeroName"];
 
@@ -236,7 +237,7 @@ namespace NecromindLibrary.model
         /// Hides and resets the confirm delete panel and restores controls on the load game panel. 
         /// </summary>
         /// <param name="heroName">Name of the hero which was supposed to be deleted.</param>
-        private void HideConfirmDeletePanel(string heroName)
+        private static void HideConfirmDeletePanel(string heroName)
         {
             foreach (Control control in Panels["loadGame"].Controls)
             {
@@ -251,7 +252,7 @@ namespace NecromindLibrary.model
         /// <summary>
         /// Sets all the labels and group boxes texts for the hero to the current hero's values.
         /// </summary>
-        private void SetHeroDetails()
+        private static void SetHeroDetails()
         {
             GroupBox heroDetails = GroupBoxes["heroDetails"];
             GroupBox heroItems = GroupBoxes["heroItems"];
