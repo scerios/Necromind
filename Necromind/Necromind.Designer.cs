@@ -65,6 +65,9 @@ namespace NecromindUI
             this.labelHeroXP = new System.Windows.Forms.Label();
             this.labelHeroGold = new System.Windows.Forms.Label();
             this.labelHeroHealth = new System.Windows.Forms.Label();
+            this.panelError = new System.Windows.Forms.Panel();
+            this.labelErrorTitle = new System.Windows.Forms.Label();
+            this.labelErrorMsg = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelNewGame.SuspendLayout();
             this.panelLoadGame.SuspendLayout();
@@ -73,6 +76,7 @@ namespace NecromindUI
             this.groupBoxCharacterItems.SuspendLayout();
             this.groupBoxHeroItems.SuspendLayout();
             this.groupBoxHeroDetails.SuspendLayout();
+            this.panelError.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -227,6 +231,7 @@ namespace NecromindUI
             // 
             // panelGame
             // 
+            this.panelGame.Controls.Add(this.panelError);
             this.panelGame.Controls.Add(this.groupBoxCharacterDetails);
             this.panelGame.Controls.Add(this.groupBoxCharacterItems);
             this.panelGame.Controls.Add(this.groupBoxHeroItems);
@@ -446,6 +451,39 @@ namespace NecromindUI
             this.labelHeroHealth.TabIndex = 0;
             this.labelHeroHealth.Text = "Health:";
             // 
+            // panelError
+            // 
+            this.panelError.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelError.Controls.Add(this.labelErrorMsg);
+            this.panelError.Controls.Add(this.labelErrorTitle);
+            this.panelError.Location = new System.Drawing.Point(380, 180);
+            this.panelError.Name = "panelError";
+            this.panelError.Size = new System.Drawing.Size(300, 178);
+            this.panelError.TabIndex = 13;
+            // 
+            // labelErrorTitle
+            // 
+            this.labelErrorTitle.AutoSize = true;
+            this.labelErrorTitle.Font = new System.Drawing.Font("Courier New", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelErrorTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labelErrorTitle.Location = new System.Drawing.Point(10, 15);
+            this.labelErrorTitle.MinimumSize = new System.Drawing.Size(280, 0);
+            this.labelErrorTitle.Name = "labelErrorTitle";
+            this.labelErrorTitle.Size = new System.Drawing.Size(280, 16);
+            this.labelErrorTitle.TabIndex = 0;
+            this.labelErrorTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelErrorMsg
+            // 
+            this.labelErrorMsg.AutoSize = true;
+            this.labelErrorMsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labelErrorMsg.Location = new System.Drawing.Point(10, 50);
+            this.labelErrorMsg.MinimumSize = new System.Drawing.Size(280, 110);
+            this.labelErrorMsg.Name = "labelErrorMsg";
+            this.labelErrorMsg.Size = new System.Drawing.Size(280, 110);
+            this.labelErrorMsg.TabIndex = 1;
+            this.labelErrorMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Necromind
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -475,6 +513,8 @@ namespace NecromindUI
             this.groupBoxCharacterItems.ResumeLayout(false);
             this.groupBoxHeroItems.ResumeLayout(false);
             this.groupBoxHeroDetails.ResumeLayout(false);
+            this.panelError.ResumeLayout(false);
+            this.panelError.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -514,6 +554,9 @@ namespace NecromindUI
         private ListBox listBoxCharacterItems;
         private GroupBox groupBoxHeroItems;
         private ListBox listBoxHeroItems;
+        private Panel panelError;
+        private Label labelErrorMsg;
+        private Label labelErrorTitle;
     }
 }
 

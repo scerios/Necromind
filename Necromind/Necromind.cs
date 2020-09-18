@@ -39,6 +39,7 @@ namespace NecromindUI
             Panels.Add("loadGame", panelLoadGame);
             Panels.Add("game", panelGame);
             Panels.Add("confirmDelete", panelConfirmDelete);
+            Panels.Add("error", panelError);
         }
 
         private void setLabels()
@@ -49,6 +50,9 @@ namespace NecromindUI
             Labels.Add("heroLevel", labelHeroLevelValue);
             Labels.Add("heroDamage", labelHeroDamageValue);
             Labels.Add("heroDefense", labelHeroDefenseValue);
+
+            Labels.Add("errorTitle", labelErrorTitle);
+            Labels.Add("errorMsg", labelErrorMsg);
         }
 
         private void setTextBoxes()
