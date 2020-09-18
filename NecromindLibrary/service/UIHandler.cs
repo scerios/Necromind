@@ -15,6 +15,8 @@ namespace NecromindLibrary.service
     /// </summary>
     public static class UIHandler
     {
+        // TODO - Figure out some better UI to display errors.
+
         // Placeholder convention for hero's name
         public static string HeroNamePlaceholder { get; private set; } = ConfigurationManager.AppSettings["heroNamePlaceholder"];
 
@@ -189,10 +191,7 @@ namespace NecromindLibrary.service
         {
             TextBox deleteHeroName = TextBoxes["deleteHeroName"];
 
-            foreach (Control control in Panels["loadGame"].Controls)
-            {
-                control.Enabled = false;
-            }
+            UIHelper.SetControlsAvailability(Panels["loadGame"].Controls, false);
 
             ConfirmDeleteText = UIHelper.ApplyCustomStyleToRichTextConfirmDelete(hero.Name, ConfirmDeleteText);
             deleteHeroName.Focus();
@@ -201,6 +200,7 @@ namespace NecromindLibrary.service
 
             deleteHeroName.KeyPress += (s, ev) =>
             {
+                // TODO - Make this section more simple by getting rid of nested ifs
                 // If ENTER is pressed
                 if (ev.KeyChar == (char)13)
                 {
@@ -239,10 +239,7 @@ namespace NecromindLibrary.service
         /// <param name="heroName">Name of the hero which was supposed to be deleted.</param>
         private static void HideConfirmDeletePanel(string heroName)
         {
-            foreach (Control control in Panels["loadGame"].Controls)
-            {
-                control.Enabled = true;
-            }
+            UIHelper.SetControlsAvailability(Panels["loadGame"].Controls, true);
 
             Panels["confirmDelete"].SendToBack();
             TextBoxes["deleteHeroName"].Text = "";

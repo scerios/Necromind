@@ -88,5 +88,18 @@ namespace NecromindLibrary.helper
 
             return button;
         }
+
+        /// <summary>
+        /// Sets the controls availability.
+        /// </summary>
+        /// <param name="controls">A list of controls which should be enabled/disabled.</param>
+        /// <param name="isAvailable">True if controls should be enabled. False otherwise.</param>
+        public static void SetControlsAvailability(Control.ControlCollection controls, bool isAvailable)
+        {
+            foreach (Control control in controls)
+            {
+                control.Enabled = isAvailable;
+            }
+        }
     }
 }

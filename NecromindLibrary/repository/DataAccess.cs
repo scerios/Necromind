@@ -26,7 +26,7 @@ namespace NecromindLibrary.repository
         {
             using (IDbConnection connection = new MySqlConnection(DBConnectionHelper.GetConnectionStringByName(databaseName)))
             {
-                var parameters = new { name = name };
+                var parameters = new { name };
                 var sql = "INSERT INTO hero (name) VALUES (@name)";
                 try
                 {
@@ -51,7 +51,7 @@ namespace NecromindLibrary.repository
         {
             using (IDbConnection connection = new MySqlConnection(DBConnectionHelper.GetConnectionStringByName(databaseName)))
             {
-                var parameters = new { id = id };
+                var parameters = new { id };
                 var sql = "DELETE FROM hero WHERE id = @id";
                 try
                 {
@@ -99,7 +99,7 @@ namespace NecromindLibrary.repository
             using (IDbConnection connection = new MySqlConnection(DBConnectionHelper.GetConnectionStringByName(databaseName)))
             {
                 DBConnectionHelper.SetDapperMapperToModelByName(ClassType.Hero);
-                var parameters = new { id = id };
+                var parameters = new { id };
                 var sql = "SELECT * FROM hero WHERE id = @id";
                 try
                 {

@@ -4,6 +4,8 @@ namespace NecromindLibrary.service
 {
     public interface IBattle
     {
+        // TODO - Figure out how the battle system should work.
+
         /// <summary>
         /// Attacks the target KillableModel and returns the value which the target will be damaged.
         /// </summary>
