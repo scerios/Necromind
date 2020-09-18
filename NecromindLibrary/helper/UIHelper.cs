@@ -3,6 +3,7 @@ using NecromindLibrary.service;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
 
 namespace NecromindLibrary.helper
@@ -100,6 +101,32 @@ namespace NecromindLibrary.helper
             {
                 control.Enabled = isAvailable;
             }
+        }
+
+        /// <summary>
+        /// Displays an error window with custom title and message.
+        /// </summary>
+        /// <param name="title">Title of the error window.</param>
+        /// <param name="msg">Message of the error.</param>
+        public static void DisplayError(string title, string msg)
+        {
+            int i = 30;
+            while (i < msg.Length - 10)
+            {
+                string test = msg.Substring(i, 10);
+                int index = test.IndexOf(" ");
+                index = i + index;
+
+                char[] chars = msg.ToCharArray();
+                chars[index] = '\n';
+                msg = new string(chars);
+
+                i += 30;
+            }
+
+            UIHandler.Labels["errorTitle"].Text = title;
+            UIHandler.Labels["errorMsg"].Text = msg;
+            UIHandler.Panels["error"].BringToFront();
         }
     }
 }

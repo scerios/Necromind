@@ -15,8 +15,6 @@ namespace NecromindLibrary.service
     /// </summary>
     public static class UIHandler
     {
-        // TODO - Figure out some better UI to display errors.
-
         // Placeholder convention for hero's name
         public static string HeroNamePlaceholder { get; private set; } = ConfigurationManager.AppSettings["heroNamePlaceholder"];
 
@@ -89,12 +87,12 @@ namespace NecromindLibrary.service
                 }
                 else
                 {
-                    MessageBox.Show("Couldn't connect to the database. Please try again.");
+                    UIHelper.DisplayError("Connection error", "Couldn't connect to the database. Please try again.");
                 }
             }
             else
             {
-                MessageBox.Show($"The entered name: '{ newHeroName.Text }' is already taken. Please pick another one.");
+                UIHelper.DisplayError("Name unavailable", $"The entered name: '{ newHeroName.Text }' is already taken. Please pick another one.");
                 newHeroName.Text = "";
             }
             
@@ -109,11 +107,11 @@ namespace NecromindLibrary.service
 
             if (HeroesAsDTO.Count == 0)
             {
-                MessageBox.Show("There's no hero yet to load. Create a new one first!");
+                UIHelper.DisplayError("Nothing to load.", "There's no hero yet to load. Create a new one first!");
             }
             else if (HeroesAsDTO.Count() == 1 && HeroesAsDTO.First().Id == 0) // Failed to connect to DB
             {
-                MessageBox.Show(HeroesAsDTO.First().Name);
+                UIHelper.DisplayError("Connection error", HeroesAsDTO.First().Name);
             }
             else
             {

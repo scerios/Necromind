@@ -119,5 +119,14 @@ namespace NecromindUI
             showMainMenu();
             UIHandler.ResetGame();
         }
+
+        private void Necromind_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // If ESC is pressed
+            if (e.KeyChar == (char)27)
+            {
+                UIHandler.Panels["error"].SendToBack();
+            }
+        }
     }
 }

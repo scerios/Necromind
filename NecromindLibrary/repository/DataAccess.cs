@@ -36,7 +36,7 @@ namespace NecromindLibrary.repository
                 }
                 catch (MySqlException exception)
                 {
-                    MessageBox.Show(exceptionErrorMsg + exception.Message);
+                    UIHelper.DisplayError("Connection error", exception.Message);
                     return 0;
                 }
             }
@@ -60,7 +60,7 @@ namespace NecromindLibrary.repository
                 }
                 catch (MySqlException exception)
                 {
-                    MessageBox.Show(exceptionErrorMsg + exception.Message);
+                    UIHelper.DisplayError("Connection error", exception.Message);
                     return false;
                 }
             }
@@ -83,7 +83,7 @@ namespace NecromindLibrary.repository
                 catch (MySqlException exception)
                 {
                     List<HeroDTO> heroes = new List<HeroDTO>();
-                    heroes.Add(new HeroDTO { Id = 0, Name = exceptionErrorMsg + exception.Message });
+                    heroes.Add(new HeroDTO { Id = 0 , Name = exception.Message });
                     return heroes;
                 }
             }
