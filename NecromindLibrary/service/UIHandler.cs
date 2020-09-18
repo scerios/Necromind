@@ -200,13 +200,11 @@ namespace NecromindLibrary.service
 
             deleteHeroName.KeyPress += (s, ev) =>
             {
-                // TODO - Make this section more simple by getting rid of nested ifs
-                // If ENTER is pressed
-                if (ev.KeyChar == (char)13)
+                switch (ev.KeyChar)
                 {
-                    if (deleteHeroName.Text == hero.Name)
-                    {
-                        if(DataAccess.TryDeleteHeroById(hero.Id))
+                    case (char)13: // If ENTER is pressed
+
+                        if (deleteHeroName.Text == hero.Name && DataAccess.TryDeleteHeroById(hero.Id))
                         {
                             HeroesAsDTO.Remove(hero);
                             foreach (Button createdButton in CreatedButtons)
@@ -222,13 +220,14 @@ namespace NecromindLibrary.service
                                 Panels["menu"].BringToFront();
                             }
                         }
-                    }
-                }
 
-                // If ESCAPE is pressed
-                if (ev.KeyChar == (char)27)
-                {
-                    HideConfirmDeletePanel(hero.Name);
+                        break;
+
+                    case (char)27: // If ESCAPE is pressed
+
+                        HideConfirmDeletePanel(hero.Name);
+
+                        break;
                 }
             };
         }
