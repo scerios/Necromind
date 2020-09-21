@@ -122,6 +122,8 @@ namespace NecromindUI
 
         private void Necromind_KeyPress(object sender, KeyPressEventArgs e)
         {
+            // TODO - Track user's position on the panels so by pressing ESC it should act like click on Back
+
             // If ESC is pressed
             if (e.KeyChar == (char)27)
             {

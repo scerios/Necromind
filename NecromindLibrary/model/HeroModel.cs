@@ -1,4 +1,6 @@
 ﻿using NecromindLibrary.service;
+using NUnit.Framework;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NecromindLibrary.model
@@ -22,22 +24,22 @@ namespace NecromindLibrary.model
         /// A list of active quests.
         /// </summary>
         [Column("active_quest_ids")]
-        public string ActiveQuestsIds { get; set; }
+        public List<QuestModel> ActiveQuestIds { get; set; }
         /// <summary>
         /// A list of completed quests.
         /// </summary>
         [Column("completed_quest_ids")]
-        public string CompletedQuestsIds { get; set; }
+        public List<QuestModel> CompletedQuestIds { get; set; }
         /// <summary>
         /// A weapon currently equipped.
         /// </summary>
         [Column("weapon_id")]
-        public int WeaponId { get; set; }
+        public WeaponModel Weapon { get; set; }
         /// <summary>
         /// An armor currently equipped.
         /// </summary>
         [Column("armor_id")]
-        public int ArmorId { get; set; }
+        public ArmorModel Armor { get; set; }
 
         /// <summary>
         /// Attacks the target KillableModel and returns the attacked target hitpoints after the damage was done.

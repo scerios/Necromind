@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace NecromindLibrary.model
 {
     /// <summary>
-    /// Represents a piece of armor.
+    /// Represents an armor a hero can equip.
     /// </summary>
     public class ArmorModel : ItemModel
     {

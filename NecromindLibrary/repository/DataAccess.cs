@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace NecromindLibrary.repository
 {
+    // TODO - Convert all DataAccess to noSQL, probably mongoDB
     public static class DataAccess
     {
         private static readonly string databaseName = ConfigurationManager.AppSettings["databaseName"];
-        private static readonly string exceptionErrorMsg = "The request couldn't be made due to the following error: ";
 
         /// <summary>
         /// Creates a new hero with the given name and returns the inserted ID.
@@ -100,14 +100,31 @@ namespace NecromindLibrary.repository
             {
                 DBConnectionHelper.SetDapperMapperToModelByName(ClassType.Hero);
                 var parameters = new { id };
-                var sql = "SELECT * FROM hero WHERE id = @id";
+                var sql = "" +
+                    "SELECT h.*, " +
+                    "a.id, a.name, a.buy_price AS BuyPrice, a.sell_price AS SellPrice, a.is_sellable AS IsSellable, a.defense, " +
+                    "w.id, w.name, w.buy_price AS BuyPrice, w.sell_price AS SellPrice, w.is_sellable AS IsSellable, w.damage " +
+                    "FROM hero h " +
+                    "LEFT JOIN armor a " +
+                    "ON h.armor_id = a.id " +
+                    "LEFT JOIN weapon w " +
+                    "ON h.weapon_id = w.id " +
+                    "WHERE h.id = @id"
+                    ;
                 try
                 {
-                    return connection.Query<HeroModel>(sql, parameters).First();
+                    var data = connection.Query<HeroModel, ArmorModel, WeaponModel, HeroModel>(sql, (hero, armor, weapon) => 
+                    {
+                        hero.Armor = armor;
+                        hero.Weapon = weapon;
+                        return hero;
+                    }, parameters, splitOn: "armor_id, weapon_id");
+
+                    return data.First();
                 }
                 catch (MySqlException exception)
                 {
-                    MessageBox.Show(exceptionErrorMsg + exception.Message);
+                    UIHelper.DisplayError("Connection error", exception.Message);
                     return new HeroModel();
                 }
             }
