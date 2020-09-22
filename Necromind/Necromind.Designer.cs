@@ -68,6 +68,7 @@ namespace NecromindUI
             this.panelError = new System.Windows.Forms.Panel();
             this.labelErrorMsg = new System.Windows.Forms.Label();
             this.labelErrorTitle = new System.Windows.Forms.Label();
+            this.btnDeleteHero = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelNewGame.SuspendLayout();
             this.panelLoadGame.SuspendLayout();
@@ -199,11 +200,12 @@ namespace NecromindUI
             // panelConfirmDelete
             // 
             this.panelConfirmDelete.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelConfirmDelete.Controls.Add(this.btnDeleteHero);
             this.panelConfirmDelete.Controls.Add(this.richTextBoxConfirmDelete);
             this.panelConfirmDelete.Controls.Add(this.textBoxDeleteHeroName);
             this.panelConfirmDelete.Location = new System.Drawing.Point(380, 180);
             this.panelConfirmDelete.Name = "panelConfirmDelete";
-            this.panelConfirmDelete.Size = new System.Drawing.Size(300, 178);
+            this.panelConfirmDelete.Size = new System.Drawing.Size(300, 222);
             this.panelConfirmDelete.TabIndex = 2;
             // 
             // richTextBoxConfirmDelete
@@ -483,18 +485,36 @@ namespace NecromindUI
             this.labelErrorTitle.TabIndex = 0;
             this.labelErrorTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnDeleteHero
+            // 
+            this.btnDeleteHero.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDeleteHero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.btnDeleteHero.CausesValidation = false;
+            this.btnDeleteHero.Enabled = false;
+            this.btnDeleteHero.FlatAppearance.BorderSize = 0;
+            this.btnDeleteHero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteHero.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnDeleteHero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnDeleteHero.Location = new System.Drawing.Point(100, 180);
+            this.btnDeleteHero.Name = "btnDeleteHero";
+            this.btnDeleteHero.Size = new System.Drawing.Size(100, 25);
+            this.btnDeleteHero.TabIndex = 4;
+            this.btnDeleteHero.Text = "DELETE";
+            this.btnDeleteHero.UseVisualStyleBackColor = false;
+            this.btnDeleteHero.Click += new System.EventHandler(this.buttonDeleteHero_Click);
+            // 
             // Necromind
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.ClientSize = new System.Drawing.Size(1084, 661);
-            this.Controls.Add(this.panelGame);
             this.Controls.Add(this.panelConfirmDelete);
             this.Controls.Add(this.panelLoadGame);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelNewGame);
             this.Controls.Add(this.panelError);
+            this.Controls.Add(this.panelGame);
             this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -558,6 +578,7 @@ namespace NecromindUI
         private Panel panelError;
         private Label labelErrorMsg;
         private Label labelErrorTitle;
+        private Button btnDeleteHero;
     }
 }
 

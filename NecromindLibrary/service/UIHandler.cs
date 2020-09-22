@@ -46,6 +46,9 @@ namespace NecromindLibrary.service
         private static readonly string targetDetails = ConfigurationManager.AppSettings["groupBoXTargetDetails"];
         private static readonly string targetInventory = ConfigurationManager.AppSettings["groupBoxTargetInventory"];
 
+        // All the needed button reference names
+        private static readonly string deleteHero = ConfigurationManager.AppSettings["btnDeleteHero"];
+
         // Collection name to store heroes.
         private static readonly string HeroesCollection = "heroes";
 
@@ -54,6 +57,7 @@ namespace NecromindLibrary.service
         public static Dictionary<string, Panel> Panels { get; private set; }
         public static Dictionary<string, TextBox> TextBoxes { get; private set; }
         public static Dictionary<string, GroupBox> GroupBoxes { get; private set; }
+        public static Dictionary<string, Button> Buttons { get; private set; }
         public static RichTextBox ConfirmDeleteText { get; private set; }
 
         // List of dynamically created buttons while loading saved heroes
@@ -61,6 +65,9 @@ namespace NecromindLibrary.service
 
         // The hero which is currently being played
         public static HeroModel Hero { get; private set; }
+
+        // The hero which is about to be deleted
+        public static HeroModel HeroToDelete { get; private set; }
 
         /// <summary>
         /// Takes all the needed UI from the NecromindUI project and stores them as static variables.
@@ -71,12 +78,13 @@ namespace NecromindLibrary.service
         /// <param name="groupBoxes">A dictionary of groupboxes</param>
         /// <param name="confirmDeleteText">The rich textbox to confirm deleting a hero.</param>
         public static void TakeAllUI(Dictionary<string, Panel> panels, Dictionary<string, Label> labels, Dictionary<string, TextBox> textBoxes,
-            Dictionary<string, GroupBox> groupBoxes, RichTextBox confirmDeleteText)
+            Dictionary<string, GroupBox> groupBoxes, Dictionary<string, Button> buttons, RichTextBox confirmDeleteText)
         {
             Panels = panels;
             Labels = labels;
             TextBoxes = textBoxes;
             GroupBoxes = groupBoxes;
+            Buttons = buttons;
             ConfirmDeleteText = confirmDeleteText;
         }
 
@@ -186,6 +194,7 @@ namespace NecromindLibrary.service
 
                     btnDeleteHero.Click += (s, ev) =>
                     {
+                        HeroToDelete = hero;
                         DeleteHeroByIdBtn(hero);
                     };
 
@@ -224,13 +233,25 @@ namespace NecromindLibrary.service
 
             Panels[confirmDelete].BringToFront();
 
+            heroName.KeyUp += (s, ev) =>
+            {
+                if (heroName.Text == hero.Name)
+                {
+                    Buttons[deleteHero].Enabled = true;
+                }
+                else
+                {
+                    Buttons[deleteHero].Enabled = false;
+                }
+            };
+
             heroName.KeyPress += (s, ev) =>
             {
                 switch (ev.KeyChar)
                 {
                     case (char)13: // If ENTER is pressed
 
-                        if (heroName.Text == hero.Name)
+                        if (Buttons[deleteHero].Enabled)
                         {
                             if (DataAccess.TryDeleteRecordById<HeroModel>(HeroesCollection, hero.Id))
                             {
@@ -255,12 +276,23 @@ namespace NecromindLibrary.service
             };
         }
 
+        public static void DeleteHero()
+        {
+            string heroName = HeroToDelete.Name;
+            if (DataAccess.TryDeleteRecordById<HeroModel>(HeroesCollection, HeroToDelete.Id))
+            {
+                ShowAllLoadedHeroes();
+                HideConfirmDeletePanel(heroName);
+            }
+        }
+
         /// <summary>
         /// Hides and resets the confirm delete panel and restores controls on the load game panel. 
         /// </summary>
         /// <param name="heroName">Name of the hero which was supposed to be deleted.</param>
         private static void HideConfirmDeletePanel(string heroName)
         {
+            HeroToDelete = null;
             UIHelper.SetControlsAvailability(Panels[loadGame].Controls, true);
 
             Panels[confirmDelete].SendToBack();

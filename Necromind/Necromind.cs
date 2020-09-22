@@ -38,11 +38,15 @@ namespace NecromindUI
         private static readonly string targetDetails = ConfigurationManager.AppSettings["groupBoXTargetDetails"];
         private static readonly string targetInventory = ConfigurationManager.AppSettings["groupBoxTargetInventory"];
 
+        // All the needed button reference names
+        private static readonly string deleteHero = ConfigurationManager.AppSettings["btnDeleteHero"];
+
         // All the needed UI to set dynamically
         private static Dictionary<string, Panel> Panels = new Dictionary<string, Panel>();
         private static Dictionary<string, Label> Labels = new Dictionary<string, Label>();
         private static Dictionary<string, TextBox> TextBoxes = new Dictionary<string, TextBox>();
         private static Dictionary<string, GroupBox> GroupBoxes = new Dictionary<string, GroupBox>();
+        private static Dictionary<string, Button> Buttons = new Dictionary<string, Button>();
 
         public Necromind()
         {
@@ -58,6 +62,7 @@ namespace NecromindUI
             setLabels();
             setTextBoxes();
             setGroupBoxes();
+            setButtons();
             sendAllUIToLibrary();
             showMainMenu();
         }
@@ -99,9 +104,14 @@ namespace NecromindUI
             GroupBoxes.Add(targetInventory, groupBoxTargetInventory);
         }
 
+        private void setButtons()
+        {
+            Buttons.Add(deleteHero, btnDeleteHero);
+        }
+
         private void sendAllUIToLibrary()
         {
-            UIHandler.TakeAllUI(Panels, Labels, TextBoxes, GroupBoxes, richTextBoxConfirmDelete);
+            UIHandler.TakeAllUI(Panels, Labels, TextBoxes, GroupBoxes, Buttons, richTextBoxConfirmDelete);
         }
 
         private void showMainMenu()
@@ -159,6 +169,11 @@ namespace NecromindUI
             {
                 UIHandler.Panels[error].SendToBack();
             }
+        }
+
+        private void buttonDeleteHero_Click(object sender, EventArgs e)
+        {
+            UIHandler.DeleteHero();
         }
     }
 }
