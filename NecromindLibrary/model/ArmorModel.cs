@@ -15,7 +15,6 @@ namespace NecromindLibrary.model
         /// <summary>
         /// How much defense the armor provides.
         /// </summary>
-        [Column("defense")]
         public int Defense { get; set; }
     }
 }

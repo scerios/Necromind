@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -15,27 +16,27 @@ namespace NecromindLibrary.model
         /// <summary>
         /// ID in the database.
         /// </summary>
-        [Column("id")]
-        public int Id { get; set; }
+        [BsonId]
+        public Guid Id { get; set; }
+
         /// <summary>
         /// Name of the item.
         /// </summary>
-        [Column("name")]
         public string Name { get; set; }
+
         /// <summary>
         /// Buying price of the item.
         /// </summary>
-        [Column("buy_price")]
         public int BuyPrice { get; set; }
+
         /// <summary>
         /// Selling price of the item.
         /// </summary>
-        [Column("sell_price")]
         public int SellPrice { get; set; }
+
         /// <summary>
         /// Decides if the item can be sold to merchant or not.
         /// </summary>
-        [Column("is_sellable")]
         public bool IsSellable { get; set; }
     }
 }

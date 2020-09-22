@@ -15,7 +15,6 @@ namespace NecromindLibrary.model
         /// <summary>
         /// How much damage the weapon gives.
         /// </summary>
-        [Column("damage")]
         public int Damage { get; set; }
     }
 }

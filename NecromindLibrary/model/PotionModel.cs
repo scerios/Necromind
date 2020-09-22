@@ -15,7 +15,6 @@ namespace NecromindLibrary.model
         /// <summary>
         /// Amount of health returned by the potion.
         /// </summary>
-        [Column("health_value")]
         public int HealthValue { get; set; }
     }
 }

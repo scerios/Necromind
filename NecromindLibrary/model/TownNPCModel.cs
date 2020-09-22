@@ -15,7 +15,6 @@ namespace NecromindLibrary.model
         /// <summary>
         /// A list of quests the NPC might provide.
         /// </summary>
-        [Column("quest_ids")]
         public List<QuestModel> Quests { get; set; }
     }
 }

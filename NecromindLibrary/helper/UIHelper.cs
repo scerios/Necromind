@@ -1,4 +1,4 @@
-﻿using NecromindLibrary.dto;
+﻿using NecromindLibrary.model;
 using NecromindLibrary.service;
 using System.Collections.Generic;
 using System.Configuration;
@@ -13,17 +13,18 @@ namespace NecromindLibrary.helper
         /// <summary>
         /// Checks among all the heroes if the user given name is already taken.
         /// </summary>
-        /// <param name="heroes">A list of heroes as HeroDTO.</param>
-        /// <returns>True if name already taken. False otherwise.</returns>
-        public static bool IsNameAlreadyTaken(List<HeroDTO> heroes, TextBox newHeroName)
+        /// <param name="heroes">A list of heroes.</param>
+        /// <param name="name">Name of new hero.</param>
+        /// <returns>True if name is available. False otherwise.</returns>
+        public static bool IsNameAvailable(List<HeroModel> heroes, string name)
         {
-            bool isNameAlreadyTaken = false;
+            bool isNameAlreadyTaken = true;
 
-            foreach (HeroDTO hero in heroes)
+            foreach (HeroModel hero in heroes)
             {
-                if (hero.Name == newHeroName.Text)
+                if (hero.Name == name)
                 {
-                    isNameAlreadyTaken = true;
+                    isNameAlreadyTaken = false;
                     break;
                 }
             }

@@ -13,33 +13,58 @@ namespace NecromindLibrary.model
         /// <summary>
         /// How much experience points the hero currently has.
         /// </summary>
-        [Column("experience_points")]
         public int ExperiencePoints { get; set; }
+
         /// <summary>
         /// At how much experience points is the next level.
         /// </summary>
-        [Column("next_level_at")]
         public int NextLevelAt { get; set; }
+
         /// <summary>
         /// A list of active quests.
         /// </summary>
-        [Column("active_quest_ids")]
-        public List<QuestModel> ActiveQuestIds { get; set; }
+        public List<QuestModel> ActiveQuests { get; set; }
+
         /// <summary>
         /// A list of completed quests.
         /// </summary>
-        [Column("completed_quest_ids")]
-        public List<QuestModel> CompletedQuestIds { get; set; }
+        public List<QuestModel> CompletedQuests { get; set; }
+
         /// <summary>
         /// A weapon currently equipped.
         /// </summary>
-        [Column("weapon_id")]
         public WeaponModel Weapon { get; set; }
+
         /// <summary>
         /// An armor currently equipped.
         /// </summary>
-        [Column("armor_id")]
         public ArmorModel Armor { get; set; }
+
+        public HeroModel()
+        {
+
+        }
+
+        /// <summary>
+        /// Creates a new hero with the given name and default values.
+        /// </summary>
+        /// <param name="name">Name of the hero.</param>
+        public HeroModel(string name)
+        {
+            Name = name;
+            HitPoints = 100;
+            HitPointsMax = 100;
+            Damage = 10;
+            Defense = 5;
+            Level = 1;
+            ExperiencePoints = 1;
+            NextLevelAt = 1000;
+            Armor = null;
+            Weapon = null;
+            ActiveQuests = null;
+            CompletedQuests = null;
+            Inventory = null;
+        }
 
         /// <summary>
         /// Attacks the target KillableModel and returns the attacked target hitpoints after the damage was done.

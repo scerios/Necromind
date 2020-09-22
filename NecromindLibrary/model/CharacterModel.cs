@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -15,17 +16,17 @@ namespace NecromindLibrary.model
         /// <summary>
         /// ID of character.
         /// </summary>
-        [Column("id")]
-        public int Id { get; set; }
+        [BsonId]
+        public Guid Id { get; set; }
+
         /// <summary>
         /// Name of character.
         /// </summary>
-        [Column("name")]
         public string Name { get; set; }
+
         /// <summary>
-        /// List of items the character might own.
+        /// List of items the character has.
         /// </summary>
-        [Column("item_ids")]
-        public string ItemIds { get; set; }
+        public string Inventory { get; set; }
     }
 }

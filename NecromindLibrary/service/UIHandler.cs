@@ -1,7 +1,7 @@
-﻿using NecromindLibrary.dto;
-using NecromindLibrary.helper;
+﻿using NecromindLibrary.helper;
 using NecromindLibrary.model;
 using NecromindLibrary.repository;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
@@ -18,6 +18,37 @@ namespace NecromindLibrary.service
         // Placeholder convention for hero's name
         public static string HeroNamePlaceholder { get; private set; } = ConfigurationManager.AppSettings["heroNamePlaceholder"];
 
+        // All the needed panel reference names
+        private static readonly string menu = ConfigurationManager.AppSettings["panelMenu"];
+        private static readonly string newGame = ConfigurationManager.AppSettings["panelNewGame"];
+        private static readonly string loadGame = ConfigurationManager.AppSettings["panelLoadGame"];
+        private static readonly string game = ConfigurationManager.AppSettings["panelGame"];
+        private static readonly string confirmDelete = ConfigurationManager.AppSettings["panelConfirmDelete"];
+        private static readonly string error = ConfigurationManager.AppSettings["panelError"];
+
+        // All the needed label reference names
+        private static readonly string heroHealth = ConfigurationManager.AppSettings["labelHeroHealth"];
+        private static readonly string heroGold = ConfigurationManager.AppSettings["labelHeroGold"];
+        private static readonly string heroXP = ConfigurationManager.AppSettings["labelHeroXP"];
+        private static readonly string heroLevel = ConfigurationManager.AppSettings["labelHeroLevel"];
+        private static readonly string heroDamage = ConfigurationManager.AppSettings["labelHeroDamage"];
+        private static readonly string heroDefense = ConfigurationManager.AppSettings["labelHeroDefense"];
+        private static readonly string errorTitle = ConfigurationManager.AppSettings["labelErrorTitle"];
+        private static readonly string errorMsg = ConfigurationManager.AppSettings["labelErrorMsg"];
+
+        // All the needed textbox reference names
+        private static readonly string newHeroName = ConfigurationManager.AppSettings["textBoxNewHeroName"];
+        private static readonly string deleteHeroName = ConfigurationManager.AppSettings["textBoxDeleteHeroName"];
+
+        // All the needed group box reference names
+        private static readonly string heroDetails = ConfigurationManager.AppSettings["groupBoxHeroDetails"];
+        private static readonly string heroInventory = ConfigurationManager.AppSettings["groupBoxHeroInventory"];
+        private static readonly string targetDetails = ConfigurationManager.AppSettings["groupBoXTargetDetails"];
+        private static readonly string targetInventory = ConfigurationManager.AppSettings["groupBoxTargetInventory"];
+
+        // Collection name to store heroes.
+        private static readonly string HeroesCollection = "heroes";
+
         // All the needed UI
         public static Dictionary<string, Label> Labels { get; private set; }
         public static Dictionary<string, Panel> Panels { get; private set; }
@@ -27,14 +58,12 @@ namespace NecromindLibrary.service
 
         // List of dynamically created buttons while loading saved heroes
         public static List<Button> CreatedButtons { get; private set; } = new List<Button>();
-        // List of all the loaded heroes as DTOs
-        public static List<HeroDTO> HeroesAsDTO { get; private set; } = new List<HeroDTO>();
 
         // The hero which is currently being played
         public static HeroModel Hero { get; private set; }
 
         /// <summary>
-        /// Takes all the needed UI from the NecromindUI and stores them as static variables.
+        /// Takes all the needed UI from the NecromindUI project and stores them as static variables.
         /// </summary>
         /// <param name="panels">A dictionary of panels.</param>
         /// <param name="labels">A dictionary of labels.</param>
@@ -56,14 +85,14 @@ namespace NecromindLibrary.service
         /// </summary>
         public static void ResetGame()
         {
-            GroupBoxes["heroDetails"].Text = HeroNamePlaceholder + "'s Details";
-            GroupBoxes["heroItems"].Text = HeroNamePlaceholder + "'s Items";
-            Labels["heroHealth"].Text = "";
-            Labels["heroGold"].Text = "";
-            Labels["heroXP"].Text = "";
-            Labels["heroLevel"].Text = "";
-            Labels["heroDamage"].Text = "";
-            Labels["heroDefense"].Text = "";
+            GroupBoxes[heroDetails].Text = HeroNamePlaceholder + "'s Details";
+            GroupBoxes[heroInventory].Text = HeroNamePlaceholder + "'s Items";
+            Labels[heroHealth].Text = "";
+            Labels[heroGold].Text = "";
+            Labels[heroXP].Text = "";
+            Labels[heroLevel].Text = "";
+            Labels[heroDamage].Text = "";
+            Labels[heroDefense].Text = "";
         }
 
         /// <summary>
@@ -71,47 +100,46 @@ namespace NecromindLibrary.service
         /// </summary>
         public static void CreateNewHero()
         {
-            TextBox newHeroName = TextBoxes["newHeroName"];
+            TextBox heroName = TextBoxes[newHeroName];
+            List<HeroModel> heroes = DataAccess.GetAllRecords<HeroModel>(HeroesCollection);
 
-            if (!UIHelper.IsNameAlreadyTaken(DataAccess.GetAllHeroesAsDTO(), newHeroName))
+            if (heroName.Text.Length < 3)
             {
-                int insertedId = DataAccess.CreateNewHero(newHeroName.Text);
+                UIHelper.DisplayError("Name too short", "Name must be at least 3 characters long");
+            }
+            else if (UIHelper.IsNameAvailable(heroes, heroName.Text))
+            {
+                Hero = new HeroModel(heroName.Text);
+                Guid defaultHeroId = Hero.Id;
 
-                if (insertedId > 0)
+                Hero.Id = DataAccess.TryCreateNewRecord(HeroesCollection, Hero);
+
+                if (defaultHeroId != Hero.Id)
                 {
-                    Hero = DataAccess.GetHeroById(insertedId);
                     SetHeroDetails();
 
-                    newHeroName.Text = "";
-                    Panels["game"].BringToFront();
-                }
-                else
-                {
-                    UIHelper.DisplayError("Connection error", "Couldn't connect to the database. Please try again.");
+                    Panels[game].BringToFront();
                 }
             }
             else
             {
-                UIHelper.DisplayError("Name unavailable", $"The entered name: '{ newHeroName.Text }' is already taken. Please pick another one.");
-                newHeroName.Text = "";
+                UIHelper.DisplayError("Name unavailable", $"The name: \"{ heroName.Text }\" you entered is already taken. Pick another one.");
             }
             
+            heroName.Text = "";
         }
 
         /// <summary>
-        /// Creates a button for each saved heroes and adds an event to load any of them upon click event. 
+        /// Creates 2 buttons for each saved heroes and adds events to load or delete any of them. 
         /// </summary>
         public static void ShowAllLoadedHeroes()
         {
-            HeroesAsDTO = DataAccess.GetAllHeroesAsDTO();
+            List<HeroModel> Heroes = DataAccess.GetAllRecords<HeroModel>(HeroesCollection);
 
-            if (HeroesAsDTO.Count == 0)
+            if (Heroes.Count == 0)
             {
+                Panels[menu].BringToFront();
                 UIHelper.DisplayError("Nothing to load.", "There's no hero yet to load. Create a new one first!");
-            }
-            else if (HeroesAsDTO.Count() == 1 && HeroesAsDTO.First().Id == 0) // Failed to connect to DB
-            {
-                UIHelper.DisplayError("Connection error", HeroesAsDTO.First().Name);
             }
             else
             {
@@ -119,7 +147,7 @@ namespace NecromindLibrary.service
                 int btnDeleteHeroLocX = 590;
                 int btnLocY = 100;
 
-                foreach (HeroDTO hero in HeroesAsDTO)
+                foreach (HeroModel hero in Heroes)
                 {
                     Button btnLoadHero = UIHelper.CreateButton(
                         hero.Name,
@@ -140,7 +168,7 @@ namespace NecromindLibrary.service
                         LoadHeroByIdBtn(hero.Id);
                     };
 
-                    Panels["loadGame"].Controls.Add(btnLoadHero);
+                    Panels[loadGame].Controls.Add(btnLoadHero);
 
                     Button btnDeleteHero = UIHelper.CreateButton(
                         "X",
@@ -163,10 +191,10 @@ namespace NecromindLibrary.service
 
                     btnLocY += 40;
 
-                    Panels["loadGame"].Controls.Add(btnDeleteHero);
+                    Panels[loadGame].Controls.Add(btnDeleteHero);
                 }
 
-                Panels["loadGame"].BringToFront();
+                Panels[loadGame].BringToFront();
             }
         }
 
@@ -174,48 +202,45 @@ namespace NecromindLibrary.service
         /// Gets all the information from the database of a single hero by its ID, sets all the needed labels in the game panel and brings the game panel to the front.
         /// </summary>
         /// <param name="id">ID of hero.</param>
-        private static void LoadHeroByIdBtn(int id)
+        private static void LoadHeroByIdBtn(Guid id)
         {
-            Hero = DataAccess.GetHeroById(id);
+            Hero = DataAccess.GetRecordById<HeroModel>(HeroesCollection, id);
             SetHeroDetails();
-            Panels["game"].BringToFront();
+            Panels[game].BringToFront();
         }
 
         /// <summary>
         /// Deletes a hero by ID then reloads the loadGame panel.
         /// </summary>
-        /// <param name="hero">A hero as HeroDTO.</param>
-        private static void DeleteHeroByIdBtn(HeroDTO hero)
+        /// <param name="hero">A hero.</param>
+        private static void DeleteHeroByIdBtn(HeroModel hero)
         {
-            TextBox deleteHeroName = TextBoxes["deleteHeroName"];
+            TextBox heroName = TextBoxes[deleteHeroName];
 
-            UIHelper.SetControlsAvailability(Panels["loadGame"].Controls, false);
+            UIHelper.SetControlsAvailability(Panels[loadGame].Controls, false);
 
             ConfirmDeleteText = UIHelper.ApplyCustomStyleToRichTextConfirmDelete(hero.Name, ConfirmDeleteText);
-            deleteHeroName.Focus();
+            heroName.Focus();
 
-            Panels["confirmDelete"].BringToFront();
+            Panels[confirmDelete].BringToFront();
 
-            deleteHeroName.KeyPress += (s, ev) =>
+            heroName.KeyPress += (s, ev) =>
             {
                 switch (ev.KeyChar)
                 {
                     case (char)13: // If ENTER is pressed
 
-                        if (deleteHeroName.Text == hero.Name && DataAccess.TryDeleteHeroById(hero.Id))
+                        if (heroName.Text == hero.Name)
                         {
-                            HeroesAsDTO.Remove(hero);
-                            foreach (Button createdButton in CreatedButtons)
+                            if (DataAccess.TryDeleteRecordById<HeroModel>(HeroesCollection, hero.Id))
                             {
-                                Panels["loadGame"].Controls.Remove(createdButton);
-                            }
+                                foreach (Button createdButton in CreatedButtons)
+                                {
+                                    Panels[loadGame].Controls.Remove(createdButton);
+                                }
 
-                            ShowAllLoadedHeroes();
-                            HideConfirmDeletePanel(hero.Name);
-
-                            if (HeroesAsDTO.Count() == 0)
-                            {
-                                Panels["menu"].BringToFront();
+                                ShowAllLoadedHeroes();
+                                HideConfirmDeletePanel(hero.Name);
                             }
                         }
 
@@ -236,10 +261,10 @@ namespace NecromindLibrary.service
         /// <param name="heroName">Name of the hero which was supposed to be deleted.</param>
         private static void HideConfirmDeletePanel(string heroName)
         {
-            UIHelper.SetControlsAvailability(Panels["loadGame"].Controls, true);
+            UIHelper.SetControlsAvailability(Panels[loadGame].Controls, true);
 
-            Panels["confirmDelete"].SendToBack();
-            TextBoxes["deleteHeroName"].Text = "";
+            Panels[confirmDelete].SendToBack();
+            TextBoxes[deleteHeroName].Text = "";
             ConfirmDeleteText.Text = ConfirmDeleteText.Text.Replace(heroName, HeroNamePlaceholder);
         }
 
@@ -248,26 +273,26 @@ namespace NecromindLibrary.service
         /// </summary>
         private static void SetHeroDetails()
         {
-            GroupBox heroDetails = GroupBoxes["heroDetails"];
-            GroupBox heroItems = GroupBoxes["heroItems"];
+            GroupBox details = GroupBoxes[heroDetails];
+            GroupBox inventory = GroupBoxes[heroInventory];
 
             if (Hero.Name.EndsWith("s") || Hero.Name.EndsWith("S"))
             {
-                heroDetails.Text = heroDetails.Text.Replace(HeroNamePlaceholder + "'s", Hero.Name + "'");
-                heroItems.Text = heroItems.Text.Replace(HeroNamePlaceholder + "'s", Hero.Name + "'");
+                details.Text = details.Text.Replace(HeroNamePlaceholder + "'s", Hero.Name + "'");
+                inventory.Text = inventory.Text.Replace(HeroNamePlaceholder + "'s", Hero.Name + "'");
             } 
             else
             {
-                heroDetails.Text = heroDetails.Text.Replace(HeroNamePlaceholder, Hero.Name);
-                heroItems.Text = heroItems.Text.Replace(HeroNamePlaceholder, Hero.Name);
+                details.Text = details.Text.Replace(HeroNamePlaceholder, Hero.Name);
+                inventory.Text = inventory.Text.Replace(HeroNamePlaceholder, Hero.Name);
             }
             
-            Labels["heroHealth"].Text = Hero.HitPointsMax.ToString() + " / " + Hero.HitPoints.ToString();
-            Labels["heroGold"].Text = Hero.Gold.ToString();
-            Labels["heroXP"].Text = Hero.ExperiencePoints.ToString() + " / " + Hero.NextLevelAt.ToString();
-            Labels["heroLevel"].Text = Hero.Level.ToString();
-            Labels["heroDamage"].Text = Hero.Damage.ToString();
-            Labels["heroDefense"].Text = Hero.Defense.ToString();
+            Labels[heroHealth].Text = Hero.HitPointsMax.ToString() + " / " + Hero.HitPoints.ToString();
+            Labels[heroGold].Text = Hero.Gold.ToString();
+            Labels[heroXP].Text = Hero.ExperiencePoints.ToString() + " / " + Hero.NextLevelAt.ToString();
+            Labels[heroLevel].Text = Hero.Level.ToString();
+            Labels[heroDamage].Text = Hero.Damage.ToString();
+            Labels[heroDefense].Text = Hero.Defense.ToString();
         }
     }
 }

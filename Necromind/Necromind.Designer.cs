@@ -45,11 +45,8 @@ namespace NecromindUI
             this.richTextBoxConfirmDelete = new System.Windows.Forms.RichTextBox();
             this.textBoxDeleteHeroName = new System.Windows.Forms.TextBox();
             this.panelGame = new System.Windows.Forms.Panel();
-            this.panelError = new System.Windows.Forms.Panel();
-            this.labelErrorMsg = new System.Windows.Forms.Label();
-            this.labelErrorTitle = new System.Windows.Forms.Label();
-            this.groupBoxCharacterDetails = new System.Windows.Forms.GroupBox();
-            this.groupBoxCharacterItems = new System.Windows.Forms.GroupBox();
+            this.groupBoxTargetDetails = new System.Windows.Forms.GroupBox();
+            this.groupBoxTargetInventory = new System.Windows.Forms.GroupBox();
             this.listBoxCharacterItems = new System.Windows.Forms.ListBox();
             this.groupBoxHeroItems = new System.Windows.Forms.GroupBox();
             this.listBoxHeroItems = new System.Windows.Forms.ListBox();
@@ -68,15 +65,18 @@ namespace NecromindUI
             this.labelHeroXP = new System.Windows.Forms.Label();
             this.labelHeroGold = new System.Windows.Forms.Label();
             this.labelHeroHealth = new System.Windows.Forms.Label();
+            this.panelError = new System.Windows.Forms.Panel();
+            this.labelErrorMsg = new System.Windows.Forms.Label();
+            this.labelErrorTitle = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelNewGame.SuspendLayout();
             this.panelLoadGame.SuspendLayout();
             this.panelConfirmDelete.SuspendLayout();
             this.panelGame.SuspendLayout();
-            this.panelError.SuspendLayout();
-            this.groupBoxCharacterItems.SuspendLayout();
+            this.groupBoxTargetInventory.SuspendLayout();
             this.groupBoxHeroItems.SuspendLayout();
             this.groupBoxHeroDetails.SuspendLayout();
+            this.panelError.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -231,8 +231,8 @@ namespace NecromindUI
             // 
             // panelGame
             // 
-            this.panelGame.Controls.Add(this.groupBoxCharacterDetails);
-            this.panelGame.Controls.Add(this.groupBoxCharacterItems);
+            this.panelGame.Controls.Add(this.groupBoxTargetDetails);
+            this.panelGame.Controls.Add(this.groupBoxTargetInventory);
             this.panelGame.Controls.Add(this.groupBoxHeroItems);
             this.panelGame.Controls.Add(this.panelGameMenu);
             this.panelGame.Controls.Add(this.btnBackFromGame);
@@ -243,61 +243,28 @@ namespace NecromindUI
             this.panelGame.Size = new System.Drawing.Size(1084, 661);
             this.panelGame.TabIndex = 16;
             // 
-            // panelError
+            // groupBoxTargetDetails
             // 
-            this.panelError.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelError.Controls.Add(this.labelErrorMsg);
-            this.panelError.Controls.Add(this.labelErrorTitle);
-            this.panelError.Location = new System.Drawing.Point(380, 180);
-            this.panelError.Name = "panelError";
-            this.panelError.Size = new System.Drawing.Size(300, 178);
-            this.panelError.TabIndex = 13;
+            this.groupBoxTargetDetails.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBoxTargetDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBoxTargetDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.groupBoxTargetDetails.Location = new System.Drawing.Point(698, 55);
+            this.groupBoxTargetDetails.Name = "groupBoxTargetDetails";
+            this.groupBoxTargetDetails.Size = new System.Drawing.Size(235, 181);
+            this.groupBoxTargetDetails.TabIndex = 12;
+            this.groupBoxTargetDetails.TabStop = false;
+            this.groupBoxTargetDetails.Text = "{TARGET}\'s Details";
             // 
-            // labelErrorMsg
+            // groupBoxTargetInventory
             // 
-            this.labelErrorMsg.AutoSize = true;
-            this.labelErrorMsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labelErrorMsg.Location = new System.Drawing.Point(10, 50);
-            this.labelErrorMsg.MinimumSize = new System.Drawing.Size(280, 110);
-            this.labelErrorMsg.Name = "labelErrorMsg";
-            this.labelErrorMsg.Size = new System.Drawing.Size(280, 110);
-            this.labelErrorMsg.TabIndex = 1;
-            this.labelErrorMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // labelErrorTitle
-            // 
-            this.labelErrorTitle.AutoSize = true;
-            this.labelErrorTitle.Font = new System.Drawing.Font("Courier New", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelErrorTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.labelErrorTitle.Location = new System.Drawing.Point(10, 15);
-            this.labelErrorTitle.MinimumSize = new System.Drawing.Size(280, 0);
-            this.labelErrorTitle.Name = "labelErrorTitle";
-            this.labelErrorTitle.Size = new System.Drawing.Size(280, 16);
-            this.labelErrorTitle.TabIndex = 0;
-            this.labelErrorTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // groupBoxCharacterDetails
-            // 
-            this.groupBoxCharacterDetails.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBoxCharacterDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBoxCharacterDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.groupBoxCharacterDetails.Location = new System.Drawing.Point(698, 55);
-            this.groupBoxCharacterDetails.Name = "groupBoxCharacterDetails";
-            this.groupBoxCharacterDetails.Size = new System.Drawing.Size(235, 181);
-            this.groupBoxCharacterDetails.TabIndex = 12;
-            this.groupBoxCharacterDetails.TabStop = false;
-            this.groupBoxCharacterDetails.Text = "{CHARACTER}\'s Details";
-            // 
-            // groupBoxCharacterItems
-            // 
-            this.groupBoxCharacterItems.Controls.Add(this.listBoxCharacterItems);
-            this.groupBoxCharacterItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.groupBoxCharacterItems.Location = new System.Drawing.Point(480, 55);
-            this.groupBoxCharacterItems.Name = "groupBoxCharacterItems";
-            this.groupBoxCharacterItems.Size = new System.Drawing.Size(212, 181);
-            this.groupBoxCharacterItems.TabIndex = 5;
-            this.groupBoxCharacterItems.TabStop = false;
-            this.groupBoxCharacterItems.Text = "{CHARACTER}\'s Items";
+            this.groupBoxTargetInventory.Controls.Add(this.listBoxCharacterItems);
+            this.groupBoxTargetInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.groupBoxTargetInventory.Location = new System.Drawing.Point(480, 55);
+            this.groupBoxTargetInventory.Name = "groupBoxTargetInventory";
+            this.groupBoxTargetInventory.Size = new System.Drawing.Size(212, 181);
+            this.groupBoxTargetInventory.TabIndex = 5;
+            this.groupBoxTargetInventory.TabStop = false;
+            this.groupBoxTargetInventory.Text = "{TARGET}\'s Items";
             // 
             // listBoxCharacterItems
             // 
@@ -483,18 +450,51 @@ namespace NecromindUI
             this.labelHeroHealth.TabIndex = 0;
             this.labelHeroHealth.Text = "Health:";
             // 
+            // panelError
+            // 
+            this.panelError.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelError.Controls.Add(this.labelErrorMsg);
+            this.panelError.Controls.Add(this.labelErrorTitle);
+            this.panelError.Location = new System.Drawing.Point(380, 180);
+            this.panelError.Name = "panelError";
+            this.panelError.Size = new System.Drawing.Size(300, 178);
+            this.panelError.TabIndex = 13;
+            // 
+            // labelErrorMsg
+            // 
+            this.labelErrorMsg.AutoSize = true;
+            this.labelErrorMsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labelErrorMsg.Location = new System.Drawing.Point(10, 50);
+            this.labelErrorMsg.MinimumSize = new System.Drawing.Size(280, 110);
+            this.labelErrorMsg.Name = "labelErrorMsg";
+            this.labelErrorMsg.Size = new System.Drawing.Size(280, 110);
+            this.labelErrorMsg.TabIndex = 1;
+            this.labelErrorMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelErrorTitle
+            // 
+            this.labelErrorTitle.AutoSize = true;
+            this.labelErrorTitle.Font = new System.Drawing.Font("Courier New", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelErrorTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labelErrorTitle.Location = new System.Drawing.Point(10, 15);
+            this.labelErrorTitle.MinimumSize = new System.Drawing.Size(280, 0);
+            this.labelErrorTitle.Name = "labelErrorTitle";
+            this.labelErrorTitle.Size = new System.Drawing.Size(280, 16);
+            this.labelErrorTitle.TabIndex = 0;
+            this.labelErrorTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Necromind
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.ClientSize = new System.Drawing.Size(1084, 661);
-            this.Controls.Add(this.panelError);
+            this.Controls.Add(this.panelGame);
+            this.Controls.Add(this.panelConfirmDelete);
             this.Controls.Add(this.panelLoadGame);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelNewGame);
-            this.Controls.Add(this.panelGame);
-            this.Controls.Add(this.panelConfirmDelete);
+            this.Controls.Add(this.panelError);
             this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -511,11 +511,11 @@ namespace NecromindUI
             this.panelConfirmDelete.ResumeLayout(false);
             this.panelConfirmDelete.PerformLayout();
             this.panelGame.ResumeLayout(false);
-            this.panelError.ResumeLayout(false);
-            this.panelError.PerformLayout();
-            this.groupBoxCharacterItems.ResumeLayout(false);
+            this.groupBoxTargetInventory.ResumeLayout(false);
             this.groupBoxHeroItems.ResumeLayout(false);
             this.groupBoxHeroDetails.ResumeLayout(false);
+            this.panelError.ResumeLayout(false);
+            this.panelError.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -550,8 +550,8 @@ namespace NecromindUI
         private System.Windows.Forms.RichTextBox richTextBoxConfirmDelete;
         private System.Windows.Forms.TextBox textBoxDeleteHeroName;
         private Panel panelGameMenu;
-        private GroupBox groupBoxCharacterDetails;
-        private GroupBox groupBoxCharacterItems;
+        private GroupBox groupBoxTargetDetails;
+        private GroupBox groupBoxTargetInventory;
         private ListBox listBoxCharacterItems;
         private GroupBox groupBoxHeroItems;
         private ListBox listBoxHeroItems;
