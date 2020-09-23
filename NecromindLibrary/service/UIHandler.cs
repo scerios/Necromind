@@ -235,14 +235,7 @@ namespace NecromindLibrary.service
 
             heroName.KeyUp += (s, ev) =>
             {
-                if (heroName.Text == hero.Name)
-                {
-                    Buttons[DeleteHeroBtn].Enabled = true;
-                }
-                else
-                {
-                    Buttons[DeleteHeroBtn].Enabled = false;
-                }
+                Buttons[DeleteHeroBtn].Enabled = heroName.Text == hero.Name;
             };
 
             // TODO - Pressing enter creates bug, sort it out!
