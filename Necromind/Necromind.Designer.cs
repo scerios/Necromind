@@ -42,6 +42,7 @@ namespace NecromindUI
             this.panelLoadGame = new System.Windows.Forms.Panel();
             this.btnBackFromLoadGame = new System.Windows.Forms.Button();
             this.panelConfirmDelete = new System.Windows.Forms.Panel();
+            this.btnDeleteHero = new System.Windows.Forms.Button();
             this.richTextBoxConfirmDelete = new System.Windows.Forms.RichTextBox();
             this.textBoxDeleteHeroName = new System.Windows.Forms.TextBox();
             this.panelGame = new System.Windows.Forms.Panel();
@@ -68,7 +69,6 @@ namespace NecromindUI
             this.panelError = new System.Windows.Forms.Panel();
             this.labelErrorMsg = new System.Windows.Forms.Label();
             this.labelErrorTitle = new System.Windows.Forms.Label();
-            this.btnDeleteHero = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelNewGame.SuspendLayout();
             this.panelLoadGame.SuspendLayout();
@@ -207,6 +207,24 @@ namespace NecromindUI
             this.panelConfirmDelete.Name = "panelConfirmDelete";
             this.panelConfirmDelete.Size = new System.Drawing.Size(300, 222);
             this.panelConfirmDelete.TabIndex = 2;
+            // 
+            // btnDeleteHero
+            // 
+            this.btnDeleteHero.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDeleteHero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.btnDeleteHero.CausesValidation = false;
+            this.btnDeleteHero.Enabled = false;
+            this.btnDeleteHero.FlatAppearance.BorderSize = 0;
+            this.btnDeleteHero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteHero.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnDeleteHero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnDeleteHero.Location = new System.Drawing.Point(100, 180);
+            this.btnDeleteHero.Name = "btnDeleteHero";
+            this.btnDeleteHero.Size = new System.Drawing.Size(100, 25);
+            this.btnDeleteHero.TabIndex = 4;
+            this.btnDeleteHero.Text = "DELETE";
+            this.btnDeleteHero.UseVisualStyleBackColor = false;
+            this.btnDeleteHero.Click += new System.EventHandler(this.buttonDeleteHero_Click);
             // 
             // richTextBoxConfirmDelete
             // 
@@ -484,24 +502,6 @@ namespace NecromindUI
             this.labelErrorTitle.Size = new System.Drawing.Size(280, 16);
             this.labelErrorTitle.TabIndex = 0;
             this.labelErrorTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnDeleteHero
-            // 
-            this.btnDeleteHero.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDeleteHero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.btnDeleteHero.CausesValidation = false;
-            this.btnDeleteHero.Enabled = false;
-            this.btnDeleteHero.FlatAppearance.BorderSize = 0;
-            this.btnDeleteHero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteHero.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnDeleteHero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnDeleteHero.Location = new System.Drawing.Point(100, 180);
-            this.btnDeleteHero.Name = "btnDeleteHero";
-            this.btnDeleteHero.Size = new System.Drawing.Size(100, 25);
-            this.btnDeleteHero.TabIndex = 4;
-            this.btnDeleteHero.Text = "DELETE";
-            this.btnDeleteHero.UseVisualStyleBackColor = false;
-            this.btnDeleteHero.Click += new System.EventHandler(this.buttonDeleteHero_Click);
             // 
             // Necromind
             // 

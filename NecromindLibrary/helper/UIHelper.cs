@@ -18,18 +18,18 @@ namespace NecromindLibrary.helper
         /// <returns>True if name is available. False otherwise.</returns>
         public static bool IsNameAvailable(List<HeroModel> heroes, string name)
         {
-            bool isNameAlreadyTaken = true;
+            bool isNameAvailable = true;
 
             foreach (HeroModel hero in heroes)
             {
                 if (hero.Name == name)
                 {
-                    isNameAlreadyTaken = false;
+                    isNameAvailable= false;
                     break;
                 }
             }
 
-            return isNameAlreadyTaken;
+            return isNameAvailable;
         }
 
         /// <summary>

@@ -238,13 +238,11 @@ namespace NecromindLibrary.service
                 Buttons[DeleteHeroBtn].Enabled = heroName.Text == hero.Name;
             };
 
-            // TODO - Pressing enter creates bug, sort it out!
-
-            heroName.KeyPress += (s, ev) =>
+            heroName.KeyDown += (s, ev) =>
             {
-                switch (ev.KeyChar)
+                switch (ev.KeyCode)
                 {
-                    case (char)13: // If ENTER is pressed
+                    case Keys.Enter: // If ENTER is pressed
 
                         if (Buttons[DeleteHeroBtn].Enabled)
                         {
@@ -259,10 +257,14 @@ namespace NecromindLibrary.service
                                 HideConfirmDeletePanel(hero.Name);
                             }
                         }
+                        else
+                        {
+                            ev.SuppressKeyPress = true;
+                        }
 
                         break;
 
-                    case (char)27: // If ESCAPE is pressed
+                    case Keys.Escape: // If ESCAPE is pressed
 
                         HideConfirmDeletePanel(hero.Name);
 
