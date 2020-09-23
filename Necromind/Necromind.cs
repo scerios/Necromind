@@ -10,37 +10,6 @@ namespace NecromindUI
 {
     public partial class Necromind : Form
     {
-        // All the needed panel reference names
-        private static readonly string menu = ConfigurationManager.AppSettings["panelMenu"];
-        private static readonly string newGame = ConfigurationManager.AppSettings["panelNewGame"];
-        private static readonly string loadGame = ConfigurationManager.AppSettings["panelLoadGame"];
-        private static readonly string game = ConfigurationManager.AppSettings["panelGame"];
-        private static readonly string confirmDelete = ConfigurationManager.AppSettings["panelConfirmDelete"];
-        private static readonly string error = ConfigurationManager.AppSettings["panelError"];
-
-        // All the needed label reference names
-        private static readonly string heroHealth = ConfigurationManager.AppSettings["labelHeroHealth"];
-        private static readonly string heroGold = ConfigurationManager.AppSettings["labelHeroGold"];
-        private static readonly string heroXP = ConfigurationManager.AppSettings["labelHeroXP"];
-        private static readonly string heroLevel = ConfigurationManager.AppSettings["labelHeroLevel"];
-        private static readonly string heroDamage = ConfigurationManager.AppSettings["labelHeroDamage"];
-        private static readonly string heroDefense = ConfigurationManager.AppSettings["labelHeroDefense"];
-        private static readonly string errorTitle = ConfigurationManager.AppSettings["labelErrorTitle"];
-        private static readonly string errorMsg = ConfigurationManager.AppSettings["labelErrorMsg"];
-
-        // All the needed textbox reference names
-        private static readonly string newHeroName = ConfigurationManager.AppSettings["textBoxNewHeroName"];
-        private static readonly string deleteHeroName = ConfigurationManager.AppSettings["textBoxDeleteHeroName"];
-
-        // All the needed group box reference names
-        private static readonly string heroDetails = ConfigurationManager.AppSettings["groupBoxHeroDetails"];
-        private static readonly string heroInventory = ConfigurationManager.AppSettings["groupBoxHeroInventory"];
-        private static readonly string targetDetails = ConfigurationManager.AppSettings["groupBoXTargetDetails"];
-        private static readonly string targetInventory = ConfigurationManager.AppSettings["groupBoxTargetInventory"];
-
-        // All the needed button reference names
-        private static readonly string deleteHero = ConfigurationManager.AppSettings["btnDeleteHero"];
-
         // All the needed UI to set dynamically
         private static Dictionary<string, Panel> Panels = new Dictionary<string, Panel>();
         private static Dictionary<string, Label> Labels = new Dictionary<string, Label>();
@@ -69,44 +38,44 @@ namespace NecromindUI
 
         private void setPanels()
         {
-            Panels.Add(menu, panelMenu);
-            Panels.Add(newGame, panelNewGame);
-            Panels.Add(loadGame, panelLoadGame);
-            Panels.Add(game, panelGame);
-            Panels.Add(confirmDelete, panelConfirmDelete);
-            Panels.Add(error, panelError);
+            Panels.Add(UIHandler.Menu, panelMenu);
+            Panels.Add(UIHandler.NewGame, panelNewGame);
+            Panels.Add(UIHandler.LoadGame, panelLoadGame);
+            Panels.Add(UIHandler.Game, panelGame);
+            Panels.Add(UIHandler.ConfirmDelete, panelConfirmDelete);
+            Panels.Add(UIHandler.Error, panelError);
         }
 
         private void setLabels()
         {
-            Labels.Add(heroHealth, labelHeroHealthValue);
-            Labels.Add(heroGold, labelHeroGoldValue);
-            Labels.Add(heroXP, labelHeroXPValue);
-            Labels.Add(heroLevel, labelHeroLevelValue);
-            Labels.Add(heroDamage, labelHeroDamageValue);
-            Labels.Add(heroDefense, labelHeroDefenseValue);
+            Labels.Add(UIHandler.HeroHealth, labelHeroHealthValue);
+            Labels.Add(UIHandler.HeroGold, labelHeroGoldValue);
+            Labels.Add(UIHandler.HeroXP, labelHeroXPValue);
+            Labels.Add(UIHandler.HeroLevel, labelHeroLevelValue);
+            Labels.Add(UIHandler.HeroDamage, labelHeroDamageValue);
+            Labels.Add(UIHandler.HeroDefense, labelHeroDefenseValue);
 
-            Labels.Add(errorTitle, labelErrorTitle);
-            Labels.Add(errorMsg, labelErrorMsg);
+            Labels.Add(UIHandler.ErrorTitle, labelErrorTitle);
+            Labels.Add(UIHandler.ErrorMsg, labelErrorMsg);
         }
 
         private void setTextBoxes()
         {
-            TextBoxes.Add(newHeroName, textBoxNewHeroName);
-            TextBoxes.Add(deleteHeroName, textBoxDeleteHeroName);
+            TextBoxes.Add(UIHandler.NewHeroName, textBoxNewHeroName);
+            TextBoxes.Add(UIHandler.DeleteHeroName, textBoxDeleteHeroName);
         }
 
         private void setGroupBoxes()
         {
-            GroupBoxes.Add(heroDetails, groupBoxHeroDetails);
-            GroupBoxes.Add(heroInventory, groupBoxHeroItems);
-            GroupBoxes.Add(targetDetails, groupBoxTargetDetails);
-            GroupBoxes.Add(targetInventory, groupBoxTargetInventory);
+            GroupBoxes.Add(UIHandler.HeroDetails, groupBoxHeroDetails);
+            GroupBoxes.Add(UIHandler.HeroInventory, groupBoxHeroItems);
+            GroupBoxes.Add(UIHandler.TargetDetails, groupBoxTargetDetails);
+            GroupBoxes.Add(UIHandler.TargetInventory, groupBoxTargetInventory);
         }
 
         private void setButtons()
         {
-            Buttons.Add(deleteHero, btnDeleteHero);
+            Buttons.Add(UIHandler.DeleteHeroBtn, btnDeleteHero);
         }
 
         private void sendAllUIToLibrary()
@@ -116,12 +85,12 @@ namespace NecromindUI
 
         private void showMainMenu()
         {
-            Panels[menu].BringToFront();
+            Panels[UIHandler.Menu].BringToFront();
         }
 
         private void btnNewGame_Click(object sender, EventArgs e)
         {
-            Panels[newGame].BringToFront();
+            Panels[UIHandler.NewGame].BringToFront();
             textBoxNewHeroName.Focus();
         }
 
@@ -167,7 +136,7 @@ namespace NecromindUI
             // If ESC is pressed
             if (e.KeyChar == (char)27)
             {
-                UIHandler.Panels[error].SendToBack();
+                UIHandler.Panels[UIHandler.Error].SendToBack();
             }
         }
 

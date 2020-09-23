@@ -112,10 +112,12 @@ namespace NecromindLibrary.helper
         public static void DisplayError(string title, string msg)
         {
             int i = 30;
+
+            // Adds linebreaks to the msg to display it correctly
             while (i < msg.Length - 10)
             {
-                string test = msg.Substring(i, 10);
-                int index = test.IndexOf(" ");
+                string msgPartToBreak = msg.Substring(i, 10);
+                int index = msgPartToBreak.IndexOf(" ");
                 index = i + index;
 
                 char[] chars = msg.ToCharArray();
@@ -125,9 +127,9 @@ namespace NecromindLibrary.helper
                 i += 30;
             }
 
-            UIHandler.Labels["errorTitle"].Text = title;
-            UIHandler.Labels["errorMsg"].Text = msg;
-            UIHandler.Panels["error"].BringToFront();
+            UIHandler.Labels[UIHandler.ErrorTitle].Text = title;
+            UIHandler.Labels[UIHandler.ErrorMsg].Text = msg;
+            UIHandler.Panels[UIHandler.Error].BringToFront();
         }
     }
 }

@@ -9,7 +9,6 @@ using NecromindLibrary.helper;
 
 namespace NecromindLibrary.repository
 {
-    // TODO - Convert all DataAccess to noSQL, probably mongoDB
     public static class DataAccess
     {
         // DB error title
