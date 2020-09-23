@@ -111,7 +111,7 @@ namespace NecromindLibrary.helper
         /// <param name="msg">Message of the error.</param>
         public static void DisplayError(string title, string msg)
         {
-            int i = 30;
+            int i = 25;
 
             // Adds linebreaks to the msg to display it correctly
             while (i < msg.Length - 10)
@@ -124,7 +124,7 @@ namespace NecromindLibrary.helper
                 chars[index] = '\n';
                 msg = new string(chars);
 
-                i += 30;
+                i += 25;
             }
 
             UIHandler.Labels[UIHandler.ErrorTitle].Text = title;
