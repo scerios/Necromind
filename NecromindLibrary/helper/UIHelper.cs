@@ -24,7 +24,7 @@ namespace NecromindLibrary.helper
             {
                 if (hero.Name == name)
                 {
-                    isNameAvailable= false;
+                    isNameAvailable = false;
                     break;
                 }
             }

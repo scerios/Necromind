@@ -52,6 +52,12 @@ namespace NecromindUI
             this.groupBoxHeroItems = new System.Windows.Forms.GroupBox();
             this.listBoxHeroItems = new System.Windows.Forms.ListBox();
             this.panelGameMenu = new System.Windows.Forms.Panel();
+            this.btnBrangor = new System.Windows.Forms.Button();
+            this.btnViascen = new System.Windows.Forms.Button();
+            this.btnShoj = new System.Windows.Forms.Button();
+            this.btnMonastery = new System.Windows.Forms.Button();
+            this.btnOutskirts = new System.Windows.Forms.Button();
+            this.btnTown = new System.Windows.Forms.Button();
             this.btnBackFromGame = new System.Windows.Forms.Button();
             this.groupBoxHeroDetails = new System.Windows.Forms.GroupBox();
             this.labelHeroDefenseValue = new System.Windows.Forms.Label();
@@ -76,6 +82,7 @@ namespace NecromindUI
             this.panelGame.SuspendLayout();
             this.groupBoxTargetInventory.SuspendLayout();
             this.groupBoxHeroItems.SuspendLayout();
+            this.panelGameMenu.SuspendLayout();
             this.groupBoxHeroDetails.SuspendLayout();
             this.panelError.SuspendLayout();
             this.SuspendLayout();
@@ -323,11 +330,101 @@ namespace NecromindUI
             // 
             // panelGameMenu
             // 
+            this.panelGameMenu.Controls.Add(this.btnBrangor);
+            this.panelGameMenu.Controls.Add(this.btnViascen);
+            this.panelGameMenu.Controls.Add(this.btnShoj);
+            this.panelGameMenu.Controls.Add(this.btnMonastery);
+            this.panelGameMenu.Controls.Add(this.btnOutskirts);
+            this.panelGameMenu.Controls.Add(this.btnTown);
             this.panelGameMenu.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelGameMenu.Location = new System.Drawing.Point(955, 0);
+            this.panelGameMenu.Location = new System.Drawing.Point(944, 0);
             this.panelGameMenu.Name = "panelGameMenu";
-            this.panelGameMenu.Size = new System.Drawing.Size(129, 661);
+            this.panelGameMenu.Size = new System.Drawing.Size(140, 661);
             this.panelGameMenu.TabIndex = 3;
+            // 
+            // btnBrangor
+            // 
+            this.btnBrangor.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBrangor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.btnBrangor.FlatAppearance.BorderSize = 0;
+            this.btnBrangor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBrangor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnBrangor.Location = new System.Drawing.Point(20, 245);
+            this.btnBrangor.Name = "btnBrangor";
+            this.btnBrangor.Size = new System.Drawing.Size(100, 25);
+            this.btnBrangor.TabIndex = 18;
+            this.btnBrangor.Text = "Brangor";
+            this.btnBrangor.UseVisualStyleBackColor = false;
+            // 
+            // btnViascen
+            // 
+            this.btnViascen.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnViascen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.btnViascen.FlatAppearance.BorderSize = 0;
+            this.btnViascen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViascen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnViascen.Location = new System.Drawing.Point(20, 200);
+            this.btnViascen.Name = "btnViascen";
+            this.btnViascen.Size = new System.Drawing.Size(100, 25);
+            this.btnViascen.TabIndex = 17;
+            this.btnViascen.Text = "Viascen";
+            this.btnViascen.UseVisualStyleBackColor = false;
+            // 
+            // btnShoj
+            // 
+            this.btnShoj.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnShoj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.btnShoj.FlatAppearance.BorderSize = 0;
+            this.btnShoj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShoj.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnShoj.Location = new System.Drawing.Point(20, 155);
+            this.btnShoj.Name = "btnShoj";
+            this.btnShoj.Size = new System.Drawing.Size(100, 25);
+            this.btnShoj.TabIndex = 16;
+            this.btnShoj.Text = "Shoj";
+            this.btnShoj.UseVisualStyleBackColor = false;
+            // 
+            // btnMonastery
+            // 
+            this.btnMonastery.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnMonastery.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.btnMonastery.FlatAppearance.BorderSize = 0;
+            this.btnMonastery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMonastery.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnMonastery.Location = new System.Drawing.Point(20, 110);
+            this.btnMonastery.Name = "btnMonastery";
+            this.btnMonastery.Size = new System.Drawing.Size(100, 25);
+            this.btnMonastery.TabIndex = 15;
+            this.btnMonastery.Text = "Monastery";
+            this.btnMonastery.UseVisualStyleBackColor = false;
+            // 
+            // btnOutskirts
+            // 
+            this.btnOutskirts.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnOutskirts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.btnOutskirts.FlatAppearance.BorderSize = 0;
+            this.btnOutskirts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOutskirts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnOutskirts.Location = new System.Drawing.Point(20, 65);
+            this.btnOutskirts.Name = "btnOutskirts";
+            this.btnOutskirts.Size = new System.Drawing.Size(100, 25);
+            this.btnOutskirts.TabIndex = 14;
+            this.btnOutskirts.Text = "Outskirts";
+            this.btnOutskirts.UseVisualStyleBackColor = false;
+            // 
+            // btnTown
+            // 
+            this.btnTown.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnTown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.btnTown.FlatAppearance.BorderSize = 0;
+            this.btnTown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnTown.Location = new System.Drawing.Point(20, 20);
+            this.btnTown.Name = "btnTown";
+            this.btnTown.Size = new System.Drawing.Size(100, 25);
+            this.btnTown.TabIndex = 13;
+            this.btnTown.Text = "Town";
+            this.btnTown.UseVisualStyleBackColor = false;
             // 
             // btnBackFromGame
             // 
@@ -509,12 +606,12 @@ namespace NecromindUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.ClientSize = new System.Drawing.Size(1084, 661);
+            this.Controls.Add(this.panelGame);
             this.Controls.Add(this.panelConfirmDelete);
             this.Controls.Add(this.panelLoadGame);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelNewGame);
             this.Controls.Add(this.panelError);
-            this.Controls.Add(this.panelGame);
             this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -533,6 +630,7 @@ namespace NecromindUI
             this.panelGame.ResumeLayout(false);
             this.groupBoxTargetInventory.ResumeLayout(false);
             this.groupBoxHeroItems.ResumeLayout(false);
+            this.panelGameMenu.ResumeLayout(false);
             this.groupBoxHeroDetails.ResumeLayout(false);
             this.panelError.ResumeLayout(false);
             this.panelError.PerformLayout();
@@ -579,6 +677,12 @@ namespace NecromindUI
         private Label labelErrorMsg;
         private Label labelErrorTitle;
         private Button btnDeleteHero;
+        private Button btnBrangor;
+        private Button btnViascen;
+        private Button btnShoj;
+        private Button btnMonastery;
+        private Button btnOutskirts;
+        private Button btnTown;
     }
 }
 
