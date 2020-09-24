@@ -94,7 +94,7 @@ namespace NecromindLibrary.service
         public static void ResetGame()
         {
             GroupBoxes[HeroDetails].Text = HeroNamePlaceholder + "'s Details";
-            GroupBoxes[HeroInventory].Text = HeroNamePlaceholder + "'s Items";
+            GroupBoxes[HeroInventory].Text = HeroNamePlaceholder + "'s Inventory";
             Labels[HeroHealth].Text = "";
             Labels[HeroGold].Text = "";
             Labels[HeroXP].Text = "";

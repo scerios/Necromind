@@ -68,7 +68,7 @@ namespace NecromindUI
         private void setGroupBoxes()
         {
             GroupBoxes.Add(UIHandler.HeroDetails, groupBoxHeroDetails);
-            GroupBoxes.Add(UIHandler.HeroInventory, groupBoxHeroItems);
+            GroupBoxes.Add(UIHandler.HeroInventory, groupBoxHeroInventory);
             GroupBoxes.Add(UIHandler.TargetDetails, groupBoxTargetDetails);
             GroupBoxes.Add(UIHandler.TargetInventory, groupBoxTargetInventory);
         }

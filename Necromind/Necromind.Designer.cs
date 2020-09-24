@@ -48,8 +48,8 @@ namespace NecromindUI
             this.panelGame = new System.Windows.Forms.Panel();
             this.groupBoxTargetDetails = new System.Windows.Forms.GroupBox();
             this.groupBoxTargetInventory = new System.Windows.Forms.GroupBox();
-            this.listBoxCharacterItems = new System.Windows.Forms.ListBox();
-            this.groupBoxHeroItems = new System.Windows.Forms.GroupBox();
+            this.listBoxTargetItems = new System.Windows.Forms.ListBox();
+            this.groupBoxHeroInventory = new System.Windows.Forms.GroupBox();
             this.listBoxHeroItems = new System.Windows.Forms.ListBox();
             this.panelGameMenu = new System.Windows.Forms.Panel();
             this.panelVendor = new System.Windows.Forms.Panel();
@@ -80,19 +80,39 @@ namespace NecromindUI
             this.labelErrorTitle = new System.Windows.Forms.Label();
             this.richTextBoxEventLog = new System.Windows.Forms.RichTextBox();
             this.panelAction = new System.Windows.Forms.Panel();
+            this.btnAttack = new System.Windows.Forms.Button();
+            this.btnFortify = new System.Windows.Forms.Button();
+            this.btnUseItem = new System.Windows.Forms.Button();
+            this.btnBuy = new System.Windows.Forms.Button();
+            this.btnSell = new System.Windows.Forms.Button();
+            this.panelTrade = new System.Windows.Forms.Panel();
+            this.panelFight = new System.Windows.Forms.Panel();
+            this.groupBoxHeroActiveQuests = new System.Windows.Forms.GroupBox();
+            this.groupBoxTargetQuests = new System.Windows.Forms.GroupBox();
+            this.panelQuestHandle = new System.Windows.Forms.Panel();
+            this.btnAccept = new System.Windows.Forms.Button();
+            this.btnComplete = new System.Windows.Forms.Button();
+            this.listBoxHeroActiveQuests = new System.Windows.Forms.ListBox();
+            this.listBoxTargetQuests = new System.Windows.Forms.ListBox();
             this.panelMenu.SuspendLayout();
             this.panelNewGame.SuspendLayout();
             this.panelLoadGame.SuspendLayout();
             this.panelConfirmDelete.SuspendLayout();
             this.panelGame.SuspendLayout();
             this.groupBoxTargetInventory.SuspendLayout();
-            this.groupBoxHeroItems.SuspendLayout();
+            this.groupBoxHeroInventory.SuspendLayout();
             this.panelGameMenu.SuspendLayout();
             this.panelVendor.SuspendLayout();
             this.panelLocation.SuspendLayout();
             this.panelBack.SuspendLayout();
             this.groupBoxHeroDetails.SuspendLayout();
             this.panelError.SuspendLayout();
+            this.panelAction.SuspendLayout();
+            this.panelTrade.SuspendLayout();
+            this.panelFight.SuspendLayout();
+            this.groupBoxHeroActiveQuests.SuspendLayout();
+            this.groupBoxTargetQuests.SuspendLayout();
+            this.panelQuestHandle.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -266,11 +286,13 @@ namespace NecromindUI
             // 
             // panelGame
             // 
+            this.panelGame.Controls.Add(this.groupBoxTargetQuests);
+            this.panelGame.Controls.Add(this.groupBoxHeroActiveQuests);
             this.panelGame.Controls.Add(this.panelAction);
             this.panelGame.Controls.Add(this.richTextBoxEventLog);
             this.panelGame.Controls.Add(this.groupBoxTargetDetails);
             this.panelGame.Controls.Add(this.groupBoxTargetInventory);
-            this.panelGame.Controls.Add(this.groupBoxHeroItems);
+            this.panelGame.Controls.Add(this.groupBoxHeroInventory);
             this.panelGame.Controls.Add(this.panelGameMenu);
             this.panelGame.Controls.Add(this.groupBoxHeroDetails);
             this.panelGame.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -293,37 +315,38 @@ namespace NecromindUI
             // 
             // groupBoxTargetInventory
             // 
-            this.groupBoxTargetInventory.Controls.Add(this.listBoxCharacterItems);
+            this.groupBoxTargetInventory.Controls.Add(this.listBoxTargetItems);
             this.groupBoxTargetInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.groupBoxTargetInventory.Location = new System.Drawing.Point(475, 20);
             this.groupBoxTargetInventory.Name = "groupBoxTargetInventory";
             this.groupBoxTargetInventory.Size = new System.Drawing.Size(215, 180);
             this.groupBoxTargetInventory.TabIndex = 5;
             this.groupBoxTargetInventory.TabStop = false;
-            this.groupBoxTargetInventory.Text = "{TARGET}\'s Items";
+            this.groupBoxTargetInventory.Text = "{TARGET}\'s Inventory";
+            this.groupBoxTargetInventory.Visible = false;
             // 
-            // listBoxCharacterItems
+            // listBoxTargetItems
             // 
-            this.listBoxCharacterItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.listBoxCharacterItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBoxCharacterItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.listBoxCharacterItems.FormattingEnabled = true;
-            this.listBoxCharacterItems.ItemHeight = 16;
-            this.listBoxCharacterItems.Location = new System.Drawing.Point(6, 26);
-            this.listBoxCharacterItems.Name = "listBoxCharacterItems";
-            this.listBoxCharacterItems.Size = new System.Drawing.Size(200, 144);
-            this.listBoxCharacterItems.TabIndex = 0;
+            this.listBoxTargetItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.listBoxTargetItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxTargetItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.listBoxTargetItems.FormattingEnabled = true;
+            this.listBoxTargetItems.ItemHeight = 16;
+            this.listBoxTargetItems.Location = new System.Drawing.Point(6, 26);
+            this.listBoxTargetItems.Name = "listBoxTargetItems";
+            this.listBoxTargetItems.Size = new System.Drawing.Size(200, 144);
+            this.listBoxTargetItems.TabIndex = 0;
             // 
-            // groupBoxHeroItems
+            // groupBoxHeroInventory
             // 
-            this.groupBoxHeroItems.Controls.Add(this.listBoxHeroItems);
-            this.groupBoxHeroItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
-            this.groupBoxHeroItems.Location = new System.Drawing.Point(255, 20);
-            this.groupBoxHeroItems.Name = "groupBoxHeroItems";
-            this.groupBoxHeroItems.Size = new System.Drawing.Size(215, 180);
-            this.groupBoxHeroItems.TabIndex = 4;
-            this.groupBoxHeroItems.TabStop = false;
-            this.groupBoxHeroItems.Text = "{HERO}\'s Items";
+            this.groupBoxHeroInventory.Controls.Add(this.listBoxHeroItems);
+            this.groupBoxHeroInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.groupBoxHeroInventory.Location = new System.Drawing.Point(255, 20);
+            this.groupBoxHeroInventory.Name = "groupBoxHeroInventory";
+            this.groupBoxHeroInventory.Size = new System.Drawing.Size(215, 180);
+            this.groupBoxHeroInventory.TabIndex = 4;
+            this.groupBoxHeroInventory.TabStop = false;
+            this.groupBoxHeroInventory.Text = "{HERO}\'s Inventory";
             // 
             // listBoxHeroItems
             // 
@@ -644,18 +667,199 @@ namespace NecromindUI
             // 
             this.richTextBoxEventLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.richTextBoxEventLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxEventLog.Location = new System.Drawing.Point(20, 340);
+            this.richTextBoxEventLog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.richTextBoxEventLog.Location = new System.Drawing.Point(20, 400);
             this.richTextBoxEventLog.Name = "richTextBoxEventLog";
-            this.richTextBoxEventLog.Size = new System.Drawing.Size(905, 300);
+            this.richTextBoxEventLog.ReadOnly = true;
+            this.richTextBoxEventLog.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.richTextBoxEventLog.Size = new System.Drawing.Size(905, 240);
             this.richTextBoxEventLog.TabIndex = 13;
             this.richTextBoxEventLog.Text = "";
             // 
             // panelAction
             // 
-            this.panelAction.Location = new System.Drawing.Point(20, 220);
+            this.panelAction.Controls.Add(this.panelQuestHandle);
+            this.panelAction.Controls.Add(this.panelFight);
+            this.panelAction.Controls.Add(this.panelTrade);
+            this.panelAction.Location = new System.Drawing.Point(232, 220);
             this.panelAction.Name = "panelAction";
-            this.panelAction.Size = new System.Drawing.Size(905, 100);
+            this.panelAction.Size = new System.Drawing.Size(480, 155);
             this.panelAction.TabIndex = 14;
+            // 
+            // btnAttack
+            // 
+            this.btnAttack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnAttack.Enabled = false;
+            this.btnAttack.FlatAppearance.BorderSize = 0;
+            this.btnAttack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAttack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnAttack.Location = new System.Drawing.Point(44, 10);
+            this.btnAttack.Name = "btnAttack";
+            this.btnAttack.Size = new System.Drawing.Size(100, 25);
+            this.btnAttack.TabIndex = 14;
+            this.btnAttack.Text = "Attack";
+            this.btnAttack.UseVisualStyleBackColor = false;
+            // 
+            // btnFortify
+            // 
+            this.btnFortify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnFortify.Enabled = false;
+            this.btnFortify.FlatAppearance.BorderSize = 0;
+            this.btnFortify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFortify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnFortify.Location = new System.Drawing.Point(189, 10);
+            this.btnFortify.Name = "btnFortify";
+            this.btnFortify.Size = new System.Drawing.Size(100, 25);
+            this.btnFortify.TabIndex = 15;
+            this.btnFortify.Text = "Fortify";
+            this.btnFortify.UseVisualStyleBackColor = false;
+            // 
+            // btnUseItem
+            // 
+            this.btnUseItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnUseItem.Enabled = false;
+            this.btnUseItem.FlatAppearance.BorderSize = 0;
+            this.btnUseItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUseItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnUseItem.Location = new System.Drawing.Point(334, 10);
+            this.btnUseItem.Name = "btnUseItem";
+            this.btnUseItem.Size = new System.Drawing.Size(100, 25);
+            this.btnUseItem.TabIndex = 16;
+            this.btnUseItem.Text = "Use Item";
+            this.btnUseItem.UseVisualStyleBackColor = false;
+            // 
+            // btnBuy
+            // 
+            this.btnBuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnBuy.Enabled = false;
+            this.btnBuy.FlatAppearance.BorderSize = 0;
+            this.btnBuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnBuy.Location = new System.Drawing.Point(94, 20);
+            this.btnBuy.Name = "btnBuy";
+            this.btnBuy.Size = new System.Drawing.Size(100, 25);
+            this.btnBuy.TabIndex = 17;
+            this.btnBuy.Text = "Buy";
+            this.btnBuy.UseVisualStyleBackColor = false;
+            // 
+            // btnSell
+            // 
+            this.btnSell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnSell.Enabled = false;
+            this.btnSell.FlatAppearance.BorderSize = 0;
+            this.btnSell.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnSell.Location = new System.Drawing.Point(286, 20);
+            this.btnSell.Name = "btnSell";
+            this.btnSell.Size = new System.Drawing.Size(100, 25);
+            this.btnSell.TabIndex = 18;
+            this.btnSell.Text = "Sell";
+            this.btnSell.UseVisualStyleBackColor = false;
+            // 
+            // panelTrade
+            // 
+            this.panelTrade.Controls.Add(this.btnSell);
+            this.panelTrade.Controls.Add(this.btnBuy);
+            this.panelTrade.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTrade.Location = new System.Drawing.Point(0, 0);
+            this.panelTrade.Name = "panelTrade";
+            this.panelTrade.Size = new System.Drawing.Size(480, 55);
+            this.panelTrade.TabIndex = 15;
+            // 
+            // panelFight
+            // 
+            this.panelFight.Controls.Add(this.btnComplete);
+            this.panelFight.Controls.Add(this.btnAccept);
+            this.panelFight.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelFight.Location = new System.Drawing.Point(0, 55);
+            this.panelFight.Name = "panelFight";
+            this.panelFight.Size = new System.Drawing.Size(480, 45);
+            this.panelFight.TabIndex = 16;
+            // 
+            // groupBoxHeroActiveQuests
+            // 
+            this.groupBoxHeroActiveQuests.Controls.Add(this.listBoxHeroActiveQuests);
+            this.groupBoxHeroActiveQuests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.groupBoxHeroActiveQuests.Location = new System.Drawing.Point(20, 215);
+            this.groupBoxHeroActiveQuests.Name = "groupBoxHeroActiveQuests";
+            this.groupBoxHeroActiveQuests.Size = new System.Drawing.Size(181, 160);
+            this.groupBoxHeroActiveQuests.TabIndex = 15;
+            this.groupBoxHeroActiveQuests.TabStop = false;
+            this.groupBoxHeroActiveQuests.Text = "{HERO}\'s Quests";
+            // 
+            // groupBoxTargetQuests
+            // 
+            this.groupBoxTargetQuests.Controls.Add(this.listBoxTargetQuests);
+            this.groupBoxTargetQuests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.groupBoxTargetQuests.Location = new System.Drawing.Point(744, 215);
+            this.groupBoxTargetQuests.Name = "groupBoxTargetQuests";
+            this.groupBoxTargetQuests.Size = new System.Drawing.Size(181, 160);
+            this.groupBoxTargetQuests.TabIndex = 16;
+            this.groupBoxTargetQuests.TabStop = false;
+            this.groupBoxTargetQuests.Text = "{TARGET}\'s Quests";
+            // 
+            // panelQuestHandle
+            // 
+            this.panelQuestHandle.Controls.Add(this.btnUseItem);
+            this.panelQuestHandle.Controls.Add(this.btnFortify);
+            this.panelQuestHandle.Controls.Add(this.btnAttack);
+            this.panelQuestHandle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelQuestHandle.Location = new System.Drawing.Point(0, 100);
+            this.panelQuestHandle.Name = "panelQuestHandle";
+            this.panelQuestHandle.Size = new System.Drawing.Size(480, 55);
+            this.panelQuestHandle.TabIndex = 17;
+            // 
+            // btnAccept
+            // 
+            this.btnAccept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnAccept.Enabled = false;
+            this.btnAccept.FlatAppearance.BorderSize = 0;
+            this.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccept.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnAccept.Location = new System.Drawing.Point(94, 10);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(100, 25);
+            this.btnAccept.TabIndex = 18;
+            this.btnAccept.Text = "Accept";
+            this.btnAccept.UseVisualStyleBackColor = false;
+            // 
+            // btnComplete
+            // 
+            this.btnComplete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnComplete.Enabled = false;
+            this.btnComplete.FlatAppearance.BorderSize = 0;
+            this.btnComplete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnComplete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnComplete.Location = new System.Drawing.Point(286, 10);
+            this.btnComplete.Name = "btnComplete";
+            this.btnComplete.Size = new System.Drawing.Size(100, 25);
+            this.btnComplete.TabIndex = 19;
+            this.btnComplete.Text = "Complete";
+            this.btnComplete.UseVisualStyleBackColor = false;
+            // 
+            // listBoxHeroActiveQuests
+            // 
+            this.listBoxHeroActiveQuests.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.listBoxHeroActiveQuests.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxHeroActiveQuests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.listBoxHeroActiveQuests.FormattingEnabled = true;
+            this.listBoxHeroActiveQuests.ItemHeight = 16;
+            this.listBoxHeroActiveQuests.Location = new System.Drawing.Point(6, 24);
+            this.listBoxHeroActiveQuests.Name = "listBoxHeroActiveQuests";
+            this.listBoxHeroActiveQuests.Size = new System.Drawing.Size(169, 128);
+            this.listBoxHeroActiveQuests.TabIndex = 1;
+            // 
+            // listBoxTargetQuests
+            // 
+            this.listBoxTargetQuests.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.listBoxTargetQuests.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxTargetQuests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.listBoxTargetQuests.FormattingEnabled = true;
+            this.listBoxTargetQuests.ItemHeight = 16;
+            this.listBoxTargetQuests.Location = new System.Drawing.Point(6, 24);
+            this.listBoxTargetQuests.Name = "listBoxTargetQuests";
+            this.listBoxTargetQuests.Size = new System.Drawing.Size(169, 128);
+            this.listBoxTargetQuests.TabIndex = 2;
             // 
             // Necromind
             // 
@@ -686,7 +890,7 @@ namespace NecromindUI
             this.panelConfirmDelete.PerformLayout();
             this.panelGame.ResumeLayout(false);
             this.groupBoxTargetInventory.ResumeLayout(false);
-            this.groupBoxHeroItems.ResumeLayout(false);
+            this.groupBoxHeroInventory.ResumeLayout(false);
             this.panelGameMenu.ResumeLayout(false);
             this.panelVendor.ResumeLayout(false);
             this.panelLocation.ResumeLayout(false);
@@ -694,6 +898,12 @@ namespace NecromindUI
             this.groupBoxHeroDetails.ResumeLayout(false);
             this.panelError.ResumeLayout(false);
             this.panelError.PerformLayout();
+            this.panelAction.ResumeLayout(false);
+            this.panelTrade.ResumeLayout(false);
+            this.panelFight.ResumeLayout(false);
+            this.groupBoxHeroActiveQuests.ResumeLayout(false);
+            this.groupBoxTargetQuests.ResumeLayout(false);
+            this.panelQuestHandle.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -730,8 +940,8 @@ namespace NecromindUI
         private Panel panelGameMenu;
         private GroupBox groupBoxTargetDetails;
         private GroupBox groupBoxTargetInventory;
-        private ListBox listBoxCharacterItems;
-        private GroupBox groupBoxHeroItems;
+        private ListBox listBoxTargetItems;
+        private GroupBox groupBoxHeroInventory;
         private ListBox listBoxHeroItems;
         private Panel panelError;
         private Label labelErrorMsg;
@@ -748,6 +958,20 @@ namespace NecromindUI
         private Panel panelBack;
         private Panel panelAction;
         private RichTextBox richTextBoxEventLog;
+        private Panel panelFight;
+        private Button btnSell;
+        private Button btnBuy;
+        private Panel panelTrade;
+        private Button btnUseItem;
+        private Button btnAttack;
+        private Button btnFortify;
+        private GroupBox groupBoxHeroActiveQuests;
+        private GroupBox groupBoxTargetQuests;
+        private Panel panelQuestHandle;
+        private Button btnComplete;
+        private Button btnAccept;
+        private ListBox listBoxTargetQuests;
+        private ListBox listBoxHeroActiveQuests;
     }
 }
 
