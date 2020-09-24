@@ -87,13 +87,13 @@ namespace NecromindUI
             this.btnSell = new System.Windows.Forms.Button();
             this.panelTrade = new System.Windows.Forms.Panel();
             this.panelFight = new System.Windows.Forms.Panel();
-            this.groupBoxHeroActiveQuests = new System.Windows.Forms.GroupBox();
+            this.groupBoxHeroQuests = new System.Windows.Forms.GroupBox();
             this.groupBoxTargetQuests = new System.Windows.Forms.GroupBox();
             this.panelQuestHandle = new System.Windows.Forms.Panel();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnComplete = new System.Windows.Forms.Button();
             this.listBoxHeroActiveQuests = new System.Windows.Forms.ListBox();
-            this.listBoxTargetQuests = new System.Windows.Forms.ListBox();
+            this.listBoxTargetAvailableQuests = new System.Windows.Forms.ListBox();
             this.panelMenu.SuspendLayout();
             this.panelNewGame.SuspendLayout();
             this.panelLoadGame.SuspendLayout();
@@ -110,7 +110,7 @@ namespace NecromindUI
             this.panelAction.SuspendLayout();
             this.panelTrade.SuspendLayout();
             this.panelFight.SuspendLayout();
-            this.groupBoxHeroActiveQuests.SuspendLayout();
+            this.groupBoxHeroQuests.SuspendLayout();
             this.groupBoxTargetQuests.SuspendLayout();
             this.panelQuestHandle.SuspendLayout();
             this.SuspendLayout();
@@ -287,7 +287,7 @@ namespace NecromindUI
             // panelGame
             // 
             this.panelGame.Controls.Add(this.groupBoxTargetQuests);
-            this.panelGame.Controls.Add(this.groupBoxHeroActiveQuests);
+            this.panelGame.Controls.Add(this.groupBoxHeroQuests);
             this.panelGame.Controls.Add(this.panelAction);
             this.panelGame.Controls.Add(this.richTextBoxEventLog);
             this.panelGame.Controls.Add(this.groupBoxTargetDetails);
@@ -441,7 +441,8 @@ namespace NecromindUI
             // btnMonastery
             // 
             this.btnMonastery.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnMonastery.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.btnMonastery.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnMonastery.Enabled = false;
             this.btnMonastery.FlatAppearance.BorderSize = 0;
             this.btnMonastery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMonastery.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
@@ -776,20 +777,20 @@ namespace NecromindUI
             this.panelFight.Size = new System.Drawing.Size(480, 45);
             this.panelFight.TabIndex = 16;
             // 
-            // groupBoxHeroActiveQuests
+            // groupBoxHeroQuests
             // 
-            this.groupBoxHeroActiveQuests.Controls.Add(this.listBoxHeroActiveQuests);
-            this.groupBoxHeroActiveQuests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
-            this.groupBoxHeroActiveQuests.Location = new System.Drawing.Point(20, 215);
-            this.groupBoxHeroActiveQuests.Name = "groupBoxHeroActiveQuests";
-            this.groupBoxHeroActiveQuests.Size = new System.Drawing.Size(181, 160);
-            this.groupBoxHeroActiveQuests.TabIndex = 15;
-            this.groupBoxHeroActiveQuests.TabStop = false;
-            this.groupBoxHeroActiveQuests.Text = "{HERO}\'s Quests";
+            this.groupBoxHeroQuests.Controls.Add(this.listBoxHeroActiveQuests);
+            this.groupBoxHeroQuests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.groupBoxHeroQuests.Location = new System.Drawing.Point(20, 215);
+            this.groupBoxHeroQuests.Name = "groupBoxHeroQuests";
+            this.groupBoxHeroQuests.Size = new System.Drawing.Size(181, 160);
+            this.groupBoxHeroQuests.TabIndex = 15;
+            this.groupBoxHeroQuests.TabStop = false;
+            this.groupBoxHeroQuests.Text = "{HERO}\'s Quests";
             // 
             // groupBoxTargetQuests
             // 
-            this.groupBoxTargetQuests.Controls.Add(this.listBoxTargetQuests);
+            this.groupBoxTargetQuests.Controls.Add(this.listBoxTargetAvailableQuests);
             this.groupBoxTargetQuests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.groupBoxTargetQuests.Location = new System.Drawing.Point(744, 215);
             this.groupBoxTargetQuests.Name = "groupBoxTargetQuests";
@@ -849,17 +850,17 @@ namespace NecromindUI
             this.listBoxHeroActiveQuests.Size = new System.Drawing.Size(169, 128);
             this.listBoxHeroActiveQuests.TabIndex = 1;
             // 
-            // listBoxTargetQuests
+            // listBoxTargetAvailableQuests
             // 
-            this.listBoxTargetQuests.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.listBoxTargetQuests.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBoxTargetQuests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.listBoxTargetQuests.FormattingEnabled = true;
-            this.listBoxTargetQuests.ItemHeight = 16;
-            this.listBoxTargetQuests.Location = new System.Drawing.Point(6, 24);
-            this.listBoxTargetQuests.Name = "listBoxTargetQuests";
-            this.listBoxTargetQuests.Size = new System.Drawing.Size(169, 128);
-            this.listBoxTargetQuests.TabIndex = 2;
+            this.listBoxTargetAvailableQuests.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.listBoxTargetAvailableQuests.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxTargetAvailableQuests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.listBoxTargetAvailableQuests.FormattingEnabled = true;
+            this.listBoxTargetAvailableQuests.ItemHeight = 16;
+            this.listBoxTargetAvailableQuests.Location = new System.Drawing.Point(6, 24);
+            this.listBoxTargetAvailableQuests.Name = "listBoxTargetAvailableQuests";
+            this.listBoxTargetAvailableQuests.Size = new System.Drawing.Size(169, 128);
+            this.listBoxTargetAvailableQuests.TabIndex = 2;
             // 
             // Necromind
             // 
@@ -901,7 +902,7 @@ namespace NecromindUI
             this.panelAction.ResumeLayout(false);
             this.panelTrade.ResumeLayout(false);
             this.panelFight.ResumeLayout(false);
-            this.groupBoxHeroActiveQuests.ResumeLayout(false);
+            this.groupBoxHeroQuests.ResumeLayout(false);
             this.groupBoxTargetQuests.ResumeLayout(false);
             this.panelQuestHandle.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -965,12 +966,12 @@ namespace NecromindUI
         private Button btnUseItem;
         private Button btnAttack;
         private Button btnFortify;
-        private GroupBox groupBoxHeroActiveQuests;
+        private GroupBox groupBoxHeroQuests;
         private GroupBox groupBoxTargetQuests;
         private Panel panelQuestHandle;
         private Button btnComplete;
         private Button btnAccept;
-        private ListBox listBoxTargetQuests;
+        private ListBox listBoxTargetAvailableQuests;
         private ListBox listBoxHeroActiveQuests;
     }
 }

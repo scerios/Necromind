@@ -15,6 +15,8 @@ namespace NecromindLibrary.service
     /// </summary>
     public static class UIHandler
     {
+        #region Configuration Settings
+
         // Placeholder convention for hero's name
         public static readonly string HeroNamePlaceholder = ConfigurationManager.AppSettings["heroNamePlaceholder"];
 
@@ -24,7 +26,15 @@ namespace NecromindLibrary.service
         public static readonly string LoadGame = ConfigurationManager.AppSettings["panelLoadGame"];
         public static readonly string Game = ConfigurationManager.AppSettings["panelGame"];
         public static readonly string ConfirmDelete = ConfigurationManager.AppSettings["panelConfirmDelete"];
+
         public static readonly string Error = ConfigurationManager.AppSettings["panelError"];
+
+        public static readonly string Location = ConfigurationManager.AppSettings["panelLocation"];
+        public static readonly string Vendor = ConfigurationManager.AppSettings["panelVendor"];
+
+        public static readonly string Trade = ConfigurationManager.AppSettings["panelTrade"];
+        public static readonly string QuestHandle = ConfigurationManager.AppSettings["panelQuestHandle"];
+        public static readonly string Fight = ConfigurationManager.AppSettings["panelFight"];
 
         // All the needed label reference names
         public static readonly string HeroHealth = ConfigurationManager.AppSettings["labelHeroHealth"];
@@ -33,6 +43,7 @@ namespace NecromindLibrary.service
         public static readonly string HeroLevel = ConfigurationManager.AppSettings["labelHeroLevel"];
         public static readonly string HeroDamage = ConfigurationManager.AppSettings["labelHeroDamage"];
         public static readonly string HeroDefense = ConfigurationManager.AppSettings["labelHeroDefense"];
+
         public static readonly string ErrorTitle = ConfigurationManager.AppSettings["labelErrorTitle"];
         public static readonly string ErrorMsg = ConfigurationManager.AppSettings["labelErrorMsg"];
 
@@ -40,25 +51,64 @@ namespace NecromindLibrary.service
         public static readonly string NewHeroName = ConfigurationManager.AppSettings["textBoxNewHeroName"];
         public static readonly string DeleteHeroName = ConfigurationManager.AppSettings["textBoxDeleteHeroName"];
 
+        // All the needed rich textbox reference names
+        public static readonly string ConfirmDeleteText = ConfigurationManager.AppSettings["richTextBoxConfirmDelete"];
+        public static readonly string EventLog = ConfigurationManager.AppSettings["richTextBoxEventLog"];
+
         // All the needed group box reference names
         public static readonly string HeroDetails = ConfigurationManager.AppSettings["groupBoxHeroDetails"];
         public static readonly string HeroInventory = ConfigurationManager.AppSettings["groupBoxHeroInventory"];
+        public static readonly string HeroQuests = ConfigurationManager.AppSettings["groupBoxHeroQuests"];
+
         public static readonly string TargetDetails = ConfigurationManager.AppSettings["groupBoXTargetDetails"];
         public static readonly string TargetInventory = ConfigurationManager.AppSettings["groupBoxTargetInventory"];
+        public static readonly string TargetQuests = ConfigurationManager.AppSettings["groupBoxTargetQuests"];
+
+        // All the needed listbox reference names
+        public static readonly string HeroActiveQuests = ConfigurationManager.AppSettings["listBoxHeroActiveQuests"];
+        public static readonly string HeroItems = ConfigurationManager.AppSettings["listBoxHeroItems"];
+
+        public static readonly string TargetAvailableQuests = ConfigurationManager.AppSettings["listBoxTargetAvailableQuests"];
+        public static readonly string TargetItems = ConfigurationManager.AppSettings["listBoxTargetItems"];
 
         // All the needed button reference names
-        public static readonly string DeleteHeroBtn = ConfigurationManager.AppSettings["btnDeleteHero"];
+        public static readonly string BtnDeleteHero = ConfigurationManager.AppSettings["btnDeleteHero"];
+
+        public static readonly string BtnBrangor = ConfigurationManager.AppSettings["btnBrangor"];
+        public static readonly string BtnShoj = ConfigurationManager.AppSettings["btnShoj"];
+        public static readonly string BtnViascen = ConfigurationManager.AppSettings["btnViascen"];
+
+        public static readonly string BtnTown = ConfigurationManager.AppSettings["btnTown"];
+        public static readonly string BtnOutskirts = ConfigurationManager.AppSettings["btnOutskirts"];
+        public static readonly string BtnMonastery = ConfigurationManager.AppSettings["btnMonastery"];
+
+        public static readonly string BtnBuy = ConfigurationManager.AppSettings["btnBuy"];
+        public static readonly string BtnSell = ConfigurationManager.AppSettings["btnSell"];
+
+        public static readonly string BtnAccept = ConfigurationManager.AppSettings["btnAccept"];
+        public static readonly string BtnComplete = ConfigurationManager.AppSettings["btnComplete"];
+
+        public static readonly string BtnAttack = ConfigurationManager.AppSettings["btnAttack"];
+        public static readonly string BtnFortify = ConfigurationManager.AppSettings["btnFortify"];
+        public static readonly string BtnUseItem = ConfigurationManager.AppSettings["btnUseItem"];
+
+        #endregion
 
         // Collection name to store heroes.
         private static readonly string HeroesCollection = "heroes";
 
+        #region UI collections
+
         // All the needed UI
-        public static Dictionary<string, Label> Labels { get; private set; }
         public static Dictionary<string, Panel> Panels { get; private set; }
+        public static Dictionary<string, Label> Labels { get; private set; }
         public static Dictionary<string, TextBox> TextBoxes { get; private set; }
+        public static Dictionary<string, RichTextBox> RichTextBoxes { get; private set; }
         public static Dictionary<string, GroupBox> GroupBoxes { get; private set; }
+        public static Dictionary<string, ListBox> ListBoxes { get; private set; }
         public static Dictionary<string, Button> Buttons { get; private set; }
-        public static RichTextBox ConfirmDeleteText { get; private set; }
+
+        #endregion
 
         // List of dynamically created buttons while loading saved heroes
         private static List<Button> CreatedButtons = new List<Button>();
@@ -78,14 +128,15 @@ namespace NecromindLibrary.service
         /// <param name="groupBoxes">A dictionary of groupboxes</param>
         /// <param name="confirmDeleteText">The rich textbox to confirm deleting a hero.</param>
         public static void TakeAllUI(Dictionary<string, Panel> panels, Dictionary<string, Label> labels, Dictionary<string, TextBox> textBoxes,
-            Dictionary<string, GroupBox> groupBoxes, Dictionary<string, Button> buttons, RichTextBox confirmDeleteText)
+            Dictionary<string, RichTextBox> richTextBoxes, Dictionary<string, GroupBox> groupBoxes, Dictionary<string, ListBox> listBoxes, Dictionary<string, Button> buttons)
         {
             Panels = panels;
             Labels = labels;
             TextBoxes = textBoxes;
+            RichTextBoxes = richTextBoxes;
             GroupBoxes = groupBoxes;
+            ListBoxes = listBoxes;
             Buttons = buttons;
-            ConfirmDeleteText = confirmDeleteText;
         }
 
         /// <summary>
@@ -228,14 +279,14 @@ namespace NecromindLibrary.service
 
             UIHelper.SetControlsAvailability(Panels[LoadGame].Controls, false);
 
-            ConfirmDeleteText = UIHelper.ApplyCustomStyleToRichTextConfirmDelete(hero.Name, ConfirmDeleteText);
+            RichTextBoxes[ConfirmDeleteText] = UIHelper.ApplyCustomStyleToRichTextConfirmDelete(hero.Name, RichTextBoxes[ConfirmDeleteText]);
             heroName.Focus();
 
             Panels[ConfirmDelete].BringToFront();
 
             heroName.KeyUp += (s, ev) =>
             {
-                Buttons[DeleteHeroBtn].Enabled = heroName.Text == hero.Name;
+                Buttons[BtnDeleteHero].Enabled = heroName.Text == hero.Name;
             };
 
             heroName.KeyDown += (s, ev) =>
@@ -244,7 +295,7 @@ namespace NecromindLibrary.service
                 {
                     case Keys.Enter: // If ENTER is pressed
 
-                        if (Buttons[DeleteHeroBtn].Enabled)
+                        if (Buttons[BtnDeleteHero].Enabled)
                         {
                             if (DataAccess.TryDeleteRecordById<HeroModel>(HeroesCollection, hero.Id))
                             {
@@ -297,7 +348,7 @@ namespace NecromindLibrary.service
 
             Panels[ConfirmDelete].SendToBack();
             TextBoxes[DeleteHeroName].Text = "";
-            ConfirmDeleteText.Text = ConfirmDeleteText.Text.Replace(heroName, HeroNamePlaceholder);
+            RichTextBoxes[ConfirmDeleteText].Text = RichTextBoxes[ConfirmDeleteText].Text.Replace(heroName, HeroNamePlaceholder);
         }
 
         /// <summary>
@@ -307,16 +358,19 @@ namespace NecromindLibrary.service
         {
             GroupBox details = GroupBoxes[HeroDetails];
             GroupBox inventory = GroupBoxes[HeroInventory];
+            GroupBox quests = GroupBoxes[HeroQuests];
 
             if (Hero.Name.EndsWith("s") || Hero.Name.EndsWith("S"))
             {
                 details.Text = details.Text.Replace(HeroNamePlaceholder + "'s", Hero.Name + "'");
                 inventory.Text = inventory.Text.Replace(HeroNamePlaceholder + "'s", Hero.Name + "'");
+                quests.Text = quests.Text.Replace(HeroNamePlaceholder + "'s", Hero.Name + "'");
             } 
             else
             {
                 details.Text = details.Text.Replace(HeroNamePlaceholder, Hero.Name);
                 inventory.Text = inventory.Text.Replace(HeroNamePlaceholder, Hero.Name);
+                quests.Text = quests.Text.Replace(HeroNamePlaceholder, Hero.Name);
             }
             
             Labels[HeroHealth].Text = Hero.HitPointsMax.ToString() + " / " + Hero.HitPoints.ToString();
