@@ -1,4 +1,5 @@
-﻿using NecromindLibrary.model;
+﻿using NecromindLibrary.helper;
+using NecromindLibrary.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace NecromindLibrary.service
         // The hero which is currently being played
         public static HeroModel Hero { get; set; }
 
+        // Hero's current location index in the map array.
         private static int locationIndex = 0;
 
         private static LocationModel Town { get; set; } = new LocationModel(LocationType.Town);
@@ -35,18 +37,23 @@ namespace NecromindLibrary.service
             switch (Hero.Location.Map[locationIndex])
             {
                 case 0:
-                    Console.WriteLine("Empty area");
+                    UIHandler.RichTextBoxes[UIHandler.EventLog].Text = UIHandler.RichTextBoxes[UIHandler.EventLog].Text + "\n" + "Empty area";
                     break;
 
                 case 1:
-                    Console.WriteLine("You have encountered an enemy");
+                    UIHandler.RichTextBoxes[UIHandler.EventLog].Text = UIHandler.RichTextBoxes[UIHandler.EventLog].Text + "\n" + "You have encountered an enemy";
                     break;
 
                 case 2:
-                    Console.WriteLine("You have found a chest");
+                    UIHandler.RichTextBoxes[UIHandler.EventLog].Text = UIHandler.RichTextBoxes[UIHandler.EventLog].Text + "\n" + "You have found a chest";
                     break;
             }
             locationIndex++;
+
+            if (locationIndex > 9)
+            {
+               UIHelper.SetButtonAvailability(UIHandler.Buttons[UIHandler.BtnForward], false);
+            }
         }
     }
 }

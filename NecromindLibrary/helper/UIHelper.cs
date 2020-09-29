@@ -109,5 +109,26 @@ namespace NecromindLibrary.helper
             UIHandler.Labels[UIHandler.ErrorMsg].Text = msg;
             UIHandler.Panels[UIHandler.Error].BringToFront();
         }
+
+        /// <summary>
+        /// Sets a buttons enabled property. By default the enabled color will be standard blue-ish. Optional: enabled color.
+        /// </summary>
+        /// <param name="button">Button which about to be set.</param>
+        /// <param name="isAvailable">True if available. False otherwise.</param>
+        /// <param name="color">Optional. If set this will be the enabled color.</param>
+        /// <returns></returns>
+        public static void SetButtonAvailability(Button button, bool isAvailable, Color color = default)
+        {
+            button.Enabled = isAvailable;
+
+            if (color != default)
+            {
+                button.BackColor = isAvailable ? Color.FromArgb(11, 84, 100) : Color.FromArgb(127, 140, 141);
+            }
+            else
+            {
+                button.BackColor = isAvailable ? color : Color.FromArgb(127, 140, 141);
+            }
+        }
     }
 }

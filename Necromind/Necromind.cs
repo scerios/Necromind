@@ -124,6 +124,8 @@ namespace NecromindUI
             Buttons.Add(UIHandler.BtnAttack, btnAttack);
             Buttons.Add(UIHandler.BtnFortify, btnFortify);
             Buttons.Add(UIHandler.BtnUseItem, btnUseItem);
+
+            Buttons.Add(UIHandler.BtnForward, btnForward);
         }
 
         private void sendAllUIToLibrary()
@@ -196,6 +198,11 @@ namespace NecromindUI
         private void btnOutskirts_Click(object sender, EventArgs e)
         {
             GameLogic.MoveToOutSkirts();
+        }
+
+        private void btnForward_Click(object sender, EventArgs e)
+        {
+            GameLogic.MoveForward();
         }
     }
 }

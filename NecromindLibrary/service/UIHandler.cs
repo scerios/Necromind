@@ -95,6 +95,8 @@ namespace NecromindLibrary.service
         public static readonly string BtnFortify = ConfigurationManager.AppSettings["btnFortify"];
         public static readonly string BtnUseItem = ConfigurationManager.AppSettings["btnUseItem"];
 
+        public static readonly string BtnForward = ConfigurationManager.AppSettings["btnForward"];
+
         #endregion
 
         // Collection name to store heroes.
