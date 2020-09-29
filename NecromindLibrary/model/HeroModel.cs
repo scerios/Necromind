@@ -40,6 +40,11 @@ namespace NecromindLibrary.model
         /// </summary>
         public ArmorModel Armor { get; set; }
 
+        /// <summary>
+        /// The actual location where the hero currently are.
+        /// </summary>
+        public LocationModel Location { get; set; }
+
         public HeroModel()
         {
 

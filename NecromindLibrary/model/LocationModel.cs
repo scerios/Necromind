@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace NecromindLibrary.model
 {
+    public enum LocationType
+    {
+        Town = 0,
+        OutSkirts = 1,
+        Monastery = 2
+    }
     /// <summary>
     /// Represent a location where the hero can go.
     /// </summary>
@@ -27,5 +33,53 @@ namespace NecromindLibrary.model
         /// A linear area in where the hero can move.
         /// </summary>
         public int[] Map { get; set; }
+
+        public LocationModel(LocationType location)
+        {
+            switch (location.ToString())
+            {
+                case "Town":
+                    Name = "Town";
+
+                    break;
+
+                case "OutSkirts":
+                    Name = "OutSkirts";
+                    Map = SetMap();
+
+                    break;
+
+                case "Monastery":
+                    Name = "Monastery";
+                    Map = SetMap();
+
+                    break;
+            }
+        }
+
+        public int[] SetMap()
+        {
+            int[] area = new int[10];
+            Random rng = new Random();
+
+            bool isChestGenerated = false;
+
+            for (int i = 0; i < 10; i++)
+            {
+                if (!isChestGenerated)
+                {
+                    int tile = rng.Next(0, 3);
+                    area[i] = tile;
+                    isChestGenerated = true;
+                }
+                else
+                {
+                    int tile = rng.Next(0, 2);
+                    area[i] = tile;
+                }
+            }
+
+            return area;
+        }
     }
 }

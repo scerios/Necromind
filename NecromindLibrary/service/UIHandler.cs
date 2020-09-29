@@ -233,6 +233,7 @@ namespace NecromindLibrary.service
             GameLogic.Hero = DataAccess.GetRecordById<HeroModel>(HeroesCollection, id);
             SetHeroDetails();
             Panels[Game].BringToFront();
+            GameLogic.StartGame();
         }
 
         /// <summary>

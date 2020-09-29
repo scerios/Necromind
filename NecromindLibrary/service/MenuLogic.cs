@@ -39,6 +39,8 @@ namespace NecromindLibrary.service
                     UIHandler.SetHeroDetails();
 
                     UIHandler.BringSelectedPanelToFront(UIHandler.Game);
+
+                    GameLogic.StartGame();
                 }
             }
             else

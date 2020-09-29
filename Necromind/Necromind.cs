@@ -192,5 +192,10 @@ namespace NecromindUI
         {
             MenuLogic.DeleteHero();
         }
+
+        private void btnOutskirts_Click(object sender, EventArgs e)
+        {
+            GameLogic.MoveToOutSkirts();
+        }
     }
 }

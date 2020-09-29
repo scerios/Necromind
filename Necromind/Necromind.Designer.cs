@@ -650,6 +650,7 @@ namespace NecromindUI
             this.btnOutskirts.TabIndex = 14;
             this.btnOutskirts.Text = "Outskirts";
             this.btnOutskirts.UseVisualStyleBackColor = false;
+            this.btnOutskirts.Click += new System.EventHandler(this.btnOutskirts_Click);
             // 
             // btnMonastery
             // 
