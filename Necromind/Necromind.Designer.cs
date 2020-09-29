@@ -881,7 +881,8 @@ namespace NecromindUI
             // btnForward
             // 
             this.btnForward.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnForward.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.btnForward.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnForward.Enabled = false;
             this.btnForward.FlatAppearance.BorderSize = 0;
             this.btnForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnForward.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));

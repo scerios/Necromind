@@ -57,26 +57,33 @@ namespace NecromindLibrary.model
             }
         }
 
+        /// <summary>
+        /// Builds a map randomly by giving each index either a 0 (empty tile) or 1 (enemy).
+        /// </summary>
+        /// <returns>The builded map.</returns>
         public int[] SetMap()
         {
             int[] area = new int[10];
             Random rng = new Random();
 
-            bool isChestGenerated = false;
+            //bool isChestGenerated = false;
 
             for (int i = 0; i < 10; i++)
             {
-                if (!isChestGenerated)
-                {
-                    int tile = rng.Next(0, 3);
-                    area[i] = tile;
-                    isChestGenerated = true;
-                }
-                else
-                {
-                    int tile = rng.Next(0, 2);
-                    area[i] = tile;
-                }
+                //if (!isChestGenerated)
+                //{
+                //    int tile = rng.Next(0, 3);
+                //    area[i] = tile;
+                //    isChestGenerated = true;
+                //}
+                //else
+                //{
+                //    int tile = rng.Next(0, 2);
+                //    area[i] = tile;
+                //}
+
+                int tile = rng.Next(0, 2);
+                area[i] = tile;
             }
 
             return area;

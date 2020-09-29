@@ -121,7 +121,7 @@ namespace NecromindLibrary.helper
         {
             button.Enabled = isAvailable;
 
-            if (color != default)
+            if (color == default)
             {
                 button.BackColor = isAvailable ? Color.FromArgb(11, 84, 100) : Color.FromArgb(127, 140, 141);
             }
@@ -129,6 +129,16 @@ namespace NecromindLibrary.helper
             {
                 button.BackColor = isAvailable ? color : Color.FromArgb(127, 140, 141);
             }
+        }
+
+        /// <summary>
+        /// Sets the event log text.
+        /// </summary>
+        /// <param name="text">The text which shall be written.</param>
+        /// <param name="isAppend">True if text should be appended. False if text should be replaced.</param>
+        public static void SetEventLogText(string text, bool isAppend)
+        {
+            UIHandler.RichTextBoxes[UIHandler.EventLog].Text = isAppend ? UIHandler.RichTextBoxes[UIHandler.EventLog].Text + "\n" + text : text;
         }
     }
 }

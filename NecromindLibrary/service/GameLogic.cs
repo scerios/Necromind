@@ -23,13 +23,16 @@ namespace NecromindLibrary.service
         public static void StartGame()
         {
             Hero.Location = Town;
+            UIHelper.SetEventLogText("You are in town.", false);
         }
 
         public static void MoveToOutSkirts()
         {
+            locationIndex = 0;
+            UIHelper.SetButtonAvailability(UIHandler.Buttons[UIHandler.BtnForward], true);
             OutSkirts = new LocationModel(LocationType.OutSkirts);
             Hero.Location = OutSkirts;
-            UIHandler.RichTextBoxes[UIHandler.EventLog].Text = "You are now in the outskirts.";
+            UIHelper.SetEventLogText("You are now in the outskirts.", false);
         }
 
         public static void MoveForward()
@@ -37,16 +40,16 @@ namespace NecromindLibrary.service
             switch (Hero.Location.Map[locationIndex])
             {
                 case 0:
-                    UIHandler.RichTextBoxes[UIHandler.EventLog].Text = UIHandler.RichTextBoxes[UIHandler.EventLog].Text + "\n" + "Empty area";
+                    UIHelper.SetEventLogText("Empty area.", true);
                     break;
 
                 case 1:
-                    UIHandler.RichTextBoxes[UIHandler.EventLog].Text = UIHandler.RichTextBoxes[UIHandler.EventLog].Text + "\n" + "You have encountered an enemy";
+                    UIHelper.SetEventLogText("You have encountered an enemy.", true);
                     break;
 
-                case 2:
-                    UIHandler.RichTextBoxes[UIHandler.EventLog].Text = UIHandler.RichTextBoxes[UIHandler.EventLog].Text + "\n" + "You have found a chest";
-                    break;
+                //case 2:
+                //    UIHelper.SetEventLogText("You have found a chest.", true);
+                //    break;
             }
             locationIndex++;
 
