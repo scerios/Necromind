@@ -46,6 +46,22 @@ namespace NecromindUI
             this.richTextBoxConfirmDelete = new System.Windows.Forms.RichTextBox();
             this.textBoxDeleteHeroName = new System.Windows.Forms.TextBox();
             this.panelGame = new System.Windows.Forms.Panel();
+            this.groupBoxTargetQuests = new System.Windows.Forms.GroupBox();
+            this.listBoxTargetAvailableQuests = new System.Windows.Forms.ListBox();
+            this.groupBoxHeroQuests = new System.Windows.Forms.GroupBox();
+            this.listBoxHeroActiveQuests = new System.Windows.Forms.ListBox();
+            this.panelAction = new System.Windows.Forms.Panel();
+            this.panelQuestHandle = new System.Windows.Forms.Panel();
+            this.btnUseItem = new System.Windows.Forms.Button();
+            this.btnFortify = new System.Windows.Forms.Button();
+            this.btnAttack = new System.Windows.Forms.Button();
+            this.panelFight = new System.Windows.Forms.Panel();
+            this.btnComplete = new System.Windows.Forms.Button();
+            this.btnAccept = new System.Windows.Forms.Button();
+            this.panelTrade = new System.Windows.Forms.Panel();
+            this.btnSell = new System.Windows.Forms.Button();
+            this.btnBuy = new System.Windows.Forms.Button();
+            this.richTextBoxEventLog = new System.Windows.Forms.RichTextBox();
             this.groupBoxTargetDetails = new System.Windows.Forms.GroupBox();
             this.groupBoxTargetInventory = new System.Windows.Forms.GroupBox();
             this.listBoxTargetItems = new System.Windows.Forms.ListBox();
@@ -53,15 +69,15 @@ namespace NecromindUI
             this.listBoxHeroItems = new System.Windows.Forms.ListBox();
             this.panelGameMenu = new System.Windows.Forms.Panel();
             this.panelVendor = new System.Windows.Forms.Panel();
-            this.btnBackFromGame = new System.Windows.Forms.Button();
-            this.panelLocation = new System.Windows.Forms.Panel();
-            this.btnOutskirts = new System.Windows.Forms.Button();
-            this.btnTown = new System.Windows.Forms.Button();
-            this.btnMonastery = new System.Windows.Forms.Button();
-            this.panelBack = new System.Windows.Forms.Panel();
             this.btnBrangor = new System.Windows.Forms.Button();
             this.btnViascen = new System.Windows.Forms.Button();
             this.btnShoj = new System.Windows.Forms.Button();
+            this.panelLocation = new System.Windows.Forms.Panel();
+            this.btnOutskirts = new System.Windows.Forms.Button();
+            this.btnMonastery = new System.Windows.Forms.Button();
+            this.btnTown = new System.Windows.Forms.Button();
+            this.panelBack = new System.Windows.Forms.Panel();
+            this.btnBackFromGame = new System.Windows.Forms.Button();
             this.groupBoxHeroDetails = new System.Windows.Forms.GroupBox();
             this.labelHeroDefenseValue = new System.Windows.Forms.Label();
             this.labelHeroDamageValue = new System.Windows.Forms.Label();
@@ -78,27 +94,17 @@ namespace NecromindUI
             this.panelError = new System.Windows.Forms.Panel();
             this.labelErrorMsg = new System.Windows.Forms.Label();
             this.labelErrorTitle = new System.Windows.Forms.Label();
-            this.richTextBoxEventLog = new System.Windows.Forms.RichTextBox();
-            this.panelAction = new System.Windows.Forms.Panel();
-            this.btnAttack = new System.Windows.Forms.Button();
-            this.btnFortify = new System.Windows.Forms.Button();
-            this.btnUseItem = new System.Windows.Forms.Button();
-            this.btnBuy = new System.Windows.Forms.Button();
-            this.btnSell = new System.Windows.Forms.Button();
-            this.panelTrade = new System.Windows.Forms.Panel();
-            this.panelFight = new System.Windows.Forms.Panel();
-            this.groupBoxHeroQuests = new System.Windows.Forms.GroupBox();
-            this.groupBoxTargetQuests = new System.Windows.Forms.GroupBox();
-            this.panelQuestHandle = new System.Windows.Forms.Panel();
-            this.btnAccept = new System.Windows.Forms.Button();
-            this.btnComplete = new System.Windows.Forms.Button();
-            this.listBoxHeroActiveQuests = new System.Windows.Forms.ListBox();
-            this.listBoxTargetAvailableQuests = new System.Windows.Forms.ListBox();
             this.panelMenu.SuspendLayout();
             this.panelNewGame.SuspendLayout();
             this.panelLoadGame.SuspendLayout();
             this.panelConfirmDelete.SuspendLayout();
             this.panelGame.SuspendLayout();
+            this.groupBoxTargetQuests.SuspendLayout();
+            this.groupBoxHeroQuests.SuspendLayout();
+            this.panelAction.SuspendLayout();
+            this.panelQuestHandle.SuspendLayout();
+            this.panelFight.SuspendLayout();
+            this.panelTrade.SuspendLayout();
             this.groupBoxTargetInventory.SuspendLayout();
             this.groupBoxHeroInventory.SuspendLayout();
             this.panelGameMenu.SuspendLayout();
@@ -107,12 +113,6 @@ namespace NecromindUI
             this.panelBack.SuspendLayout();
             this.groupBoxHeroDetails.SuspendLayout();
             this.panelError.SuspendLayout();
-            this.panelAction.SuspendLayout();
-            this.panelTrade.SuspendLayout();
-            this.panelFight.SuspendLayout();
-            this.groupBoxHeroQuests.SuspendLayout();
-            this.groupBoxTargetQuests.SuspendLayout();
-            this.panelQuestHandle.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -301,6 +301,205 @@ namespace NecromindUI
             this.panelGame.Size = new System.Drawing.Size(1084, 661);
             this.panelGame.TabIndex = 16;
             // 
+            // groupBoxTargetQuests
+            // 
+            this.groupBoxTargetQuests.Controls.Add(this.listBoxTargetAvailableQuests);
+            this.groupBoxTargetQuests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.groupBoxTargetQuests.Location = new System.Drawing.Point(744, 215);
+            this.groupBoxTargetQuests.Name = "groupBoxTargetQuests";
+            this.groupBoxTargetQuests.Size = new System.Drawing.Size(181, 160);
+            this.groupBoxTargetQuests.TabIndex = 16;
+            this.groupBoxTargetQuests.TabStop = false;
+            this.groupBoxTargetQuests.Text = "{TARGET}\'s Quests";
+            this.groupBoxTargetQuests.Visible = false;
+            // 
+            // listBoxTargetAvailableQuests
+            // 
+            this.listBoxTargetAvailableQuests.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.listBoxTargetAvailableQuests.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxTargetAvailableQuests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.listBoxTargetAvailableQuests.FormattingEnabled = true;
+            this.listBoxTargetAvailableQuests.ItemHeight = 16;
+            this.listBoxTargetAvailableQuests.Location = new System.Drawing.Point(6, 24);
+            this.listBoxTargetAvailableQuests.Name = "listBoxTargetAvailableQuests";
+            this.listBoxTargetAvailableQuests.Size = new System.Drawing.Size(169, 128);
+            this.listBoxTargetAvailableQuests.TabIndex = 2;
+            // 
+            // groupBoxHeroQuests
+            // 
+            this.groupBoxHeroQuests.Controls.Add(this.listBoxHeroActiveQuests);
+            this.groupBoxHeroQuests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.groupBoxHeroQuests.Location = new System.Drawing.Point(20, 215);
+            this.groupBoxHeroQuests.Name = "groupBoxHeroQuests";
+            this.groupBoxHeroQuests.Size = new System.Drawing.Size(181, 160);
+            this.groupBoxHeroQuests.TabIndex = 15;
+            this.groupBoxHeroQuests.TabStop = false;
+            this.groupBoxHeroQuests.Text = "{HERO}\'s Quests";
+            // 
+            // listBoxHeroActiveQuests
+            // 
+            this.listBoxHeroActiveQuests.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.listBoxHeroActiveQuests.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxHeroActiveQuests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.listBoxHeroActiveQuests.FormattingEnabled = true;
+            this.listBoxHeroActiveQuests.ItemHeight = 16;
+            this.listBoxHeroActiveQuests.Location = new System.Drawing.Point(6, 24);
+            this.listBoxHeroActiveQuests.Name = "listBoxHeroActiveQuests";
+            this.listBoxHeroActiveQuests.Size = new System.Drawing.Size(169, 128);
+            this.listBoxHeroActiveQuests.TabIndex = 1;
+            // 
+            // panelAction
+            // 
+            this.panelAction.Controls.Add(this.panelQuestHandle);
+            this.panelAction.Controls.Add(this.panelFight);
+            this.panelAction.Controls.Add(this.panelTrade);
+            this.panelAction.Location = new System.Drawing.Point(232, 220);
+            this.panelAction.Name = "panelAction";
+            this.panelAction.Size = new System.Drawing.Size(480, 155);
+            this.panelAction.TabIndex = 14;
+            // 
+            // panelQuestHandle
+            // 
+            this.panelQuestHandle.Controls.Add(this.btnUseItem);
+            this.panelQuestHandle.Controls.Add(this.btnFortify);
+            this.panelQuestHandle.Controls.Add(this.btnAttack);
+            this.panelQuestHandle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelQuestHandle.Location = new System.Drawing.Point(0, 100);
+            this.panelQuestHandle.Name = "panelQuestHandle";
+            this.panelQuestHandle.Size = new System.Drawing.Size(480, 55);
+            this.panelQuestHandle.TabIndex = 17;
+            // 
+            // btnUseItem
+            // 
+            this.btnUseItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnUseItem.Enabled = false;
+            this.btnUseItem.FlatAppearance.BorderSize = 0;
+            this.btnUseItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUseItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnUseItem.Location = new System.Drawing.Point(334, 10);
+            this.btnUseItem.Name = "btnUseItem";
+            this.btnUseItem.Size = new System.Drawing.Size(100, 25);
+            this.btnUseItem.TabIndex = 16;
+            this.btnUseItem.Text = "Use Item";
+            this.btnUseItem.UseVisualStyleBackColor = false;
+            // 
+            // btnFortify
+            // 
+            this.btnFortify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnFortify.Enabled = false;
+            this.btnFortify.FlatAppearance.BorderSize = 0;
+            this.btnFortify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFortify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnFortify.Location = new System.Drawing.Point(189, 10);
+            this.btnFortify.Name = "btnFortify";
+            this.btnFortify.Size = new System.Drawing.Size(100, 25);
+            this.btnFortify.TabIndex = 15;
+            this.btnFortify.Text = "Fortify";
+            this.btnFortify.UseVisualStyleBackColor = false;
+            // 
+            // btnAttack
+            // 
+            this.btnAttack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnAttack.Enabled = false;
+            this.btnAttack.FlatAppearance.BorderSize = 0;
+            this.btnAttack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAttack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnAttack.Location = new System.Drawing.Point(44, 10);
+            this.btnAttack.Name = "btnAttack";
+            this.btnAttack.Size = new System.Drawing.Size(100, 25);
+            this.btnAttack.TabIndex = 14;
+            this.btnAttack.Text = "Attack";
+            this.btnAttack.UseVisualStyleBackColor = false;
+            // 
+            // panelFight
+            // 
+            this.panelFight.Controls.Add(this.btnComplete);
+            this.panelFight.Controls.Add(this.btnAccept);
+            this.panelFight.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelFight.Location = new System.Drawing.Point(0, 55);
+            this.panelFight.Name = "panelFight";
+            this.panelFight.Size = new System.Drawing.Size(480, 45);
+            this.panelFight.TabIndex = 16;
+            // 
+            // btnComplete
+            // 
+            this.btnComplete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnComplete.Enabled = false;
+            this.btnComplete.FlatAppearance.BorderSize = 0;
+            this.btnComplete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnComplete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnComplete.Location = new System.Drawing.Point(286, 10);
+            this.btnComplete.Name = "btnComplete";
+            this.btnComplete.Size = new System.Drawing.Size(100, 25);
+            this.btnComplete.TabIndex = 19;
+            this.btnComplete.Text = "Complete";
+            this.btnComplete.UseVisualStyleBackColor = false;
+            // 
+            // btnAccept
+            // 
+            this.btnAccept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnAccept.Enabled = false;
+            this.btnAccept.FlatAppearance.BorderSize = 0;
+            this.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccept.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnAccept.Location = new System.Drawing.Point(94, 10);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(100, 25);
+            this.btnAccept.TabIndex = 18;
+            this.btnAccept.Text = "Accept";
+            this.btnAccept.UseVisualStyleBackColor = false;
+            // 
+            // panelTrade
+            // 
+            this.panelTrade.Controls.Add(this.btnSell);
+            this.panelTrade.Controls.Add(this.btnBuy);
+            this.panelTrade.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTrade.Location = new System.Drawing.Point(0, 0);
+            this.panelTrade.Name = "panelTrade";
+            this.panelTrade.Size = new System.Drawing.Size(480, 55);
+            this.panelTrade.TabIndex = 15;
+            // 
+            // btnSell
+            // 
+            this.btnSell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnSell.Enabled = false;
+            this.btnSell.FlatAppearance.BorderSize = 0;
+            this.btnSell.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnSell.Location = new System.Drawing.Point(286, 20);
+            this.btnSell.Name = "btnSell";
+            this.btnSell.Size = new System.Drawing.Size(100, 25);
+            this.btnSell.TabIndex = 18;
+            this.btnSell.Text = "Sell";
+            this.btnSell.UseVisualStyleBackColor = false;
+            // 
+            // btnBuy
+            // 
+            this.btnBuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnBuy.Enabled = false;
+            this.btnBuy.FlatAppearance.BorderSize = 0;
+            this.btnBuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnBuy.Location = new System.Drawing.Point(94, 20);
+            this.btnBuy.Name = "btnBuy";
+            this.btnBuy.Size = new System.Drawing.Size(100, 25);
+            this.btnBuy.TabIndex = 17;
+            this.btnBuy.Text = "Buy";
+            this.btnBuy.UseVisualStyleBackColor = false;
+            // 
+            // richTextBoxEventLog
+            // 
+            this.richTextBoxEventLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.richTextBoxEventLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxEventLog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.richTextBoxEventLog.Location = new System.Drawing.Point(20, 400);
+            this.richTextBoxEventLog.Name = "richTextBoxEventLog";
+            this.richTextBoxEventLog.ReadOnly = true;
+            this.richTextBoxEventLog.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.richTextBoxEventLog.Size = new System.Drawing.Size(905, 240);
+            this.richTextBoxEventLog.TabIndex = 13;
+            this.richTextBoxEventLog.Text = "";
+            // 
             // groupBoxTargetDetails
             // 
             this.groupBoxTargetDetails.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -312,6 +511,7 @@ namespace NecromindUI
             this.groupBoxTargetDetails.TabIndex = 12;
             this.groupBoxTargetDetails.TabStop = false;
             this.groupBoxTargetDetails.Text = "{TARGET}\'s Details";
+            this.groupBoxTargetDetails.Visible = false;
             // 
             // groupBoxTargetInventory
             // 
@@ -383,86 +583,6 @@ namespace NecromindUI
             this.panelVendor.Size = new System.Drawing.Size(140, 155);
             this.panelVendor.TabIndex = 0;
             // 
-            // btnBackFromGame
-            // 
-            this.btnBackFromGame.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnBackFromGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.btnBackFromGame.FlatAppearance.BorderSize = 0;
-            this.btnBackFromGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackFromGame.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnBackFromGame.Location = new System.Drawing.Point(20, 20);
-            this.btnBackFromGame.Name = "btnBackFromGame";
-            this.btnBackFromGame.Size = new System.Drawing.Size(100, 25);
-            this.btnBackFromGame.TabIndex = 2;
-            this.btnBackFromGame.Text = "Back";
-            this.btnBackFromGame.UseVisualStyleBackColor = false;
-            this.btnBackFromGame.Click += new System.EventHandler(this.btnBackFromGame_Click);
-            // 
-            // panelLocation
-            // 
-            this.panelLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelLocation.Controls.Add(this.btnOutskirts);
-            this.panelLocation.Controls.Add(this.btnMonastery);
-            this.panelLocation.Controls.Add(this.btnTown);
-            this.panelLocation.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLocation.Location = new System.Drawing.Point(0, 65);
-            this.panelLocation.Name = "panelLocation";
-            this.panelLocation.Size = new System.Drawing.Size(140, 155);
-            this.panelLocation.TabIndex = 1;
-            // 
-            // btnOutskirts
-            // 
-            this.btnOutskirts.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnOutskirts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
-            this.btnOutskirts.FlatAppearance.BorderSize = 0;
-            this.btnOutskirts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOutskirts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnOutskirts.Location = new System.Drawing.Point(20, 65);
-            this.btnOutskirts.Name = "btnOutskirts";
-            this.btnOutskirts.Size = new System.Drawing.Size(100, 25);
-            this.btnOutskirts.TabIndex = 14;
-            this.btnOutskirts.Text = "Outskirts";
-            this.btnOutskirts.UseVisualStyleBackColor = false;
-            // 
-            // btnTown
-            // 
-            this.btnTown.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnTown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
-            this.btnTown.FlatAppearance.BorderSize = 0;
-            this.btnTown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnTown.Location = new System.Drawing.Point(20, 20);
-            this.btnTown.Name = "btnTown";
-            this.btnTown.Size = new System.Drawing.Size(100, 25);
-            this.btnTown.TabIndex = 13;
-            this.btnTown.Text = "Town";
-            this.btnTown.UseVisualStyleBackColor = false;
-            // 
-            // btnMonastery
-            // 
-            this.btnMonastery.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnMonastery.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
-            this.btnMonastery.Enabled = false;
-            this.btnMonastery.FlatAppearance.BorderSize = 0;
-            this.btnMonastery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMonastery.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnMonastery.Location = new System.Drawing.Point(20, 110);
-            this.btnMonastery.Name = "btnMonastery";
-            this.btnMonastery.Size = new System.Drawing.Size(100, 25);
-            this.btnMonastery.TabIndex = 15;
-            this.btnMonastery.Text = "Monastery";
-            this.btnMonastery.UseVisualStyleBackColor = false;
-            // 
-            // panelBack
-            // 
-            this.panelBack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelBack.Controls.Add(this.btnBackFromGame);
-            this.panelBack.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelBack.Location = new System.Drawing.Point(0, 0);
-            this.panelBack.Name = "panelBack";
-            this.panelBack.Size = new System.Drawing.Size(140, 65);
-            this.panelBack.TabIndex = 2;
-            // 
             // btnBrangor
             // 
             this.btnBrangor.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -504,6 +624,86 @@ namespace NecromindUI
             this.btnShoj.TabIndex = 16;
             this.btnShoj.Text = "Shoj";
             this.btnShoj.UseVisualStyleBackColor = false;
+            // 
+            // panelLocation
+            // 
+            this.panelLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelLocation.Controls.Add(this.btnOutskirts);
+            this.panelLocation.Controls.Add(this.btnMonastery);
+            this.panelLocation.Controls.Add(this.btnTown);
+            this.panelLocation.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelLocation.Location = new System.Drawing.Point(0, 65);
+            this.panelLocation.Name = "panelLocation";
+            this.panelLocation.Size = new System.Drawing.Size(140, 155);
+            this.panelLocation.TabIndex = 1;
+            // 
+            // btnOutskirts
+            // 
+            this.btnOutskirts.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnOutskirts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.btnOutskirts.FlatAppearance.BorderSize = 0;
+            this.btnOutskirts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOutskirts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnOutskirts.Location = new System.Drawing.Point(20, 65);
+            this.btnOutskirts.Name = "btnOutskirts";
+            this.btnOutskirts.Size = new System.Drawing.Size(100, 25);
+            this.btnOutskirts.TabIndex = 14;
+            this.btnOutskirts.Text = "Outskirts";
+            this.btnOutskirts.UseVisualStyleBackColor = false;
+            // 
+            // btnMonastery
+            // 
+            this.btnMonastery.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnMonastery.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnMonastery.Enabled = false;
+            this.btnMonastery.FlatAppearance.BorderSize = 0;
+            this.btnMonastery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMonastery.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnMonastery.Location = new System.Drawing.Point(20, 110);
+            this.btnMonastery.Name = "btnMonastery";
+            this.btnMonastery.Size = new System.Drawing.Size(100, 25);
+            this.btnMonastery.TabIndex = 15;
+            this.btnMonastery.Text = "Monastery";
+            this.btnMonastery.UseVisualStyleBackColor = false;
+            // 
+            // btnTown
+            // 
+            this.btnTown.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnTown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+            this.btnTown.FlatAppearance.BorderSize = 0;
+            this.btnTown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnTown.Location = new System.Drawing.Point(20, 20);
+            this.btnTown.Name = "btnTown";
+            this.btnTown.Size = new System.Drawing.Size(100, 25);
+            this.btnTown.TabIndex = 13;
+            this.btnTown.Text = "Town";
+            this.btnTown.UseVisualStyleBackColor = false;
+            // 
+            // panelBack
+            // 
+            this.panelBack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelBack.Controls.Add(this.btnBackFromGame);
+            this.panelBack.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelBack.Location = new System.Drawing.Point(0, 0);
+            this.panelBack.Name = "panelBack";
+            this.panelBack.Size = new System.Drawing.Size(140, 65);
+            this.panelBack.TabIndex = 2;
+            // 
+            // btnBackFromGame
+            // 
+            this.btnBackFromGame.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnBackFromGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.btnBackFromGame.FlatAppearance.BorderSize = 0;
+            this.btnBackFromGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBackFromGame.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnBackFromGame.Location = new System.Drawing.Point(20, 20);
+            this.btnBackFromGame.Name = "btnBackFromGame";
+            this.btnBackFromGame.Size = new System.Drawing.Size(100, 25);
+            this.btnBackFromGame.TabIndex = 2;
+            this.btnBackFromGame.Text = "Back";
+            this.btnBackFromGame.UseVisualStyleBackColor = false;
+            this.btnBackFromGame.Click += new System.EventHandler(this.btnBackFromGame_Click);
             // 
             // groupBoxHeroDetails
             // 
@@ -664,204 +864,6 @@ namespace NecromindUI
             this.labelErrorTitle.TabIndex = 0;
             this.labelErrorTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // richTextBoxEventLog
-            // 
-            this.richTextBoxEventLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.richTextBoxEventLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxEventLog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.richTextBoxEventLog.Location = new System.Drawing.Point(20, 400);
-            this.richTextBoxEventLog.Name = "richTextBoxEventLog";
-            this.richTextBoxEventLog.ReadOnly = true;
-            this.richTextBoxEventLog.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.richTextBoxEventLog.Size = new System.Drawing.Size(905, 240);
-            this.richTextBoxEventLog.TabIndex = 13;
-            this.richTextBoxEventLog.Text = "";
-            // 
-            // panelAction
-            // 
-            this.panelAction.Controls.Add(this.panelQuestHandle);
-            this.panelAction.Controls.Add(this.panelFight);
-            this.panelAction.Controls.Add(this.panelTrade);
-            this.panelAction.Location = new System.Drawing.Point(232, 220);
-            this.panelAction.Name = "panelAction";
-            this.panelAction.Size = new System.Drawing.Size(480, 155);
-            this.panelAction.TabIndex = 14;
-            // 
-            // btnAttack
-            // 
-            this.btnAttack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
-            this.btnAttack.Enabled = false;
-            this.btnAttack.FlatAppearance.BorderSize = 0;
-            this.btnAttack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAttack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnAttack.Location = new System.Drawing.Point(44, 10);
-            this.btnAttack.Name = "btnAttack";
-            this.btnAttack.Size = new System.Drawing.Size(100, 25);
-            this.btnAttack.TabIndex = 14;
-            this.btnAttack.Text = "Attack";
-            this.btnAttack.UseVisualStyleBackColor = false;
-            // 
-            // btnFortify
-            // 
-            this.btnFortify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
-            this.btnFortify.Enabled = false;
-            this.btnFortify.FlatAppearance.BorderSize = 0;
-            this.btnFortify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFortify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnFortify.Location = new System.Drawing.Point(189, 10);
-            this.btnFortify.Name = "btnFortify";
-            this.btnFortify.Size = new System.Drawing.Size(100, 25);
-            this.btnFortify.TabIndex = 15;
-            this.btnFortify.Text = "Fortify";
-            this.btnFortify.UseVisualStyleBackColor = false;
-            // 
-            // btnUseItem
-            // 
-            this.btnUseItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
-            this.btnUseItem.Enabled = false;
-            this.btnUseItem.FlatAppearance.BorderSize = 0;
-            this.btnUseItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUseItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnUseItem.Location = new System.Drawing.Point(334, 10);
-            this.btnUseItem.Name = "btnUseItem";
-            this.btnUseItem.Size = new System.Drawing.Size(100, 25);
-            this.btnUseItem.TabIndex = 16;
-            this.btnUseItem.Text = "Use Item";
-            this.btnUseItem.UseVisualStyleBackColor = false;
-            // 
-            // btnBuy
-            // 
-            this.btnBuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
-            this.btnBuy.Enabled = false;
-            this.btnBuy.FlatAppearance.BorderSize = 0;
-            this.btnBuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnBuy.Location = new System.Drawing.Point(94, 20);
-            this.btnBuy.Name = "btnBuy";
-            this.btnBuy.Size = new System.Drawing.Size(100, 25);
-            this.btnBuy.TabIndex = 17;
-            this.btnBuy.Text = "Buy";
-            this.btnBuy.UseVisualStyleBackColor = false;
-            // 
-            // btnSell
-            // 
-            this.btnSell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
-            this.btnSell.Enabled = false;
-            this.btnSell.FlatAppearance.BorderSize = 0;
-            this.btnSell.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnSell.Location = new System.Drawing.Point(286, 20);
-            this.btnSell.Name = "btnSell";
-            this.btnSell.Size = new System.Drawing.Size(100, 25);
-            this.btnSell.TabIndex = 18;
-            this.btnSell.Text = "Sell";
-            this.btnSell.UseVisualStyleBackColor = false;
-            // 
-            // panelTrade
-            // 
-            this.panelTrade.Controls.Add(this.btnSell);
-            this.panelTrade.Controls.Add(this.btnBuy);
-            this.panelTrade.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTrade.Location = new System.Drawing.Point(0, 0);
-            this.panelTrade.Name = "panelTrade";
-            this.panelTrade.Size = new System.Drawing.Size(480, 55);
-            this.panelTrade.TabIndex = 15;
-            // 
-            // panelFight
-            // 
-            this.panelFight.Controls.Add(this.btnComplete);
-            this.panelFight.Controls.Add(this.btnAccept);
-            this.panelFight.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelFight.Location = new System.Drawing.Point(0, 55);
-            this.panelFight.Name = "panelFight";
-            this.panelFight.Size = new System.Drawing.Size(480, 45);
-            this.panelFight.TabIndex = 16;
-            // 
-            // groupBoxHeroQuests
-            // 
-            this.groupBoxHeroQuests.Controls.Add(this.listBoxHeroActiveQuests);
-            this.groupBoxHeroQuests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
-            this.groupBoxHeroQuests.Location = new System.Drawing.Point(20, 215);
-            this.groupBoxHeroQuests.Name = "groupBoxHeroQuests";
-            this.groupBoxHeroQuests.Size = new System.Drawing.Size(181, 160);
-            this.groupBoxHeroQuests.TabIndex = 15;
-            this.groupBoxHeroQuests.TabStop = false;
-            this.groupBoxHeroQuests.Text = "{HERO}\'s Quests";
-            // 
-            // groupBoxTargetQuests
-            // 
-            this.groupBoxTargetQuests.Controls.Add(this.listBoxTargetAvailableQuests);
-            this.groupBoxTargetQuests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.groupBoxTargetQuests.Location = new System.Drawing.Point(744, 215);
-            this.groupBoxTargetQuests.Name = "groupBoxTargetQuests";
-            this.groupBoxTargetQuests.Size = new System.Drawing.Size(181, 160);
-            this.groupBoxTargetQuests.TabIndex = 16;
-            this.groupBoxTargetQuests.TabStop = false;
-            this.groupBoxTargetQuests.Text = "{TARGET}\'s Quests";
-            // 
-            // panelQuestHandle
-            // 
-            this.panelQuestHandle.Controls.Add(this.btnUseItem);
-            this.panelQuestHandle.Controls.Add(this.btnFortify);
-            this.panelQuestHandle.Controls.Add(this.btnAttack);
-            this.panelQuestHandle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelQuestHandle.Location = new System.Drawing.Point(0, 100);
-            this.panelQuestHandle.Name = "panelQuestHandle";
-            this.panelQuestHandle.Size = new System.Drawing.Size(480, 55);
-            this.panelQuestHandle.TabIndex = 17;
-            // 
-            // btnAccept
-            // 
-            this.btnAccept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
-            this.btnAccept.Enabled = false;
-            this.btnAccept.FlatAppearance.BorderSize = 0;
-            this.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAccept.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnAccept.Location = new System.Drawing.Point(94, 10);
-            this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(100, 25);
-            this.btnAccept.TabIndex = 18;
-            this.btnAccept.Text = "Accept";
-            this.btnAccept.UseVisualStyleBackColor = false;
-            // 
-            // btnComplete
-            // 
-            this.btnComplete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
-            this.btnComplete.Enabled = false;
-            this.btnComplete.FlatAppearance.BorderSize = 0;
-            this.btnComplete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnComplete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnComplete.Location = new System.Drawing.Point(286, 10);
-            this.btnComplete.Name = "btnComplete";
-            this.btnComplete.Size = new System.Drawing.Size(100, 25);
-            this.btnComplete.TabIndex = 19;
-            this.btnComplete.Text = "Complete";
-            this.btnComplete.UseVisualStyleBackColor = false;
-            // 
-            // listBoxHeroActiveQuests
-            // 
-            this.listBoxHeroActiveQuests.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.listBoxHeroActiveQuests.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBoxHeroActiveQuests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
-            this.listBoxHeroActiveQuests.FormattingEnabled = true;
-            this.listBoxHeroActiveQuests.ItemHeight = 16;
-            this.listBoxHeroActiveQuests.Location = new System.Drawing.Point(6, 24);
-            this.listBoxHeroActiveQuests.Name = "listBoxHeroActiveQuests";
-            this.listBoxHeroActiveQuests.Size = new System.Drawing.Size(169, 128);
-            this.listBoxHeroActiveQuests.TabIndex = 1;
-            // 
-            // listBoxTargetAvailableQuests
-            // 
-            this.listBoxTargetAvailableQuests.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.listBoxTargetAvailableQuests.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBoxTargetAvailableQuests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.listBoxTargetAvailableQuests.FormattingEnabled = true;
-            this.listBoxTargetAvailableQuests.ItemHeight = 16;
-            this.listBoxTargetAvailableQuests.Location = new System.Drawing.Point(6, 24);
-            this.listBoxTargetAvailableQuests.Name = "listBoxTargetAvailableQuests";
-            this.listBoxTargetAvailableQuests.Size = new System.Drawing.Size(169, 128);
-            this.listBoxTargetAvailableQuests.TabIndex = 2;
-            // 
             // Necromind
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -890,6 +892,12 @@ namespace NecromindUI
             this.panelConfirmDelete.ResumeLayout(false);
             this.panelConfirmDelete.PerformLayout();
             this.panelGame.ResumeLayout(false);
+            this.groupBoxTargetQuests.ResumeLayout(false);
+            this.groupBoxHeroQuests.ResumeLayout(false);
+            this.panelAction.ResumeLayout(false);
+            this.panelQuestHandle.ResumeLayout(false);
+            this.panelFight.ResumeLayout(false);
+            this.panelTrade.ResumeLayout(false);
             this.groupBoxTargetInventory.ResumeLayout(false);
             this.groupBoxHeroInventory.ResumeLayout(false);
             this.panelGameMenu.ResumeLayout(false);
@@ -899,12 +907,6 @@ namespace NecromindUI
             this.groupBoxHeroDetails.ResumeLayout(false);
             this.panelError.ResumeLayout(false);
             this.panelError.PerformLayout();
-            this.panelAction.ResumeLayout(false);
-            this.panelTrade.ResumeLayout(false);
-            this.panelFight.ResumeLayout(false);
-            this.groupBoxHeroQuests.ResumeLayout(false);
-            this.groupBoxTargetQuests.ResumeLayout(false);
-            this.panelQuestHandle.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

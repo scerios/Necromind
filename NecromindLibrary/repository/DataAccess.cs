@@ -24,7 +24,7 @@ namespace NecromindLibrary.repository
         /// <typeparam name="T">Custom object.</typeparam>
         /// <param name="collectionName">Name of collection.</param>
         /// <param name="record">The object to be added.</param>
-        /// <return>An automatically generated Guid for the record OR an empty one upon some DB error.</return>
+        /// <returns>An automatically generated Guid for the record OR an empty one upon some DB error.</returns>
         public static Guid TryCreateNewRecord<T>(string collectionName, T record)
         {
             var collection = DB.GetCollection<T>(collectionName);

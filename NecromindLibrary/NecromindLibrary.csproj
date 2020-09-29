@@ -155,6 +155,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="helper\UIHelper.cs" />
+    <Compile Include="model\LocationModel.cs" />
+    <Compile Include="service\GameLogic.cs" />
+    <Compile Include="service\MenuLogic.cs" />
     <Compile Include="service\UIHandler.cs" />
     <Compile Include="model\ArmorModel.cs" />
     <Compile Include="model\BossModel.cs" />

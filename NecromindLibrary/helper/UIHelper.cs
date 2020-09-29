@@ -11,28 +11,6 @@ namespace NecromindLibrary.helper
     public static class UIHelper
     {
         /// <summary>
-        /// Checks among all the heroes if the user given name is already taken.
-        /// </summary>
-        /// <param name="heroes">A list of heroes.</param>
-        /// <param name="name">Name of new hero.</param>
-        /// <returns>True if name is available. False otherwise.</returns>
-        public static bool IsNameAvailable(List<HeroModel> heroes, string name)
-        {
-            bool isNameAvailable = true;
-
-            foreach (HeroModel hero in heroes)
-            {
-                if (hero.Name == name)
-                {
-                    isNameAvailable = false;
-                    break;
-                }
-            }
-
-            return isNameAvailable;
-        }
-
-        /// <summary>
         /// Applies custom style to rich text confirm delete.
         /// </summary>
         /// <param name="heroName">Name of the hero which is supposed to be deleted.</param>

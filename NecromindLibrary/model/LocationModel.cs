@@ -1,7 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,24 +8,24 @@ using System.Threading.Tasks;
 namespace NecromindLibrary.model
 {
     /// <summary>
-    /// Base class for any character.
+    /// Represent a location where the hero can go.
     /// </summary>
-    public class CharacterModel
+    public class LocationModel
     {
         /// <summary>
-        /// ID of character.
+        /// ID of the location.
         /// </summary>
         [BsonId]
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Name of character.
+        /// Name of the location.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// List of items the character has.
+        /// A linear area in where the hero can move.
         /// </summary>
-        public List<ItemModel> Inventory { get; set; }
+        public int[] Map { get; set; }
     }
 }

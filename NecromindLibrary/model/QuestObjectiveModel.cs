@@ -11,6 +11,6 @@ namespace NecromindLibrary.model
     /// </summary>
     public class QuestObjectiveModel : ItemModel
     {
-
+        public int test { get; set; }
     }
 }

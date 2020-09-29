@@ -144,7 +144,7 @@ namespace NecromindUI
 
         private void btnCreateNewHero_Click(object sender, EventArgs e)
         {
-            UIHandler.CreateNewHero();
+            MenuLogic.CreateNewHero();
         }
 
         private void textBoxNewHeroName_KeyPress(object sender, KeyPressEventArgs e)
@@ -190,7 +190,7 @@ namespace NecromindUI
 
         private void buttonDeleteHero_Click(object sender, EventArgs e)
         {
-            UIHandler.DeleteHero();
+            MenuLogic.DeleteHero();
         }
     }
 }
