@@ -1,14 +1,10 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization;
-using NecromindLibrary.helper;
+﻿using NecromindLibrary.helper;
 using NecromindLibrary.model;
 using NecromindLibrary.repository;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
-using System.Linq;
-using System.Management;
 using System.Windows.Forms;
 
 namespace NecromindLibrary.service

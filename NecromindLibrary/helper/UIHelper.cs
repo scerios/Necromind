@@ -1,9 +1,6 @@
-﻿using NecromindLibrary.model;
-using NecromindLibrary.service;
-using System.Collections.Generic;
+﻿using NecromindLibrary.service;
 using System.Configuration;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace NecromindLibrary.helper
