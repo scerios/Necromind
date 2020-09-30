@@ -107,7 +107,7 @@ namespace NecromindLibrary.helper
 
             UIHandler.Labels[UIHandler.ErrorTitle].Text = title;
             UIHandler.Labels[UIHandler.ErrorMsg].Text = msg;
-            UIHandler.Panels[UIHandler.Error].BringToFront();
+            UIHandler.BringSelectedPanelToFront(UIHandler.Error);
         }
 
         /// <summary>

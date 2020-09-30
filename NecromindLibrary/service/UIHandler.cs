@@ -165,7 +165,7 @@ namespace NecromindLibrary.service
 
             if (Heroes.Count == 0)
             {
-                Panels[Menu].BringToFront();
+                BringSelectedPanelToFront(Menu);
                 UIHelper.DisplayError("Nothing to load.", "There's no hero yet to load. Create a new one first!");
             }
             else
@@ -222,7 +222,7 @@ namespace NecromindLibrary.service
                     Panels[LoadGame].Controls.Add(btnDeleteHero);
                 }
 
-                Panels[LoadGame].BringToFront();
+                BringSelectedPanelToFront(LoadGame);
             }
         }
 
@@ -234,7 +234,7 @@ namespace NecromindLibrary.service
         {
             GameLogic.Hero = DataAccess.GetRecordById<HeroModel>(HeroesCollection, id);
             SetHeroDetails();
-            Panels[Game].BringToFront();
+            BringSelectedPanelToFront(Game);
             GameLogic.StartGame();
         }
 
@@ -251,7 +251,7 @@ namespace NecromindLibrary.service
             RichTextBoxes[ConfirmDeleteText] = UIHelper.ApplyCustomStyleToRichTextConfirmDelete(hero.Name, RichTextBoxes[ConfirmDeleteText]);
             heroName.Focus();
 
-            Panels[ConfirmDelete].BringToFront();
+            BringSelectedPanelToFront(ConfirmDelete);
 
             heroName.KeyUp += (s, ev) =>
             {
@@ -302,7 +302,8 @@ namespace NecromindLibrary.service
             MenuLogic.SetHeroToDelete(null);
             UIHelper.SetControlsAvailability(Panels[LoadGame].Controls, true);
 
-            Panels[ConfirmDelete].SendToBack();
+            SendSelectedPanelToBack(ConfirmDelete);
+
             TextBoxes[DeleteHeroName].Text = "";
             RichTextBoxes[ConfirmDeleteText].Text = RichTextBoxes[ConfirmDeleteText].Text.Replace(heroName, HeroNamePlaceholder);
         }
