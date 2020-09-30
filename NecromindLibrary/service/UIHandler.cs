@@ -181,6 +181,11 @@ namespace NecromindLibrary.service
         /// </summary>
         public void ShowAllLoadedHeroes()
         {
+            foreach (Button button in CreatedButtons)
+            {
+                Panels[LoadGame].Controls.Remove(button);
+            }
+
             List<HeroModel> Heroes = DataAccess.GetAllRecords<HeroModel>(HeroesCollection);
 
             if (Heroes.Count == 0)
