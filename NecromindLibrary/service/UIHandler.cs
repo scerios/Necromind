@@ -345,5 +345,14 @@ namespace NecromindLibrary.service
         {
             Panels[panelName].BringToFront();
         }
+
+        /// <summary>
+        /// Sends the selected panel to the back.
+        /// </summary>
+        /// <param name="panelName">Name of the panel.</param>
+        public static void SendSelectedPanelToBack(string panelName)
+        {
+            Panels[panelName].SendToBack();
+        }
     }
 }
