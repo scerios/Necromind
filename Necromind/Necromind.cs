@@ -31,7 +31,7 @@ namespace NecromindUI
         {
             UIHandler = new UIHandler();
             UIHelper = new UIHelper(UIHandler);
-            DataAccess = new DataAccess(UIHelper);
+            DataAccess = new DataAccess(UIHandler, UIHelper);
             GameLogic = new GameLogic(UIHandler, UIHelper);
             MenuLogic = new MenuLogic(UIHandler, UIHelper, DataAccess, GameLogic);
 

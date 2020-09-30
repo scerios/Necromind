@@ -38,7 +38,7 @@ namespace NecromindLibrary.service
 
             if (heroName.Text.Length < 3)
             {
-                UIHelper.DisplayError("Name too short", "Name must be at least 3 characters long");
+                UIHandler.DisplayError("Name too short", "Name must be at least 3 characters long");
             }
             else if (IsNameAvailable(heroes, heroName.Text))
             {
@@ -58,7 +58,7 @@ namespace NecromindLibrary.service
             }
             else
             {
-                UIHelper.DisplayError("Name unavailable", $"The name: \"{ heroName.Text }\" you entered is already taken. Pick another one.");
+                UIHandler.DisplayError("Name unavailable", $"The name: \"{ heroName.Text }\" you entered is already taken. Pick another one.");
             }
 
             heroName.Text = "";
@@ -91,11 +91,10 @@ namespace NecromindLibrary.service
         /// </summary>
         public void DeleteHero()
         {
-            string heroName = HeroToDelete.Name;
             if (DataAccess.TryDeleteRecordById<HeroModel>(UIHandler.HeroesCollection, HeroToDelete.Id))
             {
                 UIHandler.ShowAllLoadedHeroes();
-                UIHandler.HideConfirmDeletePanel(heroName);
+                UIHandler.HideConfirmDeletePanel(HeroToDelete.Name);
             }
         }
 

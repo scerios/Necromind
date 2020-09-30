@@ -127,7 +127,7 @@ namespace NecromindLibrary.service
         public UIHandler()
         {
             UIHelper = new UIHelper(this);
-            DataAccess = new DataAccess(UIHelper);
+            DataAccess = new DataAccess(this, UIHelper);
             GameLogic = new GameLogic(this, UIHelper);
             MenuLogic = new MenuLogic(this, UIHelper, DataAccess, GameLogic);
         }
@@ -177,6 +177,49 @@ namespace NecromindLibrary.service
         }
 
         /// <summary>
+        /// Sets all the labels and group boxes texts for the hero to the current hero's values.
+        /// </summary>
+        public void SetHeroDetails()
+        {
+            GroupBox details = GroupBoxes[HeroDetails];
+            GroupBox inventory = GroupBoxes[HeroInventory];
+            GroupBox quests = GroupBoxes[HeroQuests];
+
+            if (GameLogic.Hero.Name.EndsWith("s") || GameLogic.Hero.Name.EndsWith("S"))
+            {
+                details.Text = details.Text.Replace(HeroNamePlaceholder + "'s", GameLogic.Hero.Name + "'");
+                inventory.Text = inventory.Text.Replace(HeroNamePlaceholder + "'s", GameLogic.Hero.Name + "'");
+                quests.Text = quests.Text.Replace(HeroNamePlaceholder + "'s", GameLogic.Hero.Name + "'");
+            }
+            else
+            {
+                details.Text = details.Text.Replace(HeroNamePlaceholder, GameLogic.Hero.Name);
+                inventory.Text = inventory.Text.Replace(HeroNamePlaceholder, GameLogic.Hero.Name);
+                quests.Text = quests.Text.Replace(HeroNamePlaceholder, GameLogic.Hero.Name);
+            }
+
+            Labels[HeroHealth].Text = GameLogic.Hero.HitPointsMax.ToString() + " / " + GameLogic.Hero.HitPoints.ToString();
+            Labels[HeroGold].Text = GameLogic.Hero.Gold.ToString();
+            Labels[HeroXP].Text = GameLogic.Hero.ExperiencePoints.ToString() + " / " + GameLogic.Hero.NextLevelAt.ToString();
+            Labels[HeroLevel].Text = GameLogic.Hero.Level.ToString();
+            Labels[HeroDamage].Text = GameLogic.Hero.Damage.ToString();
+            Labels[HeroDefense].Text = GameLogic.Hero.Defense.ToString();
+        }
+
+        /// <summary>
+        /// Displays an error window with custom title and message. Also formats the message to add linebreaks.
+        /// </summary>
+        /// <param name="title">Title of the error.</param>
+        /// <param name="msg">Message of the error.</param>
+        public void DisplayError(string title, string msg)
+        {
+            msg = UIHelper.FormatErrorMsg(msg);
+            Labels[ErrorTitle].Text = title;
+            Labels[ErrorMsg].Text = msg;
+            BringSelectedPanelToFront(Error);
+        }
+
+        /// <summary>
         /// Creates 2 buttons for each saved heroes and adds events to load or delete any of them. 
         /// </summary>
         public void ShowAllLoadedHeroes()
@@ -191,7 +234,7 @@ namespace NecromindLibrary.service
             if (Heroes.Count == 0)
             {
                 BringSelectedPanelToFront(Menu);
-                UIHelper.DisplayError("Nothing to load.", "There's no hero yet to load. Create a new one first!");
+                DisplayError("Nothing to load.", "There's no hero yet to load. Create a new one first!");
             }
             else
             {
@@ -201,6 +244,7 @@ namespace NecromindLibrary.service
 
                 foreach (HeroModel hero in Heroes)
                 {
+                    // Creates a button to load the hero
                     Button btnLoadHero = UIHelper.CreateButton(
                         hero.Name,
                         "btnLoad" + hero.Name,
@@ -222,6 +266,7 @@ namespace NecromindLibrary.service
 
                     Panels[LoadGame].Controls.Add(btnLoadHero);
 
+                    // Creates a button to delete the hero
                     Button btnDeleteHero = UIHelper.CreateButton(
                         "X",
                         "btnDelete" + hero.Name,
@@ -331,36 +376,6 @@ namespace NecromindLibrary.service
 
             TextBoxes[DeleteHeroName].Text = "";
             RichTextBoxes[ConfirmDeleteText].Text = RichTextBoxes[ConfirmDeleteText].Text.Replace(heroName, HeroNamePlaceholder);
-        }
-
-        /// <summary>
-        /// Sets all the labels and group boxes texts for the hero to the current hero's values.
-        /// </summary>
-        public void SetHeroDetails()
-        {
-            GroupBox details = GroupBoxes[HeroDetails];
-            GroupBox inventory = GroupBoxes[HeroInventory];
-            GroupBox quests = GroupBoxes[HeroQuests];
-
-            if (GameLogic.Hero.Name.EndsWith("s") || GameLogic.Hero.Name.EndsWith("S"))
-            {
-                details.Text = details.Text.Replace(HeroNamePlaceholder + "'s", GameLogic.Hero.Name + "'");
-                inventory.Text = inventory.Text.Replace(HeroNamePlaceholder + "'s", GameLogic.Hero.Name + "'");
-                quests.Text = quests.Text.Replace(HeroNamePlaceholder + "'s", GameLogic.Hero.Name + "'");
-            } 
-            else
-            {
-                details.Text = details.Text.Replace(HeroNamePlaceholder, GameLogic.Hero.Name);
-                inventory.Text = inventory.Text.Replace(HeroNamePlaceholder, GameLogic.Hero.Name);
-                quests.Text = quests.Text.Replace(HeroNamePlaceholder, GameLogic.Hero.Name);
-            }
-            
-            Labels[HeroHealth].Text = GameLogic.Hero.HitPointsMax.ToString() + " / " + GameLogic.Hero.HitPoints.ToString();
-            Labels[HeroGold].Text = GameLogic.Hero.Gold.ToString();
-            Labels[HeroXP].Text = GameLogic.Hero.ExperiencePoints.ToString() + " / " + GameLogic.Hero.NextLevelAt.ToString();
-            Labels[HeroLevel].Text = GameLogic.Hero.Level.ToString();
-            Labels[HeroDamage].Text = GameLogic.Hero.Damage.ToString();
-            Labels[HeroDefense].Text = GameLogic.Hero.Defense.ToString();
         }
 
         /// <summary>

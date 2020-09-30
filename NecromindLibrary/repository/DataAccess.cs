@@ -6,11 +6,13 @@ using MongoDB.Driver;
 using System;
 using MongoDB.Bson;
 using NecromindLibrary.helper;
+using NecromindLibrary.service;
 
 namespace NecromindLibrary.repository
 {
     public class DataAccess
     {
+        private UIHandler UIHandler;
         private UIHelper UIHelper;
 
         // DB error title
@@ -20,8 +22,9 @@ namespace NecromindLibrary.repository
         private readonly MongoClient Client = new MongoClient();
         private readonly IMongoDatabase DB;
 
-        public DataAccess(UIHelper UIHelper)
+        public DataAccess(UIHandler UIHandler, UIHelper UIHelper)
         {
+            this.UIHandler = UIHandler;
             this.UIHelper = UIHelper;
             DB = Client.GetDatabase(ConfigurationManager.AppSettings["databaseName"]);
         }
@@ -44,7 +47,7 @@ namespace NecromindLibrary.repository
             }
             catch (MongoException e)
             {
-                UIHelper.DisplayError(DBError, e.Message);
+                UIHandler.DisplayError(DBError, e.Message);
                 return new Guid();
             }
         }
@@ -66,7 +69,7 @@ namespace NecromindLibrary.repository
             }
             catch (MongoException e)
             {
-                UIHelper.DisplayError(DBError, e.Message);
+                UIHandler.DisplayError(DBError, e.Message);
                 return false;
             }
         }

@@ -11,6 +11,7 @@ namespace NecromindLibrary.helper
     public class UIHelper
     {
         private UIHandler UIHandler;
+
         public UIHelper(UIHandler UIHandler)
         {
             this.UIHandler = UIHandler;
@@ -93,7 +94,7 @@ namespace NecromindLibrary.helper
         /// </summary>
         /// <param name="title">Title of the error window.</param>
         /// <param name="msg">Message of the error.</param>
-        public void DisplayError(string title, string msg)
+        public string FormatErrorMsg(string msg)
         {
             int i = 25;
 
@@ -110,10 +111,7 @@ namespace NecromindLibrary.helper
 
                 i += 25;
             }
-
-            UIHandler.Labels[UIHandler.ErrorTitle].Text = title;
-            UIHandler.Labels[UIHandler.ErrorMsg].Text = msg;
-            UIHandler.BringSelectedPanelToFront(UIHandler.Error);
+            return msg;
         }
 
         /// <summary>
