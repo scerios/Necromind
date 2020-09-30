@@ -68,6 +68,8 @@ namespace NecromindUI
             this.groupBoxHeroInventory = new System.Windows.Forms.GroupBox();
             this.listBoxHeroItems = new System.Windows.Forms.ListBox();
             this.panelGameMenu = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnForward = new System.Windows.Forms.Button();
             this.panelVendor = new System.Windows.Forms.Panel();
             this.btnBrangor = new System.Windows.Forms.Button();
             this.btnViascen = new System.Windows.Forms.Button();
@@ -94,8 +96,6 @@ namespace NecromindUI
             this.panelError = new System.Windows.Forms.Panel();
             this.labelErrorMsg = new System.Windows.Forms.Label();
             this.labelErrorTitle = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnForward = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelNewGame.SuspendLayout();
             this.panelLoadGame.SuspendLayout();
@@ -110,12 +110,12 @@ namespace NecromindUI
             this.groupBoxTargetInventory.SuspendLayout();
             this.groupBoxHeroInventory.SuspendLayout();
             this.panelGameMenu.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panelVendor.SuspendLayout();
             this.panelLocation.SuspendLayout();
             this.panelBack.SuspendLayout();
             this.groupBoxHeroDetails.SuspendLayout();
             this.panelError.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -338,6 +338,7 @@ namespace NecromindUI
             this.groupBoxHeroQuests.TabIndex = 15;
             this.groupBoxHeroQuests.TabStop = false;
             this.groupBoxHeroQuests.Text = "{HERO}\'s Quests";
+            this.groupBoxHeroQuests.Visible = false;
             // 
             // listBoxHeroActiveQuests
             // 
@@ -423,6 +424,7 @@ namespace NecromindUI
             this.panelFight.Name = "panelFight";
             this.panelFight.Size = new System.Drawing.Size(480, 45);
             this.panelFight.TabIndex = 16;
+            this.panelFight.Visible = false;
             // 
             // btnComplete
             // 
@@ -461,6 +463,7 @@ namespace NecromindUI
             this.panelTrade.Name = "panelTrade";
             this.panelTrade.Size = new System.Drawing.Size(480, 55);
             this.panelTrade.TabIndex = 15;
+            this.panelTrade.Visible = false;
             // 
             // btnSell
             // 
@@ -550,6 +553,7 @@ namespace NecromindUI
             this.groupBoxHeroInventory.TabIndex = 4;
             this.groupBoxHeroInventory.TabStop = false;
             this.groupBoxHeroInventory.Text = "{HERO}\'s Inventory";
+            this.groupBoxHeroInventory.Visible = false;
             // 
             // listBoxHeroItems
             // 
@@ -574,6 +578,32 @@ namespace NecromindUI
             this.panelGameMenu.Name = "panelGameMenu";
             this.panelGameMenu.Size = new System.Drawing.Size(140, 661);
             this.panelGameMenu.TabIndex = 3;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnForward);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 375);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(140, 65);
+            this.panel1.TabIndex = 3;
+            // 
+            // btnForward
+            // 
+            this.btnForward.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnForward.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
+            this.btnForward.Enabled = false;
+            this.btnForward.FlatAppearance.BorderSize = 0;
+            this.btnForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnForward.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnForward.Location = new System.Drawing.Point(19, 20);
+            this.btnForward.Name = "btnForward";
+            this.btnForward.Size = new System.Drawing.Size(100, 25);
+            this.btnForward.TabIndex = 14;
+            this.btnForward.Text = "Forward";
+            this.btnForward.UseVisualStyleBackColor = false;
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
             // 
             // panelVendor
             // 
@@ -869,31 +899,6 @@ namespace NecromindUI
             this.labelErrorTitle.TabIndex = 0;
             this.labelErrorTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnForward);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 375);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(140, 65);
-            this.panel1.TabIndex = 3;
-            // 
-            // btnForward
-            // 
-            this.btnForward.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnForward.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
-            this.btnForward.Enabled = false;
-            this.btnForward.FlatAppearance.BorderSize = 0;
-            this.btnForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnForward.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnForward.Location = new System.Drawing.Point(20, 20);
-            this.btnForward.Name = "btnForward";
-            this.btnForward.Size = new System.Drawing.Size(100, 25);
-            this.btnForward.TabIndex = 14;
-            this.btnForward.Text = "Forward";
-            this.btnForward.UseVisualStyleBackColor = false;
-            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
-            // 
             // Necromind
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -931,13 +936,13 @@ namespace NecromindUI
             this.groupBoxTargetInventory.ResumeLayout(false);
             this.groupBoxHeroInventory.ResumeLayout(false);
             this.panelGameMenu.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.panelVendor.ResumeLayout(false);
             this.panelLocation.ResumeLayout(false);
             this.panelBack.ResumeLayout(false);
             this.groupBoxHeroDetails.ResumeLayout(false);
             this.panelError.ResumeLayout(false);
             this.panelError.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

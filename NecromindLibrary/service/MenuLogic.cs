@@ -10,15 +10,28 @@ using System.Windows.Forms;
 
 namespace NecromindLibrary.service
 {
-    public static class MenuLogic
+    public class MenuLogic
     {
         // The hero which is about to be deleted
         public static HeroModel HeroToDelete { get; private set; }
 
+        private UIHandler UIHandler;
+        private UIHelper UIHelper;
+        private DataAccess DataAccess;
+        private GameLogic GameLogic;
+
+        public MenuLogic(UIHandler UIHandler, UIHelper UIHelper, DataAccess dataAccess, GameLogic gameLogic)
+        {
+            this.UIHandler = UIHandler;
+            this.UIHelper = UIHelper;
+            DataAccess = dataAccess;
+            GameLogic = gameLogic;
+        }
+
         /// <summary>
         /// Creates a new hero if the name is not already taken.
         /// </summary>
-        public static void CreateNewHero()
+        public void CreateNewHero()
         {
             TextBox heroName = UIHandler.TextBoxes[UIHandler.NewHeroName];
             List<HeroModel> heroes = DataAccess.GetAllRecords<HeroModel>(UIHandler.HeroesCollection);
@@ -57,7 +70,7 @@ namespace NecromindLibrary.service
         /// <param name="heroes">A list of heroes.</param>
         /// <param name="name">Name of new hero.</param>
         /// <returns>True if name is available. False otherwise.</returns>
-        public static bool IsNameAvailable(List<HeroModel> heroes, string name)
+        public bool IsNameAvailable(List<HeroModel> heroes, string name)
         {
             bool isNameAvailable = true;
 
@@ -76,7 +89,7 @@ namespace NecromindLibrary.service
         /// <summary>
         /// Deletes a hero.
         /// </summary>
-        public static void DeleteHero()
+        public void DeleteHero()
         {
             string heroName = HeroToDelete.Name;
             if (DataAccess.TryDeleteRecordById<HeroModel>(UIHandler.HeroesCollection, HeroToDelete.Id))
@@ -90,7 +103,7 @@ namespace NecromindLibrary.service
         /// Sets the HeroToDelete HeroModel.
         /// </summary>
         /// <param name="hero">Hero which is about to be deleted.</param>
-        public static void SetHeroToDelete(HeroModel hero)
+        public void SetHeroToDelete(HeroModel hero)
         {
             HeroToDelete = hero;
         }

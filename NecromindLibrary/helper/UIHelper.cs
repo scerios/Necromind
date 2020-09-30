@@ -8,13 +8,19 @@ using System.Windows.Forms;
 
 namespace NecromindLibrary.helper
 {
-    public static class UIHelper
+    public class UIHelper
     {
+        private UIHandler UIHandler;
+        public UIHelper(UIHandler UIHandler)
+        {
+            this.UIHandler = UIHandler;
+        }
+
         /// <summary>
         /// Applies custom style to rich text confirm delete.
         /// </summary>
         /// <param name="heroName">Name of the hero which is supposed to be deleted.</param>
-        public static RichTextBox ApplyCustomStyleToRichTextConfirmDelete(string heroName, RichTextBox confirmDeleteText)
+        public RichTextBox ApplyCustomStyleToRichTextConfirmDelete(string heroName, RichTextBox confirmDeleteText)
         {
             confirmDeleteText.Text = confirmDeleteText.Text.Replace(UIHandler.HeroNamePlaceholder, heroName);
 
@@ -52,7 +58,7 @@ namespace NecromindLibrary.helper
         /// <param name="foreColor">Text color</param>
         /// <param name="style">Button style</param>
         /// <returns></returns>
-        public static Button CreateButton(string text, string name, int sizeX, int sizeY, int locX, int locY, Color backColor, Color foreColor, FlatStyle style)
+        public Button CreateButton(string text, string name, int sizeX, int sizeY, int locX, int locY, Color backColor, Color foreColor, FlatStyle style)
         {
             Button button = new Button();
             button.Text = text;
@@ -74,7 +80,7 @@ namespace NecromindLibrary.helper
         /// </summary>
         /// <param name="controls">A list of controls which should be enabled/disabled.</param>
         /// <param name="isAvailable">True if controls should be enabled. False otherwise.</param>
-        public static void SetControlsAvailability(Control.ControlCollection controls, bool isAvailable)
+        public void SetControlsAvailability(Control.ControlCollection controls, bool isAvailable)
         {
             foreach (Control control in controls)
             {
@@ -87,7 +93,7 @@ namespace NecromindLibrary.helper
         /// </summary>
         /// <param name="title">Title of the error window.</param>
         /// <param name="msg">Message of the error.</param>
-        public static void DisplayError(string title, string msg)
+        public void DisplayError(string title, string msg)
         {
             int i = 25;
 
@@ -117,7 +123,7 @@ namespace NecromindLibrary.helper
         /// <param name="isAvailable">True if available. False otherwise.</param>
         /// <param name="color">Optional. If set this will be the enabled color.</param>
         /// <returns></returns>
-        public static void SetButtonAvailability(Button button, bool isAvailable, Color color = default)
+        public void SetButtonAvailability(Button button, bool isAvailable, Color color = default)
         {
             button.Enabled = isAvailable;
 
@@ -136,7 +142,7 @@ namespace NecromindLibrary.helper
         /// </summary>
         /// <param name="text">The text which shall be written.</param>
         /// <param name="isAppend">True if text should be appended. False if text should be replaced.</param>
-        public static void SetEventLogText(string text, bool isAppend)
+        public void SetEventLogText(string text, bool isAppend)
         {
             UIHandler.RichTextBoxes[UIHandler.EventLog].Text = isAppend ? UIHandler.RichTextBoxes[UIHandler.EventLog].Text + "\n" + text : text;
         }

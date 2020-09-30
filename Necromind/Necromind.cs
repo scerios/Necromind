@@ -1,4 +1,6 @@
-﻿using NecromindLibrary.service;
+﻿using NecromindLibrary.helper;
+using NecromindLibrary.repository;
+using NecromindLibrary.service;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,6 +12,12 @@ namespace NecromindUI
 {
     public partial class Necromind : Form
     {
+        private UIHandler UIHandler;
+        private UIHelper UIHelper;
+        private DataAccess DataAccess;
+        private GameLogic GameLogic;
+        private MenuLogic MenuLogic;
+
         // All the needed UI to set dynamically
         private static Dictionary<string, Panel> Panels = new Dictionary<string, Panel>();
         private static Dictionary<string, Label> Labels = new Dictionary<string, Label>();
@@ -21,6 +29,12 @@ namespace NecromindUI
 
         public Necromind()
         {
+            UIHandler = new UIHandler();
+            UIHelper = new UIHelper(UIHandler);
+            DataAccess = new DataAccess(UIHelper);
+            GameLogic = new GameLogic(UIHandler, UIHelper);
+            MenuLogic = new MenuLogic(UIHandler, UIHelper, DataAccess, GameLogic);
+
             // Forces Visual Studio to show error messages in english.
             if (Debugger.IsAttached) CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.GetCultureInfo("en-US");
             InitializeComponent();
@@ -176,7 +190,7 @@ namespace NecromindUI
         private void btnBackFromGame_Click(object sender, EventArgs e)
         {
             showMainMenu();
-            UIHandler.ResetGame();
+            UIHandler.ResetGameTexts();
         }
 
         private void Necromind_KeyPress(object sender, KeyPressEventArgs e)

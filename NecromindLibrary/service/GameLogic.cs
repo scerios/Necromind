@@ -5,37 +5,57 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace NecromindLibrary.service
 {
-    public static class GameLogic
+    public class GameLogic
     {
+        private UIHandler UIHandler;
+        private UIHelper UIHelper;
+
         // The hero which is currently being played
         public static HeroModel Hero { get; set; }
 
         // Hero's current location index in the map array.
-        private static int locationIndex = 0;
+        private int locationIndex = 0;
 
-        private static LocationModel Town { get; set; } = new LocationModel(LocationType.Town);
-        private static LocationModel OutSkirts { get; set; }
-        private static LocationModel Monastery { get; set; }
+        private LocationModel Town { get; set; } = new LocationModel(LocationType.Town);
+        private LocationModel OutSkirts { get; set; }
+        private LocationModel Monastery { get; set; }
 
-        public static void StartGame()
+        public GameLogic(UIHandler UIHandler, UIHelper UIHelper)
+        {
+            this.UIHandler = UIHandler;
+            this.UIHelper = UIHelper;
+        }
+
+        /// <summary>
+        /// Sets the hero's location to town and displays a message to tell this.
+        /// </summary>
+        public void StartGame()
         {
             Hero.Location = Town;
             UIHelper.SetEventLogText("You are in town.", false);
         }
 
-        public static void MoveToOutSkirts()
+        /// <summary>
+        /// Sets the hero's location to the outskirts and displays a message to tell this.
+        /// </summary>
+        public void MoveToOutSkirts()
         {
             locationIndex = 0;
-            UIHelper.SetButtonAvailability(UIHandler.Buttons[UIHandler.BtnForward], true);
             OutSkirts = new LocationModel(LocationType.OutSkirts);
             Hero.Location = OutSkirts;
+
+            UIHelper.SetButtonAvailability(GetButtonByName(UIHandler.BtnForward), true);
             UIHelper.SetEventLogText("You are now in the outskirts.", false);
         }
 
-        public static void MoveForward()
+        /// <summary>
+        /// Moves the hero forward in the current area and depending on what is there an encounter might happen.
+        /// </summary>
+        public void MoveForward()
         {
             switch (Hero.Location.Map[locationIndex])
             {
@@ -45,6 +65,7 @@ namespace NecromindLibrary.service
 
                 case 1:
                     UIHelper.SetEventLogText("You have encountered an enemy.", true);
+
                     break;
 
                 //case 2:
@@ -55,8 +76,18 @@ namespace NecromindLibrary.service
 
             if (locationIndex > 9)
             {
-               UIHelper.SetButtonAvailability(UIHandler.Buttons[UIHandler.BtnForward], false);
+               UIHelper.SetButtonAvailability(GetButtonByName(UIHandler.BtnForward), false);
             }
+        }
+
+        /// <summary>
+        /// Gets the button from the UIHandler by reference name.
+        /// </summary>
+        /// <param name="name">Reference name of the button.</param>
+        /// <returns>The button which was referenced.</returns>
+        private Button GetButtonByName(string name)
+        {
+            return UIHandler.Buttons[name];
         }
     }
 }
