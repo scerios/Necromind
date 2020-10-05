@@ -193,7 +193,7 @@ namespace NecromindLibrary.service
                 GameService.Hero = new HeroModel(heroName.Text);
                 Guid defaultHeroId = GameService.Hero.Id;
 
-                GameService.Hero.Id = _dataAccess.TryCreateNewRecord(HeroesCollection, GameService.Hero);
+                GameService.Hero.Id = new Guid(_dataAccess.TryCreateNewRecord(HeroesCollection, GameService.Hero));
 
                 if (defaultHeroId != GameService.Hero.Id)
                 {

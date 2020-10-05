@@ -34,19 +34,19 @@ namespace NecromindLibrary.repository
         /// <param name="collectionName">Name of collection.</param>
         /// <param name="record">The object to be added.</param>
         /// <returns>An automatically generated Guid for the record OR an empty one upon some DB error.</returns>
-        public Guid TryCreateNewRecord<T>(string collectionName, T record)
+        public string TryCreateNewRecord<T>(string collectionName, T record)
         {
             var collection = DB.GetCollection<T>(collectionName);
 
             try
             {
                 collection.InsertOne(record);
-                return record.ToBsonDocument().GetElement("_id").Value.AsGuid;
+                return record.ToBsonDocument().GetElement("_id").Value.AsGuid.ToString();
             }
             catch (MongoException e)
             {
                 _UIService.DisplayError(DBError, e.Message);
-                return new Guid();
+                return "00000000-0000-0000-0000-000000000000";
             }
         }
 
