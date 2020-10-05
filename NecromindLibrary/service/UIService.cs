@@ -192,14 +192,14 @@ namespace NecromindLibrary.service
             msg = FormatErrorMsg(msg);
             Labels[ErrorTitle].Text = title;
             Labels[ErrorMsg].Text = msg;
-            BringSelectedPanelToFront(Error);
+            BringPanelToFront(Error);
         }
 
         /// <summary>
         /// Brings the selected panel to the front.
         /// </summary>
         /// <param name="panelName">Name of the panel.</param>
-        public void BringSelectedPanelToFront(string panelName)
+        public void BringPanelToFront(string panelName)
         {
             Panels[panelName].BringToFront();
         }
@@ -208,7 +208,7 @@ namespace NecromindLibrary.service
         /// Sends the selected panel to the back.
         /// </summary>
         /// <param name="panelName">Name of the panel.</param>
-        public void SendSelectedPanelToBack(string panelName)
+        public void SendPanelToBack(string panelName)
         {
             Panels[panelName].SendToBack();
         }
@@ -222,7 +222,7 @@ namespace NecromindLibrary.service
             MenuService.SetHeroToDelete(null);
             SetControlsAvailability(Panels[LoadGame].Controls, true);
 
-            SendSelectedPanelToBack(ConfirmDelete);
+            SendPanelToBack(ConfirmDelete);
 
             TextBoxes[DeleteHeroName].Text = "";
             RichTextBoxes[ConfirmDeleteText].Text = RichTextBoxes[ConfirmDeleteText].Text.Replace(heroName, HeroNamePlaceholder);
