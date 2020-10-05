@@ -8,7 +8,7 @@ using NecromindLibrary.service;
 
 namespace NecromindLibrary.repository
 {
-    public class DataAccess
+    public class MongoDBAccess : IDataAccess
     {
         private UIService _UIService;
 
@@ -19,9 +19,9 @@ namespace NecromindLibrary.repository
         private readonly MongoClient Client = new MongoClient();
         private readonly IMongoDatabase DB;
 
-        public static DataAccess Instance { get; } = new DataAccess();
+        public static MongoDBAccess Instance { get; } = new MongoDBAccess();
 
-        private DataAccess()
+        private MongoDBAccess()
         {
             _UIService = UIService.Instance;
             DB = Client.GetDatabase(ConfigurationManager.AppSettings["databaseName"]);
@@ -55,10 +55,10 @@ namespace NecromindLibrary.repository
         /// </summary>
         /// <param name="id">ID of record.</param>
         /// <returns>True if successfully deleted. False otherwise.</returns>
-        public bool TryDeleteRecordById<T>(string collectionName, Guid id)
+        public bool TryDeleteRecordById<T>(string collectionName, string id)
         {
             var collection = DB.GetCollection<T>(collectionName);
-            var filter = Builders<T>.Filter.Eq("Id", id);
+            var filter = Builders<T>.Filter.Eq("Id", new Guid(id));
 
             try
             {
@@ -89,10 +89,10 @@ namespace NecromindLibrary.repository
         /// </summary>
         /// <param name="id">ID of record.</param>
         /// <returns>Returns the record.</returns>
-        public T GetRecordById<T>(string collectionName, Guid id)
+        public T GetRecordById<T>(string collectionName, string id)
         {
             var collection = DB.GetCollection<T>(collectionName);
-            var filter = Builders<T>.Filter.Eq("Id", id);
+            var filter = Builders<T>.Filter.Eq("Id", new Guid(id));
             return collection.Find(filter).First();
         }
     }

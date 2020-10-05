@@ -1,6 +1,4 @@
-﻿using NecromindLibrary.service;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;

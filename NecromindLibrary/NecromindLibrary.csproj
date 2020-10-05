@@ -155,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="model\LocationModel.cs" />
+    <Compile Include="repository\IDataAccess.cs" />
     <Compile Include="service\GameService.cs" />
     <Compile Include="service\MenuService.cs" />
     <Compile Include="model\ArmorModel.cs" />
@@ -170,7 +171,7 @@
     <Compile Include="model\TownNPCModel.cs" />
     <Compile Include="model\WeaponModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="repository\DataAccess.cs" />
+    <Compile Include="repository\MongoDBAccess.cs" />
     <Compile Include="service\UIService.cs" />
   </ItemGroup>
   <ItemGroup>

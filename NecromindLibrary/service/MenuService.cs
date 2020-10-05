@@ -11,7 +11,7 @@ namespace NecromindLibrary.service
     public class MenuService
     {
         private UIService _UIService;
-        private DataAccess _dataAccess;
+        private IDataAccess _dataAccess;
         private GameService _gameLogic;
 
         // The hero which is about to be deleted
@@ -23,12 +23,12 @@ namespace NecromindLibrary.service
         // Collection name to store heroes.
         public readonly string HeroesCollection = ConfigurationManager.AppSettings["heroesCollection"];
 
-        public static MenuService Instance { get; } = new MenuService();
+        public static MenuService Instance { get; } = new MenuService(MongoDBAccess.Instance);
 
-        private MenuService()
+        private MenuService(IDataAccess dataAccess)
         {
             _UIService = UIService.Instance;
-            _dataAccess = DataAccess.Instance;
+            _dataAccess = dataAccess;
             _gameLogic = GameService.Instance;
         }
 
@@ -115,7 +115,7 @@ namespace NecromindLibrary.service
         /// <param name="id">ID of hero.</param>
         private void LoadHeroByIdBtn(Guid id)
         {
-            GameService.Hero = _dataAccess.GetRecordById<HeroModel>(HeroesCollection, id);
+            GameService.Hero = _dataAccess.GetRecordById<HeroModel>(HeroesCollection, id.ToString());
             _UIService.SetHeroDetails();
             _UIService.BringSelectedPanelToFront(_UIService.Game);
             _gameLogic.StartGame();
@@ -149,7 +149,7 @@ namespace NecromindLibrary.service
 
                         if (_UIService.Buttons[_UIService.BtnDeleteHero].Enabled)
                         {
-                            if (_dataAccess.TryDeleteRecordById<HeroModel>(HeroesCollection, hero.Id))
+                            if (_dataAccess.TryDeleteRecordById<HeroModel>(HeroesCollection, hero.Id.ToString()))
                             {
                                 foreach (Button createdButton in CreatedButtons)
                                 {
@@ -239,7 +239,7 @@ namespace NecromindLibrary.service
         /// </summary>
         public void DeleteHero()
         {
-            if (_dataAccess.TryDeleteRecordById<HeroModel>(HeroesCollection, HeroToDelete.Id))
+            if (_dataAccess.TryDeleteRecordById<HeroModel>(HeroesCollection, HeroToDelete.Id.ToString()))
             {
                 ShowAllLoadedHeroes();
                 _UIService.HideConfirmDeletePanel(HeroToDelete.Name);
