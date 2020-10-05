@@ -8,7 +8,7 @@ namespace NecromindLibrary.model
     /// <summary>
     /// Represents a Hero.
     /// </summary>
-    public class HeroModel : KillableModel, IBattle
+    public class HeroModel : KillableModel
     {
         /// <summary>
         /// How much experience points the hero currently has.
@@ -69,16 +69,6 @@ namespace NecromindLibrary.model
             ActiveQuests = null;
             CompletedQuests = null;
             Inventory = null;
-        }
-
-        /// <summary>
-        /// Attacks the target KillableModel and returns the attacked target hitpoints after the damage was done.
-        /// </summary>
-        /// <param name="model">A KillableModel which will be attacked.</param>
-        /// <returns>The hitpoints of attacked KillableModel after attack as an int.</returns>
-        public int AttackTarget(KillableModel model)
-        {
-            return model.HitPoints - (this.Damage - model.Defense);
         }
     }
 }

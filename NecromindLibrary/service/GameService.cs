@@ -1,16 +1,14 @@
-﻿using NecromindLibrary.helper;
-using NecromindLibrary.model;
+﻿using NecromindLibrary.model;
 using System.Windows.Forms;
 
 namespace NecromindLibrary.service
 {
-    public class GameLogic
+    public class GameService
     {
+        private UIService _UIService;
+
         // The hero which is currently being played
         public static HeroModel Hero { get; set; }
-
-        private UIHandler UIHandler;
-        private UIHelper UIHelper;
 
         private LocationModel Town { get; set; } = new LocationModel(LocationType.Town);
         private LocationModel OutSkirts { get; set; }
@@ -19,10 +17,11 @@ namespace NecromindLibrary.service
         // Hero's current location index in the map array.
         private int locationIndex = 0;
 
-        public GameLogic(UIHandler UIHandler, UIHelper UIHelper)
+        public static GameService Instance { get; } = new GameService();
+
+        private GameService()
         {
-            this.UIHandler = UIHandler;
-            this.UIHelper = UIHelper;
+            _UIService = UIService.Instance;
         }
 
         /// <summary>
@@ -31,7 +30,7 @@ namespace NecromindLibrary.service
         public void StartGame()
         {
             Hero.Location = Town;
-            UIHelper.SetEventLogText("You are in town.", false);
+            _UIService.SetEventLogText("You are in town.", false);
         }
 
         /// <summary>
@@ -43,8 +42,8 @@ namespace NecromindLibrary.service
             OutSkirts = new LocationModel(LocationType.OutSkirts);
             Hero.Location = OutSkirts;
 
-            UIHelper.SetButtonAvailability(GetButtonByName(UIHandler.BtnForward), true);
-            UIHelper.SetEventLogText("You are now in the outskirts.", false);
+            _UIService.SetButtonAvailability(GetButtonByName(_UIService.BtnForward), true);
+            _UIService.SetEventLogText("You are now in the outskirts.", false);
         }
 
         /// <summary>
@@ -55,11 +54,11 @@ namespace NecromindLibrary.service
             switch (Hero.Location.Map[locationIndex])
             {
                 case 0:
-                    UIHelper.SetEventLogText("Empty area.", true);
+                    _UIService.SetEventLogText("Empty area.", true);
                     break;
 
                 case 1:
-                    UIHelper.SetEventLogText("You have encountered an enemy.", true);
+                    _UIService.SetEventLogText("You have encountered an enemy.", true);
 
                     break;
 
@@ -71,7 +70,7 @@ namespace NecromindLibrary.service
 
             if (locationIndex > 9)
             {
-               UIHelper.SetButtonAvailability(GetButtonByName(UIHandler.BtnForward), false);
+                _UIService.SetButtonAvailability(GetButtonByName(_UIService.BtnForward), false);
             }
         }
 
@@ -82,7 +81,7 @@ namespace NecromindLibrary.service
         /// <returns>The button which was referenced.</returns>
         private Button GetButtonByName(string name)
         {
-            return UIHandler.Buttons[name];
+            return _UIService.Buttons[name];
         }
     }
 }
