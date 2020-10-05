@@ -2,7 +2,7 @@
 
 namespace NecromindLibrary.repository
 {
-    public interface IDataAccess
+    public interface IDataConnection
     {
         string TryCreateNewRecord<T>(string collectionName, T record);
         bool TryDeleteRecordById<T>(string collectionName, string id);

@@ -11,21 +11,21 @@ namespace NecromindLibrary.service
     public class MenuService
     {
         private UIService _UIService;
-        private IDataAccess _dataAccess;
+        private IDataConnection _dataAccess;
         private GameService _gameLogic;
 
-        // The hero which is about to be deleted
-        public static HeroModel HeroToDelete { get; private set; }
-
         // List of dynamically created buttons while loading saved heroes
-        private List<Button> CreatedButtons = new List<Button>();
+        private List<Button> _createdButtons = new List<Button>();
 
         // Collection name to store heroes.
         public readonly string HeroesCollection = ConfigurationManager.AppSettings["heroesCollection"];
 
-        public static MenuService Instance { get; } = new MenuService(MongoDBAccess.Instance);
+        // The hero which is about to be deleted
+        public static HeroModel HeroToDelete { get; private set; }
 
-        private MenuService(IDataAccess dataAccess)
+        public static MenuService Instance { get; } = new MenuService(GlobalConfig.connection);
+
+        private MenuService(IDataConnection dataAccess)
         {
             _UIService = UIService.Instance;
             _dataAccess = dataAccess;
@@ -37,7 +37,7 @@ namespace NecromindLibrary.service
         /// </summary>
         public void ShowAllLoadedHeroes()
         {
-            foreach (Button button in CreatedButtons)
+            foreach (Button button in _createdButtons)
             {
                 _UIService.Panels[_UIService.LoadGame].Controls.Remove(button);
             }
@@ -70,7 +70,7 @@ namespace NecromindLibrary.service
                         FlatStyle.Flat
                     );
 
-                    CreatedButtons.Add(btnLoadHero);
+                    _createdButtons.Add(btnLoadHero);
 
                     btnLoadHero.Click += (s, ev) =>
                     {
@@ -92,7 +92,7 @@ namespace NecromindLibrary.service
                         FlatStyle.Flat
                     );
 
-                    CreatedButtons.Add(btnDeleteHero);
+                    _createdButtons.Add(btnDeleteHero);
 
                     btnDeleteHero.Click += (s, ev) =>
                     {
@@ -151,7 +151,7 @@ namespace NecromindLibrary.service
                         {
                             if (_dataAccess.TryDeleteRecordById<HeroModel>(HeroesCollection, hero.Id.ToString()))
                             {
-                                foreach (Button createdButton in CreatedButtons)
+                                foreach (Button createdButton in _createdButtons)
                                 {
                                     _UIService.Panels[_UIService.LoadGame].Controls.Remove(createdButton);
                                 }

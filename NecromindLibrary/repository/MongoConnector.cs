@@ -8,23 +8,23 @@ using NecromindLibrary.service;
 
 namespace NecromindLibrary.repository
 {
-    public class MongoDBAccess : IDataAccess
+    public class MongoConnector : IDataConnection
     {
         private UIService _UIService;
 
         // DB error title
-        private readonly string DBError = "Database error";
+        private readonly string _DBError = "Database error";
 
         // Client and database to use MongoDB
-        private readonly MongoClient Client = new MongoClient();
-        private readonly IMongoDatabase DB;
+        private readonly MongoClient _client = new MongoClient();
+        private readonly IMongoDatabase _DB;
 
-        public static MongoDBAccess Instance { get; } = new MongoDBAccess();
+        public static MongoConnector Instance { get; } = new MongoConnector();
 
-        private MongoDBAccess()
+        private MongoConnector()
         {
             _UIService = UIService.Instance;
-            DB = Client.GetDatabase(ConfigurationManager.AppSettings["databaseName"]);
+            _DB = _client.GetDatabase(ConfigurationManager.AppSettings["databaseName"]);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace NecromindLibrary.repository
         /// <returns>An automatically generated Guid for the record OR an empty one upon some DB error.</returns>
         public string TryCreateNewRecord<T>(string collectionName, T record)
         {
-            var collection = DB.GetCollection<T>(collectionName);
+            var collection = _DB.GetCollection<T>(collectionName);
 
             try
             {
@@ -45,7 +45,7 @@ namespace NecromindLibrary.repository
             }
             catch (MongoException e)
             {
-                _UIService.DisplayError(DBError, e.Message);
+                _UIService.DisplayError(_DBError, e.Message);
                 return "00000000-0000-0000-0000-000000000000";
             }
         }
@@ -57,7 +57,7 @@ namespace NecromindLibrary.repository
         /// <returns>True if successfully deleted. False otherwise.</returns>
         public bool TryDeleteRecordById<T>(string collectionName, string id)
         {
-            var collection = DB.GetCollection<T>(collectionName);
+            var collection = _DB.GetCollection<T>(collectionName);
             var filter = Builders<T>.Filter.Eq("Id", new Guid(id));
 
             try
@@ -67,7 +67,7 @@ namespace NecromindLibrary.repository
             }
             catch (MongoException e)
             {
-                _UIService.DisplayError(DBError, e.Message);
+                _UIService.DisplayError(_DBError, e.Message);
                 return false;
             }
         }
@@ -80,7 +80,7 @@ namespace NecromindLibrary.repository
         /// <returns>A list of all records in selected collection.</returns>
         public List<T> GetAllRecords<T>(string collectionName)
         {
-            var collection = DB.GetCollection<T>(collectionName);
+            var collection = _DB.GetCollection<T>(collectionName);
             return collection.Find(new BsonDocument()).ToList();
         }
 
@@ -91,7 +91,7 @@ namespace NecromindLibrary.repository
         /// <returns>Returns the record.</returns>
         public T GetRecordById<T>(string collectionName, string id)
         {
-            var collection = DB.GetCollection<T>(collectionName);
+            var collection = _DB.GetCollection<T>(collectionName);
             var filter = Builders<T>.Filter.Eq("Id", new Guid(id));
             return collection.Find(filter).First();
         }

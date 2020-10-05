@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NecromindLibrary;
+using NecromindLibrary.repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,6 +18,10 @@ namespace NecromindUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // Initializes the DB connection
+            GlobalConfig.InitializeConnection();
+
             Application.Run(new Necromind());
         }
     }

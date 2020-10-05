@@ -7,15 +7,15 @@ namespace NecromindLibrary.service
     {
         private UIService _UIService;
 
-        // The hero which is currently being played
-        public static HeroModel Hero { get; set; }
-
         private LocationModel Town { get; set; } = new LocationModel(LocationType.Town);
         private LocationModel OutSkirts { get; set; }
         private LocationModel Monastery { get; set; }
 
         // Hero's current location index in the map array.
         private int locationIndex = 0;
+
+        // The hero which is currently being played
+        public static HeroModel Hero { get; set; }
 
         public static GameService Instance { get; } = new GameService();
 
