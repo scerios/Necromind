@@ -14,13 +14,13 @@ namespace NecromindUI
         private GameService _gameService;
 
         // All the needed UI to set dynamically
-        private static Dictionary<string, Panel> Panels = new Dictionary<string, Panel>();
-        private static Dictionary<string, Label> Labels = new Dictionary<string, Label>();
-        private static Dictionary<string, TextBox> TextBoxes = new Dictionary<string, TextBox>();
-        private static Dictionary<string, RichTextBox> RichTextBoxes = new Dictionary<string, RichTextBox>();
-        private static Dictionary<string, GroupBox> GroupBoxes = new Dictionary<string, GroupBox>();
-        private static Dictionary<string, ListBox> ListBoxes = new Dictionary<string, ListBox>();
-        private static Dictionary<string, Button> Buttons = new Dictionary<string, Button>();
+        private static Dictionary<string, Panel> _panels = new Dictionary<string, Panel>();
+        private static Dictionary<string, Label> _labels = new Dictionary<string, Label>();
+        private static Dictionary<string, TextBox> _textBoxes = new Dictionary<string, TextBox>();
+        private static Dictionary<string, RichTextBox> _richTextBoxes = new Dictionary<string, RichTextBox>();
+        private static Dictionary<string, GroupBox> _groupBoxes = new Dictionary<string, GroupBox>();
+        private static Dictionary<string, ListBox> _listBoxes = new Dictionary<string, ListBox>();
+        private static Dictionary<string, Button> _buttons = new Dictionary<string, Button>();
 
         public Necromind()
         {
@@ -48,107 +48,111 @@ namespace NecromindUI
             showMainMenu();
         }
 
+        #region Dictionary setters
+
         private void setPanels()
         {
-            Panels.Add(_UIService.Menu, panelMenu);
-            Panels.Add(_UIService.NewGame, panelNewGame);
-            Panels.Add(_UIService.LoadGame, panelLoadGame);
-            Panels.Add(_UIService.Game, panelGame);
-            Panels.Add(_UIService.ConfirmDelete, panelConfirmDelete);
+            _panels.Add(_UIService.Menu, panelMenu);
+            _panels.Add(_UIService.NewGame, panelNewGame);
+            _panels.Add(_UIService.LoadGame, panelLoadGame);
+            _panels.Add(_UIService.Game, panelGame);
+            _panels.Add(_UIService.ConfirmDelete, panelConfirmDelete);
 
-            Panels.Add(_UIService.Error, panelError);
+            _panels.Add(_UIService.Error, panelError);
 
-            Panels.Add(_UIService.Location, panelLocation);
-            Panels.Add(_UIService.Vendor, panelVendor);
+            _panels.Add(_UIService.Location, panelLocation);
+            _panels.Add(_UIService.Vendor, panelVendor);
 
-            Panels.Add(_UIService.Trade, panelTrade);
-            Panels.Add(_UIService.QuestHandle, panelQuestHandle);
-            Panels.Add(_UIService.Fight, panelFight);
+            _panels.Add(_UIService.Trade, panelTrade);
+            _panels.Add(_UIService.QuestHandle, panelQuestHandle);
+            _panels.Add(_UIService.Fight, panelFight);
         }
 
         private void setLabels()
         {
-            Labels.Add(_UIService.HeroHealth, labelHeroHealthValue);
-            Labels.Add(_UIService.HeroGold, labelHeroGoldValue);
-            Labels.Add(_UIService.HeroXP, labelHeroXPValue);
-            Labels.Add(_UIService.HeroLevel, labelHeroLevelValue);
-            Labels.Add(_UIService.HeroDamage, labelHeroDamageValue);
-            Labels.Add(_UIService.HeroDefense, labelHeroDefenseValue);
+            _labels.Add(_UIService.HeroHealth, labelHeroHealthValue);
+            _labels.Add(_UIService.HeroGold, labelHeroGoldValue);
+            _labels.Add(_UIService.HeroXP, labelHeroXPValue);
+            _labels.Add(_UIService.HeroLevel, labelHeroLevelValue);
+            _labels.Add(_UIService.HeroDamage, labelHeroDamageValue);
+            _labels.Add(_UIService.HeroDefense, labelHeroDefenseValue);
 
-            Labels.Add(_UIService.ErrorTitle, labelErrorTitle);
-            Labels.Add(_UIService.ErrorMsg, labelErrorMsg);
+            _labels.Add(_UIService.ErrorTitle, labelErrorTitle);
+            _labels.Add(_UIService.ErrorMsg, labelErrorMsg);
         }
 
         private void setTextBoxes()
         {
-            TextBoxes.Add(_UIService.NewHeroName, textBoxNewHeroName);
-            TextBoxes.Add(_UIService.DeleteHeroName, textBoxDeleteHeroName);
+            _textBoxes.Add(_UIService.NewHeroName, textBoxNewHeroName);
+            _textBoxes.Add(_UIService.DeleteHeroName, textBoxDeleteHeroName);
         }
 
         private void setRichTextBoxes()
         {
-            RichTextBoxes.Add(_UIService.ConfirmDeleteText, richTextBoxConfirmDelete);
-            RichTextBoxes.Add(_UIService.EventLog, richTextBoxEventLog);
+            _richTextBoxes.Add(_UIService.ConfirmDeleteText, richTextBoxConfirmDelete);
+            _richTextBoxes.Add(_UIService.EventLog, richTextBoxEventLog);
         }
 
         private void setGroupBoxes()
         {
-            GroupBoxes.Add(_UIService.HeroDetails, groupBoxHeroDetails);
-            GroupBoxes.Add(_UIService.HeroInventory, groupBoxHeroInventory);
-            GroupBoxes.Add(_UIService.HeroQuests, groupBoxHeroQuests);
+            _groupBoxes.Add(_UIService.HeroDetails, groupBoxHeroDetails);
+            _groupBoxes.Add(_UIService.HeroInventory, groupBoxHeroInventory);
+            _groupBoxes.Add(_UIService.HeroQuests, groupBoxHeroQuests);
 
-            GroupBoxes.Add(_UIService.TargetDetails, groupBoxTargetDetails);
-            GroupBoxes.Add(_UIService.TargetInventory, groupBoxTargetInventory);
-            GroupBoxes.Add(_UIService.TargetQuests, groupBoxTargetQuests);
+            _groupBoxes.Add(_UIService.TargetDetails, groupBoxTargetDetails);
+            _groupBoxes.Add(_UIService.TargetInventory, groupBoxTargetInventory);
+            _groupBoxes.Add(_UIService.TargetQuests, groupBoxTargetQuests);
         }
 
         private void setListBoxes()
         {
-            ListBoxes.Add(_UIService.HeroActiveQuests, listBoxHeroActiveQuests);
-            ListBoxes.Add(_UIService.HeroItems, listBoxHeroItems);
+            _listBoxes.Add(_UIService.HeroActiveQuests, listBoxHeroActiveQuests);
+            _listBoxes.Add(_UIService.HeroItems, listBoxHeroItems);
 
-            ListBoxes.Add(_UIService.TargetAvailableQuests, listBoxTargetAvailableQuests);
-            ListBoxes.Add(_UIService.TargetItems, listBoxTargetItems);
+            _listBoxes.Add(_UIService.TargetAvailableQuests, listBoxTargetAvailableQuests);
+            _listBoxes.Add(_UIService.TargetItems, listBoxTargetItems);
         }
 
         private void setButtons()
         {
-            Buttons.Add(_UIService.BtnDeleteHero, btnDeleteHero);
+            _buttons.Add(_UIService.BtnDeleteHero, btnDeleteHero);
 
-            Buttons.Add(_UIService.BtnBrangor, btnBrangor);
-            Buttons.Add(_UIService.BtnShoj, btnShoj);
-            Buttons.Add(_UIService.BtnViascen, btnViascen);
+            _buttons.Add(_UIService.BtnBrangor, btnBrangor);
+            _buttons.Add(_UIService.BtnShoj, btnShoj);
+            _buttons.Add(_UIService.BtnViascen, btnViascen);
 
-            Buttons.Add(_UIService.BtnTown, btnTown);
-            Buttons.Add(_UIService.BtnOutskirts, btnOutskirts);
-            Buttons.Add(_UIService.BtnMonastery, btnMonastery);
+            _buttons.Add(_UIService.BtnTown, btnTown);
+            _buttons.Add(_UIService.BtnOutskirts, btnOutskirts);
+            _buttons.Add(_UIService.BtnMonastery, btnMonastery);
 
-            Buttons.Add(_UIService.BtnBuy, btnBuy);
-            Buttons.Add(_UIService.BtnSell, btnSell);
+            _buttons.Add(_UIService.BtnBuy, btnBuy);
+            _buttons.Add(_UIService.BtnSell, btnSell);
 
-            Buttons.Add(_UIService.BtnAccept, btnAccept);
-            Buttons.Add(_UIService.BtnComplete, btnComplete);
+            _buttons.Add(_UIService.BtnAccept, btnAccept);
+            _buttons.Add(_UIService.BtnComplete, btnComplete);
 
-            Buttons.Add(_UIService.BtnAttack, btnAttack);
-            Buttons.Add(_UIService.BtnFortify, btnFortify);
-            Buttons.Add(_UIService.BtnUseItem, btnUseItem);
+            _buttons.Add(_UIService.BtnAttack, btnAttack);
+            _buttons.Add(_UIService.BtnFortify, btnFortify);
+            _buttons.Add(_UIService.BtnUseItem, btnUseItem);
 
-            Buttons.Add(_UIService.BtnForward, btnForward);
+            _buttons.Add(_UIService.BtnForward, btnForward);
         }
+
+        #endregion
 
         private void sendAllUIToLibrary()
         {
-            _UIService.TakeAllUI(Panels, Labels, TextBoxes, RichTextBoxes, GroupBoxes, ListBoxes, Buttons);
+            _UIService.TakeAllUI(_panels, _labels, _textBoxes, _richTextBoxes, _groupBoxes, _listBoxes, _buttons);
         }
 
         private void showMainMenu()
         {
-            Panels[_UIService.Menu].BringToFront();
+            _UIService.BringPanelToFront(_UIService.Menu);
         }
 
         private void btnNewGame_Click(object sender, EventArgs e)
         {
-            Panels[_UIService.NewGame].BringToFront();
+            _UIService.BringPanelToFront(_UIService.NewGame);
             textBoxNewHeroName.Focus();
         }
 
