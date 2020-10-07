@@ -49,7 +49,7 @@ namespace NecromindLibrary.service
         public void StartGame()
         {
             Hero.Location = Town;
-            _UIService.SetEventLogText("You are in town.", false);
+            _UIService.SetUIToTown();
         }
 
         /// <summary>
@@ -61,8 +61,7 @@ namespace NecromindLibrary.service
             OutSkirts = new LocationModel(LocationType.OutSkirts);
             Hero.Location = OutSkirts;
 
-            _UIService.SetButtonAvailability(GetButtonByName(_UIService.BtnForward), true);
-            _UIService.SetEventLogText("You are now in the outskirts.", false);
+            _UIService.SetUIToOutOfTown("You are now in the outskirts.");
         }
 
         /// <summary>
