@@ -399,6 +399,7 @@ namespace NecromindLibrary.service
             SetButtonAvailability(Buttons[BtnShoj], true);
             SetButtonAvailability(Buttons[BtnBrangor], true);
             SetButtonAvailability(Buttons[BtnViascen], true);
+            SetButtonAvailability(Buttons[BtnOutskirts], true);
 
             SetEventLogText("You are in town.", false);
         }
@@ -409,8 +410,18 @@ namespace NecromindLibrary.service
             SetButtonAvailability(Buttons[BtnShoj], false);
             SetButtonAvailability(Buttons[BtnBrangor], false);
             SetButtonAvailability(Buttons[BtnViascen], false);
+            SetButtonAvailability(Buttons[BtnOutskirts], false);
 
             SetEventLogText(welcomeMsg, false);
+        }
+
+        public void SetUIToBattle()
+        {
+            SetButtonAvailability(Buttons[BtnAttack], true);
+            SetButtonAvailability(Buttons[BtnFortify], true);
+            SetButtonAvailability(Buttons[BtnForward], false);
+            SetButtonAvailability(Buttons[BtnTown], false);
+            SetButtonAvailability(Buttons[BtnOutskirts], false);
         }
     }
 }
