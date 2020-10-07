@@ -1,7 +1,4 @@
-﻿using NecromindLibrary.service;
-using NUnit.Framework;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
 
 namespace NecromindLibrary.model
 {

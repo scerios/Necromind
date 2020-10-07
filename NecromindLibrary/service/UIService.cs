@@ -393,6 +393,9 @@ namespace NecromindLibrary.service
             RichTextBoxes[EventLog].Text = isAppend ? RichTextBoxes[EventLog].Text + "\n" + text : text;
         }
 
+        /// <summary>
+        /// Sets the UI (buttons) to match as the player is in town, also displays a message.
+        /// </summary>
         public void SetUIToTown()
         {
             SetButtonAvailability(Buttons[BtnForward], false);
@@ -404,6 +407,10 @@ namespace NecromindLibrary.service
             SetEventLogText("You are in town.", false);
         }
 
+        /// <summary>
+        /// Sets the UI (buttons) to match as the player in out of town, also displays a custom message.
+        /// </summary>
+        /// <param name="welcomeMsg">The message to be displayed.</param>
         public void SetUIToOutOfTown(string welcomeMsg)
         {
             SetButtonAvailability(Buttons[BtnForward], true);
@@ -415,6 +422,9 @@ namespace NecromindLibrary.service
             SetEventLogText(welcomeMsg, false);
         }
 
+        /// <summary>
+        /// Sets the UI (buttons) to match as the player is in combat.
+        /// </summary>
         public void SetUIToBattle()
         {
             SetButtonAvailability(Buttons[BtnAttack], true);

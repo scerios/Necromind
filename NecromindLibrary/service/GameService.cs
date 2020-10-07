@@ -16,8 +16,10 @@ namespace NecromindLibrary.service
         // Hero's current location index in the map array.
         private int locationIndex = 0;
 
-        // The hero which is currently being played
+        // The hero which is currently being played.
         public static HeroModel Hero { get; private set; }
+        // The current enemy which the hero fights.
+        public static KillableModel Enemy { get; private set; }
 
         private GameService()
         {

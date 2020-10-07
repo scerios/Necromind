@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NecromindUI", "Necromind\Ne
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NecromindLibrary", "NecromindLibrary\NecromindLibrary.csproj", "{A48B74E6-C8A6-4043-8C89-1A6B90181B65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Necromind.UnitTests", "Necromind.UnitTests\Necromind.UnitTests.csproj", "{583502FE-7AE4-431A-B8FA-A14E94EF9630}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A48B74E6-C8A6-4043-8C89-1A6B90181B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A48B74E6-C8A6-4043-8C89-1A6B90181B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A48B74E6-C8A6-4043-8C89-1A6B90181B65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{583502FE-7AE4-431A-B8FA-A14E94EF9630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{583502FE-7AE4-431A-B8FA-A14E94EF9630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{583502FE-7AE4-431A-B8FA-A14E94EF9630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{583502FE-7AE4-431A-B8FA-A14E94EF9630}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
