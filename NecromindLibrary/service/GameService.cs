@@ -7,6 +7,8 @@ namespace NecromindLibrary.service
     {
         private UIService _UIService;
 
+        private static GameService _instance;
+
         private LocationModel Town { get; set; } = new LocationModel(LocationType.Town);
         private LocationModel OutSkirts { get; set; }
         private LocationModel Monastery { get; set; }
@@ -17,7 +19,6 @@ namespace NecromindLibrary.service
         // The hero which is currently being played
         public static HeroModel Hero { get; private set; }
 
-        private static GameService Instance;
 
         private GameService()
         {
@@ -26,12 +27,12 @@ namespace NecromindLibrary.service
 
         public static GameService GetInstance()
         {
-            if (Instance == null)
+            if (_instance == null)
             {
-                Instance = new GameService();
+                _instance = new GameService();
             }
 
-            return Instance;
+            return _instance;
         }
 
         public static void SetHero(HeroModel hero)

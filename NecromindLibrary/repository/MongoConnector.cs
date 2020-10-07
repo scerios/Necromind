@@ -19,7 +19,7 @@ namespace NecromindLibrary.repository
         private readonly MongoClient _client = new MongoClient();
         private readonly IMongoDatabase _DB;
 
-        private static MongoConnector Instance;
+        private static MongoConnector _instance;
 
         private MongoConnector()
         {
@@ -29,12 +29,12 @@ namespace NecromindLibrary.repository
 
         public static MongoConnector GetInstance()
         {
-            if (Instance == null)
+            if (_instance == null)
             {
-                Instance = new MongoConnector();
+                _instance = new MongoConnector();
             }
 
-            return Instance;
+            return _instance;
         }
 
         /// <summary>

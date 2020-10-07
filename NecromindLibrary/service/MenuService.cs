@@ -14,6 +14,8 @@ namespace NecromindLibrary.service
         private IDataConnection _dataAccess;
         private GameService _gameService;
 
+        private static MenuService _instance;
+
         // List of dynamically created buttons while loading saved heroes
         private List<Button> _createdButtons = new List<Button>();
 
@@ -23,7 +25,6 @@ namespace NecromindLibrary.service
         // The hero which is about to be deleted
         public static HeroModel HeroToDelete { get; private set; }
 
-        private static MenuService Instance;
 
         private MenuService(IDataConnection dataAccess)
         {
@@ -34,12 +35,12 @@ namespace NecromindLibrary.service
 
         public static MenuService GetInstance()
         {
-            if (Instance == null)
+            if (_instance == null)
             {
-                Instance = new MenuService(GlobalConfig.connection);
+                _instance = new MenuService(GlobalConfig.connection);
             }
 
-            return Instance;
+            return _instance;
         }
 
         /// <summary>
