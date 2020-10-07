@@ -19,12 +19,22 @@ namespace NecromindLibrary.repository
         private readonly MongoClient _client = new MongoClient();
         private readonly IMongoDatabase _DB;
 
-        public static MongoConnector Instance { get; } = new MongoConnector();
+        private static MongoConnector Instance;
 
         private MongoConnector()
         {
-            _UIService = UIService.Instance;
+            _UIService = UIService.GetInstance();
             _DB = _client.GetDatabase(ConfigurationManager.AppSettings["databaseName"]);
+        }
+
+        public static MongoConnector GetInstance()
+        {
+            if (Instance == null)
+            {
+                Instance = new MongoConnector();
+            }
+
+            return Instance;
         }
 
         /// <summary>

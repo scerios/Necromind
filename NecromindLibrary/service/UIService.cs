@@ -7,7 +7,7 @@ namespace NecromindLibrary.service
 {
     public class UIService
     {
-        public static UIService Instance { get; } = new UIService();
+        private static UIService _instance;
 
         #region Configuration Settings
 
@@ -106,6 +106,16 @@ namespace NecromindLibrary.service
 
         private UIService()
         {
+        }
+
+        public static UIService GetInstance()
+        {
+            if (_instance == null)
+            {
+                _instance = new UIService();
+            }
+
+            return _instance;
         }
 
         /// <summary>
@@ -301,11 +311,34 @@ namespace NecromindLibrary.service
         }
 
         /// <summary>
+        /// Adds the button to the panels control.
+        /// </summary>
+        /// <param name="button"></param>
+        /// <param name="panelName"></param>
+        public void AddButtonToPanelControl(Button button, string panelName)
+        {
+            Panels[panelName].Controls.Add(button);
+        }
+
+        /// <summary>
+        /// Removes the control of selected buttons from selected panel.
+        /// </summary>
+        /// <param name="buttons">List of buttons to remove.</param>
+        /// <param name="panelName">Name of the panel.</param>
+        public void RemoveButtonControlsFromPanel(List<Button> buttons, string panelName)
+        {
+            foreach (Button button in buttons)
+            {
+                Panels[panelName].Controls.Remove(button);
+            }
+        }
+
+        /// <summary>
         /// Displays an error window with custom title and message.
         /// </summary>
         /// <param name="title">Title of the error window.</param>
         /// <param name="msg">Message of the error.</param>
-        public string FormatErrorMsg(string msg)
+        private string FormatErrorMsg(string msg)
         {
             int i = 25;
 

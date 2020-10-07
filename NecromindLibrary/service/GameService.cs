@@ -15,13 +15,28 @@ namespace NecromindLibrary.service
         private int locationIndex = 0;
 
         // The hero which is currently being played
-        public static HeroModel Hero { get; set; }
+        public static HeroModel Hero { get; private set; }
 
-        public static GameService Instance { get; } = new GameService();
+        private static GameService Instance;
 
         private GameService()
         {
-            _UIService = UIService.Instance;
+            _UIService = UIService.GetInstance();
+        }
+
+        public static GameService GetInstance()
+        {
+            if (Instance == null)
+            {
+                Instance = new GameService();
+            }
+
+            return Instance;
+        }
+
+        public static void SetHero(HeroModel hero)
+        {
+            Hero = hero;
         }
 
         /// <summary>

@@ -12,7 +12,7 @@ namespace NecromindLibrary.service
     {
         private UIService _UIService;
         private IDataConnection _dataAccess;
-        private GameService _gameLogic;
+        private GameService _gameService;
 
         // List of dynamically created buttons while loading saved heroes
         private List<Button> _createdButtons = new List<Button>();
@@ -23,13 +23,23 @@ namespace NecromindLibrary.service
         // The hero which is about to be deleted
         public static HeroModel HeroToDelete { get; private set; }
 
-        public static MenuService Instance { get; } = new MenuService(GlobalConfig.connection);
+        private static MenuService Instance;
 
         private MenuService(IDataConnection dataAccess)
         {
-            _UIService = UIService.Instance;
+            _UIService = UIService.GetInstance();
             _dataAccess = dataAccess;
-            _gameLogic = GameService.Instance;
+            _gameService = GameService.GetInstance();
+        }
+
+        public static MenuService GetInstance()
+        {
+            if (Instance == null)
+            {
+                Instance = new MenuService(GlobalConfig.connection);
+            }
+
+            return Instance;
         }
 
         /// <summary>
@@ -37,10 +47,7 @@ namespace NecromindLibrary.service
         /// </summary>
         public void ShowAllLoadedHeroes()
         {
-            foreach (Button button in _createdButtons)
-            {
-                _UIService.Panels[_UIService.LoadGame].Controls.Remove(button);
-            }
+            _UIService.RemoveButtonControlsFromPanel(_createdButtons, _UIService.LoadGame);
 
             List<HeroModel> Heroes = _dataAccess.GetAllRecords<HeroModel>(HeroesCollection);
 
@@ -77,7 +84,7 @@ namespace NecromindLibrary.service
                         LoadHeroByIdBtn(hero.Id);
                     };
 
-                    _UIService.Panels[_UIService.LoadGame].Controls.Add(btnLoadHero);
+                    _UIService.AddButtonToPanelControl(btnLoadHero, _UIService.LoadGame);
 
                     // Creates a button to delete the hero
                     Button btnDeleteHero = _UIService.CreateButton(
@@ -96,13 +103,13 @@ namespace NecromindLibrary.service
 
                     btnDeleteHero.Click += (s, ev) =>
                     {
-                        MenuService.SetHeroToDelete(hero);
+                        SetHeroToDelete(hero);
                         DeleteHeroByIdBtn(hero);
                     };
 
                     btnLocY += 40;
 
-                    _UIService.Panels[_UIService.LoadGame].Controls.Add(btnDeleteHero);
+                    _UIService.AddButtonToPanelControl(btnDeleteHero, _UIService.LoadGame);
                 }
 
                 _UIService.BringPanelToFront(_UIService.LoadGame);
@@ -115,10 +122,10 @@ namespace NecromindLibrary.service
         /// <param name="id">ID of hero.</param>
         private void LoadHeroByIdBtn(Guid id)
         {
-            GameService.Hero = _dataAccess.GetRecordById<HeroModel>(HeroesCollection, id.ToString());
+            GameService.SetHero(_dataAccess.GetRecordById<HeroModel>(HeroesCollection, id.ToString()));
             _UIService.SetHeroDetails();
             _UIService.BringPanelToFront(_UIService.Game);
-            _gameLogic.StartGame();
+            _gameService.StartGame();
         }
 
         /// <summary>
@@ -190,18 +197,20 @@ namespace NecromindLibrary.service
             }
             else if (IsNameAvailable(heroes, heroName.Text))
             {
-                GameService.Hero = new HeroModel(heroName.Text);
-                Guid defaultHeroId = GameService.Hero.Id;
+                string defaultHeroId = "00000000-0000-0000-0000-000000000000";
+                HeroModel hero = new HeroModel(heroName.Text);
+                hero.Id = new Guid(_dataAccess.TryCreateNewRecord(HeroesCollection, hero));
 
-                GameService.Hero.Id = new Guid(_dataAccess.TryCreateNewRecord(HeroesCollection, GameService.Hero));
+                GameService.SetHero(hero);
 
-                if (defaultHeroId != GameService.Hero.Id)
+
+                if (defaultHeroId != hero.Id.ToString())
                 {
                     _UIService.SetHeroDetails();
 
                     _UIService.BringPanelToFront(_UIService.Game);
 
-                    _gameLogic.StartGame();
+                    _gameService.StartGame();
                 }
             }
             else

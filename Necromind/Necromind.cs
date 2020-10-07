@@ -33,9 +33,9 @@ namespace NecromindUI
 
         private void startGame()
         {
-            _UIService = UIService.Instance;
-            _menuService = MenuService.Instance;
-            _gameService = GameService.Instance;
+            _UIService = UIService.GetInstance();
+            _menuService = MenuService.GetInstance();
+            _gameService = GameService.GetInstance();
 
             setPanels();
             setLabels();
