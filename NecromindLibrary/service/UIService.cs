@@ -392,5 +392,15 @@ namespace NecromindLibrary.service
         {
             RichTextBoxes[EventLog].Text = isAppend ? RichTextBoxes[EventLog].Text + "\n" + text : text;
         }
+
+        public void SetUIToTown()
+        {
+            SetButtonAvailability(Buttons[BtnForward], false);
+            SetButtonAvailability(Buttons[BtnShoj], true);
+            SetButtonAvailability(Buttons[BtnBrangor], true);
+            SetButtonAvailability(Buttons[BtnViascen], true);
+
+            SetEventLogText("You are in town.", false);
+        }
     }
 }
