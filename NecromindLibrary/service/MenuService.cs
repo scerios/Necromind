@@ -25,7 +25,6 @@ namespace NecromindLibrary.service
         // The hero which is about to be deleted
         public static HeroModel HeroToDelete { get; private set; }
 
-
         private MenuService(IDataConnection dataAccess)
         {
             _UIService = UIService.GetInstance();
@@ -33,6 +32,10 @@ namespace NecromindLibrary.service
             _gameService = GameService.GetInstance();
         }
 
+        /// <summary>
+        /// Returns the only instance which was created due to singleton pattern.
+        /// </summary>
+        /// <returns>The only MenuService instance.</returns>
         public static MenuService GetInstance()
         {
             if (_instance == null)

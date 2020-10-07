@@ -12,6 +12,7 @@ namespace NecromindLibrary
         /// </summary>
         public static void InitializeConnection() 
         {
+            // Using a MongoDB connection.
             connection = MongoConnector.GetInstance();
         }
     }

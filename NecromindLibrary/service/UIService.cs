@@ -108,6 +108,10 @@ namespace NecromindLibrary.service
         {
         }
 
+        /// <summary>
+        /// Returns the only instance which was created due to singleton pattern.
+        /// </summary>
+        /// <returns>The only UIService instance.</returns>
         public static UIService GetInstance()
         {
             if (_instance == null)

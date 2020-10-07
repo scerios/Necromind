@@ -19,12 +19,15 @@ namespace NecromindLibrary.service
         // The hero which is currently being played
         public static HeroModel Hero { get; private set; }
 
-
         private GameService()
         {
             _UIService = UIService.GetInstance();
         }
 
+        /// <summary>
+        /// Returns the only instance which was created due to singleton pattern.
+        /// </summary>
+        /// <returns>The only GameService instance.</returns>
         public static GameService GetInstance()
         {
             if (_instance == null)
