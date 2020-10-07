@@ -44,7 +44,7 @@ namespace NecromindLibrary.service
         }
 
         /// <summary>
-        /// Sets the hero's location to town and displays a message to tell this.
+        /// Sets the hero's location to town.
         /// </summary>
         public void StartGame()
         {
@@ -53,7 +53,16 @@ namespace NecromindLibrary.service
         }
 
         /// <summary>
-        /// Sets the hero's location to the outskirts and displays a message to tell this.
+        /// Sets the hero's location to town.
+        /// </summary>
+        public void MoveToTown()
+        {
+            Hero.Location = Town;
+            _UIService.SetUIToTown();
+        }
+
+        /// <summary>
+        /// Sets the hero's location to the outskirts.
         /// </summary>
         public void MoveToOutSkirts()
         {

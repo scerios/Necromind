@@ -713,6 +713,7 @@ namespace NecromindUI
             this.btnTown.TabIndex = 13;
             this.btnTown.Text = "Town";
             this.btnTown.UseVisualStyleBackColor = false;
+            this.btnTown.Click += new System.EventHandler(this.btnTown_Click);
             // 
             // panelBack
             // 

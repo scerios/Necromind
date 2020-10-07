@@ -216,5 +216,10 @@ namespace NecromindUI
         {
             _gameService.MoveForward();
         }
+
+        private void btnTown_Click(object sender, EventArgs e)
+        {
+            _gameService.MoveToTown();
+        }
     }
 }
