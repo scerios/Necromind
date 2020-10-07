@@ -402,5 +402,15 @@ namespace NecromindLibrary.service
 
             SetEventLogText("You are in town.", false);
         }
+
+        public void SetUIToOutOfTown(string welcomeMsg)
+        {
+            SetButtonAvailability(Buttons[BtnForward], true);
+            SetButtonAvailability(Buttons[BtnShoj], false);
+            SetButtonAvailability(Buttons[BtnBrangor], false);
+            SetButtonAvailability(Buttons[BtnViascen], false);
+
+            SetEventLogText(welcomeMsg, false);
+        }
     }
 }
