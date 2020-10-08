@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using NecromindLibrary.model;
+using System.Collections;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
@@ -169,31 +171,31 @@ namespace NecromindLibrary.service
         /// <summary>
         /// Sets all the labels and group boxes texts for the hero to the current hero's values.
         /// </summary>
-        public void SetHeroDetails()
+        public void SetHeroDetails(HeroModel hero)
         {
             GroupBox details = GroupBoxes[HeroDetails];
             GroupBox inventory = GroupBoxes[HeroInventory];
             GroupBox quests = GroupBoxes[HeroQuests];
 
-            if (GameService.Hero.Name.EndsWith("s") || GameService.Hero.Name.EndsWith("S"))
+            if (hero.Name.EndsWith("s") || hero.Name.EndsWith("S"))
             {
-                details.Text = details.Text.Replace(HeroNamePlaceholder + "'s", GameService.Hero.Name + "'");
-                inventory.Text = inventory.Text.Replace(HeroNamePlaceholder + "'s", GameService.Hero.Name + "'");
-                quests.Text = quests.Text.Replace(HeroNamePlaceholder + "'s", GameService.Hero.Name + "'");
+                details.Text = details.Text.Replace(HeroNamePlaceholder + "'s", hero.Name + "'");
+                inventory.Text = inventory.Text.Replace(HeroNamePlaceholder + "'s", hero.Name + "'");
+                quests.Text = quests.Text.Replace(HeroNamePlaceholder + "'s", hero.Name + "'");
             }
             else
             {
-                details.Text = details.Text.Replace(HeroNamePlaceholder, GameService.Hero.Name);
-                inventory.Text = inventory.Text.Replace(HeroNamePlaceholder, GameService.Hero.Name);
-                quests.Text = quests.Text.Replace(HeroNamePlaceholder, GameService.Hero.Name);
+                details.Text = details.Text.Replace(HeroNamePlaceholder, hero.Name);
+                inventory.Text = inventory.Text.Replace(HeroNamePlaceholder, hero.Name);
+                quests.Text = quests.Text.Replace(HeroNamePlaceholder, hero.Name);
             }
 
-            Labels[HeroHealth].Text = GameService.Hero.HitPointsMax.ToString() + " / " + GameService.Hero.HitPoints.ToString();
-            Labels[HeroGold].Text = GameService.Hero.Gold.ToString();
-            Labels[HeroXP].Text = GameService.Hero.ExperiencePoints.ToString() + " / " + GameService.Hero.NextLevelAt.ToString();
-            Labels[HeroLevel].Text = GameService.Hero.Level.ToString();
-            Labels[HeroDamage].Text = GameService.Hero.Damage.ToString();
-            Labels[HeroDefense].Text = GameService.Hero.Defense.ToString();
+            Labels[HeroHealth].Text = hero.HitPointsMax.ToString() + " / " + hero.HitPoints.ToString();
+            Labels[HeroGold].Text = hero.Gold.ToString();
+            Labels[HeroXP].Text = hero.ExperiencePoints.ToString() + " / " + hero.NextLevelAt.ToString();
+            Labels[HeroLevel].Text = hero.Level.ToString();
+            Labels[HeroDamage].Text = hero.Damage.ToString();
+            Labels[HeroDefense].Text = hero.Defense.ToString();
         }
 
         /// <summary>
@@ -233,7 +235,6 @@ namespace NecromindLibrary.service
         /// <param name="heroName">Name of the hero which was supposed to be deleted.</param>
         public void HideConfirmDeletePanel(string heroName)
         {
-            MenuService.SetHeroToDelete(null);
             SetControlsAvailability(Panels[LoadGame].Controls, true);
 
             SendPanelToBack(ConfirmDelete);
@@ -423,15 +424,18 @@ namespace NecromindLibrary.service
         }
 
         /// <summary>
-        /// Sets the UI (buttons) to match as the player is in combat.
+        /// Sets the UI to match as the player is in combat.
         /// </summary>
-        public void SetUIToBattle()
+        public void SetUIToBattle(string targetName)
         {
             SetButtonAvailability(Buttons[BtnAttack], true);
             SetButtonAvailability(Buttons[BtnFortify], true);
             SetButtonAvailability(Buttons[BtnForward], false);
             SetButtonAvailability(Buttons[BtnTown], false);
             SetButtonAvailability(Buttons[BtnOutskirts], false);
+
+            GroupBoxes[TargetDetails].Visible = true;
+            GroupBoxes[TargetDetails].Text = targetName + "'s Details";
         }
     }
 }

@@ -10,37 +10,31 @@ namespace NecromindLibrary.service
 {
     public class MenuService
     {
-        private UIService _UIService;
-        private IDataConnection _dataAccess;
-        private GameService _gameService;
+        // Collection name to store heroes.
+        public readonly string HeroesCollection = ConfigurationManager.AppSettings["heroesCollection"];
 
         private static MenuService _instance;
+
+        private UIService _UIService = UIService.GetInstance();
+        private IDataConnection _connection;
+        private GameService _gameService = GameService.GetInstance();
 
         // List of dynamically created buttons while loading saved heroes
         private List<Button> _createdButtons = new List<Button>();
 
-        // Collection name to store heroes.
-        public readonly string HeroesCollection = ConfigurationManager.AppSettings["heroesCollection"];
-
         // The hero which is about to be deleted
-        public static HeroModel HeroToDelete { get; private set; }
+        public HeroModel HeroToDelete { get; private set; }
 
-        private MenuService(IDataConnection dataAccess)
+        private MenuService(IDataConnection connection)
         {
-            _UIService = UIService.GetInstance();
-            _dataAccess = dataAccess;
-            _gameService = GameService.GetInstance();
+            _connection = connection;
         }
 
-        /// <summary>
-        /// Returns the only instance which was created due to singleton pattern.
-        /// </summary>
-        /// <returns>The only MenuService instance.</returns>
-        public static MenuService GetInstance()
+        public static MenuService GetInstance(IDataConnection connection)
         {
             if (_instance == null)
             {
-                _instance = new MenuService(GlobalConfig.connection);
+                _instance = new MenuService(connection);
             }
 
             return _instance;
@@ -53,7 +47,7 @@ namespace NecromindLibrary.service
         {
             _UIService.RemoveButtonControlsFromPanel(_createdButtons, _UIService.LoadGame);
 
-            List<HeroModel> Heroes = _dataAccess.GetAllRecords<HeroModel>(HeroesCollection);
+            List<HeroModel> Heroes = _connection.GetAllRecords<HeroModel>(HeroesCollection);
 
             if (Heroes.Count == 0)
             {
@@ -126,8 +120,8 @@ namespace NecromindLibrary.service
         /// <param name="id">ID of hero.</param>
         private void LoadHeroByIdBtn(Guid id)
         {
-            GameService.SetHero(_dataAccess.GetRecordById<HeroModel>(HeroesCollection, id.ToString()));
-            _UIService.SetHeroDetails();
+            _gameService.SetHero(_connection.GetRecordById<HeroModel>(HeroesCollection, id.ToString()));
+            _UIService.SetHeroDetails(_gameService.Hero);
             _UIService.BringPanelToFront(_UIService.Game);
             _gameService.StartGame();
         }
@@ -160,7 +154,7 @@ namespace NecromindLibrary.service
 
                         if (_UIService.Buttons[_UIService.BtnDeleteHero].Enabled)
                         {
-                            if (_dataAccess.TryDeleteRecordById<HeroModel>(HeroesCollection, hero.Id.ToString()))
+                            if (_connection.TryDeleteRecordById<HeroModel>(HeroesCollection, hero.Id.ToString()))
                             {
                                 foreach (Button createdButton in _createdButtons)
                                 {
@@ -169,6 +163,7 @@ namespace NecromindLibrary.service
 
                                 ShowAllLoadedHeroes();
                                 _UIService.HideConfirmDeletePanel(hero.Name);
+                                SetHeroToDelete();
                             }
                         }
                         else
@@ -181,6 +176,7 @@ namespace NecromindLibrary.service
                     case Keys.Escape: // If ESCAPE is pressed
 
                         _UIService.HideConfirmDeletePanel(hero.Name);
+                        SetHeroToDelete();
 
                         break;
                 }
@@ -193,7 +189,7 @@ namespace NecromindLibrary.service
         public void CreateNewHero()
         {
             TextBox heroName = _UIService.TextBoxes[_UIService.NewHeroName];
-            List<HeroModel> heroes = _dataAccess.GetAllRecords<HeroModel>(HeroesCollection);
+            List<HeroModel> heroes = _connection.GetAllRecords<HeroModel>(HeroesCollection);
 
             if (heroName.Text.Length < 3)
             {
@@ -203,14 +199,13 @@ namespace NecromindLibrary.service
             {
                 string defaultHeroId = "00000000-0000-0000-0000-000000000000";
                 HeroModel hero = new HeroModel(heroName.Text);
-                hero.Id = new Guid(_dataAccess.TryCreateNewRecord(HeroesCollection, hero));
-
-                GameService.SetHero(hero);
-
+                hero.Id = new Guid(_connection.TryCreateNewRecord(HeroesCollection, hero));
 
                 if (defaultHeroId != hero.Id.ToString())
                 {
-                    _UIService.SetHeroDetails();
+                    _gameService.SetHero(hero);
+
+                    _UIService.SetHeroDetails(_gameService.Hero);
 
                     _UIService.BringPanelToFront(_UIService.Game);
 
@@ -252,18 +247,19 @@ namespace NecromindLibrary.service
         /// </summary>
         public void DeleteHero()
         {
-            if (_dataAccess.TryDeleteRecordById<HeroModel>(HeroesCollection, HeroToDelete.Id.ToString()))
+            if (_connection.TryDeleteRecordById<HeroModel>(HeroesCollection, HeroToDelete.Id.ToString()))
             {
                 ShowAllLoadedHeroes();
                 _UIService.HideConfirmDeletePanel(HeroToDelete.Name);
+                SetHeroToDelete();
             }
         }
 
         /// <summary>
         /// Sets the HeroToDelete HeroModel.
         /// </summary>
-        /// <param name="hero">Hero which is about to be deleted.</param>
-        public static void SetHeroToDelete(HeroModel hero)
+        /// <param name="hero">Hero which is about to be deleted. Leave empty if needs to be null.</param>
+        public void SetHeroToDelete(HeroModel hero = null)
         {
             HeroToDelete = hero;
         }

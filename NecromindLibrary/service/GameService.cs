@@ -1,29 +1,28 @@
 ﻿using NecromindLibrary.model;
+using System;
 using System.Windows.Forms;
 
 namespace NecromindLibrary.service
 {
     public class GameService
     {
-        private UIService _UIService;
-
         private static GameService _instance;
 
-        private LocationModel Town { get; set; } = new LocationModel(LocationType.Town);
-        private LocationModel OutSkirts { get; set; }
-        private LocationModel Monastery { get; set; }
+        private UIService _UIService = UIService.GetInstance();
+        private BattleService _battleService;
 
         // Hero's current location index in the map array.
         private int locationIndex = 0;
 
+        public event EventHandler OnStartGame;
+
         // The hero which is currently being played.
-        public static HeroModel Hero { get; private set; }
+        public HeroModel Hero { get; set; }
         // The current enemy which the hero fights.
-        public static KillableModel Enemy { get; private set; }
+        public KillableModel Enemy { get; set; }
 
         private GameService()
         {
-            _UIService = UIService.GetInstance();
         }
 
         /// <summary>
@@ -40,7 +39,7 @@ namespace NecromindLibrary.service
             return _instance;
         }
 
-        public static void SetHero(HeroModel hero)
+        public void SetHero(HeroModel hero)
         {
             Hero = hero;
         }
@@ -50,7 +49,6 @@ namespace NecromindLibrary.service
         /// </summary>
         public void StartGame()
         {
-            Hero.Location = Town;
             _UIService.SetUIToTown();
         }
 
@@ -59,7 +57,6 @@ namespace NecromindLibrary.service
         /// </summary>
         public void MoveToTown()
         {
-            Hero.Location = Town;
             _UIService.SetUIToTown();
         }
 
@@ -69,14 +66,13 @@ namespace NecromindLibrary.service
         public void MoveToOutSkirts()
         {
             locationIndex = 0;
-            OutSkirts = new LocationModel(LocationType.OutSkirts);
-            Hero.Location = OutSkirts;
+            Hero.Location = new LocationModel(LocationType.OutSkirts);
 
             _UIService.SetUIToOutOfTown("You are now in the outskirts.");
         }
 
         /// <summary>
-        /// Moves the hero forward in the current area and depending on what is there an encounter might happen.
+        /// Moves the hero forward in the current area and depending on what is there an event will happen.
         /// </summary>
         public void MoveForward()
         {
@@ -87,7 +83,10 @@ namespace NecromindLibrary.service
                     break;
 
                 case 1:
-                    _UIService.SetEventLogText("You have encountered an enemy.", true);
+                    _battleService = new BattleService(Hero);
+
+                    _UIService.SetEventLogText($"You have encountered a { _battleService.GetEnemyName() }.", true);
+                    _UIService.SetUIToBattle(_battleService.GetEnemyName());
 
                     break;
 
@@ -101,6 +100,11 @@ namespace NecromindLibrary.service
             {
                 _UIService.SetButtonAvailability(GetButtonByName(_UIService.BtnForward), false);
             }
+        }
+
+        public void AttackTarget()
+        {
+            _battleService.AttackTarget();
         }
 
         /// <summary>

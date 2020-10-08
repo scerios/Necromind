@@ -1,5 +1,7 @@
-﻿using NecromindLibrary.service;
+﻿using NecromindLibrary;
+using NecromindLibrary.service;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -14,13 +16,13 @@ namespace NecromindUI
         private GameService _gameService;
 
         // All the needed UI to set dynamically
-        private static Dictionary<string, Panel> _panels = new Dictionary<string, Panel>();
-        private static Dictionary<string, Label> _labels = new Dictionary<string, Label>();
-        private static Dictionary<string, TextBox> _textBoxes = new Dictionary<string, TextBox>();
-        private static Dictionary<string, RichTextBox> _richTextBoxes = new Dictionary<string, RichTextBox>();
-        private static Dictionary<string, GroupBox> _groupBoxes = new Dictionary<string, GroupBox>();
-        private static Dictionary<string, ListBox> _listBoxes = new Dictionary<string, ListBox>();
-        private static Dictionary<string, Button> _buttons = new Dictionary<string, Button>();
+        private Dictionary<string, Panel> _panels = new Dictionary<string, Panel>();
+        private Dictionary<string, Label> _labels = new Dictionary<string, Label>();
+        private Dictionary<string, TextBox> _textBoxes = new Dictionary<string, TextBox>();
+        private Dictionary<string, RichTextBox> _richTextBoxes = new Dictionary<string, RichTextBox>();
+        private Dictionary<string, GroupBox> _groupBoxes = new Dictionary<string, GroupBox>();
+        private Dictionary<string, ListBox> _listBoxes = new Dictionary<string, ListBox>();
+        private Dictionary<string, Button> _buttons = new Dictionary<string, Button>();
 
         public Necromind()
         {
@@ -34,7 +36,7 @@ namespace NecromindUI
         private void startGame()
         {
             _UIService = UIService.GetInstance();
-            _menuService = MenuService.GetInstance();
+            _menuService = MenuService.GetInstance(GlobalConfig.connection);
             _gameService = GameService.GetInstance();
 
             setPanels();
@@ -220,6 +222,11 @@ namespace NecromindUI
         private void btnTown_Click(object sender, EventArgs e)
         {
             _gameService.MoveToTown();
+        }
+
+        private void btnAttack_Click(object sender, EventArgs e)
+        {
+            _gameService.AttackTarget();
         }
     }
 }

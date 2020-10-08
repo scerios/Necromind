@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -10,12 +11,24 @@ namespace NecromindLibrary.model
     /// <summary>
     /// Represents a living character which can be killed in combat.
     /// </summary>
-    public class KillableModel : CharacterModel
+    public class KillableModel : CharacterModel, INotifyPropertyChanged
     {
+        private int _hitPoints;
         /// <summary>
         /// How many health points the character currently has.
         /// </summary>
-        public int HitPoints { get; set; }
+        public int HitPoints {
+            get 
+            { 
+                return _hitPoints; 
+            } 
+
+            set
+            {
+                _hitPoints = value;
+                OnPropertyChanged("labelHeroHealthValue");
+            }
+        }
 
         /// <summary>
         /// How many health point is the maximum for the character.
@@ -41,5 +54,13 @@ namespace NecromindLibrary.model
         /// How much gold the character currently has.
         /// </summary>
         public int Gold { get; set; }
+
+        public event EventHandler OnKilled;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
     }
 }

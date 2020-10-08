@@ -413,6 +413,7 @@ namespace NecromindUI
             this.btnAttack.TabIndex = 14;
             this.btnAttack.Text = "Attack";
             this.btnAttack.UseVisualStyleBackColor = false;
+            this.btnAttack.Click += new System.EventHandler(this.btnAttack_Click);
             // 
             // panelFight
             // 
