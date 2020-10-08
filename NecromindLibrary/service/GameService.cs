@@ -79,7 +79,7 @@ namespace NecromindLibrary.service
             switch (Hero.Location.Map[locationIndex])
             {
                 case 0:
-                    _UIService.SetEventLogText("Empty area.", true);
+                    _UIService.SetEventLogText("Empty area.", true, true);
                     break;
 
                 case 1:

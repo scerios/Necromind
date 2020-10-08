@@ -389,9 +389,19 @@ namespace NecromindLibrary.service
         /// </summary>
         /// <param name="text">The text which shall be written.</param>
         /// <param name="isAppend">True if text should be appended. False if text should be replaced.</param>
-        public void SetEventLogText(string text, bool isAppend)
+        /// <param name="isAddLinebreak">True if a linebreak should be appended. False otherwise.</param>
+        public void SetEventLogText(string text, bool isAppend = false, bool isAddLinebreak = false)
         {
-            RichTextBoxes[EventLog].Text = isAppend ? RichTextBoxes[EventLog].Text + "\n" + text : text;
+            string eventLogText = RichTextBoxes[EventLog].Text;
+
+            RichTextBoxes[EventLog].Text = isAppend ? eventLogText + "\n" + text : text;
+
+            eventLogText = RichTextBoxes[EventLog].Text;
+
+            RichTextBoxes[EventLog].Text = isAddLinebreak ? eventLogText + "\n" : eventLogText;
+
+            RichTextBoxes[EventLog].SelectionStart = eventLogText.Length;
+            RichTextBoxes[EventLog].ScrollToCaret();
         }
 
         /// <summary>

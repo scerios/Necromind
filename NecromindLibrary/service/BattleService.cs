@@ -127,7 +127,7 @@ namespace NecromindLibrary.service
 
         private void EnemyKilled(object sender, EventArgs e)
         {
-            _UIService.SetEventLogText("You have killed the enemy", true);
+            _UIService.SetEventLogText("You have killed the enemy", true, true);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace NecromindLibrary.service
         private void AttackHero()
         {
             _currentHero.HitPoints -= _currentEnemy.Damage - _currentHero.Defense;
-            _UIService.SetEventLogText($"The { _currentEnemy.Name } have dealt { _currentEnemy.Damage - _currentHero.Defense } damage to you. { _currentHero.HitPoints } remains.", true);
+            _UIService.SetEventLogText($"The { _currentEnemy.Name } have dealt { _currentEnemy.Damage - _currentHero.Defense } damage to you. { _currentHero.HitPoints } remains.", true, true);
 
             if (_currentHero.HitPoints < 1)
             {
@@ -146,7 +146,7 @@ namespace NecromindLibrary.service
 
         private void HeroKilled(object sender, EventArgs e)
         {
-            _UIService.SetEventLogText("You have been killed", true);
+            _UIService.SetEventLogText("You have been killed");
         }
     }
 }
