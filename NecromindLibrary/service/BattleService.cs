@@ -113,11 +113,17 @@ namespace NecromindLibrary.service
         public void AttackTarget()
         {
             _currentEnemy.HealthPoints -= _currentHero.Damage - _currentEnemy.Defense;
-            _UIService.SetEventLogText($"You have dealt { _currentHero.Damage - _currentEnemy.Defense } damage to the { _currentEnemy.Name }. { _currentEnemy.HealthPoints } remains.", true);
+            _UIService.SetEventLogText(
+                $"You have dealt { _currentHero.Damage - _currentEnemy.Defense } damage to the { _currentEnemy.Name }. " +
+                $"{ _currentEnemy.HealthPoints } remains.", true
+                );
 
             if (_currentEnemy.HealthPoints < 1)
             {
-                _currentEnemy.OnKilled += EnemyKilled;
+                _currentHero.ExperiencePoints += 100;
+                _currentHero.Gold += _currentEnemy.Gold;
+                //_currentEnemy.OnKilled += EnemyKilled;
+                _UIService.SetEventLogText($"The { _currentEnemy.Name } is dead.", true, true);
             }
             else
             {
@@ -135,12 +141,24 @@ namespace NecromindLibrary.service
         /// </summary>
         private void AttackHero()
         {
-            _currentHero.HealthPoints -= _currentEnemy.Damage - _currentHero.Defense;
-            _UIService.SetEventLogText($"The { _currentEnemy.Name } have dealt { _currentEnemy.Damage - _currentHero.Defense } damage to you. { _currentHero.HealthPoints } remains.", true, true);
+            int damage = _currentEnemy.Damage - _currentHero.Defense;
 
-            if (_currentHero.HealthPoints < 1)
+            if (damage > 0)
             {
-                _currentHero.OnKilled += HeroKilled;
+                _currentHero.HealthPoints -= damage;
+                _UIService.SetEventLogText(
+                    $"The { _currentEnemy.Name } have dealt { _currentEnemy.Damage - _currentHero.Defense } damage to you. " +
+                    $"{ _currentHero.HealthPoints } remains.", true, true
+                    );
+
+                if (_currentHero.HealthPoints < 1)
+                {
+                    _currentHero.OnKilled += HeroKilled;
+                }
+            }
+            else
+            {
+                _UIService.SetEventLogText($"The { _currentEnemy.Name } couldn't deal any damage to you.", true, true);
             }
         }
 

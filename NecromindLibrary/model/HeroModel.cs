@@ -10,12 +10,30 @@ namespace NecromindLibrary.model
         /// <summary>
         /// How much experience points the hero currently has.
         /// </summary>
-        public int ExperiencePoints { get; set; }
+        private int _experiencePoints;
+        public int ExperiencePoints 
+        {
+            get => _experiencePoints;
+            set
+            {
+                _experiencePoints = value;
+                OnPropertyChanged("ExperiencePoints");
+            }
+        }
 
         /// <summary>
         /// At how much experience points is the next level.
         /// </summary>
-        public int NextLevelAt { get; set; }
+        private int _nextLevelAt;
+        public int NextLevelAt 
+        {
+            get => _nextLevelAt; 
+            set
+            {
+                _nextLevelAt = value;
+                OnPropertyChanged("NextLevelAt");
+            }
+        }
 
         /// <summary>
         /// A list of active quests.

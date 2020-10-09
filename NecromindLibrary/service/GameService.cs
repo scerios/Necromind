@@ -43,6 +43,13 @@ namespace NecromindLibrary.service
         {
             Hero = hero;
             _UIService.Labels[_UIService.HeroHealth].DataBindings.Add("Text", hero, "HealthPoints");
+            _UIService.Labels[_UIService.HeroMaxHealth].DataBindings.Add("Text", hero, "HealthPointsMax");
+            _UIService.Labels[_UIService.HeroDamage].DataBindings.Add("Text", hero, "Damage");
+            _UIService.Labels[_UIService.HeroDefense].DataBindings.Add("Text", hero, "Defense");
+            _UIService.Labels[_UIService.HeroLevel].DataBindings.Add("Text", hero, "Level");
+            _UIService.Labels[_UIService.HeroXP].DataBindings.Add("Text", hero, "ExperiencePoints");
+            _UIService.Labels[_UIService.HeroNextLevelAt].DataBindings.Add("Text", hero, "NextLevelAt");
+            _UIService.Labels[_UIService.HeroGold].DataBindings.Add("Text", hero, "Gold");
         }
 
         /// <summary>

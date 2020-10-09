@@ -18,11 +18,9 @@ namespace NecromindLibrary.model
         /// How many health points the character currently has.
         /// </summary>
         private int _healthPoints;
-        public int HealthPoints {
-            get 
-            { 
-                return _healthPoints; 
-            } 
+        public int HealthPoints 
+        {
+            get => _healthPoints;
 
             set
             {
@@ -34,27 +32,72 @@ namespace NecromindLibrary.model
         /// <summary>
         /// How many health point is the maximum for the character.
         /// </summary>
-        public int HealthPointsMax { get; set; }
+        private int _healthPointsMax;
+        public int HealthPointsMax
+        {
+            get => _healthPointsMax; 
+            set
+            {
+                _healthPointsMax = value;
+                OnPropertyChanged("HealthPointsMax");
+            }
+        }
 
         /// <summary>
         /// How much damage the character can deal.
         /// </summary>
-        public int Damage { get; set; }
+        private int _damage;
+        public int Damage 
+        {
+            get => _damage; 
+            set
+            {
+                _damage = value;
+                OnPropertyChanged("Damage");
+            }
+        }
 
         /// <summary>
         /// How much damage reduction the character has.
         /// </summary>
-        public int Defense { get; set; }
+        private int _defense;
+        public int Defense 
+        {
+            get => _defense;
+            set
+            {
+                _defense = value;
+                OnPropertyChanged("Defense");
+            }
+        }
 
         /// <summary>
         /// Current level of the character.
         /// </summary>
-        public int Level { get; set; }
+        private int _level;
+        public int Level 
+        {
+            get => _level;
+            set
+            {
+                _level = value;
+                OnPropertyChanged("Level");
+            }
+        }
 
         /// <summary>
         /// How much gold the character currently has.
         /// </summary>
-        public int Gold { get; set; }
+        private int _gold;
+        public int Gold 
+        {
+            get => _gold;
+            set
+            {
+                _gold = value;
+                OnPropertyChanged("Gold");
+            } 
+        }
 
         public event EventHandler OnKilled;
         public event PropertyChangedEventHandler PropertyChanged;
