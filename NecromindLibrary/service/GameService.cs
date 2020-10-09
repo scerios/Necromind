@@ -94,6 +94,8 @@ namespace NecromindLibrary.service
                     _battleService = new BattleService(Hero);
 
                     _UIService.SetEventLogText($"You have encountered a { _battleService.GetEnemyName() }.", true);
+                    _battleService = new BattleService(Hero);
+                    Enemy = _battleService.GetCurrentEnemy();
                     _UIService.SetUIToBattle(_battleService.GetEnemyName());
 
                     break;
@@ -112,7 +114,7 @@ namespace NecromindLibrary.service
 
         public void AttackTarget()
         {
-            _battleService.AttackTarget();
+            _battleService.Attack(Hero, Enemy);
         }
 
         /// <summary>

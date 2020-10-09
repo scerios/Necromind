@@ -26,6 +26,11 @@ namespace NecromindLibrary.model
             {
                 _healthPoints = value;
                 OnPropertyChanged("HealthPoints");
+
+                if (_healthPoints < 0)
+                {
+                    IsAlive = false;
+                }
             }
         }
 
@@ -98,6 +103,8 @@ namespace NecromindLibrary.model
                 OnPropertyChanged("Gold");
             } 
         }
+
+        public bool IsAlive { get; set; } = true;
 
         public event EventHandler OnKilled;
         public event PropertyChangedEventHandler PropertyChanged;

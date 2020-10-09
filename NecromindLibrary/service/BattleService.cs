@@ -98,6 +98,11 @@ namespace NecromindLibrary.service
             return gold;
         }
 
+        public KillableModel GetCurrentEnemy()
+        {
+            return _currentEnemy;
+        }
+
         /// <summary>
         /// Returns the enemy's name as a string.
         /// </summary>
@@ -108,63 +113,59 @@ namespace NecromindLibrary.service
         }
 
         /// <summary>
-        /// The hero attacks the target then if the target is still alive it strikes back.
+        /// Attacker attacks the target and if attacker was the Hero and target is still alive then target will retaliate (attacks back).
         /// </summary>
-        public void AttackTarget()
+        /// <param name="attacker">A Killable model who attacks.</param>
+        /// <param name="target">A KillableModel who defends.</param>
+        public void Attack(KillableModel attacker, KillableModel target)
         {
-            _currentEnemy.HealthPoints -= _currentHero.Damage - _currentEnemy.Defense;
-            _UIService.SetEventLogText(
-                $"You have dealt { _currentHero.Damage - _currentEnemy.Defense } damage to the { _currentEnemy.Name }. " +
-                $"{ _currentEnemy.HealthPoints } remains.", true
-                );
-
-            if (_currentEnemy.HealthPoints < 1)
-            {
-                _currentHero.ExperiencePoints += 100;
-                _currentHero.Gold += _currentEnemy.Gold;
-                //_currentEnemy.OnKilled += EnemyKilled;
-                _UIService.SetEventLogText($"The { _currentEnemy.Name } is dead.", true, true);
-            }
-            else
-            {
-                AttackHero();
-            }
-        }
-
-        private void EnemyKilled(object sender, EventArgs e)
-        {
-            _UIService.SetEventLogText("You have killed the enemy", true, true);
-        }
-
-        /// <summary>
-        /// The enemy attacks the hero.
-        /// </summary>
-        private void AttackHero()
-        {
-            int damage = _currentEnemy.Damage - _currentHero.Defense;
+            int damage = GetActualDamage(attacker.Damage, target.Defense);
 
             if (damage > 0)
             {
-                _currentHero.HealthPoints -= damage;
-                _UIService.SetEventLogText(
-                    $"The { _currentEnemy.Name } have dealt { _currentEnemy.Damage - _currentHero.Defense } damage to you. " +
-                    $"{ _currentHero.HealthPoints } remains.", true, true
-                    );
+                target.HealthPoints -= damage;
 
-                if (_currentHero.HealthPoints < 1)
+                if (attacker.GetType() == typeof(HeroModel))
                 {
-                    _currentHero.OnKilled += HeroKilled;
+                    _UIService.SetEventLogText($"You have dealt { damage } damage to the { target.Name }.", true);
+
+                    if (!target.IsAlive)
+                    {
+                        _UIService.SetEventLogText($"You have killed the { target.Name }.", true);
+                    }
+                    else
+                    {
+                        _UIService.SetEventLogText($"The { target.Name } has { target.HealthPoints } hitpoints remaining.", true, true);
+
+                        // Target (an enemy of the hero) will retaliate after being attacked.
+                        Attack(target, attacker);
+                    }
                 }
-            }
-            else
-            {
-                _UIService.SetEventLogText($"The { _currentEnemy.Name } couldn't deal any damage to you.", true, true);
+                else
+                {
+                    _UIService.SetEventLogText($"The { attacker.Name } has dealt { damage } damage to you.", true);
+                    
+                    if (!target.IsAlive)
+                    {
+                        _UIService.SetEventLogText($"You have died.", true);
+                    }
+                    else
+                    {
+                        _UIService.SetEventLogText($"You have { target.HealthPoints } hitpoints remaining.", true, true);
+                    }
+                }
             }
         }
 
-        private void HeroKilled(object sender, EventArgs e)
+        /// <summary>
+        /// Counts the damage by subtracting target's defense out of attacker's damage.
+        /// </summary>
+        /// <param name="attackerDamage">Integer value of attacker's damage.</param>
+        /// <param name="targetDefense">Integer value of target's defense.</param>
+        /// <returns>The damage which is going to be dealt.</returns>
+        private int GetActualDamage(int attackerDamage, int targetDefense)
         {
-            _UIService.SetEventLogText("You have been killed");
+            return attackerDamage - targetDefense;
         }
     }
 }
