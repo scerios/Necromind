@@ -14,27 +14,27 @@ namespace NecromindLibrary.model
     /// </summary>
     public class KillableModel : CharacterModel, INotifyPropertyChanged
     {
-        private int _hitPoints;
         /// <summary>
         /// How many health points the character currently has.
         /// </summary>
-        public int HitPoints {
+        private int _healthPoints;
+        public int HealthPoints {
             get 
             { 
-                return _hitPoints; 
+                return _healthPoints; 
             } 
 
             set
             {
-                _hitPoints = value;
-                OnPropertyChanged("HitPoints");
+                _healthPoints = value;
+                OnPropertyChanged("HealthPoints");
             }
         }
 
         /// <summary>
         /// How many health point is the maximum for the character.
         /// </summary>
-        public int HitPointsMax { get; set; }
+        public int HealthPointsMax { get; set; }
 
         /// <summary>
         /// How much damage the character can deal.

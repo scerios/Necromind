@@ -73,8 +73,10 @@ namespace NecromindUI
         private void setLabels()
         {
             _labels.Add(_UIService.HeroHealth, labelHeroHealthValue);
+            _labels.Add(_UIService.HeroMaxHealth, labelHeroMaxHealthValue);
             _labels.Add(_UIService.HeroGold, labelHeroGoldValue);
             _labels.Add(_UIService.HeroXP, labelHeroXPValue);
+            _labels.Add(_UIService.HeroNextLevelAt, labelHeroNextLevelAtValue);
             _labels.Add(_UIService.HeroLevel, labelHeroLevelValue);
             _labels.Add(_UIService.HeroDamage, labelHeroDamageValue);
             _labels.Add(_UIService.HeroDefense, labelHeroDefenseValue);

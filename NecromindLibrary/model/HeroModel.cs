@@ -54,8 +54,8 @@ namespace NecromindLibrary.model
         public HeroModel(string name)
         {
             Name = name;
-            HitPoints = 100;
-            HitPointsMax = 100;
+            HealthPoints = 100;
+            HealthPointsMax = 100;
             Damage = 10;
             Defense = 5;
             Level = 1;

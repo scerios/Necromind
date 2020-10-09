@@ -27,8 +27,8 @@ namespace NecromindLibrary.service
         {
             _currentEnemy.Name = "Skeleton";
             _currentEnemy.Level = GenerateRandomLevel();
-            _currentEnemy.HitPointsMax = GenerateRandomHealth();
-            _currentEnemy.HitPoints = _currentEnemy.HitPointsMax;
+            _currentEnemy.HealthPointsMax = GenerateRandomHealth();
+            _currentEnemy.HealthPoints = _currentEnemy.HealthPointsMax;
             _currentEnemy.Damage = GenerateRandomDamage();
             _currentEnemy.Defense = GenerateRandomDefense();
             _currentEnemy.Gold = GenerateRandomGold();
@@ -112,10 +112,10 @@ namespace NecromindLibrary.service
         /// </summary>
         public void AttackTarget()
         {
-            _currentEnemy.HitPoints -= _currentHero.Damage - _currentEnemy.Defense;
-            _UIService.SetEventLogText($"You have dealt { _currentHero.Damage - _currentEnemy.Defense } damage to the { _currentEnemy.Name }. { _currentEnemy.HitPoints } remains.", true);
+            _currentEnemy.HealthPoints -= _currentHero.Damage - _currentEnemy.Defense;
+            _UIService.SetEventLogText($"You have dealt { _currentHero.Damage - _currentEnemy.Defense } damage to the { _currentEnemy.Name }. { _currentEnemy.HealthPoints } remains.", true);
 
-            if (_currentEnemy.HitPoints < 1)
+            if (_currentEnemy.HealthPoints < 1)
             {
                 _currentEnemy.OnKilled += EnemyKilled;
             }
@@ -135,10 +135,10 @@ namespace NecromindLibrary.service
         /// </summary>
         private void AttackHero()
         {
-            _currentHero.HitPoints -= _currentEnemy.Damage - _currentHero.Defense;
-            _UIService.SetEventLogText($"The { _currentEnemy.Name } have dealt { _currentEnemy.Damage - _currentHero.Defense } damage to you. { _currentHero.HitPoints } remains.", true, true);
+            _currentHero.HealthPoints -= _currentEnemy.Damage - _currentHero.Defense;
+            _UIService.SetEventLogText($"The { _currentEnemy.Name } have dealt { _currentEnemy.Damage - _currentHero.Defense } damage to you. { _currentHero.HealthPoints } remains.", true, true);
 
-            if (_currentHero.HitPoints < 1)
+            if (_currentHero.HealthPoints < 1)
             {
                 _currentHero.OnKilled += HeroKilled;
             }

@@ -67,7 +67,7 @@ namespace NecromindUI
             this.groupBoxHeroInventory = new System.Windows.Forms.GroupBox();
             this.listBoxHeroItems = new System.Windows.Forms.ListBox();
             this.panelGameMenu = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelMovement = new System.Windows.Forms.Panel();
             this.btnForward = new System.Windows.Forms.Button();
             this.panelVendor = new System.Windows.Forms.Panel();
             this.btnBrangor = new System.Windows.Forms.Button();
@@ -83,9 +83,9 @@ namespace NecromindUI
             this.labelHeroDefenseValue = new System.Windows.Forms.Label();
             this.labelHeroDamageValue = new System.Windows.Forms.Label();
             this.labelHeroLevelValue = new System.Windows.Forms.Label();
-            this.labelHeroXPValue = new System.Windows.Forms.Label();
+            this.labelHeroNextLevelAtValue = new System.Windows.Forms.Label();
             this.labelHeroGoldValue = new System.Windows.Forms.Label();
-            this.labelHeroHealthValue = new System.Windows.Forms.Label();
+            this.labelHeroMaxHealthValue = new System.Windows.Forms.Label();
             this.labelHeroDefense = new System.Windows.Forms.Label();
             this.labelHeroDamage = new System.Windows.Forms.Label();
             this.labelHeroLevel = new System.Windows.Forms.Label();
@@ -95,6 +95,10 @@ namespace NecromindUI
             this.panelError = new System.Windows.Forms.Panel();
             this.labelErrorMsg = new System.Windows.Forms.Label();
             this.labelErrorTitle = new System.Windows.Forms.Label();
+            this.labelHeroHealthValue = new System.Windows.Forms.Label();
+            this.labelHealthSlash = new System.Windows.Forms.Label();
+            this.labelHeroXPValue = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelNewGame.SuspendLayout();
             this.panelLoadGame.SuspendLayout();
@@ -109,7 +113,7 @@ namespace NecromindUI
             this.groupBoxTargetInventory.SuspendLayout();
             this.groupBoxHeroInventory.SuspendLayout();
             this.panelGameMenu.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panelMovement.SuspendLayout();
             this.panelVendor.SuspendLayout();
             this.panelLocation.SuspendLayout();
             this.panelBack.SuspendLayout();
@@ -569,7 +573,7 @@ namespace NecromindUI
             // 
             // panelGameMenu
             // 
-            this.panelGameMenu.Controls.Add(this.panel1);
+            this.panelGameMenu.Controls.Add(this.panelMovement);
             this.panelGameMenu.Controls.Add(this.panelVendor);
             this.panelGameMenu.Controls.Add(this.panelLocation);
             this.panelGameMenu.Controls.Add(this.panelBack);
@@ -579,15 +583,15 @@ namespace NecromindUI
             this.panelGameMenu.Size = new System.Drawing.Size(140, 661);
             this.panelGameMenu.TabIndex = 3;
             // 
-            // panel1
+            // panelMovement
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.btnForward);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 375);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(140, 65);
-            this.panel1.TabIndex = 3;
+            this.panelMovement.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelMovement.Controls.Add(this.btnForward);
+            this.panelMovement.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelMovement.Location = new System.Drawing.Point(0, 375);
+            this.panelMovement.Name = "panelMovement";
+            this.panelMovement.Size = new System.Drawing.Size(140, 65);
+            this.panelMovement.TabIndex = 3;
             // 
             // btnForward
             // 
@@ -744,12 +748,16 @@ namespace NecromindUI
             // groupBoxHeroDetails
             // 
             this.groupBoxHeroDetails.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBoxHeroDetails.Controls.Add(this.label1);
+            this.groupBoxHeroDetails.Controls.Add(this.labelHeroXPValue);
+            this.groupBoxHeroDetails.Controls.Add(this.labelHealthSlash);
+            this.groupBoxHeroDetails.Controls.Add(this.labelHeroHealthValue);
             this.groupBoxHeroDetails.Controls.Add(this.labelHeroDefenseValue);
             this.groupBoxHeroDetails.Controls.Add(this.labelHeroDamageValue);
             this.groupBoxHeroDetails.Controls.Add(this.labelHeroLevelValue);
-            this.groupBoxHeroDetails.Controls.Add(this.labelHeroXPValue);
+            this.groupBoxHeroDetails.Controls.Add(this.labelHeroNextLevelAtValue);
             this.groupBoxHeroDetails.Controls.Add(this.labelHeroGoldValue);
-            this.groupBoxHeroDetails.Controls.Add(this.labelHeroHealthValue);
+            this.groupBoxHeroDetails.Controls.Add(this.labelHeroMaxHealthValue);
             this.groupBoxHeroDetails.Controls.Add(this.labelHeroDefense);
             this.groupBoxHeroDetails.Controls.Add(this.labelHeroDamage);
             this.groupBoxHeroDetails.Controls.Add(this.labelHeroLevel);
@@ -792,14 +800,14 @@ namespace NecromindUI
             this.labelHeroLevelValue.TabIndex = 9;
             this.labelHeroLevelValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // labelHeroXPValue
+            // labelHeroNextLevelAtValue
             // 
-            this.labelHeroXPValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelHeroXPValue.Location = new System.Drawing.Point(116, 75);
-            this.labelHeroXPValue.Name = "labelHeroXPValue";
-            this.labelHeroXPValue.Size = new System.Drawing.Size(108, 20);
-            this.labelHeroXPValue.TabIndex = 8;
-            this.labelHeroXPValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelHeroNextLevelAtValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelHeroNextLevelAtValue.Location = new System.Drawing.Point(116, 75);
+            this.labelHeroNextLevelAtValue.Name = "labelHeroNextLevelAtValue";
+            this.labelHeroNextLevelAtValue.Size = new System.Drawing.Size(54, 20);
+            this.labelHeroNextLevelAtValue.TabIndex = 8;
+            this.labelHeroNextLevelAtValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelHeroGoldValue
             // 
@@ -810,14 +818,14 @@ namespace NecromindUI
             this.labelHeroGoldValue.TabIndex = 7;
             this.labelHeroGoldValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // labelHeroHealthValue
+            // labelHeroMaxHealthValue
             // 
-            this.labelHeroHealthValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelHeroHealthValue.Location = new System.Drawing.Point(116, 25);
-            this.labelHeroHealthValue.Name = "labelHeroHealthValue";
-            this.labelHeroHealthValue.Size = new System.Drawing.Size(108, 20);
-            this.labelHeroHealthValue.TabIndex = 6;
-            this.labelHeroHealthValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelHeroMaxHealthValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelHeroMaxHealthValue.Location = new System.Drawing.Point(116, 25);
+            this.labelHeroMaxHealthValue.Name = "labelHeroMaxHealthValue";
+            this.labelHeroMaxHealthValue.Size = new System.Drawing.Size(54, 20);
+            this.labelHeroMaxHealthValue.TabIndex = 6;
+            this.labelHeroMaxHealthValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelHeroDefense
             // 
@@ -900,6 +908,44 @@ namespace NecromindUI
             this.labelErrorTitle.TabIndex = 0;
             this.labelErrorTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // labelHeroHealthValue
+            // 
+            this.labelHeroHealthValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelHeroHealthValue.Location = new System.Drawing.Point(170, 25);
+            this.labelHeroHealthValue.Name = "labelHeroHealthValue";
+            this.labelHeroHealthValue.Size = new System.Drawing.Size(54, 20);
+            this.labelHeroHealthValue.TabIndex = 12;
+            this.labelHeroHealthValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelHealthSlash
+            // 
+            this.labelHealthSlash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelHealthSlash.Location = new System.Drawing.Point(160, 25);
+            this.labelHealthSlash.Name = "labelHealthSlash";
+            this.labelHealthSlash.Size = new System.Drawing.Size(20, 20);
+            this.labelHealthSlash.TabIndex = 13;
+            this.labelHealthSlash.Text = "/";
+            this.labelHealthSlash.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelHeroXPValue
+            // 
+            this.labelHeroXPValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelHeroXPValue.Location = new System.Drawing.Point(170, 75);
+            this.labelHeroXPValue.Name = "labelHeroXPValue";
+            this.labelHeroXPValue.Size = new System.Drawing.Size(54, 20);
+            this.labelHeroXPValue.TabIndex = 18;
+            this.labelHeroXPValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Location = new System.Drawing.Point(160, 75);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(20, 20);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "/";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Necromind
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -937,7 +983,7 @@ namespace NecromindUI
             this.groupBoxTargetInventory.ResumeLayout(false);
             this.groupBoxHeroInventory.ResumeLayout(false);
             this.panelGameMenu.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.panelMovement.ResumeLayout(false);
             this.panelVendor.ResumeLayout(false);
             this.panelLocation.ResumeLayout(false);
             this.panelBack.ResumeLayout(false);
@@ -969,9 +1015,9 @@ namespace NecromindUI
         private System.Windows.Forms.Label labelHeroDefenseValue;
         private System.Windows.Forms.Label labelHeroDamageValue;
         private System.Windows.Forms.Label labelHeroLevelValue;
-        private System.Windows.Forms.Label labelHeroXPValue;
+        private System.Windows.Forms.Label labelHeroNextLevelAtValue;
         private System.Windows.Forms.Label labelHeroGoldValue;
-        private System.Windows.Forms.Label labelHeroHealthValue;
+        private System.Windows.Forms.Label labelHeroMaxHealthValue;
         private System.Windows.Forms.Label labelHeroDefense;
         private System.Windows.Forms.Label labelHeroDamage;
         private System.Windows.Forms.Panel panelConfirmDelete;
@@ -1012,8 +1058,12 @@ namespace NecromindUI
         private Button btnAccept;
         private ListBox listBoxTargetAvailableQuests;
         private ListBox listBoxHeroActiveQuests;
-        private Panel panel1;
+        private Panel panelMovement;
         private Button btnForward;
+        private Label labelHealthSlash;
+        private Label labelHeroHealthValue;
+        private Label label1;
+        private Label labelHeroXPValue;
     }
 }
 

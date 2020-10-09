@@ -42,7 +42,7 @@ namespace NecromindLibrary.service
         public void SetHero(HeroModel hero)
         {
             Hero = hero;
-            _UIService.Labels[_UIService.HeroHealth].DataBindings.Add("Text", hero, "HitPoints");
+            _UIService.Labels[_UIService.HeroHealth].DataBindings.Add("Text", hero, "HealthPoints");
         }
 
         /// <summary>

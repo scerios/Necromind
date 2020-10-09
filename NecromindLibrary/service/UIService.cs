@@ -35,8 +35,10 @@ namespace NecromindLibrary.service
 
         // All the needed label reference names
         public readonly string HeroHealth = ConfigurationManager.AppSettings["labelHeroHealth"];
+        public readonly string HeroMaxHealth = ConfigurationManager.AppSettings["labelHeroMaxHealth"];
         public readonly string HeroGold = ConfigurationManager.AppSettings["labelHeroGold"];
         public readonly string HeroXP = ConfigurationManager.AppSettings["labelHeroXP"];
+        public readonly string HeroNextLevelAt = ConfigurationManager.AppSettings["labelHeroNextLevelAt"];
         public readonly string HeroLevel = ConfigurationManager.AppSettings["labelHeroLevel"];
         public readonly string HeroDamage = ConfigurationManager.AppSettings["labelHeroDamage"];
         public readonly string HeroDefense = ConfigurationManager.AppSettings["labelHeroDefense"];
@@ -160,8 +162,10 @@ namespace NecromindLibrary.service
             GroupBoxes[TargetQuests].Text = TargetNamePlaceholder + "'s Quests";
 
             RichTextBoxes[EventLog].Text = "";
+            Labels[HeroMaxHealth].Text = "";
             Labels[HeroHealth].Text = "";
             Labels[HeroGold].Text = "";
+            Labels[HeroNextLevelAt].Text = "";
             Labels[HeroXP].Text = "";
             Labels[HeroLevel].Text = "";
             Labels[HeroDamage].Text = "";
@@ -190,9 +194,11 @@ namespace NecromindLibrary.service
                 quests.Text = quests.Text.Replace(HeroNamePlaceholder, hero.Name);
             }
 
-            Labels[HeroHealth].Text = hero.HitPointsMax.ToString() + " / " + hero.HitPoints.ToString();
+            Labels[HeroMaxHealth].Text = hero.HealthPointsMax.ToString();
+            Labels[HeroHealth].Text = hero.HealthPoints.ToString();
             Labels[HeroGold].Text = hero.Gold.ToString();
-            Labels[HeroXP].Text = hero.ExperiencePoints.ToString() + " / " + hero.NextLevelAt.ToString();
+            Labels[HeroNextLevelAt].Text = hero.NextLevelAt.ToString();
+            Labels[HeroXP].Text = hero.ExperiencePoints.ToString();
             Labels[HeroLevel].Text = hero.Level.ToString();
             Labels[HeroDamage].Text = hero.Damage.ToString();
             Labels[HeroDefense].Text = hero.Defense.ToString();
