@@ -1,2 +1,7 @@
 # Necromind
-RPG game in C#
+
+### An RPG game with MongoDB
+
+Still in developement!
+
+v0.1
