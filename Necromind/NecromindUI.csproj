@@ -73,9 +73,11 @@
     <Compile Include="NecromindOld.Designer.cs">
       <DependentUpon>NecromindOld.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presenters\MenuLoadPresenter.cs" />
     <Compile Include="Presenters\MenuNewPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\IMenuLoad.cs" />
     <Compile Include="Views\IMenuNew.cs" />
     <EmbeddedResource Include="MenuLoad.resx">
       <DependentUpon>MenuLoad.cs</DependentUpon>

@@ -11,7 +11,7 @@ namespace NecromindLibrary.model
         /// How much experience points the hero currently has.
         /// </summary>
         private int _experiencePoints;
-        public int ExperiencePoints 
+        public int ExperiencePoints
         {
             get => _experiencePoints;
             set
@@ -25,9 +25,9 @@ namespace NecromindLibrary.model
         /// At how much experience points is the next level.
         /// </summary>
         private int _nextLevelAt;
-        public int NextLevelAt 
+        public int NextLevelAt
         {
-            get => _nextLevelAt; 
+            get => _nextLevelAt;
             set
             {
                 _nextLevelAt = value;

@@ -154,6 +154,7 @@
     <Compile Include="Models\LocationModel.cs" />
     <Compile Include="Repository\IDataConnection.cs" />
     <Compile Include="Services\BattleService.cs" />
+    <Compile Include="Services\ErrorService.cs" />
     <Compile Include="Services\GameService.cs" />
     <Compile Include="Services\MenuService.cs" />
     <Compile Include="Models\ArmorModel.cs" />

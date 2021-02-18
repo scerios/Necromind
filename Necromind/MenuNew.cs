@@ -14,6 +14,8 @@ namespace NecromindUI
 {
     public partial class MenuNew : UserControl
     {
+        public event EventHandler BtnBackClick;
+
         public MenuNew()
         {
             InitializeComponent();
@@ -21,8 +23,7 @@ namespace NecromindUI
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            SendToBack();
-            Visible = false;
+            BtnBackClick?.Invoke(this, e);
         }
     }
 }

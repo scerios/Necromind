@@ -1,5 +1,5 @@
 ﻿using NecromindLibrary.model;
-using NecromindLibrary.repository;
+using NecromindLibrary.Repository;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -41,12 +41,10 @@ namespace NecromindLibrary.service
         }
 
         /// <summary>
-        /// Creates 2 buttons for each saved heroes and adds events to load or delete any of them. 
+        /// Creates 2 buttons for each saved heroes and adds events to load or delete any of them.
         /// </summary>
         public void ShowAllLoadedHeroes()
         {
-            _UIService.RemoveButtonControlsFromPanel(_createdButtons, _UIService.LoadGame);
-
             List<HeroModel> Heroes = _connection.GetAllRecords<HeroModel>(HeroesCollection);
 
             if (Heroes.Count == 0)

@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Necromind.Presenters;
+using Necromind.Views;
+using NecromindLibrary.model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -10,8 +14,10 @@ using System.Windows.Forms;
 
 namespace NecromindUI
 {
-    public partial class MenuLoad : UserControl
+    public partial class MenuLoad : UserControl, IMenuLoad
     {
+        public event EventHandler BtnBackClick;
+
         public MenuLoad()
         {
             InitializeComponent();
@@ -19,8 +25,18 @@ namespace NecromindUI
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            SendToBack();
-            Visible = false;
+            BtnBackClick?.Invoke(this, e);
+        }
+
+        public void LoadHeroes()
+        {
+            var menuLoadPresenter = new MenuLoadPresenter(this);
+            var heroes = menuLoadPresenter.GetAllHeroes<HeroModel>(ConfigurationManager.AppSettings["heroesCollection"]);
+
+            foreach (var hero in heroes)
+            {
+                Console.WriteLine(hero.Name);
+            }
         }
     }
 }

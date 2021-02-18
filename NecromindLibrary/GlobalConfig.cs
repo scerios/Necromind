@@ -1,4 +1,4 @@
-﻿using NecromindLibrary.repository;
+﻿using NecromindLibrary.Repository;
 
 namespace NecromindLibrary
 {
