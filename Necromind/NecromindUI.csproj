@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MenuMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MenuMain.Designer.cs">
+      <DependentUpon>MenuMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Necromind.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MenuMain.resx">
+      <DependentUpon>MenuMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Necromind.resx">
       <DependentUpon>Necromind.cs</DependentUpon>
     </EmbeddedResource>
