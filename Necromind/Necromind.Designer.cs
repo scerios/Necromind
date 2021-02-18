@@ -1,5 +1,5 @@
 ﻿
-namespace Necromind
+namespace NecromindUI
 {
     partial class Necromind
     {
