@@ -49,11 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MenuMain.cs">
+    <Compile Include="MenuNew.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MenuMain.Designer.cs">
-      <DependentUpon>MenuMain.cs</DependentUpon>
+    <Compile Include="MenuNew.Designer.cs">
+      <DependentUpon>MenuNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Necromind.cs">
       <SubType>Form</SubType>
@@ -67,10 +67,12 @@
     <Compile Include="NecromindOld.Designer.cs">
       <DependentUpon>NecromindOld.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presenters\MenuNewPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MenuMain.resx">
-      <DependentUpon>MenuMain.cs</DependentUpon>
+    <Compile Include="Views\IMenuNew.cs" />
+    <EmbeddedResource Include="MenuNew.resx">
+      <DependentUpon>MenuNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Necromind.resx">
       <DependentUpon>Necromind.cs</DependentUpon>

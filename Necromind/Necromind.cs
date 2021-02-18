@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Necromind.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NecromindUI
+namespace Necromind
 {
     public partial class Necromind : Form
     {
@@ -20,6 +21,17 @@ namespace NecromindUI
             if (Debugger.IsAttached) CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.GetCultureInfo("en-US");
 
             InitializeComponent();
+        }
+
+        private void BtnNewGame_Click(object sender, EventArgs e)
+        {
+            ActivateView(ucMenuNew);
+        }
+
+        private void ActivateView(UserControl view)
+        {
+            view.BringToFront();
+            view.Visible = true;
         }
     }
 }

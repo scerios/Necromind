@@ -946,24 +946,24 @@ namespace NecromindUI
             this.labelErrorTitle.TabIndex = 0;
             this.labelErrorTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Necromind
+            // NecromindOld
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.ClientSize = new System.Drawing.Size(1084, 661);
-            this.Controls.Add(this.panelGame);
-            this.Controls.Add(this.panelConfirmDelete);
-            this.Controls.Add(this.panelLoadGame);
-            this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelNewGame);
             this.Controls.Add(this.panelError);
+            this.Controls.Add(this.panelGame);
+            this.Controls.Add(this.panelLoadGame);
+            this.Controls.Add(this.panelConfirmDelete);
+            this.Controls.Add(this.panelMenu);
             this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(1100, 700);
             this.MinimumSize = new System.Drawing.Size(1100, 700);
-            this.Name = "Necromind";
+            this.Name = "NecromindOld";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Necromind";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Necromind_KeyPress);

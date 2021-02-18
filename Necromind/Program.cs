@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace NecromindUI
+namespace Necromind
 {
     static class Program
     {

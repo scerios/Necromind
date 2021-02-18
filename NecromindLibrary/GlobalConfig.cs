@@ -5,15 +5,15 @@ namespace NecromindLibrary
     public static class GlobalConfig
     {
         // The DB connection across the app.
-        public static IDataConnection connection { get; private set; }
+        public static IDataConnection Connection { get; private set; }
 
         /// <summary>
         /// Initializes the connection.
         /// </summary>
-        public static void InitializeConnection() 
+        public static void InitializeConnection()
         {
             // Using a MongoDB connection.
-            connection = MongoConnector.GetInstance();
+            Connection = MongoConnector.GetInstance();
         }
     }
 }
