@@ -31,11 +31,11 @@ namespace NecromindUI
         public void LoadHeroes()
         {
             var menuLoadPresenter = new MenuLoadPresenter(this);
-            var heroes = menuLoadPresenter.GetAllHeroes<HeroModel>(ConfigurationManager.AppSettings["heroesCollection"]);
+            var heroes = menuLoadPresenter.GetAllHeroes(ConfigurationManager.AppSettings["heroesCollection"]);
 
             foreach (var hero in heroes)
             {
-                Console.WriteLine(hero.Name);
+                Controls.Add(hero);
             }
         }
     }
