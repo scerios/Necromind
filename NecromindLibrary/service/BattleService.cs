@@ -98,6 +98,10 @@ namespace NecromindLibrary.service
             return gold;
         }
 
+        /// <summary>
+        /// Gets the enemy which is the current target for the hero.
+        /// </summary>
+        /// <returns>The enemy as KillableModel.</returns>
         public KillableModel GetCurrentEnemy()
         {
             return _currentEnemy;
