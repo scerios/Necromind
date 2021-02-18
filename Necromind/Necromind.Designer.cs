@@ -33,6 +33,7 @@ namespace Necromind
             this.btnLoadGame = new System.Windows.Forms.Button();
             this.btnNewGame = new System.Windows.Forms.Button();
             this.ucMenuNew = new NecromindUI.MenuNew();
+            this.ucMenuLoad = new NecromindUI.MenuLoad();
             this.SuspendLayout();
             // 
             // btnLoadGame
@@ -49,6 +50,7 @@ namespace Necromind
             this.btnLoadGame.TabIndex = 17;
             this.btnLoadGame.Text = "Load";
             this.btnLoadGame.UseVisualStyleBackColor = false;
+            this.btnLoadGame.Click += new System.EventHandler(this.BtnLoadGame_Click);
             // 
             // btnNewGame
             // 
@@ -78,6 +80,18 @@ namespace Necromind
             this.ucMenuNew.TabIndex = 18;
             this.ucMenuNew.Visible = false;
             // 
+            // ucMenuLoad
+            // 
+            this.ucMenuLoad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.ucMenuLoad.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucMenuLoad.Font = new System.Drawing.Font("Courier New", 9.75F);
+            this.ucMenuLoad.Location = new System.Drawing.Point(0, 0);
+            this.ucMenuLoad.Margin = new System.Windows.Forms.Padding(0);
+            this.ucMenuLoad.Name = "ucMenuLoad";
+            this.ucMenuLoad.Size = new System.Drawing.Size(1084, 661);
+            this.ucMenuLoad.TabIndex = 19;
+            this.ucMenuLoad.Visible = false;
+            // 
             // Necromind
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -87,6 +101,7 @@ namespace Necromind
             this.Controls.Add(this.btnLoadGame);
             this.Controls.Add(this.btnNewGame);
             this.Controls.Add(this.ucMenuNew);
+            this.Controls.Add(this.ucMenuLoad);
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -105,5 +120,6 @@ namespace Necromind
         private System.Windows.Forms.Button btnLoadGame;
         private System.Windows.Forms.Button btnNewGame;
         private NecromindUI.MenuNew ucMenuNew;
+        private NecromindUI.MenuLoad ucMenuLoad;
     }
 }

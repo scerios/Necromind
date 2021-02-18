@@ -6,15 +6,10 @@ using System;
 using MongoDB.Bson;
 using NecromindLibrary.service;
 
-namespace NecromindLibrary.repository
+namespace NecromindLibrary.Repository
 {
     public class MongoConnector : IDataConnection
     {
-        private UIService _UIService;
-
-        // DB error title
-        private readonly string _DBError = "Database error";
-
         // Client and database to use MongoDB
         private readonly MongoClient _client = new MongoClient();
         private readonly IMongoDatabase _DB;
@@ -23,7 +18,6 @@ namespace NecromindLibrary.repository
 
         private MongoConnector()
         {
-            _UIService = UIService.GetInstance();
             _DB = _client.GetDatabase(ConfigurationManager.AppSettings["databaseName"]);
         }
 
@@ -53,9 +47,8 @@ namespace NecromindLibrary.repository
                 collection.InsertOne(record);
                 return record.ToBsonDocument().GetElement("_id").Value.AsGuid.ToString();
             }
-            catch (MongoException e)
+            catch (MongoException)
             {
-                _UIService.DisplayError(_DBError, e.Message);
                 return "00000000-0000-0000-0000-000000000000";
             }
         }
@@ -75,9 +68,8 @@ namespace NecromindLibrary.repository
                 collection.FindOneAndDelete(filter);
                 return true;
             }
-            catch (MongoException e)
+            catch (MongoException)
             {
-                _UIService.DisplayError(_DBError, e.Message);
                 return false;
             }
         }

@@ -23,15 +23,20 @@ namespace Necromind
             InitializeComponent();
         }
 
+        private void ActivateView(UserControl view)
+        {
+            view.BringToFront();
+            view.Visible = true;
+        }
+
         private void BtnNewGame_Click(object sender, EventArgs e)
         {
             ActivateView(ucMenuNew);
         }
 
-        private void ActivateView(UserControl view)
+        private void BtnLoadGame_Click(object sender, EventArgs e)
         {
-            view.BringToFront();
-            view.Visible = true;
+            ActivateView(ucMenuLoad);
         }
     }
 }

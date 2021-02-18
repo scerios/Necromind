@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace NecromindLibrary.repository
+namespace NecromindLibrary.Repository
 {
     public interface IDataConnection
     {
