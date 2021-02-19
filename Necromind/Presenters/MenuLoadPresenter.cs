@@ -15,7 +15,7 @@ namespace Necromind.Presenters
     public class MenuLoadPresenter
     {
         private readonly IMenuLoad _menuLoad;
-        private List<Button> _createdButtons = new List<Button>();
+        private readonly List<Button> _createdButtons = new List<Button>();
 
         public MenuLoadPresenter(IMenuLoad menuLoad)
         {
@@ -25,58 +25,69 @@ namespace Necromind.Presenters
         public List<Button> GetAllHeroes(string collectionName)
         {
             var mongoConnector = MongoConnector.GetInstance();
-            List<HeroModel> Heroes = mongoConnector.GetAllRecords<HeroModel>(collectionName);
+            List<HeroModel> heroes = mongoConnector.GetAllRecords<HeroModel>(collectionName);
 
-            if (Heroes.Count == 0)
+            if (heroes.Count == 1)
             {
-                // TODO - display error msg: no hero to show
+                _menuLoad.ErrorTitle = "No hero found.";
+                _menuLoad.ErrorMsg = "Create a new hero first!";
+                _menuLoad.ErrorPanel.Visible = true;
             }
             else
             {
-                int btnLoadHeroLocX = 480;
-                int btnDeleteHeroLocX = 590;
-                int btnLocY = 100;
-
-                foreach (HeroModel hero in Heroes)
-                {
-                    // Creates a button to load the hero
-                    Button btnLoadHero = CreateButton(
-                        hero.Name,
-                        "btnLoad" + hero.Name,
-                        100,
-                        25,
-                        btnLoadHeroLocX,
-                        btnLocY,
-                        Color.FromArgb(211, 84, 0), // Orange color
-                        Color.FromArgb(229, 232, 232), // Soft gray-ish white color
-                        FlatStyle.Flat
-                    );
-
-                    _createdButtons.Add(btnLoadHero);
-
-                    // Creates a button to delete the hero
-                    Button btnDeleteHero = CreateButton(
-                        "X",
-                        "btnDelete" + hero.Name,
-                        25,
-                        25,
-                        btnDeleteHeroLocX,
-                        btnLocY,
-                        Color.FromArgb(23, 32, 42), // Blue-ish color (exactly like the window background)
-                        Color.FromArgb(214, 48, 49), // Red color
-                        FlatStyle.Flat
-                    );
-
-                    _createdButtons.Add(btnDeleteHero);
-
-                    btnLocY += 40;
-                }
+                CreateButtonsForHeroes(heroes);
             }
 
             return _createdButtons;
         }
 
-        public Button CreateButton(string text, string name, int sizeX, int sizeY, int locX, int locY, Color backColor, Color foreColor, FlatStyle style)
+        private void CreateButtonsForHeroes(List<HeroModel> heroes)
+        {
+            int btnLoadHeroLocX = 480;
+            int btnDeleteHeroLocX = 590;
+            int btnLocY = 100;
+
+            foreach (HeroModel hero in heroes)
+            {
+                // Creates a button to load the hero
+                Button btnLoadHero = CreateButton(
+                    hero.Name,
+                    "btnLoad" + hero.Name,
+                    100,
+                    25,
+                    btnLoadHeroLocX,
+                    btnLocY,
+                    Color.FromArgb(211, 84, 0), // Orange color
+                    Color.FromArgb(229, 232, 232), // Soft gray-ish white color
+                    FlatStyle.Flat
+                );
+
+                _createdButtons.Add(btnLoadHero);
+
+                // TODO - Add an event to button to start game with this hero.
+
+                // Creates a button to delete the hero
+                Button btnDeleteHero = CreateButton(
+                    "X",
+                    "btnDelete" + hero.Name,
+                    25,
+                    25,
+                    btnDeleteHeroLocX,
+                    btnLocY,
+                    Color.FromArgb(23, 32, 42), // Blue-ish color (exactly like the window background)
+                    Color.FromArgb(214, 48, 49), // Red color
+                    FlatStyle.Flat
+                );
+
+                _createdButtons.Add(btnDeleteHero);
+
+                // TODO - Add an event to button to delete this hero.
+
+                btnLocY += 40;
+            }
+        }
+
+        private Button CreateButton(string text, string name, int sizeX, int sizeY, int locX, int locY, Color backColor, Color foreColor, FlatStyle style)
         {
             Button button = new Button();
             button.Text = text;

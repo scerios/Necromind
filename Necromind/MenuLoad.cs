@@ -16,6 +16,35 @@ namespace NecromindUI
 {
     public partial class MenuLoad : UserControl, IMenuLoad
     {
+        public Panel ErrorPanel
+        {
+            get => panelError;
+        }
+
+        public Button BtnClose
+        {
+            get => btnClose;
+        }
+        public string ErrorTitle
+        {
+            get => labelErrorTitle.Text;
+
+            set
+            {
+                labelErrorTitle.Text = value;
+            }
+        }
+
+        public string ErrorMsg
+        {
+            get => labelErrorMsg.Text;
+
+            set
+            {
+                labelErrorMsg.Text = value;
+            }
+        }
+
         public event EventHandler BtnBackClick;
 
         public MenuLoad()
@@ -37,6 +66,13 @@ namespace NecromindUI
             {
                 Controls.Add(hero);
             }
+        }
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            ErrorPanel.Visible = false;
+            ErrorTitle = "";
+            ErrorMsg = "";
         }
     }
 }
