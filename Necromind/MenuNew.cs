@@ -72,5 +72,10 @@ namespace NecromindUI
         {
             _presenter.TryCreateHero();
         }
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            _presenter.HideError();
+        }
     }
 }

@@ -104,6 +104,7 @@ namespace NecromindUI
             this.btnClose.Text = "X";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // labErrorMsg
             // 

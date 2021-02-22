@@ -1,6 +1,7 @@
 ﻿using Necromind.Views;
 using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
+using NecromindLibrary.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,29 @@ namespace Necromind.Presenters
         public void TryCreateHero()
         {
             var mongoConnector = MongoConnector.GetInstance();
-            mongoConnector.TryCreateNewRecord("heroes", new HeroModel(_menuNew.HeroName));
+            if (mongoConnector.TryCreateNewRecord("heroes", new HeroModel(_menuNew.HeroName)))
+            {
+                // TODO - Start the game with the created hero or go to load page so the player can select which hero they want to play.
+            }
+            else
+            {
+                DisplayError();
+            }
+        }
+
+        private void DisplayError()
+        {
+            var textService = new TextService();
+            _menuNew.Title = "Hero couldn't be saved.";
+            _menuNew.Msg = textService.FormatErrorMsg("There was an error during saving to database. Please try again.");
+            _menuNew.IsPanVisible = true;
+        }
+
+        public void HideError()
+        {
+            _menuNew.IsPanVisible = false;
+            _menuNew.Title = "";
+            _menuNew.Msg = "";
         }
     }
 }
