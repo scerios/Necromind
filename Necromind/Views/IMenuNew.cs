@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Necromind.Views
 {
-    public interface IMenuNew
+    public interface IMenuNew : IError
     {
     }
 }

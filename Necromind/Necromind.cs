@@ -17,7 +17,7 @@ namespace Necromind
     public partial class Necromind : Form
     {
         private readonly MenuNew _menuNew;
-        private readonly MenuLoad _menuLoad;
+        private MenuLoad _menuLoad;
 
         public Necromind()
         {
@@ -54,6 +54,7 @@ namespace Necromind
             _menuLoad.LoadHeroes();
 
             _menuLoad.BtnBackClick += new EventHandler(MenuLoad_BtnBackClick);
+
         }
 
         private void MenuLoad_BtnBackClick(object sender, EventArgs e)

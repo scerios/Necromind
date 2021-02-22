@@ -1,6 +1,7 @@
 ﻿using Necromind.Presenters;
 using Necromind.Views;
 using NecromindLibrary.model;
+using NecromindLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,16 +17,13 @@ namespace NecromindUI
 {
     public partial class MenuLoad : UserControl, IMenuLoad
     {
-        public Panel ErrorPanel
+        private readonly MenuLoadPresenter _presenter;
+        public Panel PanelError
         {
             get => panelError;
         }
 
-        public Button BtnClose
-        {
-            get => btnClose;
-        }
-        public string ErrorTitle
+        public string Title
         {
             get => labelErrorTitle.Text;
 
@@ -35,7 +33,7 @@ namespace NecromindUI
             }
         }
 
-        public string ErrorMsg
+        public string Msg
         {
             get => labelErrorMsg.Text;
 
@@ -50,6 +48,7 @@ namespace NecromindUI
         public MenuLoad()
         {
             InitializeComponent();
+            _presenter = new MenuLoadPresenter(this);
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
@@ -59,8 +58,7 @@ namespace NecromindUI
 
         public void LoadHeroes()
         {
-            var menuLoadPresenter = new MenuLoadPresenter(this);
-            var heroes = menuLoadPresenter.GetAllHeroes(ConfigurationManager.AppSettings["heroesCollection"]);
+            var heroes = _presenter.GetAllHeroes(ConfigurationManager.AppSettings["heroesCollection"]);
 
             foreach (var hero in heroes)
             {
@@ -70,9 +68,7 @@ namespace NecromindUI
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
-            ErrorPanel.Visible = false;
-            ErrorTitle = "";
-            ErrorMsg = "";
+            _presenter.HideError();
         }
     }
 }

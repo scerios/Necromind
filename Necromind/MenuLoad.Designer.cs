@@ -31,9 +31,9 @@ namespace NecromindUI
         {
             this.btnBack = new System.Windows.Forms.Button();
             this.panelError = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
             this.labelErrorMsg = new System.Windows.Forms.Label();
             this.labelErrorTitle = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
             this.panelError.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,11 +58,27 @@ namespace NecromindUI
             this.panelError.Controls.Add(this.btnClose);
             this.panelError.Controls.Add(this.labelErrorMsg);
             this.panelError.Controls.Add(this.labelErrorTitle);
-            this.panelError.Location = new System.Drawing.Point(392, 241);
+            this.panelError.Location = new System.Drawing.Point(400, 200);
             this.panelError.Name = "panelError";
             this.panelError.Size = new System.Drawing.Size(300, 178);
-            this.panelError.TabIndex = 21;
+            this.panelError.TabIndex = 23;
             this.panelError.Visible = false;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.btnClose.Location = new System.Drawing.Point(266, 12);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(24, 23);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "X";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // labelErrorMsg
             // 
@@ -87,22 +103,6 @@ namespace NecromindUI
             this.labelErrorTitle.TabIndex = 0;
             this.labelErrorTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.btnClose.Location = new System.Drawing.Point(266, 12);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(24, 23);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "X";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
-            // 
             // MenuLoad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -124,8 +124,8 @@ namespace NecromindUI
 
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Panel panelError;
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label labelErrorMsg;
         private System.Windows.Forms.Label labelErrorTitle;
-        private System.Windows.Forms.Button btnClose;
     }
 }

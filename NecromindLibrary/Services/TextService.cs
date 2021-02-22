@@ -7,30 +7,14 @@ using System.Windows.Forms;
 
 namespace NecromindLibrary.Services
 {
-    public class ErrorService
+    public class TextService
     {
-        public ErrorService()
-        {
-
-        }
-        /// <summary>
-        /// Displays an error window with custom title and message. Also formats the message to add linebreaks.
-        /// </summary>
-        /// <param name="title">Title of the error.</param>
-        /// <param name="msg">Message of the error.</param>
-        public void DisplayError(string title, string msg)
-        {
-            //Labels[ErrorTitle].Text = title;
-            //Labels[ErrorMsg].Text = FormatErrorMsg(msg);
-            //BringPanelToFront(Error);
-        }
-
         /// <summary>
         /// Displays an error window with custom title and message.
         /// </summary>
         /// <param name="title">Title of the error window.</param>
         /// <param name="msg">Message of the error.</param>
-        private string FormatErrorMsg(string msg)
+        public string FormatErrorMsg(string msg)
         {
             int i = 25;
 

@@ -106,7 +106,6 @@ namespace NecromindLibrary.model
 
         public bool IsAlive { get; set; } = true;
 
-        public event EventHandler OnKilled;
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")

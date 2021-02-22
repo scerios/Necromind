@@ -42,7 +42,7 @@ namespace Necromind
             this.btnLoadGame.FlatAppearance.BorderSize = 0;
             this.btnLoadGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoadGame.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnLoadGame.Location = new System.Drawing.Point(480, 140);
+            this.btnLoadGame.Location = new System.Drawing.Point(500, 140);
             this.btnLoadGame.Name = "btnLoadGame";
             this.btnLoadGame.Size = new System.Drawing.Size(100, 25);
             this.btnLoadGame.TabIndex = 17;
@@ -58,7 +58,7 @@ namespace Necromind
             this.btnNewGame.FlatAppearance.BorderSize = 0;
             this.btnNewGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewGame.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnNewGame.Location = new System.Drawing.Point(480, 100);
+            this.btnNewGame.Location = new System.Drawing.Point(500, 100);
             this.btnNewGame.Name = "btnNewGame";
             this.btnNewGame.Size = new System.Drawing.Size(100, 25);
             this.btnNewGame.TabIndex = 16;
