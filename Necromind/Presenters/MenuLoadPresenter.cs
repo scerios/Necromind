@@ -15,18 +15,20 @@ namespace Necromind.Presenters
 {
     public class MenuLoadPresenter
     {
+        private readonly MongoConnector _mongoConnector;
         private readonly IMenuLoad _menuLoad;
         private readonly List<Button> _createdButtons = new List<Button>();
+        private string _heroToDeleteId;
 
         public MenuLoadPresenter(IMenuLoad menuLoad)
         {
             _menuLoad = menuLoad;
+            _mongoConnector = MongoConnector.GetInstance();
         }
 
         public List<Button> GetAllHeroes(string collectionName)
         {
-            var mongoConnector = MongoConnector.GetInstance();
-            var heroes = mongoConnector.GetAllRecords<HeroModel>(collectionName);
+            var heroes = _mongoConnector.GetAllRecords<HeroModel>(collectionName);
 
 
             if (heroes.Count == 0)
@@ -46,14 +48,27 @@ namespace Necromind.Presenters
             var textService = new TextService();
             _menuLoad.Title = "No hero found";
             _menuLoad.Msg = textService.FormatErrorMsg("You must create a hero first to be able to load them.");
-            _menuLoad.IsPanVisible = true;
+            _menuLoad.IsErrorPanVisible = true;
         }
 
         public void HideError()
         {
-            _menuLoad.IsPanVisible = false;
+            _menuLoad.IsErrorPanVisible = false;
             _menuLoad.Title = "";
             _menuLoad.Msg = "";
+        }
+
+        private void DisplayConfDelPanel(string heroName)
+        {
+            _menuLoad.HeroName = heroName;
+            _menuLoad.IsConfDelPanVisible = true;
+        }
+
+        public void HideConfDelPanel()
+        {
+            _menuLoad.IsConfDelPanVisible = false;
+            _menuLoad.HeroName = "";
+            _menuLoad.ConfirmName = "";
         }
 
         private void CreateButtonsForHeroes(List<HeroModel> heroes)
@@ -81,7 +96,10 @@ namespace Necromind.Presenters
 
                 _createdButtons.Add(btnLoadHero);
 
-                // TODO - Add an event to button to start game with this hero.
+                btnLoadHero.Click += (s, ev) =>
+                {
+                    // TODO - Add an event to button to start game with this hero.
+                };
 
                 // Creates a button to delete the hero
                 Button btnDeleteHero = CreateButton(
@@ -100,13 +118,17 @@ namespace Necromind.Presenters
 
                 _createdButtons.Add(btnDeleteHero);
 
-                // TODO - Add an event to button to delete this hero.
+                btnDeleteHero.Click += (s, ev) =>
+                {
+                    _heroToDeleteId = hero.Id.ToString();
+                    DisplayConfDelPanel(hero.Name);
+                };
 
                 btnLocY += 40;
             }
         }
 
-        // TODO - put this in UIControl when it's eventually reworked
+        // TODO - put this in UIService when it's eventually reworked
         private Button CreateButton(
             string text, string name,
             int sizeX, int sizeY, int locX, int locY, int fontSize,
@@ -128,6 +150,11 @@ namespace Necromind.Presenters
             button.TextAlign = alignment;
 
             return button;
+        }
+
+        public void DeleteHero()
+        {
+            _mongoConnector.TryDeleteRecordById<HeroModel>(ConfigurationManager.AppSettings.Get("heroesCollection"), _heroToDeleteId);
         }
     }
 }

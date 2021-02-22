@@ -33,7 +33,7 @@ namespace NecromindUI
             this.btnCreateNewHero = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.panError = new System.Windows.Forms.Panel();
-            this.btnClose = new System.Windows.Forms.Button();
+            this.btnErrorClose = new System.Windows.Forms.Button();
             this.labErrorMsg = new System.Windows.Forms.Label();
             this.labErrorTitle = new System.Windows.Forms.Label();
             this.panError.SuspendLayout();
@@ -81,7 +81,7 @@ namespace NecromindUI
             // panError
             // 
             this.panError.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panError.Controls.Add(this.btnClose);
+            this.panError.Controls.Add(this.btnErrorClose);
             this.panError.Controls.Add(this.labErrorMsg);
             this.panError.Controls.Add(this.labErrorTitle);
             this.panError.Location = new System.Drawing.Point(400, 200);
@@ -90,21 +90,21 @@ namespace NecromindUI
             this.panError.TabIndex = 24;
             this.panError.Visible = false;
             // 
-            // btnClose
+            // btnErrorClose
             // 
-            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.btnClose.Location = new System.Drawing.Point(266, 12);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(24, 23);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "X";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            this.btnErrorClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.btnErrorClose.FlatAppearance.BorderSize = 0;
+            this.btnErrorClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnErrorClose.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnErrorClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.btnErrorClose.Location = new System.Drawing.Point(266, 12);
+            this.btnErrorClose.Name = "btnErrorClose";
+            this.btnErrorClose.Size = new System.Drawing.Size(24, 23);
+            this.btnErrorClose.TabIndex = 2;
+            this.btnErrorClose.Text = "X";
+            this.btnErrorClose.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnErrorClose.UseVisualStyleBackColor = false;
+            this.btnErrorClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // labErrorMsg
             // 
@@ -155,7 +155,7 @@ namespace NecromindUI
         private System.Windows.Forms.Button btnCreateNewHero;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Panel panError;
-        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnErrorClose;
         private System.Windows.Forms.Label labErrorMsg;
         private System.Windows.Forms.Label labErrorTitle;
     }

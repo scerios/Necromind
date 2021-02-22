@@ -9,7 +9,6 @@ namespace NecromindLibrary.Repository
 {
     public class MongoConnector : IDataConnection
     {
-        // Client and database to use MongoDB
         private readonly MongoClient _client = new MongoClient();
         private readonly IMongoDatabase _DB;
 
@@ -17,7 +16,7 @@ namespace NecromindLibrary.Repository
 
         private MongoConnector()
         {
-            _DB = _client.GetDatabase(ConfigurationManager.AppSettings["databaseName"]);
+            _DB = _client.GetDatabase(ConfigurationManager.AppSettings.Get("databaseName"));
         }
 
         public static MongoConnector GetInstance()
@@ -36,7 +35,8 @@ namespace NecromindLibrary.Repository
         /// <typeparam name="T">Custom object.</typeparam>
         /// <param name="collectionName">Name of collection.</param>
         /// <param name="record">The object to be added.</param>
-        /// <returns>An automatically generated Guid for the record OR an empty one upon some DB error.</returns>
+        /// <returns>True if insertion is successful. False otherwise.</returns>
+        /// Alternative return: An automatically generated Guid for the record OR an empty one upon some DB error.
         public bool TryCreateNewRecord<T>(string collectionName, T record)
         {
             var collection = _DB.GetCollection<T>(collectionName);

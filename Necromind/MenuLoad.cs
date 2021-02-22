@@ -18,7 +18,7 @@ namespace NecromindUI
     {
         private readonly MenuLoadPresenter _presenter;
 
-        public bool IsPanVisible
+        public bool IsErrorPanVisible
         {
             get => panError.Visible;
 
@@ -47,7 +47,38 @@ namespace NecromindUI
             }
         }
 
+        public bool IsConfDelPanVisible
+        {
+            get => panConfDel.Visible;
+
+            set
+            {
+                panConfDel.Visible = value;
+            }
+        }
+
+        public string HeroName
+        {
+            get => labHeroName.Text;
+
+            set
+            {
+                labHeroName.Text = value;
+            }
+        }
+
+        public string ConfirmName
+        {
+            get => tbDelHeroName.Text;
+
+            set
+            {
+                tbDelHeroName.Text = value;
+            }
+        }
+
         public event EventHandler BtnBackClick;
+        public event EventHandler BtnDelHeroClick;
 
         public MenuLoad()
         {
@@ -70,9 +101,20 @@ namespace NecromindUI
             }
         }
 
-        private void BtnClose_Click(object sender, EventArgs e)
+        private void BtnErrorClose_Click(object sender, EventArgs e)
         {
             _presenter.HideError();
+        }
+
+        private void BtnDeleteHero_Click(object sender, EventArgs e)
+        {
+            _presenter.DeleteHero();
+            BtnDelHeroClick?.Invoke(this, e);
+        }
+
+        private void BtnDelClose_Click(object sender, EventArgs e)
+        {
+            _presenter.HideConfDelPanel();
         }
     }
 }

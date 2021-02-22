@@ -30,5 +30,8 @@ namespace NecromindLibrary.Services
         /// Maximum health points.
         /// </summary>
         int HealthPointsMax { get; set; }
+
+        void Attack(IFighter enemy);
+        void Fortify();
     }
 }

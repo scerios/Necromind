@@ -9,7 +9,7 @@ namespace Necromind.Views
 {
     public interface IError
     {
-        bool IsPanVisible { get; set; }
+        bool IsErrorPanVisible { get; set; }
         string Title { get; set; }
         string Msg { get; set; }
     }

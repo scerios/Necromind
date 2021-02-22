@@ -86,5 +86,17 @@ namespace NecromindLibrary.Models
             ExperiencePoints = 1;
             NextLevelAt = 1000;
         }
+
+        public void Attack(IFighter enemy)
+        {
+            // TODO - Implement attack logic.
+            throw new NotImplementedException();
+        }
+
+        public void Fortify()
+        {
+            // TODO - Implement defense position logic.
+            throw new NotImplementedException();
+        }
     }
 }

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Necromind.Views
 {
-    public interface IMenuLoad : IError, IConfirmDelete
+    public interface IConfirmDelete
     {
+        bool IsConfDelPanVisible { get; set; }
+        string HeroName { get; set; }
+        string ConfirmName { get; set; }
     }
 }
