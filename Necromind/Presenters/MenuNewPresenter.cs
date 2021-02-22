@@ -1,4 +1,6 @@
 ﻿using Necromind.Views;
+using NecromindLibrary.Models;
+using NecromindLibrary.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,12 @@ namespace Necromind.Presenters
         public MenuNewPresenter(IMenuNew menuNew)
         {
             _menuNew = menuNew;
+        }
+
+        public void TryCreateHero()
+        {
+            var mongoConnector = MongoConnector.GetInstance();
+            mongoConnector.TryCreateNewRecord("heroes", new HeroModel(_menuNew.HeroName));
         }
     }
 }

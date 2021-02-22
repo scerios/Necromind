@@ -145,7 +145,6 @@ namespace NecromindUI
             this.btnLoadGame.TabIndex = 13;
             this.btnLoadGame.Text = "Load";
             this.btnLoadGame.UseVisualStyleBackColor = false;
-            this.btnLoadGame.Click += new System.EventHandler(this.BtnLoadGame_Click);
             // 
             // btnNewGame
             // 
@@ -161,7 +160,6 @@ namespace NecromindUI
             this.btnNewGame.TabIndex = 12;
             this.btnNewGame.Text = "New Game";
             this.btnNewGame.UseVisualStyleBackColor = false;
-            this.btnNewGame.Click += new System.EventHandler(this.BtnNewGame_Click);
             // 
             // panelNewGame
             // 
@@ -181,7 +179,6 @@ namespace NecromindUI
             this.textBoxNewHeroName.Name = "textBoxNewHeroName";
             this.textBoxNewHeroName.Size = new System.Drawing.Size(100, 22);
             this.textBoxNewHeroName.TabIndex = 2;
-            this.textBoxNewHeroName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNewHeroName_KeyPress);
             // 
             // btnCreateNewHero
             // 
@@ -197,7 +194,6 @@ namespace NecromindUI
             this.btnCreateNewHero.TabIndex = 1;
             this.btnCreateNewHero.Text = "Create";
             this.btnCreateNewHero.UseVisualStyleBackColor = false;
-            this.btnCreateNewHero.Click += new System.EventHandler(this.BtnCreateNewHero_Click);
             // 
             // btnBackFromNewGame
             // 
@@ -212,7 +208,6 @@ namespace NecromindUI
             this.btnBackFromNewGame.TabIndex = 0;
             this.btnBackFromNewGame.Text = "Back";
             this.btnBackFromNewGame.UseVisualStyleBackColor = false;
-            this.btnBackFromNewGame.Click += new System.EventHandler(this.BtnBackFromNewGame_Click);
             // 
             // panelLoadGame
             // 
@@ -236,7 +231,6 @@ namespace NecromindUI
             this.btnBackFromLoadGame.TabIndex = 1;
             this.btnBackFromLoadGame.Text = "Back";
             this.btnBackFromLoadGame.UseVisualStyleBackColor = false;
-            this.btnBackFromLoadGame.Click += new System.EventHandler(this.BtnBackFromLoadGame_Click);
             // 
             // panelConfirmDelete
             // 
@@ -265,7 +259,6 @@ namespace NecromindUI
             this.btnDeleteHero.TabIndex = 4;
             this.btnDeleteHero.Text = "DELETE";
             this.btnDeleteHero.UseVisualStyleBackColor = false;
-            this.btnDeleteHero.Click += new System.EventHandler(this.BtnDeleteHero_Click);
             // 
             // richTextBoxConfirmDelete
             // 
@@ -417,7 +410,6 @@ namespace NecromindUI
             this.btnAttack.TabIndex = 14;
             this.btnAttack.Text = "Attack";
             this.btnAttack.UseVisualStyleBackColor = false;
-            this.btnAttack.Click += new System.EventHandler(this.BtnAttack_Click);
             // 
             // panelFight
             // 
@@ -607,7 +599,6 @@ namespace NecromindUI
             this.btnForward.TabIndex = 14;
             this.btnForward.Text = "Forward";
             this.btnForward.UseVisualStyleBackColor = false;
-            this.btnForward.Click += new System.EventHandler(this.BtnForward_Click);
             // 
             // panelVendor
             // 
@@ -688,7 +679,6 @@ namespace NecromindUI
             this.btnOutskirts.TabIndex = 14;
             this.btnOutskirts.Text = "Outskirts";
             this.btnOutskirts.UseVisualStyleBackColor = false;
-            this.btnOutskirts.Click += new System.EventHandler(this.BtnOutskirts_Click);
             // 
             // btnMonastery
             // 
@@ -718,7 +708,6 @@ namespace NecromindUI
             this.btnTown.TabIndex = 13;
             this.btnTown.Text = "Town";
             this.btnTown.UseVisualStyleBackColor = false;
-            this.btnTown.Click += new System.EventHandler(this.BtnTown_Click);
             // 
             // panelBack
             // 
@@ -743,7 +732,6 @@ namespace NecromindUI
             this.btnBackFromGame.TabIndex = 2;
             this.btnBackFromGame.Text = "Back";
             this.btnBackFromGame.UseVisualStyleBackColor = false;
-            this.btnBackFromGame.Click += new System.EventHandler(this.BtnBackFromGame_Click);
             // 
             // groupBoxHeroDetails
             // 
@@ -966,7 +954,6 @@ namespace NecromindUI
             this.Name = "NecromindOld";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Necromind";
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Necromind_KeyPress);
             this.panelMenu.ResumeLayout(false);
             this.panelNewGame.ResumeLayout(false);
             this.panelNewGame.PerformLayout();

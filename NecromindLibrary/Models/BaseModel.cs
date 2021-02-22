@@ -1,17 +1,16 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NecromindLibrary.model
+namespace NecromindLibrary.Models
 {
     /// <summary>
     /// Base class for any character.
     /// </summary>
-    public class CharacterModel
+    public class BaseModel
     {
         /// <summary>
         /// ID of character.
@@ -25,8 +24,13 @@ namespace NecromindLibrary.model
         public string Name { get; set; }
 
         /// <summary>
-        /// List of items the character has.
+        /// How much gold the character has.
         /// </summary>
-        public List<ItemModel> Inventory { get; set; }
+        public int Gold { get; set; }
+
+        /// <summary>
+        /// On which level the character is.
+        /// </summary>
+        public int Level { get; set; }
     }
 }

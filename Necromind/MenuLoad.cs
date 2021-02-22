@@ -1,6 +1,5 @@
 ﻿using Necromind.Presenters;
 using Necromind.Views;
-using NecromindLibrary.model;
 using NecromindLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -18,28 +17,33 @@ namespace NecromindUI
     public partial class MenuLoad : UserControl, IMenuLoad
     {
         private readonly MenuLoadPresenter _presenter;
-        public Panel PanelError
-        {
-            get => panelError;
-        }
 
-        public string Title
+        public bool IsPanVisible
         {
-            get => labelErrorTitle.Text;
+            get => panError.Visible;
 
             set
             {
-                labelErrorTitle.Text = value;
+                panError.Visible = value;
+            }
+        }
+        public string Title
+        {
+            get => labErrorTitle.Text;
+
+            set
+            {
+                labErrorTitle.Text = value;
             }
         }
 
         public string Msg
         {
-            get => labelErrorMsg.Text;
+            get => labErrorMsg.Text;
 
             set
             {
-                labelErrorMsg.Text = value;
+                labErrorMsg.Text = value;
             }
         }
 

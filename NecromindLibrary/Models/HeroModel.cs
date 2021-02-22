@@ -1,89 +1,90 @@
-﻿using System.Collections.Generic;
+﻿using NecromindLibrary.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace NecromindLibrary.model
+namespace NecromindLibrary.Models
 {
-    /// <summary>
-    /// Represents a Hero.
-    /// </summary>
-    public class HeroModel : KillableModel
+    public class HeroModel : BaseModel, IFighter, ILevelable
     {
-        /// <summary>
-        /// How much experience points the hero currently has.
-        /// </summary>
+        private int _dmg;
+        public int Dmg
+        {
+            get => _dmg;
+
+            set
+            {
+                _dmg = value;
+            }
+        }
+
+        private int _def;
+        public int Def
+        {
+            get => _def;
+
+            set
+            {
+                _def = value;
+            }
+        }
+
+        private int _healthPoints;
+        public int HealthPoints
+        {
+            get => _healthPoints;
+
+            set
+            {
+                _healthPoints = value;
+            }
+        }
+
+        private int _healthPointsMax;
+        public int HealthPointsMax
+        {
+            get => _healthPointsMax;
+
+            set
+            {
+                _healthPointsMax = value;
+            }
+        }
+
         private int _experiencePoints;
         public int ExperiencePoints
         {
             get => _experiencePoints;
+
             set
             {
                 _experiencePoints = value;
-                OnPropertyChanged("ExperiencePoints");
             }
         }
 
-        /// <summary>
-        /// At how much experience points is the next level.
-        /// </summary>
         private int _nextLevelAt;
         public int NextLevelAt
         {
             get => _nextLevelAt;
+
             set
             {
                 _nextLevelAt = value;
-                OnPropertyChanged("NextLevelAt");
             }
         }
 
-        /// <summary>
-        /// A list of active quests.
-        /// </summary>
-        public List<QuestModel> ActiveQuests { get; set; }
-
-        /// <summary>
-        /// A list of completed quests.
-        /// </summary>
-        public List<QuestModel> CompletedQuests { get; set; }
-
-        /// <summary>
-        /// A weapon currently equipped.
-        /// </summary>
-        public WeaponModel Weapon { get; set; }
-
-        /// <summary>
-        /// An armor currently equipped.
-        /// </summary>
-        public ArmorModel Armor { get; set; }
-
-        /// <summary>
-        /// The actual location where the hero currently are.
-        /// </summary>
-        public LocationModel Location { get; set; }
-
-        public HeroModel()
-        {
-
-        }
-
-        /// <summary>
-        /// Creates a new hero with the given name and default values.
-        /// </summary>
-        /// <param name="name">Name of the hero.</param>
         public HeroModel(string name)
         {
             Name = name;
             HealthPoints = 100;
             HealthPointsMax = 100;
-            Damage = 10;
-            Defense = 5;
+            Dmg = 10;
+            Def = 5;
             Level = 1;
             ExperiencePoints = 1;
             NextLevelAt = 1000;
-            Armor = null;
-            Weapon = null;
-            ActiveQuests = null;
-            CompletedQuests = null;
-            Inventory = null;
         }
     }
 }

@@ -29,23 +29,23 @@ namespace NecromindUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxNewHeroName = new System.Windows.Forms.TextBox();
+            this.tbHeroName = new System.Windows.Forms.TextBox();
             this.btnCreateNewHero = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
-            this.panelError = new System.Windows.Forms.Panel();
+            this.panError = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
-            this.labelErrorMsg = new System.Windows.Forms.Label();
-            this.labelErrorTitle = new System.Windows.Forms.Label();
-            this.panelError.SuspendLayout();
+            this.labErrorMsg = new System.Windows.Forms.Label();
+            this.labErrorTitle = new System.Windows.Forms.Label();
+            this.panError.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBoxNewHeroName
+            // tbHeroName
             // 
-            this.textBoxNewHeroName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxNewHeroName.Location = new System.Drawing.Point(500, 100);
-            this.textBoxNewHeroName.Name = "textBoxNewHeroName";
-            this.textBoxNewHeroName.Size = new System.Drawing.Size(100, 22);
-            this.textBoxNewHeroName.TabIndex = 5;
+            this.tbHeroName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tbHeroName.Location = new System.Drawing.Point(500, 100);
+            this.tbHeroName.Name = "tbHeroName";
+            this.tbHeroName.Size = new System.Drawing.Size(100, 22);
+            this.tbHeroName.TabIndex = 5;
             // 
             // btnCreateNewHero
             // 
@@ -61,6 +61,7 @@ namespace NecromindUI
             this.btnCreateNewHero.TabIndex = 4;
             this.btnCreateNewHero.Text = "Create";
             this.btnCreateNewHero.UseVisualStyleBackColor = false;
+            this.btnCreateNewHero.Click += new System.EventHandler(this.BtnCreateNewHero_Click);
             // 
             // btnBack
             // 
@@ -77,17 +78,17 @@ namespace NecromindUI
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
-            // panelError
+            // panError
             // 
-            this.panelError.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelError.Controls.Add(this.btnClose);
-            this.panelError.Controls.Add(this.labelErrorMsg);
-            this.panelError.Controls.Add(this.labelErrorTitle);
-            this.panelError.Location = new System.Drawing.Point(400, 200);
-            this.panelError.Name = "panelError";
-            this.panelError.Size = new System.Drawing.Size(300, 178);
-            this.panelError.TabIndex = 24;
-            this.panelError.Visible = false;
+            this.panError.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panError.Controls.Add(this.btnClose);
+            this.panError.Controls.Add(this.labErrorMsg);
+            this.panError.Controls.Add(this.labErrorTitle);
+            this.panError.Location = new System.Drawing.Point(400, 200);
+            this.panError.Name = "panError";
+            this.panError.Size = new System.Drawing.Size(300, 178);
+            this.panError.TabIndex = 24;
+            this.panError.Visible = false;
             // 
             // btnClose
             // 
@@ -104,44 +105,44 @@ namespace NecromindUI
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClose.UseVisualStyleBackColor = false;
             // 
-            // labelErrorMsg
+            // labErrorMsg
             // 
-            this.labelErrorMsg.AutoSize = true;
-            this.labelErrorMsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labelErrorMsg.Location = new System.Drawing.Point(10, 50);
-            this.labelErrorMsg.MinimumSize = new System.Drawing.Size(280, 110);
-            this.labelErrorMsg.Name = "labelErrorMsg";
-            this.labelErrorMsg.Size = new System.Drawing.Size(280, 110);
-            this.labelErrorMsg.TabIndex = 1;
-            this.labelErrorMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labErrorMsg.AutoSize = true;
+            this.labErrorMsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labErrorMsg.Location = new System.Drawing.Point(10, 50);
+            this.labErrorMsg.MinimumSize = new System.Drawing.Size(280, 110);
+            this.labErrorMsg.Name = "labErrorMsg";
+            this.labErrorMsg.Size = new System.Drawing.Size(280, 110);
+            this.labErrorMsg.TabIndex = 1;
+            this.labErrorMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labelErrorTitle
+            // labErrorTitle
             // 
-            this.labelErrorTitle.AutoSize = true;
-            this.labelErrorTitle.Font = new System.Drawing.Font("Courier New", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelErrorTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.labelErrorTitle.Location = new System.Drawing.Point(10, 15);
-            this.labelErrorTitle.MinimumSize = new System.Drawing.Size(240, 0);
-            this.labelErrorTitle.Name = "labelErrorTitle";
-            this.labelErrorTitle.Size = new System.Drawing.Size(240, 16);
-            this.labelErrorTitle.TabIndex = 0;
-            this.labelErrorTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labErrorTitle.AutoSize = true;
+            this.labErrorTitle.Font = new System.Drawing.Font("Courier New", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labErrorTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labErrorTitle.Location = new System.Drawing.Point(10, 15);
+            this.labErrorTitle.MinimumSize = new System.Drawing.Size(240, 0);
+            this.labErrorTitle.Name = "labErrorTitle";
+            this.labErrorTitle.Size = new System.Drawing.Size(240, 16);
+            this.labErrorTitle.TabIndex = 0;
+            this.labErrorTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MenuNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.Controls.Add(this.panelError);
-            this.Controls.Add(this.textBoxNewHeroName);
+            this.Controls.Add(this.panError);
+            this.Controls.Add(this.tbHeroName);
             this.Controls.Add(this.btnCreateNewHero);
             this.Controls.Add(this.btnBack);
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "MenuNew";
             this.Size = new System.Drawing.Size(1084, 661);
-            this.panelError.ResumeLayout(false);
-            this.panelError.PerformLayout();
+            this.panError.ResumeLayout(false);
+            this.panError.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,12 +150,12 @@ namespace NecromindUI
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBoxNewHeroName;
+        private System.Windows.Forms.TextBox tbHeroName;
         private System.Windows.Forms.Button btnCreateNewHero;
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Panel panelError;
+        private System.Windows.Forms.Panel panError;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Label labelErrorMsg;
-        private System.Windows.Forms.Label labelErrorTitle;
+        private System.Windows.Forms.Label labErrorMsg;
+        private System.Windows.Forms.Label labErrorTitle;
     }
 }

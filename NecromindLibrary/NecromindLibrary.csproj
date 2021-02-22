@@ -151,26 +151,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalConfig.cs" />
-    <Compile Include="Models\ErrorModel.cs" />
-    <Compile Include="Models\GeneralDTO.cs" />
-    <Compile Include="Models\LocationModel.cs" />
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\HeroModel.cs" />
     <Compile Include="Repository\IDataConnection.cs" />
     <Compile Include="Services\BattleService.cs" />
+    <Compile Include="Services\IFighter.cs" />
+    <Compile Include="Services\ILevelable.cs" />
     <Compile Include="Services\TextService.cs" />
     <Compile Include="Services\GameService.cs" />
     <Compile Include="Services\MenuService.cs" />
-    <Compile Include="Models\ArmorModel.cs" />
-    <Compile Include="Models\BossModel.cs" />
-    <Compile Include="Models\CharacterModel.cs" />
-    <Compile Include="Models\HeroModel.cs" />
-    <Compile Include="Models\ItemModel.cs" />
-    <Compile Include="Models\KillableModel.cs" />
-    <Compile Include="Models\MonsterModel.cs" />
-    <Compile Include="Models\PotionModel.cs" />
-    <Compile Include="Models\QuestModel.cs" />
-    <Compile Include="Models\QuestObjectiveModel.cs" />
-    <Compile Include="Models\TownNPCModel.cs" />
-    <Compile Include="Models\WeaponModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\MongoConnector.cs" />
     <Compile Include="Services\UIService.cs" />

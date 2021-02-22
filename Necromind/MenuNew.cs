@@ -15,28 +15,43 @@ namespace NecromindUI
     public partial class MenuNew : UserControl, IMenuNew
     {
         private readonly MenuNewPresenter _presenter;
-        public Panel PanelError
+        public bool IsPanVisible
         {
-            get => panelError;
+            get => panError.Visible;
+
+            set
+            {
+                panError.Visible = value;
+            }
         }
 
         public string Title
         {
-            get => labelErrorTitle.Text;
+            get => labErrorTitle.Text;
 
             set
             {
-                labelErrorTitle.Text = value;
+                labErrorTitle.Text = value;
             }
         }
 
         public string Msg
         {
-            get => labelErrorMsg.Text;
+            get => labErrorMsg.Text;
 
             set
             {
-                labelErrorMsg.Text = value;
+                labErrorMsg.Text = value;
+            }
+        }
+
+        public string HeroName
+        {
+            get => tbHeroName.Text;
+
+            set
+            {
+                tbHeroName.Text = value;
             }
         }
 
@@ -51,6 +66,11 @@ namespace NecromindUI
         private void BtnBack_Click(object sender, EventArgs e)
         {
             BtnBackClick?.Invoke(this, e);
+        }
+
+        private void BtnCreateNewHero_Click(object sender, EventArgs e)
+        {
+            _presenter.TryCreateHero();
         }
     }
 }

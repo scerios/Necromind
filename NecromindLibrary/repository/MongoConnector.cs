@@ -4,7 +4,6 @@ using System.Configuration;
 using MongoDB.Driver;
 using System;
 using MongoDB.Bson;
-using NecromindLibrary.service;
 
 namespace NecromindLibrary.Repository
 {
@@ -38,18 +37,20 @@ namespace NecromindLibrary.Repository
         /// <param name="collectionName">Name of collection.</param>
         /// <param name="record">The object to be added.</param>
         /// <returns>An automatically generated Guid for the record OR an empty one upon some DB error.</returns>
-        public string TryCreateNewRecord<T>(string collectionName, T record)
+        public bool TryCreateNewRecord<T>(string collectionName, T record)
         {
             var collection = _DB.GetCollection<T>(collectionName);
 
             try
             {
                 collection.InsertOne(record);
-                return record.ToBsonDocument().GetElement("_id").Value.AsGuid.ToString();
+                return true;
+                //return record.ToBsonDocument().GetElement("_id").Value.AsGuid.ToString();
             }
             catch (MongoException)
             {
-                return "00000000-0000-0000-0000-000000000000";
+                return false;
+                //return "00000000-0000-0000-0000-000000000000";
             }
         }
 

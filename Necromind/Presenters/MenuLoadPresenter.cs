@@ -1,5 +1,4 @@
 ﻿using Necromind.Views;
-using NecromindLibrary.model;
 using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
 using NecromindLibrary.Services;
@@ -30,7 +29,7 @@ namespace Necromind.Presenters
             var heroes = mongoConnector.GetAllRecords<HeroModel>(collectionName);
 
 
-            if (heroes.Count == 1)
+            if (heroes.Count == 0)
             {
                 DisplayError();
             }
@@ -47,12 +46,12 @@ namespace Necromind.Presenters
             var textService = new TextService();
             _menuLoad.Title = "No hero found";
             _menuLoad.Msg = textService.FormatErrorMsg("You must create a hero first to be able to load them.");
-            _menuLoad.PanelError.Visible = true;
+            _menuLoad.IsPanVisible = true;
         }
 
         public void HideError()
         {
-            _menuLoad.PanelError.Visible = false;
+            _menuLoad.IsPanVisible = false;
             _menuLoad.Title = "";
             _menuLoad.Msg = "";
         }
