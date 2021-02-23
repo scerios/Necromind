@@ -35,10 +35,12 @@ namespace NecromindUI
             this.labErrorMsg = new System.Windows.Forms.Label();
             this.labErrorTitle = new System.Windows.Forms.Label();
             this.panConfDel = new System.Windows.Forms.Panel();
+            this.labQuestionMark = new System.Windows.Forms.Label();
+            this.labDelConfirm = new System.Windows.Forms.Label();
             this.btnDelClose = new System.Windows.Forms.Button();
             this.labHeroName = new System.Windows.Forms.Label();
             this.labDelQuestion = new System.Windows.Forms.Label();
-            this.btnDeleteHero = new System.Windows.Forms.Button();
+            this.btnDelHero = new System.Windows.Forms.Button();
             this.tbDelHeroName = new System.Windows.Forms.TextBox();
             this.panError.SuspendLayout();
             this.panConfDel.SuspendLayout();
@@ -113,16 +115,40 @@ namespace NecromindUI
             // panConfDel
             // 
             this.panConfDel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panConfDel.Controls.Add(this.labQuestionMark);
+            this.panConfDel.Controls.Add(this.labDelConfirm);
             this.panConfDel.Controls.Add(this.btnDelClose);
             this.panConfDel.Controls.Add(this.labHeroName);
             this.panConfDel.Controls.Add(this.labDelQuestion);
-            this.panConfDel.Controls.Add(this.btnDeleteHero);
+            this.panConfDel.Controls.Add(this.btnDelHero);
             this.panConfDel.Controls.Add(this.tbDelHeroName);
             this.panConfDel.Location = new System.Drawing.Point(400, 200);
             this.panConfDel.Name = "panConfDel";
-            this.panConfDel.Size = new System.Drawing.Size(300, 178);
+            this.panConfDel.Size = new System.Drawing.Size(300, 241);
             this.panConfDel.TabIndex = 24;
             this.panConfDel.Visible = false;
+            // 
+            // labQuestionMark
+            // 
+            this.labQuestionMark.AutoSize = true;
+            this.labQuestionMark.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labQuestionMark.Location = new System.Drawing.Point(219, 65);
+            this.labQuestionMark.Name = "labQuestionMark";
+            this.labQuestionMark.Size = new System.Drawing.Size(16, 16);
+            this.labQuestionMark.TabIndex = 9;
+            this.labQuestionMark.Text = "?";
+            // 
+            // labDelConfirm
+            // 
+            this.labDelConfirm.AutoSize = true;
+            this.labDelConfirm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labDelConfirm.Location = new System.Drawing.Point(18, 96);
+            this.labDelConfirm.MinimumSize = new System.Drawing.Size(264, 0);
+            this.labDelConfirm.Name = "labDelConfirm";
+            this.labDelConfirm.Size = new System.Drawing.Size(264, 32);
+            this.labDelConfirm.TabIndex = 8;
+            this.labDelConfirm.Text = "Type the name of the character \r\nto confirm delete.";
+            this.labDelConfirm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnDelClose
             // 
@@ -161,30 +187,32 @@ namespace NecromindUI
             this.labDelQuestion.TabIndex = 5;
             this.labDelQuestion.Text = "Are you sure your want to DELETE";
             // 
-            // btnDeleteHero
+            // btnDelHero
             // 
-            this.btnDeleteHero.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDeleteHero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.btnDeleteHero.CausesValidation = false;
-            this.btnDeleteHero.FlatAppearance.BorderSize = 0;
-            this.btnDeleteHero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteHero.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnDeleteHero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnDeleteHero.Location = new System.Drawing.Point(100, 135);
-            this.btnDeleteHero.Name = "btnDeleteHero";
-            this.btnDeleteHero.Size = new System.Drawing.Size(100, 25);
-            this.btnDeleteHero.TabIndex = 4;
-            this.btnDeleteHero.Text = "DELETE";
-            this.btnDeleteHero.UseVisualStyleBackColor = false;
-            this.btnDeleteHero.Click += new System.EventHandler(this.BtnDeleteHero_Click);
+            this.btnDelHero.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnDelHero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.btnDelHero.CausesValidation = false;
+            this.btnDelHero.Enabled = false;
+            this.btnDelHero.FlatAppearance.BorderSize = 0;
+            this.btnDelHero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelHero.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnDelHero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnDelHero.Location = new System.Drawing.Point(100, 197);
+            this.btnDelHero.Name = "btnDelHero";
+            this.btnDelHero.Size = new System.Drawing.Size(100, 25);
+            this.btnDelHero.TabIndex = 4;
+            this.btnDelHero.Text = "DELETE";
+            this.btnDelHero.UseVisualStyleBackColor = false;
+            this.btnDelHero.Click += new System.EventHandler(this.BtnDeleteHero_Click);
             // 
             // tbDelHeroName
             // 
-            this.tbDelHeroName.Location = new System.Drawing.Point(87, 94);
+            this.tbDelHeroName.Location = new System.Drawing.Point(87, 150);
             this.tbDelHeroName.Multiline = true;
             this.tbDelHeroName.Name = "tbDelHeroName";
             this.tbDelHeroName.Size = new System.Drawing.Size(125, 25);
             this.tbDelHeroName.TabIndex = 1;
+            this.tbDelHeroName.TextChanged += new System.EventHandler(this.TbDelHeroName_TextChanged);
             // 
             // MenuLoad
             // 
@@ -214,10 +242,12 @@ namespace NecromindUI
         private System.Windows.Forms.Label labErrorMsg;
         private System.Windows.Forms.Label labErrorTitle;
         private System.Windows.Forms.Panel panConfDel;
-        private System.Windows.Forms.Button btnDeleteHero;
+        private System.Windows.Forms.Button btnDelHero;
         private System.Windows.Forms.TextBox tbDelHeroName;
         private System.Windows.Forms.Label labHeroName;
         private System.Windows.Forms.Label labDelQuestion;
         private System.Windows.Forms.Button btnDelClose;
+        private System.Windows.Forms.Label labQuestionMark;
+        private System.Windows.Forms.Label labDelConfirm;
     }
 }

@@ -11,5 +11,6 @@ namespace Necromind.Views
         bool IsConfDelPanVisible { get; set; }
         string HeroName { get; set; }
         string ConfirmName { get; set; }
+        bool IsBtnDelHeroEnabled { get; set; }
     }
 }

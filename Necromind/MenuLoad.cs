@@ -77,6 +77,16 @@ namespace NecromindUI
             }
         }
 
+        public bool IsBtnDelHeroEnabled
+        {
+            get => btnDelHero.Enabled;
+
+            set
+            {
+                btnDelHero.Enabled = value;
+            }
+        }
+
         public event EventHandler BtnBackClick;
         public event EventHandler BtnDelHeroClick;
 
@@ -115,6 +125,11 @@ namespace NecromindUI
         private void BtnDelClose_Click(object sender, EventArgs e)
         {
             _presenter.HideConfDelPanel();
+        }
+
+        private void TbDelHeroName_TextChanged(object sender, EventArgs e)
+        {
+            _presenter.ChangeBtnDelHeroAvailability();
         }
     }
 }

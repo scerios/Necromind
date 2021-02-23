@@ -33,5 +33,8 @@ namespace NecromindLibrary.Services
             }
             return msg;
         }
+
+        public bool IsGivenStringsAreEqual(string one, string two) =>
+            one.ToLower().Equals(two.ToLower());
     }
 }

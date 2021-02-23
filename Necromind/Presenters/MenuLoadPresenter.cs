@@ -156,5 +156,11 @@ namespace Necromind.Presenters
         {
             _mongoConnector.TryDeleteRecordById<HeroModel>(ConfigurationManager.AppSettings.Get("heroesCollection"), _heroToDeleteId);
         }
+
+        public void ChangeBtnDelHeroAvailability()
+        {
+            var textService = new TextService();
+            _menuLoad.IsBtnDelHeroEnabled = textService.IsGivenStringsAreEqual(_menuLoad.HeroName, _menuLoad.ConfirmName);
+        }
     }
 }
