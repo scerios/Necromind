@@ -10,10 +10,10 @@ namespace NecromindLibrary.Services
     public class TextService
     {
         /// <summary>
-        /// Displays an error window with custom title and message.
+        /// Formats a string by adding linebreaks so it's shown correctly on the error panel.
         /// </summary>
-        /// <param name="title">Title of the error window.</param>
         /// <param name="msg">Message of the error.</param>
+        /// <returns>A formatted string.</returns>
         public string FormatErrorMsg(string msg)
         {
             int i = 25;
