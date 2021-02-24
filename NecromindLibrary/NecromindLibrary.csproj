@@ -152,11 +152,14 @@
   <ItemGroup>
     <Compile Include="GlobalConfig.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\EnemyModel.cs" />
     <Compile Include="Models\HeroModel.cs" />
     <Compile Include="Repository\IDataConnection.cs" />
     <Compile Include="Services\BattleService.cs" />
+    <Compile Include="Services\IConsumer.cs" />
     <Compile Include="Services\IFighter.cs" />
     <Compile Include="Services\ILevelable.cs" />
+    <Compile Include="Services\IPlayer.cs" />
     <Compile Include="Services\TextService.cs" />
     <Compile Include="Services\GameService.cs" />
     <Compile Include="Services\MenuService.cs" />

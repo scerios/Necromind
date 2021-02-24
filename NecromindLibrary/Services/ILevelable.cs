@@ -14,11 +14,22 @@ namespace NecromindLibrary.Services
         /// <summary>
         /// Current experience points.
         /// </summary>
-        int ExperiencePoints { get; set; }
+        int ExperiencePoints { get; }
 
         /// <summary>
         /// When reached, the character will level up.
         /// </summary>
-        int NextLevelAt { get; set; }
+        int NextLevelAt { get; }
+
+        /// <summary>
+        /// Gives some experience calculated from the level of the enemy killed.
+        /// </summary>
+        /// <param name="level"></param>
+        void GainExperience(int level);
+
+        /// <summary>
+        /// Levels up the character and boosts some of its stats.
+        /// </summary>
+        void LevelUp();
     }
 }

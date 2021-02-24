@@ -14,24 +14,38 @@ namespace NecromindLibrary.Services
         /// <summary>
         /// Actual damage the character deals.
         /// </summary>
-        int Dmg { get; set; }
+        int Dmg { get; }
 
         /// <summary>
         /// Defense points which helps reducing incoming damage.
         /// </summary>
-        int Def { get; set; }
+        int Def { get; }
 
         /// <summary>
         /// Current health points.
         /// </summary>
-        int HealthPoints { get; set; }
+        int HealthPoints { get; }
 
         /// <summary>
         /// Maximum health points.
         /// </summary>
-        int HealthPointsMax { get; set; }
+        int HealthPointsMax { get; }
 
+        /// <summary>
+        /// Performs an attack against the target. Attack dmg is calculated by subtracting enemy's def from attackers dmg.
+        /// </summary>
+        /// <param name="enemy">An enemy which can fight.</param>
         void Attack(IFighter enemy);
-        void Fortify();
+
+        /// <summary>
+        /// Takes dmg from the incoming attack.
+        /// </summary>
+        /// <param name="amount">The actual dmg of the attack.</param>
+        void TakeDmg(int amount);
+
+        /// <summary>
+        /// When healthpoints reach 0, the character dies.
+        /// </summary>
+        void Die();
     }
 }

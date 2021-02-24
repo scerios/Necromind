@@ -1,79 +1,27 @@
 ﻿using NecromindLibrary.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace NecromindLibrary.Models
 {
-    public class HeroModel : BaseModel, IFighter, ILevelable
+    public class HeroModel : BaseModel, IPlayer
     {
-        private int _dmg;
-        public int Dmg
-        {
-            get => _dmg;
+        public int Dmg { get; private set; }
 
-            set
-            {
-                _dmg = value;
-            }
-        }
+        public int Def { get; private set; }
 
-        private int _def;
-        public int Def
-        {
-            get => _def;
+        public int HealthPoints { get; private set; }
 
-            set
-            {
-                _def = value;
-            }
-        }
+        public int HealthPointsMax { get; private set; }
 
-        private int _healthPoints;
-        public int HealthPoints
-        {
-            get => _healthPoints;
+        public int ExperiencePoints { get; private set; }
 
-            set
-            {
-                _healthPoints = value;
-            }
-        }
-
-        private int _healthPointsMax;
-        public int HealthPointsMax
-        {
-            get => _healthPointsMax;
-
-            set
-            {
-                _healthPointsMax = value;
-            }
-        }
-
-        private int _experiencePoints;
-        public int ExperiencePoints
-        {
-            get => _experiencePoints;
-
-            set
-            {
-                _experiencePoints = value;
-            }
-        }
-
-        private int _nextLevelAt;
-        public int NextLevelAt
-        {
-            get => _nextLevelAt;
-
-            set
-            {
-                _nextLevelAt = value;
-            }
-        }
+        public int NextLevelAt { get; private set; }
 
         public HeroModel(string name)
         {
@@ -87,16 +35,69 @@ namespace NecromindLibrary.Models
             NextLevelAt = 1000;
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         public void Attack(IFighter enemy)
         {
-            // TODO - Implement attack logic.
+            enemy.TakeDmg(Dmg - enemy.Def);
+        }
+
+        public void TakeDmg(int amount)
+        {
+            HealthPoints -= amount;
+            if (HealthPoints < 1)
+            {
+                Die();
+            }
+        }
+
+        public void Die()
+        {
+            // TODO - Implement die logic.
             throw new NotImplementedException();
         }
 
-        public void Fortify()
+        public void Heal(int amount)
         {
-            // TODO - Implement defense position logic.
-            throw new NotImplementedException();
+            if (HealthPoints + amount < HealthPointsMax)
+            {
+                HealthPoints += amount;
+            }
+            else
+            {
+                FullyHeal();
+            }
+
+        }
+
+        public void FullyHeal()
+        {
+            HealthPoints = HealthPointsMax;
+        }
+
+        public void GainExperience(int level)
+        {
+            ExperiencePoints += level * 10;
+
+            if (ExperiencePoints >= NextLevelAt)
+            {
+                LevelUp();
+            }
+        }
+
+        public void LevelUp()
+        {
+            Level++;
+            Dmg += 10;
+            Def += 2;
+            HealthPointsMax += 20;
+            FullyHeal();
+            NextLevelAt += Level * 1000;
         }
     }
 }

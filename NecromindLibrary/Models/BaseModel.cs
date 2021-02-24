@@ -16,21 +16,21 @@ namespace NecromindLibrary.Models
         /// ID of character.
         /// </summary>
         [BsonId]
-        public Guid Id { get; set; }
+        public Guid Id { get; protected set; }
 
         /// <summary>
         /// Name of character.
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; protected set; }
 
         /// <summary>
         /// How much gold the character has.
         /// </summary>
-        public int Gold { get; set; }
+        public int Gold { get; protected set; }
 
         /// <summary>
         /// On which level the character is.
         /// </summary>
-        public int Level { get; set; }
+        public int Level { get; protected set; }
     }
 }
