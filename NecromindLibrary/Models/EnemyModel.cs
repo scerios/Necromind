@@ -17,17 +17,30 @@ namespace NecromindLibrary.Models
 
         public int HealthPointsMax { get; private set; }
 
-        //public EnemyModel(EnemyModel scheme)
-        //{
-        //    Id = scheme.Id;
-        //    Name = scheme.Name;
-        //    Gold = scheme.Gold;
-        //    Level = scheme.Level;
-        //    Dmg = scheme.Dmg;
-        //    Def = scheme.Def;
-        //    HealthPoints = scheme.HealthPoints;
-        //    HealthPointsMax = scheme.HealthPointsMax;
-        //}
+        /// <summary>
+        /// This constructor is for testing purposes.
+        /// </summary>
+        public EnemyModel()
+        {
+            Gold = 100;
+            Level = 1;
+            Dmg = 1;
+            Def = 1;
+            HealthPoints = 1;
+            HealthPointsMax = 1;
+        }
+
+        public EnemyModel(EnemyModel scheme)
+        {
+            Id = scheme.Id;
+            Name = scheme.Name;
+            Gold = scheme.Gold;
+            Level = scheme.Level;
+            Dmg = scheme.Dmg;
+            Def = scheme.Def;
+            HealthPoints = scheme.HealthPoints;
+            HealthPointsMax = scheme.HealthPointsMax;
+        }
 
         public void Attack(IFighter enemy)
         {
