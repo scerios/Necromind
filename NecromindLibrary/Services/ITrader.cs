@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace NecromindLibrary.Services
 {
-    public interface IPlayer : IFighter, IConsumer, ILevelable, ITrader, INotifyPropertyChanged
+    public interface ITrader
     {
+        void GiveGold(ITrader trader, int amount);
+        void RecieveGold(int amount);
     }
 }

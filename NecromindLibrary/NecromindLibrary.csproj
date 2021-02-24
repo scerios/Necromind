@@ -160,6 +160,7 @@
     <Compile Include="Services\IFighter.cs" />
     <Compile Include="Services\ILevelable.cs" />
     <Compile Include="Services\IPlayer.cs" />
+    <Compile Include="Services\ITrader.cs" />
     <Compile Include="Services\TextService.cs" />
     <Compile Include="Services\GameService.cs" />
     <Compile Include="Services\MenuService.cs" />

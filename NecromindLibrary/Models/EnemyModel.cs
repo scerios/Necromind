@@ -24,10 +24,10 @@ namespace NecromindLibrary.Models
         {
             Gold = 100;
             Level = 1;
-            Dmg = 1;
-            Def = 1;
-            HealthPoints = 1;
-            HealthPointsMax = 1;
+            Dmg = 10;
+            Def = 5;
+            HealthPoints = 5;
+            HealthPointsMax = 5;
         }
 
         public EnemyModel(EnemyModel scheme)
@@ -58,8 +58,11 @@ namespace NecromindLibrary.Models
 
         public void Die(IFighter enemy)
         {
-            var player = enemy as ILevelable;
-            player.GainExperience(Level);
+            var levelablePlayer = enemy as ILevelable;
+            levelablePlayer.GainExperience(Level);
+
+            var traderPlayer = enemy as ITrader;
+            traderPlayer.RecieveGold(Gold);
         }
     }
 }

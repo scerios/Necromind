@@ -19,14 +19,17 @@ namespace Necromind.UnitTests
         }
 
         [Test]
-        public void Attack_EnemyKilled()
+        public void HeroAttack_EnemyKilled()
         {
             var enemyOriginalHP = _enemy.HealthPoints;
             var heroOriginalXP = _hero.ExperiencePoints;
+            var heroOriginalGold = _hero.Gold;
+
             _hero.Attack(_enemy);
 
             Assert.That(_enemy.HealthPoints, Is.EqualTo(enemyOriginalHP - _hero.Dmg + _enemy.Def));
             Assert.That(_hero.ExperiencePoints, Is.EqualTo(heroOriginalXP + _enemy.Level * 10));
+            Assert.That(_hero.Gold, Is.EqualTo(heroOriginalGold + _enemy.Gold));
         }
     }
 }

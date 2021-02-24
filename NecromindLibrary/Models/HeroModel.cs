@@ -99,5 +99,15 @@ namespace NecromindLibrary.Models
             FullyHeal();
             NextLevelAt += Level * 1000;
         }
+
+        public void GiveGold(ITrader trader, int amount)
+        {
+            trader.RecieveGold(amount);
+        }
+
+        public void RecieveGold(int amount)
+        {
+            Gold += amount;
+        }
     }
 }
