@@ -44,21 +44,21 @@ namespace NecromindLibrary.Models
 
         public void Attack(IFighter enemy)
         {
-            enemy.TakeDmg(Dmg - enemy.Def);
+            enemy.TakeDmg(this);
         }
 
-        public void TakeDmg(int amount)
+        public void TakeDmg(IFighter enemy)
         {
-            HealthPoints -= amount;
+            HealthPoints -= enemy.Dmg - Def;
             if (HealthPoints < 1)
             {
-                Die();
+                Die(enemy);
             }
         }
 
-        public void Die()
+        public void Die(IFighter enemy)
         {
-            // TODO - Implement die logic.
+            // TODO - Implement die logic (Game Over).
             throw new NotImplementedException();
         }
 

@@ -32,7 +32,7 @@ namespace NecromindLibrary.Services
         int HealthPointsMax { get; }
 
         /// <summary>
-        /// Performs an attack against the target. Attack dmg is calculated by subtracting enemy's def from attackers dmg.
+        /// Performs an attack against the target.
         /// </summary>
         /// <param name="enemy">An enemy which can fight.</param>
         void Attack(IFighter enemy);
@@ -40,12 +40,12 @@ namespace NecromindLibrary.Services
         /// <summary>
         /// Takes dmg from the incoming attack.
         /// </summary>
-        /// <param name="amount">The actual dmg of the attack.</param>
-        void TakeDmg(int amount);
+        /// <param name="enemy">The enemy which attacks.</param>
+        void TakeDmg(IFighter enemy);
 
         /// <summary>
         /// When healthpoints reach 0, the character dies.
         /// </summary>
-        void Die();
+        void Die(IFighter enemy);
     }
 }

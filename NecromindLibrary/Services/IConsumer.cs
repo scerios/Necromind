@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace NecromindLibrary.Services
 {
+    /// <summary>
+    /// Consumers can consume items and can heal at certain points.
+    /// </summary>
     public interface IConsumer
     {
         /// <summary>
