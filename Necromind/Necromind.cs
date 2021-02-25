@@ -83,6 +83,13 @@ namespace NecromindUI
             DeavtivateView(_menuLoad);
             _gameMain = new GameMain(PlayerModel.Hero);
             ActivateView(_gameMain);
+
+            _gameMain.BackToMenu += new EventHandler(GameMain_BackToMenu);
+        }
+
+        private void GameMain_BackToMenu(object sender, EventArgs e)
+        {
+            DeavtivateView(_gameMain);
         }
     }
 }

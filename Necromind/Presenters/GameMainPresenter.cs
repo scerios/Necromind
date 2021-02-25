@@ -7,16 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.Control;
+using NecromindLibrary.Repository;
+using System.Configuration;
 
 namespace NecromindUI.Presenters
 {
     public class GameMainPresenter
     {
+        private readonly MongoConnector _mongoConnector;
         private readonly IGameMain _gameMain;
 
         public GameMainPresenter(IGameMain gameMain)
         {
             _gameMain = gameMain;
+            _mongoConnector = MongoConnector.GetInstance();
         }
 
         public void SetHeroStats(HeroModel hero)
@@ -38,6 +42,11 @@ namespace NecromindUI.Presenters
         public void HidePanExit()
         {
             _gameMain.IsPanExitVisible = false;
+        }
+
+        public void SaveGame(HeroModel hero)
+        {
+            _mongoConnector.TryUpsertRecord(ConfigurationManager.AppSettings.Get("heroesCollection"), hero.Id, hero);
         }
     }
 }

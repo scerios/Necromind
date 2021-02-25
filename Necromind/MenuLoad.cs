@@ -177,7 +177,7 @@ namespace NecromindUI
 
                 btnDelHero.Click += (sender, e) =>
                 {
-                    _presenter.HeroToDelId = hero.Id.ToString();
+                    _presenter.HeroToDelId = hero.Id;
                     _presenter.DisplayPanConfDel(hero.Name);
                 };
 

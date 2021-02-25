@@ -18,7 +18,7 @@ namespace NecromindUI.Presenters
     {
         private readonly MongoConnector _mongoConnector;
         private readonly IMenuLoad _menuLoad;
-        public string HeroToDelId;
+        public Guid HeroToDelId;
 
         public MenuLoadPresenter(IMenuLoad menuLoad)
         {

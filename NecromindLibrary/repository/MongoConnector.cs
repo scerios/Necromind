@@ -32,7 +32,7 @@ namespace NecromindLibrary.Repository
         /// <summary>
         /// Creates a new record in the given collection.
         /// </summary>
-        /// <typeparam name="T">Custom object.</typeparam>
+        /// <typeparam name="T">Custom type.</typeparam>
         /// <param name="collectionName">Name of collection.</param>
         /// <param name="record">The object to be added.</param>
         /// <returns>True if insertion is successful. False otherwise.</returns>
@@ -54,15 +54,32 @@ namespace NecromindLibrary.Repository
             }
         }
 
+        public bool TryUpsertRecord<T>(string collectionName, Guid id, T record)
+        {
+            var collection = _DB.GetCollection<T>(collectionName);
+            var filter = Builders<T>.Filter.Eq("Id", id);
+
+            try
+            {
+                collection.ReplaceOne(filter, record);
+                return true;
+            }
+            catch (MongoException)
+            {
+                return false;
+            }
+
+        }
+
         /// <summary>
         /// Deletes a record from the database by ID.
         /// </summary>
         /// <param name="id">ID of record.</param>
         /// <returns>True if successfully deleted. False otherwise.</returns>
-        public bool TryDeleteRecordById<T>(string collectionName, string id)
+        public bool TryDeleteRecordById<T>(string collectionName, Guid id)
         {
             var collection = _DB.GetCollection<T>(collectionName);
-            var filter = Builders<T>.Filter.Eq("Id", new Guid(id));
+            var filter = Builders<T>.Filter.Eq("Id", id);
 
             try
             {
@@ -78,7 +95,7 @@ namespace NecromindLibrary.Repository
         /// <summary>
         /// Gets all the records from a collection.
         /// </summary>
-        /// <typeparam name="T">Custom object.</typeparam>
+        /// <typeparam name="T">Custom type.</typeparam>
         /// <param name="collectionName">Name of collection.</param>
         /// <returns>A list of all records in selected collection.</returns>
         public List<T> GetAllRecords<T>(string collectionName)

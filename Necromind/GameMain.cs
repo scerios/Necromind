@@ -104,6 +104,8 @@ namespace NecromindUI
             }
         }
 
+        public event EventHandler BackToMenu;
+
         public GameMain(HeroModel hero)
         {
             InitializeComponent();
@@ -135,7 +137,8 @@ namespace NecromindUI
 
         private void BtnSaveExit_Click(object sender, EventArgs e)
         {
-            // TODO - Implement save & exit
+            BackToMenu?.Invoke(sender, e);
+            _presenter.SaveGame(_hero);
         }
 
         private void BtnContinue_Click(object sender, EventArgs e)
