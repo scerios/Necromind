@@ -15,6 +15,15 @@ namespace NecromindUI
         private readonly GameMainPresenter _presenter;
         private readonly HeroModel _hero;
 
+        public bool IsPanExitVisible
+        {
+            get => panExit.Visible;
+
+            set
+            {
+                panExit.Visible = value;
+            }
+        }
         public string CurrentLocation
         {
             get => labLocation.Text;
@@ -106,6 +115,32 @@ namespace NecromindUI
         private void SetHeroStats()
         {
             _presenter.SetHeroStats(_hero);
+
+        }
+
+        private void GameMain_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                if (IsPanExitVisible)
+                {
+                    _presenter.HidePanExit();
+                }
+                else
+                {
+                    _presenter.ShowPanExit();
+                }
+            }
+        }
+
+        private void BtnSaveExit_Click(object sender, EventArgs e)
+        {
+            // TODO - Implement save & exit
+        }
+
+        private void BtnContinue_Click(object sender, EventArgs e)
+        {
+            _presenter.HidePanExit();
         }
     }
 }

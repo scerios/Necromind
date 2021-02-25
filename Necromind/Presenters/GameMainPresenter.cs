@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using static System.Windows.Forms.Control;
 
 namespace NecromindUI.Presenters
 {
@@ -26,6 +28,16 @@ namespace NecromindUI.Presenters
             _gameMain.Def = hero.Def.ToString();
             _gameMain.Gold = hero.Gold.ToString();
             _gameMain.Lvl = hero.Level.ToString();
+        }
+
+        public void ShowPanExit()
+        {
+            _gameMain.IsPanExitVisible = true;
+        }
+
+        public void HidePanExit()
+        {
+            _gameMain.IsPanExitVisible = false;
         }
     }
 }

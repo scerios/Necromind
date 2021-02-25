@@ -57,12 +57,12 @@ namespace NecromindUI.Presenters
             var textService = new TextService();
             _menuNew.Title = title;
             _menuNew.Msg = textService.FormatErrorMsg(msg);
-            _menuNew.IsErrorPanVisible = true;
+            _menuNew.IsPanErrorVisible = true;
         }
 
         public void HideError()
         {
-            _menuNew.IsErrorPanVisible = false;
+            _menuNew.IsPanErrorVisible = false;
             _menuNew.Title = "";
             _menuNew.Msg = "";
         }

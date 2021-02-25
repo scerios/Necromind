@@ -15,7 +15,7 @@ namespace NecromindUI
     public partial class MenuNew : UserControl, IMenuNew
     {
         private readonly MenuNewPresenter _presenter;
-        public bool IsErrorPanVisible
+        public bool IsPanErrorVisible
         {
             get => panError.Visible;
 

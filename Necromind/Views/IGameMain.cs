@@ -8,6 +8,7 @@ namespace NecromindUI.Views
 {
     public interface IGameMain
     {
+        bool IsPanExitVisible { get; set; }
         string CurrentLocation { get; set; }
         string HeroName { get; set; }
         string HealthMax { get; set; }

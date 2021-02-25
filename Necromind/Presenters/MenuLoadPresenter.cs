@@ -31,7 +31,7 @@ namespace NecromindUI.Presenters
             var textService = new TextService();
             _menuLoad.Title = "No hero found";
             _menuLoad.Msg = textService.FormatErrorMsg("You must create a hero first to be able to load them.");
-            _menuLoad.IsErrorPanVisible = true;
+            _menuLoad.IsPanErrorVisible = true;
         }
 
         public List<HeroModel> GetAllHeroes(string collectionName)
@@ -49,20 +49,20 @@ namespace NecromindUI.Presenters
 
         public void HideError()
         {
-            _menuLoad.IsErrorPanVisible = false;
+            _menuLoad.IsPanErrorVisible = false;
             _menuLoad.Title = "";
             _menuLoad.Msg = "";
         }
 
-        public void DisplayConfDelPanel(string heroName)
+        public void DisplayPanConfDel(string heroName)
         {
             _menuLoad.HeroName = heroName;
-            _menuLoad.IsConfDelPanVisible = true;
+            _menuLoad.IsPanConfDelVisible = true;
         }
 
-        public void HideConfDelPanel()
+        public void HidePanConfDel()
         {
-            _menuLoad.IsConfDelPanVisible = false;
+            _menuLoad.IsPanConfDelVisible = false;
             _menuLoad.HeroName = "";
             _menuLoad.ConfirmName = "";
         }
@@ -87,6 +87,8 @@ namespace NecromindUI.Presenters
             button.Anchor = AnchorStyles.None;
             button.FlatAppearance.BorderSize = 0;
             button.TextAlign = alignment;
+            button.Cursor = Cursors.Hand;
+            button.TabStop = false;
 
             return button;
         }

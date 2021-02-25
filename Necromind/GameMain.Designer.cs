@@ -37,20 +37,25 @@ namespace NecromindUI
             this.labSlash = new System.Windows.Forms.Label();
             this.labHealthValue = new System.Windows.Forms.Label();
             this.labDefValue = new System.Windows.Forms.Label();
-            this.labDmgValue = new System.Windows.Forms.Label();
-            this.labMaxHealthValue = new System.Windows.Forms.Label();
-            this.labDef = new System.Windows.Forms.Label();
-            this.labDmg = new System.Windows.Forms.Label();
-            this.labHealth = new System.Windows.Forms.Label();
             this.labLvlValue = new System.Windows.Forms.Label();
             this.labGoldValue = new System.Windows.Forms.Label();
             this.labLvl = new System.Windows.Forms.Label();
+            this.labDmgValue = new System.Windows.Forms.Label();
+            this.labMaxHealthValue = new System.Windows.Forms.Label();
             this.labGold = new System.Windows.Forms.Label();
+            this.labDef = new System.Windows.Forms.Label();
+            this.labDmg = new System.Windows.Forms.Label();
+            this.labHealth = new System.Windows.Forms.Label();
             this.labLocation = new System.Windows.Forms.Label();
             this.labName = new System.Windows.Forms.Label();
+            this.panExit = new System.Windows.Forms.Panel();
+            this.btnSaveExit = new System.Windows.Forms.Button();
+            this.btnContinue = new System.Windows.Forms.Button();
+            this.labExitQuestion = new System.Windows.Forms.Label();
             this.panBottom.SuspendLayout();
             this.panEventLog.SuspendLayout();
             this.panHero.SuspendLayout();
+            this.panExit.SuspendLayout();
             this.SuspendLayout();
             // 
             // panBottom
@@ -77,6 +82,7 @@ namespace NecromindUI
             // 
             this.rtbEventLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.rtbEventLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtbEventLog.Cursor = System.Windows.Forms.Cursors.Default;
             this.rtbEventLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtbEventLog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
             this.rtbEventLog.Location = new System.Drawing.Point(0, 0);
@@ -85,6 +91,7 @@ namespace NecromindUI
             this.rtbEventLog.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.rtbEventLog.Size = new System.Drawing.Size(780, 246);
             this.rtbEventLog.TabIndex = 14;
+            this.rtbEventLog.TabStop = false;
             this.rtbEventLog.Text = "";
             // 
             // panControls
@@ -143,6 +150,34 @@ namespace NecromindUI
             this.labDefValue.TabIndex = 31;
             this.labDefValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // labLvlValue
+            // 
+            this.labLvlValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labLvlValue.Location = new System.Drawing.Point(80, 110);
+            this.labLvlValue.Name = "labLvlValue";
+            this.labLvlValue.Size = new System.Drawing.Size(125, 20);
+            this.labLvlValue.TabIndex = 29;
+            this.labLvlValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labGoldValue
+            // 
+            this.labGoldValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labGoldValue.Location = new System.Drawing.Point(80, 85);
+            this.labGoldValue.Name = "labGoldValue";
+            this.labGoldValue.Size = new System.Drawing.Size(125, 20);
+            this.labGoldValue.TabIndex = 27;
+            this.labGoldValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labLvl
+            // 
+            this.labLvl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labLvl.Location = new System.Drawing.Point(3, 110);
+            this.labLvl.Name = "labLvl";
+            this.labLvl.Size = new System.Drawing.Size(78, 20);
+            this.labLvl.TabIndex = 23;
+            this.labLvl.Text = "Level:";
+            this.labLvl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // labDmgValue
             // 
             this.labDmgValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
@@ -160,6 +195,16 @@ namespace NecromindUI
             this.labMaxHealthValue.Size = new System.Drawing.Size(50, 20);
             this.labMaxHealthValue.TabIndex = 26;
             this.labMaxHealthValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labGold
+            // 
+            this.labGold.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labGold.Location = new System.Drawing.Point(3, 85);
+            this.labGold.Name = "labGold";
+            this.labGold.Size = new System.Drawing.Size(78, 20);
+            this.labGold.TabIndex = 21;
+            this.labGold.Text = "Gold:";
+            this.labGold.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labDef
             // 
@@ -191,44 +236,6 @@ namespace NecromindUI
             this.labHealth.Text = "Health:";
             this.labHealth.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // labLvlValue
-            // 
-            this.labLvlValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labLvlValue.Location = new System.Drawing.Point(80, 110);
-            this.labLvlValue.Name = "labLvlValue";
-            this.labLvlValue.Size = new System.Drawing.Size(125, 20);
-            this.labLvlValue.TabIndex = 29;
-            this.labLvlValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labGoldValue
-            // 
-            this.labGoldValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labGoldValue.Location = new System.Drawing.Point(80, 85);
-            this.labGoldValue.Name = "labGoldValue";
-            this.labGoldValue.Size = new System.Drawing.Size(125, 20);
-            this.labGoldValue.TabIndex = 27;
-            this.labGoldValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labLvl
-            // 
-            this.labLvl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labLvl.Location = new System.Drawing.Point(3, 110);
-            this.labLvl.Name = "labLvl";
-            this.labLvl.Size = new System.Drawing.Size(78, 20);
-            this.labLvl.TabIndex = 23;
-            this.labLvl.Text = "Level:";
-            this.labLvl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labGold
-            // 
-            this.labGold.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labGold.Location = new System.Drawing.Point(3, 85);
-            this.labGold.Name = "labGold";
-            this.labGold.Size = new System.Drawing.Size(78, 20);
-            this.labGold.TabIndex = 21;
-            this.labGold.Text = "Gold:";
-            this.labGold.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // labLocation
             // 
             this.labLocation.AutoSize = true;
@@ -254,11 +261,72 @@ namespace NecromindUI
             this.labName.TabIndex = 3;
             this.labName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panExit
+            // 
+            this.panExit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panExit.Controls.Add(this.btnSaveExit);
+            this.panExit.Controls.Add(this.btnContinue);
+            this.panExit.Controls.Add(this.labExitQuestion);
+            this.panExit.Location = new System.Drawing.Point(400, 200);
+            this.panExit.Name = "panExit";
+            this.panExit.Size = new System.Drawing.Size(300, 140);
+            this.panExit.TabIndex = 25;
+            this.panExit.Visible = false;
+            // 
+            // btnSaveExit
+            // 
+            this.btnSaveExit.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnSaveExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.btnSaveExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSaveExit.FlatAppearance.BorderSize = 0;
+            this.btnSaveExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnSaveExit.Location = new System.Drawing.Point(75, 50);
+            this.btnSaveExit.Name = "btnSaveExit";
+            this.btnSaveExit.Size = new System.Drawing.Size(150, 25);
+            this.btnSaveExit.TabIndex = 5;
+            this.btnSaveExit.TabStop = false;
+            this.btnSaveExit.Text = "Save and Exit";
+            this.btnSaveExit.UseVisualStyleBackColor = false;
+            this.btnSaveExit.Click += new System.EventHandler(this.BtnSaveExit_Click);
+            // 
+            // btnContinue
+            // 
+            this.btnContinue.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnContinue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.btnContinue.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnContinue.FlatAppearance.BorderSize = 0;
+            this.btnContinue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContinue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnContinue.Location = new System.Drawing.Point(100, 95);
+            this.btnContinue.Name = "btnContinue";
+            this.btnContinue.Size = new System.Drawing.Size(100, 25);
+            this.btnContinue.TabIndex = 4;
+            this.btnContinue.TabStop = false;
+            this.btnContinue.Text = "Continue";
+            this.btnContinue.UseVisualStyleBackColor = false;
+            this.btnContinue.Click += new System.EventHandler(this.BtnContinue_Click);
+            // 
+            // labExitQuestion
+            // 
+            this.labExitQuestion.AutoSize = true;
+            this.labExitQuestion.Font = new System.Drawing.Font("Courier New", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labExitQuestion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labExitQuestion.Location = new System.Drawing.Point(10, 10);
+            this.labExitQuestion.MaximumSize = new System.Drawing.Size(0, 20);
+            this.labExitQuestion.MinimumSize = new System.Drawing.Size(280, 20);
+            this.labExitQuestion.Name = "labExitQuestion";
+            this.labExitQuestion.Size = new System.Drawing.Size(280, 20);
+            this.labExitQuestion.TabIndex = 0;
+            this.labExitQuestion.Text = "Are you sure you want to quit?";
+            this.labExitQuestion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // GameMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.Controls.Add(this.panExit);
             this.Controls.Add(this.labName);
             this.Controls.Add(this.labLocation);
             this.Controls.Add(this.panHero);
@@ -267,9 +335,12 @@ namespace NecromindUI
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameMain";
             this.Size = new System.Drawing.Size(1084, 661);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameMain_KeyUp);
             this.panBottom.ResumeLayout(false);
             this.panEventLog.ResumeLayout(false);
             this.panHero.ResumeLayout(false);
+            this.panExit.ResumeLayout(false);
+            this.panExit.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,5 +367,9 @@ namespace NecromindUI
         private System.Windows.Forms.Label labGold;
         private System.Windows.Forms.Label labHealth;
         private System.Windows.Forms.Label labName;
+        private System.Windows.Forms.Panel panExit;
+        private System.Windows.Forms.Label labExitQuestion;
+        private System.Windows.Forms.Button btnContinue;
+        private System.Windows.Forms.Button btnSaveExit;
     }
 }

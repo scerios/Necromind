@@ -8,7 +8,7 @@ namespace NecromindUI.Views
 {
     public interface IConfirmDelete
     {
-        bool IsConfDelPanVisible { get; set; }
+        bool IsPanConfDelVisible { get; set; }
         string HeroName { get; set; }
         string ConfirmName { get; set; }
         bool IsBtnDelHeroEnabled { get; set; }

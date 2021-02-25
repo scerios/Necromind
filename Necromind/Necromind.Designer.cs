@@ -46,6 +46,7 @@ namespace NecromindUI
             this.btnLoadGame.Name = "btnLoadGame";
             this.btnLoadGame.Size = new System.Drawing.Size(100, 25);
             this.btnLoadGame.TabIndex = 17;
+            this.btnLoadGame.TabStop = false;
             this.btnLoadGame.Text = "Load";
             this.btnLoadGame.UseVisualStyleBackColor = false;
             this.btnLoadGame.Click += new System.EventHandler(this.BtnLoadGame_Click);
@@ -62,6 +63,7 @@ namespace NecromindUI
             this.btnNewGame.Name = "btnNewGame";
             this.btnNewGame.Size = new System.Drawing.Size(100, 25);
             this.btnNewGame.TabIndex = 16;
+            this.btnNewGame.TabStop = false;
             this.btnNewGame.Text = "New Game";
             this.btnNewGame.UseVisualStyleBackColor = false;
             this.btnNewGame.Click += new System.EventHandler(this.BtnNewGame_Click);

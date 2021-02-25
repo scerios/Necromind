@@ -51,7 +51,7 @@ namespace NecromindUI
             // 
             this.btnCreateNewHero.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCreateNewHero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.btnCreateNewHero.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnCreateNewHero.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCreateNewHero.FlatAppearance.BorderSize = 0;
             this.btnCreateNewHero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateNewHero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
@@ -59,6 +59,7 @@ namespace NecromindUI
             this.btnCreateNewHero.Name = "btnCreateNewHero";
             this.btnCreateNewHero.Size = new System.Drawing.Size(100, 25);
             this.btnCreateNewHero.TabIndex = 4;
+            this.btnCreateNewHero.TabStop = false;
             this.btnCreateNewHero.Text = "Create";
             this.btnCreateNewHero.UseVisualStyleBackColor = false;
             this.btnCreateNewHero.Click += new System.EventHandler(this.BtnCreateNewHero_Click);
@@ -67,6 +68,7 @@ namespace NecromindUI
             // 
             this.btnBack.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBack.FlatAppearance.BorderSize = 0;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
@@ -74,6 +76,7 @@ namespace NecromindUI
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(100, 25);
             this.btnBack.TabIndex = 3;
+            this.btnBack.TabStop = false;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.BtnBack_Click);
@@ -93,6 +96,7 @@ namespace NecromindUI
             // btnErrorClose
             // 
             this.btnErrorClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.btnErrorClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnErrorClose.FlatAppearance.BorderSize = 0;
             this.btnErrorClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnErrorClose.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -101,6 +105,7 @@ namespace NecromindUI
             this.btnErrorClose.Name = "btnErrorClose";
             this.btnErrorClose.Size = new System.Drawing.Size(24, 23);
             this.btnErrorClose.TabIndex = 2;
+            this.btnErrorClose.TabStop = false;
             this.btnErrorClose.Text = "X";
             this.btnErrorClose.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnErrorClose.UseVisualStyleBackColor = false;

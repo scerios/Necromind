@@ -52,6 +52,7 @@ namespace NecromindUI
             // 
             this.btnBack.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBack.FlatAppearance.BorderSize = 0;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
@@ -59,6 +60,7 @@ namespace NecromindUI
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(100, 25);
             this.btnBack.TabIndex = 2;
+            this.btnBack.TabStop = false;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.BtnBack_Click);
@@ -163,6 +165,7 @@ namespace NecromindUI
             this.btnDelClose.Name = "btnDelClose";
             this.btnDelClose.Size = new System.Drawing.Size(24, 23);
             this.btnDelClose.TabIndex = 7;
+            this.btnDelClose.TabStop = false;
             this.btnDelClose.Text = "X";
             this.btnDelClose.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDelClose.UseVisualStyleBackColor = false;
@@ -195,6 +198,7 @@ namespace NecromindUI
             this.btnDelHero.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnDelHero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.btnDelHero.CausesValidation = false;
+            this.btnDelHero.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelHero.Enabled = false;
             this.btnDelHero.FlatAppearance.BorderSize = 0;
             this.btnDelHero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -204,6 +208,7 @@ namespace NecromindUI
             this.btnDelHero.Name = "btnDelHero";
             this.btnDelHero.Size = new System.Drawing.Size(100, 25);
             this.btnDelHero.TabIndex = 4;
+            this.btnDelHero.TabStop = false;
             this.btnDelHero.Text = "DELETE";
             this.btnDelHero.UseVisualStyleBackColor = false;
             this.btnDelHero.Click += new System.EventHandler(this.BtnDeleteHero_Click);
