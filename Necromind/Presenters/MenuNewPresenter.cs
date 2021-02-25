@@ -1,4 +1,4 @@
-﻿using Necromind.Views;
+﻿using NecromindUI.Views;
 using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
 using NecromindLibrary.Services;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Necromind.Presenters
+namespace NecromindUI.Presenters
 {
     public class MenuNewPresenter
     {

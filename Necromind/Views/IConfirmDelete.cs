@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Necromind.Views
+namespace NecromindUI.Views
 {
     public interface IConfirmDelete
     {

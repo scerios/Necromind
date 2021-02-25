@@ -24,12 +24,12 @@ namespace NecromindLibrary.Services
         /// <summary>
         /// Current health points.
         /// </summary>
-        int HealthPoints { get; }
+        int Health { get; }
 
         /// <summary>
         /// Maximum health points.
         /// </summary>
-        int HealthPointsMax { get; }
+        int HealthMax { get; }
 
         /// <summary>
         /// Performs an attack against the target.

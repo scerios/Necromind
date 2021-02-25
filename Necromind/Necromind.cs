@@ -1,4 +1,5 @@
-﻿using Necromind.Views;
+﻿using NecromindUI.Views;
+using NecromindLibrary.Models;
 using NecromindUI;
 using System;
 using System.Collections.Generic;
@@ -12,12 +13,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Necromind
+namespace NecromindUI
 {
     public partial class Necromind : Form
     {
         private MenuNew _menuNew;
         private MenuLoad _menuLoad;
+        private GameMain _gameMain;
 
         public Necromind()
         {
@@ -25,6 +27,11 @@ namespace Necromind
             if (Debugger.IsAttached) CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.GetCultureInfo("en-US");
 
             InitializeComponent();
+        }
+
+        public void Test()
+        {
+
         }
 
         private void ActivateView(UserControl view)
@@ -54,6 +61,8 @@ namespace Necromind
 
             _menuLoad.BtnBackClick += new EventHandler(MenuLoad_BtnBackClick);
             _menuLoad.BtnDelHeroClick += new EventHandler(MenuLoad_BtnDelHeroClick);
+            _menuLoad.BtnLoadHeroClick += new EventHandler(GameMainLoad);
+
         }
 
         private void MenuLoad_BtnBackClick(object sender, EventArgs e)
@@ -65,6 +74,13 @@ namespace Necromind
         {
             Controls.Remove(_menuLoad);
             BtnLoadGame_Click(sender, e);
+        }
+
+        private void GameMainLoad(object sender, EventArgs e)
+        {
+            Controls.Remove(_menuLoad);
+            _gameMain = new GameMain(PlayerModel.Hero);
+            ActivateView(_gameMain);
         }
     }
 }

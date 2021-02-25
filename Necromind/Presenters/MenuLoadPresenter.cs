@@ -1,7 +1,8 @@
-﻿using Necromind.Views;
+﻿using NecromindUI.Views;
 using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
 using NecromindLibrary.Services;
+using NecromindUI;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,36 +12,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Necromind.Presenters
+namespace NecromindUI.Presenters
 {
     public class MenuLoadPresenter
     {
         private readonly MongoConnector _mongoConnector;
         private readonly IMenuLoad _menuLoad;
-        private readonly List<Button> _createdButtons = new List<Button>();
-        private string _heroToDeleteId;
+        public string HeroToDelId;
 
         public MenuLoadPresenter(IMenuLoad menuLoad)
         {
             _menuLoad = menuLoad;
             _mongoConnector = MongoConnector.GetInstance();
-        }
-
-        public List<Button> GetAllHeroes(string collectionName)
-        {
-            var heroes = _mongoConnector.GetAllRecords<HeroModel>(collectionName);
-
-
-            if (heroes.Count == 0)
-            {
-                DisplayError();
-            }
-            else
-            {
-                CreateButtonsForHeroes(heroes);
-            }
-
-            return _createdButtons;
         }
 
         private void DisplayError()
@@ -51,6 +34,19 @@ namespace Necromind.Presenters
             _menuLoad.IsErrorPanVisible = true;
         }
 
+        public List<HeroModel> GetAllHeroes(string collectionName)
+        {
+            var heroes = _mongoConnector.GetAllRecords<HeroModel>(collectionName);
+
+
+            if (heroes.Count == 0)
+            {
+                DisplayError();
+            }
+
+            return heroes;
+        }
+
         public void HideError()
         {
             _menuLoad.IsErrorPanVisible = false;
@@ -58,7 +54,7 @@ namespace Necromind.Presenters
             _menuLoad.Msg = "";
         }
 
-        private void DisplayConfDelPanel(string heroName)
+        public void DisplayConfDelPanel(string heroName)
         {
             _menuLoad.HeroName = heroName;
             _menuLoad.IsConfDelPanVisible = true;
@@ -71,65 +67,8 @@ namespace Necromind.Presenters
             _menuLoad.ConfirmName = "";
         }
 
-        private void CreateButtonsForHeroes(List<HeroModel> heroes)
-        {
-            int btnLoadHeroLocX = 500;
-            int btnDeleteHeroLocX = 610;
-            int btnLocY = 100;
-
-            foreach (HeroModel hero in heroes)
-            {
-                // Creates a button to load the hero
-                Button btnLoadHero = CreateButton(
-                    hero.Name,
-                    "btnLoad" + hero.Name,
-                    100,
-                    25,
-                    btnLoadHeroLocX,
-                    btnLocY,
-                    10,
-                    Color.FromArgb(211, 84, 0), // Orange color
-                    Color.FromArgb(229, 232, 232), // Soft gray-ish white color
-                    FlatStyle.Flat,
-                    ContentAlignment.MiddleCenter
-                );
-
-                _createdButtons.Add(btnLoadHero);
-
-                btnLoadHero.Click += (s, ev) =>
-                {
-                    // TODO - Add an event to button to start game with this hero.
-                };
-
-                // Creates a button to delete the hero
-                Button btnDeleteHero = CreateButton(
-                    "X",
-                    "btnDelete" + hero.Name,
-                    25,
-                    25,
-                    btnDeleteHeroLocX,
-                    btnLocY,
-                    12,
-                    Color.FromArgb(23, 32, 42), // Blue-ish color (exactly like the window background)
-                    Color.FromArgb(214, 48, 49), // Red color
-                    FlatStyle.Flat,
-                    ContentAlignment.MiddleLeft
-                );
-
-                _createdButtons.Add(btnDeleteHero);
-
-                btnDeleteHero.Click += (s, ev) =>
-                {
-                    _heroToDeleteId = hero.Id.ToString();
-                    DisplayConfDelPanel(hero.Name);
-                };
-
-                btnLocY += 40;
-            }
-        }
-
         // TODO - put this in UIService when it's eventually reworked
-        private Button CreateButton(
+        public Button CreateButton(
             string text, string name,
             int sizeX, int sizeY, int locX, int locY, int fontSize,
             Color backColor, Color foreColor,
@@ -154,7 +93,7 @@ namespace Necromind.Presenters
 
         public void DeleteHero()
         {
-            _mongoConnector.TryDeleteRecordById<HeroModel>(ConfigurationManager.AppSettings.Get("heroesCollection"), _heroToDeleteId);
+            _mongoConnector.TryDeleteRecordById<HeroModel>(ConfigurationManager.AppSettings.Get("heroesCollection"), HeroToDelId);
         }
 
         public void ChangeBtnDelHeroAvailability()

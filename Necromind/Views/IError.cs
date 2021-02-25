@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Necromind.Views
+namespace NecromindUI.Views
 {
     public interface IError
     {

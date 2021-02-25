@@ -1,5 +1,5 @@
-﻿using Necromind.Presenters;
-using Necromind.Views;
+﻿using NecromindUI.Presenters;
+using NecromindUI.Views;
 using NecromindLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -89,6 +89,7 @@ namespace NecromindUI
 
         public event EventHandler BtnBackClick;
         public event EventHandler BtnDelHeroClick;
+        public event EventHandler BtnLoadHeroClick;
 
         public MenuLoad()
         {
@@ -101,19 +102,14 @@ namespace NecromindUI
             BtnBackClick?.Invoke(this, e);
         }
 
-        public void LoadHeroes()
-        {
-            var heroes = _presenter.GetAllHeroes(ConfigurationManager.AppSettings["heroesCollection"]);
-
-            foreach (var hero in heroes)
-            {
-                Controls.Add(hero);
-            }
-        }
-
         private void BtnErrorClose_Click(object sender, EventArgs e)
         {
             _presenter.HideError();
+        }
+
+        private void BtnLoadHero_Click(object sender, EventArgs e)
+        {
+            BtnLoadHeroClick?.Invoke(this, e);
         }
 
         private void BtnDeleteHero_Click(object sender, EventArgs e)
@@ -130,6 +126,63 @@ namespace NecromindUI
         private void TbDelHeroName_TextChanged(object sender, EventArgs e)
         {
             _presenter.ChangeBtnDelHeroAvailability();
+        }
+
+        public void LoadHeroes()
+        {
+            var heroes = _presenter.GetAllHeroes(ConfigurationManager.AppSettings.Get("heroesCollection"));
+            int btnLoadHeroLocX = 500;
+            int btnDeleteHeroLocX = 610;
+            int btnLocY = 100;
+
+            foreach (HeroModel hero in heroes)
+            {
+                Button btnLoadHero = _presenter.CreateButton(
+                    hero.Name,
+                    "btnLoad" + hero.Name,
+                    100,
+                    25,
+                    btnLoadHeroLocX,
+                    btnLocY,
+                    10,
+                    Color.FromArgb(211, 84, 0),
+                    Color.FromArgb(229, 232, 232),
+                    FlatStyle.Flat,
+                    ContentAlignment.MiddleCenter
+                );
+
+                Controls.Add(btnLoadHero);
+
+                btnLoadHero.Click += (sender, e) =>
+                {
+                    PlayerModel.Hero = hero;
+                    BtnLoadHeroClick?.Invoke(sender, e);
+                };
+
+                Button btnDelHero = _presenter.CreateButton(
+                    "X",
+                    "btnDelete" + hero.Name,
+                    25,
+                    25,
+                    btnDeleteHeroLocX,
+                    btnLocY,
+                    12,
+                    Color.FromArgb(23, 32, 42),
+                    Color.FromArgb(214, 48, 49),
+                    FlatStyle.Flat,
+                    ContentAlignment.MiddleLeft
+                );
+
+                Controls.Add(btnDelHero);
+
+                btnDelHero.Click += (sender, e) =>
+                {
+                    _presenter.HeroToDelId = hero.Id.ToString();
+                    _presenter.DisplayConfDelPanel(hero.Name);
+                };
+
+                btnLocY += 40;
+            }
         }
     }
 }

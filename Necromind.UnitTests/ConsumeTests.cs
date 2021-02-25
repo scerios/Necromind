@@ -21,13 +21,13 @@ namespace Necromind.UnitTests
         [Test]
         public void Consume_Heal()
         {
-            var heroOriginalHP = _hero.HealthPoints;
+            var heroOriginalHP = _hero.Health;
 
             _hero.TakeDmg(_enemy);
             _hero.TakeDmg(_enemy);
             _hero.Heal(5);
 
-            Assert.That(_hero.HealthPoints, Is.EqualTo(heroOriginalHP - (_enemy.Dmg - _hero.Def) * 2 + 5));
+            Assert.That(_hero.Health, Is.EqualTo(heroOriginalHP - (_enemy.Dmg - _hero.Def) * 2 + 5));
         }
 
         [Test]
@@ -37,7 +37,7 @@ namespace Necromind.UnitTests
             _hero.TakeDmg(_enemy);
             _hero.Heal(100);
 
-            Assert.That(_hero.HealthPoints, Is.EqualTo(_hero.HealthPointsMax));
+            Assert.That(_hero.Health, Is.EqualTo(_hero.HealthMax));
         }
     }
 }

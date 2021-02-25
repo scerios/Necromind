@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace NecromindUI
 {
     partial class MenuLoad
@@ -131,7 +133,7 @@ namespace NecromindUI
             // labQuestionMark
             // 
             this.labQuestionMark.AutoSize = true;
-            this.labQuestionMark.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labQuestionMark.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.labQuestionMark.Location = new System.Drawing.Point(219, 65);
             this.labQuestionMark.Name = "labQuestionMark";
             this.labQuestionMark.Size = new System.Drawing.Size(16, 16);
@@ -169,18 +171,19 @@ namespace NecromindUI
             // labHeroName
             // 
             this.labHeroName.AutoSize = true;
-            this.labHeroName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labHeroName.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labHeroName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.labHeroName.Location = new System.Drawing.Point(87, 65);
             this.labHeroName.MinimumSize = new System.Drawing.Size(125, 16);
             this.labHeroName.Name = "labHeroName";
-            this.labHeroName.Size = new System.Drawing.Size(125, 16);
+            this.labHeroName.Size = new System.Drawing.Size(125, 18);
             this.labHeroName.TabIndex = 6;
             this.labHeroName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labDelQuestion
             // 
             this.labDelQuestion.AutoSize = true;
-            this.labDelQuestion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labDelQuestion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.labDelQuestion.Location = new System.Drawing.Point(18, 40);
             this.labDelQuestion.Name = "labDelQuestion";
             this.labDelQuestion.Size = new System.Drawing.Size(264, 16);

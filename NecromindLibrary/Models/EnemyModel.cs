@@ -13,9 +13,9 @@ namespace NecromindLibrary.Models
 
         public int Def { get; private set; }
 
-        public int HealthPoints { get; private set; }
+        public int Health { get; private set; }
 
-        public int HealthPointsMax { get; private set; }
+        public int HealthMax { get; private set; }
 
         /// <summary>
         /// This constructor is for testing purposes.
@@ -26,8 +26,8 @@ namespace NecromindLibrary.Models
             Level = 1;
             Dmg = 10;
             Def = 5;
-            HealthPoints = 5;
-            HealthPointsMax = 5;
+            Health = 5;
+            HealthMax = 5;
         }
 
         public EnemyModel(EnemyModel scheme)
@@ -38,8 +38,8 @@ namespace NecromindLibrary.Models
             Level = scheme.Level;
             Dmg = scheme.Dmg;
             Def = scheme.Def;
-            HealthPoints = scheme.HealthPoints;
-            HealthPointsMax = scheme.HealthPointsMax;
+            Health = scheme.Health;
+            HealthMax = scheme.HealthMax;
         }
 
         public void Attack(IFighter enemy)
@@ -49,8 +49,8 @@ namespace NecromindLibrary.Models
 
         public void TakeDmg(IFighter enemy)
         {
-            HealthPoints -= enemy.Dmg - Def;
-            if (HealthPoints < 1)
+            Health -= enemy.Dmg - Def;
+            if (Health < 1)
             {
                 Die(enemy);
             }

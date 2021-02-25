@@ -1,5 +1,5 @@
-﻿using Necromind.Presenters;
-using Necromind.Views;
+﻿using NecromindUI.Presenters;
+using NecromindUI.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

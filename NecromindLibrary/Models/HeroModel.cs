@@ -15,9 +15,9 @@ namespace NecromindLibrary.Models
 
         public int Def { get; private set; }
 
-        public int HealthPoints { get; private set; }
+        public int Health { get; private set; }
 
-        public int HealthPointsMax { get; private set; }
+        public int HealthMax { get; private set; }
 
         public int ExperiencePoints { get; private set; }
 
@@ -26,8 +26,8 @@ namespace NecromindLibrary.Models
         public HeroModel(string name)
         {
             Name = name;
-            HealthPoints = 100;
-            HealthPointsMax = 100;
+            Health = 100;
+            HealthMax = 100;
             Dmg = 10;
             Def = 5;
             Level = 1;
@@ -49,8 +49,8 @@ namespace NecromindLibrary.Models
 
         public void TakeDmg(IFighter enemy)
         {
-            HealthPoints -= enemy.Dmg - Def;
-            if (HealthPoints < 1)
+            Health -= enemy.Dmg - Def;
+            if (Health < 1)
             {
                 Die(enemy);
             }
@@ -64,9 +64,9 @@ namespace NecromindLibrary.Models
 
         public void Heal(int amount)
         {
-            if (HealthPoints + amount < HealthPointsMax)
+            if (Health + amount < HealthMax)
             {
-                HealthPoints += amount;
+                Health += amount;
             }
             else
             {
@@ -77,7 +77,7 @@ namespace NecromindLibrary.Models
 
         public void FullyHeal()
         {
-            HealthPoints = HealthPointsMax;
+            Health = HealthMax;
         }
 
         public void GainExperience(int level)
@@ -95,7 +95,7 @@ namespace NecromindLibrary.Models
             Level++;
             Dmg += 10;
             Def += 2;
-            HealthPointsMax += 20;
+            HealthMax += 20;
             FullyHeal();
             NextLevelAt += Level * 1000;
         }

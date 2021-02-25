@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace NecromindUI.Views
+namespace NecromindLibrary.Models
 {
-    public interface IMenuNew : IError
+    public static class PlayerModel
     {
-        string HeroName { get; set; }
+        public static HeroModel Hero;
     }
 }
