@@ -97,7 +97,7 @@ namespace Necromind
             this.btnBuy.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
             this.btnBuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnBuy.Location = new System.Drawing.Point(580, 20);
+            this.btnBuy.Location = new System.Drawing.Point(584, 20);
             this.btnBuy.Name = "btnBuy";
             this.btnBuy.Size = new System.Drawing.Size(100, 25);
             this.btnBuy.TabIndex = 9;
@@ -114,7 +114,7 @@ namespace Necromind
             this.btnSell.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.btnSell.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnSell.Location = new System.Drawing.Point(760, 20);
+            this.btnSell.Location = new System.Drawing.Point(764, 20);
             this.btnSell.Name = "btnSell";
             this.btnSell.Size = new System.Drawing.Size(100, 25);
             this.btnSell.TabIndex = 10;
@@ -131,7 +131,7 @@ namespace Necromind
             this.btnAccept.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
             this.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAccept.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnAccept.Location = new System.Drawing.Point(940, 20);
+            this.btnAccept.Location = new System.Drawing.Point(944, 20);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(100, 25);
             this.btnAccept.TabIndex = 11;

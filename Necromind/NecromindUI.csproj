@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameEnemyInteraction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GameEnemyInteraction.Designer.cs">
+      <DependentUpon>GameEnemyInteraction.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameFriendlyInteraction.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     <Compile Include="Views\IGameMain.cs" />
     <Compile Include="Views\IMenuLoad.cs" />
     <Compile Include="Views\IMenuNew.cs" />
+    <EmbeddedResource Include="GameEnemyInteraction.resx">
+      <DependentUpon>GameEnemyInteraction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GameFriendlyInteraction.resx">
       <DependentUpon>GameFriendlyInteraction.cs</DependentUpon>
     </EmbeddedResource>

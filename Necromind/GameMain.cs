@@ -15,6 +15,7 @@ namespace NecromindUI
     {
         private readonly GameMainPresenter _presenter;
         private readonly GameFriendlyInteraction _gameFriendlyInteraction;
+        private readonly GameEnemyInteraction _gameEnemyInteraction;
 
         public bool IsPanExitVisible
         {
@@ -72,6 +73,7 @@ namespace NecromindUI
             InitializeComponent();
             _presenter = new GameMainPresenter(this);
             _gameFriendlyInteraction = new GameFriendlyInteraction();
+            _gameEnemyInteraction = new GameEnemyInteraction();
             InitUIForHero(hero);
         }
 
