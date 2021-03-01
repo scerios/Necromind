@@ -19,7 +19,7 @@ namespace NecromindLibrary.Services
         /// <summary>
         /// When reached, the character will level up.
         /// </summary>
-        int NextLevelAt { get; }
+        int NextLvlAt { get; }
 
         /// <summary>
         /// Gives some experience calculated from the level of the enemy killed.

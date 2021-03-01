@@ -18,7 +18,6 @@ namespace NecromindUI
         public bool IsPanExitVisible
         {
             get => panExit.Visible;
-
             set
             {
                 panExit.Visible = value;
@@ -27,7 +26,6 @@ namespace NecromindUI
         public string CurrentLocation
         {
             get => labLocation.Text;
-
             set
             {
                 labLocation.Text = value;
@@ -37,71 +35,40 @@ namespace NecromindUI
         public string HeroName
         {
             get => labName.Text;
-
             set
             {
                 labName.Text = value;
             }
         }
 
-        public string HealthMax
+        public Label LabHealthMax
         {
-            get => labMaxHealthValue.Text;
-
-            set
-            {
-                labMaxHealthValue.Text = value;
-            }
+            get => labHealthMaxValue;
         }
 
-        public string Health
+        public Label LabHealth
         {
-            get => labHealthValue.Text;
-
-            set
-            {
-                labHealthValue.Text = value;
-            }
+            get => labHealthValue;
         }
 
-        public string Dmg
+        public Label LabDmg
         {
-            get => labDmgValue.Text;
-
-            set
-            {
-                labDmgValue.Text = value;
-            }
+            get => labDmgValue;
         }
 
-        public string Def
+        public Label LabDef
         {
-            get => labDefValue.Text;
-
-            set
-            {
-                labDefValue.Text = value;
-            }
+            get => labDefValue;
         }
 
-        public string Gold
+        public Label LabGold
         {
-            get => labGoldValue.Text;
-
-            set
-            {
-                labGoldValue.Text = value;
-            }
+            get => labGoldValue;
         }
 
-        public string Lvl
+        public Label LabLvl
         {
-            get => labLvlValue.Text;
-
-            set
-            {
-                labLvlValue.Text = value;
-            }
+            get => labLvlValue;
         }
 
         public event EventHandler BackToMenu;
@@ -111,12 +78,12 @@ namespace NecromindUI
             InitializeComponent();
             _hero = hero;
             _presenter = new GameMainPresenter(this);
-            SetHeroStats();
+            InitUIForHero();
         }
 
-        private void SetHeroStats()
+        private void InitUIForHero()
         {
-            _presenter.SetHeroStats(_hero);
+            _presenter.InitUIForHero(_hero);
 
         }
 

@@ -18,37 +18,30 @@ namespace NecromindUI
         public bool IsPanErrorVisible
         {
             get => panError.Visible;
-
             set
             {
                 panError.Visible = value;
             }
         }
-
         public string Title
         {
             get => labErrorTitle.Text;
-
             set
             {
                 labErrorTitle.Text = value;
             }
         }
-
         public string Msg
         {
             get => labErrorMsg.Text;
-
             set
             {
                 labErrorMsg.Text = value;
             }
         }
-
         public string HeroName
         {
             get => tbHeroName.Text;
-
             set
             {
                 tbHeroName.Text = value;

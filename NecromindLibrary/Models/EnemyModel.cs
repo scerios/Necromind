@@ -23,7 +23,7 @@ namespace NecromindLibrary.Models
         public EnemyModel()
         {
             Gold = 100;
-            Level = 1;
+            Lvl = 1;
             Dmg = 10;
             Def = 5;
             Health = 5;
@@ -35,7 +35,7 @@ namespace NecromindLibrary.Models
             Id = scheme.Id;
             Name = scheme.Name;
             Gold = scheme.Gold;
-            Level = scheme.Level;
+            Lvl = scheme.Lvl;
             Dmg = scheme.Dmg;
             Def = scheme.Def;
             Health = scheme.Health;
@@ -59,7 +59,7 @@ namespace NecromindLibrary.Models
         public void Die(IFighter enemy)
         {
             var levelablePlayer = enemy as ILevelable;
-            levelablePlayer.GainExperience(Level);
+            levelablePlayer.GainExperience(Lvl);
 
             var traderPlayer = enemy as ITrader;
             traderPlayer.RecieveGold(Gold);

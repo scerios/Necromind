@@ -11,17 +11,65 @@ namespace NecromindLibrary.Models
 {
     public class HeroModel : BaseModel, IPlayer
     {
-        public int Dmg { get; private set; }
+        private int _dmg;
+        public int Dmg {
+            get => _dmg;
+            private set
+            {
+                _dmg = value;
+                OnPropertyChanged("Dmg");
+            }
+        }
 
-        public int Def { get; private set; }
+        private int _def;
+        public int Def {
+            get => _def;
+            private set
+            {
+                _def = value;
+                OnPropertyChanged("Def");
+            }
+        }
 
-        public int Health { get; private set; }
+        private int _health;
+        public int Health {
+            get => _health;
+            private set
+            {
+                _health = value;
+                OnPropertyChanged("Health");
+            }
+        }
 
-        public int HealthMax { get; private set; }
+        private int _healthMax;
+        public int HealthMax {
+            get => _healthMax;
+            private set
+            {
+                _healthMax = value;
+                OnPropertyChanged("HealthMax");
+            }
+        }
 
-        public int ExperiencePoints { get; private set; }
+        private int _experiencePoints;
+        public int ExperiencePoints {
+            get => _experiencePoints;
+            private set
+            {
+                _experiencePoints = value;
+                OnPropertyChanged("ExperiencePoints");
+            }
+        }
 
-        public int NextLevelAt { get; private set; }
+        private int _nextLvlAt;
+        public int NextLvlAt {
+            get => _nextLvlAt;
+            private set
+            {
+                _nextLvlAt = value;
+                OnPropertyChanged("NextLvlAt");
+            }
+        }
 
         public HeroModel(string name)
         {
@@ -30,16 +78,9 @@ namespace NecromindLibrary.Models
             HealthMax = 100;
             Dmg = 10;
             Def = 5;
-            Level = 1;
+            Lvl = 1;
             ExperiencePoints = 1;
-            NextLevelAt = 1000;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            NextLvlAt = 1000;
         }
 
         public void Attack(IFighter enemy)
@@ -84,7 +125,7 @@ namespace NecromindLibrary.Models
         {
             ExperiencePoints += level * 10;
 
-            if (ExperiencePoints >= NextLevelAt)
+            if (ExperiencePoints >= NextLvlAt)
             {
                 LevelUp();
             }
@@ -92,12 +133,12 @@ namespace NecromindLibrary.Models
 
         public void LevelUp()
         {
-            Level++;
+            Lvl++;
             Dmg += 10;
             Def += 2;
             HealthMax += 20;
             FullyHeal();
-            NextLevelAt += Level * 1000;
+            NextLvlAt += Lvl * 1000;
         }
 
         public void GiveGold(ITrader trader, int amount)

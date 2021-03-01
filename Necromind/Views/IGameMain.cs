@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace NecromindUI.Views
 {
@@ -11,11 +12,11 @@ namespace NecromindUI.Views
         bool IsPanExitVisible { get; set; }
         string CurrentLocation { get; set; }
         string HeroName { get; set; }
-        string HealthMax { get; set; }
-        string Health { get; set; }
-        string Dmg { get; set; }
-        string Def { get; set; }
-        string Gold { get; set; }
-        string Lvl { get; set; }
+        Label LabHealthMax { get; }
+        Label LabHealth { get; }
+        Label LabDmg { get; }
+        Label LabDef { get; }
+        Label LabGold { get; }
+        Label LabLvl { get; }
     }
 }

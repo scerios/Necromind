@@ -21,7 +21,6 @@ namespace NecromindUI
         public bool IsPanErrorVisible
         {
             get => panError.Visible;
-
             set
             {
                 panError.Visible = value;
@@ -30,57 +29,46 @@ namespace NecromindUI
         public string Title
         {
             get => labErrorTitle.Text;
-
             set
             {
                 labErrorTitle.Text = value;
             }
         }
-
         public string Msg
         {
             get => labErrorMsg.Text;
-
             set
             {
                 labErrorMsg.Text = value;
             }
         }
-
         public bool IsPanConfDelVisible
         {
             get => panConfDel.Visible;
-
             set
             {
                 panConfDel.Visible = value;
             }
         }
-
         public string HeroName
         {
             get => labHeroName.Text;
-
             set
             {
                 labHeroName.Text = value;
             }
         }
-
         public string ConfirmName
         {
             get => tbDelHeroName.Text;
-
             set
             {
                 tbDelHeroName.Text = value;
             }
         }
-
         public bool IsBtnDelHeroEnabled
         {
             get => btnDelHero.Enabled;
-
             set
             {
                 btnDelHero.Enabled = value;
