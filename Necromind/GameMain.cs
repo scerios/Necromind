@@ -31,7 +31,6 @@ namespace NecromindUI
                 labLocation.Text = value;
             }
         }
-
         public string HeroName
         {
             get => labName.Text;
@@ -40,32 +39,26 @@ namespace NecromindUI
                 labName.Text = value;
             }
         }
-
         public Label LabHealthMax
         {
             get => labHealthMaxValue;
         }
-
         public Label LabHealth
         {
             get => labHealthValue;
         }
-
         public Label LabDmg
         {
             get => labDmgValue;
         }
-
         public Label LabDef
         {
             get => labDefValue;
         }
-
         public Label LabGold
         {
             get => labGoldValue;
         }
-
         public Label LabLvl
         {
             get => labLvlValue;

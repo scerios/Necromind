@@ -36,7 +36,7 @@ namespace NecromindUI
             view.BringToFront();
         }
 
-        private void DeavtivateView(UserControl view)
+        private void DeactivateView(UserControl view)
         {
             Controls.Remove(view);
             view.Dispose();
@@ -48,11 +48,19 @@ namespace NecromindUI
             ActivateView(_menuNew);
 
             _menuNew.BtnBackClick += new EventHandler(MenuNew_BtnBackClick);
+            _menuNew.BtnGoToMenuLoadClick += new EventHandler(MenuNew_BtnGoToMenuLoadClick);
         }
 
         private void MenuNew_BtnBackClick(object sender, EventArgs e)
         {
-            DeavtivateView(_menuNew);
+            DeactivateView(_menuNew);
+        }
+
+        private void MenuNew_BtnGoToMenuLoadClick(object sender, EventArgs e)
+        {
+            DeactivateView(_menuNew);
+
+            BtnLoadGame_Click(this, e);
         }
 
         private void BtnLoadGame_Click(object sender, EventArgs e)
@@ -69,18 +77,18 @@ namespace NecromindUI
 
         private void MenuLoad_BtnBackClick(object sender, EventArgs e)
         {
-            DeavtivateView(_menuLoad);
+            DeactivateView(_menuLoad);
         }
 
         private void MenuLoad_BtnDelHeroClick(object sender, EventArgs e)
         {
-            DeavtivateView(_menuLoad);
+            DeactivateView(_menuLoad);
             BtnLoadGame_Click(sender, e);
         }
 
         private void GameMainLoad(object sender, EventArgs e)
         {
-            DeavtivateView(_menuLoad);
+            DeactivateView(_menuLoad);
             _gameMain = new GameMain(PlayerModel.Hero);
             ActivateView(_gameMain);
 
@@ -89,7 +97,7 @@ namespace NecromindUI
 
         private void GameMain_BackToMenu(object sender, EventArgs e)
         {
-            DeavtivateView(_gameMain);
+            DeactivateView(_gameMain);
         }
     }
 }

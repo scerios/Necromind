@@ -49,6 +49,7 @@ namespace NecromindUI
         }
 
         public event EventHandler BtnBackClick;
+        public event EventHandler BtnGoToMenuLoadClick;
 
         public MenuNew()
         {
@@ -63,7 +64,30 @@ namespace NecromindUI
 
         private void BtnCreateNewHero_Click(object sender, EventArgs e)
         {
-            _presenter.TryCreateHero();
+
+            if (_presenter.IsHeroNameAvailable())
+            {
+                if (_presenter.IsHeroCreated())
+                {
+                    BtnGoToMenuLoadClick?.Invoke(this, e);
+                }
+                else
+                {
+                    _presenter.DisplayError(
+                        "Hero couldn't be saved.",
+                        "There was an error during saving to database. Please try again."
+                        );
+                }
+            }
+            else
+            {
+                _presenter.DisplayError(
+                    "Hero already exists.",
+                    $"The name \"{ HeroName }\" is taken by one of your characters already. You need to pick another one."
+                    );
+
+                HeroName = "";
+            }
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
