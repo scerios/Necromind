@@ -32,7 +32,7 @@ namespace NecromindUI
             this.panBottom = new System.Windows.Forms.Panel();
             this.panEventLog = new System.Windows.Forms.Panel();
             this.rtbEventLog = new System.Windows.Forms.RichTextBox();
-            this.panControls = new System.Windows.Forms.Panel();
+            this.panMovement = new System.Windows.Forms.Panel();
             this.panHero = new System.Windows.Forms.Panel();
             this.labSlash = new System.Windows.Forms.Label();
             this.labHealthValue = new System.Windows.Forms.Label();
@@ -56,9 +56,10 @@ namespace NecromindUI
             this.btnWest = new System.Windows.Forms.Button();
             this.btnEast = new System.Windows.Forms.Button();
             this.btnSouth = new System.Windows.Forms.Button();
+            this.panInteraction = new System.Windows.Forms.Panel();
             this.panBottom.SuspendLayout();
             this.panEventLog.SuspendLayout();
-            this.panControls.SuspendLayout();
+            this.panMovement.SuspendLayout();
             this.panHero.SuspendLayout();
             this.panExit.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +67,7 @@ namespace NecromindUI
             // panBottom
             // 
             this.panBottom.Controls.Add(this.panEventLog);
-            this.panBottom.Controls.Add(this.panControls);
+            this.panBottom.Controls.Add(this.panMovement);
             this.panBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panBottom.Location = new System.Drawing.Point(0, 411);
             this.panBottom.Name = "panBottom";
@@ -98,17 +99,17 @@ namespace NecromindUI
             this.rtbEventLog.TabStop = false;
             this.rtbEventLog.Text = "";
             // 
-            // panControls
+            // panMovement
             // 
-            this.panControls.Controls.Add(this.btnSouth);
-            this.panControls.Controls.Add(this.btnEast);
-            this.panControls.Controls.Add(this.btnWest);
-            this.panControls.Controls.Add(this.btnNorth);
-            this.panControls.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panControls.Location = new System.Drawing.Point(784, 0);
-            this.panControls.Name = "panControls";
-            this.panControls.Size = new System.Drawing.Size(300, 250);
-            this.panControls.TabIndex = 0;
+            this.panMovement.Controls.Add(this.btnSouth);
+            this.panMovement.Controls.Add(this.btnEast);
+            this.panMovement.Controls.Add(this.btnWest);
+            this.panMovement.Controls.Add(this.btnNorth);
+            this.panMovement.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panMovement.Location = new System.Drawing.Point(784, 0);
+            this.panMovement.Name = "panMovement";
+            this.panMovement.Size = new System.Drawing.Size(300, 250);
+            this.panMovement.TabIndex = 0;
             // 
             // panHero
             // 
@@ -400,11 +401,20 @@ namespace NecromindUI
             this.btnSouth.Text = "South";
             this.btnSouth.UseVisualStyleBackColor = false;
             // 
+            // panInteraction
+            // 
+            this.panInteraction.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panInteraction.Location = new System.Drawing.Point(0, 346);
+            this.panInteraction.Name = "panInteraction";
+            this.panInteraction.Size = new System.Drawing.Size(1084, 65);
+            this.panInteraction.TabIndex = 26;
+            // 
             // GameMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.Controls.Add(this.panInteraction);
             this.Controls.Add(this.panExit);
             this.Controls.Add(this.labName);
             this.Controls.Add(this.labLocation);
@@ -417,7 +427,7 @@ namespace NecromindUI
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameMain_KeyUp);
             this.panBottom.ResumeLayout(false);
             this.panEventLog.ResumeLayout(false);
-            this.panControls.ResumeLayout(false);
+            this.panMovement.ResumeLayout(false);
             this.panHero.ResumeLayout(false);
             this.panExit.ResumeLayout(false);
             this.panExit.PerformLayout();
@@ -430,7 +440,7 @@ namespace NecromindUI
 
         private System.Windows.Forms.Panel panBottom;
         private System.Windows.Forms.Panel panEventLog;
-        private System.Windows.Forms.Panel panControls;
+        private System.Windows.Forms.Panel panMovement;
         private System.Windows.Forms.Panel panHero;
         private System.Windows.Forms.Label labLocation;
         private System.Windows.Forms.RichTextBox rtbEventLog;
@@ -455,5 +465,6 @@ namespace NecromindUI
         private System.Windows.Forms.Button btnEast;
         private System.Windows.Forms.Button btnWest;
         private System.Windows.Forms.Button btnNorth;
+        private System.Windows.Forms.Panel panInteraction;
     }
 }

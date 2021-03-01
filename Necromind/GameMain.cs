@@ -7,12 +7,14 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+using Necromind;
 
 namespace NecromindUI
 {
     public partial class GameMain : UserControl, IGameMain
     {
         private readonly GameMainPresenter _presenter;
+        private readonly GameFriendlyInteraction _gameFriendlyInteraction;
 
         public bool IsPanExitVisible
         {
@@ -69,6 +71,7 @@ namespace NecromindUI
         {
             InitializeComponent();
             _presenter = new GameMainPresenter(this);
+            _gameFriendlyInteraction = new GameFriendlyInteraction();
             InitUIForHero(hero);
         }
 
@@ -76,6 +79,27 @@ namespace NecromindUI
         {
             _presenter.InitUIForHero(hero);
 
+        }
+
+        private void ActivateView(Panel panel, UserControl view)
+        {
+            panel.Controls.Add(view);
+            view.BringToFront();
+        }
+
+        private void DeactivateView(Panel panel, UserControl view)
+        {
+            panel.Controls.Remove(view);
+        }
+
+        private void ShowFriendlyUI()
+        {
+            ActivateView(panInteraction, _gameFriendlyInteraction);
+        }
+
+        private void HideFriendlyUI()
+        {
+            DeactivateView(panInteraction, _gameFriendlyInteraction);
         }
 
         private void GameMain_KeyUp(object sender, KeyEventArgs e)

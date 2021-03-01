@@ -77,5 +77,10 @@ namespace NecromindUI.Presenters
             _mongoConnector.TryUpsertRecord(ConfigurationManager.AppSettings.Get("heroesCollection"), _hero.Id, _hero);
             ClearHeroLabelDatabindings();
         }
+
+        public void ShowFriendlyUI()
+        {
+
+        }
     }
 }
