@@ -7,14 +7,14 @@ using System.Windows.Forms;
 
 namespace NecromindLibrary.Services
 {
-    public class TextService
+    public static class TextService
     {
         /// <summary>
         /// Formats a string by adding linebreaks so it's shown correctly on the error panel.
         /// </summary>
         /// <param name="msg">Message of the error.</param>
         /// <returns>A formatted string.</returns>
-        public string FormatErrorMsg(string msg)
+        public static string FormatErrorMsg(string msg)
         {
             int i = 25;
 
@@ -34,7 +34,7 @@ namespace NecromindLibrary.Services
             return msg;
         }
 
-        public bool IsGivenStringsAreEqual(string one, string two) =>
+        public static bool IsGivenStringsAreEqual(string one, string two) =>
             one.ToLower().Equals(two.ToLower());
     }
 }

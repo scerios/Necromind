@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NecromindLibrary.Services;
 
 namespace NecromindUI
 {
@@ -125,7 +126,7 @@ namespace NecromindUI
 
             foreach (HeroModel hero in heroes)
             {
-                Button btnLoadHero = _presenter.CreateButton(
+                Button btnLoadHero = UIService.CreateButton(
                     hero.Name,
                     "btnLoad" + hero.Name,
                     100,
@@ -147,7 +148,7 @@ namespace NecromindUI
                     BtnLoadHeroClick?.Invoke(sender, e);
                 };
 
-                Button btnDelHero = _presenter.CreateButton(
+                Button btnDelHero = UIService.CreateButton(
                     "X",
                     "btnDelete" + hero.Name,
                     25,

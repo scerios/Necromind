@@ -25,9 +25,8 @@ namespace NecromindUI.Presenters
         public bool IsHeroNameAvailable()
         {
             var heroes = _connector.GetAllRecords<HeroModel>(ConfigurationManager.AppSettings.Get("heroesCollection"));
-            var validationService = new ValidationService();
 
-            return !validationService.IsHeroNameAlreadyRegistered(heroes, _menuNew.HeroName);
+            return !ValidationService.IsHeroNameAlreadyRegistered(heroes, _menuNew.HeroName);
         }
 
         public bool IsHeroCreated()
@@ -37,9 +36,8 @@ namespace NecromindUI.Presenters
 
         public void DisplayError(string title, string msg)
         {
-            var textService = new TextService();
             _menuNew.Title = title;
-            _menuNew.Msg = textService.FormatErrorMsg(msg);
+            _menuNew.Msg = TextService.FormatErrorMsg(msg);
             _menuNew.IsPanErrorVisible = true;
         }
 

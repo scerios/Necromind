@@ -57,6 +57,7 @@ namespace NecromindUI
             this.btnEast = new System.Windows.Forms.Button();
             this.btnSouth = new System.Windows.Forms.Button();
             this.panInteraction = new System.Windows.Forms.Panel();
+            this.panTarget = new System.Windows.Forms.Panel();
             this.panBottom.SuspendLayout();
             this.panEventLog.SuspendLayout();
             this.panMovement.SuspendLayout();
@@ -409,17 +410,26 @@ namespace NecromindUI
             this.panInteraction.Size = new System.Drawing.Size(1084, 65);
             this.panInteraction.TabIndex = 26;
             // 
+            // panTarget
+            // 
+            this.panTarget.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panTarget.Location = new System.Drawing.Point(542, 20);
+            this.panTarget.Name = "panTarget";
+            this.panTarget.Size = new System.Drawing.Size(542, 326);
+            this.panTarget.TabIndex = 27;
+            // 
             // GameMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.Controls.Add(this.panTarget);
             this.Controls.Add(this.panInteraction);
-            this.Controls.Add(this.panExit);
             this.Controls.Add(this.labName);
             this.Controls.Add(this.labLocation);
             this.Controls.Add(this.panHero);
             this.Controls.Add(this.panBottom);
+            this.Controls.Add(this.panExit);
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameMain";
@@ -466,5 +476,6 @@ namespace NecromindUI
         private System.Windows.Forms.Button btnWest;
         private System.Windows.Forms.Button btnNorth;
         private System.Windows.Forms.Panel panInteraction;
+        private System.Windows.Forms.Panel panTarget;
     }
 }

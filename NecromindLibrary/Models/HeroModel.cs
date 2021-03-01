@@ -99,7 +99,7 @@ namespace NecromindLibrary.Models
 
         public void Die(IFighter enemy)
         {
-            // TODO - Implement die logic (Game Over).
+            // TODO - Implement die logic.
             throw new NotImplementedException();
         }
 

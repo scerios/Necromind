@@ -104,6 +104,16 @@ namespace NecromindUI
             DeactivateView(panInteraction, _gameFriendlyInteraction);
         }
 
+        private void ShowEnemyUI()
+        {
+            ActivateView(panInteraction, _gameEnemyInteraction);
+        }
+
+        private void HideEnemyUI()
+        {
+            DeactivateView(panInteraction, _gameEnemyInteraction);
+        }
+
         private void GameMain_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)

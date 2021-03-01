@@ -21,7 +21,7 @@ namespace Necromind.UnitTests
         {
             _hero.GainExperience(100);
 
-            Assert.That(_hero.Level, Is.EqualTo(2));
+            Assert.That(_hero.Lvl, Is.EqualTo(2));
         }
     }
 }
