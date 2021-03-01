@@ -13,7 +13,6 @@ namespace NecromindUI
     public partial class GameMain : UserControl, IGameMain
     {
         private readonly GameMainPresenter _presenter;
-        private readonly HeroModel _hero;
 
         public bool IsPanExitVisible
         {
@@ -69,14 +68,13 @@ namespace NecromindUI
         public GameMain(HeroModel hero)
         {
             InitializeComponent();
-            _hero = hero;
             _presenter = new GameMainPresenter(this);
-            InitUIForHero();
+            InitUIForHero(hero);
         }
 
-        private void InitUIForHero()
+        private void InitUIForHero(HeroModel hero)
         {
-            _presenter.InitUIForHero(_hero);
+            _presenter.InitUIForHero(hero);
 
         }
 
@@ -98,7 +96,7 @@ namespace NecromindUI
         private void BtnSaveExit_Click(object sender, EventArgs e)
         {
             BackToMenu?.Invoke(sender, e);
-            _presenter.SaveGame(_hero);
+            _presenter.SaveGame();
         }
 
         private void BtnContinue_Click(object sender, EventArgs e)
