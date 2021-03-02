@@ -1,15 +1,8 @@
-﻿using NecromindUI.Views;
-using NecromindLibrary.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.Control;
+﻿using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
-using System.Configuration;
 using NecromindLibrary.Services;
+using NecromindUI.Views;
+using System.Configuration;
 
 namespace NecromindUI.Presenters
 {
@@ -56,6 +49,12 @@ namespace NecromindUI.Presenters
             _gameMain.LabLvl.DataBindings.Clear();
         }
 
+        private void ScrollEventLogToBottom()
+        {
+            _gameMain.EventLog.SelectionStart = _gameMain.EventLog.Text.Length;
+            _gameMain.EventLog.ScrollToCaret();
+        }
+
         public void InitUIForHero(HeroModel hero)
         {
             _hero = hero;
@@ -65,12 +64,14 @@ namespace NecromindUI.Presenters
 
         public void SetEventLog(string msg)
         {
-            _gameMain.EventLog = TextService.FormatEventMsg(msg);
+            _gameMain.EventLog.Text = TextService.FormatEventMsg(msg);
+            ScrollEventLogToBottom();
         }
 
         public void AppendEventLog(string msg)
         {
-            _gameMain.EventLog = _gameMain.EventLog + "\n" + TextService.FormatEventMsg(msg);
+            _gameMain.EventLog.Text = _gameMain.EventLog + "\n" + TextService.FormatEventMsg(msg);
+            ScrollEventLogToBottom();
         }
 
         public void SetLocationName(string name)
@@ -96,7 +97,6 @@ namespace NecromindUI.Presenters
 
         public void ShowFriendlyUI()
         {
-
         }
     }
 }

@@ -1,13 +1,9 @@
-﻿using NecromindUI.Presenters;
-using NecromindUI.Views;
+﻿using Necromind;
 using NecromindLibrary.Models;
+using NecromindUI.Presenters;
+using NecromindUI.Views;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Threading;
 using System.Windows.Forms;
-using Necromind;
 
 namespace NecromindUI
 {
@@ -25,6 +21,7 @@ namespace NecromindUI
                 panExit.Visible = value;
             }
         }
+
         public string CurrentLocation
         {
             get => labLocation.Text;
@@ -33,6 +30,7 @@ namespace NecromindUI
                 labLocation.Text = value;
             }
         }
+
         public string HeroName
         {
             get => labName.Text;
@@ -41,35 +39,37 @@ namespace NecromindUI
                 labName.Text = value;
             }
         }
-        public string EventLog
-        {
-            get => rtbEventLog.Text;
 
-            set
-            {
-                rtbEventLog.Text = value;
-            }
+        public RichTextBox EventLog
+        {
+            get => rtbEventLog;
         }
+
         public Label LabHealthMax
         {
             get => labHealthMaxValue;
         }
+
         public Label LabHealth
         {
             get => labHealthValue;
         }
+
         public Label LabDmg
         {
             get => labDmgValue;
         }
+
         public Label LabDef
         {
             get => labDefValue;
         }
+
         public Label LabGold
         {
             get => labGoldValue;
         }
+
         public Label LabLvl
         {
             get => labLvlValue;
@@ -167,22 +167,18 @@ namespace NecromindUI
 
         private void BtnNorth_Click(object sender, EventArgs e)
         {
-
         }
 
         private void BtnSouth_Click(object sender, EventArgs e)
         {
-
         }
 
         private void BtnWest_Click(object sender, EventArgs e)
         {
-
         }
 
         private void BtnEast_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

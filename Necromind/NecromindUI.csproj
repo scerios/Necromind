@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminControls.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminControls.Designer.cs">
+      <DependentUpon>AdminControls.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameEnemyInteraction.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -66,6 +72,12 @@
     </Compile>
     <Compile Include="GameMain.Designer.cs">
       <DependentUpon>GameMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuAdmin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MenuAdmin.Designer.cs">
+      <DependentUpon>MenuAdmin.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuLoad.cs">
       <SubType>UserControl</SubType>
@@ -86,6 +98,7 @@
       <DependentUpon>Necromind.cs</DependentUpon>
     </Compile>
     <Compile Include="Presenters\GameMainPresenter.cs" />
+    <Compile Include="Presenters\MenuAdminPresenter.cs" />
     <Compile Include="Presenters\MenuLoadPresenter.cs" />
     <Compile Include="Presenters\MenuNewPresenter.cs" />
     <Compile Include="Program.cs" />
@@ -93,8 +106,12 @@
     <Compile Include="Views\IConfirmDelete.cs" />
     <Compile Include="Views\IError.cs" />
     <Compile Include="Views\IGameMain.cs" />
+    <Compile Include="Views\IMenuAdmin.cs" />
     <Compile Include="Views\IMenuLoad.cs" />
     <Compile Include="Views\IMenuNew.cs" />
+    <EmbeddedResource Include="AdminControls.resx">
+      <DependentUpon>AdminControls.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GameEnemyInteraction.resx">
       <DependentUpon>GameEnemyInteraction.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GameMain.resx">
       <DependentUpon>GameMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuAdmin.resx">
+      <DependentUpon>MenuAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuLoad.resx">
       <DependentUpon>MenuLoad.cs</DependentUpon>
@@ -140,6 +160,9 @@
       <Project>{a48b74e6-c8a6-4043-8c89-1a6b90181b65}</Project>
       <Name>NecromindLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

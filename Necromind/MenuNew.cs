@@ -1,13 +1,6 @@
 ﻿using NecromindUI.Presenters;
 using NecromindUI.Views;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NecromindUI
@@ -15,6 +8,7 @@ namespace NecromindUI
     public partial class MenuNew : UserControl, IMenuNew
     {
         private readonly MenuNewPresenter _presenter;
+
         public bool IsPanErrorVisible
         {
             get => panError.Visible;
@@ -23,6 +17,7 @@ namespace NecromindUI
                 panError.Visible = value;
             }
         }
+
         public string Title
         {
             get => labErrorTitle.Text;
@@ -31,6 +26,7 @@ namespace NecromindUI
                 labErrorTitle.Text = value;
             }
         }
+
         public string Msg
         {
             get => labErrorMsg.Text;
@@ -39,6 +35,7 @@ namespace NecromindUI
                 labErrorMsg.Text = value;
             }
         }
+
         public string HeroName
         {
             get => tbHeroName.Text;
@@ -49,12 +46,14 @@ namespace NecromindUI
         }
 
         public event EventHandler BtnBackClick;
+
         public event EventHandler BtnGoToMenuLoadClick;
 
         public MenuNew()
         {
             InitializeComponent();
             _presenter = new MenuNewPresenter(this);
+            tbHeroName.Focus();
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
@@ -64,7 +63,6 @@ namespace NecromindUI
 
         private void BtnCreateNewHero_Click(object sender, EventArgs e)
         {
-
             if (_presenter.IsHeroNameAvailable())
             {
                 if (_presenter.IsHeroCreated())

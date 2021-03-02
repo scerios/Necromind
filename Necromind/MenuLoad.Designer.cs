@@ -211,7 +211,7 @@ namespace NecromindUI
             this.btnDelHero.TabStop = false;
             this.btnDelHero.Text = "DELETE";
             this.btnDelHero.UseVisualStyleBackColor = false;
-            this.btnDelHero.Click += new System.EventHandler(this.BtnDeleteHero_Click);
+            this.btnDelHero.Click += new System.EventHandler(this.BtnDelHero_Click);
             // 
             // tbDelHeroName
             // 

@@ -85,6 +85,7 @@ namespace NecromindUI
             this.Name = "Necromind";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Necromind";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Necromind_KeyDown);
             this.ResumeLayout(false);
 
         }

@@ -1,16 +1,7 @@
-﻿using NecromindUI.Views;
-using NecromindLibrary.Models;
-using NecromindUI;
+﻿using NecromindLibrary.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NecromindUI
@@ -20,6 +11,7 @@ namespace NecromindUI
         private MenuNew _menuNew;
         private MenuLoad _menuLoad;
         private GameMain _gameMain;
+        private MenuAdmin _menuAdmin;
 
         public Necromind()
         {
@@ -72,7 +64,6 @@ namespace NecromindUI
             _menuLoad.BtnBackClick += new EventHandler(MenuLoad_BtnBackClick);
             _menuLoad.BtnDelHeroClick += new EventHandler(MenuLoad_BtnDelHeroClick);
             _menuLoad.BtnLoadHeroClick += new EventHandler(GameMainLoad);
-
         }
 
         private void MenuLoad_BtnBackClick(object sender, EventArgs e)
@@ -98,6 +89,22 @@ namespace NecromindUI
         private void GameMain_BackToMenu(object sender, EventArgs e)
         {
             DeactivateView(_gameMain);
+        }
+
+        private void Necromind_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.A && e.Modifiers == Keys.Control)
+            {
+                _menuAdmin = new MenuAdmin();
+                ActivateView(_menuAdmin);
+
+                _menuAdmin.BtnBackCLick += new EventHandler(MenuAdmin_BtnBackClick);
+            }
+        }
+
+        private void MenuAdmin_BtnBackClick(object sender, EventArgs e)
+        {
+            DeactivateView(_menuAdmin);
         }
     }
 }

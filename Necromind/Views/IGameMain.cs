@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace NecromindUI.Views
 {
@@ -12,7 +7,7 @@ namespace NecromindUI.Views
         bool IsPanExitVisible { get; set; }
         string CurrentLocation { get; set; }
         string HeroName { get; set; }
-        string EventLog { get; set; }
+        RichTextBox EventLog { get; }
         Label LabHealthMax { get; }
         Label LabHealth { get; }
         Label LabDmg { get; }

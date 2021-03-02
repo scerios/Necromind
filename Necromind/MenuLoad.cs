@@ -1,17 +1,11 @@
-﻿using NecromindUI.Presenters;
-using NecromindUI.Views;
-using NecromindLibrary.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using NecromindLibrary.Models;
 using NecromindLibrary.Services;
+using NecromindUI.Presenters;
+using NecromindUI.Views;
+using System;
+using System.Configuration;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace NecromindUI
 {
@@ -27,6 +21,7 @@ namespace NecromindUI
                 panError.Visible = value;
             }
         }
+
         public string Title
         {
             get => labErrorTitle.Text;
@@ -35,6 +30,7 @@ namespace NecromindUI
                 labErrorTitle.Text = value;
             }
         }
+
         public string Msg
         {
             get => labErrorMsg.Text;
@@ -43,6 +39,7 @@ namespace NecromindUI
                 labErrorMsg.Text = value;
             }
         }
+
         public bool IsPanConfDelVisible
         {
             get => panConfDel.Visible;
@@ -51,6 +48,7 @@ namespace NecromindUI
                 panConfDel.Visible = value;
             }
         }
+
         public string HeroName
         {
             get => labHeroName.Text;
@@ -59,6 +57,7 @@ namespace NecromindUI
                 labHeroName.Text = value;
             }
         }
+
         public string ConfirmName
         {
             get => tbDelHeroName.Text;
@@ -67,6 +66,7 @@ namespace NecromindUI
                 tbDelHeroName.Text = value;
             }
         }
+
         public bool IsBtnDelHeroEnabled
         {
             get => btnDelHero.Enabled;
@@ -77,7 +77,9 @@ namespace NecromindUI
         }
 
         public event EventHandler BtnBackClick;
+
         public event EventHandler BtnDelHeroClick;
+
         public event EventHandler BtnLoadHeroClick;
 
         public MenuLoad()
@@ -101,7 +103,7 @@ namespace NecromindUI
             BtnLoadHeroClick?.Invoke(this, e);
         }
 
-        private void BtnDeleteHero_Click(object sender, EventArgs e)
+        private void BtnDelHero_Click(object sender, EventArgs e)
         {
             _presenter.DeleteHero();
             BtnDelHeroClick?.Invoke(this, e);
