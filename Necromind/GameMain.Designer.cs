@@ -33,6 +33,10 @@ namespace NecromindUI
             this.panEventLog = new System.Windows.Forms.Panel();
             this.rtbEventLog = new System.Windows.Forms.RichTextBox();
             this.panMovement = new System.Windows.Forms.Panel();
+            this.btnSouth = new System.Windows.Forms.Button();
+            this.btnEast = new System.Windows.Forms.Button();
+            this.btnWest = new System.Windows.Forms.Button();
+            this.btnNorth = new System.Windows.Forms.Button();
             this.panHero = new System.Windows.Forms.Panel();
             this.labSlash = new System.Windows.Forms.Label();
             this.labHealthValue = new System.Windows.Forms.Label();
@@ -52,10 +56,6 @@ namespace NecromindUI
             this.btnSaveExit = new System.Windows.Forms.Button();
             this.btnContinue = new System.Windows.Forms.Button();
             this.labExitQuestion = new System.Windows.Forms.Label();
-            this.btnNorth = new System.Windows.Forms.Button();
-            this.btnWest = new System.Windows.Forms.Button();
-            this.btnEast = new System.Windows.Forms.Button();
-            this.btnSouth = new System.Windows.Forms.Button();
             this.panInteraction = new System.Windows.Forms.Panel();
             this.panTarget = new System.Windows.Forms.Panel();
             this.panBottom.SuspendLayout();
@@ -89,13 +89,12 @@ namespace NecromindUI
             this.rtbEventLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.rtbEventLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtbEventLog.Cursor = System.Windows.Forms.Cursors.Default;
-            this.rtbEventLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtbEventLog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.rtbEventLog.Location = new System.Drawing.Point(0, 0);
+            this.rtbEventLog.Location = new System.Drawing.Point(30, 0);
             this.rtbEventLog.Name = "rtbEventLog";
             this.rtbEventLog.ReadOnly = true;
             this.rtbEventLog.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtbEventLog.Size = new System.Drawing.Size(784, 250);
+            this.rtbEventLog.Size = new System.Drawing.Size(724, 250);
             this.rtbEventLog.TabIndex = 14;
             this.rtbEventLog.TabStop = false;
             this.rtbEventLog.Text = "";
@@ -111,6 +110,82 @@ namespace NecromindUI
             this.panMovement.Name = "panMovement";
             this.panMovement.Size = new System.Drawing.Size(300, 250);
             this.panMovement.TabIndex = 0;
+            // 
+            // btnSouth
+            // 
+            this.btnSouth.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnSouth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
+            this.btnSouth.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSouth.Enabled = false;
+            this.btnSouth.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
+            this.btnSouth.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.btnSouth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSouth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnSouth.Location = new System.Drawing.Point(100, 185);
+            this.btnSouth.Name = "btnSouth";
+            this.btnSouth.Size = new System.Drawing.Size(100, 25);
+            this.btnSouth.TabIndex = 8;
+            this.btnSouth.TabStop = false;
+            this.btnSouth.Text = "South";
+            this.btnSouth.UseVisualStyleBackColor = false;
+            this.btnSouth.Click += new System.EventHandler(this.BtnSouth_Click);
+            // 
+            // btnEast
+            // 
+            this.btnEast.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnEast.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
+            this.btnEast.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEast.Enabled = false;
+            this.btnEast.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
+            this.btnEast.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.btnEast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEast.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnEast.Location = new System.Drawing.Point(175, 110);
+            this.btnEast.Name = "btnEast";
+            this.btnEast.Size = new System.Drawing.Size(100, 25);
+            this.btnEast.TabIndex = 7;
+            this.btnEast.TabStop = false;
+            this.btnEast.Text = "East";
+            this.btnEast.UseVisualStyleBackColor = false;
+            this.btnEast.Click += new System.EventHandler(this.BtnEast_Click);
+            // 
+            // btnWest
+            // 
+            this.btnWest.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnWest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
+            this.btnWest.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnWest.Enabled = false;
+            this.btnWest.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
+            this.btnWest.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.btnWest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnWest.Location = new System.Drawing.Point(25, 110);
+            this.btnWest.Name = "btnWest";
+            this.btnWest.Size = new System.Drawing.Size(100, 25);
+            this.btnWest.TabIndex = 6;
+            this.btnWest.TabStop = false;
+            this.btnWest.Text = "West";
+            this.btnWest.UseVisualStyleBackColor = false;
+            this.btnWest.Click += new System.EventHandler(this.BtnWest_Click);
+            // 
+            // btnNorth
+            // 
+            this.btnNorth.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnNorth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
+            this.btnNorth.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNorth.Enabled = false;
+            this.btnNorth.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
+            this.btnNorth.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.btnNorth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNorth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnNorth.Location = new System.Drawing.Point(100, 35);
+            this.btnNorth.Name = "btnNorth";
+            this.btnNorth.Size = new System.Drawing.Size(100, 25);
+            this.btnNorth.TabIndex = 5;
+            this.btnNorth.TabStop = false;
+            this.btnNorth.Text = "North";
+            this.btnNorth.UseVisualStyleBackColor = false;
+            this.btnNorth.Click += new System.EventHandler(this.BtnNorth_Click);
             // 
             // panHero
             // 
@@ -329,78 +404,6 @@ namespace NecromindUI
             this.labExitQuestion.TabIndex = 0;
             this.labExitQuestion.Text = "Are you sure you want to quit?";
             this.labExitQuestion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnNorth
-            // 
-            this.btnNorth.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnNorth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
-            this.btnNorth.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNorth.Enabled = false;
-            this.btnNorth.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
-            this.btnNorth.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.btnNorth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNorth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnNorth.Location = new System.Drawing.Point(100, 35);
-            this.btnNorth.Name = "btnNorth";
-            this.btnNorth.Size = new System.Drawing.Size(100, 25);
-            this.btnNorth.TabIndex = 5;
-            this.btnNorth.TabStop = false;
-            this.btnNorth.Text = "North";
-            this.btnNorth.UseVisualStyleBackColor = false;
-            // 
-            // btnWest
-            // 
-            this.btnWest.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnWest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
-            this.btnWest.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnWest.Enabled = false;
-            this.btnWest.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
-            this.btnWest.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.btnWest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnWest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnWest.Location = new System.Drawing.Point(25, 110);
-            this.btnWest.Name = "btnWest";
-            this.btnWest.Size = new System.Drawing.Size(100, 25);
-            this.btnWest.TabIndex = 6;
-            this.btnWest.TabStop = false;
-            this.btnWest.Text = "West";
-            this.btnWest.UseVisualStyleBackColor = false;
-            // 
-            // btnEast
-            // 
-            this.btnEast.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnEast.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
-            this.btnEast.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEast.Enabled = false;
-            this.btnEast.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
-            this.btnEast.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.btnEast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEast.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnEast.Location = new System.Drawing.Point(175, 110);
-            this.btnEast.Name = "btnEast";
-            this.btnEast.Size = new System.Drawing.Size(100, 25);
-            this.btnEast.TabIndex = 7;
-            this.btnEast.TabStop = false;
-            this.btnEast.Text = "East";
-            this.btnEast.UseVisualStyleBackColor = false;
-            // 
-            // btnSouth
-            // 
-            this.btnSouth.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnSouth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
-            this.btnSouth.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSouth.Enabled = false;
-            this.btnSouth.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
-            this.btnSouth.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.btnSouth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSouth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnSouth.Location = new System.Drawing.Point(100, 185);
-            this.btnSouth.Name = "btnSouth";
-            this.btnSouth.Size = new System.Drawing.Size(100, 25);
-            this.btnSouth.TabIndex = 8;
-            this.btnSouth.TabStop = false;
-            this.btnSouth.Text = "South";
-            this.btnSouth.UseVisualStyleBackColor = false;
             // 
             // panInteraction
             // 

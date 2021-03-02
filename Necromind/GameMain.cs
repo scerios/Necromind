@@ -41,6 +41,15 @@ namespace NecromindUI
                 labName.Text = value;
             }
         }
+        public string EventLog
+        {
+            get => rtbEventLog.Text;
+
+            set
+            {
+                rtbEventLog.Text = value;
+            }
+        }
         public Label LabHealthMax
         {
             get => labHealthMaxValue;
@@ -74,13 +83,29 @@ namespace NecromindUI
             _presenter = new GameMainPresenter(this);
             _gameFriendlyInteraction = new GameFriendlyInteraction();
             _gameEnemyInteraction = new GameEnemyInteraction();
+            StartGame(hero);
+        }
+
+        private void StartGame(HeroModel hero)
+        {
             InitUIForHero(hero);
+            SetLocationName("Town Square");
+            SetEventLog("You are in the town square");
         }
 
         private void InitUIForHero(HeroModel hero)
         {
             _presenter.InitUIForHero(hero);
+        }
 
+        private void SetLocationName(string name)
+        {
+            _presenter.SetLocationName(name);
+        }
+
+        private void SetEventLog(string msg)
+        {
+            _presenter.SetEventLog(msg);
         }
 
         private void ActivateView(Panel panel, UserControl view)
@@ -138,6 +163,26 @@ namespace NecromindUI
         private void BtnContinue_Click(object sender, EventArgs e)
         {
             _presenter.HidePanExit();
+        }
+
+        private void BtnNorth_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnSouth_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnWest_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnEast_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

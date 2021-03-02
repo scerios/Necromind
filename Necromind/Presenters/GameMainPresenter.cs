@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.Control;
 using NecromindLibrary.Repository;
 using System.Configuration;
+using NecromindLibrary.Services;
 
 namespace NecromindUI.Presenters
 {
@@ -60,6 +61,21 @@ namespace NecromindUI.Presenters
             _hero = hero;
             SetHeroStats();
             SetHeroLabelDatabindings();
+        }
+
+        public void SetEventLog(string msg)
+        {
+            _gameMain.EventLog = TextService.FormatEventMsg(msg);
+        }
+
+        public void AppendEventLog(string msg)
+        {
+            _gameMain.EventLog = _gameMain.EventLog + "\n" + TextService.FormatEventMsg(msg);
+        }
+
+        public void SetLocationName(string name)
+        {
+            _gameMain.CurrentLocation = name;
         }
 
         public void ShowPanExit()
