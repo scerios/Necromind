@@ -93,6 +93,7 @@ namespace NecromindUI
             this.tbPassword.TabIndex = 11;
             this.tbPassword.TabStop = false;
             this.tbPassword.UseSystemPasswordChar = true;
+            this.tbPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TbPassword_KeyUp);
             // 
             // btnEnter
             // 
@@ -135,7 +136,7 @@ namespace NecromindUI
         private System.Windows.Forms.Panel panMain;
         private System.Windows.Forms.Panel panControls;
         private System.Windows.Forms.Panel panSettings;
-        private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Button btnEnter;
+        public System.Windows.Forms.TextBox tbPassword;
     }
 }

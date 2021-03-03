@@ -46,6 +46,7 @@ namespace NecromindUI
             this.tbHeroName.Name = "tbHeroName";
             this.tbHeroName.Size = new System.Drawing.Size(100, 22);
             this.tbHeroName.TabIndex = 5;
+            this.tbHeroName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TbHeroName_KeyUp);
             // 
             // btnCreateNewHero
             // 
@@ -155,13 +156,12 @@ namespace NecromindUI
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox tbHeroName;
         private System.Windows.Forms.Button btnCreateNewHero;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Panel panError;
         private System.Windows.Forms.Button btnErrorClose;
         private System.Windows.Forms.Label labErrorMsg;
         private System.Windows.Forms.Label labErrorTitle;
+        public System.Windows.Forms.TextBox tbHeroName;
     }
 }

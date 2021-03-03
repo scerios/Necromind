@@ -37,13 +37,18 @@ namespace NecromindUI
             InitializeComponent();
             _presenter = new MenuAdminPresenter(this);
             _controls = new AdminControls();
-            tbPassword.Focus();
+
+            _controls.BtnMapsClick += new EventHandler(AdminControls_BtnMapsClick);
+            _controls.BtnLocationsClick += new EventHandler(AdminControls_BtnLocationsClick);
+            _controls.BtnHeroesClick += new EventHandler(AdminControls_BtnHeroesClick);
         }
 
-        private void ActivateView(Panel panel, UserControl view)
+        private void TbPassword_KeyUp(object sender, KeyEventArgs e)
         {
-            panel.Controls.Add(view);
-            view.BringToFront();
+            if (e.KeyCode == Keys.Enter)
+            {
+                BtnEnter_Click(this, e);
+            }
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
@@ -59,6 +64,37 @@ namespace NecromindUI
             }
 
             Password = "";
+        }
+
+        private void ActivateView(Panel panel, UserControl view)
+        {
+            panel.Controls.Add(view);
+            view.BringToFront();
+        }
+
+        private void AdminControls_BtnMapsClick(object sender, EventArgs e)
+        {
+            // TODO - Create settings panel for maps.
+        }
+
+        private void AdminControls_BtnLocationsClick(object sender, EventArgs e)
+        {
+            // TODO - Create settings panel for locations.
+        }
+
+        private void AdminControls_BtnHeroesClick(object sender, EventArgs e)
+        {
+            // TODO - Create settings panel for heroes.
+        }
+
+        private void AdminControls_BtnVendorsClick(object sender, EventArgs e)
+        {
+            // TODO - Create settings panel for vendors.
+        }
+
+        private void AdminControls_BtnEnemiesClick(object sender, EventArgs e)
+        {
+            // TODO - Create settings panel for enemies.
         }
     }
 }

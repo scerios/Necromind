@@ -21,23 +21,23 @@ namespace NecromindUI
             InitializeComponent();
         }
 
-        private void ActivateView(UserControl view)
+        private void Necromind_KeyDown(object sender, KeyEventArgs e)
         {
-            Controls.Add(view);
-            view.Select();
-            view.BringToFront();
-        }
+            if (e.KeyCode == Keys.A && e.Modifiers == Keys.Control)
+            {
+                _menuAdmin = new MenuAdmin();
+                ActivateView(_menuAdmin);
+                _menuAdmin.tbPassword.Focus();
 
-        private void DeactivateView(UserControl view)
-        {
-            Controls.Remove(view);
-            view.Dispose();
+                _menuAdmin.BtnBackCLick += new EventHandler(MenuAdmin_BtnBackClick);
+            }
         }
 
         private void BtnNewGame_Click(object sender, EventArgs e)
         {
             _menuNew = new MenuNew();
             ActivateView(_menuNew);
+            _menuNew.tbHeroName.Focus();
 
             _menuNew.BtnBackClick += new EventHandler(MenuNew_BtnBackClick);
             _menuNew.BtnGoToMenuLoadClick += new EventHandler(MenuNew_BtnGoToMenuLoadClick);
@@ -77,34 +77,36 @@ namespace NecromindUI
             BtnLoadGame_Click(sender, e);
         }
 
+        private void GameMain_BtnBackToMenu(object sender, EventArgs e)
+        {
+            DeactivateView(_gameMain);
+        }
+
+        private void MenuAdmin_BtnBackClick(object sender, EventArgs e)
+        {
+            DeactivateView(_menuAdmin);
+        }
+
+        private void ActivateView(UserControl view)
+        {
+            Controls.Add(view);
+            view.Select();
+            view.BringToFront();
+        }
+
+        private void DeactivateView(UserControl view)
+        {
+            Controls.Remove(view);
+            view.Dispose();
+        }
+
         private void GameMainLoad(object sender, EventArgs e)
         {
             DeactivateView(_menuLoad);
             _gameMain = new GameMain(PlayerModel.Hero);
             ActivateView(_gameMain);
 
-            _gameMain.BackToMenu += new EventHandler(GameMain_BackToMenu);
-        }
-
-        private void GameMain_BackToMenu(object sender, EventArgs e)
-        {
-            DeactivateView(_gameMain);
-        }
-
-        private void Necromind_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.A && e.Modifiers == Keys.Control)
-            {
-                _menuAdmin = new MenuAdmin();
-                ActivateView(_menuAdmin);
-
-                _menuAdmin.BtnBackCLick += new EventHandler(MenuAdmin_BtnBackClick);
-            }
-        }
-
-        private void MenuAdmin_BtnBackClick(object sender, EventArgs e)
-        {
-            DeactivateView(_menuAdmin);
+            _gameMain.BtnBackToMenu += new EventHandler(GameMain_BtnBackToMenu);
         }
     }
 }

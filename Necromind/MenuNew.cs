@@ -53,7 +53,14 @@ namespace NecromindUI
         {
             InitializeComponent();
             _presenter = new MenuNewPresenter(this);
-            tbHeroName.Focus();
+        }
+
+        private void TbHeroName_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BtnCreateNewHero_Click(this, e);
+            }
         }
 
         private void BtnBack_Click(object sender, EventArgs e)

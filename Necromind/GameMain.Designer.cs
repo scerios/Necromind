@@ -426,13 +426,13 @@ namespace NecromindUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.Controls.Add(this.panExit);
             this.Controls.Add(this.panTarget);
             this.Controls.Add(this.panInteraction);
             this.Controls.Add(this.labName);
             this.Controls.Add(this.labLocation);
             this.Controls.Add(this.panHero);
             this.Controls.Add(this.panBottom);
-            this.Controls.Add(this.panExit);
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameMain";

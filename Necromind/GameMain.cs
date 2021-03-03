@@ -75,7 +75,7 @@ namespace NecromindUI
             get => labLvlValue;
         }
 
-        public event EventHandler BackToMenu;
+        public event EventHandler BtnBackToMenu;
 
         public GameMain(HeroModel hero)
         {
@@ -84,6 +84,52 @@ namespace NecromindUI
             _gameFriendlyInteraction = new GameFriendlyInteraction();
             _gameEnemyInteraction = new GameEnemyInteraction();
             StartGame(hero);
+        }
+
+        private void GameMain_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                if (IsPanExitVisible)
+                {
+                    _presenter.HidePanExit();
+                }
+                else
+                {
+                    _presenter.ShowPanExit();
+                }
+            }
+        }
+
+        private void BtnSaveExit_Click(object sender, EventArgs e)
+        {
+            BtnBackToMenu?.Invoke(sender, e);
+            _presenter.SaveGame();
+        }
+
+        private void BtnContinue_Click(object sender, EventArgs e)
+        {
+            _presenter.HidePanExit();
+        }
+
+        private void BtnNorth_Click(object sender, EventArgs e)
+        {
+            // TODO - Implement move north logic.
+        }
+
+        private void BtnSouth_Click(object sender, EventArgs e)
+        {
+            // TODO - Implement move south logic.
+        }
+
+        private void BtnWest_Click(object sender, EventArgs e)
+        {
+            // TODO - Implement move west logic.
+        }
+
+        private void BtnEast_Click(object sender, EventArgs e)
+        {
+            // TODO - Implement move east logic.
         }
 
         private void StartGame(HeroModel hero)
@@ -137,48 +183,6 @@ namespace NecromindUI
         private void HideEnemyUI()
         {
             DeactivateView(panInteraction, _gameEnemyInteraction);
-        }
-
-        private void GameMain_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                if (IsPanExitVisible)
-                {
-                    _presenter.HidePanExit();
-                }
-                else
-                {
-                    _presenter.ShowPanExit();
-                }
-            }
-        }
-
-        private void BtnSaveExit_Click(object sender, EventArgs e)
-        {
-            BackToMenu?.Invoke(sender, e);
-            _presenter.SaveGame();
-        }
-
-        private void BtnContinue_Click(object sender, EventArgs e)
-        {
-            _presenter.HidePanExit();
-        }
-
-        private void BtnNorth_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void BtnSouth_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void BtnWest_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void BtnEast_Click(object sender, EventArgs e)
-        {
         }
     }
 }
