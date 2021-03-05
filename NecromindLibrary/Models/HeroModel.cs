@@ -1,18 +1,14 @@
 ﻿using NecromindLibrary.Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NecromindLibrary.Models
 {
-    public class HeroModel : BaseModel, IPlayer
+    public class HeroModel : BaseModel, IPlayer, IAdminSetter
     {
         private int _dmg;
-        public int Dmg {
+
+        public int Dmg
+        {
             get => _dmg;
             private set
             {
@@ -22,7 +18,9 @@ namespace NecromindLibrary.Models
         }
 
         private int _def;
-        public int Def {
+
+        public int Def
+        {
             get => _def;
             private set
             {
@@ -32,7 +30,9 @@ namespace NecromindLibrary.Models
         }
 
         private int _health;
-        public int Health {
+
+        public int Health
+        {
             get => _health;
             private set
             {
@@ -42,7 +42,9 @@ namespace NecromindLibrary.Models
         }
 
         private int _healthMax;
-        public int HealthMax {
+
+        public int HealthMax
+        {
             get => _healthMax;
             private set
             {
@@ -52,7 +54,9 @@ namespace NecromindLibrary.Models
         }
 
         private int _experiencePoints;
-        public int ExperiencePoints {
+
+        public int ExperiencePoints
+        {
             get => _experiencePoints;
             private set
             {
@@ -62,7 +66,9 @@ namespace NecromindLibrary.Models
         }
 
         private int _nextLvlAt;
-        public int NextLvlAt {
+
+        public int NextLvlAt
+        {
             get => _nextLvlAt;
             private set
             {
@@ -113,7 +119,6 @@ namespace NecromindLibrary.Models
             {
                 FullyHeal();
             }
-
         }
 
         public void FullyHeal()
@@ -149,6 +154,37 @@ namespace NecromindLibrary.Models
         public void RecieveGold(int amount)
         {
             Gold += amount;
+        }
+
+        public void AdminSetName(string name)
+        {
+            Name = name;
+        }
+
+        public void AdminSetGold(int gold)
+        {
+            Gold = gold;
+        }
+
+        public void AdminSetLvl(int lvl)
+        {
+            Lvl = lvl;
+        }
+
+        public void AdminSetDmg(int dmg)
+        {
+            Dmg = dmg;
+        }
+
+        public void AdminSetDef(int def)
+        {
+            Def = def;
+        }
+
+        public void AdminSetHealth(int health)
+        {
+            HealthMax = health;
+            Health = health;
         }
     }
 }
