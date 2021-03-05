@@ -55,6 +55,7 @@ namespace Necromind
             this.lbHeroes.Name = "lbHeroes";
             this.lbHeroes.Size = new System.Drawing.Size(150, 196);
             this.lbHeroes.TabIndex = 0;
+            this.lbHeroes.SelectedIndexChanged += new System.EventHandler(this.LbHeroes_SelectedIndexChanged);
             // 
             // labName
             // 
@@ -119,51 +120,69 @@ namespace Necromind
             // 
             // tbName
             // 
-            this.tbName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.tbName.BackColor = System.Drawing.Color.White;
+            this.tbName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbName.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tbName.Location = new System.Drawing.Point(300, 17);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(100, 22);
             this.tbName.TabIndex = 7;
+            this.tbName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tbLvl
             // 
-            this.tbLvl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.tbLvl.BackColor = System.Drawing.Color.White;
+            this.tbLvl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbLvl.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tbLvl.Location = new System.Drawing.Point(300, 47);
             this.tbLvl.Name = "tbLvl";
             this.tbLvl.Size = new System.Drawing.Size(100, 22);
             this.tbLvl.TabIndex = 8;
+            this.tbLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tbGold
             // 
-            this.tbGold.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.tbGold.BackColor = System.Drawing.Color.White;
+            this.tbGold.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbGold.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tbGold.Location = new System.Drawing.Point(300, 77);
             this.tbGold.Name = "tbGold";
             this.tbGold.Size = new System.Drawing.Size(100, 22);
             this.tbGold.TabIndex = 9;
+            this.tbGold.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tbDmg
             // 
-            this.tbDmg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.tbDmg.BackColor = System.Drawing.Color.White;
+            this.tbDmg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbDmg.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tbDmg.Location = new System.Drawing.Point(300, 105);
             this.tbDmg.Name = "tbDmg";
             this.tbDmg.Size = new System.Drawing.Size(100, 22);
             this.tbDmg.TabIndex = 10;
+            this.tbDmg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tbDef
             // 
-            this.tbDef.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.tbDef.BackColor = System.Drawing.Color.White;
+            this.tbDef.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbDef.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tbDef.Location = new System.Drawing.Point(300, 137);
             this.tbDef.Name = "tbDef";
             this.tbDef.Size = new System.Drawing.Size(100, 22);
             this.tbDef.TabIndex = 11;
+            this.tbDef.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tbHealth
             // 
-            this.tbHealth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.tbHealth.BackColor = System.Drawing.Color.White;
+            this.tbHealth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbHealth.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tbHealth.Location = new System.Drawing.Point(300, 169);
             this.tbHealth.Name = "tbHealth";
             this.tbHealth.Size = new System.Drawing.Size(100, 22);
             this.tbHealth.TabIndex = 12;
+            this.tbHealth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnSave
             // 
@@ -201,7 +220,7 @@ namespace Necromind
             this.Controls.Add(this.labName);
             this.Controls.Add(this.lbHeroes);
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdminHeroes";
             this.Size = new System.Drawing.Size(1084, 471);
             this.ResumeLayout(false);

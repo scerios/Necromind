@@ -1,11 +1,7 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NecromindLibrary.Models
 {
@@ -29,7 +25,9 @@ namespace NecromindLibrary.Models
         /// How much gold the character has.
         /// </summary>
         private int _gold;
-        public int Gold {
+
+        public int Gold
+        {
             get => _gold;
             protected set
             {
@@ -42,7 +40,9 @@ namespace NecromindLibrary.Models
         /// On which level the character is.
         /// </summary>
         private int _lvl;
-        public int Lvl {
+
+        public int Lvl
+        {
             get => _lvl;
             protected set
             {

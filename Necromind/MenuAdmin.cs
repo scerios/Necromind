@@ -1,4 +1,5 @@
-﻿using Necromind.Presenters;
+﻿using Necromind;
+using Necromind.Presenters;
 using Necromind.Views;
 using System;
 using System.Windows.Forms;
@@ -9,6 +10,7 @@ namespace NecromindUI
     {
         private readonly MenuAdminPresenter _presenter;
         private readonly AdminControls _controls;
+        private AdminHeroes _adminHeroes;
 
         public string Password
         {
@@ -84,7 +86,8 @@ namespace NecromindUI
 
         private void AdminControls_BtnHeroesClick(object sender, EventArgs e)
         {
-            // TODO - Create settings panel for heroes.
+            _adminHeroes = new AdminHeroes();
+            ActivateView(PanSettings, _adminHeroes);
         }
 
         private void AdminControls_BtnVendorsClick(object sender, EventArgs e)

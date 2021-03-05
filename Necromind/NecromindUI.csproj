@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{03E075B0-593A-4CBE-8058-655149D9E9C4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Necromind</RootNamespace>
+    <RootNamespace>NecromindUI</RootNamespace>
     <AssemblyName>Necromind</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -103,12 +103,14 @@
     <Compile Include="Necromind.Designer.cs">
       <DependentUpon>Necromind.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presenters\AdminHeroesPresenter.cs" />
     <Compile Include="Presenters\GameMainPresenter.cs" />
     <Compile Include="Presenters\MenuAdminPresenter.cs" />
     <Compile Include="Presenters\MenuLoadPresenter.cs" />
     <Compile Include="Presenters\MenuNewPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\IAdminHeroes.cs" />
     <Compile Include="Views\IConfirmDelete.cs" />
     <Compile Include="Views\IError.cs" />
     <Compile Include="Views\IGameMain.cs" />
@@ -150,6 +152,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
