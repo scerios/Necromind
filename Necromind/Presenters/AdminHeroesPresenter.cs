@@ -1,6 +1,7 @@
 ﻿using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
 using NecromindUI.Views;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 
@@ -42,6 +43,18 @@ namespace NecromindUI.Presenters
             _adminHeroes.Dmg = hero.Dmg.ToString();
             _adminHeroes.Def = hero.Def.ToString();
             _adminHeroes.Health = hero.HealthMax.ToString();
+        }
+
+        public void UpdateHero()
+        {
+            var hero = _heroes[_adminHeroes.Heroes.SelectedIndex];
+            hero.AdminSetLvl(Int32.Parse(_adminHeroes.Lvl));
+            hero.AdminSetGold(Int32.Parse(_adminHeroes.Gold));
+            hero.AdminSetDmg(Int32.Parse(_adminHeroes.Dmg));
+            hero.AdminSetDef(Int32.Parse(_adminHeroes.Def));
+            hero.AdminSetHealth(Int32.Parse(_adminHeroes.Health));
+
+            _mongoConnector.TryUpsertRecord(ConfigurationManager.AppSettings.Get("heroesCollection"), hero.Id, hero);
         }
     }
 }

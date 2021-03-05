@@ -83,5 +83,10 @@ namespace Necromind
         {
             _presenter.GetSelectedHeroStats();
         }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            _presenter.UpdateHero();
+        }
     }
 }
