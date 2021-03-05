@@ -55,6 +55,12 @@
     <Compile Include="AdminControls.Designer.cs">
       <DependentUpon>AdminControls.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminHeroes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminHeroes.Designer.cs">
+      <DependentUpon>AdminHeroes.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameEnemyInteraction.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     <Compile Include="Views\IMenuNew.cs" />
     <EmbeddedResource Include="AdminControls.resx">
       <DependentUpon>AdminControls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminHeroes.resx">
+      <DependentUpon>AdminHeroes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GameEnemyInteraction.resx">
       <DependentUpon>GameEnemyInteraction.cs</DependentUpon>
