@@ -5,15 +5,27 @@ namespace NecromindLibrary.Models
 {
     public class HeroModel : BaseModel, IPlayer, IAdminSetter
     {
-        private int _dmg;
+        private int _dmgMin;
 
-        public int Dmg
+        public int DmgMin
         {
-            get => _dmg;
+            get => _dmgMin;
             private set
             {
-                _dmg = value;
-                OnPropertyChanged("Dmg");
+                _dmgMin = value;
+                OnPropertyChanged("DmgMin");
+            }
+        }
+
+        private int _dmgMax;
+
+        public int DmgMax
+        {
+            get => _dmgMax;
+            private set
+            {
+                _dmgMax = value;
+                OnPropertyChanged("DmgMax");
             }
         }
 
@@ -82,7 +94,8 @@ namespace NecromindLibrary.Models
             Name = name;
             Health = 100;
             HealthMax = 100;
-            Dmg = 10;
+            DmgMin = 5;
+            DmgMax = 10;
             Def = 5;
             Lvl = 1;
             ExperiencePoints = 1;
@@ -96,11 +109,11 @@ namespace NecromindLibrary.Models
 
         public void TakeDmg(IFighter enemy)
         {
-            Health -= enemy.Dmg - Def;
-            if (Health < 1)
-            {
-                Die(enemy);
-            }
+            //Health -= enemy.Dmg - Def;
+            //if (Health < 1)
+            //{
+            //    Die(enemy);
+            //}
         }
 
         public void Die(IFighter enemy)
@@ -139,7 +152,8 @@ namespace NecromindLibrary.Models
         public void LevelUp()
         {
             Lvl++;
-            Dmg += 10;
+            DmgMin += 5;
+            DmgMax += 5;
             Def += 2;
             HealthMax += 20;
             FullyHeal();
@@ -171,9 +185,14 @@ namespace NecromindLibrary.Models
             Lvl = lvl;
         }
 
-        public void AdminSetDmg(int dmg)
+        public void AdminSetDmgMin(int dmg)
         {
-            Dmg = dmg;
+            DmgMin = dmg;
+        }
+
+        public void AdminSetDmgMax(int dmg)
+        {
+            DmgMax = dmg;
         }
 
         public void AdminSetDef(int def)

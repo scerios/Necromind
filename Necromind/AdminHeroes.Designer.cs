@@ -39,10 +39,11 @@ namespace Necromind
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbLvl = new System.Windows.Forms.TextBox();
             this.tbGold = new System.Windows.Forms.TextBox();
-            this.tbDmg = new System.Windows.Forms.TextBox();
+            this.tbDmgMin = new System.Windows.Forms.TextBox();
             this.tbDef = new System.Windows.Forms.TextBox();
             this.tbHealth = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.tbDmgMax = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lbHeroes
@@ -125,9 +126,9 @@ namespace Necromind
             this.tbName.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tbName.Location = new System.Drawing.Point(300, 17);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(100, 22);
+            this.tbName.Size = new System.Drawing.Size(125, 22);
             this.tbName.TabIndex = 7;
-            this.tbName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tbLvl
             // 
@@ -136,9 +137,9 @@ namespace Necromind
             this.tbLvl.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tbLvl.Location = new System.Drawing.Point(300, 47);
             this.tbLvl.Name = "tbLvl";
-            this.tbLvl.Size = new System.Drawing.Size(100, 22);
+            this.tbLvl.Size = new System.Drawing.Size(125, 22);
             this.tbLvl.TabIndex = 8;
-            this.tbLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tbGold
             // 
@@ -147,20 +148,20 @@ namespace Necromind
             this.tbGold.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tbGold.Location = new System.Drawing.Point(300, 77);
             this.tbGold.Name = "tbGold";
-            this.tbGold.Size = new System.Drawing.Size(100, 22);
+            this.tbGold.Size = new System.Drawing.Size(125, 22);
             this.tbGold.TabIndex = 9;
-            this.tbGold.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbGold.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // tbDmg
+            // tbDmgMin
             // 
-            this.tbDmg.BackColor = System.Drawing.Color.White;
-            this.tbDmg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbDmg.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbDmg.Location = new System.Drawing.Point(300, 105);
-            this.tbDmg.Name = "tbDmg";
-            this.tbDmg.Size = new System.Drawing.Size(100, 22);
-            this.tbDmg.TabIndex = 10;
-            this.tbDmg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbDmgMin.BackColor = System.Drawing.Color.White;
+            this.tbDmgMin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbDmgMin.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tbDmgMin.Location = new System.Drawing.Point(300, 105);
+            this.tbDmgMin.Name = "tbDmgMin";
+            this.tbDmgMin.Size = new System.Drawing.Size(60, 22);
+            this.tbDmgMin.TabIndex = 10;
+            this.tbDmgMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tbDef
             // 
@@ -169,9 +170,9 @@ namespace Necromind
             this.tbDef.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tbDef.Location = new System.Drawing.Point(300, 137);
             this.tbDef.Name = "tbDef";
-            this.tbDef.Size = new System.Drawing.Size(100, 22);
+            this.tbDef.Size = new System.Drawing.Size(125, 22);
             this.tbDef.TabIndex = 11;
-            this.tbDef.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbDef.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tbHealth
             // 
@@ -180,9 +181,9 @@ namespace Necromind
             this.tbHealth.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tbHealth.Location = new System.Drawing.Point(300, 169);
             this.tbHealth.Name = "tbHealth";
-            this.tbHealth.Size = new System.Drawing.Size(100, 22);
+            this.tbHealth.Size = new System.Drawing.Size(125, 22);
             this.tbHealth.TabIndex = 12;
-            this.tbHealth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbHealth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnSave
             // 
@@ -201,15 +202,27 @@ namespace Necromind
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
+            // tbDmgMax
+            // 
+            this.tbDmgMax.BackColor = System.Drawing.Color.White;
+            this.tbDmgMax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbDmgMax.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tbDmgMax.Location = new System.Drawing.Point(365, 105);
+            this.tbDmgMax.Name = "tbDmgMax";
+            this.tbDmgMax.Size = new System.Drawing.Size(60, 22);
+            this.tbDmgMax.TabIndex = 18;
+            this.tbDmgMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // AdminHeroes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.Controls.Add(this.tbDmgMax);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tbHealth);
             this.Controls.Add(this.tbDef);
-            this.Controls.Add(this.tbDmg);
+            this.Controls.Add(this.tbDmgMin);
             this.Controls.Add(this.tbGold);
             this.Controls.Add(this.tbLvl);
             this.Controls.Add(this.tbName);
@@ -241,9 +254,10 @@ namespace Necromind
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.TextBox tbLvl;
         private System.Windows.Forms.TextBox tbGold;
-        private System.Windows.Forms.TextBox tbDmg;
+        private System.Windows.Forms.TextBox tbDmgMin;
         private System.Windows.Forms.TextBox tbDef;
         private System.Windows.Forms.TextBox tbHealth;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TextBox tbDmgMax;
     }
 }

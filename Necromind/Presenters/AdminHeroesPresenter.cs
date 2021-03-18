@@ -40,7 +40,8 @@ namespace NecromindUI.Presenters
             _adminHeroes.HeroName = hero.Name;
             _adminHeroes.Lvl = hero.Lvl.ToString();
             _adminHeroes.Gold = hero.Gold.ToString();
-            _adminHeroes.Dmg = hero.Dmg.ToString();
+            _adminHeroes.DmgMin = hero.DmgMin.ToString();
+            _adminHeroes.DmgMax = hero.DmgMax.ToString();
             _adminHeroes.Def = hero.Def.ToString();
             _adminHeroes.Health = hero.HealthMax.ToString();
         }
@@ -50,7 +51,8 @@ namespace NecromindUI.Presenters
             var hero = _heroes[_adminHeroes.Heroes.SelectedIndex];
             hero.AdminSetLvl(Int32.Parse(_adminHeroes.Lvl));
             hero.AdminSetGold(Int32.Parse(_adminHeroes.Gold));
-            hero.AdminSetDmg(Int32.Parse(_adminHeroes.Dmg));
+            hero.AdminSetDmgMin(Int32.Parse(_adminHeroes.DmgMin));
+            hero.AdminSetDmgMax(Int32.Parse(_adminHeroes.DmgMax));
             hero.AdminSetDef(Int32.Parse(_adminHeroes.Def));
             hero.AdminSetHealth(Int32.Parse(_adminHeroes.Health));
 

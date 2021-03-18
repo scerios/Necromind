@@ -44,7 +44,7 @@ namespace NecromindUI
             this.labLvlValue = new System.Windows.Forms.Label();
             this.labGoldValue = new System.Windows.Forms.Label();
             this.labLvl = new System.Windows.Forms.Label();
-            this.labDmgValue = new System.Windows.Forms.Label();
+            this.labDmgMinValue = new System.Windows.Forms.Label();
             this.labHealthMaxValue = new System.Windows.Forms.Label();
             this.labGold = new System.Windows.Forms.Label();
             this.labDef = new System.Windows.Forms.Label();
@@ -58,6 +58,8 @@ namespace NecromindUI
             this.labExitQuestion = new System.Windows.Forms.Label();
             this.panInteraction = new System.Windows.Forms.Panel();
             this.panTarget = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labDmgMaxValue = new System.Windows.Forms.Label();
             this.panBottom.SuspendLayout();
             this.panEventLog.SuspendLayout();
             this.panMovement.SuspendLayout();
@@ -189,13 +191,15 @@ namespace NecromindUI
             // 
             // panHero
             // 
+            this.panHero.Controls.Add(this.labDmgMaxValue);
+            this.panHero.Controls.Add(this.label1);
             this.panHero.Controls.Add(this.labSlash);
             this.panHero.Controls.Add(this.labHealthValue);
             this.panHero.Controls.Add(this.labDefValue);
             this.panHero.Controls.Add(this.labLvlValue);
             this.panHero.Controls.Add(this.labGoldValue);
             this.panHero.Controls.Add(this.labLvl);
-            this.panHero.Controls.Add(this.labDmgValue);
+            this.panHero.Controls.Add(this.labDmgMinValue);
             this.panHero.Controls.Add(this.labHealthMaxValue);
             this.panHero.Controls.Add(this.labGold);
             this.panHero.Controls.Add(this.labDef);
@@ -262,14 +266,14 @@ namespace NecromindUI
             this.labLvl.Text = "Level:";
             this.labLvl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // labDmgValue
+            // labDmgMinValue
             // 
-            this.labDmgValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labDmgValue.Location = new System.Drawing.Point(80, 35);
-            this.labDmgValue.Name = "labDmgValue";
-            this.labDmgValue.Size = new System.Drawing.Size(125, 20);
-            this.labDmgValue.TabIndex = 30;
-            this.labDmgValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labDmgMinValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labDmgMinValue.Location = new System.Drawing.Point(80, 35);
+            this.labDmgMinValue.Name = "labDmgMinValue";
+            this.labDmgMinValue.Size = new System.Drawing.Size(50, 20);
+            this.labDmgMinValue.TabIndex = 30;
+            this.labDmgMinValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labHealthMaxValue
             // 
@@ -421,6 +425,25 @@ namespace NecromindUI
             this.panTarget.Size = new System.Drawing.Size(542, 326);
             this.panTarget.TabIndex = 27;
             // 
+            // label1
+            // 
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(135, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(15, 20);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "/";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labDmgMaxValue
+            // 
+            this.labDmgMaxValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labDmgMaxValue.Location = new System.Drawing.Point(155, 35);
+            this.labDmgMaxValue.Name = "labDmgMaxValue";
+            this.labDmgMaxValue.Size = new System.Drawing.Size(50, 20);
+            this.labDmgMaxValue.TabIndex = 35;
+            this.labDmgMaxValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // GameMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -460,7 +483,7 @@ namespace NecromindUI
         private System.Windows.Forms.Label labSlash;
         private System.Windows.Forms.Label labHealthValue;
         private System.Windows.Forms.Label labDefValue;
-        private System.Windows.Forms.Label labDmgValue;
+        private System.Windows.Forms.Label labDmgMinValue;
         private System.Windows.Forms.Label labLvlValue;
         private System.Windows.Forms.Label labGoldValue;
         private System.Windows.Forms.Label labHealthMaxValue;
@@ -480,5 +503,7 @@ namespace NecromindUI
         private System.Windows.Forms.Button btnNorth;
         private System.Windows.Forms.Panel panInteraction;
         private System.Windows.Forms.Panel panTarget;
+        private System.Windows.Forms.Label labDmgMaxValue;
+        private System.Windows.Forms.Label label1;
     }
 }

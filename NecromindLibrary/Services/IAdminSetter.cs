@@ -8,7 +8,9 @@
 
         void AdminSetLvl(int lvl);
 
-        void AdminSetDmg(int dmg);
+        void AdminSetDmgMin(int dmg);
+
+        void AdminSetDmgMax(int dmg);
 
         void AdminSetDef(int def);
 

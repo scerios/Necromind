@@ -10,7 +10,8 @@ namespace NecromindUI.Views
         RichTextBox EventLog { get; }
         Label LabHealthMax { get; }
         Label LabHealth { get; }
-        Label LabDmg { get; }
+        Label LabDmgMin { get; }
+        Label LabDmgMax { get; }
         Label LabDef { get; }
         Label LabGold { get; }
         Label LabLvl { get; }

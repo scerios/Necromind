@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NecromindLibrary.Services
 {
@@ -12,9 +8,14 @@ namespace NecromindLibrary.Services
     public interface IFighter
     {
         /// <summary>
-        /// Actual damage the character deals.
+        /// Minimum damage the character deals.
         /// </summary>
-        int Dmg { get; }
+        int DmgMin { get; }
+
+        /// <summary>
+        /// Maximum damage the character deals.
+        /// </summary>
+        int DmgMax { get; }
 
         /// <summary>
         /// Defense points which helps reducing incoming damage.

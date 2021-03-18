@@ -38,13 +38,23 @@ namespace Necromind
             }
         }
 
-        public string Dmg
+        public string DmgMin
         {
-            get => tbDmg.Text;
+            get => tbDmgMin.Text;
 
             set
             {
-                tbDmg.Text = value;
+                tbDmgMin.Text = value;
+            }
+        }
+
+        public string DmgMax
+        {
+            get => tbDmgMax.Text;
+
+            set
+            {
+                tbDmgMax.Text = value;
             }
         }
 

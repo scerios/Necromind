@@ -55,9 +55,14 @@ namespace NecromindUI
             get => labHealthValue;
         }
 
-        public Label LabDmg
+        public Label LabDmgMin
         {
-            get => labDmgValue;
+            get => labDmgMinValue;
+        }
+
+        public Label LabDmgMax
+        {
+            get => labDmgMaxValue;
         }
 
         public Label LabDef

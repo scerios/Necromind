@@ -1,15 +1,12 @@
 ﻿using NecromindLibrary.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NecromindLibrary.Models
 {
     public class EnemyModel : BaseModel, IFighter
     {
-        public int Dmg { get; private set; }
+        public int DmgMin { get; private set; }
+        public int DmgMax { get; private set; }
 
         public int Def { get; private set; }
 
@@ -24,7 +21,8 @@ namespace NecromindLibrary.Models
         {
             Gold = 100;
             Lvl = 1;
-            Dmg = 10;
+            DmgMin = 5;
+            DmgMax = 5;
             Def = 5;
             Health = 5;
             HealthMax = 5;
@@ -36,7 +34,8 @@ namespace NecromindLibrary.Models
             Name = scheme.Name;
             Gold = scheme.Gold;
             Lvl = scheme.Lvl;
-            Dmg = scheme.Dmg;
+            DmgMin = scheme.DmgMin;
+            DmgMax = scheme.DmgMax;
             Def = scheme.Def;
             Health = scheme.Health;
             HealthMax = scheme.HealthMax;
@@ -49,11 +48,11 @@ namespace NecromindLibrary.Models
 
         public void TakeDmg(IFighter enemy)
         {
-            Health -= enemy.Dmg - Def;
-            if (Health < 1)
-            {
-                Die(enemy);
-            }
+            //Health -= enemy.Dmg - Def;
+            //if (Health < 1)
+            //{
+            //    Die(enemy);
+            //}
         }
 
         public void Die(IFighter enemy)

@@ -7,7 +7,8 @@ namespace NecromindUI.Views
         string HeroName { get; set; }
         string Lvl { get; set; }
         string Gold { get; set; }
-        string Dmg { get; set; }
+        string DmgMin { get; set; }
+        string DmgMax { get; set; }
         string Def { get; set; }
         string Health { get; set; }
         ListBox Heroes { get; }
