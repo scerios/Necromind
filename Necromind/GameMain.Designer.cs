@@ -460,7 +460,6 @@ namespace NecromindUI
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameMain";
             this.Size = new System.Drawing.Size(1084, 661);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameMain_KeyUp);
             this.panBottom.ResumeLayout(false);
             this.panEventLog.ResumeLayout(false);
             this.panMovement.ResumeLayout(false);

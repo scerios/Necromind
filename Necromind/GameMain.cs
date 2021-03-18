@@ -91,30 +91,15 @@ namespace NecromindUI
             StartGame(hero);
         }
 
-        private void GameMain_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                if (IsPanExitVisible)
-                {
-                    _presenter.HidePanExit();
-                }
-                else
-                {
-                    _presenter.ShowPanExit();
-                }
-            }
-        }
-
         private void BtnSaveExit_Click(object sender, EventArgs e)
         {
             BtnBackToMenu?.Invoke(sender, e);
-            _presenter.SaveGame();
+            _presenter.SaveAndExitGame();
         }
 
         private void BtnContinue_Click(object sender, EventArgs e)
         {
-            _presenter.HidePanExit();
+            _presenter.TogglePanExitVisibility();
         }
 
         private void BtnNorth_Click(object sender, EventArgs e)
@@ -137,16 +122,27 @@ namespace NecromindUI
             // TODO - Implement move east logic.
         }
 
+        private void ActivateView(Panel panel, UserControl view)
+        {
+            panel.Controls.Add(view);
+            view.BringToFront();
+        }
+
+        private void DeactivateView(Panel panel, UserControl view)
+        {
+            panel.Controls.Remove(view);
+        }
+
         private void StartGame(HeroModel hero)
         {
-            InitUIForHero(hero);
+            InitUIFor(hero);
             SetLocationName("Town Square");
             SetEventLog("You are in the town square");
         }
 
-        private void InitUIForHero(HeroModel hero)
+        private void InitUIFor(HeroModel hero)
         {
-            _presenter.InitUIForHero(hero);
+            _presenter.InitUIFor(hero);
         }
 
         private void SetLocationName(string name)
@@ -157,17 +153,6 @@ namespace NecromindUI
         private void SetEventLog(string msg)
         {
             _presenter.SetEventLog(msg);
-        }
-
-        private void ActivateView(Panel panel, UserControl view)
-        {
-            panel.Controls.Add(view);
-            view.BringToFront();
-        }
-
-        private void DeactivateView(Panel panel, UserControl view)
-        {
-            panel.Controls.Remove(view);
         }
 
         private void ShowFriendlyUI()
@@ -188,6 +173,11 @@ namespace NecromindUI
         private void HideEnemyUI()
         {
             DeactivateView(panInteraction, _gameEnemyInteraction);
+        }
+
+        public void ToggleExitPanVisibility()
+        {
+            _presenter.TogglePanExitVisibility();
         }
     }
 }

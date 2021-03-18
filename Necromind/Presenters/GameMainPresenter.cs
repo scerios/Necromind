@@ -58,7 +58,7 @@ namespace NecromindUI.Presenters
             _gameMain.EventLog.ScrollToCaret();
         }
 
-        public void InitUIForHero(HeroModel hero)
+        public void InitUIFor(HeroModel hero)
         {
             _hero = hero;
             SetHeroStats();
@@ -82,17 +82,19 @@ namespace NecromindUI.Presenters
             _gameMain.CurrentLocation = name;
         }
 
-        public void ShowPanExit()
+        public void TogglePanExitVisibility()
         {
-            _gameMain.IsPanExitVisible = true;
+            if (_gameMain.IsPanExitVisible)
+            {
+                _gameMain.IsPanExitVisible = false;
+            }
+            else
+            {
+                _gameMain.IsPanExitVisible = true;
+            }
         }
 
-        public void HidePanExit()
-        {
-            _gameMain.IsPanExitVisible = false;
-        }
-
-        public void SaveGame()
+        public void SaveAndExitGame()
         {
             _mongoConnector.TryUpsertRecord(ConfigurationManager.AppSettings.Get("heroesCollection"), _hero.Id, _hero);
             ClearHeroLabelDatabindings();
@@ -100,6 +102,7 @@ namespace NecromindUI.Presenters
 
         public void ShowFriendlyUI()
         {
+            // TODO - Add logic to show friendly UI.
         }
     }
 }
