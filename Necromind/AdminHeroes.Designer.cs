@@ -29,6 +29,7 @@ namespace Necromind
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbHeroes = new System.Windows.Forms.ListBox();
             this.labName = new System.Windows.Forms.Label();
             this.labLvl = new System.Windows.Forms.Label();
@@ -44,6 +45,8 @@ namespace Necromind
             this.tbHealth = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.tbDmgMax = new System.Windows.Forms.TextBox();
+            this.labHeroSaved = new System.Windows.Forms.Label();
+            this.timHide = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // lbHeroes
@@ -62,7 +65,7 @@ namespace Necromind
             // 
             this.labName.AutoSize = true;
             this.labName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labName.Location = new System.Drawing.Point(220, 20);
+            this.labName.Location = new System.Drawing.Point(200, 35);
             this.labName.MinimumSize = new System.Drawing.Size(0, 20);
             this.labName.Name = "labName";
             this.labName.Size = new System.Drawing.Size(48, 20);
@@ -73,7 +76,7 @@ namespace Necromind
             // 
             this.labLvl.AutoSize = true;
             this.labLvl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labLvl.Location = new System.Drawing.Point(220, 50);
+            this.labLvl.Location = new System.Drawing.Point(200, 65);
             this.labLvl.Name = "labLvl";
             this.labLvl.Size = new System.Drawing.Size(56, 16);
             this.labLvl.TabIndex = 2;
@@ -83,7 +86,7 @@ namespace Necromind
             // 
             this.labGold.AutoSize = true;
             this.labGold.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labGold.Location = new System.Drawing.Point(220, 80);
+            this.labGold.Location = new System.Drawing.Point(200, 95);
             this.labGold.Name = "labGold";
             this.labGold.Size = new System.Drawing.Size(48, 16);
             this.labGold.TabIndex = 3;
@@ -93,7 +96,7 @@ namespace Necromind
             // 
             this.labDmg.AutoSize = true;
             this.labDmg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labDmg.Location = new System.Drawing.Point(220, 110);
+            this.labDmg.Location = new System.Drawing.Point(200, 125);
             this.labDmg.Name = "labDmg";
             this.labDmg.Size = new System.Drawing.Size(64, 16);
             this.labDmg.TabIndex = 4;
@@ -103,7 +106,7 @@ namespace Necromind
             // 
             this.labDef.AutoSize = true;
             this.labDef.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labDef.Location = new System.Drawing.Point(220, 140);
+            this.labDef.Location = new System.Drawing.Point(200, 155);
             this.labDef.Name = "labDef";
             this.labDef.Size = new System.Drawing.Size(72, 16);
             this.labDef.TabIndex = 5;
@@ -113,7 +116,7 @@ namespace Necromind
             // 
             this.labHealth.AutoSize = true;
             this.labHealth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labHealth.Location = new System.Drawing.Point(220, 172);
+            this.labHealth.Location = new System.Drawing.Point(200, 185);
             this.labHealth.Name = "labHealth";
             this.labHealth.Size = new System.Drawing.Size(64, 16);
             this.labHealth.TabIndex = 6;
@@ -124,7 +127,7 @@ namespace Necromind
             this.tbName.BackColor = System.Drawing.Color.White;
             this.tbName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbName.Location = new System.Drawing.Point(300, 17);
+            this.tbName.Location = new System.Drawing.Point(280, 32);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(125, 22);
             this.tbName.TabIndex = 7;
@@ -135,7 +138,7 @@ namespace Necromind
             this.tbLvl.BackColor = System.Drawing.Color.White;
             this.tbLvl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbLvl.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbLvl.Location = new System.Drawing.Point(300, 47);
+            this.tbLvl.Location = new System.Drawing.Point(280, 62);
             this.tbLvl.Name = "tbLvl";
             this.tbLvl.Size = new System.Drawing.Size(125, 22);
             this.tbLvl.TabIndex = 8;
@@ -146,7 +149,7 @@ namespace Necromind
             this.tbGold.BackColor = System.Drawing.Color.White;
             this.tbGold.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbGold.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbGold.Location = new System.Drawing.Point(300, 77);
+            this.tbGold.Location = new System.Drawing.Point(280, 92);
             this.tbGold.Name = "tbGold";
             this.tbGold.Size = new System.Drawing.Size(125, 22);
             this.tbGold.TabIndex = 9;
@@ -157,7 +160,7 @@ namespace Necromind
             this.tbDmgMin.BackColor = System.Drawing.Color.White;
             this.tbDmgMin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbDmgMin.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbDmgMin.Location = new System.Drawing.Point(300, 105);
+            this.tbDmgMin.Location = new System.Drawing.Point(280, 122);
             this.tbDmgMin.Name = "tbDmgMin";
             this.tbDmgMin.Size = new System.Drawing.Size(60, 22);
             this.tbDmgMin.TabIndex = 10;
@@ -168,7 +171,7 @@ namespace Necromind
             this.tbDef.BackColor = System.Drawing.Color.White;
             this.tbDef.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbDef.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbDef.Location = new System.Drawing.Point(300, 137);
+            this.tbDef.Location = new System.Drawing.Point(280, 152);
             this.tbDef.Name = "tbDef";
             this.tbDef.Size = new System.Drawing.Size(125, 22);
             this.tbDef.TabIndex = 11;
@@ -179,7 +182,7 @@ namespace Necromind
             this.tbHealth.BackColor = System.Drawing.Color.White;
             this.tbHealth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbHealth.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbHealth.Location = new System.Drawing.Point(300, 169);
+            this.tbHealth.Location = new System.Drawing.Point(280, 182);
             this.tbHealth.Name = "tbHealth";
             this.tbHealth.Size = new System.Drawing.Size(125, 22);
             this.tbHealth.TabIndex = 12;
@@ -207,17 +210,33 @@ namespace Necromind
             this.tbDmgMax.BackColor = System.Drawing.Color.White;
             this.tbDmgMax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbDmgMax.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbDmgMax.Location = new System.Drawing.Point(365, 105);
+            this.tbDmgMax.Location = new System.Drawing.Point(345, 122);
             this.tbDmgMax.Name = "tbDmgMax";
             this.tbDmgMax.Size = new System.Drawing.Size(60, 22);
             this.tbDmgMax.TabIndex = 18;
             this.tbDmgMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labHeroSaved
+            // 
+            this.labHeroSaved.AutoSize = true;
+            this.labHeroSaved.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labHeroSaved.Location = new System.Drawing.Point(700, 430);
+            this.labHeroSaved.Name = "labHeroSaved";
+            this.labHeroSaved.Size = new System.Drawing.Size(0, 16);
+            this.labHeroSaved.TabIndex = 19;
+            this.labHeroSaved.Visible = false;
+            // 
+            // timHide
+            // 
+            this.timHide.Interval = 3000;
+            this.timHide.Tick += new System.EventHandler(this.TimHide_Tick);
             // 
             // AdminHeroes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.Controls.Add(this.labHeroSaved);
             this.Controls.Add(this.tbDmgMax);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tbHealth);
@@ -259,5 +278,7 @@ namespace Necromind
         private System.Windows.Forms.TextBox tbHealth;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox tbDmgMax;
+        private System.Windows.Forms.Label labHeroSaved;
+        private System.Windows.Forms.Timer timHide;
     }
 }

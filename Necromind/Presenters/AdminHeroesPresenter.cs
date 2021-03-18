@@ -4,6 +4,7 @@ using NecromindUI.Views;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
 
 namespace NecromindUI.Presenters
 {
@@ -19,6 +20,22 @@ namespace NecromindUI.Presenters
             _mongoConnector = MongoConnector.GetInstance();
             GetAllHeroes();
             SetupHeroesList();
+        }
+
+        private void AlertSuccess(string name)
+        {
+            _adminHeroes.LabHeroSaved.Text = $"{ name } saved successfully!";
+            _adminHeroes.LabHeroSaved.ForeColor = Color.FromArgb(211, 84, 0);
+            _adminHeroes.LabHeroSaved.Visible = true;
+            _adminHeroes.TimHide.Start();
+        }
+
+        private void AlertFail(string name)
+        {
+            _adminHeroes.LabHeroSaved.Text = $"Failed to save { name }!";
+            _adminHeroes.LabHeroSaved.ForeColor = Color.FromArgb(214, 48, 49);
+            _adminHeroes.LabHeroSaved.Visible = true;
+            _adminHeroes.TimHide.Start();
         }
 
         private void GetAllHeroes()
@@ -56,7 +73,14 @@ namespace NecromindUI.Presenters
             hero.AdminSetDef(Int32.Parse(_adminHeroes.Def));
             hero.AdminSetHealth(Int32.Parse(_adminHeroes.Health));
 
-            _mongoConnector.TryUpsertRecord(ConfigurationManager.AppSettings.Get("heroesCollection"), hero.Id, hero);
+            if (_mongoConnector.TryUpsertRecord(ConfigurationManager.AppSettings.Get("heroesCollection"), hero.Id, hero))
+            {
+                AlertSuccess(hero.Name);
+            }
+            else
+            {
+                AlertFail(hero.Name);
+            }
         }
     }
 }

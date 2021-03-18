@@ -83,6 +83,16 @@ namespace Necromind
             get => lbHeroes;
         }
 
+        public Timer TimHide
+        {
+            get => timHide;
+        }
+
+        public Label LabHeroSaved
+        {
+            get => labHeroSaved;
+        }
+
         public AdminHeroes()
         {
             InitializeComponent();
@@ -97,6 +107,12 @@ namespace Necromind
         private void BtnSave_Click(object sender, EventArgs e)
         {
             _presenter.UpdateHero();
+        }
+
+        private void TimHide_Tick(object sender, EventArgs e)
+        {
+            labHeroSaved.Visible = false;
+            timHide.Stop();
         }
     }
 }

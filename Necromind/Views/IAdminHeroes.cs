@@ -12,5 +12,7 @@ namespace NecromindUI.Views
         string Def { get; set; }
         string Health { get; set; }
         ListBox Heroes { get; }
+        Timer TimHide { get; }
+        Label LabHeroSaved { get; }
     }
 }
