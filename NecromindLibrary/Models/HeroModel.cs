@@ -109,11 +109,7 @@ namespace NecromindLibrary.Models
 
         public void TakeDmg(IFighter enemy)
         {
-            //Health -= enemy.Dmg - Def;
-            //if (Health < 1)
-            //{
-            //    Die(enemy);
-            //}
+            // TODO - Implement take dmg logic.
         }
 
         public void Die(IFighter enemy)

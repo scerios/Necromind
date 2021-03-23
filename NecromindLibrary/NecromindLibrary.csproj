@@ -154,6 +154,7 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\EnemyModel.cs" />
     <Compile Include="Models\HeroModel.cs" />
+    <Compile Include="Models\LocationModel.cs" />
     <Compile Include="Models\PlayerModel.cs" />
     <Compile Include="Repository\IDataConnection.cs" />
     <Compile Include="Services\IAdminSetter.cs" />
