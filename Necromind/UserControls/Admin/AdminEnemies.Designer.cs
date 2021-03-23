@@ -31,8 +31,8 @@ namespace NecromindUI.UserControls.Admin
         {
             this.components = new System.ComponentModel.Container();
             this.panAdd = new System.Windows.Forms.Panel();
-            this.panDivider = new System.Windows.Forms.Panel();
-            this.panEdit = new System.Windows.Forms.Panel();
+            this.labEnemyAdded = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.tbDmgMax = new System.Windows.Forms.TextBox();
             this.tbHealth = new System.Windows.Forms.TextBox();
             this.tbDef = new System.Windows.Forms.TextBox();
@@ -46,8 +46,8 @@ namespace NecromindUI.UserControls.Admin
             this.labGold = new System.Windows.Forms.Label();
             this.labLvl = new System.Windows.Forms.Label();
             this.labName = new System.Windows.Forms.Label();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.labEnemyAdded = new System.Windows.Forms.Label();
+            this.panDivider = new System.Windows.Forms.Panel();
+            this.panEdit = new System.Windows.Forms.Panel();
             this.timHide = new System.Windows.Forms.Timer(this.components);
             this.panAdd.SuspendLayout();
             this.SuspendLayout();
@@ -75,22 +75,32 @@ namespace NecromindUI.UserControls.Admin
             this.panAdd.Size = new System.Drawing.Size(540, 471);
             this.panAdd.TabIndex = 0;
             // 
-            // panDivider
+            // labEnemyAdded
             // 
-            this.panDivider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.panDivider.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panDivider.Location = new System.Drawing.Point(540, 0);
-            this.panDivider.Name = "panDivider";
-            this.panDivider.Size = new System.Drawing.Size(4, 471);
-            this.panDivider.TabIndex = 2;
+            this.labEnemyAdded.AutoSize = true;
+            this.labEnemyAdded.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labEnemyAdded.Location = new System.Drawing.Point(150, 430);
+            this.labEnemyAdded.Name = "labEnemyAdded";
+            this.labEnemyAdded.Size = new System.Drawing.Size(0, 16);
+            this.labEnemyAdded.TabIndex = 33;
+            this.labEnemyAdded.Visible = false;
             // 
-            // panEdit
+            // btnAdd
             // 
-            this.panEdit.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panEdit.Location = new System.Drawing.Point(544, 0);
-            this.panEdit.Name = "panEdit";
-            this.panEdit.Size = new System.Drawing.Size(540, 471);
-            this.panEdit.TabIndex = 3;
+            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.ForeColor = System.Drawing.Color.Black;
+            this.btnAdd.Location = new System.Drawing.Point(420, 426);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(100, 25);
+            this.btnAdd.TabIndex = 32;
+            this.btnAdd.TabStop = false;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // tbDmgMax
             // 
@@ -230,35 +240,27 @@ namespace NecromindUI.UserControls.Admin
             this.labName.TabIndex = 19;
             this.labName.Text = "Name:";
             // 
-            // btnAdd
+            // panDivider
             // 
-            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
-            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.ForeColor = System.Drawing.Color.Black;
-            this.btnAdd.Location = new System.Drawing.Point(420, 426);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(100, 25);
-            this.btnAdd.TabIndex = 32;
-            this.btnAdd.TabStop = false;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = false;
+            this.panDivider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.panDivider.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panDivider.Location = new System.Drawing.Point(540, 0);
+            this.panDivider.Name = "panDivider";
+            this.panDivider.Size = new System.Drawing.Size(4, 471);
+            this.panDivider.TabIndex = 2;
             // 
-            // labEnemyAdded
+            // panEdit
             // 
-            this.labEnemyAdded.AutoSize = true;
-            this.labEnemyAdded.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labEnemyAdded.Location = new System.Drawing.Point(200, 430);
-            this.labEnemyAdded.Name = "labEnemyAdded";
-            this.labEnemyAdded.Size = new System.Drawing.Size(0, 16);
-            this.labEnemyAdded.TabIndex = 33;
-            this.labEnemyAdded.Visible = false;
+            this.panEdit.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panEdit.Location = new System.Drawing.Point(544, 0);
+            this.panEdit.Name = "panEdit";
+            this.panEdit.Size = new System.Drawing.Size(540, 471);
+            this.panEdit.TabIndex = 3;
             // 
             // timHide
             // 
             this.timHide.Interval = 3000;
+            this.timHide.Tick += new System.EventHandler(this.TimHide_Tick);
             // 
             // AdminEnemies
             // 
@@ -269,7 +271,7 @@ namespace NecromindUI.UserControls.Admin
             this.Controls.Add(this.panDivider);
             this.Controls.Add(this.panAdd);
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdminEnemies";
             this.Size = new System.Drawing.Size(1084, 471);
             this.panAdd.ResumeLayout(false);

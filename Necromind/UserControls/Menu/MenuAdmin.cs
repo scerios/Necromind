@@ -10,7 +10,8 @@ namespace NecromindUI.UserControls.Menu
     {
         private readonly MenuAdminPresenter _presenter;
         private readonly AdminControls _controls;
-        private AdminHeroes _adminHeroes;
+        private readonly AdminHeroes _adminHeroes;
+        private readonly AdminEnemies _adminEnemies;
 
         public string Password
         {
@@ -39,10 +40,22 @@ namespace NecromindUI.UserControls.Menu
             InitializeComponent();
             _presenter = new MenuAdminPresenter(this);
             _controls = new AdminControls();
+            _adminHeroes = new AdminHeroes();
+            _adminEnemies = new AdminEnemies();
+        }
 
+        private void LoadViews()
+        {
+            LoadView(PanSettings, _adminHeroes);
+            LoadView(PanSettings, _adminEnemies);
+        }
+
+        private void SetControlsEvents()
+        {
             _controls.BtnMapsClick += new EventHandler(AdminControls_BtnMapsClick);
             _controls.BtnLocationsClick += new EventHandler(AdminControls_BtnLocationsClick);
             _controls.BtnHeroesClick += new EventHandler(AdminControls_BtnHeroesClick);
+            _controls.BtnEnemiesClick += new EventHandler(AdminControls_BtnEnemiesClick);
         }
 
         private void TbPassword_KeyUp(object sender, KeyEventArgs e)
@@ -63,6 +76,8 @@ namespace NecromindUI.UserControls.Menu
             if (_presenter.IsPasswordCorrect())
             {
                 ActivateView(PanControls, _controls);
+                LoadViews();
+                SetControlsEvents();
             }
 
             Password = "";
@@ -71,6 +86,16 @@ namespace NecromindUI.UserControls.Menu
         private void ActivateView(Panel panel, UserControl view)
         {
             panel.Controls.Add(view);
+            view.BringToFront();
+        }
+
+        private void LoadView(Panel panel, UserControl view)
+        {
+            panel.Controls.Add(view);
+        }
+
+        private void BringToFront(UserControl view)
+        {
             view.BringToFront();
         }
 
@@ -86,8 +111,7 @@ namespace NecromindUI.UserControls.Menu
 
         private void AdminControls_BtnHeroesClick(object sender, EventArgs e)
         {
-            _adminHeroes = new AdminHeroes();
-            ActivateView(PanSettings, _adminHeroes);
+            BringToFront(_adminHeroes);
         }
 
         private void AdminControls_BtnVendorsClick(object sender, EventArgs e)
@@ -97,7 +121,7 @@ namespace NecromindUI.UserControls.Menu
 
         private void AdminControls_BtnEnemiesClick(object sender, EventArgs e)
         {
-            // TODO - Create settings panel for enemies.
+            BringToFront(_adminEnemies);
         }
     }
 }
