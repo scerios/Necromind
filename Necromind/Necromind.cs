@@ -1,4 +1,6 @@
 ﻿using NecromindLibrary.Models;
+using NecromindUI.UserControls.Game;
+using NecromindUI.UserControls.Menu;
 using System;
 using System.Diagnostics;
 using System.Globalization;

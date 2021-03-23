@@ -3,7 +3,7 @@ using NecromindUI.Views;
 using System;
 using System.Windows.Forms;
 
-namespace Necromind
+namespace NecromindUI.UserControls.Admin
 {
     public partial class AdminHeroes : UserControl, IAdminHeroes
     {

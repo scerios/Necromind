@@ -3,7 +3,7 @@ using NecromindUI.Views;
 using System;
 using System.Windows.Forms;
 
-namespace NecromindUI
+namespace NecromindUI.UserControls.Menu
 {
     public partial class MenuNew : UserControl, IMenuNew
     {

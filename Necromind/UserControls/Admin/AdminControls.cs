@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace NecromindUI
+namespace NecromindUI.UserControls.Admin
 {
     public partial class AdminControls : UserControl
     {

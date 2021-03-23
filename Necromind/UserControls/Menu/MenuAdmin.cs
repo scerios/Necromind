@@ -1,10 +1,10 @@
-﻿using Necromind;
-using Necromind.Presenters;
+﻿using Necromind.Presenters;
 using Necromind.Views;
+using NecromindUI.UserControls.Admin;
 using System;
 using System.Windows.Forms;
 
-namespace NecromindUI
+namespace NecromindUI.UserControls.Menu
 {
     public partial class MenuAdmin : UserControl, IMenuAdmin
     {

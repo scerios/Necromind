@@ -1,5 +1,5 @@
 ﻿
-namespace NecromindUI
+namespace NecromindUI.UserControls.Game
 {
     partial class GameMain
     {

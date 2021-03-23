@@ -1,11 +1,10 @@
-﻿using Necromind;
-using NecromindLibrary.Models;
+﻿using NecromindLibrary.Models;
 using NecromindUI.Presenters;
 using NecromindUI.Views;
 using System;
 using System.Windows.Forms;
 
-namespace NecromindUI
+namespace NecromindUI.UserControls.Game
 {
     public partial class GameMain : UserControl, IGameMain
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace NecromindUI
+namespace NecromindUI.UserControls.Admin
 {
     partial class AdminControls
     {

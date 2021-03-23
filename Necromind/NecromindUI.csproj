@@ -49,52 +49,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminControls.cs">
+    <Compile Include="UserControls\Admin\AdminControls.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AdminControls.Designer.cs">
+    <Compile Include="UserControls\Admin\AdminControls.Designer.cs">
       <DependentUpon>AdminControls.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminHeroes.cs">
+    <Compile Include="UserControls\Admin\AdminHeroes.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AdminHeroes.Designer.cs">
+    <Compile Include="UserControls\Admin\AdminHeroes.Designer.cs">
       <DependentUpon>AdminHeroes.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameEnemyInteraction.cs">
+    <Compile Include="UserControls\Game\GameEnemyInteraction.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GameEnemyInteraction.Designer.cs">
+    <Compile Include="UserControls\Game\GameEnemyInteraction.Designer.cs">
       <DependentUpon>GameEnemyInteraction.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameFriendlyInteraction.cs">
+    <Compile Include="UserControls\Game\GameFriendlyInteraction.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GameFriendlyInteraction.Designer.cs">
+    <Compile Include="UserControls\Game\GameFriendlyInteraction.Designer.cs">
       <DependentUpon>GameFriendlyInteraction.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameMain.cs">
+    <Compile Include="UserControls\Game\GameMain.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GameMain.Designer.cs">
+    <Compile Include="UserControls\Game\GameMain.Designer.cs">
       <DependentUpon>GameMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuAdmin.cs">
+    <Compile Include="UserControls\Menu\MenuAdmin.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MenuAdmin.Designer.cs">
+    <Compile Include="UserControls\Menu\MenuAdmin.Designer.cs">
       <DependentUpon>MenuAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuLoad.cs">
+    <Compile Include="UserControls\Menu\MenuLoad.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MenuLoad.Designer.cs">
+    <Compile Include="UserControls\Menu\MenuLoad.Designer.cs">
       <DependentUpon>MenuLoad.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuNew.cs">
+    <Compile Include="UserControls\Menu\MenuNew.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MenuNew.Designer.cs">
+    <Compile Include="UserControls\Menu\MenuNew.Designer.cs">
       <DependentUpon>MenuNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Necromind.cs">
@@ -117,28 +117,28 @@
     <Compile Include="Views\IMenuAdmin.cs" />
     <Compile Include="Views\IMenuLoad.cs" />
     <Compile Include="Views\IMenuNew.cs" />
-    <EmbeddedResource Include="AdminControls.resx">
+    <EmbeddedResource Include="UserControls\Admin\AdminControls.resx">
       <DependentUpon>AdminControls.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminHeroes.resx">
+    <EmbeddedResource Include="UserControls\Admin\AdminHeroes.resx">
       <DependentUpon>AdminHeroes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GameEnemyInteraction.resx">
+    <EmbeddedResource Include="UserControls\Game\GameEnemyInteraction.resx">
       <DependentUpon>GameEnemyInteraction.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GameFriendlyInteraction.resx">
+    <EmbeddedResource Include="UserControls\Game\GameFriendlyInteraction.resx">
       <DependentUpon>GameFriendlyInteraction.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GameMain.resx">
+    <EmbeddedResource Include="UserControls\Game\GameMain.resx">
       <DependentUpon>GameMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuAdmin.resx">
+    <EmbeddedResource Include="UserControls\Menu\MenuAdmin.resx">
       <DependentUpon>MenuAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuLoad.resx">
+    <EmbeddedResource Include="UserControls\Menu\MenuLoad.resx">
       <DependentUpon>MenuLoad.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuNew.resx">
+    <EmbeddedResource Include="UserControls\Menu\MenuNew.resx">
       <DependentUpon>MenuNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Necromind.resx">

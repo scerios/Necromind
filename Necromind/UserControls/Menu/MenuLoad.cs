@@ -7,7 +7,7 @@ using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace NecromindUI
+namespace NecromindUI.UserControls.Menu
 {
     public partial class MenuLoad : UserControl, IMenuLoad
     {

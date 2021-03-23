@@ -1,5 +1,5 @@
 ﻿
-namespace Necromind
+namespace NecromindUI.UserControls.Admin
 {
     partial class AdminHeroes
     {

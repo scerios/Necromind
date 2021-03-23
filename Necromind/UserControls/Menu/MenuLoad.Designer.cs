@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace NecromindUI
+namespace NecromindUI.UserControls.Menu
 {
     partial class MenuLoad
     {
