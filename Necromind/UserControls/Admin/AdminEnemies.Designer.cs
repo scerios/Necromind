@@ -29,6 +29,7 @@ namespace NecromindUI.UserControls.Admin
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panAdd = new System.Windows.Forms.Panel();
             this.panDivider = new System.Windows.Forms.Panel();
             this.panEdit = new System.Windows.Forms.Panel();
@@ -47,6 +48,7 @@ namespace NecromindUI.UserControls.Admin
             this.labName = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.labEnemyAdded = new System.Windows.Forms.Label();
+            this.timHide = new System.Windows.Forms.Timer(this.components);
             this.panAdd.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -254,6 +256,10 @@ namespace NecromindUI.UserControls.Admin
             this.labEnemyAdded.TabIndex = 33;
             this.labEnemyAdded.Visible = false;
             // 
+            // timHide
+            // 
+            this.timHide.Interval = 3000;
+            // 
             // AdminEnemies
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -292,5 +298,6 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.Label labName;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label labEnemyAdded;
+        private System.Windows.Forms.Timer timHide;
     }
 }
