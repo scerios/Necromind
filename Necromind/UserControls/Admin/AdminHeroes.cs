@@ -88,9 +88,9 @@ namespace NecromindUI.UserControls.Admin
             get => timHide;
         }
 
-        public Label LabHeroSaved
+        public Label LabHeroEdit
         {
-            get => labHeroSaved;
+            get => labHeroEdit;
         }
 
         public AdminHeroes()
@@ -111,7 +111,7 @@ namespace NecromindUI.UserControls.Admin
 
         private void TimHide_Tick(object sender, EventArgs e)
         {
-            labHeroSaved.Visible = false;
+            labHeroEdit.Visible = false;
             timHide.Stop();
         }
     }

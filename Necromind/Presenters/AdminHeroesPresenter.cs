@@ -24,14 +24,17 @@ namespace NecromindUI.Presenters
 
         public void GetSelectedHeroStats()
         {
-            var hero = _heroes[_adminHeroes.Heroes.SelectedIndex];
-            _adminHeroes.HeroName = hero.Name;
-            _adminHeroes.Lvl = hero.Lvl.ToString();
-            _adminHeroes.Gold = hero.Gold.ToString();
-            _adminHeroes.DmgMin = hero.DmgMin.ToString();
-            _adminHeroes.DmgMax = hero.DmgMax.ToString();
-            _adminHeroes.Def = hero.Def.ToString();
-            _adminHeroes.Health = hero.HealthMax.ToString();
+            if (_adminHeroes.Heroes.SelectedIndex >= 0)
+            {
+                var hero = _heroes[_adminHeroes.Heroes.SelectedIndex];
+                _adminHeroes.HeroName = hero.Name;
+                _adminHeroes.Lvl = hero.Lvl.ToString();
+                _adminHeroes.Gold = hero.Gold.ToString();
+                _adminHeroes.DmgMin = hero.DmgMin.ToString();
+                _adminHeroes.DmgMax = hero.DmgMax.ToString();
+                _adminHeroes.Def = hero.Def.ToString();
+                _adminHeroes.Health = hero.HealthMax.ToString();
+            }
         }
 
         public void EditHero()
@@ -47,6 +50,8 @@ namespace NecromindUI.Presenters
             if (_mongoConnector.TryUpsertRecord(ConfigurationManager.AppSettings.Get("heroesCollection"), hero.Id, hero))
             {
                 AlertSuccess(hero.Name);
+                _adminHeroes.Heroes.ClearSelected();
+                ClearEditFields();
             }
             else
             {
@@ -56,17 +61,17 @@ namespace NecromindUI.Presenters
 
         private void AlertSuccess(string name)
         {
-            _adminHeroes.LabHeroSaved.Text = $"{ name } saved successfully!";
-            _adminHeroes.LabHeroSaved.ForeColor = UISettings.GreenColor;
-            _adminHeroes.LabHeroSaved.Visible = true;
+            _adminHeroes.LabHeroEdit.Text = $"{ name } edited successfully!";
+            _adminHeroes.LabHeroEdit.ForeColor = UISettings.GreenColor;
+            _adminHeroes.LabHeroEdit.Visible = true;
             _adminHeroes.TimHide.Start();
         }
 
         private void AlertFail(string name)
         {
-            _adminHeroes.LabHeroSaved.Text = $"Failed to save { name }!";
-            _adminHeroes.LabHeroSaved.ForeColor = UISettings.RedColor;
-            _adminHeroes.LabHeroSaved.Visible = true;
+            _adminHeroes.LabHeroEdit.Text = $"Failed to edit { name }!";
+            _adminHeroes.LabHeroEdit.ForeColor = UISettings.RedColor;
+            _adminHeroes.LabHeroEdit.Visible = true;
             _adminHeroes.TimHide.Start();
         }
 
@@ -81,6 +86,17 @@ namespace NecromindUI.Presenters
             {
                 _adminHeroes.Heroes.Items.Add(hero.Name);
             }
+        }
+
+        private void ClearEditFields()
+        {
+            _adminHeroes.HeroName = "";
+            _adminHeroes.Lvl = "";
+            _adminHeroes.Gold = "";
+            _adminHeroes.DmgMin = "";
+            _adminHeroes.DmgMax = "";
+            _adminHeroes.Def = "";
+            _adminHeroes.Health = "";
         }
     }
 }

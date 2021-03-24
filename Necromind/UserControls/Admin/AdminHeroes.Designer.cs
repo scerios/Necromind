@@ -45,7 +45,7 @@ namespace NecromindUI.UserControls.Admin
             this.tbHealth = new System.Windows.Forms.TextBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.tbDmgMax = new System.Windows.Forms.TextBox();
-            this.labHeroSaved = new System.Windows.Forms.Label();
+            this.labHeroEdit = new System.Windows.Forms.Label();
             this.timHide = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
@@ -216,15 +216,15 @@ namespace NecromindUI.UserControls.Admin
             this.tbDmgMax.TabIndex = 18;
             this.tbDmgMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // labHeroSaved
+            // labHeroEdit
             // 
-            this.labHeroSaved.AutoSize = true;
-            this.labHeroSaved.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labHeroSaved.Location = new System.Drawing.Point(700, 430);
-            this.labHeroSaved.Name = "labHeroSaved";
-            this.labHeroSaved.Size = new System.Drawing.Size(0, 16);
-            this.labHeroSaved.TabIndex = 19;
-            this.labHeroSaved.Visible = false;
+            this.labHeroEdit.AutoSize = true;
+            this.labHeroEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labHeroEdit.Location = new System.Drawing.Point(700, 430);
+            this.labHeroEdit.Name = "labHeroEdit";
+            this.labHeroEdit.Size = new System.Drawing.Size(0, 16);
+            this.labHeroEdit.TabIndex = 19;
+            this.labHeroEdit.Visible = false;
             // 
             // timHide
             // 
@@ -236,7 +236,7 @@ namespace NecromindUI.UserControls.Admin
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.Controls.Add(this.labHeroSaved);
+            this.Controls.Add(this.labHeroEdit);
             this.Controls.Add(this.tbDmgMax);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.tbHealth);
@@ -278,7 +278,7 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.TextBox tbHealth;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.TextBox tbDmgMax;
-        private System.Windows.Forms.Label labHeroSaved;
+        private System.Windows.Forms.Label labHeroEdit;
         private System.Windows.Forms.Timer timHide;
     }
 }
