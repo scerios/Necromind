@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Necromind.Views
+namespace Necromind.Views.Menu
 {
     public interface IMenuAdmin
     {

@@ -1,5 +1,5 @@
 ﻿using Necromind.Presenters;
-using Necromind.Views;
+using Necromind.Views.Menu;
 using NecromindUI.UserControls.Admin;
 using System;
 using System.Windows.Forms;

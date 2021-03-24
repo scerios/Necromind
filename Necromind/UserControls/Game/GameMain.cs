@@ -1,6 +1,6 @@
 ﻿using NecromindLibrary.Models;
 using NecromindUI.Presenters;
-using NecromindUI.Views;
+using NecromindUI.Views.Game;
 using System;
 using System.Windows.Forms;
 

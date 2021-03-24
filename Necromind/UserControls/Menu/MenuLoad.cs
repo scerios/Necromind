@@ -2,7 +2,7 @@
 using NecromindLibrary.Models;
 using NecromindLibrary.Services;
 using NecromindUI.Presenters;
-using NecromindUI.Views;
+using NecromindUI.Views.Menu;
 using System;
 using System.Configuration;
 using System.Drawing;

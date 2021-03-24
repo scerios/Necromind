@@ -1,4 +1,4 @@
-﻿using Necromind.Views;
+﻿using Necromind.Views.Menu;
 using NecromindLibrary.Repository;
 using System.Configuration;
 

@@ -1,7 +1,7 @@
 ﻿using NecromindLibrary.Config;
 using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
-using NecromindUI.Views;
+using NecromindUI.Views.Admin;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

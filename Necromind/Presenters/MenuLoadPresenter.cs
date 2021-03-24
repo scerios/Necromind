@@ -1,16 +1,10 @@
-﻿using NecromindUI.Views;
-using NecromindLibrary.Models;
+﻿using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
 using NecromindLibrary.Services;
-using NecromindUI;
+using NecromindUI.Views.Menu;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace NecromindUI.Presenters
 {
@@ -36,7 +30,6 @@ namespace NecromindUI.Presenters
         public List<HeroModel> GetAllHeroes(string collectionName)
         {
             var heroes = _mongoConnector.GetAllRecords<HeroModel>(collectionName);
-
 
             if (heroes.Count == 0)
             {

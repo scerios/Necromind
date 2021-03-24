@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace NecromindUI.Views
+namespace NecromindUI.Views.Admin
 {
     public interface IAdminEnemies
     {

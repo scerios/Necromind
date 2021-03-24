@@ -1,13 +1,9 @@
-﻿using NecromindUI.Views;
-using NecromindLibrary.Models;
+﻿using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
 using NecromindLibrary.Services;
+using NecromindUI.Views.Menu;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NecromindUI.Presenters
 {
