@@ -1,4 +1,5 @@
-﻿using NecromindLibrary.Models;
+﻿using NecromindLibrary.Config;
+using NecromindLibrary.Models;
 using NecromindLibrary.Services;
 using NecromindUI.Presenters;
 using NecromindUI.Views;
@@ -136,8 +137,8 @@ namespace NecromindUI.UserControls.Menu
                     btnLoadHeroLocX,
                     btnLocY,
                     10,
-                    Color.FromArgb(211, 84, 0),
-                    Color.FromArgb(229, 232, 232),
+                    UISettings.OrangeColor,
+                    UISettings.WhiteColor,
                     FlatStyle.Flat,
                     ContentAlignment.MiddleCenter
                 );
@@ -158,8 +159,8 @@ namespace NecromindUI.UserControls.Menu
                     btnDeleteHeroLocX,
                     btnLocY,
                     12,
-                    Color.FromArgb(23, 32, 42),
-                    Color.FromArgb(214, 48, 49),
+                    UISettings.BackgroundColor,
+                    UISettings.RedColor,
                     FlatStyle.Flat,
                     ContentAlignment.MiddleLeft
                 );

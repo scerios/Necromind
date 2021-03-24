@@ -9,83 +9,167 @@ namespace NecromindUI.UserControls.Admin
     {
         private readonly AdminEnemiesPresenter _presenter;
 
-        public string EnemyName
+        public string AddEnemyName
         {
-            get => tbName.Text;
+            get => tbAddName.Text;
             set
             {
-                tbName.Text = value;
+                tbAddName.Text = value;
             }
         }
 
-        public string Lvl
+        public string EditEnemyName
         {
-            get => tbLvl.Text;
-
+            get => tbEditName.Text;
             set
             {
-                tbLvl.Text = value;
+                tbEditName.Text = value;
             }
         }
 
-        public string Gold
+        public string AddLvl
         {
-            get => tbGold.Text;
+            get => tbAddLvl.Text;
 
             set
             {
-                tbGold.Text = value;
+                tbAddLvl.Text = value;
             }
         }
 
-        public string DmgMin
+        public string EditLvl
         {
-            get => tbDmgMin.Text;
+            get => tbEditLvl.Text;
 
             set
             {
-                tbDmgMin.Text = value;
+                tbEditLvl.Text = value;
             }
         }
 
-        public string DmgMax
+        public string AddGold
         {
-            get => tbDmgMax.Text;
+            get => tbAddGold.Text;
 
             set
             {
-                tbDmgMax.Text = value;
+                tbAddGold.Text = value;
             }
         }
 
-        public string Def
+        public string EditGold
         {
-            get => tbDef.Text;
+            get => tbEditGold.Text;
 
             set
             {
-                tbDef.Text = value;
+                tbEditGold.Text = value;
             }
         }
 
-        public string Health
+        public string AddDmgMin
         {
-            get => tbHealth.Text;
+            get => tbAddDmgMin.Text;
 
             set
             {
-                tbHealth.Text = value;
+                tbAddDmgMin.Text = value;
             }
         }
 
-        public Timer TimHide
+        public string EditDmgMin
         {
-            get => timHide;
+            get => tbEditDmgMin.Text;
+
+            set
+            {
+                tbEditDmgMin.Text = value;
+            }
         }
 
-        public Label LabEnemyAdded
+        public string AddDmgMax
         {
-            get => labEnemyAdded;
+            get => tbAddDmgMax.Text;
+
+            set
+            {
+                tbAddDmgMax.Text = value;
+            }
+        }
+
+        public string EditDmgMax
+        {
+            get => tbEditDmgMax.Text;
+
+            set
+            {
+                tbEditDmgMax.Text = value;
+            }
+        }
+
+        public string AddDef
+        {
+            get => tbAddDef.Text;
+
+            set
+            {
+                tbAddDef.Text = value;
+            }
+        }
+
+        public string EditDef
+        {
+            get => tbEditDef.Text;
+
+            set
+            {
+                tbEditDef.Text = value;
+            }
+        }
+
+        public string AddHealth
+        {
+            get => tbAddHealth.Text;
+
+            set
+            {
+                tbAddHealth.Text = value;
+            }
+        }
+
+        public string EditHealth
+        {
+            get => tbEditHealth.Text;
+
+            set
+            {
+                tbEditHealth.Text = value;
+            }
+        }
+
+        public ListBox Enemies
+        {
+            get => lbEnemies;
+        }
+
+        public Timer TimHideAdd
+        {
+            get => timHideAdd;
+        }
+
+        public Timer TimHideEdit
+        {
+            get => timHideEdit;
+        }
+
+        public Label LabEnemyAdd
+        {
+            get => labEnemyAdd;
+        }
+
+        public Label LabEnemyEdit
+        {
+            get => labEnemyEdit;
         }
 
         public AdminEnemies()
@@ -99,10 +183,31 @@ namespace NecromindUI.UserControls.Admin
             _presenter.AddEnemy();
         }
 
-        private void TimHide_Tick(object sender, EventArgs e)
+        private void BtnEdit_Click(object sender, EventArgs e)
         {
-            labEnemyAdded.Visible = false;
-            timHide.Stop();
+            _presenter.EditEnemy();
+        }
+
+        private void BtnDel_Click(object sender, EventArgs e)
+        {
+            _presenter.DeleteEnemy();
+        }
+
+        private void TimHideAdd_Tick(object sender, EventArgs e)
+        {
+            LabEnemyAdd.Visible = false;
+            TimHideAdd.Stop();
+        }
+
+        private void TimHideEdit_Tick(object sender, EventArgs e)
+        {
+            LabEnemyEdit.Visible = false;
+            TimHideEdit.Stop();
+        }
+
+        private void LbEnemies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _presenter.GetSelectedEnemyStats();
         }
     }
 }

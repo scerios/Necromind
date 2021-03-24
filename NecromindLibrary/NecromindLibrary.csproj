@@ -150,6 +150,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\UISettings.cs" />
     <Compile Include="GlobalConfig.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\EnemyModel.cs" />

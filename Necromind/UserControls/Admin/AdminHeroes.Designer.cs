@@ -43,7 +43,7 @@ namespace NecromindUI.UserControls.Admin
             this.tbDmgMin = new System.Windows.Forms.TextBox();
             this.tbDef = new System.Windows.Forms.TextBox();
             this.tbHealth = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.tbDmgMax = new System.Windows.Forms.TextBox();
             this.labHeroSaved = new System.Windows.Forms.Label();
             this.timHide = new System.Windows.Forms.Timer(this.components);
@@ -188,22 +188,22 @@ namespace NecromindUI.UserControls.Admin
             this.tbHealth.TabIndex = 12;
             this.tbHealth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // btnSave
+            // btnEdit
             // 
-            this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(964, 426);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 25);
-            this.btnSave.TabIndex = 17;
-            this.btnSave.TabStop = false;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
+            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.ForeColor = System.Drawing.Color.Black;
+            this.btnEdit.Location = new System.Drawing.Point(964, 426);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(100, 25);
+            this.btnEdit.TabIndex = 17;
+            this.btnEdit.TabStop = false;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
             // 
             // tbDmgMax
             // 
@@ -238,7 +238,7 @@ namespace NecromindUI.UserControls.Admin
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.Controls.Add(this.labHeroSaved);
             this.Controls.Add(this.tbDmgMax);
-            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.tbHealth);
             this.Controls.Add(this.tbDef);
             this.Controls.Add(this.tbDmgMin);
@@ -276,7 +276,7 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.TextBox tbDmgMin;
         private System.Windows.Forms.TextBox tbDef;
         private System.Windows.Forms.TextBox tbHealth;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.TextBox tbDmgMax;
         private System.Windows.Forms.Label labHeroSaved;
         private System.Windows.Forms.Timer timHide;

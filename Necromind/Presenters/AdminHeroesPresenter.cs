@@ -1,10 +1,10 @@
-﻿using NecromindLibrary.Models;
+﻿using NecromindLibrary.Config;
+using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
 using NecromindUI.Views;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Drawing;
 
 namespace NecromindUI.Presenters
 {
@@ -18,37 +18,8 @@ namespace NecromindUI.Presenters
         {
             _adminHeroes = adminHeroes;
             _mongoConnector = MongoConnector.GetInstance();
-            GetAllHeroes();
+            LoadAllHeroes();
             SetupHeroesList();
-        }
-
-        private void AlertSuccess(string name)
-        {
-            _adminHeroes.LabHeroSaved.Text = $"{ name } saved successfully!";
-            _adminHeroes.LabHeroSaved.ForeColor = Color.FromArgb(211, 84, 0);
-            _adminHeroes.LabHeroSaved.Visible = true;
-            _adminHeroes.TimHide.Start();
-        }
-
-        private void AlertFail(string name)
-        {
-            _adminHeroes.LabHeroSaved.Text = $"Failed to save { name }!";
-            _adminHeroes.LabHeroSaved.ForeColor = Color.FromArgb(214, 48, 49);
-            _adminHeroes.LabHeroSaved.Visible = true;
-            _adminHeroes.TimHide.Start();
-        }
-
-        private void GetAllHeroes()
-        {
-            _heroes = _mongoConnector.GetAllRecords<HeroModel>(ConfigurationManager.AppSettings.Get("heroesCollection"));
-        }
-
-        private void SetupHeroesList()
-        {
-            foreach (var hero in _heroes)
-            {
-                _adminHeroes.Heroes.Items.Add(hero.Name);
-            }
         }
 
         public void GetSelectedHeroStats()
@@ -63,7 +34,7 @@ namespace NecromindUI.Presenters
             _adminHeroes.Health = hero.HealthMax.ToString();
         }
 
-        public void UpdateHero()
+        public void EditHero()
         {
             var hero = _heroes[_adminHeroes.Heroes.SelectedIndex];
             hero.AdminSetLvl(Int32.Parse(_adminHeroes.Lvl));
@@ -80,6 +51,35 @@ namespace NecromindUI.Presenters
             else
             {
                 AlertFail(hero.Name);
+            }
+        }
+
+        private void AlertSuccess(string name)
+        {
+            _adminHeroes.LabHeroSaved.Text = $"{ name } saved successfully!";
+            _adminHeroes.LabHeroSaved.ForeColor = UISettings.GreenColor;
+            _adminHeroes.LabHeroSaved.Visible = true;
+            _adminHeroes.TimHide.Start();
+        }
+
+        private void AlertFail(string name)
+        {
+            _adminHeroes.LabHeroSaved.Text = $"Failed to save { name }!";
+            _adminHeroes.LabHeroSaved.ForeColor = UISettings.RedColor;
+            _adminHeroes.LabHeroSaved.Visible = true;
+            _adminHeroes.TimHide.Start();
+        }
+
+        private void LoadAllHeroes()
+        {
+            _heroes = _mongoConnector.GetAllRecords<HeroModel>(ConfigurationManager.AppSettings.Get("heroesCollection"));
+        }
+
+        private void SetupHeroesList()
+        {
+            foreach (var hero in _heroes)
+            {
+                _adminHeroes.Heroes.Items.Add(hero.Name);
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using NecromindLibrary.Config;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace NecromindLibrary.Services
@@ -20,7 +21,7 @@ namespace NecromindLibrary.Services
             button.BackColor = backColor;
             button.ForeColor = foreColor;
             button.FlatStyle = style;
-            button.Font = new Font("Courier New", fontSize);
+            button.Font = new Font(UISettings.FontStyle, fontSize);
             button.Anchor = AnchorStyles.None;
             button.FlatAppearance.BorderSize = 0;
             button.TextAlign = alignment;

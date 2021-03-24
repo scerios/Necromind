@@ -104,9 +104,9 @@ namespace NecromindUI.UserControls.Admin
             _presenter.GetSelectedHeroStats();
         }
 
-        private void BtnSave_Click(object sender, EventArgs e)
+        private void BtnEdit_Click(object sender, EventArgs e)
         {
-            _presenter.UpdateHero();
+            _presenter.EditHero();
         }
 
         private void TimHide_Tick(object sender, EventArgs e)
