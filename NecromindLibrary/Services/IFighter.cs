@@ -42,11 +42,11 @@ namespace NecromindLibrary.Services
         /// Takes dmg from the incoming attack.
         /// </summary>
         /// <param name="enemy">The enemy which attacks.</param>
-        void TakeDmg(IFighter enemy);
+        void TakeDmgFrom(IFighter enemy);
 
         /// <summary>
         /// When healthpoints reach 0, the character dies.
         /// </summary>
-        void Die(IFighter enemy);
+        void DieBy(IFighter enemy);
     }
 }

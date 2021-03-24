@@ -16,26 +16,27 @@ namespace Necromind.UnitTests
             _enemy = new EnemyModel();
         }
 
-        //[Test]
-        //public void Consume_Heal()
-        //{
-        //    var heroOriginalHP = _hero.Health;
+        [Test]
+        public void Consume_Heal()
+        {
+            var heroOriginalHP = _hero.Health;
 
-        //    _hero.TakeDmg(_enemy);
-        //    _hero.TakeDmg(_enemy);
-        //    _hero.Heal(5);
+            _hero.TakeDmgFrom(_enemy);
+            _hero.Heal(5);
 
-        //    Assert.That(_hero.Health, Is.EqualTo(heroOriginalHP - (_enemy.Dmg - _hero.Def) * 2 + 5));
-        //}
+            Assert.That(_hero.Health, Is.InRange(95, 100));
+        }
 
-        //[Test]
-        //public void Consume_FullyHeal()
-        //{
-        //    _hero.TakeDmg(_enemy);
-        //    _hero.TakeDmg(_enemy);
-        //    _hero.Heal(100);
+        [Test]
+        public void Consume_FullyHeal()
+        {
+            _hero.TakeDmgFrom(_enemy);
+            _hero.TakeDmgFrom(_enemy);
+            _hero.TakeDmgFrom(_enemy);
+            _hero.TakeDmgFrom(_enemy);
+            _hero.FullyHeal();
 
-        //    Assert.That(_hero.Health, Is.EqualTo(_hero.HealthMax));
-        //}
+            Assert.That(_hero.Health, Is.EqualTo(_hero.HealthMax));
+        }
     }
 }

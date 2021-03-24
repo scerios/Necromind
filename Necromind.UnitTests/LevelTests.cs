@@ -1,8 +1,6 @@
 ﻿using NecromindLibrary.Models;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Necromind.UnitTests
 {
@@ -19,7 +17,7 @@ namespace Necromind.UnitTests
         [Test]
         public void Level_LevelUp()
         {
-            _hero.GainExperience(100);
+            _hero.GainExperience(1001);
 
             Assert.That(_hero.Lvl, Is.EqualTo(2));
         }

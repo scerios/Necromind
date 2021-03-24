@@ -16,18 +16,21 @@ namespace Necromind.UnitTests
             _enemy = new EnemyModel();
         }
 
-        //[Test]
-        //public void HeroAttack_EnemyKilled()
-        //{
-        //    var enemyOriginalHP = _enemy.Health;
-        //    var heroOriginalXP = _hero.ExperiencePoints;
-        //    var heroOriginalGold = _hero.Gold;
+        [Test]
+        public void HeroAttack_EnemyDamagedOne()
+        {
+            _hero.Attack(_enemy);
 
-        //    _hero.Attack(_enemy);
+            Assert.That(_enemy.Health, Is.InRange(24, 29));
+        }
 
-        //    Assert.That(_enemy.Health, Is.EqualTo(enemyOriginalHP - _hero.Dmg + _enemy.Def));
-        //    Assert.That(_hero.ExperiencePoints, Is.EqualTo(heroOriginalXP + _enemy.Lvl * 10));
-        //    Assert.That(_hero.Gold, Is.EqualTo(heroOriginalGold + _enemy.Gold));
-        //}
+        [Test]
+        public void HeroAttack_EnemyDamagedTwice()
+        {
+            _hero.Attack(_enemy);
+            _hero.Attack(_enemy);
+
+            Assert.That(_enemy.Health, Is.InRange(18, 28));
+        }
     }
 }

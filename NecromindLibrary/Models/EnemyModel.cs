@@ -21,11 +21,11 @@ namespace NecromindLibrary.Models
         {
             Gold = 100;
             Lvl = 1;
-            DmgMin = 5;
-            DmgMax = 5;
-            Def = 5;
-            Health = 5;
-            HealthMax = 5;
+            DmgMin = 8;
+            DmgMax = 15;
+            Def = 4;
+            Health = 30;
+            HealthMax = 30;
         }
 
         public EnemyModel(EnemyModel scheme)
@@ -43,15 +43,22 @@ namespace NecromindLibrary.Models
 
         public void Attack(IFighter enemy)
         {
-            enemy.TakeDmg(this);
+            enemy.TakeDmgFrom(this);
         }
 
-        public void TakeDmg(IFighter enemy)
+        public void TakeDmgFrom(IFighter enemy)
         {
-            // TODO - Implement take dmg logic.
+            var rng = new Random();
+            var rawDmg = rng.Next(enemy.DmgMin, enemy.DmgMax);
+            Health -= rawDmg - Def;
+
+            if (Health < 1)
+            {
+                DieBy(enemy);
+            }
         }
 
-        public void Die(IFighter enemy)
+        public void DieBy(IFighter enemy)
         {
             var levelablePlayer = enemy as ILevelable;
             levelablePlayer.GainExperience(Lvl);

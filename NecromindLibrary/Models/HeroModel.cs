@@ -104,15 +104,22 @@ namespace NecromindLibrary.Models
 
         public void Attack(IFighter enemy)
         {
-            enemy.TakeDmg(this);
+            enemy.TakeDmgFrom(this);
         }
 
-        public void TakeDmg(IFighter enemy)
+        public void TakeDmgFrom(IFighter enemy)
         {
-            // TODO - Implement take dmg logic.
+            var rng = new Random();
+            var rawDmg = rng.Next(enemy.DmgMin, enemy.DmgMax);
+            Health -= rawDmg - Def;
+
+            if (Health < 1)
+            {
+                DieBy(enemy);
+            }
         }
 
-        public void Die(IFighter enemy)
+        public void DieBy(IFighter enemy)
         {
             // TODO - Implement die logic.
             throw new NotImplementedException();
@@ -135,9 +142,9 @@ namespace NecromindLibrary.Models
             Health = HealthMax;
         }
 
-        public void GainExperience(int level)
+        public void GainExperience(int amount)
         {
-            ExperiencePoints += level * 10;
+            ExperiencePoints += amount;
 
             if (ExperiencePoints >= NextLvlAt)
             {
