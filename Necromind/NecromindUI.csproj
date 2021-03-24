@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Presenters\AdminEnemiesPresenter.cs" />
+    <Compile Include="Presenters\Admin\AdminEnemiesPresenter.cs" />
     <Compile Include="UserControls\Admin\AdminControls.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -110,11 +110,11 @@
     <Compile Include="Necromind.Designer.cs">
       <DependentUpon>Necromind.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presenters\AdminHeroesPresenter.cs" />
-    <Compile Include="Presenters\GameMainPresenter.cs" />
-    <Compile Include="Presenters\MenuAdminPresenter.cs" />
-    <Compile Include="Presenters\MenuLoadPresenter.cs" />
-    <Compile Include="Presenters\MenuNewPresenter.cs" />
+    <Compile Include="Presenters\Admin\AdminHeroesPresenter.cs" />
+    <Compile Include="Presenters\Game\GameMainPresenter.cs" />
+    <Compile Include="Presenters\Menu\MenuAdminPresenter.cs" />
+    <Compile Include="Presenters\Menu\MenuLoadPresenter.cs" />
+    <Compile Include="Presenters\Menu\MenuNewPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Admin\IAdminEnemies.cs" />

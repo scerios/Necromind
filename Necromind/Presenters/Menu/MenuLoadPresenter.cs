@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 
-namespace NecromindUI.Presenters
+namespace NecromindUI.Presenters.Menu
 {
     public class MenuLoadPresenter
     {
@@ -18,13 +18,6 @@ namespace NecromindUI.Presenters
         {
             _menuLoad = menuLoad;
             _mongoConnector = MongoConnector.GetInstance();
-        }
-
-        private void DisplayError()
-        {
-            _menuLoad.Title = "No hero found";
-            _menuLoad.Msg = TextService.FormatErrorMsg("You must create a hero first to be able to load them.");
-            _menuLoad.IsPanErrorVisible = true;
         }
 
         public List<HeroModel> GetAllHeroes(string collectionName)
@@ -67,6 +60,13 @@ namespace NecromindUI.Presenters
         public void ChangeBtnDelHeroAvailability()
         {
             _menuLoad.IsBtnDelHeroEnabled = TextService.IsGivenStringsAreEqual(_menuLoad.HeroName, _menuLoad.ConfirmName);
+        }
+
+        private void DisplayError()
+        {
+            _menuLoad.Title = "No hero found";
+            _menuLoad.Msg = TextService.FormatErrorMsg("You must create a hero first to be able to load them.");
+            _menuLoad.IsPanErrorVisible = true;
         }
     }
 }

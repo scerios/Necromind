@@ -1,5 +1,5 @@
 ﻿using NecromindLibrary.Models;
-using NecromindUI.Presenters;
+using NecromindUI.Presenters.Game;
 using NecromindUI.Views.Game;
 using System;
 using System.Windows.Forms;
@@ -90,6 +90,11 @@ namespace NecromindUI.UserControls.Game
             StartGame(hero);
         }
 
+        public void ToggleExitPanVisibility()
+        {
+            _presenter.TogglePanExitVisibility();
+        }
+
         private void BtnSaveExit_Click(object sender, EventArgs e)
         {
             BtnBackToMenu?.Invoke(sender, e);
@@ -172,11 +177,6 @@ namespace NecromindUI.UserControls.Game
         private void HideEnemyUI()
         {
             DeactivateView(panInteraction, _gameEnemyInteraction);
-        }
-
-        public void ToggleExitPanVisibility()
-        {
-            _presenter.TogglePanExitVisibility();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using NecromindUI.Presenters;
+﻿using NecromindUI.Presenters.Admin;
 using NecromindUI.Views.Admin;
 using System;
 using System.Windows.Forms;

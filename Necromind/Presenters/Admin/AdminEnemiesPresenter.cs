@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Windows.Forms;
 
-namespace NecromindUI.Presenters
+namespace NecromindUI.Presenters.Admin
 {
     public class AdminEnemiesPresenter
     {

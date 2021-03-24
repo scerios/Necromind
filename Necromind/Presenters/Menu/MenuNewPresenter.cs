@@ -5,7 +5,7 @@ using NecromindUI.Views.Menu;
 using System;
 using System.Configuration;
 
-namespace NecromindUI.Presenters
+namespace NecromindUI.Presenters.Menu
 {
     public class MenuNewPresenter
     {

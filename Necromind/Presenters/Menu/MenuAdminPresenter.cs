@@ -2,7 +2,7 @@
 using NecromindLibrary.Repository;
 using System.Configuration;
 
-namespace Necromind.Presenters
+namespace Necromind.Presenters.Menu
 {
     public class MenuAdminPresenter
     {
@@ -17,7 +17,7 @@ namespace Necromind.Presenters
 
         public bool IsPasswordCorrect()
         {
-            // TODO - Store password securely in DB.
+            // TODO - Store password securely.
             return _menuAdmin.Password.Equals(ConfigurationManager.AppSettings.Get("adminPassword"));
         }
     }

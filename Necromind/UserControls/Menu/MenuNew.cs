@@ -1,4 +1,4 @@
-﻿using NecromindUI.Presenters;
+﻿using NecromindUI.Presenters.Menu;
 using NecromindUI.Views.Menu;
 using System;
 using System.Windows.Forms;

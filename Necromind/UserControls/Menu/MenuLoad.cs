@@ -1,7 +1,7 @@
 ﻿using NecromindLibrary.Config;
 using NecromindLibrary.Models;
 using NecromindLibrary.Services;
-using NecromindUI.Presenters;
+using NecromindUI.Presenters.Menu;
 using NecromindUI.Views.Menu;
 using System;
 using System.Configuration;
@@ -89,37 +89,6 @@ namespace NecromindUI.UserControls.Menu
             _presenter = new MenuLoadPresenter(this);
         }
 
-        private void BtnBack_Click(object sender, EventArgs e)
-        {
-            BtnBackClick?.Invoke(this, e);
-        }
-
-        private void BtnErrorClose_Click(object sender, EventArgs e)
-        {
-            _presenter.HideError();
-        }
-
-        private void BtnLoadHero_Click(object sender, EventArgs e)
-        {
-            BtnLoadHeroClick?.Invoke(this, e);
-        }
-
-        private void BtnDelHero_Click(object sender, EventArgs e)
-        {
-            _presenter.DeleteHero();
-            BtnDelHeroClick?.Invoke(this, e);
-        }
-
-        private void BtnDelClose_Click(object sender, EventArgs e)
-        {
-            _presenter.HidePanConfDel();
-        }
-
-        private void TbDelHeroName_TextChanged(object sender, EventArgs e)
-        {
-            _presenter.ChangeBtnDelHeroAvailability();
-        }
-
         public void LoadHeroes()
         {
             var heroes = _presenter.GetAllHeroes(ConfigurationManager.AppSettings.Get("heroesCollection"));
@@ -175,6 +144,37 @@ namespace NecromindUI.UserControls.Menu
 
                 btnLocY += 40;
             }
+        }
+
+        private void BtnBack_Click(object sender, EventArgs e)
+        {
+            BtnBackClick?.Invoke(this, e);
+        }
+
+        private void BtnErrorClose_Click(object sender, EventArgs e)
+        {
+            _presenter.HideError();
+        }
+
+        private void BtnLoadHero_Click(object sender, EventArgs e)
+        {
+            BtnLoadHeroClick?.Invoke(this, e);
+        }
+
+        private void BtnDelHero_Click(object sender, EventArgs e)
+        {
+            _presenter.DeleteHero();
+            BtnDelHeroClick?.Invoke(this, e);
+        }
+
+        private void BtnDelClose_Click(object sender, EventArgs e)
+        {
+            _presenter.HidePanConfDel();
+        }
+
+        private void TbDelHeroName_TextChanged(object sender, EventArgs e)
+        {
+            _presenter.ChangeBtnDelHeroAvailability();
         }
     }
 }

@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 
-namespace NecromindUI.Presenters
+namespace NecromindUI.Presenters.Admin
 {
     public class AdminHeroesPresenter
     {
