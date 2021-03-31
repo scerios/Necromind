@@ -30,7 +30,7 @@ namespace NecromindUI.UserControls.Admin
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.panAdd = new System.Windows.Forms.Panel();
+            this.panCreate = new System.Windows.Forms.Panel();
             this.cbCreateIsHostile = new System.Windows.Forms.CheckBox();
             this.labEnemyAdd = new System.Windows.Forms.Label();
             this.btnCreate = new System.Windows.Forms.Button();
@@ -61,29 +61,29 @@ namespace NecromindUI.UserControls.Admin
             this.btnEditAdd = new System.Windows.Forms.Button();
             this.lbEditAddedEnemies = new System.Windows.Forms.ListBox();
             this.lbEditEnemies = new System.Windows.Forms.ListBox();
-            this.panAdd.SuspendLayout();
+            this.panCreate.SuspendLayout();
             this.panEdit.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panAdd
+            // panCreate
             // 
-            this.panAdd.Controls.Add(this.btnCreateRemove);
-            this.panAdd.Controls.Add(this.btnCreateAdd);
-            this.panAdd.Controls.Add(this.lbCreateAddedEnemies);
-            this.panAdd.Controls.Add(this.lbCreateEnemies);
-            this.panAdd.Controls.Add(this.cbCreateIsHostile);
-            this.panAdd.Controls.Add(this.labEnemyAdd);
-            this.panAdd.Controls.Add(this.btnCreate);
-            this.panAdd.Controls.Add(this.tbCreateDescription);
-            this.panAdd.Controls.Add(this.tbCreateName);
-            this.panAdd.Controls.Add(this.labIsHostileL);
-            this.panAdd.Controls.Add(this.labDescriptionL);
-            this.panAdd.Controls.Add(this.labNameL);
-            this.panAdd.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panAdd.Location = new System.Drawing.Point(0, 0);
-            this.panAdd.Name = "panAdd";
-            this.panAdd.Size = new System.Drawing.Size(540, 471);
-            this.panAdd.TabIndex = 0;
+            this.panCreate.Controls.Add(this.btnCreateRemove);
+            this.panCreate.Controls.Add(this.btnCreateAdd);
+            this.panCreate.Controls.Add(this.lbCreateAddedEnemies);
+            this.panCreate.Controls.Add(this.lbCreateEnemies);
+            this.panCreate.Controls.Add(this.cbCreateIsHostile);
+            this.panCreate.Controls.Add(this.labEnemyAdd);
+            this.panCreate.Controls.Add(this.btnCreate);
+            this.panCreate.Controls.Add(this.tbCreateDescription);
+            this.panCreate.Controls.Add(this.tbCreateName);
+            this.panCreate.Controls.Add(this.labIsHostileL);
+            this.panCreate.Controls.Add(this.labDescriptionL);
+            this.panCreate.Controls.Add(this.labNameL);
+            this.panCreate.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panCreate.Location = new System.Drawing.Point(0, 0);
+            this.panCreate.Name = "panCreate";
+            this.panCreate.Size = new System.Drawing.Size(540, 471);
+            this.panCreate.TabIndex = 0;
             // 
             // cbCreateIsHostile
             // 
@@ -456,13 +456,13 @@ namespace NecromindUI.UserControls.Admin
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.Controls.Add(this.panEdit);
             this.Controls.Add(this.panDivider);
-            this.Controls.Add(this.panAdd);
+            this.Controls.Add(this.panCreate);
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdminLocations";
             this.Size = new System.Drawing.Size(1084, 471);
-            this.panAdd.ResumeLayout(false);
-            this.panAdd.PerformLayout();
+            this.panCreate.ResumeLayout(false);
+            this.panCreate.PerformLayout();
             this.panEdit.ResumeLayout(false);
             this.panEdit.PerformLayout();
             this.ResumeLayout(false);
@@ -471,7 +471,7 @@ namespace NecromindUI.UserControls.Admin
 
         #endregion
 
-        private System.Windows.Forms.Panel panAdd;
+        private System.Windows.Forms.Panel panCreate;
         private System.Windows.Forms.Panel panDivider;
         private System.Windows.Forms.Panel panEdit;
         private System.Windows.Forms.Label labEnemyAdd;
