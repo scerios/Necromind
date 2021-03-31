@@ -144,6 +144,7 @@ namespace NecromindUI.UserControls.Admin
             this.lbCreateAddedEnemies.Name = "lbCreateAddedEnemies";
             this.lbCreateAddedEnemies.Size = new System.Drawing.Size(150, 180);
             this.lbCreateAddedEnemies.TabIndex = 55;
+            this.lbCreateAddedEnemies.SelectedIndexChanged += new System.EventHandler(this.LbCreateAddedEnemies_SelectedIndexChanged);
             // 
             // lbCreateEnemies
             // 
@@ -155,6 +156,7 @@ namespace NecromindUI.UserControls.Admin
             this.lbCreateEnemies.Name = "lbCreateEnemies";
             this.lbCreateEnemies.Size = new System.Drawing.Size(150, 180);
             this.lbCreateEnemies.TabIndex = 54;
+            this.lbCreateEnemies.SelectedIndexChanged += new System.EventHandler(this.LbCreateEnemies_SelectedIndexChanged);
             // 
             // cbCreateIsHostile
             // 

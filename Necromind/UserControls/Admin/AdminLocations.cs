@@ -191,5 +191,29 @@ namespace NecromindUI.UserControls.Admin
             LabLocationEdit.Visible = false;
             TimHideEdit.Stop();
         }
+
+        private void LbCreateEnemies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbCreateEnemies.SelectedIndex >= 0)
+            {
+                btnCreateAdd.Enabled = true;
+            }
+            else
+            {
+                btnCreateAdd.Enabled = false;
+            }
+        }
+
+        private void LbCreateAddedEnemies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbCreateAddedEnemies.SelectedIndex >= 0)
+            {
+                btnCreateRemove.Enabled = true;
+            }
+            else
+            {
+                btnCreateRemove.Enabled = false;
+            }
+        }
     }
 }
