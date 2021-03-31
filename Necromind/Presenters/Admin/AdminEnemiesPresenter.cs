@@ -112,7 +112,7 @@ namespace NecromindUI.Presenters.Admin
         {
             foreach (var enemy in _enemies)
             {
-                _adminEnemies.Enemies.Items.Add(enemy.Name);
+                _adminEnemies.Enemies.Items.Add($"{ enemy.Name } { enemy.Lvl }");
             }
         }
 
