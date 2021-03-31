@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using System;
+using System.Collections.Generic;
 
 namespace NecromindLibrary.Models
 {
@@ -30,8 +31,8 @@ namespace NecromindLibrary.Models
         public bool IsHostile { get; set; }
 
         /// <summary>
-        /// Array of enemy IDs which can spawn on the location.
+        /// List of enemy IDs which can spawn on the location.
         /// </summary>
-        public Guid[] Enemies { get; set; }
+        public List<Guid> Enemies { get; set; }
     }
 }
