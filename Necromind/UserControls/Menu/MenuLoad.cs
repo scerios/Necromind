@@ -1,10 +1,10 @@
 ﻿using NecromindLibrary.Config;
 using NecromindLibrary.Models;
 using NecromindLibrary.Services;
+using NecromindUI.Config;
 using NecromindUI.Presenters.Menu;
 using NecromindUI.Views.Menu;
 using System;
-using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -91,7 +91,7 @@ namespace NecromindUI.UserControls.Menu
 
         public void LoadHeroes()
         {
-            var heroes = _presenter.GetAllHeroes(ConfigurationManager.AppSettings.Get("heroesCollection"));
+            var heroes = _presenter.GetAllHeroes(DBConfig.HeroesCollection);
             int btnLoadHeroLocX = 500;
             int btnDeleteHeroLocX = 610;
             int btnLocY = 100;

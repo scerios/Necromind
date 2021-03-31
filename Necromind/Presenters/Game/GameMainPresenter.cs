@@ -1,8 +1,8 @@
 ﻿using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
 using NecromindLibrary.Services;
+using NecromindUI.Config;
 using NecromindUI.Views.Game;
-using System.Configuration;
 
 namespace NecromindUI.Presenters.Game
 {
@@ -56,7 +56,7 @@ namespace NecromindUI.Presenters.Game
 
         public void SaveAndExitGame()
         {
-            _mongoConnector.TryUpsertRecord(ConfigurationManager.AppSettings.Get("heroesCollection"), _hero.Id, _hero);
+            _mongoConnector.TryUpsertRecord(DBConfig.HeroesCollection, _hero.Id, _hero);
             ClearHeroLabelDatabindings();
         }
 

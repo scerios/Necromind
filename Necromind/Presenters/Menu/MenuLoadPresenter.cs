@@ -1,10 +1,10 @@
 ﻿using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
 using NecromindLibrary.Services;
+using NecromindUI.Config;
 using NecromindUI.Views.Menu;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 
 namespace NecromindUI.Presenters.Menu
 {
@@ -54,7 +54,7 @@ namespace NecromindUI.Presenters.Menu
 
         public void DeleteHero()
         {
-            _mongoConnector.TryDeleteRecordById<HeroModel>(ConfigurationManager.AppSettings.Get("heroesCollection"), HeroToDelId);
+            _mongoConnector.TryDeleteRecordById<HeroModel>(DBConfig.HeroesCollection, HeroToDelId);
         }
 
         public void ChangeBtnDelHeroAvailability()

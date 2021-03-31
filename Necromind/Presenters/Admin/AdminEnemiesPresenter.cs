@@ -1,10 +1,10 @@
 ﻿using NecromindLibrary.Config;
 using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
+using NecromindUI.Config;
 using NecromindUI.Views.Admin;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Windows.Forms;
 
 namespace NecromindUI.Presenters.Admin
@@ -50,11 +50,11 @@ namespace NecromindUI.Presenters.Admin
             enemy.AdminSetHealth(Int32.Parse(_adminEnemies.AddHealth));
             enemy.AdminSetCombinedName();
 
-            if (_mongoConnector.TryCreateNewRecord(ConfigurationManager.AppSettings.Get("enemiesCollection"), enemy))
+            if (_mongoConnector.TryCreateNewRecord(DBConfig.EnemiesCollection, enemy))
             {
                 AlertAddSuccess($"{ enemy.Name } added successfully!");
                 _enemies.Add(enemy);
-                _adminEnemies.Enemies.Items.Add(enemy.Name);
+                _adminEnemies.Enemies.Items.Add($"{ enemy.Name } { enemy.Lvl }");
                 ClearAddFields();
             }
             else
@@ -75,7 +75,7 @@ namespace NecromindUI.Presenters.Admin
             enemy.AdminSetDef(Int32.Parse(_adminEnemies.EditDef));
             enemy.AdminSetHealth(Int32.Parse(_adminEnemies.EditHealth));
 
-            if (_mongoConnector.TryUpsertRecord(ConfigurationManager.AppSettings.Get("enemiesCollection"), enemy.Id, enemy))
+            if (_mongoConnector.TryUpsertRecord(DBConfig.EnemiesCollection, enemy.Id, enemy))
             {
                 AlertEditSuccess($"{ enemy.Name } edited successfully!");
                 _adminEnemies.Enemies.ClearSelected();
@@ -92,7 +92,7 @@ namespace NecromindUI.Presenters.Admin
         {
             var enemy = _enemies[_adminEnemies.Enemies.SelectedIndex];
 
-            if (_mongoConnector.TryDeleteRecordById<EnemyModel>(ConfigurationManager.AppSettings.Get("enemiesCollection"), enemy.Id))
+            if (_mongoConnector.TryDeleteRecordById<EnemyModel>(DBConfig.EnemiesCollection, enemy.Id))
             {
                 AlertEditSuccess($"{ enemy.Name } deleted successfully!");
                 _adminEnemies.Enemies.Items.Remove(enemy.Name);
@@ -106,7 +106,7 @@ namespace NecromindUI.Presenters.Admin
 
         private void LoadAllEnemies()
         {
-            _enemies = _mongoConnector.GetAllRecords<EnemyModel>(ConfigurationManager.AppSettings.Get("enemiesCollection"));
+            _enemies = _mongoConnector.GetAllRecords<EnemyModel>(DBConfig.EnemiesCollection);
         }
 
         private void SetupEnemiesList()

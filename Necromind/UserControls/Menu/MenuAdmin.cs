@@ -109,6 +109,7 @@ namespace NecromindUI.UserControls.Menu
 
         private void AdminControls_BtnLocationsClick(object sender, EventArgs e)
         {
+            _adminLocations.LoadData();
             BringToFront(_adminLocations);
         }
 

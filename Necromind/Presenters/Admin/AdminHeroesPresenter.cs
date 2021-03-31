@@ -1,10 +1,10 @@
 ﻿using NecromindLibrary.Config;
 using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
+using NecromindUI.Config;
 using NecromindUI.Views.Admin;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 
 namespace NecromindUI.Presenters.Admin
 {
@@ -47,7 +47,7 @@ namespace NecromindUI.Presenters.Admin
             hero.AdminSetDef(Int32.Parse(_adminHeroes.Def));
             hero.AdminSetHealth(Int32.Parse(_adminHeroes.Health));
 
-            if (_mongoConnector.TryUpsertRecord(ConfigurationManager.AppSettings.Get("heroesCollection"), hero.Id, hero))
+            if (_mongoConnector.TryUpsertRecord(DBConfig.HeroesCollection, hero.Id, hero))
             {
                 AlertSuccess(hero.Name);
                 _adminHeroes.Heroes.ClearSelected();
@@ -77,7 +77,7 @@ namespace NecromindUI.Presenters.Admin
 
         private void LoadAllHeroes()
         {
-            _heroes = _mongoConnector.GetAllRecords<HeroModel>(ConfigurationManager.AppSettings.Get("heroesCollection"));
+            _heroes = _mongoConnector.GetAllRecords<HeroModel>(DBConfig.HeroesCollection);
         }
 
         private void SetupHeroesList()

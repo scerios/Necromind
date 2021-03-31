@@ -1,9 +1,9 @@
 ﻿using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
 using NecromindLibrary.Services;
+using NecromindUI.Config;
 using NecromindUI.Views.Menu;
 using System;
-using System.Configuration;
 
 namespace NecromindUI.Presenters.Menu
 {
@@ -20,14 +20,14 @@ namespace NecromindUI.Presenters.Menu
 
         public bool IsHeroNameAvailable()
         {
-            var heroes = _connector.GetAllRecords<HeroModel>(ConfigurationManager.AppSettings.Get("heroesCollection"));
+            var heroes = _connector.GetAllRecords<HeroModel>(DBConfig.HeroesCollection);
 
             return !ValidationService.IsHeroNameAlreadyRegistered(heroes, _menuNew.HeroName);
         }
 
         public bool IsHeroCreated()
         {
-            return _connector.TryCreateNewRecord(ConfigurationManager.AppSettings.Get("heroesCollection"), new HeroModel(_menuNew.HeroName));
+            return _connector.TryCreateNewRecord(DBConfig.HeroesCollection, new HeroModel(_menuNew.HeroName));
         }
 
         public void DisplayError(string title, string msg)
