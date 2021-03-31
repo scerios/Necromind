@@ -1,34 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace NecromindLibrary.Services
 {
     public static class TextService
     {
-        private static string FormatMsg(int lineLength, string msg)
-        {
-            int i = lineLength;
-
-            while (i < msg.Length - 10)
-            {
-                string msgPartToBreak = msg.Substring(i, 10);
-                int index = msgPartToBreak.IndexOf(" ");
-                index = i + index;
-
-                char[] chars = msg.ToCharArray();
-                chars[index] = '\n';
-                msg = new string(chars);
-
-                i += 25;
-            }
-
-            return msg;
-        }
-
         /// <summary>
         /// Formats a string by adding linebreaks so it's shown correctly on the error panel.
         /// </summary>
@@ -55,5 +30,25 @@ namespace NecromindLibrary.Services
 
         public static bool IsGivenStringsAreEqual(string one, string two) =>
             one.ToLower().Equals(two.ToLower());
+
+        private static string FormatMsg(int lineLength, string msg)
+        {
+            int i = lineLength;
+
+            while (i < msg.Length - 10)
+            {
+                string msgPartToBreak = msg.Substring(i, 10);
+                int index = msgPartToBreak.IndexOf(" ");
+                index = i + index;
+
+                char[] chars = msg.ToCharArray();
+                chars[index] = '\n';
+                msg = new string(chars);
+
+                i += 25;
+            }
+
+            return msg;
+        }
     }
 }
