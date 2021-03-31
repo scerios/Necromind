@@ -19,6 +19,7 @@ namespace NecromindLibrary.Models
         /// </summary>
         public EnemyModel()
         {
+            Name = "Dummy";
             Gold = 100;
             Lvl = 1;
             DmgMin = 8;
