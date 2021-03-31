@@ -11,10 +11,10 @@ namespace NecromindUI.UserControls.Admin
 
         public string HeroName
         {
-            get => tbName.Text;
+            get => labNameValue.Text;
             set
             {
-                tbName.Text = value;
+                labNameValue.Text = value;
             }
         }
 

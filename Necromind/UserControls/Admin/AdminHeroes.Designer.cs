@@ -37,7 +37,6 @@ namespace NecromindUI.UserControls.Admin
             this.labDmg = new System.Windows.Forms.Label();
             this.labDef = new System.Windows.Forms.Label();
             this.labHealth = new System.Windows.Forms.Label();
-            this.tbName = new System.Windows.Forms.TextBox();
             this.tbLvl = new System.Windows.Forms.TextBox();
             this.tbGold = new System.Windows.Forms.TextBox();
             this.tbDmgMin = new System.Windows.Forms.TextBox();
@@ -47,6 +46,7 @@ namespace NecromindUI.UserControls.Admin
             this.tbDmgMax = new System.Windows.Forms.TextBox();
             this.labHeroEdit = new System.Windows.Forms.Label();
             this.timHide = new System.Windows.Forms.Timer(this.components);
+            this.labNameValue = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbHeroes
@@ -121,17 +121,6 @@ namespace NecromindUI.UserControls.Admin
             this.labHealth.Size = new System.Drawing.Size(64, 16);
             this.labHealth.TabIndex = 6;
             this.labHealth.Text = "Health:";
-            // 
-            // tbName
-            // 
-            this.tbName.BackColor = System.Drawing.Color.White;
-            this.tbName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbName.Location = new System.Drawing.Point(280, 32);
-            this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(125, 22);
-            this.tbName.TabIndex = 7;
-            this.tbName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tbLvl
             // 
@@ -231,11 +220,23 @@ namespace NecromindUI.UserControls.Admin
             this.timHide.Interval = 3000;
             this.timHide.Tick += new System.EventHandler(this.TimHide_Tick);
             // 
+            // labNameValue
+            // 
+            this.labNameValue.AutoSize = true;
+            this.labNameValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labNameValue.Location = new System.Drawing.Point(280, 35);
+            this.labNameValue.MinimumSize = new System.Drawing.Size(125, 20);
+            this.labNameValue.Name = "labNameValue";
+            this.labNameValue.Size = new System.Drawing.Size(125, 20);
+            this.labNameValue.TabIndex = 20;
+            this.labNameValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // AdminHeroes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.Controls.Add(this.labNameValue);
             this.Controls.Add(this.labHeroEdit);
             this.Controls.Add(this.tbDmgMax);
             this.Controls.Add(this.btnEdit);
@@ -244,7 +245,6 @@ namespace NecromindUI.UserControls.Admin
             this.Controls.Add(this.tbDmgMin);
             this.Controls.Add(this.tbGold);
             this.Controls.Add(this.tbLvl);
-            this.Controls.Add(this.tbName);
             this.Controls.Add(this.labHealth);
             this.Controls.Add(this.labDef);
             this.Controls.Add(this.labDmg);
@@ -270,7 +270,6 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.Label labDmg;
         private System.Windows.Forms.Label labDef;
         private System.Windows.Forms.Label labHealth;
-        private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.TextBox tbLvl;
         private System.Windows.Forms.TextBox tbGold;
         private System.Windows.Forms.TextBox tbDmgMin;
@@ -280,5 +279,6 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.TextBox tbDmgMax;
         private System.Windows.Forms.Label labHeroEdit;
         private System.Windows.Forms.Timer timHide;
+        private System.Windows.Forms.Label labNameValue;
     }
 }
