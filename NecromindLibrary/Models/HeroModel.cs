@@ -3,7 +3,7 @@ using System;
 
 namespace NecromindLibrary.Models
 {
-    public class HeroModel : BaseModel, IPlayer, IAdminSetter
+    public class HeroModel : BaseCharacterModel, IPlayer, IAdminSetter
     {
         private int _dmgMin;
 

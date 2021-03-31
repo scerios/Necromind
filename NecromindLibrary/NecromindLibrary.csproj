@@ -152,7 +152,7 @@
   <ItemGroup>
     <Compile Include="Config\UISettings.cs" />
     <Compile Include="GlobalConfig.cs" />
-    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\BaseCharacterModel.cs" />
     <Compile Include="Models\EnemyModel.cs" />
     <Compile Include="Models\HeroModel.cs" />
     <Compile Include="Models\LocationModel.cs" />

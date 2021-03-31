@@ -3,7 +3,7 @@ using System;
 
 namespace NecromindLibrary.Models
 {
-    public class EnemyModel : BaseModel, IFighter, IAdminSetter
+    public class EnemyModel : BaseCharacterModel, IFighter, IAdminSetter
     {
         public int DmgMin { get; private set; }
         public int DmgMax { get; private set; }

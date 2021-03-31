@@ -8,7 +8,7 @@ namespace NecromindLibrary.Models
     /// <summary>
     /// Base class for any character.
     /// </summary>
-    public class BaseModel : INotifyPropertyChanged
+    public class BaseCharacterModel : INotifyPropertyChanged
     {
         /// <summary>
         /// ID of character.
