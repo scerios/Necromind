@@ -33,6 +33,6 @@ namespace NecromindLibrary.Models
         /// <summary>
         /// List of enemy IDs which can spawn on the location.
         /// </summary>
-        public List<Guid> Enemies { get; set; }
+        public List<Guid> Enemies { get; set; } = new List<Guid>();
     }
 }
