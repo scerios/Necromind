@@ -9,8 +9,10 @@ namespace NecromindUI.Views.Admin
         string EditName { get; set; }
         string CreateDescription { get; set; }
         string EditDescription { get; set; }
-        bool CreateIsHostile { get; set; }
-        bool EditIsHostile { get; set; }
+        bool CbCreateIsHostile { get; set; }
+        bool CbEditIsHostile { get; set; }
+        bool PanCreateEnemies { get; set; }
+        bool PanEditEnemies { get; set; }
         ListBox Locations { get; }
         ListBox CreateEnemies { get; }
         ListBox CreateAddedEnemies { get; }
@@ -18,7 +20,7 @@ namespace NecromindUI.Views.Admin
         ListBox EditAddedEnemies { get; }
         Timer TimHideAdd { get; }
         Timer TimHideEdit { get; }
-        Label LabEnemyAdd { get; }
-        Label LabEnemyEdit { get; }
+        Label LabLocationAdd { get; }
+        Label LabLocationEdit { get; }
     }
 }
