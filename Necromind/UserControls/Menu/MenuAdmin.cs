@@ -12,6 +12,7 @@ namespace NecromindUI.UserControls.Menu
         private readonly AdminControls _controls;
         private readonly AdminHeroes _adminHeroes;
         private readonly AdminEnemies _adminEnemies;
+        private readonly AdminLocations _adminLocations;
 
         public string Password
         {
@@ -42,6 +43,7 @@ namespace NecromindUI.UserControls.Menu
             _controls = new AdminControls();
             _adminHeroes = new AdminHeroes();
             _adminEnemies = new AdminEnemies();
+            _adminLocations = new AdminLocations();
         }
 
         private void LoadViews()
@@ -106,7 +108,7 @@ namespace NecromindUI.UserControls.Menu
 
         private void AdminControls_BtnLocationsClick(object sender, EventArgs e)
         {
-            // TODO - Create settings panel for locations.
+            BringToFront(_adminLocations);
         }
 
         private void AdminControls_BtnHeroesClick(object sender, EventArgs e)
