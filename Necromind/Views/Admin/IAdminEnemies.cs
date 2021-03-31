@@ -5,8 +5,8 @@ namespace NecromindUI.Views.Admin
 {
     public interface IAdminEnemies
     {
-        string AddEnemyName { get; set; }
-        string EditEnemyName { get; set; }
+        string AddName { get; set; }
+        string EditName { get; set; }
         string AddLvl { get; set; }
         string EditLvl { get; set; }
         string AddGold { get; set; }

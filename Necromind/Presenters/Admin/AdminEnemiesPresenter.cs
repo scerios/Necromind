@@ -28,7 +28,7 @@ namespace NecromindUI.Presenters.Admin
             if (_adminEnemies.Enemies.SelectedIndex >= 0)
             {
                 var enemy = _enemies[_adminEnemies.Enemies.SelectedIndex];
-                _adminEnemies.EditEnemyName = enemy.Name;
+                _adminEnemies.EditName = enemy.Name;
                 _adminEnemies.EditLvl = enemy.Lvl.ToString();
                 _adminEnemies.EditGold = enemy.Gold.ToString();
                 _adminEnemies.EditDmgMin = enemy.DmgMin.ToString();
@@ -41,7 +41,7 @@ namespace NecromindUI.Presenters.Admin
         public void AddEnemy()
         {
             var enemy = new EnemyModel();
-            enemy.AdminSetName(_adminEnemies.AddEnemyName);
+            enemy.AdminSetName(_adminEnemies.AddName);
             enemy.AdminSetLvl(Int32.Parse(_adminEnemies.AddLvl));
             enemy.AdminSetGold(Int32.Parse(_adminEnemies.AddGold));
             enemy.AdminSetDmgMin(Int32.Parse(_adminEnemies.AddDmgMin));
@@ -66,7 +66,7 @@ namespace NecromindUI.Presenters.Admin
         {
             var selectedIndex = _adminEnemies.Enemies.SelectedIndex;
             var enemy = _enemies[selectedIndex];
-            enemy.AdminSetName(_adminEnemies.EditEnemyName);
+            enemy.AdminSetName(_adminEnemies.EditName);
             enemy.AdminSetLvl(Int32.Parse(_adminEnemies.EditLvl));
             enemy.AdminSetGold(Int32.Parse(_adminEnemies.EditGold));
             enemy.AdminSetDmgMin(Int32.Parse(_adminEnemies.EditDmgMin));
@@ -156,7 +156,7 @@ namespace NecromindUI.Presenters.Admin
 
         private void ClearAddFields()
         {
-            _adminEnemies.AddEnemyName = "";
+            _adminEnemies.AddName = "";
             _adminEnemies.AddLvl = "";
             _adminEnemies.AddGold = "";
             _adminEnemies.AddDmgMin = "";
@@ -167,7 +167,7 @@ namespace NecromindUI.Presenters.Admin
 
         private void ClearEditFields()
         {
-            _adminEnemies.EditEnemyName = "";
+            _adminEnemies.EditName = "";
             _adminEnemies.EditLvl = "";
             _adminEnemies.EditGold = "";
             _adminEnemies.EditDmgMin = "";

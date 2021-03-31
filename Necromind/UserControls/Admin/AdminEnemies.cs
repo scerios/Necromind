@@ -9,7 +9,7 @@ namespace NecromindUI.UserControls.Admin
     {
         private readonly AdminEnemiesPresenter _presenter;
 
-        public string AddEnemyName
+        public string AddName
         {
             get => tbCreateName.Text;
             set
@@ -18,7 +18,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string EditEnemyName
+        public string EditName
         {
             get => tbEditName.Text;
             set
