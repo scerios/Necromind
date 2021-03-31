@@ -48,6 +48,7 @@ namespace NecromindUI.Presenters.Admin
             enemy.AdminSetDmgMax(Int32.Parse(_adminEnemies.AddDmgMax));
             enemy.AdminSetDef(Int32.Parse(_adminEnemies.AddDef));
             enemy.AdminSetHealth(Int32.Parse(_adminEnemies.AddHealth));
+            enemy.AdminSetCombinedName();
 
             if (_mongoConnector.TryCreateNewRecord(ConfigurationManager.AppSettings.Get("enemiesCollection"), enemy))
             {

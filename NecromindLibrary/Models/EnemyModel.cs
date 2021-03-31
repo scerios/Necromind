@@ -5,6 +5,7 @@ namespace NecromindLibrary.Models
 {
     public class EnemyModel : BaseCharacterModel, IFighter, IAdminSetter
     {
+        public string CombinedName { get; private set; }
         public int DmgMin { get; private set; }
         public int DmgMax { get; private set; }
 
@@ -27,6 +28,7 @@ namespace NecromindLibrary.Models
             Def = 4;
             Health = 30;
             HealthMax = 30;
+            CombinedName = Name + " " + Lvl;
         }
 
         public EnemyModel(EnemyModel scheme)
@@ -40,6 +42,7 @@ namespace NecromindLibrary.Models
             Def = scheme.Def;
             Health = scheme.Health;
             HealthMax = scheme.HealthMax;
+            CombinedName = Name + " " + Lvl;
         }
 
         public void Attack(IFighter enemy)
@@ -102,6 +105,11 @@ namespace NecromindLibrary.Models
         {
             HealthMax = health;
             Health = health;
+        }
+
+        public void AdminSetCombinedName()
+        {
+            CombinedName = Name + " " + Lvl;
         }
     }
 }
