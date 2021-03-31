@@ -31,6 +31,11 @@ namespace NecromindUI.UserControls.Admin
         {
             this.components = new System.ComponentModel.Container();
             this.panCreate = new System.Windows.Forms.Panel();
+            this.panCreateEnemies = new System.Windows.Forms.Panel();
+            this.btnCreateRemove = new System.Windows.Forms.Button();
+            this.btnCreateAdd = new System.Windows.Forms.Button();
+            this.lbCreateAddedEnemies = new System.Windows.Forms.ListBox();
+            this.lbCreateEnemies = new System.Windows.Forms.ListBox();
             this.cbCreateIsHostile = new System.Windows.Forms.CheckBox();
             this.labEnemyAdd = new System.Windows.Forms.Label();
             this.btnCreate = new System.Windows.Forms.Button();
@@ -41,6 +46,12 @@ namespace NecromindUI.UserControls.Admin
             this.labNameL = new System.Windows.Forms.Label();
             this.panDivider = new System.Windows.Forms.Panel();
             this.panEdit = new System.Windows.Forms.Panel();
+            this.panEditEnemies = new System.Windows.Forms.Panel();
+            this.btnEditRemove = new System.Windows.Forms.Button();
+            this.btnEditAdd = new System.Windows.Forms.Button();
+            this.lbEditAddedEnemies = new System.Windows.Forms.ListBox();
+            this.lbEditEnemies = new System.Windows.Forms.ListBox();
+            this.cbEditIsHostile = new System.Windows.Forms.CheckBox();
             this.labEnemyEdit = new System.Windows.Forms.Label();
             this.btnDel = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -52,25 +63,15 @@ namespace NecromindUI.UserControls.Admin
             this.lbLocations = new System.Windows.Forms.ListBox();
             this.timHideAdd = new System.Windows.Forms.Timer(this.components);
             this.timHideEdit = new System.Windows.Forms.Timer(this.components);
-            this.cbEditIsHostile = new System.Windows.Forms.CheckBox();
-            this.lbCreateEnemies = new System.Windows.Forms.ListBox();
-            this.lbCreateAddedEnemies = new System.Windows.Forms.ListBox();
-            this.btnCreateAdd = new System.Windows.Forms.Button();
-            this.btnCreateRemove = new System.Windows.Forms.Button();
-            this.btnEditRemove = new System.Windows.Forms.Button();
-            this.btnEditAdd = new System.Windows.Forms.Button();
-            this.lbEditAddedEnemies = new System.Windows.Forms.ListBox();
-            this.lbEditEnemies = new System.Windows.Forms.ListBox();
             this.panCreate.SuspendLayout();
+            this.panCreateEnemies.SuspendLayout();
             this.panEdit.SuspendLayout();
+            this.panEditEnemies.SuspendLayout();
             this.SuspendLayout();
             // 
             // panCreate
             // 
-            this.panCreate.Controls.Add(this.btnCreateRemove);
-            this.panCreate.Controls.Add(this.btnCreateAdd);
-            this.panCreate.Controls.Add(this.lbCreateAddedEnemies);
-            this.panCreate.Controls.Add(this.lbCreateEnemies);
+            this.panCreate.Controls.Add(this.panCreateEnemies);
             this.panCreate.Controls.Add(this.cbCreateIsHostile);
             this.panCreate.Controls.Add(this.labEnemyAdd);
             this.panCreate.Controls.Add(this.btnCreate);
@@ -85,14 +86,83 @@ namespace NecromindUI.UserControls.Admin
             this.panCreate.Size = new System.Drawing.Size(540, 471);
             this.panCreate.TabIndex = 0;
             // 
+            // panCreateEnemies
+            // 
+            this.panCreateEnemies.Controls.Add(this.btnCreateRemove);
+            this.panCreateEnemies.Controls.Add(this.btnCreateAdd);
+            this.panCreateEnemies.Controls.Add(this.lbCreateAddedEnemies);
+            this.panCreateEnemies.Controls.Add(this.lbCreateEnemies);
+            this.panCreateEnemies.Location = new System.Drawing.Point(23, 220);
+            this.panCreateEnemies.Name = "panCreateEnemies";
+            this.panCreateEnemies.Size = new System.Drawing.Size(500, 180);
+            this.panCreateEnemies.TabIndex = 50;
+            this.panCreateEnemies.Visible = false;
+            // 
+            // btnCreateRemove
+            // 
+            this.btnCreateRemove.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCreateRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.btnCreateRemove.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCreateRemove.FlatAppearance.BorderSize = 0;
+            this.btnCreateRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreateRemove.ForeColor = System.Drawing.Color.Black;
+            this.btnCreateRemove.Location = new System.Drawing.Point(204, 112);
+            this.btnCreateRemove.Name = "btnCreateRemove";
+            this.btnCreateRemove.Size = new System.Drawing.Size(100, 25);
+            this.btnCreateRemove.TabIndex = 57;
+            this.btnCreateRemove.TabStop = false;
+            this.btnCreateRemove.Text = "Remove";
+            this.btnCreateRemove.UseVisualStyleBackColor = false;
+            this.btnCreateRemove.Click += new System.EventHandler(this.BtnCreateRemove_Click);
+            // 
+            // btnCreateAdd
+            // 
+            this.btnCreateAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCreateAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
+            this.btnCreateAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCreateAdd.FlatAppearance.BorderSize = 0;
+            this.btnCreateAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreateAdd.ForeColor = System.Drawing.Color.Black;
+            this.btnCreateAdd.Location = new System.Drawing.Point(204, 43);
+            this.btnCreateAdd.Name = "btnCreateAdd";
+            this.btnCreateAdd.Size = new System.Drawing.Size(100, 25);
+            this.btnCreateAdd.TabIndex = 56;
+            this.btnCreateAdd.TabStop = false;
+            this.btnCreateAdd.Text = "Add";
+            this.btnCreateAdd.UseVisualStyleBackColor = false;
+            this.btnCreateAdd.Click += new System.EventHandler(this.BtnCreateAdd_Click);
+            // 
+            // lbCreateAddedEnemies
+            // 
+            this.lbCreateAddedEnemies.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.lbCreateAddedEnemies.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.lbCreateAddedEnemies.FormattingEnabled = true;
+            this.lbCreateAddedEnemies.ItemHeight = 16;
+            this.lbCreateAddedEnemies.Location = new System.Drawing.Point(350, 0);
+            this.lbCreateAddedEnemies.Name = "lbCreateAddedEnemies";
+            this.lbCreateAddedEnemies.Size = new System.Drawing.Size(150, 180);
+            this.lbCreateAddedEnemies.TabIndex = 55;
+            // 
+            // lbCreateEnemies
+            // 
+            this.lbCreateEnemies.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.lbCreateEnemies.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.lbCreateEnemies.FormattingEnabled = true;
+            this.lbCreateEnemies.ItemHeight = 16;
+            this.lbCreateEnemies.Location = new System.Drawing.Point(0, 0);
+            this.lbCreateEnemies.Name = "lbCreateEnemies";
+            this.lbCreateEnemies.Size = new System.Drawing.Size(150, 180);
+            this.lbCreateEnemies.TabIndex = 54;
+            // 
             // cbCreateIsHostile
             // 
             this.cbCreateIsHostile.AutoSize = true;
-            this.cbCreateIsHostile.Location = new System.Drawing.Point(185, 177);
+            this.cbCreateIsHostile.Location = new System.Drawing.Point(185, 182);
             this.cbCreateIsHostile.Name = "cbCreateIsHostile";
             this.cbCreateIsHostile.Size = new System.Drawing.Size(15, 14);
             this.cbCreateIsHostile.TabIndex = 49;
             this.cbCreateIsHostile.UseVisualStyleBackColor = true;
+            this.cbCreateIsHostile.CheckedChanged += new System.EventHandler(this.CbCreateIsHostile_CheckedChanged);
             // 
             // labEnemyAdd
             // 
@@ -121,6 +191,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnCreate.TabStop = false;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = false;
+            this.btnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
             // 
             // tbCreateDescription
             // 
@@ -149,7 +220,7 @@ namespace NecromindUI.UserControls.Admin
             // 
             this.labIsHostileL.AutoSize = true;
             this.labIsHostileL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labIsHostileL.Location = new System.Drawing.Point(20, 175);
+            this.labIsHostileL.Location = new System.Drawing.Point(20, 180);
             this.labIsHostileL.Name = "labIsHostileL";
             this.labIsHostileL.Size = new System.Drawing.Size(72, 16);
             this.labIsHostileL.TabIndex = 36;
@@ -187,10 +258,7 @@ namespace NecromindUI.UserControls.Admin
             // 
             // panEdit
             // 
-            this.panEdit.Controls.Add(this.btnEditRemove);
-            this.panEdit.Controls.Add(this.btnEditAdd);
-            this.panEdit.Controls.Add(this.lbEditAddedEnemies);
-            this.panEdit.Controls.Add(this.lbEditEnemies);
+            this.panEdit.Controls.Add(this.panEditEnemies);
             this.panEdit.Controls.Add(this.cbEditIsHostile);
             this.panEdit.Controls.Add(this.labEnemyEdit);
             this.panEdit.Controls.Add(this.btnDel);
@@ -206,6 +274,84 @@ namespace NecromindUI.UserControls.Admin
             this.panEdit.Name = "panEdit";
             this.panEdit.Size = new System.Drawing.Size(540, 471);
             this.panEdit.TabIndex = 2;
+            // 
+            // panEditEnemies
+            // 
+            this.panEditEnemies.Controls.Add(this.btnEditRemove);
+            this.panEditEnemies.Controls.Add(this.btnEditAdd);
+            this.panEditEnemies.Controls.Add(this.lbEditAddedEnemies);
+            this.panEditEnemies.Controls.Add(this.lbEditEnemies);
+            this.panEditEnemies.Location = new System.Drawing.Point(20, 220);
+            this.panEditEnemies.Name = "panEditEnemies";
+            this.panEditEnemies.Size = new System.Drawing.Size(500, 180);
+            this.panEditEnemies.TabIndex = 54;
+            this.panEditEnemies.Visible = false;
+            // 
+            // btnEditRemove
+            // 
+            this.btnEditRemove.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEditRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.btnEditRemove.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditRemove.FlatAppearance.BorderSize = 0;
+            this.btnEditRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditRemove.ForeColor = System.Drawing.Color.Black;
+            this.btnEditRemove.Location = new System.Drawing.Point(202, 112);
+            this.btnEditRemove.Name = "btnEditRemove";
+            this.btnEditRemove.Size = new System.Drawing.Size(100, 25);
+            this.btnEditRemove.TabIndex = 61;
+            this.btnEditRemove.TabStop = false;
+            this.btnEditRemove.Text = "Remove";
+            this.btnEditRemove.UseVisualStyleBackColor = false;
+            this.btnEditRemove.Click += new System.EventHandler(this.BtnEditRemove_Click);
+            // 
+            // btnEditAdd
+            // 
+            this.btnEditAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEditAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
+            this.btnEditAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditAdd.FlatAppearance.BorderSize = 0;
+            this.btnEditAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditAdd.ForeColor = System.Drawing.Color.Black;
+            this.btnEditAdd.Location = new System.Drawing.Point(202, 43);
+            this.btnEditAdd.Name = "btnEditAdd";
+            this.btnEditAdd.Size = new System.Drawing.Size(100, 25);
+            this.btnEditAdd.TabIndex = 60;
+            this.btnEditAdd.TabStop = false;
+            this.btnEditAdd.Text = "Add";
+            this.btnEditAdd.UseVisualStyleBackColor = false;
+            this.btnEditAdd.Click += new System.EventHandler(this.BtnEditAdd_Click);
+            // 
+            // lbEditAddedEnemies
+            // 
+            this.lbEditAddedEnemies.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.lbEditAddedEnemies.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.lbEditAddedEnemies.FormattingEnabled = true;
+            this.lbEditAddedEnemies.ItemHeight = 16;
+            this.lbEditAddedEnemies.Location = new System.Drawing.Point(350, 0);
+            this.lbEditAddedEnemies.Name = "lbEditAddedEnemies";
+            this.lbEditAddedEnemies.Size = new System.Drawing.Size(150, 180);
+            this.lbEditAddedEnemies.TabIndex = 59;
+            // 
+            // lbEditEnemies
+            // 
+            this.lbEditEnemies.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.lbEditEnemies.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.lbEditEnemies.FormattingEnabled = true;
+            this.lbEditEnemies.ItemHeight = 16;
+            this.lbEditEnemies.Location = new System.Drawing.Point(0, 0);
+            this.lbEditEnemies.Name = "lbEditEnemies";
+            this.lbEditEnemies.Size = new System.Drawing.Size(150, 180);
+            this.lbEditEnemies.TabIndex = 58;
+            // 
+            // cbEditIsHostile
+            // 
+            this.cbEditIsHostile.AutoSize = true;
+            this.cbEditIsHostile.Location = new System.Drawing.Point(345, 182);
+            this.cbEditIsHostile.Name = "cbEditIsHostile";
+            this.cbEditIsHostile.Size = new System.Drawing.Size(15, 14);
+            this.cbEditIsHostile.TabIndex = 53;
+            this.cbEditIsHostile.UseVisualStyleBackColor = true;
+            this.cbEditIsHostile.CheckedChanged += new System.EventHandler(this.CbEditIsHostile_CheckedChanged);
             // 
             // labEnemyEdit
             // 
@@ -234,6 +380,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnDel.TabStop = false;
             this.btnDel.Text = "Delete";
             this.btnDel.UseVisualStyleBackColor = false;
+            this.btnDel.Click += new System.EventHandler(this.BtnDel_Click);
             // 
             // btnEdit
             // 
@@ -250,6 +397,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnEdit.TabStop = false;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
             // 
             // tbEditDescription
             // 
@@ -278,7 +426,7 @@ namespace NecromindUI.UserControls.Admin
             // 
             this.labIsHostileR.AutoSize = true;
             this.labIsHostileR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labIsHostileR.Location = new System.Drawing.Point(176, 175);
+            this.labIsHostileR.Location = new System.Drawing.Point(176, 180);
             this.labIsHostileR.Name = "labIsHostileR";
             this.labIsHostileR.Size = new System.Drawing.Size(72, 16);
             this.labIsHostileR.TabIndex = 39;
@@ -324,131 +472,6 @@ namespace NecromindUI.UserControls.Admin
             // 
             this.timHideEdit.Interval = 3000;
             // 
-            // cbEditIsHostile
-            // 
-            this.cbEditIsHostile.AutoSize = true;
-            this.cbEditIsHostile.Location = new System.Drawing.Point(345, 177);
-            this.cbEditIsHostile.Name = "cbEditIsHostile";
-            this.cbEditIsHostile.Size = new System.Drawing.Size(15, 14);
-            this.cbEditIsHostile.TabIndex = 53;
-            this.cbEditIsHostile.UseVisualStyleBackColor = true;
-            // 
-            // lbCreateEnemies
-            // 
-            this.lbCreateEnemies.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.lbCreateEnemies.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.lbCreateEnemies.FormattingEnabled = true;
-            this.lbCreateEnemies.ItemHeight = 16;
-            this.lbCreateEnemies.Location = new System.Drawing.Point(20, 220);
-            this.lbCreateEnemies.Name = "lbCreateEnemies";
-            this.lbCreateEnemies.Size = new System.Drawing.Size(150, 180);
-            this.lbCreateEnemies.TabIndex = 50;
-            this.lbCreateEnemies.Visible = false;
-            // 
-            // lbCreateAddedEnemies
-            // 
-            this.lbCreateAddedEnemies.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.lbCreateAddedEnemies.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.lbCreateAddedEnemies.FormattingEnabled = true;
-            this.lbCreateAddedEnemies.ItemHeight = 16;
-            this.lbCreateAddedEnemies.Location = new System.Drawing.Point(370, 220);
-            this.lbCreateAddedEnemies.Name = "lbCreateAddedEnemies";
-            this.lbCreateAddedEnemies.Size = new System.Drawing.Size(150, 180);
-            this.lbCreateAddedEnemies.TabIndex = 51;
-            this.lbCreateAddedEnemies.Visible = false;
-            // 
-            // btnCreateAdd
-            // 
-            this.btnCreateAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCreateAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
-            this.btnCreateAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCreateAdd.FlatAppearance.BorderSize = 0;
-            this.btnCreateAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreateAdd.ForeColor = System.Drawing.Color.Black;
-            this.btnCreateAdd.Location = new System.Drawing.Point(222, 263);
-            this.btnCreateAdd.Name = "btnCreateAdd";
-            this.btnCreateAdd.Size = new System.Drawing.Size(100, 25);
-            this.btnCreateAdd.TabIndex = 52;
-            this.btnCreateAdd.TabStop = false;
-            this.btnCreateAdd.Text = "Add";
-            this.btnCreateAdd.UseVisualStyleBackColor = false;
-            this.btnCreateAdd.Visible = false;
-            // 
-            // btnCreateRemove
-            // 
-            this.btnCreateRemove.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCreateRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.btnCreateRemove.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCreateRemove.FlatAppearance.BorderSize = 0;
-            this.btnCreateRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreateRemove.ForeColor = System.Drawing.Color.Black;
-            this.btnCreateRemove.Location = new System.Drawing.Point(222, 332);
-            this.btnCreateRemove.Name = "btnCreateRemove";
-            this.btnCreateRemove.Size = new System.Drawing.Size(100, 25);
-            this.btnCreateRemove.TabIndex = 53;
-            this.btnCreateRemove.TabStop = false;
-            this.btnCreateRemove.Text = "Remove";
-            this.btnCreateRemove.UseVisualStyleBackColor = false;
-            this.btnCreateRemove.Visible = false;
-            // 
-            // btnEditRemove
-            // 
-            this.btnEditRemove.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEditRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.btnEditRemove.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditRemove.FlatAppearance.BorderSize = 0;
-            this.btnEditRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditRemove.ForeColor = System.Drawing.Color.Black;
-            this.btnEditRemove.Location = new System.Drawing.Point(222, 332);
-            this.btnEditRemove.Name = "btnEditRemove";
-            this.btnEditRemove.Size = new System.Drawing.Size(100, 25);
-            this.btnEditRemove.TabIndex = 57;
-            this.btnEditRemove.TabStop = false;
-            this.btnEditRemove.Text = "Remove";
-            this.btnEditRemove.UseVisualStyleBackColor = false;
-            this.btnEditRemove.Visible = false;
-            // 
-            // btnEditAdd
-            // 
-            this.btnEditAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEditAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
-            this.btnEditAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditAdd.FlatAppearance.BorderSize = 0;
-            this.btnEditAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditAdd.ForeColor = System.Drawing.Color.Black;
-            this.btnEditAdd.Location = new System.Drawing.Point(222, 263);
-            this.btnEditAdd.Name = "btnEditAdd";
-            this.btnEditAdd.Size = new System.Drawing.Size(100, 25);
-            this.btnEditAdd.TabIndex = 56;
-            this.btnEditAdd.TabStop = false;
-            this.btnEditAdd.Text = "Add";
-            this.btnEditAdd.UseVisualStyleBackColor = false;
-            this.btnEditAdd.Visible = false;
-            // 
-            // lbEditAddedEnemies
-            // 
-            this.lbEditAddedEnemies.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.lbEditAddedEnemies.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.lbEditAddedEnemies.FormattingEnabled = true;
-            this.lbEditAddedEnemies.ItemHeight = 16;
-            this.lbEditAddedEnemies.Location = new System.Drawing.Point(370, 220);
-            this.lbEditAddedEnemies.Name = "lbEditAddedEnemies";
-            this.lbEditAddedEnemies.Size = new System.Drawing.Size(150, 180);
-            this.lbEditAddedEnemies.TabIndex = 55;
-            this.lbEditAddedEnemies.Visible = false;
-            // 
-            // lbEditEnemies
-            // 
-            this.lbEditEnemies.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.lbEditEnemies.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.lbEditEnemies.FormattingEnabled = true;
-            this.lbEditEnemies.ItemHeight = 16;
-            this.lbEditEnemies.Location = new System.Drawing.Point(20, 220);
-            this.lbEditEnemies.Name = "lbEditEnemies";
-            this.lbEditEnemies.Size = new System.Drawing.Size(150, 180);
-            this.lbEditEnemies.TabIndex = 54;
-            this.lbEditEnemies.Visible = false;
-            // 
             // AdminLocations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -463,8 +486,10 @@ namespace NecromindUI.UserControls.Admin
             this.Size = new System.Drawing.Size(1084, 471);
             this.panCreate.ResumeLayout(false);
             this.panCreate.PerformLayout();
+            this.panCreateEnemies.ResumeLayout(false);
             this.panEdit.ResumeLayout(false);
             this.panEdit.PerformLayout();
+            this.panEditEnemies.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -493,11 +518,13 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.Label labNameR;
         private System.Windows.Forms.ListBox lbLocations;
         private System.Windows.Forms.CheckBox cbCreateIsHostile;
-        private System.Windows.Forms.ListBox lbCreateEnemies;
         private System.Windows.Forms.CheckBox cbEditIsHostile;
+        private System.Windows.Forms.Panel panCreateEnemies;
+        private System.Windows.Forms.Button btnCreateRemove;
         private System.Windows.Forms.Button btnCreateAdd;
         private System.Windows.Forms.ListBox lbCreateAddedEnemies;
-        private System.Windows.Forms.Button btnCreateRemove;
+        private System.Windows.Forms.ListBox lbCreateEnemies;
+        private System.Windows.Forms.Panel panEditEnemies;
         private System.Windows.Forms.Button btnEditRemove;
         private System.Windows.Forms.Button btnEditAdd;
         private System.Windows.Forms.ListBox lbEditAddedEnemies;
