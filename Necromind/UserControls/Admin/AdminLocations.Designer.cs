@@ -31,7 +31,7 @@ namespace NecromindUI.UserControls.Admin
         {
             this.components = new System.ComponentModel.Container();
             this.panAdd = new System.Windows.Forms.Panel();
-            this.cbAddIsHostile = new System.Windows.Forms.CheckBox();
+            this.cbCreateIsHostile = new System.Windows.Forms.CheckBox();
             this.labEnemyAdd = new System.Windows.Forms.Label();
             this.btnCreate = new System.Windows.Forms.Button();
             this.tbCreateDescription = new System.Windows.Forms.TextBox();
@@ -44,7 +44,7 @@ namespace NecromindUI.UserControls.Admin
             this.labEnemyEdit = new System.Windows.Forms.Label();
             this.btnDel = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.tbEditLvl = new System.Windows.Forms.TextBox();
+            this.tbEditDescription = new System.Windows.Forms.TextBox();
             this.tbEditName = new System.Windows.Forms.TextBox();
             this.labIsHostileR = new System.Windows.Forms.Label();
             this.labDescriptionR = new System.Windows.Forms.Label();
@@ -71,7 +71,7 @@ namespace NecromindUI.UserControls.Admin
             this.panAdd.Controls.Add(this.btnCreateAdd);
             this.panAdd.Controls.Add(this.lbCreateAddedEnemies);
             this.panAdd.Controls.Add(this.lbCreateEnemies);
-            this.panAdd.Controls.Add(this.cbAddIsHostile);
+            this.panAdd.Controls.Add(this.cbCreateIsHostile);
             this.panAdd.Controls.Add(this.labEnemyAdd);
             this.panAdd.Controls.Add(this.btnCreate);
             this.panAdd.Controls.Add(this.tbCreateDescription);
@@ -85,14 +85,14 @@ namespace NecromindUI.UserControls.Admin
             this.panAdd.Size = new System.Drawing.Size(540, 471);
             this.panAdd.TabIndex = 0;
             // 
-            // cbAddIsHostile
+            // cbCreateIsHostile
             // 
-            this.cbAddIsHostile.AutoSize = true;
-            this.cbAddIsHostile.Location = new System.Drawing.Point(185, 177);
-            this.cbAddIsHostile.Name = "cbAddIsHostile";
-            this.cbAddIsHostile.Size = new System.Drawing.Size(15, 14);
-            this.cbAddIsHostile.TabIndex = 49;
-            this.cbAddIsHostile.UseVisualStyleBackColor = true;
+            this.cbCreateIsHostile.AutoSize = true;
+            this.cbCreateIsHostile.Location = new System.Drawing.Point(185, 177);
+            this.cbCreateIsHostile.Name = "cbCreateIsHostile";
+            this.cbCreateIsHostile.Size = new System.Drawing.Size(15, 14);
+            this.cbCreateIsHostile.TabIndex = 49;
+            this.cbCreateIsHostile.UseVisualStyleBackColor = true;
             // 
             // labEnemyAdd
             // 
@@ -195,7 +195,7 @@ namespace NecromindUI.UserControls.Admin
             this.panEdit.Controls.Add(this.labEnemyEdit);
             this.panEdit.Controls.Add(this.btnDel);
             this.panEdit.Controls.Add(this.btnEdit);
-            this.panEdit.Controls.Add(this.tbEditLvl);
+            this.panEdit.Controls.Add(this.tbEditDescription);
             this.panEdit.Controls.Add(this.tbEditName);
             this.panEdit.Controls.Add(this.labIsHostileR);
             this.panEdit.Controls.Add(this.labDescriptionR);
@@ -251,17 +251,17 @@ namespace NecromindUI.UserControls.Admin
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = false;
             // 
-            // tbEditLvl
+            // tbEditDescription
             // 
-            this.tbEditLvl.BackColor = System.Drawing.Color.White;
-            this.tbEditLvl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbEditLvl.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbEditLvl.Location = new System.Drawing.Point(285, 47);
-            this.tbEditLvl.Multiline = true;
-            this.tbEditLvl.Name = "tbEditLvl";
-            this.tbEditLvl.Size = new System.Drawing.Size(235, 122);
-            this.tbEditLvl.TabIndex = 44;
-            this.tbEditLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbEditDescription.BackColor = System.Drawing.Color.White;
+            this.tbEditDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbEditDescription.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tbEditDescription.Location = new System.Drawing.Point(285, 47);
+            this.tbEditDescription.Multiline = true;
+            this.tbEditDescription.Name = "tbEditDescription";
+            this.tbEditDescription.Size = new System.Drawing.Size(235, 122);
+            this.tbEditDescription.TabIndex = 44;
+            this.tbEditDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tbEditName
             // 
@@ -486,13 +486,13 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.Label labEnemyEdit;
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.TextBox tbEditLvl;
+        private System.Windows.Forms.TextBox tbEditDescription;
         private System.Windows.Forms.TextBox tbEditName;
         private System.Windows.Forms.Label labIsHostileR;
         private System.Windows.Forms.Label labDescriptionR;
         private System.Windows.Forms.Label labNameR;
         private System.Windows.Forms.ListBox lbLocations;
-        private System.Windows.Forms.CheckBox cbAddIsHostile;
+        private System.Windows.Forms.CheckBox cbCreateIsHostile;
         private System.Windows.Forms.ListBox lbCreateEnemies;
         private System.Windows.Forms.CheckBox cbEditIsHostile;
         private System.Windows.Forms.Button btnCreateAdd;
