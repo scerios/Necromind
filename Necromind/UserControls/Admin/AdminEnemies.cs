@@ -11,10 +11,10 @@ namespace NecromindUI.UserControls.Admin
 
         public string AddEnemyName
         {
-            get => tbAddName.Text;
+            get => tbCreateName.Text;
             set
             {
-                tbAddName.Text = value;
+                tbCreateName.Text = value;
             }
         }
 
@@ -29,11 +29,11 @@ namespace NecromindUI.UserControls.Admin
 
         public string AddLvl
         {
-            get => tbAddLvl.Text;
+            get => tbCreateLvl.Text;
 
             set
             {
-                tbAddLvl.Text = value;
+                tbCreateLvl.Text = value;
             }
         }
 
@@ -49,11 +49,11 @@ namespace NecromindUI.UserControls.Admin
 
         public string AddGold
         {
-            get => tbAddGold.Text;
+            get => tbCreateGold.Text;
 
             set
             {
-                tbAddGold.Text = value;
+                tbCreateGold.Text = value;
             }
         }
 
@@ -69,11 +69,11 @@ namespace NecromindUI.UserControls.Admin
 
         public string AddDmgMin
         {
-            get => tbAddDmgMin.Text;
+            get => tbCreateDmgMin.Text;
 
             set
             {
-                tbAddDmgMin.Text = value;
+                tbCreateDmgMin.Text = value;
             }
         }
 
@@ -89,11 +89,11 @@ namespace NecromindUI.UserControls.Admin
 
         public string AddDmgMax
         {
-            get => tbAddDmgMax.Text;
+            get => tbCreateDmgMax.Text;
 
             set
             {
-                tbAddDmgMax.Text = value;
+                tbCreateDmgMax.Text = value;
             }
         }
 
@@ -109,11 +109,11 @@ namespace NecromindUI.UserControls.Admin
 
         public string AddDef
         {
-            get => tbAddDef.Text;
+            get => tbCreateDef.Text;
 
             set
             {
-                tbAddDef.Text = value;
+                tbCreateDef.Text = value;
             }
         }
 
@@ -129,11 +129,11 @@ namespace NecromindUI.UserControls.Admin
 
         public string AddHealth
         {
-            get => tbAddHealth.Text;
+            get => tbCreateHealth.Text;
 
             set
             {
-                tbAddHealth.Text = value;
+                tbCreateHealth.Text = value;
             }
         }
 

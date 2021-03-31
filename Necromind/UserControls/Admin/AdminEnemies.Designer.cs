@@ -30,16 +30,16 @@ namespace NecromindUI.UserControls.Admin
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.panAdd = new System.Windows.Forms.Panel();
+            this.panCreate = new System.Windows.Forms.Panel();
             this.labEnemyAdd = new System.Windows.Forms.Label();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.tbAddDmgMax = new System.Windows.Forms.TextBox();
-            this.tbAddHealth = new System.Windows.Forms.TextBox();
-            this.tbAddDef = new System.Windows.Forms.TextBox();
-            this.tbAddDmgMin = new System.Windows.Forms.TextBox();
-            this.tbAddGold = new System.Windows.Forms.TextBox();
-            this.tbAddLvl = new System.Windows.Forms.TextBox();
-            this.tbAddName = new System.Windows.Forms.TextBox();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.tbCreateDmgMax = new System.Windows.Forms.TextBox();
+            this.tbCreateHealth = new System.Windows.Forms.TextBox();
+            this.tbCreateDef = new System.Windows.Forms.TextBox();
+            this.tbCreateDmgMin = new System.Windows.Forms.TextBox();
+            this.tbCreateGold = new System.Windows.Forms.TextBox();
+            this.tbCreateLvl = new System.Windows.Forms.TextBox();
+            this.tbCreateName = new System.Windows.Forms.TextBox();
             this.labHealthL = new System.Windows.Forms.Label();
             this.labDefL = new System.Windows.Forms.Label();
             this.labDmgL = new System.Windows.Forms.Label();
@@ -67,32 +67,32 @@ namespace NecromindUI.UserControls.Admin
             this.lbEnemies = new System.Windows.Forms.ListBox();
             this.timHideAdd = new System.Windows.Forms.Timer(this.components);
             this.timHideEdit = new System.Windows.Forms.Timer(this.components);
-            this.panAdd.SuspendLayout();
+            this.panCreate.SuspendLayout();
             this.panEdit.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panAdd
+            // panCreate
             // 
-            this.panAdd.Controls.Add(this.labEnemyAdd);
-            this.panAdd.Controls.Add(this.btnAdd);
-            this.panAdd.Controls.Add(this.tbAddDmgMax);
-            this.panAdd.Controls.Add(this.tbAddHealth);
-            this.panAdd.Controls.Add(this.tbAddDef);
-            this.panAdd.Controls.Add(this.tbAddDmgMin);
-            this.panAdd.Controls.Add(this.tbAddGold);
-            this.panAdd.Controls.Add(this.tbAddLvl);
-            this.panAdd.Controls.Add(this.tbAddName);
-            this.panAdd.Controls.Add(this.labHealthL);
-            this.panAdd.Controls.Add(this.labDefL);
-            this.panAdd.Controls.Add(this.labDmgL);
-            this.panAdd.Controls.Add(this.labGoldL);
-            this.panAdd.Controls.Add(this.labLvlL);
-            this.panAdd.Controls.Add(this.labNameL);
-            this.panAdd.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panAdd.Location = new System.Drawing.Point(0, 0);
-            this.panAdd.Name = "panAdd";
-            this.panAdd.Size = new System.Drawing.Size(540, 471);
-            this.panAdd.TabIndex = 0;
+            this.panCreate.Controls.Add(this.labEnemyAdd);
+            this.panCreate.Controls.Add(this.btnCreate);
+            this.panCreate.Controls.Add(this.tbCreateDmgMax);
+            this.panCreate.Controls.Add(this.tbCreateHealth);
+            this.panCreate.Controls.Add(this.tbCreateDef);
+            this.panCreate.Controls.Add(this.tbCreateDmgMin);
+            this.panCreate.Controls.Add(this.tbCreateGold);
+            this.panCreate.Controls.Add(this.tbCreateLvl);
+            this.panCreate.Controls.Add(this.tbCreateName);
+            this.panCreate.Controls.Add(this.labHealthL);
+            this.panCreate.Controls.Add(this.labDefL);
+            this.panCreate.Controls.Add(this.labDmgL);
+            this.panCreate.Controls.Add(this.labGoldL);
+            this.panCreate.Controls.Add(this.labLvlL);
+            this.panCreate.Controls.Add(this.labNameL);
+            this.panCreate.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panCreate.Location = new System.Drawing.Point(0, 0);
+            this.panCreate.Name = "panCreate";
+            this.panCreate.Size = new System.Drawing.Size(540, 471);
+            this.panCreate.TabIndex = 0;
             // 
             // labEnemyAdd
             // 
@@ -104,99 +104,99 @@ namespace NecromindUI.UserControls.Admin
             this.labEnemyAdd.TabIndex = 33;
             this.labEnemyAdd.Visible = false;
             // 
-            // btnAdd
+            // btnCreate
             // 
-            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
-            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.ForeColor = System.Drawing.Color.Black;
-            this.btnAdd.Location = new System.Drawing.Point(420, 426);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(100, 25);
-            this.btnAdd.TabIndex = 32;
-            this.btnAdd.TabStop = false;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
+            this.btnCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
+            this.btnCreate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCreate.FlatAppearance.BorderSize = 0;
+            this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreate.ForeColor = System.Drawing.Color.Black;
+            this.btnCreate.Location = new System.Drawing.Point(420, 426);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(100, 25);
+            this.btnCreate.TabIndex = 32;
+            this.btnCreate.TabStop = false;
+            this.btnCreate.Text = "Create";
+            this.btnCreate.UseVisualStyleBackColor = false;
+            this.btnCreate.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
-            // tbAddDmgMax
+            // tbCreateDmgMax
             // 
-            this.tbAddDmgMax.BackColor = System.Drawing.Color.White;
-            this.tbAddDmgMax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbAddDmgMax.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbAddDmgMax.Location = new System.Drawing.Point(165, 107);
-            this.tbAddDmgMax.Name = "tbAddDmgMax";
-            this.tbAddDmgMax.Size = new System.Drawing.Size(60, 22);
-            this.tbAddDmgMax.TabIndex = 31;
-            this.tbAddDmgMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbCreateDmgMax.BackColor = System.Drawing.Color.White;
+            this.tbCreateDmgMax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbCreateDmgMax.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tbCreateDmgMax.Location = new System.Drawing.Point(165, 107);
+            this.tbCreateDmgMax.Name = "tbCreateDmgMax";
+            this.tbCreateDmgMax.Size = new System.Drawing.Size(60, 22);
+            this.tbCreateDmgMax.TabIndex = 31;
+            this.tbCreateDmgMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // tbAddHealth
+            // tbCreateHealth
             // 
-            this.tbAddHealth.BackColor = System.Drawing.Color.White;
-            this.tbAddHealth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbAddHealth.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbAddHealth.Location = new System.Drawing.Point(100, 167);
-            this.tbAddHealth.Name = "tbAddHealth";
-            this.tbAddHealth.Size = new System.Drawing.Size(125, 22);
-            this.tbAddHealth.TabIndex = 30;
-            this.tbAddHealth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbCreateHealth.BackColor = System.Drawing.Color.White;
+            this.tbCreateHealth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbCreateHealth.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tbCreateHealth.Location = new System.Drawing.Point(100, 167);
+            this.tbCreateHealth.Name = "tbCreateHealth";
+            this.tbCreateHealth.Size = new System.Drawing.Size(125, 22);
+            this.tbCreateHealth.TabIndex = 30;
+            this.tbCreateHealth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // tbAddDef
+            // tbCreateDef
             // 
-            this.tbAddDef.BackColor = System.Drawing.Color.White;
-            this.tbAddDef.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbAddDef.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbAddDef.Location = new System.Drawing.Point(100, 137);
-            this.tbAddDef.Name = "tbAddDef";
-            this.tbAddDef.Size = new System.Drawing.Size(125, 22);
-            this.tbAddDef.TabIndex = 29;
-            this.tbAddDef.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbCreateDef.BackColor = System.Drawing.Color.White;
+            this.tbCreateDef.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbCreateDef.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tbCreateDef.Location = new System.Drawing.Point(100, 137);
+            this.tbCreateDef.Name = "tbCreateDef";
+            this.tbCreateDef.Size = new System.Drawing.Size(125, 22);
+            this.tbCreateDef.TabIndex = 29;
+            this.tbCreateDef.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // tbAddDmgMin
+            // tbCreateDmgMin
             // 
-            this.tbAddDmgMin.BackColor = System.Drawing.Color.White;
-            this.tbAddDmgMin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbAddDmgMin.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbAddDmgMin.Location = new System.Drawing.Point(100, 107);
-            this.tbAddDmgMin.Name = "tbAddDmgMin";
-            this.tbAddDmgMin.Size = new System.Drawing.Size(60, 22);
-            this.tbAddDmgMin.TabIndex = 28;
-            this.tbAddDmgMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbCreateDmgMin.BackColor = System.Drawing.Color.White;
+            this.tbCreateDmgMin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbCreateDmgMin.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tbCreateDmgMin.Location = new System.Drawing.Point(100, 107);
+            this.tbCreateDmgMin.Name = "tbCreateDmgMin";
+            this.tbCreateDmgMin.Size = new System.Drawing.Size(60, 22);
+            this.tbCreateDmgMin.TabIndex = 28;
+            this.tbCreateDmgMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // tbAddGold
+            // tbCreateGold
             // 
-            this.tbAddGold.BackColor = System.Drawing.Color.White;
-            this.tbAddGold.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbAddGold.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbAddGold.Location = new System.Drawing.Point(100, 77);
-            this.tbAddGold.Name = "tbAddGold";
-            this.tbAddGold.Size = new System.Drawing.Size(125, 22);
-            this.tbAddGold.TabIndex = 27;
-            this.tbAddGold.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbCreateGold.BackColor = System.Drawing.Color.White;
+            this.tbCreateGold.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbCreateGold.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tbCreateGold.Location = new System.Drawing.Point(100, 77);
+            this.tbCreateGold.Name = "tbCreateGold";
+            this.tbCreateGold.Size = new System.Drawing.Size(125, 22);
+            this.tbCreateGold.TabIndex = 27;
+            this.tbCreateGold.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // tbAddLvl
+            // tbCreateLvl
             // 
-            this.tbAddLvl.BackColor = System.Drawing.Color.White;
-            this.tbAddLvl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbAddLvl.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbAddLvl.Location = new System.Drawing.Point(100, 47);
-            this.tbAddLvl.Name = "tbAddLvl";
-            this.tbAddLvl.Size = new System.Drawing.Size(125, 22);
-            this.tbAddLvl.TabIndex = 26;
-            this.tbAddLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbCreateLvl.BackColor = System.Drawing.Color.White;
+            this.tbCreateLvl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbCreateLvl.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tbCreateLvl.Location = new System.Drawing.Point(100, 47);
+            this.tbCreateLvl.Name = "tbCreateLvl";
+            this.tbCreateLvl.Size = new System.Drawing.Size(125, 22);
+            this.tbCreateLvl.TabIndex = 26;
+            this.tbCreateLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // tbAddName
+            // tbCreateName
             // 
-            this.tbAddName.BackColor = System.Drawing.Color.White;
-            this.tbAddName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbAddName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbAddName.Location = new System.Drawing.Point(100, 17);
-            this.tbAddName.Name = "tbAddName";
-            this.tbAddName.Size = new System.Drawing.Size(125, 22);
-            this.tbAddName.TabIndex = 25;
-            this.tbAddName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbCreateName.BackColor = System.Drawing.Color.White;
+            this.tbCreateName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbCreateName.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tbCreateName.Location = new System.Drawing.Point(100, 17);
+            this.tbCreateName.Name = "tbCreateName";
+            this.tbCreateName.Size = new System.Drawing.Size(125, 22);
+            this.tbCreateName.TabIndex = 25;
+            this.tbCreateName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labHealthL
             // 
@@ -504,13 +504,13 @@ namespace NecromindUI.UserControls.Admin
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.Controls.Add(this.panEdit);
             this.Controls.Add(this.panDivider);
-            this.Controls.Add(this.panAdd);
+            this.Controls.Add(this.panCreate);
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdminEnemies";
             this.Size = new System.Drawing.Size(1084, 471);
-            this.panAdd.ResumeLayout(false);
-            this.panAdd.PerformLayout();
+            this.panCreate.ResumeLayout(false);
+            this.panCreate.PerformLayout();
             this.panEdit.ResumeLayout(false);
             this.panEdit.PerformLayout();
             this.ResumeLayout(false);
@@ -519,23 +519,23 @@ namespace NecromindUI.UserControls.Admin
 
         #endregion
 
-        private System.Windows.Forms.Panel panAdd;
+        private System.Windows.Forms.Panel panCreate;
         private System.Windows.Forms.Panel panDivider;
         private System.Windows.Forms.Panel panEdit;
-        private System.Windows.Forms.TextBox tbAddDmgMax;
-        private System.Windows.Forms.TextBox tbAddHealth;
-        private System.Windows.Forms.TextBox tbAddDef;
-        private System.Windows.Forms.TextBox tbAddDmgMin;
-        private System.Windows.Forms.TextBox tbAddGold;
-        private System.Windows.Forms.TextBox tbAddLvl;
-        private System.Windows.Forms.TextBox tbAddName;
+        private System.Windows.Forms.TextBox tbCreateDmgMax;
+        private System.Windows.Forms.TextBox tbCreateHealth;
+        private System.Windows.Forms.TextBox tbCreateDef;
+        private System.Windows.Forms.TextBox tbCreateDmgMin;
+        private System.Windows.Forms.TextBox tbCreateGold;
+        private System.Windows.Forms.TextBox tbCreateLvl;
+        private System.Windows.Forms.TextBox tbCreateName;
         private System.Windows.Forms.Label labHealthL;
         private System.Windows.Forms.Label labDefL;
         private System.Windows.Forms.Label labDmgL;
         private System.Windows.Forms.Label labGoldL;
         private System.Windows.Forms.Label labLvlL;
         private System.Windows.Forms.Label labNameL;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Label labEnemyAdd;
         private System.Windows.Forms.Timer timHideAdd;
         private System.Windows.Forms.TextBox tbEditDmgMax;
