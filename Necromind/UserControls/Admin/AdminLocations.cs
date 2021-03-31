@@ -122,12 +122,12 @@ namespace NecromindUI.UserControls.Admin
             get => timHideEdit;
         }
 
-        public Label LabEnemyAdd
+        public Label LabLocationAdd
         {
             get => labEnemyAdd;
         }
 
-        public Label LabEnemyEdit
+        public Label LabLocationEdit
         {
             get => labEnemyEdit;
         }
@@ -150,18 +150,22 @@ namespace NecromindUI.UserControls.Admin
 
         private void BtnCreateAdd_Click(object sender, EventArgs e)
         {
+            _presenter.CreateAdd();
         }
 
         private void BtnCreateRemove_Click(object sender, EventArgs e)
         {
+            _presenter.CreateRemove();
         }
 
         private void BtnEditAdd_Click(object sender, EventArgs e)
         {
+            _presenter.EditAdd();
         }
 
         private void BtnEditRemove_Click(object sender, EventArgs e)
         {
+            _presenter.EditRemove();
         }
 
         private void BtnCreate_Click(object sender, EventArgs e)
@@ -174,6 +178,18 @@ namespace NecromindUI.UserControls.Admin
 
         private void BtnDel_Click(object sender, EventArgs e)
         {
+        }
+
+        private void TimHideAdd_Tick(object sender, EventArgs e)
+        {
+            LabLocationAdd.Visible = false;
+            TimHideAdd.Stop();
+        }
+
+        private void TimHideEdit_Tick(object sender, EventArgs e)
+        {
+            LabLocationEdit.Visible = false;
+            TimHideEdit.Stop();
         }
     }
 }

@@ -103,6 +103,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnCreateRemove.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCreateRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.btnCreateRemove.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCreateRemove.Enabled = false;
             this.btnCreateRemove.FlatAppearance.BorderSize = 0;
             this.btnCreateRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateRemove.ForeColor = System.Drawing.Color.Black;
@@ -120,6 +121,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnCreateAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCreateAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
             this.btnCreateAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCreateAdd.Enabled = false;
             this.btnCreateAdd.FlatAppearance.BorderSize = 0;
             this.btnCreateAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateAdd.ForeColor = System.Drawing.Color.Black;
@@ -292,6 +294,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnEditRemove.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnEditRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.btnEditRemove.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditRemove.Enabled = false;
             this.btnEditRemove.FlatAppearance.BorderSize = 0;
             this.btnEditRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditRemove.ForeColor = System.Drawing.Color.Black;
@@ -309,6 +312,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnEditAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnEditAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
             this.btnEditAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditAdd.Enabled = false;
             this.btnEditAdd.FlatAppearance.BorderSize = 0;
             this.btnEditAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditAdd.ForeColor = System.Drawing.Color.Black;
@@ -467,10 +471,12 @@ namespace NecromindUI.UserControls.Admin
             // timHideAdd
             // 
             this.timHideAdd.Interval = 3000;
+            this.timHideAdd.Tick += new System.EventHandler(this.TimHideAdd_Tick);
             // 
             // timHideEdit
             // 
             this.timHideEdit.Interval = 3000;
+            this.timHideEdit.Tick += new System.EventHandler(this.TimHideEdit_Tick);
             // 
             // AdminLocations
             // 
