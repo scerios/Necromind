@@ -50,6 +50,7 @@ namespace NecromindUI.UserControls.Menu
         {
             LoadView(PanSettings, _adminHeroes);
             LoadView(PanSettings, _adminEnemies);
+            LoadView(PanSettings, _adminLocations);
         }
 
         private void SetControlsEvents()
