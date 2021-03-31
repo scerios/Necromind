@@ -138,6 +138,11 @@ namespace NecromindUI.UserControls.Admin
             _presenter = new AdminLocationsPresenter(this);
         }
 
+        public void LoadData()
+        {
+            _presenter.LoadData();
+        }
+
         private void CbCreateIsHostile_CheckedChanged(object sender, EventArgs e)
         {
             PanCreateEnemies = CbCreateIsHostile;
@@ -170,14 +175,19 @@ namespace NecromindUI.UserControls.Admin
 
         private void BtnCreate_Click(object sender, EventArgs e)
         {
+            _presenter.CreateLocation();
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
+            // TODO - add edit logic
+            _presenter.EditLocation();
         }
 
         private void BtnDel_Click(object sender, EventArgs e)
         {
+            // TODO add delete logic
+            _presenter.DeleteLocation();
         }
 
         private void TimHideAdd_Tick(object sender, EventArgs e)
@@ -213,6 +223,35 @@ namespace NecromindUI.UserControls.Admin
             else
             {
                 btnCreateRemove.Enabled = false;
+            }
+        }
+
+        private void LbLocations_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _presenter.GetSelectedLocationStats();
+        }
+
+        private void LbEditEnemies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbEditEnemies.SelectedIndex >= 0)
+            {
+                btnEditAdd.Enabled = true;
+            }
+            else
+            {
+                btnEditAdd.Enabled = false;
+            }
+        }
+
+        private void LbEditAddedEnemies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbEditAddedEnemies.SelectedIndex >= 0)
+            {
+                btnEditRemove.Enabled = true;
+            }
+            else
+            {
+                btnEditRemove.Enabled = false;
             }
         }
     }

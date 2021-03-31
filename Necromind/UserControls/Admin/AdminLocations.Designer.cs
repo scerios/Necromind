@@ -337,6 +337,7 @@ namespace NecromindUI.UserControls.Admin
             this.lbEditAddedEnemies.Name = "lbEditAddedEnemies";
             this.lbEditAddedEnemies.Size = new System.Drawing.Size(150, 180);
             this.lbEditAddedEnemies.TabIndex = 59;
+            this.lbEditAddedEnemies.SelectedIndexChanged += new System.EventHandler(this.LbEditAddedEnemies_SelectedIndexChanged);
             // 
             // lbEditEnemies
             // 
@@ -348,6 +349,7 @@ namespace NecromindUI.UserControls.Admin
             this.lbEditEnemies.Name = "lbEditEnemies";
             this.lbEditEnemies.Size = new System.Drawing.Size(150, 180);
             this.lbEditEnemies.TabIndex = 58;
+            this.lbEditEnemies.SelectedIndexChanged += new System.EventHandler(this.LbEditEnemies_SelectedIndexChanged);
             // 
             // cbEditIsHostile
             // 
@@ -469,6 +471,7 @@ namespace NecromindUI.UserControls.Admin
             this.lbLocations.Name = "lbLocations";
             this.lbLocations.Size = new System.Drawing.Size(150, 180);
             this.lbLocations.TabIndex = 36;
+            this.lbLocations.SelectedIndexChanged += new System.EventHandler(this.LbLocations_SelectedIndexChanged);
             // 
             // timHideAdd
             // 
