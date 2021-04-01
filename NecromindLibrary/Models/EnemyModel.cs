@@ -5,15 +5,76 @@ namespace NecromindLibrary.Models
 {
     public class EnemyModel : BaseCharacterModel, IFighter, IAdminSetter
     {
-        public string CombinedName { get; private set; }
-        public int DmgMin { get; private set; }
-        public int DmgMax { get; private set; }
+        private string _combinedName;
 
-        public int Def { get; private set; }
+        public string CombinedName
+        {
+            get => _combinedName;
+            private set
+            {
+                _combinedName = value;
+            }
+        }
 
-        public int Health { get; private set; }
+        private int _dmgMin;
 
-        public int HealthMax { get; private set; }
+        public int DmgMin
+        {
+            get => _dmgMin;
+            private set
+            {
+                _dmgMin = value;
+                OnPropertyChanged("DmgMin");
+            }
+        }
+
+        private int _dmgMax;
+
+        public int DmgMax
+        {
+            get => _dmgMax;
+            private set
+            {
+                _dmgMax = value;
+                OnPropertyChanged("DmgMax");
+            }
+        }
+
+        private int _def;
+
+        public int Def
+        {
+            get => _def;
+            private set
+            {
+                _def = value;
+                OnPropertyChanged("Def");
+            }
+        }
+
+        private int _health;
+
+        public int Health
+        {
+            get => _health;
+            private set
+            {
+                _health = value;
+                OnPropertyChanged("Health");
+            }
+        }
+
+        private int _healthMax;
+
+        public int HealthMax
+        {
+            get => _healthMax;
+            private set
+            {
+                _healthMax = value;
+                OnPropertyChanged("HealthMax");
+            }
+        }
 
         /// <summary>
         /// This constructor is for testing purposes.
@@ -81,9 +142,19 @@ namespace NecromindLibrary.Models
             Gold = gold;
         }
 
+        public void AdminSetGold(string gold)
+        {
+            Gold = Int32.Parse(gold);
+        }
+
         public void AdminSetLvl(int lvl)
         {
             Lvl = lvl;
+        }
+
+        public void AdminSetLvl(string lvl)
+        {
+            Lvl = Int32.Parse(lvl);
         }
 
         public void AdminSetDmgMin(int dmg)
@@ -91,9 +162,19 @@ namespace NecromindLibrary.Models
             DmgMin = dmg;
         }
 
+        public void AdminSetDmgMin(string dmg)
+        {
+            DmgMin = Int32.Parse(dmg);
+        }
+
         public void AdminSetDmgMax(int dmg)
         {
             DmgMax = dmg;
+        }
+
+        public void AdminSetDmgMax(string dmg)
+        {
+            DmgMax = Int32.Parse(dmg);
         }
 
         public void AdminSetDef(int def)
@@ -101,10 +182,22 @@ namespace NecromindLibrary.Models
             Def = def;
         }
 
+        public void AdminSetDef(string def)
+        {
+            Def = Int32.Parse(def);
+        }
+
         public void AdminSetHealth(int health)
         {
             HealthMax = health;
             Health = health;
+        }
+
+        public void AdminSetHealth(string health)
+        {
+            var healthAsInt = Int32.Parse(health);
+            HealthMax = healthAsInt;
+            Health = healthAsInt;
         }
 
         public void AdminSetCombinedName()

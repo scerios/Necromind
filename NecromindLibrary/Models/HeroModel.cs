@@ -183,9 +183,19 @@ namespace NecromindLibrary.Models
             Gold = gold;
         }
 
+        public void AdminSetGold(string gold)
+        {
+            Gold = Int32.Parse(gold);
+        }
+
         public void AdminSetLvl(int lvl)
         {
             Lvl = lvl;
+        }
+
+        public void AdminSetLvl(string lvl)
+        {
+            Lvl = Int32.Parse(lvl);
         }
 
         public void AdminSetDmgMin(int dmg)
@@ -193,9 +203,19 @@ namespace NecromindLibrary.Models
             DmgMin = dmg;
         }
 
+        public void AdminSetDmgMin(string dmg)
+        {
+            DmgMin = Int32.Parse(dmg);
+        }
+
         public void AdminSetDmgMax(int dmg)
         {
             DmgMax = dmg;
+        }
+
+        public void AdminSetDmgMax(string dmg)
+        {
+            DmgMax = Int32.Parse(dmg);
         }
 
         public void AdminSetDef(int def)
@@ -203,10 +223,22 @@ namespace NecromindLibrary.Models
             Def = def;
         }
 
+        public void AdminSetDef(string def)
+        {
+            Def = Int32.Parse(def);
+        }
+
         public void AdminSetHealth(int health)
         {
             HealthMax = health;
             Health = health;
+        }
+
+        public void AdminSetHealth(string health)
+        {
+            var healthAsInt = Int32.Parse(health);
+            HealthMax = healthAsInt;
+            Health = healthAsInt;
         }
     }
 }
