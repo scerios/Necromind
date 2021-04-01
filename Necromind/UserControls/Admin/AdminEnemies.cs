@@ -9,7 +9,7 @@ namespace NecromindUI.UserControls.Admin
     {
         private readonly AdminEnemiesPresenter _presenter;
 
-        public string AddName
+        public string CreateName
         {
             get => tbCreateName.Text;
             set
@@ -27,7 +27,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string AddLvl
+        public string CreateLvl
         {
             get => tbCreateLvl.Text;
 
@@ -47,7 +47,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string AddGold
+        public string CreateGold
         {
             get => tbCreateGold.Text;
 
@@ -67,7 +67,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string AddDmgMin
+        public string CreateDmgMin
         {
             get => tbCreateDmgMin.Text;
 
@@ -87,7 +87,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string AddDmgMax
+        public string CreateDmgMax
         {
             get => tbCreateDmgMax.Text;
 
@@ -107,7 +107,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string AddDef
+        public string CreateDef
         {
             get => tbCreateDef.Text;
 
@@ -127,7 +127,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string AddHealth
+        public string CreateHealth
         {
             get => tbCreateHealth.Text;
 
@@ -152,9 +152,9 @@ namespace NecromindUI.UserControls.Admin
             get => lbEnemies;
         }
 
-        public Timer TimHideAdd
+        public Timer TimHideCreate
         {
-            get => timHideAdd;
+            get => timHideCreate;
         }
 
         public Timer TimHideEdit
@@ -162,7 +162,7 @@ namespace NecromindUI.UserControls.Admin
             get => timHideEdit;
         }
 
-        public Label LabEnemyAdd
+        public Label LabEnemyCreate
         {
             get => labEnemyAdd;
         }
@@ -178,9 +178,14 @@ namespace NecromindUI.UserControls.Admin
             _presenter = new AdminEnemiesPresenter(this);
         }
 
-        private void BtnAdd_Click(object sender, EventArgs e)
+        public void LoadData()
         {
-            _presenter.AddEnemy();
+            _presenter.LoadData();
+        }
+
+        private void BtnCreate_Click(object sender, EventArgs e)
+        {
+            _presenter.CreateEnemy();
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
@@ -193,10 +198,10 @@ namespace NecromindUI.UserControls.Admin
             _presenter.DeleteEnemy();
         }
 
-        private void TimHideAdd_Tick(object sender, EventArgs e)
+        private void TimHideCreate_Tick(object sender, EventArgs e)
         {
-            LabEnemyAdd.Visible = false;
-            TimHideAdd.Stop();
+            LabEnemyCreate.Visible = false;
+            TimHideCreate.Stop();
         }
 
         private void TimHideEdit_Tick(object sender, EventArgs e)

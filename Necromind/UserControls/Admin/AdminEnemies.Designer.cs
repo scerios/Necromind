@@ -65,7 +65,7 @@ namespace NecromindUI.UserControls.Admin
             this.labLvlR = new System.Windows.Forms.Label();
             this.labNameR = new System.Windows.Forms.Label();
             this.lbEnemies = new System.Windows.Forms.ListBox();
-            this.timHideAdd = new System.Windows.Forms.Timer(this.components);
+            this.timHideCreate = new System.Windows.Forms.Timer(this.components);
             this.timHideEdit = new System.Windows.Forms.Timer(this.components);
             this.panCreate.SuspendLayout();
             this.panEdit.SuspendLayout();
@@ -119,7 +119,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnCreate.TabStop = false;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = false;
-            this.btnCreate.Click += new System.EventHandler(this.BtnAdd_Click);
+            this.btnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
             // 
             // tbCreateDmgMax
             // 
@@ -487,10 +487,10 @@ namespace NecromindUI.UserControls.Admin
             this.lbEnemies.TabIndex = 19;
             this.lbEnemies.SelectedIndexChanged += new System.EventHandler(this.LbEnemies_SelectedIndexChanged);
             // 
-            // timHideAdd
+            // timHideCreate
             // 
-            this.timHideAdd.Interval = 3000;
-            this.timHideAdd.Tick += new System.EventHandler(this.TimHideAdd_Tick);
+            this.timHideCreate.Interval = 3000;
+            this.timHideCreate.Tick += new System.EventHandler(this.TimHideCreate_Tick);
             // 
             // timHideEdit
             // 
@@ -537,7 +537,7 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.Label labNameL;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Label labEnemyAdd;
-        private System.Windows.Forms.Timer timHideAdd;
+        private System.Windows.Forms.Timer timHideCreate;
         private System.Windows.Forms.TextBox tbEditDmgMax;
         private System.Windows.Forms.TextBox tbEditHealth;
         private System.Windows.Forms.TextBox tbEditDef;
