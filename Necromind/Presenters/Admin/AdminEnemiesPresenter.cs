@@ -11,96 +11,83 @@ namespace NecromindUI.Presenters.Admin
 {
     public class AdminEnemiesPresenter
     {
+        private readonly string _combinedName = "CombinedName";
         private readonly MongoConnector _mongoConnector;
         private readonly IAdminEnemies _adminEnemies;
+        private readonly BindingSource _bsEnemies = new BindingSource();
         private List<EnemyModel> _enemies;
+        private EnemyModel _enemy;
 
         public AdminEnemiesPresenter(IAdminEnemies adminEnemies)
         {
             _adminEnemies = adminEnemies;
             _mongoConnector = MongoConnector.GetInstance();
+        }
+
+        public void LoadData()
+        {
             LoadAllEnemies();
-            SetupEnemiesList();
+            BindEnemies();
         }
 
         public void GetSelectedEnemyStats()
         {
-            if (_adminEnemies.Enemies.SelectedIndex >= 0)
+            var selectedIndex = _adminEnemies.Enemies.SelectedIndex;
+
+            if (selectedIndex >= 0)
             {
-                var enemy = _enemies[_adminEnemies.Enemies.SelectedIndex];
-                _adminEnemies.EditName = enemy.Name;
-                _adminEnemies.EditLvl = enemy.Lvl.ToString();
-                _adminEnemies.EditGold = enemy.Gold.ToString();
-                _adminEnemies.EditDmgMin = enemy.DmgMin.ToString();
-                _adminEnemies.EditDmgMax = enemy.DmgMax.ToString();
-                _adminEnemies.EditDef = enemy.Def.ToString();
-                _adminEnemies.EditHealth = enemy.HealthMax.ToString();
+                _enemy = _enemies[selectedIndex];
+                _adminEnemies.EditName = _enemy.Name;
+                _adminEnemies.EditLvl = _enemy.Lvl.ToString();
+                _adminEnemies.EditGold = _enemy.Gold.ToString();
+                _adminEnemies.EditDmgMin = _enemy.DmgMin.ToString();
+                _adminEnemies.EditDmgMax = _enemy.DmgMax.ToString();
+                _adminEnemies.EditDef = _enemy.Def.ToString();
+                _adminEnemies.EditHealth = _enemy.HealthMax.ToString();
             }
         }
 
-        public void AddEnemy()
+        public void CreateEnemy()
         {
-            var enemy = new EnemyModel();
-            enemy.AdminSetName(_adminEnemies.AddName);
-            enemy.AdminSetLvl(Int32.Parse(_adminEnemies.AddLvl));
-            enemy.AdminSetGold(Int32.Parse(_adminEnemies.AddGold));
-            enemy.AdminSetDmgMin(Int32.Parse(_adminEnemies.AddDmgMin));
-            enemy.AdminSetDmgMax(Int32.Parse(_adminEnemies.AddDmgMax));
-            enemy.AdminSetDef(Int32.Parse(_adminEnemies.AddDef));
-            enemy.AdminSetHealth(Int32.Parse(_adminEnemies.AddHealth));
-            enemy.AdminSetCombinedName();
+            SetCreateEnemyProperties();
 
-            if (_mongoConnector.TryCreateNewRecord(DBConfig.EnemiesCollection, enemy))
+            if (_mongoConnector.TryCreateNewRecord(DBConfig.EnemiesCollection, _enemy))
             {
-                AlertAddSuccess($"{ enemy.Name } added successfully!");
-                _enemies.Add(enemy);
-                _adminEnemies.Enemies.Items.Add($"{ enemy.Name } { enemy.Lvl }");
-                ClearAddFields();
+                UpdateUIAfterCreate();
             }
             else
             {
-                AlertAddFail($"Failed to add { enemy.Name }!");
+                AlertCreateFail($"Failed to create { _enemy.Name }!");
             }
         }
 
         public void EditEnemy()
         {
-            var selectedIndex = _adminEnemies.Enemies.SelectedIndex;
-            var enemy = _enemies[selectedIndex];
-            enemy.AdminSetName(_adminEnemies.EditName);
-            enemy.AdminSetLvl(Int32.Parse(_adminEnemies.EditLvl));
-            enemy.AdminSetGold(Int32.Parse(_adminEnemies.EditGold));
-            enemy.AdminSetDmgMin(Int32.Parse(_adminEnemies.EditDmgMin));
-            enemy.AdminSetDmgMax(Int32.Parse(_adminEnemies.EditDmgMax));
-            enemy.AdminSetDef(Int32.Parse(_adminEnemies.EditDef));
-            enemy.AdminSetHealth(Int32.Parse(_adminEnemies.EditHealth));
+            SetEditEnemyProperties();
 
-            if (_mongoConnector.TryUpsertRecord(DBConfig.EnemiesCollection, enemy.Id, enemy))
+            if (_mongoConnector.TryUpsertRecord(DBConfig.EnemiesCollection, _enemy.Id, _enemy))
             {
-                AlertEditSuccess($"{ enemy.Name } edited successfully!");
-                _adminEnemies.Enemies.ClearSelected();
-                _adminEnemies.Enemies.Items[selectedIndex] = enemy.Name;
-                ClearEditFields();
+                UpdateUIAfterEdit();
             }
             else
             {
-                AlertEditFail($"Failed to edit { enemy.Name }!");
+                AlertEditFail($"Failed to edit { _enemy.Name }!");
             }
         }
 
         public void DeleteEnemy()
         {
-            var enemy = _enemies[_adminEnemies.Enemies.SelectedIndex];
+            var _enemy = _enemies[_adminEnemies.Enemies.SelectedIndex];
 
-            if (_mongoConnector.TryDeleteRecordById<EnemyModel>(DBConfig.EnemiesCollection, enemy.Id))
+            if (_mongoConnector.TryDeleteRecordById<EnemyModel>(DBConfig.EnemiesCollection, _enemy.Id))
             {
-                AlertEditSuccess($"{ enemy.Name } deleted successfully!");
-                _adminEnemies.Enemies.Items.Remove(enemy.Name);
+                AlertEditSuccess($"{ _enemy.Name } deleted successfully!");
+                _adminEnemies.Enemies.Items.Remove(_enemy.Name);
                 ClearEditFields();
             }
             else
             {
-                AlertEditFail($"Failed to delete { enemy.Name }!");
+                AlertEditFail($"Failed to delete { _enemy.Name }!");
             }
         }
 
@@ -109,28 +96,61 @@ namespace NecromindUI.Presenters.Admin
             _enemies = _mongoConnector.GetAllRecords<EnemyModel>(DBConfig.EnemiesCollection);
         }
 
-        private void SetupEnemiesList()
+        private void BindEnemies()
         {
-            foreach (var enemy in _enemies)
-            {
-                _adminEnemies.Enemies.Items.Add($"{ enemy.Name } { enemy.Lvl }");
-            }
+            _bsEnemies.DataSource = _enemies;
+            _adminEnemies.Enemies.DataSource = _bsEnemies;
+            _adminEnemies.Enemies.DisplayMember = _combinedName;
         }
 
-        private void AlertAddSuccess(string msg)
+        private void SetCreateEnemyProperties()
         {
-            _adminEnemies.LabEnemyAdd.Text = msg;
-            _adminEnemies.LabEnemyAdd.ForeColor = UISettings.GreenColor;
-
-            ShowAlert(_adminEnemies.LabEnemyAdd, _adminEnemies.TimHideAdd);
+            _enemy = new EnemyModel();
+            _enemy.AdminSetName(_adminEnemies.CreateName);
+            _enemy.AdminSetLvl(_adminEnemies.CreateLvl);
+            _enemy.AdminSetGold(_adminEnemies.CreateGold);
+            _enemy.AdminSetDmgMin(_adminEnemies.CreateDmgMin);
+            _enemy.AdminSetDmgMax(_adminEnemies.CreateDmgMax);
+            _enemy.AdminSetDef(_adminEnemies.CreateDef);
+            _enemy.AdminSetHealth(_adminEnemies.CreateHealth);
+            _enemy.AdminSetCombinedName();
         }
 
-        private void AlertAddFail(string msg)
+        private void SetEditEnemyProperties()
         {
-            _adminEnemies.LabEnemyAdd.Text = msg;
-            _adminEnemies.LabEnemyAdd.ForeColor = UISettings.RedColor;
+            // TODO - inputs stay as default after "_enemy.AdminSetLvl(_adminEnemies.EditLvl);"
+            // by taking all inputs as variables first then everything works properly
+            //var lvl = _adminEnemies.EditLvl;
+            //var gold = _adminEnemies.EditGold;
+            //var dmgMin = _adminEnemies.EditDmgMin;
+            //var dmgMax = _adminEnemies.EditDmgMax;
+            //var def = _adminEnemies.EditDef;
+            //var health = _adminEnemies.EditHealth;
 
-            ShowAlert(_adminEnemies.LabEnemyAdd, _adminEnemies.TimHideAdd);
+            _enemy.AdminSetName(_adminEnemies.EditName);
+            _enemy.AdminSetLvl(_adminEnemies.EditLvl);
+            _enemy.AdminSetGold(_adminEnemies.EditGold);
+            _enemy.AdminSetDmgMin(_adminEnemies.EditDmgMin);
+            _enemy.AdminSetDmgMax(_adminEnemies.EditDmgMax);
+            _enemy.AdminSetDef(_adminEnemies.EditDef);
+            _enemy.AdminSetHealth(_adminEnemies.EditHealth);
+            _enemy.AdminSetCombinedName();
+        }
+
+        private void AlertCreateSuccess(string msg)
+        {
+            _adminEnemies.LabEnemyCreate.Text = msg;
+            _adminEnemies.LabEnemyCreate.ForeColor = UISettings.GreenColor;
+
+            ShowAlert(_adminEnemies.LabEnemyCreate, _adminEnemies.TimHideCreate);
+        }
+
+        private void AlertCreateFail(string msg)
+        {
+            _adminEnemies.LabEnemyCreate.Text = msg;
+            _adminEnemies.LabEnemyCreate.ForeColor = UISettings.RedColor;
+
+            ShowAlert(_adminEnemies.LabEnemyCreate, _adminEnemies.TimHideCreate);
         }
 
         private void AlertEditSuccess(string msg)
@@ -157,13 +177,13 @@ namespace NecromindUI.Presenters.Admin
 
         private void ClearAddFields()
         {
-            _adminEnemies.AddName = "";
-            _adminEnemies.AddLvl = "";
-            _adminEnemies.AddGold = "";
-            _adminEnemies.AddDmgMin = "";
-            _adminEnemies.AddDmgMax = "";
-            _adminEnemies.AddDef = "";
-            _adminEnemies.AddHealth = "";
+            _adminEnemies.CreateName = "";
+            _adminEnemies.CreateLvl = "";
+            _adminEnemies.CreateGold = "";
+            _adminEnemies.CreateDmgMin = "";
+            _adminEnemies.CreateDmgMax = "";
+            _adminEnemies.CreateDef = "";
+            _adminEnemies.CreateHealth = "";
         }
 
         private void ClearEditFields()
@@ -175,6 +195,27 @@ namespace NecromindUI.Presenters.Admin
             _adminEnemies.EditDmgMax = "";
             _adminEnemies.EditDef = "";
             _adminEnemies.EditHealth = "";
+        }
+
+        private void UpdateUIAfterCreate()
+        {
+            AlertCreateSuccess($"{ _enemy.Name } created successfully!");
+
+            _enemies.Add(_enemy);
+            _bsEnemies.ResetBindings(false);
+
+            ClearAddFields();
+        }
+
+        private void UpdateUIAfterEdit()
+        {
+            AlertEditSuccess($"{ _enemy.Name } edited successfully!");
+
+            _enemies[_adminEnemies.Enemies.SelectedIndex].AdminSetCombinedName();
+            _bsEnemies.ResetBindings(false);
+            _adminEnemies.Enemies.ClearSelected();
+
+            ClearEditFields();
         }
     }
 }

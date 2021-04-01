@@ -180,13 +180,11 @@ namespace NecromindUI.UserControls.Admin
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            // TODO - add edit logic
             _presenter.EditLocation();
         }
 
         private void BtnDel_Click(object sender, EventArgs e)
         {
-            // TODO add delete logic
             _presenter.DeleteLocation();
         }
 

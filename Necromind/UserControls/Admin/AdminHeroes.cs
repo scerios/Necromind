@@ -99,6 +99,11 @@ namespace NecromindUI.UserControls.Admin
             _presenter = new AdminHeroesPresenter(this);
         }
 
+        public void LoadData()
+        {
+            _presenter.LoadData();
+        }
+
         private void LbHeroes_SelectedIndexChanged(object sender, EventArgs e)
         {
             _presenter.GetSelectedHeroStats();

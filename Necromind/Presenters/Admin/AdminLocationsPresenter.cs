@@ -46,9 +46,11 @@ namespace NecromindUI.Presenters.Admin
 
         public void GetSelectedLocationStats()
         {
-            if (_adminLocations.Locations.SelectedIndex >= 0)
+            var selectedIndex = _adminLocations.Locations.SelectedIndex;
+
+            if (selectedIndex >= 0)
             {
-                _location = _locations[_adminLocations.Locations.SelectedIndex];
+                _location = _locations[selectedIndex];
                 _adminLocations.EditName = _location.Name;
                 _adminLocations.EditDescription = _location.Description;
                 _adminLocations.CbEditIsHostile = _location.IsHostile;
@@ -282,7 +284,7 @@ namespace NecromindUI.Presenters.Admin
             timer.Start();
         }
 
-        private void AddEnemiesToLocations(List<EnemyModel> enemies)
+        private void AddEnemiesToLocation(List<EnemyModel> enemies)
         {
             foreach (var enemy in enemies)
             {
@@ -321,7 +323,7 @@ namespace NecromindUI.Presenters.Admin
             _location.Description = _adminLocations.CreateDescription;
             _location.IsHostile = _adminLocations.CbCreateIsHostile;
 
-            AddEnemiesToLocations(_createAddedEnemies);
+            AddEnemiesToLocation(_createAddedEnemies);
         }
 
         private void SetEditLocationProperties()

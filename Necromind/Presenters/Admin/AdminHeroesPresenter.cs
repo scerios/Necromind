@@ -5,6 +5,7 @@ using NecromindUI.Config;
 using NecromindUI.Views.Admin;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace NecromindUI.Presenters.Admin
 {
@@ -12,50 +13,56 @@ namespace NecromindUI.Presenters.Admin
     {
         private readonly MongoConnector _mongoConnector;
         private readonly IAdminHeroes _adminHeroes;
+        private readonly BindingSource _bsHeroes = new BindingSource();
         private List<HeroModel> _heroes;
+        private HeroModel _hero;
 
         public AdminHeroesPresenter(IAdminHeroes adminHeroes)
         {
             _adminHeroes = adminHeroes;
             _mongoConnector = MongoConnector.GetInstance();
+        }
+
+        public void LoadData()
+        {
             LoadAllHeroes();
-            SetupHeroesList();
+            BindHeroes();
         }
 
         public void GetSelectedHeroStats()
         {
-            if (_adminHeroes.Heroes.SelectedIndex >= 0)
+            var selectedIndex = _adminHeroes.Heroes.SelectedIndex;
+
+            if (selectedIndex >= 0)
             {
-                var hero = _heroes[_adminHeroes.Heroes.SelectedIndex];
-                _adminHeroes.HeroName = hero.Name;
-                _adminHeroes.Lvl = hero.Lvl.ToString();
-                _adminHeroes.Gold = hero.Gold.ToString();
-                _adminHeroes.DmgMin = hero.DmgMin.ToString();
-                _adminHeroes.DmgMax = hero.DmgMax.ToString();
-                _adminHeroes.Def = hero.Def.ToString();
-                _adminHeroes.Health = hero.HealthMax.ToString();
+                _hero = _heroes[selectedIndex];
+                _adminHeroes.HeroName = _hero.Name;
+                _adminHeroes.Lvl = _hero.Lvl.ToString();
+                _adminHeroes.Gold = _hero.Gold.ToString();
+                _adminHeroes.DmgMin = _hero.DmgMin.ToString();
+                _adminHeroes.DmgMax = _hero.DmgMax.ToString();
+                _adminHeroes.Def = _hero.Def.ToString();
+                _adminHeroes.Health = _hero.HealthMax.ToString();
             }
         }
 
         public void EditHero()
         {
-            var hero = _heroes[_adminHeroes.Heroes.SelectedIndex];
-            hero.AdminSetLvl(Int32.Parse(_adminHeroes.Lvl));
-            hero.AdminSetGold(Int32.Parse(_adminHeroes.Gold));
-            hero.AdminSetDmgMin(Int32.Parse(_adminHeroes.DmgMin));
-            hero.AdminSetDmgMax(Int32.Parse(_adminHeroes.DmgMax));
-            hero.AdminSetDef(Int32.Parse(_adminHeroes.Def));
-            hero.AdminSetHealth(Int32.Parse(_adminHeroes.Health));
+            _hero = _heroes[_adminHeroes.Heroes.SelectedIndex];
+            _hero.AdminSetLvl(Int32.Parse(_adminHeroes.Lvl));
+            _hero.AdminSetGold(Int32.Parse(_adminHeroes.Gold));
+            _hero.AdminSetDmgMin(Int32.Parse(_adminHeroes.DmgMin));
+            _hero.AdminSetDmgMax(Int32.Parse(_adminHeroes.DmgMax));
+            _hero.AdminSetDef(Int32.Parse(_adminHeroes.Def));
+            _hero.AdminSetHealth(Int32.Parse(_adminHeroes.Health));
 
-            if (_mongoConnector.TryUpsertRecord(DBConfig.HeroesCollection, hero.Id, hero))
+            if (_mongoConnector.TryUpsertRecord(DBConfig.HeroesCollection, _hero.Id, _hero))
             {
-                AlertSuccess(hero.Name);
-                _adminHeroes.Heroes.ClearSelected();
-                ClearEditFields();
+                UpdateUIAfterEdit();
             }
             else
             {
-                AlertFail(hero.Name);
+                AlertFail(_hero.Name);
             }
         }
 
@@ -80,12 +87,11 @@ namespace NecromindUI.Presenters.Admin
             _heroes = _mongoConnector.GetAllRecords<HeroModel>(DBConfig.HeroesCollection);
         }
 
-        private void SetupHeroesList()
+        private void BindHeroes()
         {
-            foreach (var hero in _heroes)
-            {
-                _adminHeroes.Heroes.Items.Add(hero.Name);
-            }
+            _bsHeroes.DataSource = _heroes;
+            _adminHeroes.Heroes.DataSource = _bsHeroes;
+            _adminHeroes.Heroes.DisplayMember = "Name";
         }
 
         private void ClearEditFields()
@@ -97,6 +103,14 @@ namespace NecromindUI.Presenters.Admin
             _adminHeroes.DmgMax = "";
             _adminHeroes.Def = "";
             _adminHeroes.Health = "";
+        }
+
+        private void UpdateUIAfterEdit()
+        {
+            AlertSuccess(_hero.Name);
+            _bsHeroes.ResetBindings(false);
+            _adminHeroes.Heroes.ClearSelected();
+            ClearEditFields();
         }
     }
 }
