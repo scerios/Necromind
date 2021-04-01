@@ -13,6 +13,7 @@ namespace NecromindUI.UserControls.Menu
         private readonly AdminHeroes _adminHeroes;
         private readonly AdminEnemies _adminEnemies;
         private readonly AdminLocations _adminLocations;
+        private UserControl _currentView;
 
         public string Password
         {
@@ -46,13 +47,6 @@ namespace NecromindUI.UserControls.Menu
             _adminLocations = new AdminLocations();
         }
 
-        private void LoadViews()
-        {
-            LoadView(PanSettings, _adminHeroes);
-            LoadView(PanSettings, _adminEnemies);
-            LoadView(PanSettings, _adminLocations);
-        }
-
         private void SetControlsEvents()
         {
             _controls.BtnMapsClick += new EventHandler(AdminControls_BtnMapsClick);
@@ -78,23 +72,29 @@ namespace NecromindUI.UserControls.Menu
         {
             if (_presenter.IsPasswordCorrect())
             {
-                ActivateView(PanControls, _controls);
-                LoadViews();
+                ActivateMainView(PanControls, _controls);
                 SetControlsEvents();
             }
 
             Password = "";
         }
 
-        private void ActivateView(Panel panel, UserControl view)
+        private void ActivateMainView(Panel panel, UserControl view)
         {
             panel.Controls.Add(view);
             view.BringToFront();
         }
 
-        private void LoadView(Panel panel, UserControl view)
+        private void ActivateView(Panel panel, UserControl view)
         {
-            panel.Controls.Add(view);
+            if (_currentView != null)
+            {
+                panel.Controls.Remove(_currentView);
+            }
+
+            _currentView = view;
+            panel.Controls.Add(_currentView);
+            _currentView.BringToFront();
         }
 
         private void BringToFront(UserControl view)
@@ -109,12 +109,15 @@ namespace NecromindUI.UserControls.Menu
 
         private void AdminControls_BtnLocationsClick(object sender, EventArgs e)
         {
+            ActivateView(PanSettings, _adminLocations);
             _adminLocations.LoadData();
             BringToFront(_adminLocations);
         }
 
         private void AdminControls_BtnHeroesClick(object sender, EventArgs e)
         {
+            ActivateView(PanSettings, _adminHeroes);
+            _adminHeroes.LoadData();
             BringToFront(_adminHeroes);
         }
 
@@ -125,6 +128,8 @@ namespace NecromindUI.UserControls.Menu
 
         private void AdminControls_BtnEnemiesClick(object sender, EventArgs e)
         {
+            ActivateView(PanSettings, _adminEnemies);
+            _adminEnemies.LoadData();
             BringToFront(_adminEnemies);
         }
     }
