@@ -4,7 +4,7 @@ using NecromindLibrary.Repository;
 using NecromindUI.Config;
 using NecromindUI.Views.Admin;
 using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace NecromindUI.Presenters.Admin
@@ -14,7 +14,7 @@ namespace NecromindUI.Presenters.Admin
         private readonly MongoConnector _mongoConnector;
         private readonly IAdminHeroes _adminHeroes;
         private readonly BindingSource _bsHeroes = new BindingSource();
-        private List<HeroModel> _heroes;
+        private BindingList<HeroModel> _heroes;
         private HeroModel _hero;
 
         public AdminHeroesPresenter(IAdminHeroes adminHeroes)
@@ -48,13 +48,7 @@ namespace NecromindUI.Presenters.Admin
 
         public void EditHero()
         {
-            _hero = _heroes[_adminHeroes.Heroes.SelectedIndex];
-            _hero.AdminSetLvl(Int32.Parse(_adminHeroes.Lvl));
-            _hero.AdminSetGold(Int32.Parse(_adminHeroes.Gold));
-            _hero.AdminSetDmgMin(Int32.Parse(_adminHeroes.DmgMin));
-            _hero.AdminSetDmgMax(Int32.Parse(_adminHeroes.DmgMax));
-            _hero.AdminSetDef(Int32.Parse(_adminHeroes.Def));
-            _hero.AdminSetHealth(Int32.Parse(_adminHeroes.Health));
+            SetHeroProperties();
 
             if (_mongoConnector.TryUpsertRecord(DBConfig.HeroesCollection, _hero.Id, _hero))
             {
@@ -64,6 +58,16 @@ namespace NecromindUI.Presenters.Admin
             {
                 AlertFail(_hero.Name);
             }
+        }
+
+        private void SetHeroProperties()
+        {
+            _hero.AdminSetLvl(_adminHeroes.Lvl);
+            _hero.AdminSetGold(_adminHeroes.Gold);
+            _hero.AdminSetDmgMin(_adminHeroes.DmgMin);
+            _hero.AdminSetDmgMax(_adminHeroes.DmgMax);
+            _hero.AdminSetDef(_adminHeroes.Def);
+            _hero.AdminSetHealth(_adminHeroes.Health);
         }
 
         private void AlertSuccess(string name)
@@ -84,7 +88,7 @@ namespace NecromindUI.Presenters.Admin
 
         private void LoadAllHeroes()
         {
-            _heroes = _mongoConnector.GetAllRecords<HeroModel>(DBConfig.HeroesCollection);
+            _heroes = new BindingList<HeroModel>(_mongoConnector.GetAllRecords<HeroModel>(DBConfig.HeroesCollection));
         }
 
         private void BindHeroes()
