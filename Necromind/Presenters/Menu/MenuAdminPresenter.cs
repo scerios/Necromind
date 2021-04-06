@@ -1,13 +1,14 @@
 ﻿using Necromind.Views.Menu;
+using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
-using System.Configuration;
+using NecromindUI.Config;
 
 namespace Necromind.Presenters.Menu
 {
     public class MenuAdminPresenter
     {
-        private IMenuAdmin _menuAdmin;
-        private MongoConnector _mongoConnector;
+        private readonly IMenuAdmin _menuAdmin;
+        private readonly MongoConnector _mongoConnector;
 
         public MenuAdminPresenter(IMenuAdmin menuAdmin)
         {
@@ -17,8 +18,26 @@ namespace Necromind.Presenters.Menu
 
         public bool IsPasswordCorrect()
         {
-            // TODO - Store password securely.
-            return _menuAdmin.Password.Equals(ConfigurationManager.AppSettings.Get("adminPassword"));
+            var admins = _mongoConnector.GetAllRecords<AdminModel>(DBConfig.AdminsCollection);
+
+            if (admins.Count == 0)
+            {
+                SaveAdmin();
+                return true;
+            }
+
+            return BCrypt.Net.BCrypt.Verify(
+                _menuAdmin.Password,
+                admins[0].Password
+                );
+        }
+
+        public void SaveAdmin()
+        {
+            _mongoConnector.TryCreateNewRecord(
+                DBConfig.AdminsCollection,
+                new AdminModel(BCrypt.Net.BCrypt.HashPassword(_menuAdmin.Password))
+                );
         }
     }
 }
