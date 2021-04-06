@@ -13,7 +13,7 @@ namespace NecromindLibrary.Models
             private set
             {
                 _dmgMin = value;
-                OnPropertyChanged("DmgMin");
+                OnPropertyChanged();
             }
         }
 
@@ -25,7 +25,7 @@ namespace NecromindLibrary.Models
             private set
             {
                 _dmgMax = value;
-                OnPropertyChanged("DmgMax");
+                OnPropertyChanged();
             }
         }
 
@@ -37,7 +37,7 @@ namespace NecromindLibrary.Models
             private set
             {
                 _def = value;
-                OnPropertyChanged("Def");
+                OnPropertyChanged();
             }
         }
 
@@ -49,7 +49,7 @@ namespace NecromindLibrary.Models
             private set
             {
                 _health = value;
-                OnPropertyChanged("Health");
+                OnPropertyChanged();
             }
         }
 
@@ -61,7 +61,7 @@ namespace NecromindLibrary.Models
             private set
             {
                 _healthMax = value;
-                OnPropertyChanged("HealthMax");
+                OnPropertyChanged();
             }
         }
 
@@ -73,7 +73,7 @@ namespace NecromindLibrary.Models
             private set
             {
                 _experiencePoints = value;
-                OnPropertyChanged("ExperiencePoints");
+                OnPropertyChanged();
             }
         }
 
@@ -85,7 +85,7 @@ namespace NecromindLibrary.Models
             private set
             {
                 _nextLvlAt = value;
-                OnPropertyChanged("NextLvlAt");
+                OnPropertyChanged();
             }
         }
 
@@ -178,67 +178,36 @@ namespace NecromindLibrary.Models
             Name = name;
         }
 
-        public void AdminSetGold(int gold)
-        {
-            Gold = gold;
-        }
-
         public void AdminSetGold(string gold)
         {
-            Gold = Int32.Parse(gold);
-        }
-
-        public void AdminSetLvl(int lvl)
-        {
-            Lvl = lvl;
+            _gold = Int32.Parse(gold);
         }
 
         public void AdminSetLvl(string lvl)
         {
-            Lvl = Int32.Parse(lvl);
-        }
-
-        public void AdminSetDmgMin(int dmg)
-        {
-            DmgMin = dmg;
+            _lvl = Int32.Parse(lvl);
         }
 
         public void AdminSetDmgMin(string dmg)
         {
-            DmgMin = Int32.Parse(dmg);
-        }
-
-        public void AdminSetDmgMax(int dmg)
-        {
-            DmgMax = dmg;
+            _dmgMin = Int32.Parse(dmg);
         }
 
         public void AdminSetDmgMax(string dmg)
         {
-            DmgMax = Int32.Parse(dmg);
-        }
-
-        public void AdminSetDef(int def)
-        {
-            Def = def;
+            _dmgMax = Int32.Parse(dmg);
         }
 
         public void AdminSetDef(string def)
         {
-            Def = Int32.Parse(def);
-        }
-
-        public void AdminSetHealth(int health)
-        {
-            HealthMax = health;
-            Health = health;
+            _def = Int32.Parse(def);
         }
 
         public void AdminSetHealth(string health)
         {
             var healthAsInt = Int32.Parse(health);
-            HealthMax = healthAsInt;
-            Health = healthAsInt;
+            _healthMax = healthAsInt;
+            _health = healthAsInt;
         }
     }
 }

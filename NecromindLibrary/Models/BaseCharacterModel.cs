@@ -24,7 +24,7 @@ namespace NecromindLibrary.Models
         /// <summary>
         /// How much gold the character has.
         /// </summary>
-        private int _gold;
+        protected int _gold;
 
         public int Gold
         {
@@ -32,14 +32,14 @@ namespace NecromindLibrary.Models
             protected set
             {
                 _gold = value;
-                OnPropertyChanged("Gold");
+                OnPropertyChanged();
             }
         }
 
         /// <summary>
         /// On which level the character is.
         /// </summary>
-        private int _lvl;
+        protected int _lvl;
 
         public int Lvl
         {
@@ -47,7 +47,7 @@ namespace NecromindLibrary.Models
             protected set
             {
                 _lvl = value;
-                OnPropertyChanged("Lvl");
+                OnPropertyChanged();
             }
         }
 
