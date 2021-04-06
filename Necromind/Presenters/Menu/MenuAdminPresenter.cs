@@ -32,7 +32,7 @@ namespace Necromind.Presenters.Menu
                 );
         }
 
-        public void SaveAdmin()
+        private void SaveAdmin()
         {
             _mongoConnector.TryCreateNewRecord(
                 DBConfig.AdminsCollection,
