@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Configuration;
+﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
-using MongoDB.Bson;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
 
 namespace NecromindLibrary.Repository
 {
@@ -30,13 +30,12 @@ namespace NecromindLibrary.Repository
         }
 
         /// <summary>
-        /// Creates a new record in the given collection.
+        /// Tries to creates a new record in the given collection.
         /// </summary>
         /// <typeparam name="T">Custom type.</typeparam>
         /// <param name="collectionName">Name of collection.</param>
         /// <param name="record">The object to be added.</param>
         /// <returns>True if insertion is successful. False otherwise.</returns>
-        /// Alternative return: An automatically generated Guid for the record OR an empty one upon some DB error.
         public bool TryCreateNewRecord<T>(string collectionName, T record)
         {
             var collection = _DB.GetCollection<T>(collectionName);
@@ -45,15 +44,21 @@ namespace NecromindLibrary.Repository
             {
                 collection.InsertOne(record);
                 return true;
-                //return record.ToBsonDocument().GetElement("_id").Value.AsGuid.ToString();
             }
             catch (MongoException)
             {
                 return false;
-                //return "00000000-0000-0000-0000-000000000000";
             }
         }
 
+        /// <summary>
+        /// Tries to upsert a record by ID in the given collection.
+        /// </summary>
+        /// <typeparam name="T">Custom type.</typeparam>
+        /// <param name="collectionName">Name of collection.</param>
+        /// <param name="id">ID of the record.</param>
+        /// <param name="record">The object to be updated</param>
+        /// <returns>True if upsertion is successfull. False otherwise.</returns>
         public bool TryUpsertRecord<T>(string collectionName, Guid id, T record)
         {
             var collection = _DB.GetCollection<T>(collectionName);
@@ -68,11 +73,10 @@ namespace NecromindLibrary.Repository
             {
                 return false;
             }
-
         }
 
         /// <summary>
-        /// Deletes a record from the database by ID.
+        /// Tries to delete a record by ID in the given collection.
         /// </summary>
         /// <param name="id">ID of record.</param>
         /// <returns>True if successfully deleted. False otherwise.</returns>
@@ -105,7 +109,7 @@ namespace NecromindLibrary.Repository
         }
 
         /// <summary>
-        /// Gets a single record from the database by ID.
+        /// Gets a single record from the collection by ID.
         /// </summary>
         /// <param name="id">ID of record.</param>
         /// <returns>Returns the record.</returns>
