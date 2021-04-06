@@ -118,15 +118,6 @@ namespace NecromindUI.Presenters.Admin
 
         private void SetEditEnemyProperties()
         {
-            // TODO - inputs stay as default after "_enemy.AdminSetLvl(_adminEnemies.EditLvl);"
-            // by taking all inputs as variables first then everything works properly
-            //var lvl = _adminEnemies.EditLvl;
-            //var gold = _adminEnemies.EditGold;
-            //var dmgMin = _adminEnemies.EditDmgMin;
-            //var dmgMax = _adminEnemies.EditDmgMax;
-            //var def = _adminEnemies.EditDef;
-            //var health = _adminEnemies.EditHealth;
-
             _enemy.AdminSetName(_adminEnemies.EditName);
             _enemy.AdminSetLvl(_adminEnemies.EditLvl);
             _enemy.AdminSetGold(_adminEnemies.EditGold);
