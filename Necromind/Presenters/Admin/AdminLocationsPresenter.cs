@@ -54,6 +54,7 @@ namespace NecromindUI.Presenters.Admin
                 _adminLocations.EditName = _location.Name;
                 _adminLocations.EditDescription = _location.Description;
                 _adminLocations.CbEditIsHostile = _location.IsHostile;
+                _adminLocations.CbEditIsAccessible = _location.IsAccessible;
                 LoadSelectedEnemies();
                 ClearEditSelections();
             }
@@ -237,6 +238,7 @@ namespace NecromindUI.Presenters.Admin
             _adminLocations.CreateName = "";
             _adminLocations.CreateDescription = "";
             _adminLocations.CbCreateIsHostile = false;
+            _adminLocations.CbEditIsAccessible = false;
         }
 
         private void ClearEditFields()
@@ -244,6 +246,7 @@ namespace NecromindUI.Presenters.Admin
             _adminLocations.EditName = "";
             _adminLocations.EditDescription = "";
             _adminLocations.CbEditIsHostile = false;
+            _adminLocations.CbEditIsAccessible = false;
         }
 
         private void AlertCreateSuccess(string msg)
@@ -322,6 +325,7 @@ namespace NecromindUI.Presenters.Admin
             _location.Name = _adminLocations.CreateName;
             _location.Description = _adminLocations.CreateDescription;
             _location.IsHostile = _adminLocations.CbCreateIsHostile;
+            _location.IsAccessible = _adminLocations.CbCreateIsAccessible;
 
             AddEnemiesToLocation(_createAddedEnemies);
         }
@@ -331,6 +335,7 @@ namespace NecromindUI.Presenters.Admin
             _location.Name = _adminLocations.EditName;
             _location.Description = _adminLocations.EditDescription;
             _location.IsHostile = _adminLocations.CbEditIsHostile;
+            _location.IsAccessible = _adminLocations.CbEditIsAccessible;
 
             _location.Enemies.Clear();
 

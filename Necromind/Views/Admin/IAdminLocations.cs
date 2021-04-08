@@ -11,6 +11,8 @@ namespace NecromindUI.Views.Admin
         string EditDescription { get; set; }
         bool CbCreateIsHostile { get; set; }
         bool CbEditIsHostile { get; set; }
+        bool CbCreateIsAccessible { get; set; }
+        bool CbEditIsAccessible { get; set; }
         bool PanCreateEnemies { get; set; }
         bool PanEditEnemies { get; set; }
         ListBox Locations { get; }

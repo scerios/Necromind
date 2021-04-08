@@ -31,6 +31,8 @@ namespace NecromindUI.UserControls.Admin
         {
             this.components = new System.ComponentModel.Container();
             this.panCreate = new System.Windows.Forms.Panel();
+            this.cbCreateIsAccessible = new System.Windows.Forms.CheckBox();
+            this.labIsAccessibleL = new System.Windows.Forms.Label();
             this.panCreateEnemies = new System.Windows.Forms.Panel();
             this.btnCreateRemove = new System.Windows.Forms.Button();
             this.btnCreateAdd = new System.Windows.Forms.Button();
@@ -46,6 +48,8 @@ namespace NecromindUI.UserControls.Admin
             this.labNameL = new System.Windows.Forms.Label();
             this.panDivider = new System.Windows.Forms.Panel();
             this.panEdit = new System.Windows.Forms.Panel();
+            this.cbEditIsAccessible = new System.Windows.Forms.CheckBox();
+            this.labIsAccessibleR = new System.Windows.Forms.Label();
             this.panEditEnemies = new System.Windows.Forms.Panel();
             this.btnEditRemove = new System.Windows.Forms.Button();
             this.btnEditAdd = new System.Windows.Forms.Button();
@@ -71,6 +75,8 @@ namespace NecromindUI.UserControls.Admin
             // 
             // panCreate
             // 
+            this.panCreate.Controls.Add(this.cbCreateIsAccessible);
+            this.panCreate.Controls.Add(this.labIsAccessibleL);
             this.panCreate.Controls.Add(this.panCreateEnemies);
             this.panCreate.Controls.Add(this.cbCreateIsHostile);
             this.panCreate.Controls.Add(this.labEnemyAdd);
@@ -85,6 +91,25 @@ namespace NecromindUI.UserControls.Admin
             this.panCreate.Name = "panCreate";
             this.panCreate.Size = new System.Drawing.Size(540, 471);
             this.panCreate.TabIndex = 0;
+            // 
+            // cbCreateIsAccessible
+            // 
+            this.cbCreateIsAccessible.AutoSize = true;
+            this.cbCreateIsAccessible.Location = new System.Drawing.Point(365, 182);
+            this.cbCreateIsAccessible.Name = "cbCreateIsAccessible";
+            this.cbCreateIsAccessible.Size = new System.Drawing.Size(15, 14);
+            this.cbCreateIsAccessible.TabIndex = 52;
+            this.cbCreateIsAccessible.UseVisualStyleBackColor = true;
+            // 
+            // labIsAccessibleL
+            // 
+            this.labIsAccessibleL.AutoSize = true;
+            this.labIsAccessibleL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labIsAccessibleL.Location = new System.Drawing.Point(231, 180);
+            this.labIsAccessibleL.Name = "labIsAccessibleL";
+            this.labIsAccessibleL.Size = new System.Drawing.Size(96, 16);
+            this.labIsAccessibleL.TabIndex = 51;
+            this.labIsAccessibleL.Text = "Accessible?";
             // 
             // panCreateEnemies
             // 
@@ -161,7 +186,7 @@ namespace NecromindUI.UserControls.Admin
             // cbCreateIsHostile
             // 
             this.cbCreateIsHostile.AutoSize = true;
-            this.cbCreateIsHostile.Location = new System.Drawing.Point(185, 182);
+            this.cbCreateIsHostile.Location = new System.Drawing.Point(158, 182);
             this.cbCreateIsHostile.Name = "cbCreateIsHostile";
             this.cbCreateIsHostile.Size = new System.Drawing.Size(15, 14);
             this.cbCreateIsHostile.TabIndex = 49;
@@ -262,6 +287,8 @@ namespace NecromindUI.UserControls.Admin
             // 
             // panEdit
             // 
+            this.panEdit.Controls.Add(this.cbEditIsAccessible);
+            this.panEdit.Controls.Add(this.labIsAccessibleR);
             this.panEdit.Controls.Add(this.panEditEnemies);
             this.panEdit.Controls.Add(this.cbEditIsHostile);
             this.panEdit.Controls.Add(this.labEnemyEdit);
@@ -278,6 +305,25 @@ namespace NecromindUI.UserControls.Admin
             this.panEdit.Name = "panEdit";
             this.panEdit.Size = new System.Drawing.Size(540, 471);
             this.panEdit.TabIndex = 2;
+            // 
+            // cbEditIsAccessible
+            // 
+            this.cbEditIsAccessible.AutoSize = true;
+            this.cbEditIsAccessible.Location = new System.Drawing.Point(505, 182);
+            this.cbEditIsAccessible.Name = "cbEditIsAccessible";
+            this.cbEditIsAccessible.Size = new System.Drawing.Size(15, 14);
+            this.cbEditIsAccessible.TabIndex = 56;
+            this.cbEditIsAccessible.UseVisualStyleBackColor = true;
+            // 
+            // labIsAccessibleR
+            // 
+            this.labIsAccessibleR.AutoSize = true;
+            this.labIsAccessibleR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labIsAccessibleR.Location = new System.Drawing.Point(367, 180);
+            this.labIsAccessibleR.Name = "labIsAccessibleR";
+            this.labIsAccessibleR.Size = new System.Drawing.Size(96, 16);
+            this.labIsAccessibleR.TabIndex = 55;
+            this.labIsAccessibleR.Text = "Accessible?";
             // 
             // panEditEnemies
             // 
@@ -354,7 +400,7 @@ namespace NecromindUI.UserControls.Admin
             // cbEditIsHostile
             // 
             this.cbEditIsHostile.AutoSize = true;
-            this.cbEditIsHostile.Location = new System.Drawing.Point(345, 182);
+            this.cbEditIsHostile.Location = new System.Drawing.Point(307, 182);
             this.cbEditIsHostile.Name = "cbEditIsHostile";
             this.cbEditIsHostile.Size = new System.Drawing.Size(15, 14);
             this.cbEditIsHostile.TabIndex = 53;
@@ -540,5 +586,9 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.Button btnEditAdd;
         private System.Windows.Forms.ListBox lbEditAddedEnemies;
         private System.Windows.Forms.ListBox lbEditEnemies;
+        private System.Windows.Forms.CheckBox cbCreateIsAccessible;
+        private System.Windows.Forms.Label labIsAccessibleL;
+        private System.Windows.Forms.CheckBox cbEditIsAccessible;
+        private System.Windows.Forms.Label labIsAccessibleR;
     }
 }

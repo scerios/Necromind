@@ -69,6 +69,26 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
+        public bool CbCreateIsAccessible
+        {
+            get => cbCreateIsAccessible.Checked;
+
+            set
+            {
+                cbCreateIsAccessible.Checked = value;
+            }
+        }
+
+        public bool CbEditIsAccessible
+        {
+            get => cbEditIsAccessible.Checked;
+
+            set
+            {
+                cbEditIsAccessible.Checked = value;
+            }
+        }
+
         public bool PanCreateEnemies
         {
             get => panCreateEnemies.Visible;
