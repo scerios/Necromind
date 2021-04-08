@@ -26,6 +26,11 @@ namespace NecromindLibrary.Models
         public string Description { get; set; }
 
         /// <summary>
+        /// True if player can move to this location. False otherwise.
+        /// </summary>
+        public bool IsAccessible { get; set; }
+
+        /// <summary>
         /// True if location can spawn enemies.
         /// </summary>
         public bool IsHostile { get; set; }
