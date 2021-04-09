@@ -31,18 +31,18 @@ namespace NecromindUI.Presenters.Admin
 
         public void GetSelectedHeroStats()
         {
-            var selectedIndex = _adminHeroes.Heroes.SelectedIndex;
+            var selectedIndex = _adminHeroes.LbHeroes.SelectedIndex;
 
             if (selectedIndex >= 0)
             {
                 _hero = _heroes[selectedIndex];
-                _adminHeroes.HeroName = _hero.Name;
-                _adminHeroes.Lvl = _hero.Lvl.ToString();
-                _adminHeroes.Gold = _hero.Gold.ToString();
-                _adminHeroes.DmgMin = _hero.DmgMin.ToString();
-                _adminHeroes.DmgMax = _hero.DmgMax.ToString();
-                _adminHeroes.Def = _hero.Def.ToString();
-                _adminHeroes.Health = _hero.HealthMax.ToString();
+                _adminHeroes.LabName = _hero.Name;
+                _adminHeroes.TbLvl = _hero.Lvl.ToString();
+                _adminHeroes.TbGold = _hero.Gold.ToString();
+                _adminHeroes.TbDmgMin = _hero.DmgMin.ToString();
+                _adminHeroes.TbDmgMax = _hero.DmgMax.ToString();
+                _adminHeroes.TbDef = _hero.Def.ToString();
+                _adminHeroes.TbHealth = _hero.HealthMax.ToString();
             }
         }
 
@@ -62,12 +62,12 @@ namespace NecromindUI.Presenters.Admin
 
         private void SetHeroProperties()
         {
-            _hero.AdminSetLvl(_adminHeroes.Lvl);
-            _hero.AdminSetGold(_adminHeroes.Gold);
-            _hero.AdminSetDmgMin(_adminHeroes.DmgMin);
-            _hero.AdminSetDmgMax(_adminHeroes.DmgMax);
-            _hero.AdminSetDef(_adminHeroes.Def);
-            _hero.AdminSetHealth(_adminHeroes.Health);
+            _hero.AdminSetLvl(_adminHeroes.TbLvl);
+            _hero.AdminSetGold(_adminHeroes.TbGold);
+            _hero.AdminSetDmgMin(_adminHeroes.TbDmgMin);
+            _hero.AdminSetDmgMax(_adminHeroes.TbDmgMax);
+            _hero.AdminSetDef(_adminHeroes.TbDef);
+            _hero.AdminSetHealth(_adminHeroes.TbHealth);
         }
 
         private void AlertSuccess(string name)
@@ -94,26 +94,26 @@ namespace NecromindUI.Presenters.Admin
         private void BindHeroes()
         {
             _bsHeroes.DataSource = _heroes;
-            _adminHeroes.Heroes.DataSource = _bsHeroes;
-            _adminHeroes.Heroes.DisplayMember = "Name";
+            _adminHeroes.LbHeroes.DataSource = _bsHeroes;
+            _adminHeroes.LbHeroes.DisplayMember = "Name";
         }
 
         private void ClearEditFields()
         {
-            _adminHeroes.HeroName = "";
-            _adminHeroes.Lvl = "";
-            _adminHeroes.Gold = "";
-            _adminHeroes.DmgMin = "";
-            _adminHeroes.DmgMax = "";
-            _adminHeroes.Def = "";
-            _adminHeroes.Health = "";
+            _adminHeroes.LabName = "";
+            _adminHeroes.TbLvl = "";
+            _adminHeroes.TbGold = "";
+            _adminHeroes.TbDmgMin = "";
+            _adminHeroes.TbDmgMax = "";
+            _adminHeroes.TbDef = "";
+            _adminHeroes.TbHealth = "";
         }
 
         private void UpdateUIAfterEdit()
         {
             AlertSuccess(_hero.Name);
             _bsHeroes.ResetBindings(false);
-            _adminHeroes.Heroes.ClearSelected();
+            _adminHeroes.LbHeroes.ClearSelected();
             ClearEditFields();
         }
     }

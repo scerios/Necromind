@@ -9,7 +9,7 @@ namespace NecromindUI.UserControls.Admin
     {
         private readonly AdminEnemiesPresenter _presenter;
 
-        public string CreateName
+        public string TbCreateName
         {
             get => tbCreateName.Text;
             set
@@ -18,7 +18,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string EditName
+        public string TbEditName
         {
             get => tbEditName.Text;
             set
@@ -27,7 +27,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string CreateLvl
+        public string TbCreateLvl
         {
             get => tbCreateLvl.Text;
 
@@ -37,7 +37,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string EditLvl
+        public string TbEditLvl
         {
             get => tbEditLvl.Text;
 
@@ -47,7 +47,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string CreateGold
+        public string TbCreateGold
         {
             get => tbCreateGold.Text;
 
@@ -57,7 +57,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string EditGold
+        public string TbEditGold
         {
             get => tbEditGold.Text;
 
@@ -67,7 +67,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string CreateDmgMin
+        public string TbCreateDmgMin
         {
             get => tbCreateDmgMin.Text;
 
@@ -77,7 +77,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string EditDmgMin
+        public string TbEditDmgMin
         {
             get => tbEditDmgMin.Text;
 
@@ -87,7 +87,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string CreateDmgMax
+        public string TbCreateDmgMax
         {
             get => tbCreateDmgMax.Text;
 
@@ -97,7 +97,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string EditDmgMax
+        public string TbEditDmgMax
         {
             get => tbEditDmgMax.Text;
 
@@ -107,7 +107,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string CreateDef
+        public string TbCreateDef
         {
             get => tbCreateDef.Text;
 
@@ -117,7 +117,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string EditDef
+        public string TbEditDef
         {
             get => tbEditDef.Text;
 
@@ -127,7 +127,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string CreateHealth
+        public string TbCreateHealth
         {
             get => tbCreateHealth.Text;
 
@@ -137,7 +137,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string EditHealth
+        public string TbEditHealth
         {
             get => tbEditHealth.Text;
 
@@ -147,7 +147,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public ListBox Enemies
+        public ListBox LbEnemies
         {
             get => lbEnemies;
         }

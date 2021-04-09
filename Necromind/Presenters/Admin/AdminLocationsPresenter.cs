@@ -46,13 +46,13 @@ namespace NecromindUI.Presenters.Admin
 
         public void GetSelectedLocationStats()
         {
-            var selectedIndex = _adminLocations.Locations.SelectedIndex;
+            var selectedIndex = _adminLocations.LbLocations.SelectedIndex;
 
             if (selectedIndex >= 0)
             {
                 _location = _locations[selectedIndex];
-                _adminLocations.EditName = _location.Name;
-                _adminLocations.EditDescription = _location.Description;
+                _adminLocations.TbEditName = _location.Name;
+                _adminLocations.TbEditDescription = _location.Description;
                 _adminLocations.CbEditIsHostile = _location.IsHostile;
                 _adminLocations.CbEditIsAccessible = _location.IsAccessible;
                 LoadSelectedEnemies();
@@ -102,7 +102,7 @@ namespace NecromindUI.Presenters.Admin
 
         public void CreateAdd()
         {
-            var enemy = (EnemyModel)_adminLocations.CreateEnemies.SelectedItem;
+            var enemy = (EnemyModel)_adminLocations.LbCreateEnemies.SelectedItem;
 
             _createEnemies.Remove(enemy);
             _bsCreateEnemies.ResetBindings(false);
@@ -114,7 +114,7 @@ namespace NecromindUI.Presenters.Admin
 
         public void CreateRemove()
         {
-            var enemy = (EnemyModel)_adminLocations.CreateAddedEnemies.SelectedItem;
+            var enemy = (EnemyModel)_adminLocations.LbCreateAddedEnemies.SelectedItem;
 
             _createAddedEnemies.Remove(enemy);
             _bsCreateAddedEnemies.ResetBindings(false);
@@ -126,7 +126,7 @@ namespace NecromindUI.Presenters.Admin
 
         public void EditAdd()
         {
-            var enemy = (EnemyModel)_adminLocations.EditEnemies.SelectedItem;
+            var enemy = (EnemyModel)_adminLocations.LbEditEnemies.SelectedItem;
 
             _editEnemies.Remove(enemy);
             _bsEditEnemies.ResetBindings(false);
@@ -138,7 +138,7 @@ namespace NecromindUI.Presenters.Admin
 
         public void EditRemove()
         {
-            var enemy = (EnemyModel)_adminLocations.EditAddedEnemies.SelectedItem;
+            var enemy = (EnemyModel)_adminLocations.LbEditAddedEnemies.SelectedItem;
 
             _editAddedEnemies.Remove(enemy);
             _bsEditAddedEnemies.ResetBindings(false);
@@ -163,37 +163,37 @@ namespace NecromindUI.Presenters.Admin
         private void BindLocations()
         {
             _bsLocations.DataSource = _locations;
-            _adminLocations.Locations.DataSource = _bsLocations;
-            _adminLocations.Locations.DisplayMember = "Name";
+            _adminLocations.LbLocations.DataSource = _bsLocations;
+            _adminLocations.LbLocations.DisplayMember = "Name";
         }
 
         private void BindCreateEnemies()
         {
             _createEnemies = _enemies;
             _bsCreateEnemies.DataSource = _createEnemies;
-            _adminLocations.CreateEnemies.DataSource = _bsCreateEnemies;
-            _adminLocations.CreateEnemies.DisplayMember = _combinedName;
+            _adminLocations.LbCreateEnemies.DataSource = _bsCreateEnemies;
+            _adminLocations.LbCreateEnemies.DisplayMember = _combinedName;
         }
 
         private void BindCreateEnemiesAdded()
         {
             _bsCreateAddedEnemies.DataSource = _createAddedEnemies;
-            _adminLocations.CreateAddedEnemies.DataSource = _bsCreateAddedEnemies;
-            _adminLocations.CreateAddedEnemies.DisplayMember = _combinedName;
+            _adminLocations.LbCreateAddedEnemies.DataSource = _bsCreateAddedEnemies;
+            _adminLocations.LbCreateAddedEnemies.DisplayMember = _combinedName;
         }
 
         private void BindEditEnemies()
         {
             _bsEditEnemies.DataSource = _editEnemies;
-            _adminLocations.EditEnemies.DataSource = _bsEditEnemies;
-            _adminLocations.EditEnemies.DisplayMember = _combinedName;
+            _adminLocations.LbEditEnemies.DataSource = _bsEditEnemies;
+            _adminLocations.LbEditEnemies.DisplayMember = _combinedName;
         }
 
         private void BindEditEnemiesAdded()
         {
             _bsEditAddedEnemies.DataSource = _editAddedEnemies;
-            _adminLocations.EditAddedEnemies.DataSource = _bsEditAddedEnemies;
-            _adminLocations.EditAddedEnemies.DisplayMember = _combinedName;
+            _adminLocations.LbEditAddedEnemies.DataSource = _bsEditAddedEnemies;
+            _adminLocations.LbEditAddedEnemies.DisplayMember = _combinedName;
         }
 
         private void LoadAllLocations()
@@ -218,33 +218,33 @@ namespace NecromindUI.Presenters.Admin
 
         private void ClearLocationSelection()
         {
-            _adminLocations.Locations.ClearSelected();
+            _adminLocations.LbLocations.ClearSelected();
         }
 
         private void ClearCreateSelections()
         {
-            _adminLocations.CreateEnemies.ClearSelected();
-            _adminLocations.CreateAddedEnemies.ClearSelected();
+            _adminLocations.LbCreateEnemies.ClearSelected();
+            _adminLocations.LbCreateAddedEnemies.ClearSelected();
         }
 
         private void ClearEditSelections()
         {
-            _adminLocations.EditEnemies.ClearSelected();
-            _adminLocations.EditAddedEnemies.ClearSelected();
+            _adminLocations.LbEditEnemies.ClearSelected();
+            _adminLocations.LbEditAddedEnemies.ClearSelected();
         }
 
         private void ClearCreateFields()
         {
-            _adminLocations.CreateName = "";
-            _adminLocations.CreateDescription = "";
+            _adminLocations.TbCreateName = "";
+            _adminLocations.TbCreateDescription = "";
             _adminLocations.CbCreateIsHostile = false;
             _adminLocations.CbEditIsAccessible = false;
         }
 
         private void ClearEditFields()
         {
-            _adminLocations.EditName = "";
-            _adminLocations.EditDescription = "";
+            _adminLocations.TbEditName = "";
+            _adminLocations.TbEditDescription = "";
             _adminLocations.CbEditIsHostile = false;
             _adminLocations.CbEditIsAccessible = false;
         }
@@ -322,8 +322,8 @@ namespace NecromindUI.Presenters.Admin
         private void SetCreateLocationProperties()
         {
             _location = new LocationModel();
-            _location.Name = _adminLocations.CreateName;
-            _location.Description = _adminLocations.CreateDescription;
+            _location.Name = _adminLocations.TbCreateName;
+            _location.Description = _adminLocations.TbCreateDescription;
             _location.IsHostile = _adminLocations.CbCreateIsHostile;
             _location.IsAccessible = _adminLocations.CbCreateIsAccessible;
 
@@ -332,8 +332,8 @@ namespace NecromindUI.Presenters.Admin
 
         private void SetEditLocationProperties()
         {
-            _location.Name = _adminLocations.EditName;
-            _location.Description = _adminLocations.EditDescription;
+            _location.Name = _adminLocations.TbEditName;
+            _location.Description = _adminLocations.TbEditDescription;
             _location.IsHostile = _adminLocations.CbEditIsHostile;
             _location.IsAccessible = _adminLocations.CbEditIsAccessible;
 
@@ -369,7 +369,7 @@ namespace NecromindUI.Presenters.Admin
         {
             AlertEditSuccess($"{ _location.Name } edited successfully!");
 
-            _locations[_adminLocations.Locations.SelectedIndex].Name = _location.Name;
+            _locations[_adminLocations.LbLocations.SelectedIndex].Name = _location.Name;
             _bsLocations.ResetBindings(false);
 
             ClearEditFields();

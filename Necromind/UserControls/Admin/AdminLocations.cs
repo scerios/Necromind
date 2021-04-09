@@ -9,7 +9,7 @@ namespace NecromindUI.UserControls.Admin
     {
         private readonly AdminLocationsPresenter _presenter;
 
-        public string CreateName
+        public string TbCreateName
         {
             get => tbCreateName.Text;
 
@@ -19,7 +19,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string EditName
+        public string TbEditName
         {
             get => tbEditName.Text;
 
@@ -29,7 +29,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string CreateDescription
+        public string TbCreateDescription
         {
             get => tbCreateDescription.Text;
 
@@ -39,7 +39,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string EditDescription
+        public string TbEditDescription
         {
             get => tbEditDescription.Text;
 
@@ -107,27 +107,27 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public ListBox Locations
+        public ListBox LbLocations
         {
             get => lbLocations;
         }
 
-        public ListBox CreateEnemies
+        public ListBox LbCreateEnemies
         {
             get => lbCreateEnemies;
         }
 
-        public ListBox CreateAddedEnemies
+        public ListBox LbCreateAddedEnemies
         {
             get => lbCreateAddedEnemies;
         }
 
-        public ListBox EditEnemies
+        public ListBox LbEditEnemies
         {
             get => lbEditEnemies;
         }
 
-        public ListBox EditAddedEnemies
+        public ListBox LbEditAddedEnemies
         {
             get => lbEditAddedEnemies;
         }

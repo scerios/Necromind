@@ -9,7 +9,7 @@ namespace NecromindUI.UserControls.Admin
     {
         private readonly AdminHeroesPresenter _presenter;
 
-        public string HeroName
+        public string LabName
         {
             get => labNameValue.Text;
             set
@@ -18,7 +18,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string Lvl
+        public string TbLvl
         {
             get => tbLvl.Text;
 
@@ -28,7 +28,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string Gold
+        public string TbGold
         {
             get => tbGold.Text;
 
@@ -38,7 +38,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string DmgMin
+        public string TbDmgMin
         {
             get => tbDmgMin.Text;
 
@@ -48,7 +48,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string DmgMax
+        public string TbDmgMax
         {
             get => tbDmgMax.Text;
 
@@ -58,7 +58,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string Def
+        public string TbDef
         {
             get => tbDef.Text;
 
@@ -68,7 +68,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string Health
+        public string TbHealth
         {
             get => tbHealth.Text;
 
@@ -78,7 +78,7 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public ListBox Heroes
+        public ListBox LbHeroes
         {
             get => lbHeroes;
         }

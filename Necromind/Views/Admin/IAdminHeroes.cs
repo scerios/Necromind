@@ -4,14 +4,14 @@ namespace NecromindUI.Views.Admin
 {
     public interface IAdminHeroes
     {
-        string HeroName { get; set; }
-        string Lvl { get; set; }
-        string Gold { get; set; }
-        string DmgMin { get; set; }
-        string DmgMax { get; set; }
-        string Def { get; set; }
-        string Health { get; set; }
-        ListBox Heroes { get; }
+        string LabName { get; set; }
+        string TbLvl { get; set; }
+        string TbGold { get; set; }
+        string TbDmgMin { get; set; }
+        string TbDmgMax { get; set; }
+        string TbDef { get; set; }
+        string TbHealth { get; set; }
+        ListBox LbHeroes { get; }
         Timer TimHide { get; }
         Label LabHeroEdit { get; }
     }

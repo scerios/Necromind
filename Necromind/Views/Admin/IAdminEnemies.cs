@@ -5,21 +5,21 @@ namespace NecromindUI.Views.Admin
 {
     public interface IAdminEnemies
     {
-        string CreateName { get; set; }
-        string EditName { get; set; }
-        string CreateLvl { get; set; }
-        string EditLvl { get; set; }
-        string CreateGold { get; set; }
-        string EditGold { get; set; }
-        string CreateDmgMin { get; set; }
-        string EditDmgMin { get; set; }
-        string CreateDmgMax { get; set; }
-        string EditDmgMax { get; set; }
-        string CreateDef { get; set; }
-        string EditDef { get; set; }
-        string CreateHealth { get; set; }
-        string EditHealth { get; set; }
-        ListBox Enemies { get; }
+        string TbCreateName { get; set; }
+        string TbEditName { get; set; }
+        string TbCreateLvl { get; set; }
+        string TbEditLvl { get; set; }
+        string TbCreateGold { get; set; }
+        string TbEditGold { get; set; }
+        string TbCreateDmgMin { get; set; }
+        string TbEditDmgMin { get; set; }
+        string TbCreateDmgMax { get; set; }
+        string TbEditDmgMax { get; set; }
+        string TbCreateDef { get; set; }
+        string TbEditDef { get; set; }
+        string TbCreateHealth { get; set; }
+        string TbEditHealth { get; set; }
+        ListBox LbEnemies { get; }
         Timer TimHideCreate { get; }
         Timer TimHideEdit { get; }
         Label LabEnemyCreate { get; }
