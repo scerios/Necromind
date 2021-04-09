@@ -195,17 +195,20 @@ namespace NecromindUI.UserControls.Admin
 
         private void BtnCreate_Click(object sender, EventArgs e)
         {
-            _presenter.CreateLocation();
+            if (_presenter.AreCreateFieldsValid())
+                _presenter.CreateLocation();
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            _presenter.EditLocation();
+            if (_presenter.IsLocationSelected() && _presenter.AreEditFieldsValid())
+                _presenter.EditLocation();
         }
 
         private void BtnDel_Click(object sender, EventArgs e)
         {
-            _presenter.DeleteLocation();
+            if (_presenter.IsLocationSelected() && _presenter.AreEditFieldsValid())
+                _presenter.DeleteLocation();
         }
 
         private void TimHideAdd_Tick(object sender, EventArgs e)

@@ -37,9 +37,9 @@ namespace NecromindUI.Presenters.Admin
 
         public void LoadData()
         {
-            LoadAllLocations();
-            LoadAllEnemies();
-            BindAllLists();
+            LoadLocations();
+            LoadEnemies();
+            BindLists();
             ClearLocationSelection();
             ClearEditFields();
         }
@@ -81,6 +81,7 @@ namespace NecromindUI.Presenters.Admin
             if (_mongoConnector.TryUpsertRecord(DBConfig.LocationsCollection, _location.Id, _location))
             {
                 UpdateUIAfterEdit();
+                ClearLocation();
             }
             else
             {
@@ -93,6 +94,7 @@ namespace NecromindUI.Presenters.Admin
             if (_mongoConnector.TryDeleteRecordById<LocationModel>(DBConfig.LocationsCollection, _location.Id))
             {
                 UpdateUIAfterDelete();
+                ClearLocation();
             }
             else
             {
@@ -148,7 +150,22 @@ namespace NecromindUI.Presenters.Admin
             ClearEditSelections();
         }
 
-        private void BindAllLists()
+        public bool AreCreateFieldsValid()
+        {
+            return _adminLocations.TbCreateName.Length > 0 && _adminLocations.TbCreateDescription.Length > 0;
+        }
+
+        public bool AreEditFieldsValid()
+        {
+            return _adminLocations.TbEditName.Length > 0 && _adminLocations.TbEditDescription.Length > 0;
+        }
+
+        public bool IsLocationSelected()
+        {
+            return _location != null;
+        }
+
+        private void BindLists()
         {
             BindLocations();
             BindCreateEnemies();
@@ -196,12 +213,12 @@ namespace NecromindUI.Presenters.Admin
             _adminLocations.LbEditAddedEnemies.DisplayMember = _combinedName;
         }
 
-        private void LoadAllLocations()
+        private void LoadLocations()
         {
             _locations = _mongoConnector.GetAllRecords<LocationModel>(DBConfig.LocationsCollection);
         }
 
-        private void LoadAllEnemies()
+        private void LoadEnemies()
         {
             _enemies = _mongoConnector.GetAllRecords<EnemyModel>(DBConfig.EnemiesCollection);
         }
@@ -214,6 +231,11 @@ namespace NecromindUI.Presenters.Admin
             SetEditAddedEnemies();
 
             SetEditEnemiesBy(enemyIds.Where(i => !_enemyIds.Contains(i)));
+        }
+
+        private void ClearLocation()
+        {
+            _location = null;
         }
 
         private void ClearLocationSelection()
