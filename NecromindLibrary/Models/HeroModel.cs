@@ -96,6 +96,10 @@ namespace NecromindLibrary.Models
         public int LocationX
         {
             get => _locationX;
+            private set
+            {
+                _locationX = value;
+            }
         }
 
         private int _locationY;
@@ -104,6 +108,10 @@ namespace NecromindLibrary.Models
         public int LocationY
         {
             get => _locationY;
+            private set
+            {
+                _locationY = value;
+            }
         }
 
         public HeroModel(string name)
@@ -225,6 +233,26 @@ namespace NecromindLibrary.Models
             var healthAsInt = Int32.Parse(health);
             _healthMax = healthAsInt;
             _health = healthAsInt;
+        }
+
+        public void MoveNorth()
+        {
+            LocationY--;
+        }
+
+        public void MoveSouth()
+        {
+            LocationY++;
+        }
+
+        public void MoveEast()
+        {
+            LocationX--;
+        }
+
+        public void MoveWest()
+        {
+            LocationX++;
         }
     }
 }
