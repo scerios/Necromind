@@ -147,6 +147,7 @@
     <Compile Include="Config\UISettings.cs" />
     <Compile Include="GlobalConfig.cs" />
     <Compile Include="Models\AdminModel.cs" />
+    <Compile Include="Models\AreaModel.cs" />
     <Compile Include="Models\BaseCharacterModel.cs" />
     <Compile Include="Models\EnemyModel.cs" />
     <Compile Include="Models\HeroModel.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="Services\IConsumer.cs" />
     <Compile Include="Services\IFighter.cs" />
     <Compile Include="Services\ILevelable.cs" />
+    <Compile Include="Services\IMobile.cs" />
     <Compile Include="Services\IPlayer.cs" />
     <Compile Include="Services\ITrader.cs" />
     <Compile Include="Services\TextService.cs" />
