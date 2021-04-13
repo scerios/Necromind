@@ -1,4 +1,5 @@
-﻿using NecromindLibrary.Services;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using NecromindLibrary.Services;
 using System;
 
 namespace NecromindLibrary.Models
@@ -87,6 +88,22 @@ namespace NecromindLibrary.Models
                 _nextLvlAt = value;
                 OnPropertyChanged();
             }
+        }
+
+        private int _locationX;
+
+        [BsonIgnore]
+        public int LocationX
+        {
+            get => _locationX;
+        }
+
+        private int _locationY;
+
+        [BsonIgnore]
+        public int LocationY
+        {
+            get => _locationY;
         }
 
         public HeroModel(string name)
