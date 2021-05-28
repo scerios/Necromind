@@ -1,9 +1,6 @@
 ﻿using NecromindLibrary.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NecromindLibrary.Services
 {
@@ -17,5 +14,8 @@ namespace NecromindLibrary.Services
         /// <returns>True if given name is found. False otherwise.</returns>
         public static bool IsHeroNameAlreadyRegistered(List<HeroModel> heroes, string heroName) =>
             heroes.Find(h => h.Name == heroName) != null;
+
+        private static bool IsInputValidNumber(string input) =>
+            Int32.TryParse(input, out _);
     }
 }
