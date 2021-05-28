@@ -15,6 +15,9 @@ namespace NecromindLibrary.Services
         public static bool IsHeroNameAlreadyRegistered(List<HeroModel> heroes, string heroName) =>
             heroes.Find(h => h.Name == heroName) != null;
 
+        public static bool IsGreaterThanOrEqualToZero(string input) =>
+            IsInputValidNumber(input) && Int32.Parse(input) >= 0;
+
         private static bool IsInputValidNumber(string input) =>
             Int32.TryParse(input, out _);
     }
