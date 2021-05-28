@@ -78,6 +78,56 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
+        public bool LabLvlError
+        {
+            get => labLvlError.Visible;
+
+            set
+            {
+                labLvlError.Visible = value;
+            }
+        }
+
+        public bool LabGoldError
+        {
+            get => labGoldError.Visible;
+
+            set
+            {
+                labGoldError.Visible = value;
+            }
+        }
+
+        public bool LabDmgError
+        {
+            get => labDmgError.Visible;
+
+            set
+            {
+                labDmgError.Visible = value;
+            }
+        }
+
+        public bool LabDefError
+        {
+            get => labDefError.Visible;
+
+            set
+            {
+                labDefError.Visible = value;
+            }
+        }
+
+        public bool LabHealthError
+        {
+            get => labHealthError.Visible;
+
+            set
+            {
+                labHealthError.Visible = value;
+            }
+        }
+
         public ListBox LbHeroes
         {
             get => lbHeroes;
