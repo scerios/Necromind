@@ -21,6 +21,9 @@ namespace NecromindLibrary.Services
         public static bool IsGreaterThanZero(string input) =>
             IsInputValidNumber(input) && Int32.Parse(input) > 0;
 
+        public static bool IsFirstIsGreaterThanSecond(string first, string second) =>
+            (IsInputValidNumber(first) && IsInputValidNumber(second)) && Int32.Parse(first) > Int32.Parse(second);
+
         private static bool IsInputValidNumber(string input) =>
             Int32.TryParse(input, out _);
     }
