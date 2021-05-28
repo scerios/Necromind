@@ -47,6 +47,12 @@ namespace NecromindUI.UserControls.Admin
             this.labHeroEdit = new System.Windows.Forms.Label();
             this.timHide = new System.Windows.Forms.Timer(this.components);
             this.labNameValue = new System.Windows.Forms.Label();
+            this.labLvlError = new System.Windows.Forms.Label();
+            this.labGoldError = new System.Windows.Forms.Label();
+            this.labDmgError = new System.Windows.Forms.Label();
+            this.labDefError = new System.Windows.Forms.Label();
+            this.labHealthError = new System.Windows.Forms.Label();
+            this.labValidationInfo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbHeroes
@@ -231,11 +237,88 @@ namespace NecromindUI.UserControls.Admin
             this.labNameValue.TabIndex = 20;
             this.labNameValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // labLvlError
+            // 
+            this.labLvlError.AutoSize = true;
+            this.labLvlError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labLvlError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labLvlError.Location = new System.Drawing.Point(411, 65);
+            this.labLvlError.Name = "labLvlError";
+            this.labLvlError.Size = new System.Drawing.Size(240, 16);
+            this.labLvlError.TabIndex = 21;
+            this.labLvlError.Text = "Level must be greater than 0!";
+            this.labLvlError.Visible = false;
+            // 
+            // labGoldError
+            // 
+            this.labGoldError.AutoSize = true;
+            this.labGoldError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labGoldError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labGoldError.Location = new System.Drawing.Point(411, 95);
+            this.labGoldError.Name = "labGoldError";
+            this.labGoldError.Size = new System.Drawing.Size(328, 16);
+            this.labGoldError.TabIndex = 22;
+            this.labGoldError.Text = "Gold must be greater than or equal to 0!";
+            this.labGoldError.Visible = false;
+            // 
+            // labDmgError
+            // 
+            this.labDmgError.AutoSize = true;
+            this.labDmgError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labDmgError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labDmgError.Location = new System.Drawing.Point(411, 125);
+            this.labDmgError.Name = "labDmgError";
+            this.labDmgError.Size = new System.Drawing.Size(520, 16);
+            this.labDmgError.TabIndex = 23;
+            this.labDmgError.Text = "Damage min must be greater than 0, max must be greater than min!";
+            this.labDmgError.Visible = false;
+            // 
+            // labDefError
+            // 
+            this.labDefError.AutoSize = true;
+            this.labDefError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labDefError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labDefError.Location = new System.Drawing.Point(411, 155);
+            this.labDefError.Name = "labDefError";
+            this.labDefError.Size = new System.Drawing.Size(352, 16);
+            this.labDefError.TabIndex = 24;
+            this.labDefError.Text = "Defense must be greater than or equal to 0!";
+            this.labDefError.Visible = false;
+            // 
+            // labHealthError
+            // 
+            this.labHealthError.AutoSize = true;
+            this.labHealthError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labHealthError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labHealthError.Location = new System.Drawing.Point(411, 185);
+            this.labHealthError.Name = "labHealthError";
+            this.labHealthError.Size = new System.Drawing.Size(248, 16);
+            this.labHealthError.TabIndex = 25;
+            this.labHealthError.Text = "Health must be greater than 0!";
+            this.labHealthError.Visible = false;
+            // 
+            // labValidationInfo
+            // 
+            this.labValidationInfo.AutoSize = true;
+            this.labValidationInfo.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labValidationInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labValidationInfo.Location = new System.Drawing.Point(20, 223);
+            this.labValidationInfo.Name = "labValidationInfo";
+            this.labValidationInfo.Size = new System.Drawing.Size(320, 16);
+            this.labValidationInfo.TabIndex = 26;
+            this.labValidationInfo.Text = "All inputs must be valid whole numbers!";
+            // 
             // AdminHeroes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.Controls.Add(this.labValidationInfo);
+            this.Controls.Add(this.labHealthError);
+            this.Controls.Add(this.labDefError);
+            this.Controls.Add(this.labDmgError);
+            this.Controls.Add(this.labGoldError);
+            this.Controls.Add(this.labLvlError);
             this.Controls.Add(this.labNameValue);
             this.Controls.Add(this.labHeroEdit);
             this.Controls.Add(this.tbDmgMax);
@@ -280,5 +363,11 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.Label labHeroEdit;
         private System.Windows.Forms.Timer timHide;
         private System.Windows.Forms.Label labNameValue;
+        private System.Windows.Forms.Label labLvlError;
+        private System.Windows.Forms.Label labGoldError;
+        private System.Windows.Forms.Label labDmgError;
+        private System.Windows.Forms.Label labDefError;
+        private System.Windows.Forms.Label labHealthError;
+        private System.Windows.Forms.Label labValidationInfo;
     }
 }
