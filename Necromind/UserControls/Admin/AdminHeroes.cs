@@ -156,6 +156,7 @@ namespace NecromindUI.UserControls.Admin
 
         private void LbHeroes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            btnEdit.Enabled = LbHeroes.SelectedIndex > -1;
             _presenter.GetSelectedHeroStats();
         }
 

@@ -188,6 +188,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
             this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEdit.Enabled = false;
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.ForeColor = System.Drawing.Color.Black;
