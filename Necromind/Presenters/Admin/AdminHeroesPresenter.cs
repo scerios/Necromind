@@ -1,6 +1,7 @@
 ﻿using NecromindLibrary.Config;
 using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
+using NecromindLibrary.Services;
 using NecromindUI.Config;
 using NecromindUI.Views.Admin;
 using System;
@@ -58,6 +59,74 @@ namespace NecromindUI.Presenters.Admin
             {
                 AlertFail(_hero.Name);
             }
+        }
+
+        public bool AreInputsValid()
+        {
+            int errorCount = 0;
+
+            if (IsLvlInvalid())
+            {
+                errorCount++;
+            }
+
+            if (IsGoldInvalid())
+            {
+                errorCount++;
+            }
+
+            if (AreDmgInvalid())
+            {
+                errorCount++;
+            }
+
+            if (IsDefInvalid())
+            {
+                errorCount++;
+            }
+
+            if (IsHealthInvalid())
+            {
+                errorCount++;
+            }
+
+            return errorCount == 0;
+        }
+
+        private bool IsLvlInvalid()
+        {
+            _adminHeroes.LabLvlError = !ValidationService.IsGreaterThanZero(_adminHeroes.TbLvl);
+
+            return _adminHeroes.LabLvlError;
+        }
+
+        private bool IsGoldInvalid()
+        {
+            _adminHeroes.LabGoldError = !ValidationService.IsGreaterThanOrEqualToZero(_adminHeroes.TbGold);
+
+            return _adminHeroes.LabGoldError;
+        }
+
+        private bool AreDmgInvalid()
+        {
+            _adminHeroes.LabDmgError = !ValidationService.IsGreaterThanZero(_adminHeroes.TbDmgMin) &&
+                ValidationService.IsFirstIsGreaterThanSecond(_adminHeroes.TbDmgMax, _adminHeroes.TbDmgMin);
+
+            return _adminHeroes.LabDmgError;
+        }
+
+        private bool IsDefInvalid()
+        {
+            _adminHeroes.LabDefError = !ValidationService.IsGreaterThanOrEqualToZero(_adminHeroes.TbDef);
+
+            return _adminHeroes.LabDefError;
+        }
+
+        private bool IsHealthInvalid()
+        {
+            _adminHeroes.LabHealthError = !ValidationService.IsGreaterThanZero(_adminHeroes.TbHealth);
+
+            return _adminHeroes.LabHealthError;
         }
 
         private void SetHeroProperties()

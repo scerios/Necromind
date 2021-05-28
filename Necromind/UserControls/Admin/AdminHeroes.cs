@@ -161,7 +161,10 @@ namespace NecromindUI.UserControls.Admin
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            _presenter.EditHero();
+            if (_presenter.AreInputsValid())
+            {
+                _presenter.EditHero();
+            }
         }
 
         private void TimHide_Tick(object sender, EventArgs e)
