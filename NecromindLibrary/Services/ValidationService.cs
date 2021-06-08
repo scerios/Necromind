@@ -15,6 +15,11 @@ namespace NecromindLibrary.Services
         public static bool IsHeroNameAlreadyRegistered(List<HeroModel> heroes, string heroName) =>
             heroes.Find(h => h.Name == heroName) != null;
 
+        /// <summary>
+        /// Checks if given name's length is between 3 and 16 characters, also if first character is a letter.
+        /// </summary>
+        /// <param name="name">The name as a string.</param>
+        /// <returns>True if given name is valid. False otherwise.</returns>
         public static bool IsValidHeroName(string name) =>
             char.IsLetter(name[0]) && name.Length > 2 && name.Length < 17;
 
