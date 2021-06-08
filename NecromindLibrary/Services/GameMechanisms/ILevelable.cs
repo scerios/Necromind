@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NecromindLibrary.Services
+namespace NecromindLibrary.Services.GameMechanisms
 {
     /// <summary>
     /// Levelables can level up when their experience points reach the next-level-at goal.

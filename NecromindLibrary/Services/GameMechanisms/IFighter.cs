@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NecromindLibrary.Services
+namespace NecromindLibrary.Services.GameMechanisms
 {
     /// <summary>
     /// Fighters can attack, defend and have health points.

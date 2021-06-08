@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NecromindLibrary.Services
+namespace NecromindLibrary.Services.GameMechanisms
 {
     public interface IMobile
     {

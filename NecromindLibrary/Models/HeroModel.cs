@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using NecromindLibrary.Services;
+using NecromindLibrary.Services.GameMechanisms;
 using System;
 
 namespace NecromindLibrary.Models

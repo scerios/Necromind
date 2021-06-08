@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NecromindLibrary.Services
+namespace NecromindLibrary.Services.GameMechanisms
 {
     /// <summary>
     /// Consumers can consume items and can heal at certain points.
