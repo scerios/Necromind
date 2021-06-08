@@ -16,7 +16,7 @@ namespace NecromindLibrary.Services
             heroes.Find(h => h.Name == heroName) != null;
 
         public static bool IsValidHeroName(string name) =>
-            !char.IsDigit(name[0]) && name.Length > 2 && name.Length < 17;
+            char.IsLetter(name[0]) && name.Length > 2 && name.Length < 17;
 
         public static bool IsGreaterThanOrEqualToZero(string input) =>
             IsInputValidNumber(input) && Int32.Parse(input) >= 0;
