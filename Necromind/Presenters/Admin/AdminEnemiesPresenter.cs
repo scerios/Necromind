@@ -77,12 +77,11 @@ namespace NecromindUI.Presenters.Admin
 
         public void DeleteEnemy()
         {
-            var _enemy = _enemies[_adminEnemies.LbEnemies.SelectedIndex];
-
             if (_mongoConnector.TryDeleteRecordById<EnemyModel>(DBConfig.EnemiesCollection, _enemy.Id))
             {
                 AlertEditSuccess($"{ _enemy.Name } deleted successfully!");
                 _adminEnemies.LbEnemies.Items.Remove(_enemy.Name);
+                _bsEnemies.Remove(_enemy);
                 ClearEditFields();
             }
             else
