@@ -52,7 +52,6 @@ namespace NecromindUI.UserControls.Admin
             this.labDmgError = new System.Windows.Forms.Label();
             this.labDefError = new System.Windows.Forms.Label();
             this.labHealthError = new System.Windows.Forms.Label();
-            this.labValidationInfo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbHeroes
@@ -299,23 +298,11 @@ namespace NecromindUI.UserControls.Admin
             this.labHealthError.Text = "Health must be greater than 0!";
             this.labHealthError.Visible = false;
             // 
-            // labValidationInfo
-            // 
-            this.labValidationInfo.AutoSize = true;
-            this.labValidationInfo.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labValidationInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.labValidationInfo.Location = new System.Drawing.Point(20, 223);
-            this.labValidationInfo.Name = "labValidationInfo";
-            this.labValidationInfo.Size = new System.Drawing.Size(320, 16);
-            this.labValidationInfo.TabIndex = 26;
-            this.labValidationInfo.Text = "All inputs must be valid whole numbers!";
-            // 
             // AdminHeroes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.Controls.Add(this.labValidationInfo);
             this.Controls.Add(this.labHealthError);
             this.Controls.Add(this.labDefError);
             this.Controls.Add(this.labDmgError);
@@ -370,6 +357,5 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.Label labDmgError;
         private System.Windows.Forms.Label labDefError;
         private System.Windows.Forms.Label labHealthError;
-        private System.Windows.Forms.Label labValidationInfo;
     }
 }
