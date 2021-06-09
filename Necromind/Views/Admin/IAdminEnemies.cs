@@ -21,6 +21,18 @@ namespace NecromindUI.Views.Admin
         string TbEditHealth { get; set; }
         bool BtnEditIsEnabled { get; set; }
         bool BtnDelIsEnabled { get; set; }
+        bool LabNameCError { get; set; }
+        bool LabLvlCError { get; set; }
+        bool LabGoldCError { get; set; }
+        bool LabDmgCError { get; set; }
+        bool LabDefCError { get; set; }
+        bool LabHealthCError { get; set; }
+        bool LabNameMError { get; set; }
+        bool LabLvlMError { get; set; }
+        bool LabGoldMError { get; set; }
+        bool LabDmgMError { get; set; }
+        bool LabDefMError { get; set; }
+        bool LabHealthMError { get; set; }
         ListBox LbEnemies { get; }
         Timer TimHideCreate { get; }
         Timer TimHideEdit { get; }
