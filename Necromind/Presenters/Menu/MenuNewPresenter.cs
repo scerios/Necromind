@@ -75,7 +75,7 @@ namespace NecromindUI.Presenters.Menu
             _connector.TryCreateNewRecord(DBConfig.HeroesCollection, new HeroModel(_menuNew.HeroName));
 
         private bool IsHeroNameValid() =>
-            ValidationService.IsValidHeroName(_menuNew.HeroName);
+            ValidationService.IsValidName(_menuNew.HeroName);
 
         private void DisplayError(string title, string msg)
         {
