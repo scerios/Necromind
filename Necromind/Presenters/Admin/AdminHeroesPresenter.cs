@@ -111,8 +111,8 @@ namespace NecromindUI.Presenters.Admin
 
         private bool AreDmgInvalid()
         {
-            _adminHeroes.LabDmgError = ValidationService.IsGreaterThanZero(_adminHeroes.TbDmgMin) ^
-                ValidationService.IsFirstIsGreaterThanSecond(_adminHeroes.TbDmgMax, _adminHeroes.TbDmgMin);
+            _adminHeroes.LabDmgError = !ValidationService.IsGreaterThanZero(_adminHeroes.TbDmgMin) ||
+                !ValidationService.IsFirstIsGreaterThanSecond(_adminHeroes.TbDmgMax, _adminHeroes.TbDmgMin);
 
             return _adminHeroes.LabDmgError;
         }

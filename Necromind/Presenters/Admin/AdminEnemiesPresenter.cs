@@ -196,8 +196,8 @@ namespace NecromindUI.Presenters.Admin
 
         private bool AreDmgCInvalid()
         {
-            _adminEnemies.LabDmgCError = ValidationService.IsGreaterThanZero(_adminEnemies.TbCreateDmgMin) ^
-                ValidationService.IsFirstIsGreaterThanSecond(_adminEnemies.TbCreateDmgMax, _adminEnemies.TbCreateDmgMin);
+            _adminEnemies.LabDmgCError = !ValidationService.IsGreaterThanZero(_adminEnemies.TbCreateDmgMin) ||
+                !ValidationService.IsFirstIsGreaterThanSecond(_adminEnemies.TbCreateDmgMax, _adminEnemies.TbCreateDmgMin);
 
             return _adminEnemies.LabDmgCError;
         }
@@ -243,8 +243,8 @@ namespace NecromindUI.Presenters.Admin
 
         private bool AreDmgMInvalid()
         {
-            _adminEnemies.LabDmgMError = ValidationService.IsGreaterThanZero(_adminEnemies.TbEditDmgMin) ^
-                ValidationService.IsFirstIsGreaterThanSecond(_adminEnemies.TbEditDmgMax, _adminEnemies.TbEditDmgMin);
+            _adminEnemies.LabDmgMError = !ValidationService.IsGreaterThanZero(_adminEnemies.TbEditDmgMin) ||
+                !ValidationService.IsFirstIsGreaterThanSecond(_adminEnemies.TbEditDmgMax, _adminEnemies.TbEditDmgMin);
 
             return _adminEnemies.LabDmgMError;
         }
