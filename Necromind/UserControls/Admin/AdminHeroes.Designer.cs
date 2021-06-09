@@ -185,14 +185,14 @@ namespace NecromindUI.UserControls.Admin
             // 
             // btnEdit
             // 
-            this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
             this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEdit.Enabled = false;
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.ForeColor = System.Drawing.Color.Black;
-            this.btnEdit.Location = new System.Drawing.Point(964, 426);
+            this.btnEdit.Location = new System.Drawing.Point(964, 482);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(100, 25);
             this.btnEdit.TabIndex = 17;
@@ -214,9 +214,10 @@ namespace NecromindUI.UserControls.Admin
             // 
             // labHeroEdit
             // 
+            this.labHeroEdit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labHeroEdit.AutoSize = true;
             this.labHeroEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labHeroEdit.Location = new System.Drawing.Point(700, 430);
+            this.labHeroEdit.Location = new System.Drawing.Point(700, 486);
             this.labHeroEdit.Name = "labHeroEdit";
             this.labHeroEdit.Size = new System.Drawing.Size(0, 16);
             this.labHeroEdit.TabIndex = 19;
@@ -339,7 +340,7 @@ namespace NecromindUI.UserControls.Admin
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdminHeroes";
-            this.Size = new System.Drawing.Size(1084, 471);
+            this.Size = new System.Drawing.Size(1084, 527);
             this.ResumeLayout(false);
             this.PerformLayout();
 
