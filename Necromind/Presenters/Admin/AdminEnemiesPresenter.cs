@@ -36,6 +36,8 @@ namespace NecromindUI.Presenters.Admin
 
             if (selectedIndex >= 0)
             {
+                EnableModifyBtns();
+
                 _enemy = _enemies[selectedIndex];
                 _adminEnemies.TbEditName = _enemy.Name;
                 _adminEnemies.TbEditLvl = _enemy.Lvl.ToString();
@@ -44,6 +46,10 @@ namespace NecromindUI.Presenters.Admin
                 _adminEnemies.TbEditDmgMax = _enemy.DmgMax.ToString();
                 _adminEnemies.TbEditDef = _enemy.Def.ToString();
                 _adminEnemies.TbEditHealth = _enemy.HealthMax.ToString();
+            }
+            else
+            {
+                DisableModifyBtns();
             }
         }
 
@@ -206,6 +212,18 @@ namespace NecromindUI.Presenters.Admin
             _adminEnemies.LbEnemies.ClearSelected();
 
             ClearEditFields();
+        }
+
+        private void EnableModifyBtns()
+        {
+            _adminEnemies.BtnEditIsEnabled = true;
+            _adminEnemies.BtnDelIsEnabled = true;
+        }
+
+        private void DisableModifyBtns()
+        {
+            _adminEnemies.BtnEditIsEnabled = false;
+            _adminEnemies.BtnDelIsEnabled = false;
         }
     }
 }
