@@ -41,7 +41,7 @@ namespace NecromindUI.UserControls.Menu
             // 
             // btnBack
             // 
-            this.btnBack.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBack.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
             this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBack.FlatAppearance.BorderSize = 0;
@@ -58,27 +58,24 @@ namespace NecromindUI.UserControls.Menu
             // 
             // panMain
             // 
-            this.panMain.Controls.Add(this.panSettings);
             this.panMain.Controls.Add(this.panControls);
-            this.panMain.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panMain.Controls.Add(this.panSettings);
             this.panMain.Location = new System.Drawing.Point(0, 70);
             this.panMain.Name = "panMain";
-            this.panMain.Size = new System.Drawing.Size(1084, 591);
+            this.panMain.Size = new System.Drawing.Size(1084, 647);
             this.panMain.TabIndex = 4;
             // 
             // panSettings
             // 
-            this.panSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panSettings.Location = new System.Drawing.Point(0, 120);
             this.panSettings.Name = "panSettings";
-            this.panSettings.Size = new System.Drawing.Size(1084, 471);
+            this.panSettings.Size = new System.Drawing.Size(1084, 527);
             this.panSettings.TabIndex = 1;
             // 
             // panControls
             // 
             this.panControls.Controls.Add(this.tbPassword);
             this.panControls.Controls.Add(this.btnEnter);
-            this.panControls.Dock = System.Windows.Forms.DockStyle.Top;
             this.panControls.Location = new System.Drawing.Point(0, 0);
             this.panControls.Name = "panControls";
             this.panControls.Size = new System.Drawing.Size(1084, 120);
@@ -122,7 +119,7 @@ namespace NecromindUI.UserControls.Menu
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MenuAdmin";
-            this.Size = new System.Drawing.Size(1084, 661);
+            this.Size = new System.Drawing.Size(1084, 717);
             this.panMain.ResumeLayout(false);
             this.panControls.ResumeLayout(false);
             this.panControls.PerformLayout();
