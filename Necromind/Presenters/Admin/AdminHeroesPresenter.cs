@@ -93,6 +93,8 @@ namespace NecromindUI.Presenters.Admin
             return errorCount == 0;
         }
 
+        #region Errors
+
         private bool IsLvlInvalid()
         {
             _adminHeroes.LabLvlError = !ValidationService.IsGreaterThanZero(_adminHeroes.TbLvl);
@@ -109,7 +111,7 @@ namespace NecromindUI.Presenters.Admin
 
         private bool AreDmgInvalid()
         {
-            _adminHeroes.LabDmgError = !ValidationService.IsGreaterThanZero(_adminHeroes.TbDmgMin) &&
+            _adminHeroes.LabDmgError = ValidationService.IsGreaterThanZero(_adminHeroes.TbDmgMin) ^
                 ValidationService.IsFirstIsGreaterThanSecond(_adminHeroes.TbDmgMax, _adminHeroes.TbDmgMin);
 
             return _adminHeroes.LabDmgError;
@@ -129,15 +131,7 @@ namespace NecromindUI.Presenters.Admin
             return _adminHeroes.LabHealthError;
         }
 
-        private void SetHeroProperties()
-        {
-            _hero.AdminSetLvl(_adminHeroes.TbLvl);
-            _hero.AdminSetGold(_adminHeroes.TbGold);
-            _hero.AdminSetDmgMin(_adminHeroes.TbDmgMin);
-            _hero.AdminSetDmgMax(_adminHeroes.TbDmgMax);
-            _hero.AdminSetDef(_adminHeroes.TbDef);
-            _hero.AdminSetHealth(_adminHeroes.TbHealth);
-        }
+        #endregion Errors
 
         private void AlertSuccess(string name)
         {
@@ -165,6 +159,16 @@ namespace NecromindUI.Presenters.Admin
             _bsHeroes.DataSource = _heroes;
             _adminHeroes.LbHeroes.DataSource = _bsHeroes;
             _adminHeroes.LbHeroes.DisplayMember = "Name";
+        }
+
+        private void SetHeroProperties()
+        {
+            _hero.AdminSetLvl(_adminHeroes.TbLvl);
+            _hero.AdminSetGold(_adminHeroes.TbGold);
+            _hero.AdminSetDmgMin(_adminHeroes.TbDmgMin);
+            _hero.AdminSetDmgMax(_adminHeroes.TbDmgMax);
+            _hero.AdminSetDef(_adminHeroes.TbDef);
+            _hero.AdminSetHealth(_adminHeroes.TbHealth);
         }
 
         private void ClearEditFields()
