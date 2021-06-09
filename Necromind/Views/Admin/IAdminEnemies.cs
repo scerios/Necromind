@@ -19,6 +19,8 @@ namespace NecromindUI.Views.Admin
         string TbEditDef { get; set; }
         string TbCreateHealth { get; set; }
         string TbEditHealth { get; set; }
+        bool BtnEditIsEnabled { get; set; }
+        bool BtnDelIsEnabled { get; set; }
         ListBox LbEnemies { get; }
         Timer TimHideCreate { get; }
         Timer TimHideEdit { get; }
