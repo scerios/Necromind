@@ -40,12 +40,12 @@ namespace NecromindUI.UserControls.Admin
             this.tbCreateGold = new System.Windows.Forms.TextBox();
             this.tbCreateLvl = new System.Windows.Forms.TextBox();
             this.tbCreateName = new System.Windows.Forms.TextBox();
-            this.labHealthL = new System.Windows.Forms.Label();
-            this.labDefL = new System.Windows.Forms.Label();
-            this.labDmgL = new System.Windows.Forms.Label();
-            this.labGoldL = new System.Windows.Forms.Label();
-            this.labLvlL = new System.Windows.Forms.Label();
-            this.labNameL = new System.Windows.Forms.Label();
+            this.labHealthC = new System.Windows.Forms.Label();
+            this.labDefC = new System.Windows.Forms.Label();
+            this.labDmgC = new System.Windows.Forms.Label();
+            this.labGoldC = new System.Windows.Forms.Label();
+            this.labLvlC = new System.Windows.Forms.Label();
+            this.labNameC = new System.Windows.Forms.Label();
             this.timHideCreate = new System.Windows.Forms.Timer(this.components);
             this.timHideEdit = new System.Windows.Forms.Timer(this.components);
             this.panDivider = new System.Windows.Forms.Panel();
@@ -60,19 +60,37 @@ namespace NecromindUI.UserControls.Admin
             this.tbEditGold = new System.Windows.Forms.TextBox();
             this.tbEditLvl = new System.Windows.Forms.TextBox();
             this.tbEditName = new System.Windows.Forms.TextBox();
-            this.labHealthR = new System.Windows.Forms.Label();
-            this.labDefR = new System.Windows.Forms.Label();
-            this.labDmgR = new System.Windows.Forms.Label();
-            this.labGoldR = new System.Windows.Forms.Label();
-            this.labLvlR = new System.Windows.Forms.Label();
-            this.labNameR = new System.Windows.Forms.Label();
+            this.labHealthM = new System.Windows.Forms.Label();
+            this.labDefM = new System.Windows.Forms.Label();
+            this.labDmgM = new System.Windows.Forms.Label();
+            this.labGoldM = new System.Windows.Forms.Label();
+            this.labLvlM = new System.Windows.Forms.Label();
+            this.labNameM = new System.Windows.Forms.Label();
             this.lbEnemies = new System.Windows.Forms.ListBox();
+            this.labHealthCError = new System.Windows.Forms.Label();
+            this.labDefCError = new System.Windows.Forms.Label();
+            this.labDmgCError = new System.Windows.Forms.Label();
+            this.labGoldCError = new System.Windows.Forms.Label();
+            this.labLvlCError = new System.Windows.Forms.Label();
+            this.labNameCError = new System.Windows.Forms.Label();
+            this.labNameMError = new System.Windows.Forms.Label();
+            this.labHealthMError = new System.Windows.Forms.Label();
+            this.labDefMError = new System.Windows.Forms.Label();
+            this.labDmgMError = new System.Windows.Forms.Label();
+            this.labGoldMError = new System.Windows.Forms.Label();
+            this.labLvlMError = new System.Windows.Forms.Label();
             this.panCreate.SuspendLayout();
             this.panEdit.SuspendLayout();
             this.SuspendLayout();
             // 
             // panCreate
             // 
+            this.panCreate.Controls.Add(this.labNameCError);
+            this.panCreate.Controls.Add(this.labHealthCError);
+            this.panCreate.Controls.Add(this.labDefCError);
+            this.panCreate.Controls.Add(this.labDmgCError);
+            this.panCreate.Controls.Add(this.labGoldCError);
+            this.panCreate.Controls.Add(this.labLvlCError);
             this.panCreate.Controls.Add(this.labEnemyAdd);
             this.panCreate.Controls.Add(this.btnCreate);
             this.panCreate.Controls.Add(this.tbCreateDmgMax);
@@ -82,12 +100,12 @@ namespace NecromindUI.UserControls.Admin
             this.panCreate.Controls.Add(this.tbCreateGold);
             this.panCreate.Controls.Add(this.tbCreateLvl);
             this.panCreate.Controls.Add(this.tbCreateName);
-            this.panCreate.Controls.Add(this.labHealthL);
-            this.panCreate.Controls.Add(this.labDefL);
-            this.panCreate.Controls.Add(this.labDmgL);
-            this.panCreate.Controls.Add(this.labGoldL);
-            this.panCreate.Controls.Add(this.labLvlL);
-            this.panCreate.Controls.Add(this.labNameL);
+            this.panCreate.Controls.Add(this.labHealthC);
+            this.panCreate.Controls.Add(this.labDefC);
+            this.panCreate.Controls.Add(this.labDmgC);
+            this.panCreate.Controls.Add(this.labGoldC);
+            this.panCreate.Controls.Add(this.labLvlC);
+            this.panCreate.Controls.Add(this.labNameC);
             this.panCreate.Dock = System.Windows.Forms.DockStyle.Top;
             this.panCreate.Location = new System.Drawing.Point(0, 0);
             this.panCreate.Name = "panCreate";
@@ -199,66 +217,66 @@ namespace NecromindUI.UserControls.Admin
             this.tbCreateName.TabIndex = 25;
             this.tbCreateName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // labHealthL
+            // labHealthC
             // 
-            this.labHealthL.AutoSize = true;
-            this.labHealthL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labHealthL.Location = new System.Drawing.Point(20, 170);
-            this.labHealthL.Name = "labHealthL";
-            this.labHealthL.Size = new System.Drawing.Size(64, 16);
-            this.labHealthL.TabIndex = 24;
-            this.labHealthL.Text = "Health:";
+            this.labHealthC.AutoSize = true;
+            this.labHealthC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labHealthC.Location = new System.Drawing.Point(20, 170);
+            this.labHealthC.Name = "labHealthC";
+            this.labHealthC.Size = new System.Drawing.Size(64, 16);
+            this.labHealthC.TabIndex = 24;
+            this.labHealthC.Text = "Health:";
             // 
-            // labDefL
+            // labDefC
             // 
-            this.labDefL.AutoSize = true;
-            this.labDefL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labDefL.Location = new System.Drawing.Point(20, 140);
-            this.labDefL.Name = "labDefL";
-            this.labDefL.Size = new System.Drawing.Size(72, 16);
-            this.labDefL.TabIndex = 23;
-            this.labDefL.Text = "Defense:";
+            this.labDefC.AutoSize = true;
+            this.labDefC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labDefC.Location = new System.Drawing.Point(20, 140);
+            this.labDefC.Name = "labDefC";
+            this.labDefC.Size = new System.Drawing.Size(72, 16);
+            this.labDefC.TabIndex = 23;
+            this.labDefC.Text = "Defense:";
             // 
-            // labDmgL
+            // labDmgC
             // 
-            this.labDmgL.AutoSize = true;
-            this.labDmgL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labDmgL.Location = new System.Drawing.Point(20, 110);
-            this.labDmgL.Name = "labDmgL";
-            this.labDmgL.Size = new System.Drawing.Size(64, 16);
-            this.labDmgL.TabIndex = 22;
-            this.labDmgL.Text = "Damage:";
+            this.labDmgC.AutoSize = true;
+            this.labDmgC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labDmgC.Location = new System.Drawing.Point(20, 110);
+            this.labDmgC.Name = "labDmgC";
+            this.labDmgC.Size = new System.Drawing.Size(64, 16);
+            this.labDmgC.TabIndex = 22;
+            this.labDmgC.Text = "Damage:";
             // 
-            // labGoldL
+            // labGoldC
             // 
-            this.labGoldL.AutoSize = true;
-            this.labGoldL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labGoldL.Location = new System.Drawing.Point(20, 80);
-            this.labGoldL.Name = "labGoldL";
-            this.labGoldL.Size = new System.Drawing.Size(48, 16);
-            this.labGoldL.TabIndex = 21;
-            this.labGoldL.Text = "Gold:";
+            this.labGoldC.AutoSize = true;
+            this.labGoldC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labGoldC.Location = new System.Drawing.Point(20, 80);
+            this.labGoldC.Name = "labGoldC";
+            this.labGoldC.Size = new System.Drawing.Size(48, 16);
+            this.labGoldC.TabIndex = 21;
+            this.labGoldC.Text = "Gold:";
             // 
-            // labLvlL
+            // labLvlC
             // 
-            this.labLvlL.AutoSize = true;
-            this.labLvlL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labLvlL.Location = new System.Drawing.Point(20, 50);
-            this.labLvlL.Name = "labLvlL";
-            this.labLvlL.Size = new System.Drawing.Size(56, 16);
-            this.labLvlL.TabIndex = 20;
-            this.labLvlL.Text = "Level:";
+            this.labLvlC.AutoSize = true;
+            this.labLvlC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labLvlC.Location = new System.Drawing.Point(20, 50);
+            this.labLvlC.Name = "labLvlC";
+            this.labLvlC.Size = new System.Drawing.Size(56, 16);
+            this.labLvlC.TabIndex = 20;
+            this.labLvlC.Text = "Level:";
             // 
-            // labNameL
+            // labNameC
             // 
-            this.labNameL.AutoSize = true;
-            this.labNameL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labNameL.Location = new System.Drawing.Point(20, 20);
-            this.labNameL.MinimumSize = new System.Drawing.Size(0, 20);
-            this.labNameL.Name = "labNameL";
-            this.labNameL.Size = new System.Drawing.Size(48, 20);
-            this.labNameL.TabIndex = 19;
-            this.labNameL.Text = "Name:";
+            this.labNameC.AutoSize = true;
+            this.labNameC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labNameC.Location = new System.Drawing.Point(20, 20);
+            this.labNameC.MinimumSize = new System.Drawing.Size(0, 20);
+            this.labNameC.Name = "labNameC";
+            this.labNameC.Size = new System.Drawing.Size(48, 20);
+            this.labNameC.TabIndex = 19;
+            this.labNameC.Text = "Name:";
             // 
             // timHideCreate
             // 
@@ -281,6 +299,12 @@ namespace NecromindUI.UserControls.Admin
             // 
             // panEdit
             // 
+            this.panEdit.Controls.Add(this.labNameMError);
+            this.panEdit.Controls.Add(this.labHealthMError);
+            this.panEdit.Controls.Add(this.labDefMError);
+            this.panEdit.Controls.Add(this.labDmgMError);
+            this.panEdit.Controls.Add(this.labGoldMError);
+            this.panEdit.Controls.Add(this.labLvlMError);
             this.panEdit.Controls.Add(this.labEnemyEdit);
             this.panEdit.Controls.Add(this.btnDel);
             this.panEdit.Controls.Add(this.btnEdit);
@@ -291,12 +315,12 @@ namespace NecromindUI.UserControls.Admin
             this.panEdit.Controls.Add(this.tbEditGold);
             this.panEdit.Controls.Add(this.tbEditLvl);
             this.panEdit.Controls.Add(this.tbEditName);
-            this.panEdit.Controls.Add(this.labHealthR);
-            this.panEdit.Controls.Add(this.labDefR);
-            this.panEdit.Controls.Add(this.labDmgR);
-            this.panEdit.Controls.Add(this.labGoldR);
-            this.panEdit.Controls.Add(this.labLvlR);
-            this.panEdit.Controls.Add(this.labNameR);
+            this.panEdit.Controls.Add(this.labHealthM);
+            this.panEdit.Controls.Add(this.labDefM);
+            this.panEdit.Controls.Add(this.labDmgM);
+            this.panEdit.Controls.Add(this.labGoldM);
+            this.panEdit.Controls.Add(this.labLvlM);
+            this.panEdit.Controls.Add(this.labNameM);
             this.panEdit.Controls.Add(this.lbEnemies);
             this.panEdit.Dock = System.Windows.Forms.DockStyle.Top;
             this.panEdit.Location = new System.Drawing.Point(0, 265);
@@ -428,66 +452,66 @@ namespace NecromindUI.UserControls.Admin
             this.tbEditName.TabIndex = 26;
             this.tbEditName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // labHealthR
+            // labHealthM
             // 
-            this.labHealthR.AutoSize = true;
-            this.labHealthR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labHealthR.Location = new System.Drawing.Point(194, 173);
-            this.labHealthR.Name = "labHealthR";
-            this.labHealthR.Size = new System.Drawing.Size(64, 16);
-            this.labHealthR.TabIndex = 25;
-            this.labHealthR.Text = "Health:";
+            this.labHealthM.AutoSize = true;
+            this.labHealthM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labHealthM.Location = new System.Drawing.Point(194, 173);
+            this.labHealthM.Name = "labHealthM";
+            this.labHealthM.Size = new System.Drawing.Size(64, 16);
+            this.labHealthM.TabIndex = 25;
+            this.labHealthM.Text = "Health:";
             // 
-            // labDefR
+            // labDefM
             // 
-            this.labDefR.AutoSize = true;
-            this.labDefR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labDefR.Location = new System.Drawing.Point(194, 143);
-            this.labDefR.Name = "labDefR";
-            this.labDefR.Size = new System.Drawing.Size(72, 16);
-            this.labDefR.TabIndex = 24;
-            this.labDefR.Text = "Defense:";
+            this.labDefM.AutoSize = true;
+            this.labDefM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labDefM.Location = new System.Drawing.Point(194, 143);
+            this.labDefM.Name = "labDefM";
+            this.labDefM.Size = new System.Drawing.Size(72, 16);
+            this.labDefM.TabIndex = 24;
+            this.labDefM.Text = "Defense:";
             // 
-            // labDmgR
+            // labDmgM
             // 
-            this.labDmgR.AutoSize = true;
-            this.labDmgR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labDmgR.Location = new System.Drawing.Point(194, 113);
-            this.labDmgR.Name = "labDmgR";
-            this.labDmgR.Size = new System.Drawing.Size(64, 16);
-            this.labDmgR.TabIndex = 23;
-            this.labDmgR.Text = "Damage:";
+            this.labDmgM.AutoSize = true;
+            this.labDmgM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labDmgM.Location = new System.Drawing.Point(194, 113);
+            this.labDmgM.Name = "labDmgM";
+            this.labDmgM.Size = new System.Drawing.Size(64, 16);
+            this.labDmgM.TabIndex = 23;
+            this.labDmgM.Text = "Damage:";
             // 
-            // labGoldR
+            // labGoldM
             // 
-            this.labGoldR.AutoSize = true;
-            this.labGoldR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labGoldR.Location = new System.Drawing.Point(194, 83);
-            this.labGoldR.Name = "labGoldR";
-            this.labGoldR.Size = new System.Drawing.Size(48, 16);
-            this.labGoldR.TabIndex = 22;
-            this.labGoldR.Text = "Gold:";
+            this.labGoldM.AutoSize = true;
+            this.labGoldM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labGoldM.Location = new System.Drawing.Point(194, 83);
+            this.labGoldM.Name = "labGoldM";
+            this.labGoldM.Size = new System.Drawing.Size(48, 16);
+            this.labGoldM.TabIndex = 22;
+            this.labGoldM.Text = "Gold:";
             // 
-            // labLvlR
+            // labLvlM
             // 
-            this.labLvlR.AutoSize = true;
-            this.labLvlR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labLvlR.Location = new System.Drawing.Point(194, 53);
-            this.labLvlR.Name = "labLvlR";
-            this.labLvlR.Size = new System.Drawing.Size(56, 16);
-            this.labLvlR.TabIndex = 21;
-            this.labLvlR.Text = "Level:";
+            this.labLvlM.AutoSize = true;
+            this.labLvlM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labLvlM.Location = new System.Drawing.Point(194, 53);
+            this.labLvlM.Name = "labLvlM";
+            this.labLvlM.Size = new System.Drawing.Size(56, 16);
+            this.labLvlM.TabIndex = 21;
+            this.labLvlM.Text = "Level:";
             // 
-            // labNameR
+            // labNameM
             // 
-            this.labNameR.AutoSize = true;
-            this.labNameR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labNameR.Location = new System.Drawing.Point(194, 23);
-            this.labNameR.MinimumSize = new System.Drawing.Size(0, 20);
-            this.labNameR.Name = "labNameR";
-            this.labNameR.Size = new System.Drawing.Size(48, 20);
-            this.labNameR.TabIndex = 20;
-            this.labNameR.Text = "Name:";
+            this.labNameM.AutoSize = true;
+            this.labNameM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labNameM.Location = new System.Drawing.Point(194, 23);
+            this.labNameM.MinimumSize = new System.Drawing.Size(0, 20);
+            this.labNameM.Name = "labNameM";
+            this.labNameM.Size = new System.Drawing.Size(48, 20);
+            this.labNameM.TabIndex = 20;
+            this.labNameM.Text = "Name:";
             // 
             // lbEnemies
             // 
@@ -500,6 +524,150 @@ namespace NecromindUI.UserControls.Admin
             this.lbEnemies.Size = new System.Drawing.Size(150, 180);
             this.lbEnemies.TabIndex = 19;
             this.lbEnemies.SelectedIndexChanged += new System.EventHandler(this.LbEnemies_SelectedIndexChanged);
+            // 
+            // labHealthCError
+            // 
+            this.labHealthCError.AutoSize = true;
+            this.labHealthCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labHealthCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labHealthCError.Location = new System.Drawing.Point(231, 170);
+            this.labHealthCError.Name = "labHealthCError";
+            this.labHealthCError.Size = new System.Drawing.Size(248, 16);
+            this.labHealthCError.TabIndex = 38;
+            this.labHealthCError.Text = "Health must be greater than 0!";
+            this.labHealthCError.Visible = false;
+            // 
+            // labDefCError
+            // 
+            this.labDefCError.AutoSize = true;
+            this.labDefCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labDefCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labDefCError.Location = new System.Drawing.Point(231, 140);
+            this.labDefCError.Name = "labDefCError";
+            this.labDefCError.Size = new System.Drawing.Size(352, 16);
+            this.labDefCError.TabIndex = 37;
+            this.labDefCError.Text = "Defense must be greater than or equal to 0!";
+            this.labDefCError.Visible = false;
+            // 
+            // labDmgCError
+            // 
+            this.labDmgCError.AutoSize = true;
+            this.labDmgCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labDmgCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labDmgCError.Location = new System.Drawing.Point(231, 110);
+            this.labDmgCError.Name = "labDmgCError";
+            this.labDmgCError.Size = new System.Drawing.Size(520, 16);
+            this.labDmgCError.TabIndex = 36;
+            this.labDmgCError.Text = "Damage min must be greater than 0, max must be greater than min!";
+            this.labDmgCError.Visible = false;
+            // 
+            // labGoldCError
+            // 
+            this.labGoldCError.AutoSize = true;
+            this.labGoldCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labGoldCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labGoldCError.Location = new System.Drawing.Point(231, 80);
+            this.labGoldCError.Name = "labGoldCError";
+            this.labGoldCError.Size = new System.Drawing.Size(328, 16);
+            this.labGoldCError.TabIndex = 35;
+            this.labGoldCError.Text = "Gold must be greater than or equal to 0!";
+            this.labGoldCError.Visible = false;
+            // 
+            // labLvlCError
+            // 
+            this.labLvlCError.AutoSize = true;
+            this.labLvlCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labLvlCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labLvlCError.Location = new System.Drawing.Point(231, 50);
+            this.labLvlCError.Name = "labLvlCError";
+            this.labLvlCError.Size = new System.Drawing.Size(240, 16);
+            this.labLvlCError.TabIndex = 34;
+            this.labLvlCError.Text = "Level must be greater than 0!";
+            this.labLvlCError.Visible = false;
+            // 
+            // labNameCError
+            // 
+            this.labNameCError.AutoSize = true;
+            this.labNameCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labNameCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labNameCError.Location = new System.Drawing.Point(231, 20);
+            this.labNameCError.Name = "labNameCError";
+            this.labNameCError.Size = new System.Drawing.Size(568, 16);
+            this.labNameCError.TabIndex = 39;
+            this.labNameCError.Text = "Name must be between 3 to 16 characters. Must start with valid letter.";
+            this.labNameCError.Visible = false;
+            // 
+            // labNameMError
+            // 
+            this.labNameMError.AutoSize = true;
+            this.labNameMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labNameMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labNameMError.Location = new System.Drawing.Point(405, 23);
+            this.labNameMError.Name = "labNameMError";
+            this.labNameMError.Size = new System.Drawing.Size(568, 16);
+            this.labNameMError.TabIndex = 45;
+            this.labNameMError.Text = "Name must be between 3 to 16 characters. Must start with valid letter.";
+            this.labNameMError.Visible = false;
+            // 
+            // labHealthMError
+            // 
+            this.labHealthMError.AutoSize = true;
+            this.labHealthMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labHealthMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labHealthMError.Location = new System.Drawing.Point(405, 173);
+            this.labHealthMError.Name = "labHealthMError";
+            this.labHealthMError.Size = new System.Drawing.Size(248, 16);
+            this.labHealthMError.TabIndex = 44;
+            this.labHealthMError.Text = "Health must be greater than 0!";
+            this.labHealthMError.Visible = false;
+            // 
+            // labDefMError
+            // 
+            this.labDefMError.AutoSize = true;
+            this.labDefMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labDefMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labDefMError.Location = new System.Drawing.Point(405, 143);
+            this.labDefMError.Name = "labDefMError";
+            this.labDefMError.Size = new System.Drawing.Size(352, 16);
+            this.labDefMError.TabIndex = 43;
+            this.labDefMError.Text = "Defense must be greater than or equal to 0!";
+            this.labDefMError.Visible = false;
+            // 
+            // labDmgMError
+            // 
+            this.labDmgMError.AutoSize = true;
+            this.labDmgMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labDmgMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labDmgMError.Location = new System.Drawing.Point(405, 113);
+            this.labDmgMError.Name = "labDmgMError";
+            this.labDmgMError.Size = new System.Drawing.Size(520, 16);
+            this.labDmgMError.TabIndex = 42;
+            this.labDmgMError.Text = "Damage min must be greater than 0, max must be greater than min!";
+            this.labDmgMError.Visible = false;
+            // 
+            // labGoldMError
+            // 
+            this.labGoldMError.AutoSize = true;
+            this.labGoldMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labGoldMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labGoldMError.Location = new System.Drawing.Point(405, 83);
+            this.labGoldMError.Name = "labGoldMError";
+            this.labGoldMError.Size = new System.Drawing.Size(328, 16);
+            this.labGoldMError.TabIndex = 41;
+            this.labGoldMError.Text = "Gold must be greater than or equal to 0!";
+            this.labGoldMError.Visible = false;
+            // 
+            // labLvlMError
+            // 
+            this.labLvlMError.AutoSize = true;
+            this.labLvlMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labLvlMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labLvlMError.Location = new System.Drawing.Point(405, 53);
+            this.labLvlMError.Name = "labLvlMError";
+            this.labLvlMError.Size = new System.Drawing.Size(240, 16);
+            this.labLvlMError.TabIndex = 40;
+            this.labLvlMError.Text = "Level must be greater than 0!";
+            this.labLvlMError.Visible = false;
             // 
             // AdminEnemies
             // 
@@ -531,12 +699,12 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.TextBox tbCreateGold;
         private System.Windows.Forms.TextBox tbCreateLvl;
         private System.Windows.Forms.TextBox tbCreateName;
-        private System.Windows.Forms.Label labHealthL;
-        private System.Windows.Forms.Label labDefL;
-        private System.Windows.Forms.Label labDmgL;
-        private System.Windows.Forms.Label labGoldL;
-        private System.Windows.Forms.Label labLvlL;
-        private System.Windows.Forms.Label labNameL;
+        private System.Windows.Forms.Label labHealthC;
+        private System.Windows.Forms.Label labDefC;
+        private System.Windows.Forms.Label labDmgC;
+        private System.Windows.Forms.Label labGoldC;
+        private System.Windows.Forms.Label labLvlC;
+        private System.Windows.Forms.Label labNameC;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Label labEnemyAdd;
         private System.Windows.Forms.Timer timHideCreate;
@@ -553,12 +721,24 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.TextBox tbEditGold;
         private System.Windows.Forms.TextBox tbEditLvl;
         private System.Windows.Forms.TextBox tbEditName;
-        private System.Windows.Forms.Label labHealthR;
-        private System.Windows.Forms.Label labDefR;
-        private System.Windows.Forms.Label labDmgR;
-        private System.Windows.Forms.Label labGoldR;
-        private System.Windows.Forms.Label labLvlR;
-        private System.Windows.Forms.Label labNameR;
+        private System.Windows.Forms.Label labHealthM;
+        private System.Windows.Forms.Label labDefM;
+        private System.Windows.Forms.Label labDmgM;
+        private System.Windows.Forms.Label labGoldM;
+        private System.Windows.Forms.Label labLvlM;
+        private System.Windows.Forms.Label labNameM;
         private System.Windows.Forms.ListBox lbEnemies;
+        private System.Windows.Forms.Label labHealthCError;
+        private System.Windows.Forms.Label labDefCError;
+        private System.Windows.Forms.Label labDmgCError;
+        private System.Windows.Forms.Label labGoldCError;
+        private System.Windows.Forms.Label labLvlCError;
+        private System.Windows.Forms.Label labNameCError;
+        private System.Windows.Forms.Label labNameMError;
+        private System.Windows.Forms.Label labHealthMError;
+        private System.Windows.Forms.Label labDefMError;
+        private System.Windows.Forms.Label labDmgMError;
+        private System.Windows.Forms.Label labGoldMError;
+        private System.Windows.Forms.Label labLvlMError;
     }
 }

@@ -11,6 +11,8 @@ namespace NecromindUI.UserControls.Admin
 
         private readonly AdminEnemiesPresenter _presenter;
 
+        #region Textboxes
+
         public string TbCreateName
         {
             get => tbCreateName.Text;
@@ -149,6 +151,10 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
+        #endregion Textboxes
+
+        #region Buttons
+
         public bool BtnEditIsEnabled
         {
             get => btnEdit.Enabled;
@@ -168,6 +174,136 @@ namespace NecromindUI.UserControls.Admin
                 btnDel.Enabled = value;
             }
         }
+
+        #endregion Buttons
+
+        #region Create errors
+
+        public bool LabNameCError
+        {
+            get => labNameCError.Visible;
+
+            set
+            {
+                labNameCError.Visible = value;
+            }
+        }
+
+        public bool LabLvlCError
+        {
+            get => labLvlCError.Visible;
+
+            set
+            {
+                labLvlCError.Visible = value;
+            }
+        }
+
+        public bool LabGoldCError
+        {
+            get => labGoldCError.Visible;
+
+            set
+            {
+                labGoldCError.Visible = value;
+            }
+        }
+
+        public bool LabDmgCError
+        {
+            get => labDmgCError.Visible;
+
+            set
+            {
+                labDmgCError.Visible = value;
+            }
+        }
+
+        public bool LabDefCError
+        {
+            get => labDefCError.Visible;
+
+            set
+            {
+                labDefCError.Visible = value;
+            }
+        }
+
+        public bool LabHealthCError
+        {
+            get => labHealthCError.Visible;
+
+            set
+            {
+                labHealthCError.Visible = value;
+            }
+        }
+
+        #endregion Create errors
+
+        #region Modify errors
+
+        public bool LabNameMError
+        {
+            get => labNameMError.Visible;
+
+            set
+            {
+                labNameMError.Visible = value;
+            }
+        }
+
+        public bool LabLvlMError
+        {
+            get => labLvlMError.Visible;
+
+            set
+            {
+                labLvlMError.Visible = value;
+            }
+        }
+
+        public bool LabGoldMError
+        {
+            get => labGoldMError.Visible;
+
+            set
+            {
+                labGoldMError.Visible = value;
+            }
+        }
+
+        public bool LabDmgMError
+        {
+            get => labDmgMError.Visible;
+
+            set
+            {
+                labDmgMError.Visible = value;
+            }
+        }
+
+        public bool LabDefMError
+        {
+            get => labDefMError.Visible;
+
+            set
+            {
+                labDefMError.Visible = value;
+            }
+        }
+
+        public bool LabHealthMError
+        {
+            get => labHealthMError.Visible;
+
+            set
+            {
+                labHealthMError.Visible = value;
+            }
+        }
+
+        #endregion Modify errors
 
         public ListBox LbEnemies
         {
@@ -211,12 +347,18 @@ namespace NecromindUI.UserControls.Admin
 
         private void BtnCreate_Click(object sender, EventArgs e)
         {
-            _presenter.CreateEnemy();
+            if (_presenter.AreCInputsValid())
+            {
+                _presenter.CreateEnemy();
+            }
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            _presenter.EditEnemy();
+            if (_presenter.AreMInputsValid())
+            {
+                _presenter.EditEnemy();
+            }
         }
 
         private void BtnDel_Click(object sender, EventArgs e)
