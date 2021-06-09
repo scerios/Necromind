@@ -36,7 +36,7 @@ namespace NecromindUI
             // 
             // btnLoadGame
             // 
-            this.btnLoadGame.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnLoadGame.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnLoadGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
             this.btnLoadGame.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLoadGame.FlatAppearance.BorderSize = 0;
@@ -53,7 +53,7 @@ namespace NecromindUI
             // 
             // btnNewGame
             // 
-            this.btnNewGame.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnNewGame.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnNewGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
             this.btnNewGame.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNewGame.FlatAppearance.BorderSize = 0;
@@ -73,15 +73,15 @@ namespace NecromindUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.ClientSize = new System.Drawing.Size(1084, 661);
+            this.ClientSize = new System.Drawing.Size(1084, 717);
             this.Controls.Add(this.btnLoadGame);
             this.Controls.Add(this.btnNewGame);
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(1100, 700);
-            this.MinimumSize = new System.Drawing.Size(1100, 700);
+            this.MaximumSize = new System.Drawing.Size(1100, 756);
+            this.MinimumSize = new System.Drawing.Size(1100, 756);
             this.Name = "Necromind";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Necromind";
