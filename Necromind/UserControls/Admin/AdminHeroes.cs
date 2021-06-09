@@ -7,6 +7,8 @@ namespace NecromindUI.UserControls.Admin
 {
     public partial class AdminHeroes : UserControl, IAdminHeroes
     {
+        #region Properties
+
         private readonly AdminHeroesPresenter _presenter;
 
         public string LabName
@@ -143,11 +145,15 @@ namespace NecromindUI.UserControls.Admin
             get => labHeroEdit;
         }
 
+        #endregion Properties
+
         public AdminHeroes()
         {
             InitializeComponent();
             _presenter = new AdminHeroesPresenter(this);
         }
+
+        #region Methods
 
         public void LoadData()
         {
@@ -173,5 +179,7 @@ namespace NecromindUI.UserControls.Admin
             labHeroEdit.Visible = false;
             timHide.Stop();
         }
+
+        #endregion Methods
     }
 }
