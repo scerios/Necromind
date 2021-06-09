@@ -20,8 +20,8 @@ namespace NecromindLibrary.Services
         /// </summary>
         /// <param name="name">The name as a string.</param>
         /// <returns>True if given name is valid. False otherwise.</returns>
-        public static bool IsValidHeroName(string name) =>
-            char.IsLetter(name[0]) && name.Length > 2 && name.Length < 17;
+        public static bool IsValidName(string name) =>
+            name.Length > 2 && name.Length < 17 && char.IsLetter(name[0]);
 
         public static bool IsGreaterThanOrEqualToZero(string input) =>
             IsInputValidNumber(input) && Int32.Parse(input) >= 0;
