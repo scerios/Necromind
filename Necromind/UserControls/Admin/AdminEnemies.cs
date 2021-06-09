@@ -149,6 +149,26 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
+        public bool BtnEditIsEnabled
+        {
+            get => btnEdit.Enabled;
+
+            set
+            {
+                btnEdit.Enabled = value;
+            }
+        }
+
+        public bool BtnDelIsEnabled
+        {
+            get => btnDel.Enabled;
+
+            set
+            {
+                btnDel.Enabled = value;
+            }
+        }
+
         public ListBox LbEnemies
         {
             get => lbEnemies;

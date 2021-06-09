@@ -320,6 +320,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.btnDel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDel.Enabled = false;
             this.btnDel.FlatAppearance.BorderSize = 0;
             this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDel.ForeColor = System.Drawing.Color.Black;
@@ -337,6 +338,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
             this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEdit.Enabled = false;
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.ForeColor = System.Drawing.Color.Black;
