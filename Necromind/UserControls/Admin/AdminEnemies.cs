@@ -7,6 +7,8 @@ namespace NecromindUI.UserControls.Admin
 {
     public partial class AdminEnemies : UserControl, IAdminEnemies
     {
+        #region Properties
+
         private readonly AdminEnemiesPresenter _presenter;
 
         public string TbCreateName
@@ -172,11 +174,15 @@ namespace NecromindUI.UserControls.Admin
             get => labEnemyEdit;
         }
 
+        #endregion Properties
+
         public AdminEnemies()
         {
             InitializeComponent();
             _presenter = new AdminEnemiesPresenter(this);
         }
+
+        #region Methods
 
         public void LoadData()
         {
@@ -214,5 +220,7 @@ namespace NecromindUI.UserControls.Admin
         {
             _presenter.GetSelectedEnemyStats();
         }
+
+        #endregion Methods
     }
 }
