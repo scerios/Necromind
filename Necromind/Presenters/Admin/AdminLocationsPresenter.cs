@@ -12,6 +12,8 @@ namespace NecromindUI.Presenters.Admin
 {
     public class AdminLocationsPresenter
     {
+        #region Properties
+
         private readonly string _combinedName = "CombinedName";
         private readonly MongoConnector _mongoConnector;
         private readonly IAdminLocations _adminLocations;
@@ -23,11 +25,13 @@ namespace NecromindUI.Presenters.Admin
         private List<LocationModel> _locations;
         private List<EnemyModel> _enemies;
         private List<EnemyModel> _createEnemies;
-        private readonly List<EnemyModel> _createAddedEnemies = new List<EnemyModel>();
+        private List<EnemyModel> _createAddedEnemies = new List<EnemyModel>();
         private List<EnemyModel> _editEnemies = new List<EnemyModel>();
         private List<EnemyModel> _editAddedEnemies = new List<EnemyModel>();
         private List<Guid> _enemyIds;
         private LocationModel _location;
+
+        #endregion Properties
 
         public AdminLocationsPresenter(IAdminLocations adminLocations)
         {
@@ -102,6 +106,8 @@ namespace NecromindUI.Presenters.Admin
             }
         }
 
+        #region Enemy handling
+
         public void CreateAdd()
         {
             var enemy = (EnemyModel)_adminLocations.LbCreateEnemies.SelectedItem;
@@ -150,6 +156,8 @@ namespace NecromindUI.Presenters.Admin
             ClearEditSelections();
         }
 
+        #endregion Enemy handling
+
         public bool AreCreateFieldsValid()
         {
             return _adminLocations.TbCreateName.Length > 0 && _adminLocations.TbCreateDescription.Length > 0;
@@ -164,6 +172,8 @@ namespace NecromindUI.Presenters.Admin
         {
             return _location != null;
         }
+
+        #region Resource binding
 
         private void BindLists()
         {
@@ -213,6 +223,10 @@ namespace NecromindUI.Presenters.Admin
             _adminLocations.LbEditAddedEnemies.DisplayMember = _combinedName;
         }
 
+        #endregion Resource binding
+
+        #region Load
+
         private void LoadLocations()
         {
             _locations = _mongoConnector.GetAllRecords<LocationModel>(DBConfig.LocationsCollection);
@@ -232,6 +246,10 @@ namespace NecromindUI.Presenters.Admin
 
             SetEditEnemiesBy(enemyIds.Where(i => !_enemyIds.Contains(i)));
         }
+
+        #endregion Load
+
+        #region Clear
 
         private void ClearLocation()
         {
@@ -260,7 +278,7 @@ namespace NecromindUI.Presenters.Admin
             _adminLocations.TbCreateName = "";
             _adminLocations.TbCreateDescription = "";
             _adminLocations.CbCreateIsHostile = false;
-            _adminLocations.CbEditIsAccessible = false;
+            _adminLocations.CbCreateIsAccessible = false;
         }
 
         private void ClearEditFields()
@@ -270,6 +288,10 @@ namespace NecromindUI.Presenters.Admin
             _adminLocations.CbEditIsHostile = false;
             _adminLocations.CbEditIsAccessible = false;
         }
+
+        #endregion Clear
+
+        #region Alert
 
         private void AlertCreateSuccess(string msg)
         {
@@ -309,6 +331,8 @@ namespace NecromindUI.Presenters.Admin
             timer.Start();
         }
 
+        #endregion Alert
+
         private void AddEnemiesToLocation(List<EnemyModel> enemies)
         {
             foreach (var enemy in enemies)
@@ -316,6 +340,8 @@ namespace NecromindUI.Presenters.Admin
                 _location.Enemies.Add(enemy.Id);
             }
         }
+
+        #region Set
 
         private void SetEditAddedEnemies()
         {
@@ -367,6 +393,10 @@ namespace NecromindUI.Presenters.Admin
             }
         }
 
+        #endregion Set
+
+        #region Update
+
         private void UpdateUIAfterCreate()
         {
             AlertCreateSuccess($"{ _location.Name } created successfully!");
@@ -406,5 +436,7 @@ namespace NecromindUI.Presenters.Admin
 
             ClearEditFields();
         }
+
+        #endregion Update
     }
 }
