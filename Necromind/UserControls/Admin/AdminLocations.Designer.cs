@@ -121,6 +121,7 @@ namespace NecromindUI.UserControls.Admin
             this.panCreateEnemies.Name = "panCreateEnemies";
             this.panCreateEnemies.Size = new System.Drawing.Size(500, 180);
             this.panCreateEnemies.TabIndex = 50;
+            this.panCreateEnemies.Visible = false;
             // 
             // btnCreateRemove
             // 
@@ -345,6 +346,7 @@ namespace NecromindUI.UserControls.Admin
             this.panEditEnemies.Name = "panEditEnemies";
             this.panEditEnemies.Size = new System.Drawing.Size(500, 180);
             this.panEditEnemies.TabIndex = 54;
+            this.panEditEnemies.Visible = false;
             // 
             // btnEditRemove
             // 
@@ -414,6 +416,7 @@ namespace NecromindUI.UserControls.Admin
             this.cbEditIsHostile.Size = new System.Drawing.Size(15, 14);
             this.cbEditIsHostile.TabIndex = 53;
             this.cbEditIsHostile.UseVisualStyleBackColor = true;
+            this.cbEditIsHostile.CheckedChanged += new System.EventHandler(this.CbEditIsHostile_CheckedChanged);
             // 
             // labEnemyEdit
             // 
