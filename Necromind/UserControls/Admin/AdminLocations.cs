@@ -7,6 +7,8 @@ namespace NecromindUI.UserControls.Admin
 {
     public partial class AdminLocations : UserControl, IAdminLocations
     {
+        #region Properties
+
         private readonly AdminLocationsPresenter _presenter;
 
         public string TbCreateName
@@ -152,11 +154,15 @@ namespace NecromindUI.UserControls.Admin
             get => labEnemyEdit;
         }
 
+        #endregion Properties
+
         public AdminLocations()
         {
             InitializeComponent();
             _presenter = new AdminLocationsPresenter(this);
         }
+
+        #region Methods
 
         public void LoadData()
         {
@@ -275,5 +281,7 @@ namespace NecromindUI.UserControls.Admin
                 btnEditRemove.Enabled = false;
             }
         }
+
+        #endregion Methods
     }
 }

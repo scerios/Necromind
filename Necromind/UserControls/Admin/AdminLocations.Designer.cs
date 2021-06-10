@@ -47,6 +47,8 @@ namespace NecromindUI.UserControls.Admin
             this.labDescriptionL = new System.Windows.Forms.Label();
             this.labNameL = new System.Windows.Forms.Label();
             this.panDivider = new System.Windows.Forms.Panel();
+            this.timHideAdd = new System.Windows.Forms.Timer(this.components);
+            this.timHideEdit = new System.Windows.Forms.Timer(this.components);
             this.panEdit = new System.Windows.Forms.Panel();
             this.cbEditIsAccessible = new System.Windows.Forms.CheckBox();
             this.labIsAccessibleR = new System.Windows.Forms.Label();
@@ -65,8 +67,6 @@ namespace NecromindUI.UserControls.Admin
             this.labDescriptionR = new System.Windows.Forms.Label();
             this.labNameR = new System.Windows.Forms.Label();
             this.lbLocations = new System.Windows.Forms.ListBox();
-            this.timHideAdd = new System.Windows.Forms.Timer(this.components);
-            this.timHideEdit = new System.Windows.Forms.Timer(this.components);
             this.panCreate.SuspendLayout();
             this.panCreateEnemies.SuspendLayout();
             this.panEdit.SuspendLayout();
@@ -86,10 +86,10 @@ namespace NecromindUI.UserControls.Admin
             this.panCreate.Controls.Add(this.labIsHostileL);
             this.panCreate.Controls.Add(this.labDescriptionL);
             this.panCreate.Controls.Add(this.labNameL);
-            this.panCreate.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panCreate.Dock = System.Windows.Forms.DockStyle.Top;
             this.panCreate.Location = new System.Drawing.Point(0, 0);
             this.panCreate.Name = "panCreate";
-            this.panCreate.Size = new System.Drawing.Size(540, 471);
+            this.panCreate.Size = new System.Drawing.Size(1084, 260);
             this.panCreate.TabIndex = 0;
             // 
             // cbCreateIsAccessible
@@ -117,11 +117,10 @@ namespace NecromindUI.UserControls.Admin
             this.panCreateEnemies.Controls.Add(this.btnCreateAdd);
             this.panCreateEnemies.Controls.Add(this.lbCreateAddedEnemies);
             this.panCreateEnemies.Controls.Add(this.lbCreateEnemies);
-            this.panCreateEnemies.Location = new System.Drawing.Point(23, 220);
+            this.panCreateEnemies.Location = new System.Drawing.Point(564, 17);
             this.panCreateEnemies.Name = "panCreateEnemies";
             this.panCreateEnemies.Size = new System.Drawing.Size(500, 180);
             this.panCreateEnemies.TabIndex = 50;
-            this.panCreateEnemies.Visible = false;
             // 
             // btnCreateRemove
             // 
@@ -195,9 +194,10 @@ namespace NecromindUI.UserControls.Admin
             // 
             // labEnemyAdd
             // 
+            this.labEnemyAdd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labEnemyAdd.AutoSize = true;
             this.labEnemyAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labEnemyAdd.Location = new System.Drawing.Point(140, 431);
+            this.labEnemyAdd.Location = new System.Drawing.Point(684, 219);
             this.labEnemyAdd.MinimumSize = new System.Drawing.Size(260, 0);
             this.labEnemyAdd.Name = "labEnemyAdd";
             this.labEnemyAdd.Size = new System.Drawing.Size(260, 16);
@@ -207,13 +207,13 @@ namespace NecromindUI.UserControls.Admin
             // 
             // btnCreate
             // 
-            this.btnCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCreate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
             this.btnCreate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCreate.FlatAppearance.BorderSize = 0;
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreate.ForeColor = System.Drawing.Color.Black;
-            this.btnCreate.Location = new System.Drawing.Point(420, 426);
+            this.btnCreate.Location = new System.Drawing.Point(964, 215);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(100, 25);
             this.btnCreate.TabIndex = 47;
@@ -279,11 +279,21 @@ namespace NecromindUI.UserControls.Admin
             // panDivider
             // 
             this.panDivider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.panDivider.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panDivider.Location = new System.Drawing.Point(540, 0);
+            this.panDivider.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panDivider.Location = new System.Drawing.Point(0, 260);
             this.panDivider.Name = "panDivider";
-            this.panDivider.Size = new System.Drawing.Size(4, 471);
+            this.panDivider.Size = new System.Drawing.Size(1084, 5);
             this.panDivider.TabIndex = 1;
+            // 
+            // timHideAdd
+            // 
+            this.timHideAdd.Interval = 3000;
+            this.timHideAdd.Tick += new System.EventHandler(this.TimHideAdd_Tick);
+            // 
+            // timHideEdit
+            // 
+            this.timHideEdit.Interval = 3000;
+            this.timHideEdit.Tick += new System.EventHandler(this.TimHideEdit_Tick);
             // 
             // panEdit
             // 
@@ -300,11 +310,11 @@ namespace NecromindUI.UserControls.Admin
             this.panEdit.Controls.Add(this.labDescriptionR);
             this.panEdit.Controls.Add(this.labNameR);
             this.panEdit.Controls.Add(this.lbLocations);
-            this.panEdit.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panEdit.Location = new System.Drawing.Point(544, 0);
+            this.panEdit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panEdit.Location = new System.Drawing.Point(0, 265);
             this.panEdit.Name = "panEdit";
-            this.panEdit.Size = new System.Drawing.Size(540, 471);
-            this.panEdit.TabIndex = 2;
+            this.panEdit.Size = new System.Drawing.Size(1084, 260);
+            this.panEdit.TabIndex = 3;
             // 
             // cbEditIsAccessible
             // 
@@ -331,11 +341,10 @@ namespace NecromindUI.UserControls.Admin
             this.panEditEnemies.Controls.Add(this.btnEditAdd);
             this.panEditEnemies.Controls.Add(this.lbEditAddedEnemies);
             this.panEditEnemies.Controls.Add(this.lbEditEnemies);
-            this.panEditEnemies.Location = new System.Drawing.Point(20, 220);
+            this.panEditEnemies.Location = new System.Drawing.Point(564, 17);
             this.panEditEnemies.Name = "panEditEnemies";
             this.panEditEnemies.Size = new System.Drawing.Size(500, 180);
             this.panEditEnemies.TabIndex = 54;
-            this.panEditEnemies.Visible = false;
             // 
             // btnEditRemove
             // 
@@ -405,13 +414,13 @@ namespace NecromindUI.UserControls.Admin
             this.cbEditIsHostile.Size = new System.Drawing.Size(15, 14);
             this.cbEditIsHostile.TabIndex = 53;
             this.cbEditIsHostile.UseVisualStyleBackColor = true;
-            this.cbEditIsHostile.CheckedChanged += new System.EventHandler(this.CbEditIsHostile_CheckedChanged);
             // 
             // labEnemyEdit
             // 
+            this.labEnemyEdit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labEnemyEdit.AutoSize = true;
             this.labEnemyEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labEnemyEdit.Location = new System.Drawing.Point(140, 430);
+            this.labEnemyEdit.Location = new System.Drawing.Point(684, 219);
             this.labEnemyEdit.MinimumSize = new System.Drawing.Size(260, 0);
             this.labEnemyEdit.Name = "labEnemyEdit";
             this.labEnemyEdit.Size = new System.Drawing.Size(260, 16);
@@ -421,13 +430,13 @@ namespace NecromindUI.UserControls.Admin
             // 
             // btnDel
             // 
-            this.btnDel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.btnDel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDel.FlatAppearance.BorderSize = 0;
             this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDel.ForeColor = System.Drawing.Color.Black;
-            this.btnDel.Location = new System.Drawing.Point(20, 426);
+            this.btnDel.Location = new System.Drawing.Point(564, 215);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(100, 25);
             this.btnDel.TabIndex = 51;
@@ -438,13 +447,13 @@ namespace NecromindUI.UserControls.Admin
             // 
             // btnEdit
             // 
-            this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
             this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.ForeColor = System.Drawing.Color.Black;
-            this.btnEdit.Location = new System.Drawing.Point(420, 426);
+            this.btnEdit.Location = new System.Drawing.Point(964, 215);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(100, 25);
             this.btnEdit.TabIndex = 50;
@@ -519,16 +528,6 @@ namespace NecromindUI.UserControls.Admin
             this.lbLocations.TabIndex = 36;
             this.lbLocations.SelectedIndexChanged += new System.EventHandler(this.LbLocations_SelectedIndexChanged);
             // 
-            // timHideAdd
-            // 
-            this.timHideAdd.Interval = 3000;
-            this.timHideAdd.Tick += new System.EventHandler(this.TimHideAdd_Tick);
-            // 
-            // timHideEdit
-            // 
-            this.timHideEdit.Interval = 3000;
-            this.timHideEdit.Tick += new System.EventHandler(this.TimHideEdit_Tick);
-            // 
             // AdminLocations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -540,7 +539,7 @@ namespace NecromindUI.UserControls.Admin
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdminLocations";
-            this.Size = new System.Drawing.Size(1084, 471);
+            this.Size = new System.Drawing.Size(1084, 525);
             this.panCreate.ResumeLayout(false);
             this.panCreate.PerformLayout();
             this.panCreateEnemies.ResumeLayout(false);
@@ -555,7 +554,6 @@ namespace NecromindUI.UserControls.Admin
 
         private System.Windows.Forms.Panel panCreate;
         private System.Windows.Forms.Panel panDivider;
-        private System.Windows.Forms.Panel panEdit;
         private System.Windows.Forms.Label labEnemyAdd;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.TextBox tbCreateDescription;
@@ -565,6 +563,23 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.Label labNameL;
         private System.Windows.Forms.Timer timHideAdd;
         private System.Windows.Forms.Timer timHideEdit;
+        private System.Windows.Forms.CheckBox cbCreateIsHostile;
+        private System.Windows.Forms.Panel panCreateEnemies;
+        private System.Windows.Forms.Button btnCreateRemove;
+        private System.Windows.Forms.Button btnCreateAdd;
+        private System.Windows.Forms.ListBox lbCreateAddedEnemies;
+        private System.Windows.Forms.ListBox lbCreateEnemies;
+        private System.Windows.Forms.CheckBox cbCreateIsAccessible;
+        private System.Windows.Forms.Label labIsAccessibleL;
+        private System.Windows.Forms.Panel panEdit;
+        private System.Windows.Forms.CheckBox cbEditIsAccessible;
+        private System.Windows.Forms.Label labIsAccessibleR;
+        private System.Windows.Forms.Panel panEditEnemies;
+        private System.Windows.Forms.Button btnEditRemove;
+        private System.Windows.Forms.Button btnEditAdd;
+        private System.Windows.Forms.ListBox lbEditAddedEnemies;
+        private System.Windows.Forms.ListBox lbEditEnemies;
+        private System.Windows.Forms.CheckBox cbEditIsHostile;
         private System.Windows.Forms.Label labEnemyEdit;
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Button btnEdit;
@@ -574,21 +589,5 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.Label labDescriptionR;
         private System.Windows.Forms.Label labNameR;
         private System.Windows.Forms.ListBox lbLocations;
-        private System.Windows.Forms.CheckBox cbCreateIsHostile;
-        private System.Windows.Forms.CheckBox cbEditIsHostile;
-        private System.Windows.Forms.Panel panCreateEnemies;
-        private System.Windows.Forms.Button btnCreateRemove;
-        private System.Windows.Forms.Button btnCreateAdd;
-        private System.Windows.Forms.ListBox lbCreateAddedEnemies;
-        private System.Windows.Forms.ListBox lbCreateEnemies;
-        private System.Windows.Forms.Panel panEditEnemies;
-        private System.Windows.Forms.Button btnEditRemove;
-        private System.Windows.Forms.Button btnEditAdd;
-        private System.Windows.Forms.ListBox lbEditAddedEnemies;
-        private System.Windows.Forms.ListBox lbEditEnemies;
-        private System.Windows.Forms.CheckBox cbCreateIsAccessible;
-        private System.Windows.Forms.Label labIsAccessibleL;
-        private System.Windows.Forms.CheckBox cbEditIsAccessible;
-        private System.Windows.Forms.Label labIsAccessibleR;
     }
 }
