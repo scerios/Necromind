@@ -32,8 +32,8 @@ namespace NecromindUI
 
         private void DeactivateView(UserControl view)
         {
-            Controls.Remove(view);
             view.Dispose();
+            Controls.Remove(view);
         }
 
         private void Necromind_KeyDown(object sender, KeyEventArgs e)
@@ -114,7 +114,6 @@ namespace NecromindUI
         private void GameMain_BtnBackToMenu(object sender, EventArgs e)
         {
             DeactivateView(_gameMain);
-            _gameMain = null;
         }
 
         private void MenuAdmin_BtnBackClick(object sender, EventArgs e)
