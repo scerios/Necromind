@@ -114,6 +114,7 @@ namespace NecromindUI
         private void GameMain_BtnBackToMenu(object sender, EventArgs e)
         {
             DeactivateView(_gameMain);
+            _gameMain = null;
         }
 
         private void MenuAdmin_BtnBackClick(object sender, EventArgs e)
