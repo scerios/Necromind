@@ -41,7 +41,7 @@ namespace NecromindUI.UserControls.Menu
             // 
             // tbHeroName
             // 
-            this.tbHeroName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tbHeroName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tbHeroName.Location = new System.Drawing.Point(500, 100);
             this.tbHeroName.Name = "tbHeroName";
             this.tbHeroName.Size = new System.Drawing.Size(100, 22);
@@ -50,7 +50,7 @@ namespace NecromindUI.UserControls.Menu
             // 
             // btnCreateNewHero
             // 
-            this.btnCreateNewHero.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCreateNewHero.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnCreateNewHero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
             this.btnCreateNewHero.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCreateNewHero.FlatAppearance.BorderSize = 0;
@@ -67,7 +67,7 @@ namespace NecromindUI.UserControls.Menu
             // 
             // btnBack
             // 
-            this.btnBack.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBack.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
             this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBack.FlatAppearance.BorderSize = 0;
@@ -84,6 +84,7 @@ namespace NecromindUI.UserControls.Menu
             // 
             // panError
             // 
+            this.panError.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panError.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panError.Controls.Add(this.btnErrorClose);
             this.panError.Controls.Add(this.labErrorMsg);
@@ -147,7 +148,7 @@ namespace NecromindUI.UserControls.Menu
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "MenuNew";
-            this.Size = new System.Drawing.Size(1084, 661);
+            this.Size = new System.Drawing.Size(1084, 717);
             this.panError.ResumeLayout(false);
             this.panError.PerformLayout();
             this.ResumeLayout(false);

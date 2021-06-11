@@ -50,7 +50,7 @@ namespace NecromindUI.UserControls.Menu
             // 
             // btnBack
             // 
-            this.btnBack.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBack.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
             this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBack.FlatAppearance.BorderSize = 0;
@@ -233,7 +233,7 @@ namespace NecromindUI.UserControls.Menu
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "MenuLoad";
-            this.Size = new System.Drawing.Size(1084, 661);
+            this.Size = new System.Drawing.Size(1084, 717);
             this.panError.ResumeLayout(false);
             this.panError.PerformLayout();
             this.panConfDel.ResumeLayout(false);

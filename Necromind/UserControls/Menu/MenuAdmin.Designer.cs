@@ -31,10 +31,10 @@ namespace NecromindUI.UserControls.Menu
         {
             this.btnBack = new System.Windows.Forms.Button();
             this.panMain = new System.Windows.Forms.Panel();
-            this.panSettings = new System.Windows.Forms.Panel();
             this.panControls = new System.Windows.Forms.Panel();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.btnEnter = new System.Windows.Forms.Button();
+            this.panSettings = new System.Windows.Forms.Panel();
             this.panMain.SuspendLayout();
             this.panControls.SuspendLayout();
             this.SuspendLayout();
@@ -64,13 +64,6 @@ namespace NecromindUI.UserControls.Menu
             this.panMain.Name = "panMain";
             this.panMain.Size = new System.Drawing.Size(1084, 647);
             this.panMain.TabIndex = 4;
-            // 
-            // panSettings
-            // 
-            this.panSettings.Location = new System.Drawing.Point(0, 120);
-            this.panSettings.Name = "panSettings";
-            this.panSettings.Size = new System.Drawing.Size(1084, 527);
-            this.panSettings.TabIndex = 1;
             // 
             // panControls
             // 
@@ -108,6 +101,13 @@ namespace NecromindUI.UserControls.Menu
             this.btnEnter.Text = "Enter";
             this.btnEnter.UseVisualStyleBackColor = false;
             this.btnEnter.Click += new System.EventHandler(this.BtnEnter_Click);
+            // 
+            // panSettings
+            // 
+            this.panSettings.Location = new System.Drawing.Point(0, 120);
+            this.panSettings.Name = "panSettings";
+            this.panSettings.Size = new System.Drawing.Size(1084, 527);
+            this.panSettings.TabIndex = 1;
             // 
             // MenuAdmin
             // 
