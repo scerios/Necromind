@@ -78,7 +78,7 @@ namespace NecromindUI.UserControls.Menu
             // tbPassword
             // 
             this.tbPassword.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tbPassword.Location = new System.Drawing.Point(500, 30);
+            this.tbPassword.Location = new System.Drawing.Point(492, 30);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(100, 22);
             this.tbPassword.TabIndex = 11;
@@ -94,7 +94,7 @@ namespace NecromindUI.UserControls.Menu
             this.btnEnter.FlatAppearance.BorderSize = 0;
             this.btnEnter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnEnter.Location = new System.Drawing.Point(500, 70);
+            this.btnEnter.Location = new System.Drawing.Point(492, 70);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(100, 25);
             this.btnEnter.TabIndex = 10;
@@ -130,6 +130,7 @@ namespace NecromindUI.UserControls.Menu
             this.btnInfo.Text = "i";
             this.btnInfo.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
             this.btnInfo.UseVisualStyleBackColor = true;
+            this.btnInfo.Click += new System.EventHandler(this.BtnInfo_Click);
             // 
             // MenuAdmin
             // 

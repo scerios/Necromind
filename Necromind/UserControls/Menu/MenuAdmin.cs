@@ -132,5 +132,9 @@ namespace NecromindUI.UserControls.Menu
             _adminEnemies.LoadData();
             BringToFront(_adminEnemies);
         }
+
+        private void BtnInfo_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
