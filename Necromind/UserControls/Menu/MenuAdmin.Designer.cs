@@ -35,6 +35,7 @@ namespace NecromindUI.UserControls.Menu
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.btnEnter = new System.Windows.Forms.Button();
             this.panSettings = new System.Windows.Forms.Panel();
+            this.btnInfo = new NecromindLibrary.Config.Button_WOC();
             this.panMain.SuspendLayout();
             this.panControls.SuspendLayout();
             this.SuspendLayout();
@@ -109,11 +110,33 @@ namespace NecromindUI.UserControls.Menu
             this.panSettings.Size = new System.Drawing.Size(1084, 527);
             this.panSettings.TabIndex = 1;
             // 
+            // btnInfo
+            // 
+            this.btnInfo.BorderColor = System.Drawing.Color.Transparent;
+            this.btnInfo.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.btnInfo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInfo.FlatAppearance.BorderSize = 0;
+            this.btnInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.btnInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.btnInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInfo.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnInfo.Location = new System.Drawing.Point(1039, 16);
+            this.btnInfo.Name = "btnInfo";
+            this.btnInfo.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.btnInfo.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.btnInfo.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnInfo.Size = new System.Drawing.Size(30, 30);
+            this.btnInfo.TabIndex = 5;
+            this.btnInfo.Text = "i";
+            this.btnInfo.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnInfo.UseVisualStyleBackColor = true;
+            // 
             // MenuAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.Controls.Add(this.btnInfo);
             this.Controls.Add(this.panMain);
             this.Controls.Add(this.btnBack);
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
@@ -135,5 +158,6 @@ namespace NecromindUI.UserControls.Menu
         private System.Windows.Forms.Panel panSettings;
         private System.Windows.Forms.Button btnEnter;
         public System.Windows.Forms.TextBox tbPassword;
+        private NecromindLibrary.Config.Button_WOC btnInfo;
     }
 }
