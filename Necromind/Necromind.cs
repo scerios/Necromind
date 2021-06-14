@@ -50,10 +50,10 @@ namespace NecromindUI
                 if (e.KeyCode == Keys.A && e.Modifiers == Keys.Control)
                 {
                     _menuAdmin = new MenuAdmin();
-                    ActivateView(_menuAdmin);
                     _menuAdmin.tbPassword.Focus();
-
                     _menuAdmin.BtnBackCLick += new EventHandler(MenuAdmin_BtnBackClick);
+
+                    ActivateView(_menuAdmin);
                 }
             }
         }

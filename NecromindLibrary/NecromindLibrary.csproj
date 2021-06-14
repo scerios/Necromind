@@ -144,7 +144,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config\Button_WOC.cs">
+    <Compile Include="Config\RoundButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Config\DBConfig.cs" />

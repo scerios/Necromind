@@ -9,10 +9,10 @@ namespace NecromindUI.UserControls.Menu
     public partial class MenuAdmin : UserControl, IMenuAdmin
     {
         private readonly MenuAdminPresenter _presenter;
-        private readonly AdminControls _controls;
-        private readonly AdminHeroes _adminHeroes;
-        private readonly AdminEnemies _adminEnemies;
-        private readonly AdminLocations _adminLocations;
+        private AdminControls _controls;
+        private AdminHeroes _adminHeroes;
+        private AdminEnemies _adminEnemies;
+        private AdminLocations _adminLocations;
         private UserControl _currentView;
 
         public string Password
@@ -22,6 +22,26 @@ namespace NecromindUI.UserControls.Menu
             set
             {
                 tbPassword.Text = value;
+            }
+        }
+
+        public bool IsPanInfoPassVisible
+        {
+            get => panInfoPass.Visible;
+
+            set
+            {
+                panInfoPass.Visible = value;
+            }
+        }
+
+        public bool IsPanInfoConvVisible
+        {
+            get => panInfoConv.Visible;
+
+            set
+            {
+                panInfoConv.Visible = value;
             }
         }
 
@@ -41,6 +61,10 @@ namespace NecromindUI.UserControls.Menu
         {
             InitializeComponent();
             _presenter = new MenuAdminPresenter(this);
+        }
+
+        private void SetAdminLayer()
+        {
             _controls = new AdminControls();
             _adminHeroes = new AdminHeroes();
             _adminEnemies = new AdminEnemies();
@@ -72,8 +96,9 @@ namespace NecromindUI.UserControls.Menu
         {
             if (_presenter.IsPasswordCorrect())
             {
-                ActivateMainView(PanControls, _controls);
+                SetAdminLayer();
                 SetControlsEvents();
+                ActivateMainView(PanControls, _controls);
             }
 
             Password = "";
@@ -135,6 +160,26 @@ namespace NecromindUI.UserControls.Menu
 
         private void BtnInfo_Click(object sender, EventArgs e)
         {
+            if (_controls == null)
+            {
+                IsPanInfoPassVisible = true;
+                panInfoPass.BringToFront();
+            }
+            else
+            {
+                IsPanInfoConvVisible = true;
+                panInfoConv.BringToFront();
+            }
+        }
+
+        private void BtnInfoPassClose_Click(object sender, EventArgs e)
+        {
+            IsPanInfoPassVisible = false;
+        }
+
+        private void BtnInfoConvClose_Click(object sender, EventArgs e)
+        {
+            IsPanInfoConvVisible = false;
         }
     }
 }
