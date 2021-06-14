@@ -94,6 +94,7 @@ namespace NecromindUI.UserControls.Menu
             int btnLoadHeroLocX = 492;
             int btnDeleteHeroLocX = 610;
             int btnLocY = 100;
+            int btnSpace = 40;
 
             foreach (HeroModel hero in heroes)
             {
@@ -141,7 +142,7 @@ namespace NecromindUI.UserControls.Menu
                     _presenter.DisplayPanConfDel(hero.Name);
                 };
 
-                btnLocY += 40;
+                btnLocY += btnSpace;
             }
         }
 
