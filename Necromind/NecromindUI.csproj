@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Presenters\Admin\AdminEnemiesPresenter.cs" />
     <Compile Include="Presenters\Admin\AdminLocationsPresenter.cs" />
+    <Compile Include="Presenters\Admin\AdminMapPresenter.cs" />
     <Compile Include="UserControls\Admin\AdminControls.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -136,6 +137,7 @@
     <Compile Include="Views\Admin\IAdminEnemies.cs" />
     <Compile Include="Views\Admin\IAdminHeroes.cs" />
     <Compile Include="Views\Admin\IAdminLocations.cs" />
+    <Compile Include="Views\Admin\IAdminMap.cs" />
     <Compile Include="Views\Menu\IConfirmDelete.cs" />
     <Compile Include="Views\Menu\IError.cs" />
     <Compile Include="Views\Game\IGameMain.cs" />
