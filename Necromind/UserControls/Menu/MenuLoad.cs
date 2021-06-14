@@ -156,11 +156,6 @@ namespace NecromindUI.UserControls.Menu
             _presenter.HideError();
         }
 
-        private void BtnLoadHero_Click(object sender, EventArgs e)
-        {
-            BtnLoadHeroClick?.Invoke(this, e);
-        }
-
         private void BtnDelHero_Click(object sender, EventArgs e)
         {
             _presenter.DeleteHero();
