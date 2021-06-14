@@ -91,7 +91,7 @@ namespace NecromindUI.UserControls.Menu
         public void LoadHeroes()
         {
             var heroes = _presenter.GetAllHeroes(DBConfig.HeroesCollection);
-            int btnLoadHeroLocX = 500;
+            int btnLoadHeroLocX = 492;
             int btnDeleteHeroLocX = 610;
             int btnLocY = 100;
 

@@ -42,7 +42,7 @@ namespace NecromindUI.UserControls.Menu
             // tbHeroName
             // 
             this.tbHeroName.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tbHeroName.Location = new System.Drawing.Point(500, 100);
+            this.tbHeroName.Location = new System.Drawing.Point(492, 100);
             this.tbHeroName.Name = "tbHeroName";
             this.tbHeroName.Size = new System.Drawing.Size(100, 22);
             this.tbHeroName.TabIndex = 5;
@@ -56,7 +56,7 @@ namespace NecromindUI.UserControls.Menu
             this.btnCreateNewHero.FlatAppearance.BorderSize = 0;
             this.btnCreateNewHero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateNewHero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.btnCreateNewHero.Location = new System.Drawing.Point(500, 140);
+            this.btnCreateNewHero.Location = new System.Drawing.Point(492, 140);
             this.btnCreateNewHero.Name = "btnCreateNewHero";
             this.btnCreateNewHero.Size = new System.Drawing.Size(100, 25);
             this.btnCreateNewHero.TabIndex = 4;
@@ -89,7 +89,7 @@ namespace NecromindUI.UserControls.Menu
             this.panError.Controls.Add(this.btnErrorClose);
             this.panError.Controls.Add(this.labErrorMsg);
             this.panError.Controls.Add(this.labErrorTitle);
-            this.panError.Location = new System.Drawing.Point(400, 200);
+            this.panError.Location = new System.Drawing.Point(392, 200);
             this.panError.Name = "panError";
             this.panError.Size = new System.Drawing.Size(300, 178);
             this.panError.TabIndex = 24;
