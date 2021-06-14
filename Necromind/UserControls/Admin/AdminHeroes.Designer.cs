@@ -245,9 +245,9 @@ namespace NecromindUI.UserControls.Admin
             this.labLvlError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.labLvlError.Location = new System.Drawing.Point(411, 65);
             this.labLvlError.Name = "labLvlError";
-            this.labLvlError.Size = new System.Drawing.Size(240, 16);
+            this.labLvlError.Size = new System.Drawing.Size(120, 16);
             this.labLvlError.TabIndex = 21;
-            this.labLvlError.Text = "Level must be greater than 0!";
+            this.labLvlError.Text = "Invalid level.";
             this.labLvlError.Visible = false;
             // 
             // labGoldError
@@ -257,9 +257,9 @@ namespace NecromindUI.UserControls.Admin
             this.labGoldError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.labGoldError.Location = new System.Drawing.Point(411, 95);
             this.labGoldError.Name = "labGoldError";
-            this.labGoldError.Size = new System.Drawing.Size(328, 16);
+            this.labGoldError.Size = new System.Drawing.Size(112, 16);
             this.labGoldError.TabIndex = 22;
-            this.labGoldError.Text = "Gold must be greater than or equal to 0!";
+            this.labGoldError.Text = "Invalid gold.";
             this.labGoldError.Visible = false;
             // 
             // labDmgError
@@ -269,9 +269,9 @@ namespace NecromindUI.UserControls.Admin
             this.labDmgError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.labDmgError.Location = new System.Drawing.Point(411, 125);
             this.labDmgError.Name = "labDmgError";
-            this.labDmgError.Size = new System.Drawing.Size(520, 16);
+            this.labDmgError.Size = new System.Drawing.Size(128, 16);
             this.labDmgError.TabIndex = 23;
-            this.labDmgError.Text = "Damage min must be greater than 0, max must be greater than min!";
+            this.labDmgError.Text = "Invalid damage.";
             this.labDmgError.Visible = false;
             // 
             // labDefError
@@ -281,9 +281,9 @@ namespace NecromindUI.UserControls.Admin
             this.labDefError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.labDefError.Location = new System.Drawing.Point(411, 155);
             this.labDefError.Name = "labDefError";
-            this.labDefError.Size = new System.Drawing.Size(352, 16);
+            this.labDefError.Size = new System.Drawing.Size(136, 16);
             this.labDefError.TabIndex = 24;
-            this.labDefError.Text = "Defense must be greater than or equal to 0!";
+            this.labDefError.Text = "Invalid defense.";
             this.labDefError.Visible = false;
             // 
             // labHealthError
@@ -293,9 +293,9 @@ namespace NecromindUI.UserControls.Admin
             this.labHealthError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.labHealthError.Location = new System.Drawing.Point(411, 185);
             this.labHealthError.Name = "labHealthError";
-            this.labHealthError.Size = new System.Drawing.Size(248, 16);
+            this.labHealthError.Size = new System.Drawing.Size(128, 16);
             this.labHealthError.TabIndex = 25;
-            this.labHealthError.Text = "Health must be greater than 0!";
+            this.labHealthError.Text = "Invalid health.";
             this.labHealthError.Visible = false;
             // 
             // AdminHeroes

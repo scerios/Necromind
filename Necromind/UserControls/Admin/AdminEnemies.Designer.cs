@@ -31,6 +31,12 @@ namespace NecromindUI.UserControls.Admin
         {
             this.components = new System.ComponentModel.Container();
             this.panCreate = new System.Windows.Forms.Panel();
+            this.labNameCError = new System.Windows.Forms.Label();
+            this.labHealthCError = new System.Windows.Forms.Label();
+            this.labDefCError = new System.Windows.Forms.Label();
+            this.labDmgCError = new System.Windows.Forms.Label();
+            this.labGoldCError = new System.Windows.Forms.Label();
+            this.labLvlCError = new System.Windows.Forms.Label();
             this.labEnemyAdd = new System.Windows.Forms.Label();
             this.btnCreate = new System.Windows.Forms.Button();
             this.tbCreateDmgMax = new System.Windows.Forms.TextBox();
@@ -50,6 +56,12 @@ namespace NecromindUI.UserControls.Admin
             this.timHideEdit = new System.Windows.Forms.Timer(this.components);
             this.panDivider = new System.Windows.Forms.Panel();
             this.panEdit = new System.Windows.Forms.Panel();
+            this.labNameMError = new System.Windows.Forms.Label();
+            this.labHealthMError = new System.Windows.Forms.Label();
+            this.labDefMError = new System.Windows.Forms.Label();
+            this.labDmgMError = new System.Windows.Forms.Label();
+            this.labGoldMError = new System.Windows.Forms.Label();
+            this.labLvlMError = new System.Windows.Forms.Label();
             this.labEnemyEdit = new System.Windows.Forms.Label();
             this.btnDel = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -67,18 +79,6 @@ namespace NecromindUI.UserControls.Admin
             this.labLvlM = new System.Windows.Forms.Label();
             this.labNameM = new System.Windows.Forms.Label();
             this.lbEnemies = new System.Windows.Forms.ListBox();
-            this.labHealthCError = new System.Windows.Forms.Label();
-            this.labDefCError = new System.Windows.Forms.Label();
-            this.labDmgCError = new System.Windows.Forms.Label();
-            this.labGoldCError = new System.Windows.Forms.Label();
-            this.labLvlCError = new System.Windows.Forms.Label();
-            this.labNameCError = new System.Windows.Forms.Label();
-            this.labNameMError = new System.Windows.Forms.Label();
-            this.labHealthMError = new System.Windows.Forms.Label();
-            this.labDefMError = new System.Windows.Forms.Label();
-            this.labDmgMError = new System.Windows.Forms.Label();
-            this.labGoldMError = new System.Windows.Forms.Label();
-            this.labLvlMError = new System.Windows.Forms.Label();
             this.panCreate.SuspendLayout();
             this.panEdit.SuspendLayout();
             this.SuspendLayout();
@@ -111,6 +111,78 @@ namespace NecromindUI.UserControls.Admin
             this.panCreate.Name = "panCreate";
             this.panCreate.Size = new System.Drawing.Size(1084, 260);
             this.panCreate.TabIndex = 0;
+            // 
+            // labNameCError
+            // 
+            this.labNameCError.AutoSize = true;
+            this.labNameCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labNameCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labNameCError.Location = new System.Drawing.Point(231, 20);
+            this.labNameCError.Name = "labNameCError";
+            this.labNameCError.Size = new System.Drawing.Size(112, 16);
+            this.labNameCError.TabIndex = 39;
+            this.labNameCError.Text = "Invalid name.";
+            this.labNameCError.Visible = false;
+            // 
+            // labHealthCError
+            // 
+            this.labHealthCError.AutoSize = true;
+            this.labHealthCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labHealthCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labHealthCError.Location = new System.Drawing.Point(231, 170);
+            this.labHealthCError.Name = "labHealthCError";
+            this.labHealthCError.Size = new System.Drawing.Size(128, 16);
+            this.labHealthCError.TabIndex = 38;
+            this.labHealthCError.Text = "Invalid health.";
+            this.labHealthCError.Visible = false;
+            // 
+            // labDefCError
+            // 
+            this.labDefCError.AutoSize = true;
+            this.labDefCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labDefCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labDefCError.Location = new System.Drawing.Point(231, 140);
+            this.labDefCError.Name = "labDefCError";
+            this.labDefCError.Size = new System.Drawing.Size(136, 16);
+            this.labDefCError.TabIndex = 37;
+            this.labDefCError.Text = "Invalid defense.";
+            this.labDefCError.Visible = false;
+            // 
+            // labDmgCError
+            // 
+            this.labDmgCError.AutoSize = true;
+            this.labDmgCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labDmgCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labDmgCError.Location = new System.Drawing.Point(231, 110);
+            this.labDmgCError.Name = "labDmgCError";
+            this.labDmgCError.Size = new System.Drawing.Size(128, 16);
+            this.labDmgCError.TabIndex = 36;
+            this.labDmgCError.Text = "Invalid damage.";
+            this.labDmgCError.Visible = false;
+            // 
+            // labGoldCError
+            // 
+            this.labGoldCError.AutoSize = true;
+            this.labGoldCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labGoldCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labGoldCError.Location = new System.Drawing.Point(231, 80);
+            this.labGoldCError.Name = "labGoldCError";
+            this.labGoldCError.Size = new System.Drawing.Size(112, 16);
+            this.labGoldCError.TabIndex = 35;
+            this.labGoldCError.Text = "Invalid gold.";
+            this.labGoldCError.Visible = false;
+            // 
+            // labLvlCError
+            // 
+            this.labLvlCError.AutoSize = true;
+            this.labLvlCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labLvlCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labLvlCError.Location = new System.Drawing.Point(231, 50);
+            this.labLvlCError.Name = "labLvlCError";
+            this.labLvlCError.Size = new System.Drawing.Size(120, 16);
+            this.labLvlCError.TabIndex = 34;
+            this.labLvlCError.Text = "Invalid level.";
+            this.labLvlCError.Visible = false;
             // 
             // labEnemyAdd
             // 
@@ -328,6 +400,78 @@ namespace NecromindUI.UserControls.Admin
             this.panEdit.Size = new System.Drawing.Size(1084, 260);
             this.panEdit.TabIndex = 4;
             // 
+            // labNameMError
+            // 
+            this.labNameMError.AutoSize = true;
+            this.labNameMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labNameMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labNameMError.Location = new System.Drawing.Point(405, 23);
+            this.labNameMError.Name = "labNameMError";
+            this.labNameMError.Size = new System.Drawing.Size(112, 16);
+            this.labNameMError.TabIndex = 45;
+            this.labNameMError.Text = "Invalid name.";
+            this.labNameMError.Visible = false;
+            // 
+            // labHealthMError
+            // 
+            this.labHealthMError.AutoSize = true;
+            this.labHealthMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labHealthMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labHealthMError.Location = new System.Drawing.Point(405, 173);
+            this.labHealthMError.Name = "labHealthMError";
+            this.labHealthMError.Size = new System.Drawing.Size(128, 16);
+            this.labHealthMError.TabIndex = 44;
+            this.labHealthMError.Text = "Invalid health.";
+            this.labHealthMError.Visible = false;
+            // 
+            // labDefMError
+            // 
+            this.labDefMError.AutoSize = true;
+            this.labDefMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labDefMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labDefMError.Location = new System.Drawing.Point(405, 143);
+            this.labDefMError.Name = "labDefMError";
+            this.labDefMError.Size = new System.Drawing.Size(136, 16);
+            this.labDefMError.TabIndex = 43;
+            this.labDefMError.Text = "Invalid defense.";
+            this.labDefMError.Visible = false;
+            // 
+            // labDmgMError
+            // 
+            this.labDmgMError.AutoSize = true;
+            this.labDmgMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labDmgMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labDmgMError.Location = new System.Drawing.Point(405, 113);
+            this.labDmgMError.Name = "labDmgMError";
+            this.labDmgMError.Size = new System.Drawing.Size(128, 16);
+            this.labDmgMError.TabIndex = 42;
+            this.labDmgMError.Text = "Invalid damage.";
+            this.labDmgMError.Visible = false;
+            // 
+            // labGoldMError
+            // 
+            this.labGoldMError.AutoSize = true;
+            this.labGoldMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labGoldMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labGoldMError.Location = new System.Drawing.Point(405, 83);
+            this.labGoldMError.Name = "labGoldMError";
+            this.labGoldMError.Size = new System.Drawing.Size(112, 16);
+            this.labGoldMError.TabIndex = 41;
+            this.labGoldMError.Text = "Invalid gold.";
+            this.labGoldMError.Visible = false;
+            // 
+            // labLvlMError
+            // 
+            this.labLvlMError.AutoSize = true;
+            this.labLvlMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labLvlMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labLvlMError.Location = new System.Drawing.Point(405, 53);
+            this.labLvlMError.Name = "labLvlMError";
+            this.labLvlMError.Size = new System.Drawing.Size(120, 16);
+            this.labLvlMError.TabIndex = 40;
+            this.labLvlMError.Text = "Invalid level.";
+            this.labLvlMError.Visible = false;
+            // 
             // labEnemyEdit
             // 
             this.labEnemyEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -524,150 +668,6 @@ namespace NecromindUI.UserControls.Admin
             this.lbEnemies.Size = new System.Drawing.Size(150, 180);
             this.lbEnemies.TabIndex = 19;
             this.lbEnemies.SelectedIndexChanged += new System.EventHandler(this.LbEnemies_SelectedIndexChanged);
-            // 
-            // labHealthCError
-            // 
-            this.labHealthCError.AutoSize = true;
-            this.labHealthCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labHealthCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.labHealthCError.Location = new System.Drawing.Point(231, 170);
-            this.labHealthCError.Name = "labHealthCError";
-            this.labHealthCError.Size = new System.Drawing.Size(248, 16);
-            this.labHealthCError.TabIndex = 38;
-            this.labHealthCError.Text = "Health must be greater than 0!";
-            this.labHealthCError.Visible = false;
-            // 
-            // labDefCError
-            // 
-            this.labDefCError.AutoSize = true;
-            this.labDefCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labDefCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.labDefCError.Location = new System.Drawing.Point(231, 140);
-            this.labDefCError.Name = "labDefCError";
-            this.labDefCError.Size = new System.Drawing.Size(352, 16);
-            this.labDefCError.TabIndex = 37;
-            this.labDefCError.Text = "Defense must be greater than or equal to 0!";
-            this.labDefCError.Visible = false;
-            // 
-            // labDmgCError
-            // 
-            this.labDmgCError.AutoSize = true;
-            this.labDmgCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labDmgCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.labDmgCError.Location = new System.Drawing.Point(231, 110);
-            this.labDmgCError.Name = "labDmgCError";
-            this.labDmgCError.Size = new System.Drawing.Size(520, 16);
-            this.labDmgCError.TabIndex = 36;
-            this.labDmgCError.Text = "Damage min must be greater than 0, max must be greater than min!";
-            this.labDmgCError.Visible = false;
-            // 
-            // labGoldCError
-            // 
-            this.labGoldCError.AutoSize = true;
-            this.labGoldCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labGoldCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.labGoldCError.Location = new System.Drawing.Point(231, 80);
-            this.labGoldCError.Name = "labGoldCError";
-            this.labGoldCError.Size = new System.Drawing.Size(328, 16);
-            this.labGoldCError.TabIndex = 35;
-            this.labGoldCError.Text = "Gold must be greater than or equal to 0!";
-            this.labGoldCError.Visible = false;
-            // 
-            // labLvlCError
-            // 
-            this.labLvlCError.AutoSize = true;
-            this.labLvlCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labLvlCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.labLvlCError.Location = new System.Drawing.Point(231, 50);
-            this.labLvlCError.Name = "labLvlCError";
-            this.labLvlCError.Size = new System.Drawing.Size(240, 16);
-            this.labLvlCError.TabIndex = 34;
-            this.labLvlCError.Text = "Level must be greater than 0!";
-            this.labLvlCError.Visible = false;
-            // 
-            // labNameCError
-            // 
-            this.labNameCError.AutoSize = true;
-            this.labNameCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labNameCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.labNameCError.Location = new System.Drawing.Point(231, 20);
-            this.labNameCError.Name = "labNameCError";
-            this.labNameCError.Size = new System.Drawing.Size(568, 16);
-            this.labNameCError.TabIndex = 39;
-            this.labNameCError.Text = "Name must be between 3 to 16 characters. Must start with valid letter.";
-            this.labNameCError.Visible = false;
-            // 
-            // labNameMError
-            // 
-            this.labNameMError.AutoSize = true;
-            this.labNameMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labNameMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.labNameMError.Location = new System.Drawing.Point(405, 23);
-            this.labNameMError.Name = "labNameMError";
-            this.labNameMError.Size = new System.Drawing.Size(568, 16);
-            this.labNameMError.TabIndex = 45;
-            this.labNameMError.Text = "Name must be between 3 to 16 characters. Must start with valid letter.";
-            this.labNameMError.Visible = false;
-            // 
-            // labHealthMError
-            // 
-            this.labHealthMError.AutoSize = true;
-            this.labHealthMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labHealthMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.labHealthMError.Location = new System.Drawing.Point(405, 173);
-            this.labHealthMError.Name = "labHealthMError";
-            this.labHealthMError.Size = new System.Drawing.Size(248, 16);
-            this.labHealthMError.TabIndex = 44;
-            this.labHealthMError.Text = "Health must be greater than 0!";
-            this.labHealthMError.Visible = false;
-            // 
-            // labDefMError
-            // 
-            this.labDefMError.AutoSize = true;
-            this.labDefMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labDefMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.labDefMError.Location = new System.Drawing.Point(405, 143);
-            this.labDefMError.Name = "labDefMError";
-            this.labDefMError.Size = new System.Drawing.Size(352, 16);
-            this.labDefMError.TabIndex = 43;
-            this.labDefMError.Text = "Defense must be greater than or equal to 0!";
-            this.labDefMError.Visible = false;
-            // 
-            // labDmgMError
-            // 
-            this.labDmgMError.AutoSize = true;
-            this.labDmgMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labDmgMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.labDmgMError.Location = new System.Drawing.Point(405, 113);
-            this.labDmgMError.Name = "labDmgMError";
-            this.labDmgMError.Size = new System.Drawing.Size(520, 16);
-            this.labDmgMError.TabIndex = 42;
-            this.labDmgMError.Text = "Damage min must be greater than 0, max must be greater than min!";
-            this.labDmgMError.Visible = false;
-            // 
-            // labGoldMError
-            // 
-            this.labGoldMError.AutoSize = true;
-            this.labGoldMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labGoldMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.labGoldMError.Location = new System.Drawing.Point(405, 83);
-            this.labGoldMError.Name = "labGoldMError";
-            this.labGoldMError.Size = new System.Drawing.Size(328, 16);
-            this.labGoldMError.TabIndex = 41;
-            this.labGoldMError.Text = "Gold must be greater than or equal to 0!";
-            this.labGoldMError.Visible = false;
-            // 
-            // labLvlMError
-            // 
-            this.labLvlMError.AutoSize = true;
-            this.labLvlMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labLvlMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.labLvlMError.Location = new System.Drawing.Point(405, 53);
-            this.labLvlMError.Name = "labLvlMError";
-            this.labLvlMError.Size = new System.Drawing.Size(240, 16);
-            this.labLvlMError.TabIndex = 40;
-            this.labLvlMError.Text = "Level must be greater than 0!";
-            this.labLvlMError.Visible = false;
             // 
             // AdminEnemies
             // 
