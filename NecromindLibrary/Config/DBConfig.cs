@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
-namespace NecromindUI.Config
+namespace NecromindLibrary.Config
 {
     public static class DBConfig
     {

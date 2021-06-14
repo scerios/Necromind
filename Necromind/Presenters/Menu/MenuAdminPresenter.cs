@@ -1,7 +1,7 @@
 ﻿using Necromind.Views.Menu;
+using NecromindLibrary.Config;
 using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
-using NecromindUI.Config;
 
 namespace Necromind.Presenters.Menu
 {

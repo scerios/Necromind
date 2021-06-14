@@ -2,7 +2,6 @@
 using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
 using NecromindLibrary.Services;
-using NecromindUI.Config;
 using NecromindUI.Views.Admin;
 using System;
 using System.ComponentModel;

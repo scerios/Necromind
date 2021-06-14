@@ -1,7 +1,6 @@
 ﻿using NecromindLibrary.Config;
 using NecromindLibrary.Models;
 using NecromindLibrary.Services;
-using NecromindUI.Config;
 using NecromindUI.Presenters.Menu;
 using NecromindUI.Views.Menu;
 using System;

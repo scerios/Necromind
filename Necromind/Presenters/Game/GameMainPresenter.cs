@@ -1,7 +1,7 @@
-﻿using NecromindLibrary.Models;
+﻿using NecromindLibrary.Config;
+using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
 using NecromindLibrary.Services;
-using NecromindUI.Config;
 using NecromindUI.Views.Game;
 
 namespace NecromindUI.Presenters.Game
