@@ -78,6 +78,12 @@
     <Compile Include="UserControls\Admin\AdminLocations.Designer.cs">
       <DependentUpon>AdminLocations.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Admin\AdminMap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Admin\AdminMap.Designer.cs">
+      <DependentUpon>AdminMap.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Game\GameEnemyInteraction.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Admin\AdminLocations.resx">
       <DependentUpon>AdminLocations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Admin\AdminMap.resx">
+      <DependentUpon>AdminMap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Game\GameEnemyInteraction.resx">
       <DependentUpon>GameEnemyInteraction.cs</DependentUpon>
