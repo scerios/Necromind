@@ -13,6 +13,7 @@ namespace NecromindUI.UserControls.Menu
         private AdminHeroes _adminHeroes;
         private AdminEnemies _adminEnemies;
         private AdminLocations _adminLocations;
+        private AdminMap _adminMap;
         private UserControl _currentView;
 
         public string Password
@@ -69,14 +70,15 @@ namespace NecromindUI.UserControls.Menu
             _adminHeroes = new AdminHeroes();
             _adminEnemies = new AdminEnemies();
             _adminLocations = new AdminLocations();
+            _adminMap = new AdminMap();
         }
 
         private void SetControlsEvents()
         {
-            _controls.BtnMapsClick += new EventHandler(AdminControls_BtnMapsClick);
-            _controls.BtnLocationsClick += new EventHandler(AdminControls_BtnLocationsClick);
             _controls.BtnHeroesClick += new EventHandler(AdminControls_BtnHeroesClick);
             _controls.BtnEnemiesClick += new EventHandler(AdminControls_BtnEnemiesClick);
+            _controls.BtnLocationsClick += new EventHandler(AdminControls_BtnLocationsClick);
+            _controls.BtnMapClick += new EventHandler(AdminControls_BtnMapClick);
         }
 
         private void TbPassword_KeyUp(object sender, KeyEventArgs e)
@@ -127,9 +129,10 @@ namespace NecromindUI.UserControls.Menu
             view.BringToFront();
         }
 
-        private void AdminControls_BtnMapsClick(object sender, EventArgs e)
+        private void AdminControls_BtnMapClick(object sender, EventArgs e)
         {
-            // TODO - Create settings panel for maps.
+            ActivateView(PanSettings, _adminMap);
+            BringToFront(_adminMap);
         }
 
         private void AdminControls_BtnLocationsClick(object sender, EventArgs e)

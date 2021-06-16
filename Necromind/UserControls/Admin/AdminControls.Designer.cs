@@ -50,7 +50,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnMaps.Size = new System.Drawing.Size(100, 25);
             this.btnMaps.TabIndex = 4;
             this.btnMaps.TabStop = false;
-            this.btnMaps.Text = "Maps";
+            this.btnMaps.Text = "Map";
             this.btnMaps.UseVisualStyleBackColor = false;
             this.btnMaps.Click += new System.EventHandler(this.BtnMaps_Click);
             // 

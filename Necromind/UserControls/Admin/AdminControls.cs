@@ -5,7 +5,7 @@ namespace NecromindUI.UserControls.Admin
 {
     public partial class AdminControls : UserControl
     {
-        public event EventHandler BtnMapsClick;
+        public event EventHandler BtnMapClick;
 
         public event EventHandler BtnLocationsClick;
 
@@ -22,7 +22,7 @@ namespace NecromindUI.UserControls.Admin
 
         private void BtnMaps_Click(object sender, EventArgs e)
         {
-            BtnMapsClick?.Invoke(this, e);
+            BtnMapClick?.Invoke(this, e);
         }
 
         private void BtnLocations_Click(object sender, EventArgs e)
