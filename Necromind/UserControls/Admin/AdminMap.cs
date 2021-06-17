@@ -71,6 +71,17 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
+        public bool IndicatorsOff
+        {
+            set
+            {
+                labAccessibleCross.Visible = false;
+                labAccessibleTick.Visible = false;
+                labHostileCross.Visible = false;
+                labHostileTick.Visible = false;
+            }
+        }
+
         public bool LabIsAccessible
         {
             set
@@ -126,6 +137,22 @@ namespace NecromindUI.UserControls.Admin
         private void LbLocations_SelectedIndexChanged(object sender, EventArgs e)
         {
             _presenter.GetSelectedLocationStats();
+        }
+
+        private void BtnNorth_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void BtnSouth_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void BtnWest_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void BtnEast_Click(object sender, EventArgs e)
+        {
         }
     }
 }

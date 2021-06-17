@@ -100,6 +100,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnSouth.TabStop = false;
             this.btnSouth.Text = "South";
             this.btnSouth.UseVisualStyleBackColor = false;
+            this.btnSouth.Click += new System.EventHandler(this.BtnSouth_Click);
             // 
             // btnEast
             // 
@@ -117,6 +118,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnEast.TabStop = false;
             this.btnEast.Text = "East";
             this.btnEast.UseVisualStyleBackColor = false;
+            this.btnEast.Click += new System.EventHandler(this.BtnEast_Click);
             // 
             // btnWest
             // 
@@ -134,6 +136,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnWest.TabStop = false;
             this.btnWest.Text = "West";
             this.btnWest.UseVisualStyleBackColor = false;
+            this.btnWest.Click += new System.EventHandler(this.BtnWest_Click);
             // 
             // btnNorth
             // 
@@ -151,6 +154,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnNorth.TabStop = false;
             this.btnNorth.Text = "North";
             this.btnNorth.UseVisualStyleBackColor = false;
+            this.btnNorth.Click += new System.EventHandler(this.BtnNorth_Click);
             // 
             // labLocName
             // 

@@ -26,18 +26,8 @@ namespace NecromindUI.Presenters.Admin
         {
             LoadLocations();
             BindLocations();
-        }
-
-        private void LoadLocations()
-        {
-            _locations = _mongoConnector.GetAllRecords<LocationModel>(DBConfig.LocationsCollection);
-        }
-
-        private void BindLocations()
-        {
-            _bsLocations.DataSource = _locations;
-            _adminMap.LbLocations.DataSource = _bsLocations;
-            _adminMap.LbLocations.DisplayMember = "Name";
+            ClearLocationSelection();
+            ClearEditFields();
         }
 
         public void GetSelectedLocationStats()
@@ -52,6 +42,30 @@ namespace NecromindUI.Presenters.Admin
                 _adminMap.LabIsAccessible = _location.IsAccessible;
                 _adminMap.LabIsHostile = _location.IsHostile;
             }
+        }
+
+        private void LoadLocations()
+        {
+            _locations = _mongoConnector.GetAllRecords<LocationModel>(DBConfig.LocationsCollection);
+        }
+
+        private void BindLocations()
+        {
+            _bsLocations.DataSource = _locations;
+            _adminMap.LbLocations.DataSource = _bsLocations;
+            _adminMap.LbLocations.DisplayMember = "Name";
+        }
+
+        private void ClearLocationSelection()
+        {
+            _adminMap.LbLocations.ClearSelected();
+        }
+
+        private void ClearEditFields()
+        {
+            _adminMap.LabLocName = "";
+            _adminMap.LabLocDescription = "";
+            _adminMap.IndicatorsOff = true;
         }
     }
 }
