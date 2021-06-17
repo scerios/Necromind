@@ -53,7 +53,11 @@ namespace NecromindUI.Presenters.Admin
 
         public void MoveNorth()
         {
-            _adminMap.LabY = (_currentTile.Y - 1).ToString();
+            if (_northOfCurrent == null)
+                _adminMap.LabY = (_currentTile.Y - 1).ToString();
+            else
+                _adminMap.LabY = _northOfCurrent.Y.ToString();
+
             _southOfCurrent = _currentTile;
             _currentTile = _northOfCurrent;
 
