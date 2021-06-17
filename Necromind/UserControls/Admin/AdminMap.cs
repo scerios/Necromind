@@ -71,12 +71,62 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
+        public bool LabAccessibleTick
+        {
+            get => labAccessibleTick.Visible;
+
+            set
+            {
+                labAccessibleTick.Visible = value;
+            }
+        }
+
+        public bool LabAccessibleCross
+        {
+            get => labAccessibleCross.Visible;
+
+            set
+            {
+                labAccessibleCross.Visible = value;
+            }
+        }
+
+        public bool LabHostileTick
+        {
+            get => labHostileTick.Visible;
+
+            set
+            {
+                labHostileTick.Visible = value;
+            }
+        }
+
+        public bool LabHostileCross
+        {
+            get => labHostileCross.Visible;
+
+            set
+            {
+                labHostileCross.Visible = value;
+            }
+        }
+
+        public ListBox LbLocations
+        {
+            get => lbLocations;
+        }
+
         #endregion Properties
 
         public AdminMap()
         {
             InitializeComponent();
             _presenter = new AdminMapPresenter(this);
+        }
+
+        public void LoadData()
+        {
+            _presenter.LoadData();
         }
     }
 }

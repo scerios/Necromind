@@ -132,6 +132,7 @@ namespace NecromindUI.UserControls.Menu
         private void AdminControls_BtnMapClick(object sender, EventArgs e)
         {
             ActivateView(PanSettings, _adminMap);
+            _adminMap.LoadData();
             BringToFront(_adminMap);
         }
 
