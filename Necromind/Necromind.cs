@@ -21,6 +21,8 @@ namespace NecromindUI
             if (Debugger.IsAttached) CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.GetCultureInfo("en-US");
 
             InitializeComponent();
+
+            //Console.WriteLine(MongoConnector.GetInstance().GetTileByCoordinates(DBConfig.MapTilesCollection, 1, 0) == null);
         }
 
         private void ActivateView(UserControl view)
