@@ -99,6 +99,22 @@ namespace NecromindUI.Presenters.Admin
             SetMovementBtns();
         }
 
+        public void MoveEast()
+        {
+            if (_eastOfCurrent == null)
+                _adminMap.LabX = (_currentTile.X + 1).ToString();
+            else
+                _adminMap.LabX = _eastOfCurrent.X.ToString();
+
+            _westOfCurrent = _currentTile;
+            _currentTile = _eastOfCurrent;
+
+            TryGetNorthOfCurrent();
+            TryGetSouthOfCurrent();
+            TryGetEastOfCurrent();
+            SetMovementBtns();
+        }
+
         private void SetLocationStats()
         {
             _adminMap.LabLocName = _location.Name;
