@@ -120,7 +120,7 @@ namespace NecromindLibrary.Repository
         {
             var collection = _DB.GetCollection<T>(collectionName);
             var filter = Builders<T>.Filter.Eq("Id", new Guid(id));
-            return collection.Find(filter).First();
+            return collection.Find(filter).FirstOrDefault();
         }
 
         /// <summary>
