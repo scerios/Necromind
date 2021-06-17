@@ -16,6 +16,10 @@ namespace NecromindUI.Presenters.Admin
         private List<LocationModel> _locations;
         private LocationModel _location;
         private MapTileModel _currentTile;
+        private MapTileModel _northOfCurrent;
+        private MapTileModel _southOfCurrent;
+        private MapTileModel _westOfCurrent;
+        private MapTileModel _eastOfCurrent;
         private int _currentX = 0;
         private int _currentY = 0;
 
@@ -31,6 +35,10 @@ namespace NecromindUI.Presenters.Admin
             BindLocations();
             ClearLocationSelection();
             ClearEditFields();
+            SetCurrentTile();
+            SetNeighborhood();
+            TrySetCurrentLocationStats();
+            SetMovementBtns();
         }
 
         public void SetSelectedLocationStats()
@@ -50,6 +58,60 @@ namespace NecromindUI.Presenters.Admin
             _adminMap.LabLocDescription = _location.Description;
             _adminMap.LabIsAccessible = _location.IsAccessible;
             _adminMap.LabIsHostile = _location.IsHostile;
+        }
+
+        private void SetCurrentTile()
+        {
+            _adminMap.LabX = _currentX.ToString();
+            _adminMap.LabY = _currentY.ToString();
+            TryGetCurrentTile();
+        }
+
+        private void SetNeighborhood()
+        {
+            TryGetNorthOfCurrent();
+            TryGetSouthOfCurrent();
+            TryGetWestOfCurrent();
+            TryGetEastOfCurrent();
+        }
+
+        private void SetMovementBtns()
+        {
+            if (_currentTile == null)
+            {
+                _adminMap.BtnIsNorthEnabled = _northOfCurrent != null;
+                _adminMap.BtnIsSouthEnabled = _southOfCurrent != null;
+                _adminMap.BtnIsWestEnabled = _westOfCurrent != null;
+                _adminMap.BtnIsEastEnabled = _eastOfCurrent != null;
+            }
+            else
+            {
+                _adminMap.BtnIsNorthEnabled = true;
+                _adminMap.BtnIsSouthEnabled = true;
+                _adminMap.BtnIsWestEnabled = true;
+                _adminMap.BtnIsEastEnabled = true;
+            }
+        }
+
+        private bool TryGetTilesLocation()
+        {
+            var location = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _currentTile.LocationId.ToString());
+
+            if (location != null)
+            {
+                _location = location;
+                return true;
+            }
+
+            return false;
+        }
+
+        private void TrySetCurrentLocationStats()
+        {
+            if (TryGetTilesLocation())
+            {
+                SetLocationStats();
+            }
         }
 
         private void LoadLocations()
@@ -76,29 +138,29 @@ namespace NecromindUI.Presenters.Admin
             _adminMap.IndicatorsOff = true;
         }
 
-        private MapTileModel TryGetCurrentTile()
+        private void TryGetCurrentTile()
         {
-            return _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _currentX, _currentY);
+            _currentTile = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _currentX, _currentY);
         }
 
-        private MapTileModel TryGetNorthOfCurrent()
+        private void TryGetNorthOfCurrent()
         {
-            return _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _currentX, _currentY - 1);
+            _northOfCurrent = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _currentX, _currentY - 1);
         }
 
-        private MapTileModel TryGetSouthOfCurrent()
+        private void TryGetSouthOfCurrent()
         {
-            return _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _currentX, _currentY + 1);
+            _southOfCurrent = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _currentX, _currentY + 1);
         }
 
-        private MapTileModel TryGetWestOfCurrent()
+        private void TryGetWestOfCurrent()
         {
-            return _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _currentX - 1, _currentY);
+            _westOfCurrent = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _currentX - 1, _currentY);
         }
 
-        private MapTileModel TryGetEastOfCurrent()
+        private void TryGetEastOfCurrent()
         {
-            return _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _currentX + 1, _currentY);
+            _eastOfCurrent = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _currentX + 1, _currentY);
         }
     }
 }
