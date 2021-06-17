@@ -56,6 +56,8 @@ namespace NecromindUI.UserControls.Admin
             this.labHostile = new System.Windows.Forms.Label();
             this.labAccessibleTick = new System.Windows.Forms.Label();
             this.labHostileTick = new System.Windows.Forms.Label();
+            this.labAccessibleCross = new System.Windows.Forms.Label();
+            this.labHostileCross = new System.Windows.Forms.Label();
             this.panMovement.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +69,7 @@ namespace NecromindUI.UserControls.Admin
             this.lbLocations.ItemHeight = 16;
             this.lbLocations.Location = new System.Drawing.Point(20, 20);
             this.lbLocations.Name = "lbLocations";
-            this.lbLocations.Size = new System.Drawing.Size(150, 228);
+            this.lbLocations.Size = new System.Drawing.Size(150, 212);
             this.lbLocations.TabIndex = 37;
             // 
             // panMovement
@@ -380,6 +382,7 @@ namespace NecromindUI.UserControls.Admin
             this.labAccessibleTick.TabIndex = 62;
             this.labAccessibleTick.Text = "✓";
             this.labAccessibleTick.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labAccessibleTick.Visible = false;
             // 
             // labHostileTick
             // 
@@ -392,12 +395,41 @@ namespace NecromindUI.UserControls.Admin
             this.labHostileTick.TabIndex = 63;
             this.labHostileTick.Text = "✓";
             this.labHostileTick.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labHostileTick.Visible = false;
+            // 
+            // labAccessibleCross
+            // 
+            this.labAccessibleCross.AutoSize = true;
+            this.labAccessibleCross.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labAccessibleCross.Location = new System.Drawing.Point(330, 215);
+            this.labAccessibleCross.MinimumSize = new System.Drawing.Size(17, 20);
+            this.labAccessibleCross.Name = "labAccessibleCross";
+            this.labAccessibleCross.Size = new System.Drawing.Size(17, 20);
+            this.labAccessibleCross.TabIndex = 64;
+            this.labAccessibleCross.Text = "X";
+            this.labAccessibleCross.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labAccessibleCross.Visible = false;
+            // 
+            // labHostileCross
+            // 
+            this.labHostileCross.AutoSize = true;
+            this.labHostileCross.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labHostileCross.Location = new System.Drawing.Point(530, 215);
+            this.labHostileCross.MinimumSize = new System.Drawing.Size(17, 20);
+            this.labHostileCross.Name = "labHostileCross";
+            this.labHostileCross.Size = new System.Drawing.Size(17, 20);
+            this.labHostileCross.TabIndex = 65;
+            this.labHostileCross.Text = "X";
+            this.labHostileCross.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labHostileCross.Visible = false;
             // 
             // AdminMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.Controls.Add(this.labHostileCross);
+            this.Controls.Add(this.labAccessibleCross);
             this.Controls.Add(this.labHostileTick);
             this.Controls.Add(this.labAccessibleTick);
             this.Controls.Add(this.labHostile);
@@ -460,5 +492,7 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.Label labHostile;
         private System.Windows.Forms.Label labAccessibleTick;
         private System.Windows.Forms.Label labHostileTick;
+        private System.Windows.Forms.Label labAccessibleCross;
+        private System.Windows.Forms.Label labHostileCross;
     }
 }
