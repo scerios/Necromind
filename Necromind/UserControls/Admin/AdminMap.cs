@@ -116,6 +116,46 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
+        public bool BtnIsNorthEnabled
+        {
+            get => btnNorth.Enabled;
+
+            set
+            {
+                btnNorth.Enabled = value;
+            }
+        }
+
+        public bool BtnIsSouthEnabled
+        {
+            get => btnSouth.Enabled;
+
+            set
+            {
+                btnSouth.Enabled = value;
+            }
+        }
+
+        public bool BtnIsWestEnabled
+        {
+            get => btnWest.Enabled;
+
+            set
+            {
+                btnWest.Enabled = value;
+            }
+        }
+
+        public bool BtnIsEastEnabled
+        {
+            get => btnEast.Enabled;
+
+            set
+            {
+                btnEast.Enabled = value;
+            }
+        }
+
         public ListBox LbLocations
         {
             get => lbLocations;
@@ -136,7 +176,7 @@ namespace NecromindUI.UserControls.Admin
 
         private void LbLocations_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _presenter.GetSelectedLocationStats();
+            _presenter.SetSelectedLocationStats();
         }
 
         private void BtnNorth_Click(object sender, EventArgs e)
