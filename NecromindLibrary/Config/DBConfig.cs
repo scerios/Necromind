@@ -10,6 +10,6 @@ namespace NecromindLibrary.Config
         public static readonly string VendorsCollection = ConfigurationManager.AppSettings.Get("vendorsCollection");
         public static readonly string EnemiesCollection = ConfigurationManager.AppSettings.Get("enemiesCollection");
         public static readonly string LocationsCollection = ConfigurationManager.AppSettings.Get("locationsCollection");
-        public static readonly string MapsCollection = ConfigurationManager.AppSettings.Get("mapsCollection");
+        public static readonly string MapTilesCollection = ConfigurationManager.AppSettings.Get("mapTilesCollection");
     }
 }
