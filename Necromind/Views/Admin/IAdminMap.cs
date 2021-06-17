@@ -14,6 +14,10 @@ namespace NecromindUI.Views.Admin
         bool IndicatorsOff { set; }
         bool LabIsAccessible { set; }
         bool LabIsHostile { set; }
+        bool BtnIsNorthEnabled { get; set; }
+        bool BtnIsSouthEnabled { get; set; }
+        bool BtnIsWestEnabled { get; set; }
+        bool BtnIsEastEnabled { get; set; }
 
         ListBox LbLocations { get; }
     }
