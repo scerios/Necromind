@@ -10,6 +10,8 @@ namespace NecromindUI.Presenters.Admin
 {
     public class AdminMapPresenter
     {
+        #region Properties
+
         private readonly MongoConnector _mongoConnector;
         private readonly IAdminMap _adminMap;
         private readonly BindingSource _bsLocations = new BindingSource();
@@ -20,6 +22,8 @@ namespace NecromindUI.Presenters.Admin
         private MapTileModel _southOfCurrent;
         private MapTileModel _westOfCurrent;
         private MapTileModel _eastOfCurrent;
+
+        #endregion Properties
 
         public AdminMapPresenter(IAdminMap adminMap)
         {
@@ -50,6 +54,8 @@ namespace NecromindUI.Presenters.Admin
                 SetLocationStats();
             }
         }
+
+        #region Movement
 
         public void MoveNorth()
         {
@@ -115,6 +121,10 @@ namespace NecromindUI.Presenters.Admin
             SetMovementBtns();
         }
 
+        #endregion Movement
+
+        #region Setters
+
         private void SetLocationStats()
         {
             _adminMap.LabLocName = _location.Name;
@@ -176,6 +186,8 @@ namespace NecromindUI.Presenters.Admin
             }
         }
 
+        #endregion Setters
+
         private void LoadLocations()
         {
             _locations = _mongoConnector.GetAllRecords<LocationModel>(DBConfig.LocationsCollection);
@@ -199,6 +211,8 @@ namespace NecromindUI.Presenters.Admin
             _adminMap.LabLocDescription = "";
             _adminMap.IndicatorsOff = true;
         }
+
+        #region Getters
 
         private void TryGetStartTile()
         {
@@ -228,5 +242,7 @@ namespace NecromindUI.Presenters.Admin
             if (_currentTile != null)
                 _eastOfCurrent = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _currentTile.X + 1, _currentTile.Y);
         }
+
+        #endregion Getters
     }
 }
