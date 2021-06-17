@@ -39,8 +39,8 @@ namespace NecromindUI.UserControls.Admin
             this.labLocDescription = new System.Windows.Forms.Label();
             this.labLocDescriptionValue = new System.Windows.Forms.Label();
             this.labLocNameValue = new System.Windows.Forms.Label();
-            this.labJumpLocX = new System.Windows.Forms.Label();
-            this.labJumpLocY = new System.Windows.Forms.Label();
+            this.labJumpX = new System.Windows.Forms.Label();
+            this.labJumpY = new System.Windows.Forms.Label();
             this.tbJumpX = new System.Windows.Forms.TextBox();
             this.tbJumpY = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
@@ -52,6 +52,10 @@ namespace NecromindUI.UserControls.Admin
             this.labXValue = new System.Windows.Forms.Label();
             this.labY = new System.Windows.Forms.Label();
             this.labYValue = new System.Windows.Forms.Label();
+            this.labAccessible = new System.Windows.Forms.Label();
+            this.labHostile = new System.Windows.Forms.Label();
+            this.labAccessibleTick = new System.Windows.Forms.Label();
+            this.labHostileTick = new System.Windows.Forms.Label();
             this.panMovement.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -150,7 +154,7 @@ namespace NecromindUI.UserControls.Admin
             this.labLocName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
             this.labLocName.Location = new System.Drawing.Point(190, 50);
             this.labLocName.Name = "labLocName";
-            this.labLocName.Size = new System.Drawing.Size(110, 20);
+            this.labLocName.Size = new System.Drawing.Size(105, 20);
             this.labLocName.TabIndex = 39;
             this.labLocName.Text = "Name:";
             this.labLocName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -160,7 +164,7 @@ namespace NecromindUI.UserControls.Admin
             this.labLocDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
             this.labLocDescription.Location = new System.Drawing.Point(190, 75);
             this.labLocDescription.Name = "labLocDescription";
-            this.labLocDescription.Size = new System.Drawing.Size(110, 20);
+            this.labLocDescription.Size = new System.Drawing.Size(105, 20);
             this.labLocDescription.TabIndex = 40;
             this.labLocDescription.Text = "Description:";
             this.labLocDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -187,32 +191,32 @@ namespace NecromindUI.UserControls.Admin
             this.labLocNameValue.TabIndex = 42;
             this.labLocNameValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labJumpLocX
+            // labJumpX
             // 
-            this.labJumpLocX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labJumpLocX.Location = new System.Drawing.Point(190, 227);
-            this.labJumpLocX.Name = "labJumpLocX";
-            this.labJumpLocX.Size = new System.Drawing.Size(75, 20);
-            this.labJumpLocX.TabIndex = 43;
-            this.labJumpLocX.Text = "X:";
-            this.labJumpLocX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labJumpX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labJumpX.Location = new System.Drawing.Point(190, 250);
+            this.labJumpX.Name = "labJumpX";
+            this.labJumpX.Size = new System.Drawing.Size(75, 20);
+            this.labJumpX.TabIndex = 43;
+            this.labJumpX.Text = "X:";
+            this.labJumpX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // labJumpLocY
+            // labJumpY
             // 
-            this.labJumpLocY.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labJumpLocY.Location = new System.Drawing.Point(390, 227);
-            this.labJumpLocY.Name = "labJumpLocY";
-            this.labJumpLocY.Size = new System.Drawing.Size(75, 20);
-            this.labJumpLocY.TabIndex = 44;
-            this.labJumpLocY.Text = "Y:";
-            this.labJumpLocY.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labJumpY.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labJumpY.Location = new System.Drawing.Point(390, 250);
+            this.labJumpY.Name = "labJumpY";
+            this.labJumpY.Size = new System.Drawing.Size(75, 20);
+            this.labJumpY.TabIndex = 44;
+            this.labJumpY.Text = "Y:";
+            this.labJumpY.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tbJumpX
             // 
             this.tbJumpX.BackColor = System.Drawing.Color.White;
             this.tbJumpX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbJumpX.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbJumpX.Location = new System.Drawing.Point(275, 227);
+            this.tbJumpX.Location = new System.Drawing.Point(275, 250);
             this.tbJumpX.Name = "tbJumpX";
             this.tbJumpX.Size = new System.Drawing.Size(50, 22);
             this.tbJumpX.TabIndex = 45;
@@ -223,7 +227,7 @@ namespace NecromindUI.UserControls.Admin
             this.tbJumpY.BackColor = System.Drawing.Color.White;
             this.tbJumpY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbJumpY.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbJumpY.Location = new System.Drawing.Point(475, 227);
+            this.tbJumpY.Location = new System.Drawing.Point(475, 250);
             this.tbJumpY.Name = "tbJumpY";
             this.tbJumpY.Size = new System.Drawing.Size(50, 22);
             this.tbJumpY.TabIndex = 46;
@@ -253,7 +257,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnJump.FlatAppearance.BorderSize = 0;
             this.btnJump.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJump.ForeColor = System.Drawing.Color.Black;
-            this.btnJump.Location = new System.Drawing.Point(628, 225);
+            this.btnJump.Location = new System.Drawing.Point(637, 248);
             this.btnJump.Name = "btnJump";
             this.btnJump.Size = new System.Drawing.Size(100, 25);
             this.btnJump.TabIndex = 52;
@@ -269,7 +273,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnAttach.FlatAppearance.BorderSize = 0;
             this.btnAttach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAttach.ForeColor = System.Drawing.Color.Black;
-            this.btnAttach.Location = new System.Drawing.Point(628, 70);
+            this.btnAttach.Location = new System.Drawing.Point(637, 70);
             this.btnAttach.Name = "btnAttach";
             this.btnAttach.Size = new System.Drawing.Size(100, 25);
             this.btnAttach.TabIndex = 53;
@@ -285,7 +289,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnDetach.FlatAppearance.BorderSize = 0;
             this.btnDetach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetach.ForeColor = System.Drawing.Color.Black;
-            this.btnDetach.Location = new System.Drawing.Point(628, 120);
+            this.btnDetach.Location = new System.Drawing.Point(637, 120);
             this.btnDetach.Name = "btnDetach";
             this.btnDetach.Size = new System.Drawing.Size(100, 25);
             this.btnDetach.TabIndex = 54;
@@ -298,7 +302,7 @@ namespace NecromindUI.UserControls.Admin
             this.labCurrent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
             this.labCurrent.Location = new System.Drawing.Point(190, 20);
             this.labCurrent.Name = "labCurrent";
-            this.labCurrent.Size = new System.Drawing.Size(110, 20);
+            this.labCurrent.Size = new System.Drawing.Size(105, 20);
             this.labCurrent.TabIndex = 55;
             this.labCurrent.Text = "Current";
             this.labCurrent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -306,7 +310,7 @@ namespace NecromindUI.UserControls.Admin
             // labX
             // 
             this.labX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labX.Location = new System.Drawing.Point(370, 20);
+            this.labX.Location = new System.Drawing.Point(303, 20);
             this.labX.Name = "labX";
             this.labX.Size = new System.Drawing.Size(25, 20);
             this.labX.TabIndex = 56;
@@ -316,7 +320,7 @@ namespace NecromindUI.UserControls.Admin
             // labXValue
             // 
             this.labXValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labXValue.Location = new System.Drawing.Point(401, 20);
+            this.labXValue.Location = new System.Drawing.Point(334, 20);
             this.labXValue.Name = "labXValue";
             this.labXValue.Size = new System.Drawing.Size(50, 20);
             this.labXValue.TabIndex = 57;
@@ -325,7 +329,7 @@ namespace NecromindUI.UserControls.Admin
             // labY
             // 
             this.labY.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labY.Location = new System.Drawing.Point(457, 20);
+            this.labY.Location = new System.Drawing.Point(390, 20);
             this.labY.Name = "labY";
             this.labY.Size = new System.Drawing.Size(25, 20);
             this.labY.TabIndex = 58;
@@ -335,17 +339,69 @@ namespace NecromindUI.UserControls.Admin
             // labYValue
             // 
             this.labYValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labYValue.Location = new System.Drawing.Point(488, 20);
+            this.labYValue.Location = new System.Drawing.Point(421, 20);
             this.labYValue.Name = "labYValue";
             this.labYValue.Size = new System.Drawing.Size(50, 20);
             this.labYValue.TabIndex = 59;
             this.labYValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labAccessible
+            // 
+            this.labAccessible.AutoSize = true;
+            this.labAccessible.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labAccessible.Location = new System.Drawing.Point(190, 215);
+            this.labAccessible.MinimumSize = new System.Drawing.Size(0, 20);
+            this.labAccessible.Name = "labAccessible";
+            this.labAccessible.Size = new System.Drawing.Size(96, 20);
+            this.labAccessible.TabIndex = 60;
+            this.labAccessible.Text = "Accessible?";
+            this.labAccessible.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labHostile
+            // 
+            this.labHostile.AutoSize = true;
+            this.labHostile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labHostile.Location = new System.Drawing.Point(390, 215);
+            this.labHostile.MinimumSize = new System.Drawing.Size(0, 20);
+            this.labHostile.Name = "labHostile";
+            this.labHostile.Size = new System.Drawing.Size(72, 20);
+            this.labHostile.TabIndex = 61;
+            this.labHostile.Text = "Hostile?";
+            this.labHostile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labAccessibleTick
+            // 
+            this.labAccessibleTick.AutoSize = true;
+            this.labAccessibleTick.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
+            this.labAccessibleTick.Location = new System.Drawing.Point(330, 215);
+            this.labAccessibleTick.MinimumSize = new System.Drawing.Size(0, 20);
+            this.labAccessibleTick.Name = "labAccessibleTick";
+            this.labAccessibleTick.Size = new System.Drawing.Size(17, 20);
+            this.labAccessibleTick.TabIndex = 62;
+            this.labAccessibleTick.Text = "✓";
+            this.labAccessibleTick.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labHostileTick
+            // 
+            this.labHostileTick.AutoSize = true;
+            this.labHostileTick.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
+            this.labHostileTick.Location = new System.Drawing.Point(530, 215);
+            this.labHostileTick.MinimumSize = new System.Drawing.Size(0, 20);
+            this.labHostileTick.Name = "labHostileTick";
+            this.labHostileTick.Size = new System.Drawing.Size(17, 20);
+            this.labHostileTick.TabIndex = 63;
+            this.labHostileTick.Text = "✓";
+            this.labHostileTick.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // AdminMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.Controls.Add(this.labHostileTick);
+            this.Controls.Add(this.labAccessibleTick);
+            this.Controls.Add(this.labHostile);
+            this.Controls.Add(this.labAccessible);
             this.Controls.Add(this.labYValue);
             this.Controls.Add(this.labY);
             this.Controls.Add(this.labXValue);
@@ -357,8 +413,8 @@ namespace NecromindUI.UserControls.Admin
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tbJumpY);
             this.Controls.Add(this.tbJumpX);
-            this.Controls.Add(this.labJumpLocY);
-            this.Controls.Add(this.labJumpLocX);
+            this.Controls.Add(this.labJumpY);
+            this.Controls.Add(this.labJumpX);
             this.Controls.Add(this.labLocNameValue);
             this.Controls.Add(this.labLocDescriptionValue);
             this.Controls.Add(this.labLocDescription);
@@ -366,7 +422,7 @@ namespace NecromindUI.UserControls.Admin
             this.Controls.Add(this.panMovement);
             this.Controls.Add(this.lbLocations);
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdminMap";
             this.Size = new System.Drawing.Size(1084, 525);
             this.panMovement.ResumeLayout(false);
@@ -387,8 +443,8 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.Label labLocDescription;
         private System.Windows.Forms.Label labLocDescriptionValue;
         private System.Windows.Forms.Label labLocNameValue;
-        private System.Windows.Forms.Label labJumpLocX;
-        private System.Windows.Forms.Label labJumpLocY;
+        private System.Windows.Forms.Label labJumpX;
+        private System.Windows.Forms.Label labJumpY;
         private System.Windows.Forms.TextBox tbJumpX;
         private System.Windows.Forms.TextBox tbJumpY;
         private System.Windows.Forms.Button btnSave;
@@ -400,5 +456,9 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.Label labXValue;
         private System.Windows.Forms.Label labY;
         private System.Windows.Forms.Label labYValue;
+        private System.Windows.Forms.Label labAccessible;
+        private System.Windows.Forms.Label labHostile;
+        private System.Windows.Forms.Label labAccessibleTick;
+        private System.Windows.Forms.Label labHostileTick;
     }
 }
