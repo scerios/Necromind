@@ -11,10 +11,8 @@ namespace NecromindUI.Views.Admin
         string LabLocDescription { get; set; }
         string TbJumpX { get; set; }
         string TbJumpY { get; set; }
-        bool LabAccessibleTick { get; set; }
-        bool LabAccessibleCross { get; set; }
-        bool LabHostileTick { get; set; }
-        bool LabHostileCross { get; set; }
+        bool LabIsAccessible { set; }
+        bool LabIsHostile { set; }
 
         ListBox LbLocations { get; }
     }
