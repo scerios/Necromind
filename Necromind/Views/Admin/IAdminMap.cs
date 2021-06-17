@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace NecromindUI.Views.Admin
 {
@@ -14,5 +15,7 @@ namespace NecromindUI.Views.Admin
         bool LabAccessibleCross { get; set; }
         bool LabHostileTick { get; set; }
         bool LabHostileCross { get; set; }
+
+        ListBox LbLocations { get; }
     }
 }
