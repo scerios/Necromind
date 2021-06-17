@@ -71,6 +71,7 @@ namespace NecromindUI.UserControls.Admin
             this.lbLocations.Name = "lbLocations";
             this.lbLocations.Size = new System.Drawing.Size(150, 212);
             this.lbLocations.TabIndex = 37;
+            this.lbLocations.SelectedIndexChanged += new System.EventHandler(this.LbLocations_SelectedIndexChanged);
             // 
             // panMovement
             // 
@@ -153,7 +154,7 @@ namespace NecromindUI.UserControls.Admin
             // 
             // labLocName
             // 
-            this.labLocName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labLocName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(64)))), ((int)(((byte)(50)))));
             this.labLocName.Location = new System.Drawing.Point(190, 50);
             this.labLocName.Name = "labLocName";
             this.labLocName.Size = new System.Drawing.Size(105, 20);
@@ -163,7 +164,7 @@ namespace NecromindUI.UserControls.Admin
             // 
             // labLocDescription
             // 
-            this.labLocDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labLocDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(64)))), ((int)(((byte)(50)))));
             this.labLocDescription.Location = new System.Drawing.Point(190, 75);
             this.labLocDescription.Name = "labLocDescription";
             this.labLocDescription.Size = new System.Drawing.Size(105, 20);
@@ -195,7 +196,7 @@ namespace NecromindUI.UserControls.Admin
             // 
             // labJumpX
             // 
-            this.labJumpX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labJumpX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(64)))), ((int)(((byte)(50)))));
             this.labJumpX.Location = new System.Drawing.Point(190, 250);
             this.labJumpX.Name = "labJumpX";
             this.labJumpX.Size = new System.Drawing.Size(75, 20);
@@ -205,7 +206,7 @@ namespace NecromindUI.UserControls.Admin
             // 
             // labJumpY
             // 
-            this.labJumpY.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labJumpY.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(64)))), ((int)(((byte)(50)))));
             this.labJumpY.Location = new System.Drawing.Point(390, 250);
             this.labJumpY.Name = "labJumpY";
             this.labJumpY.Size = new System.Drawing.Size(75, 20);
@@ -301,7 +302,7 @@ namespace NecromindUI.UserControls.Admin
             // 
             // labCurrent
             // 
-            this.labCurrent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labCurrent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(64)))), ((int)(((byte)(50)))));
             this.labCurrent.Location = new System.Drawing.Point(190, 20);
             this.labCurrent.Name = "labCurrent";
             this.labCurrent.Size = new System.Drawing.Size(105, 20);
@@ -311,7 +312,7 @@ namespace NecromindUI.UserControls.Admin
             // 
             // labX
             // 
-            this.labX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(64)))), ((int)(((byte)(50)))));
             this.labX.Location = new System.Drawing.Point(303, 20);
             this.labX.Name = "labX";
             this.labX.Size = new System.Drawing.Size(25, 20);
@@ -330,7 +331,7 @@ namespace NecromindUI.UserControls.Admin
             // 
             // labY
             // 
-            this.labY.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labY.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(64)))), ((int)(((byte)(50)))));
             this.labY.Location = new System.Drawing.Point(390, 20);
             this.labY.Name = "labY";
             this.labY.Size = new System.Drawing.Size(25, 20);
@@ -350,7 +351,7 @@ namespace NecromindUI.UserControls.Admin
             // labAccessible
             // 
             this.labAccessible.AutoSize = true;
-            this.labAccessible.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labAccessible.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(64)))), ((int)(((byte)(50)))));
             this.labAccessible.Location = new System.Drawing.Point(190, 215);
             this.labAccessible.MinimumSize = new System.Drawing.Size(0, 20);
             this.labAccessible.Name = "labAccessible";
@@ -362,7 +363,7 @@ namespace NecromindUI.UserControls.Admin
             // labHostile
             // 
             this.labHostile.AutoSize = true;
-            this.labHostile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labHostile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(64)))), ((int)(((byte)(50)))));
             this.labHostile.Location = new System.Drawing.Point(390, 215);
             this.labHostile.MinimumSize = new System.Drawing.Size(0, 20);
             this.labHostile.Name = "labHostile";

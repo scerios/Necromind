@@ -37,7 +37,7 @@ namespace NecromindUI.UserControls.Admin
 
             set
             {
-                labLocName.Text = value;
+                labLocNameValue.Text = value;
             }
         }
 
@@ -71,43 +71,37 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public bool LabAccessibleTick
+        public bool LabIsAccessible
         {
-            get => labAccessibleTick.Visible;
-
             set
             {
-                labAccessibleTick.Visible = value;
+                if (value)
+                {
+                    labAccessibleCross.Visible = false;
+                    labAccessibleTick.Visible = true;
+                }
+                else
+                {
+                    labAccessibleTick.Visible = false;
+                    labAccessibleCross.Visible = true;
+                }
             }
         }
 
-        public bool LabAccessibleCross
+        public bool LabIsHostile
         {
-            get => labAccessibleCross.Visible;
-
             set
             {
-                labAccessibleCross.Visible = value;
-            }
-        }
-
-        public bool LabHostileTick
-        {
-            get => labHostileTick.Visible;
-
-            set
-            {
-                labHostileTick.Visible = value;
-            }
-        }
-
-        public bool LabHostileCross
-        {
-            get => labHostileCross.Visible;
-
-            set
-            {
-                labHostileCross.Visible = value;
+                if (value)
+                {
+                    labHostileCross.Visible = false;
+                    labHostileTick.Visible = true;
+                }
+                else
+                {
+                    labHostileTick.Visible = false;
+                    labHostileCross.Visible = true;
+                }
             }
         }
 
@@ -127,6 +121,11 @@ namespace NecromindUI.UserControls.Admin
         public void LoadData()
         {
             _presenter.LoadData();
+        }
+
+        private void LbLocations_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _presenter.GetSelectedLocationStats();
         }
     }
 }
