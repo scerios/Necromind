@@ -295,7 +295,7 @@ namespace NecromindUI.Presenters.Admin
         private void AlertCreateSuccess(string msg)
         {
             _adminLocations.LabLocationAdd.Text = msg;
-            _adminLocations.LabLocationAdd.ForeColor = UISettings.GreenColor;
+            _adminLocations.LabLocationAdd.ForeColor = UISettings.SuccessColor;
 
             ShowAlert(_adminLocations.LabLocationAdd, _adminLocations.TimHideAdd);
         }
@@ -303,7 +303,7 @@ namespace NecromindUI.Presenters.Admin
         private void AlertCreateFail(string msg)
         {
             _adminLocations.LabLocationAdd.Text = msg;
-            _adminLocations.LabLocationAdd.ForeColor = UISettings.RedColor;
+            _adminLocations.LabLocationAdd.ForeColor = UISettings.ErrorColor;
 
             ShowAlert(_adminLocations.LabLocationAdd, _adminLocations.TimHideAdd);
         }
@@ -311,7 +311,7 @@ namespace NecromindUI.Presenters.Admin
         private void AlertEditSuccess(string msg)
         {
             _adminLocations.LabLocationEdit.Text = msg;
-            _adminLocations.LabLocationEdit.ForeColor = UISettings.GreenColor;
+            _adminLocations.LabLocationEdit.ForeColor = UISettings.SuccessColor;
 
             ShowAlert(_adminLocations.LabLocationEdit, _adminLocations.TimHideEdit);
         }
@@ -319,7 +319,7 @@ namespace NecromindUI.Presenters.Admin
         private void AlertEditFail(string msg)
         {
             _adminLocations.LabLocationEdit.Text = msg;
-            _adminLocations.LabLocationEdit.ForeColor = UISettings.RedColor;
+            _adminLocations.LabLocationEdit.ForeColor = UISettings.ErrorColor;
 
             ShowAlert(_adminLocations.LabLocationEdit, _adminLocations.TimHideEdit);
         }

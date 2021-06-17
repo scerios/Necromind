@@ -106,8 +106,8 @@ namespace NecromindUI.UserControls.Menu
                     btnLoadHeroLocX,
                     btnLocY,
                     UISettings.BtnFontSizeSmall,
-                    UISettings.OrangeColor,
-                    UISettings.WhiteColor,
+                    UISettings.ValueColor,
+                    UISettings.TextColor,
                     FlatStyle.Flat,
                     ContentAlignment.MiddleCenter
                 );
@@ -129,7 +129,7 @@ namespace NecromindUI.UserControls.Menu
                     btnLocY,
                     UISettings.BtnFontSizeBig,
                     UISettings.BackgroundColor,
-                    UISettings.RedColor,
+                    UISettings.ErrorColor,
                     FlatStyle.Flat,
                     ContentAlignment.MiddleLeft
                 );

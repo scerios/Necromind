@@ -135,7 +135,7 @@ namespace NecromindUI.Presenters.Admin
         private void AlertSuccess(string name)
         {
             _adminHeroes.LabHeroEdit.Text = $"{ name } edited successfully!";
-            _adminHeroes.LabHeroEdit.ForeColor = UISettings.GreenColor;
+            _adminHeroes.LabHeroEdit.ForeColor = UISettings.SuccessColor;
             _adminHeroes.LabHeroEdit.Visible = true;
             _adminHeroes.TimHide.Start();
         }
@@ -143,7 +143,7 @@ namespace NecromindUI.Presenters.Admin
         private void AlertFail(string name)
         {
             _adminHeroes.LabHeroEdit.Text = $"Failed to edit { name }!";
-            _adminHeroes.LabHeroEdit.ForeColor = UISettings.RedColor;
+            _adminHeroes.LabHeroEdit.ForeColor = UISettings.ErrorColor;
             _adminHeroes.LabHeroEdit.Visible = true;
             _adminHeroes.TimHide.Start();
         }

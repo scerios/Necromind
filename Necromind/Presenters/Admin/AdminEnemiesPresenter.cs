@@ -281,7 +281,7 @@ namespace NecromindUI.Presenters.Admin
         private void AlertCreateSuccess(string msg)
         {
             _adminEnemies.LabEnemyCreate.Text = msg;
-            _adminEnemies.LabEnemyCreate.ForeColor = UISettings.GreenColor;
+            _adminEnemies.LabEnemyCreate.ForeColor = UISettings.SuccessColor;
 
             ShowAlert(_adminEnemies.LabEnemyCreate, _adminEnemies.TimHideCreate);
         }
@@ -289,7 +289,7 @@ namespace NecromindUI.Presenters.Admin
         private void AlertCreateFail(string msg)
         {
             _adminEnemies.LabEnemyCreate.Text = msg;
-            _adminEnemies.LabEnemyCreate.ForeColor = UISettings.RedColor;
+            _adminEnemies.LabEnemyCreate.ForeColor = UISettings.ErrorColor;
 
             ShowAlert(_adminEnemies.LabEnemyCreate, _adminEnemies.TimHideCreate);
         }
@@ -297,7 +297,7 @@ namespace NecromindUI.Presenters.Admin
         private void AlertEditSuccess(string msg)
         {
             _adminEnemies.LabEnemyEdit.Text = msg;
-            _adminEnemies.LabEnemyEdit.ForeColor = UISettings.GreenColor;
+            _adminEnemies.LabEnemyEdit.ForeColor = UISettings.SuccessColor;
 
             ShowAlert(_adminEnemies.LabEnemyEdit, _adminEnemies.TimHideEdit);
         }
@@ -305,7 +305,7 @@ namespace NecromindUI.Presenters.Admin
         private void AlertEditFail(string msg)
         {
             _adminEnemies.LabEnemyEdit.Text = msg;
-            _adminEnemies.LabEnemyEdit.ForeColor = UISettings.RedColor;
+            _adminEnemies.LabEnemyEdit.ForeColor = UISettings.ErrorColor;
 
             ShowAlert(_adminEnemies.LabEnemyEdit, _adminEnemies.TimHideEdit);
         }

@@ -14,6 +14,7 @@ namespace NecromindUI.Presenters.Admin
         private readonly IAdminMap _adminMap;
         private readonly BindingSource _bsLocations = new BindingSource();
         private List<LocationModel> _locations;
+        private LocationModel _location;
 
         public AdminMapPresenter(IAdminMap adminMap)
         {
@@ -37,6 +38,20 @@ namespace NecromindUI.Presenters.Admin
             _bsLocations.DataSource = _locations;
             _adminMap.LbLocations.DataSource = _bsLocations;
             _adminMap.LbLocations.DisplayMember = "Name";
+        }
+
+        public void GetSelectedLocationStats()
+        {
+            var selectedIndex = _adminMap.LbLocations.SelectedIndex;
+
+            if (selectedIndex >= 0)
+            {
+                _location = _locations[selectedIndex];
+                _adminMap.LabLocName = _location.Name;
+                _adminMap.LabLocDescription = _location.Description;
+                _adminMap.LabIsAccessible = _location.IsAccessible;
+                _adminMap.LabIsHostile = _location.IsHostile;
+            }
         }
     }
 }
