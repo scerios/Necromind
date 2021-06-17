@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
+using NecromindLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -78,6 +79,7 @@ namespace NecromindLibrary.Repository
         /// <summary>
         /// Tries to delete a record by ID in the given collection.
         /// </summary>
+        /// <param name="collectionName">Name of collection.</param>
         /// <param name="id">ID of record.</param>
         /// <returns>True if successfully deleted. False otherwise.</returns>
         public bool TryDeleteRecordById<T>(string collectionName, Guid id)
@@ -111,6 +113,7 @@ namespace NecromindLibrary.Repository
         /// <summary>
         /// Gets a single record from the collection by ID.
         /// </summary>
+        /// <param name="collectionName">ID of record.</param>
         /// <param name="id">ID of record.</param>
         /// <returns>Returns the record.</returns>
         public T GetRecordById<T>(string collectionName, string id)
@@ -118,6 +121,21 @@ namespace NecromindLibrary.Repository
             var collection = _DB.GetCollection<T>(collectionName);
             var filter = Builders<T>.Filter.Eq("Id", new Guid(id));
             return collection.Find(filter).First();
+        }
+
+        /// <summary>
+        /// Gets a single map tile by its coordinates on X and Y axes.
+        /// </summary>
+        /// <param name="collectionName">Name of collection.</param>
+        /// <param name="x">Coordinate on X axis.</param>
+        /// <param name="y">Coordinate on Y axis.</param>
+        /// <returns>Map tile on given axes.</returns>
+        public MapTileModel GetTileByCoordinates(string collectionName, int x, int y)
+        {
+            var collection = _DB.GetCollection<MapTileModel>(collectionName);
+            var builder = Builders<MapTileModel>.Filter;
+            var filter = builder.And(builder.Eq("X", x), builder.Eq("Y", y));
+            return collection.Find(filter).FirstOrDefault();
         }
     }
 }
