@@ -181,18 +181,22 @@ namespace NecromindUI.UserControls.Admin
 
         private void BtnNorth_Click(object sender, EventArgs e)
         {
+            _presenter.MoveNorth();
         }
 
         private void BtnSouth_Click(object sender, EventArgs e)
         {
+            _presenter.MoveSouth();
         }
 
         private void BtnWest_Click(object sender, EventArgs e)
         {
+            _presenter.MoveWest();
         }
 
         private void BtnEast_Click(object sender, EventArgs e)
         {
+            _presenter.MoveEast();
         }
     }
 }
