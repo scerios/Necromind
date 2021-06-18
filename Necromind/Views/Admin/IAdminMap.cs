@@ -18,6 +18,9 @@ namespace NecromindUI.Views.Admin
         bool BtnIsSouthEnabled { get; set; }
         bool BtnIsWestEnabled { get; set; }
         bool BtnIsEastEnabled { get; set; }
+        bool BtnIsAttachEnabled { get; set; }
+        bool BtnIsDetachEnabled { get; set; }
+        bool BtnIsSaveEnabled { get; set; }
 
         ListBox LbLocations { get; }
     }
