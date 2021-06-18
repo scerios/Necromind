@@ -35,10 +35,12 @@ namespace NecromindUI.Presenters.Admin
         {
             LoadLocations();
             BindLocations();
+
             ClearLocationSelection();
             ClearEditFields();
-            TryGetStartTile();
-            SetCurrentTileCoordinates();
+
+            GetStartTile();
+            SetStartTileCoordinates();
             SetNeighborhood();
             TrySetCurrentLocationStats();
             SetMovementBtns();
@@ -133,10 +135,10 @@ namespace NecromindUI.Presenters.Admin
             _adminMap.LabIsHostile = _location.IsHostile;
         }
 
-        private void SetCurrentTileCoordinates()
+        private void SetStartTileCoordinates()
         {
-            _adminMap.LabX = _currentTile.X.ToString();
-            _adminMap.LabY = _currentTile.Y.ToString();
+            _adminMap.LabX = "0";
+            _adminMap.LabY = "0";
         }
 
         private void SetNeighborhood()
@@ -165,7 +167,7 @@ namespace NecromindUI.Presenters.Admin
             }
         }
 
-        private bool TryGetTilesLocation()
+        private bool GetTilesLocation()
         {
             var location = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _currentTile.LocationId.ToString());
 
@@ -180,13 +182,13 @@ namespace NecromindUI.Presenters.Admin
 
         private void TrySetCurrentLocationStats()
         {
-            if (TryGetTilesLocation())
-            {
+            if (_currentTile != null && GetTilesLocation())
                 SetLocationStats();
-            }
         }
 
         #endregion Setters
+
+        #region Init
 
         private void LoadLocations()
         {
@@ -199,6 +201,8 @@ namespace NecromindUI.Presenters.Admin
             _adminMap.LbLocations.DataSource = _bsLocations;
             _adminMap.LbLocations.DisplayMember = "Name";
         }
+
+        #endregion Init
 
         private void ClearLocationSelection()
         {
@@ -214,7 +218,7 @@ namespace NecromindUI.Presenters.Admin
 
         #region Getters
 
-        private void TryGetStartTile()
+        private void GetStartTile()
         {
             _currentTile = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, 0, 0);
         }
