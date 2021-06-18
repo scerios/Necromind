@@ -245,6 +245,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.Enabled = false;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.Black;
@@ -255,12 +256,14 @@ namespace NecromindUI.UserControls.Admin
             this.btnSave.TabStop = false;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // btnJump
             // 
             this.btnJump.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnJump.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(195)))), ((int)(((byte)(18)))));
             this.btnJump.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJump.Enabled = false;
             this.btnJump.FlatAppearance.BorderSize = 0;
             this.btnJump.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJump.ForeColor = System.Drawing.Color.Black;
@@ -277,6 +280,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnAttach.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnAttach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
             this.btnAttach.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAttach.Enabled = false;
             this.btnAttach.FlatAppearance.BorderSize = 0;
             this.btnAttach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAttach.ForeColor = System.Drawing.Color.Black;
@@ -287,12 +291,14 @@ namespace NecromindUI.UserControls.Admin
             this.btnAttach.TabStop = false;
             this.btnAttach.Text = "Attach";
             this.btnAttach.UseVisualStyleBackColor = false;
+            this.btnAttach.Click += new System.EventHandler(this.BtnAttach_Click);
             // 
             // btnDetach
             // 
             this.btnDetach.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnDetach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.btnDetach.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDetach.Enabled = false;
             this.btnDetach.FlatAppearance.BorderSize = 0;
             this.btnDetach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetach.ForeColor = System.Drawing.Color.Black;
@@ -303,6 +309,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnDetach.TabStop = false;
             this.btnDetach.Text = "Detach";
             this.btnDetach.UseVisualStyleBackColor = false;
+            this.btnDetach.Click += new System.EventHandler(this.BtnDetach_Click);
             // 
             // labCurrent
             // 

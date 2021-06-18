@@ -156,6 +156,36 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
+        public bool BtnIsAttachEnabled
+        {
+            get => btnAttach.Enabled;
+
+            set
+            {
+                btnAttach.Enabled = value;
+            }
+        }
+
+        public bool BtnIsDetachEnabled
+        {
+            get => btnDetach.Enabled;
+
+            set
+            {
+                btnDetach.Enabled = value;
+            }
+        }
+
+        public bool BtnIsSaveEnabled
+        {
+            get => btnSave.Enabled;
+
+            set
+            {
+                btnSave.Enabled = value;
+            }
+        }
+
         public ListBox LbLocations
         {
             get => lbLocations;
@@ -197,6 +227,18 @@ namespace NecromindUI.UserControls.Admin
         private void BtnEast_Click(object sender, EventArgs e)
         {
             _presenter.MoveEast();
+        }
+
+        private void BtnAttach_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void BtnDetach_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
         }
     }
 }
