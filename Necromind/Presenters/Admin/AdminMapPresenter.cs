@@ -22,8 +22,8 @@ namespace NecromindUI.Presenters.Admin
         private MapTileModel _southOfCurrent;
         private MapTileModel _westOfCurrent;
         private MapTileModel _eastOfCurrent;
-        private int _locX = 0;
-        private int _locY = 0;
+        private int _x = 0;
+        private int _y = 0;
 
         #endregion Properties
 
@@ -91,10 +91,25 @@ namespace NecromindUI.Presenters.Admin
             _mongoConnector.TryUpsertRecord(DBConfig.MapTilesCollection, _currentTile.Id, _currentTile);
         }
 
-        //private bool HasNeighbor(MapTileModel mapTile)
-        //{
-        //    return
-        //}
+        private bool HasNorthNeighbor(int x, int y)
+        {
+            return GetNorthOf(x, y) != null;
+        }
+
+        private bool HasSouthNeighbor(int x, int y)
+        {
+            return GetSouthOf(x, y) != null;
+        }
+
+        private bool HasWestNeighbor(int x, int y)
+        {
+            return GetWestOf(x, y) != null;
+        }
+
+        private bool HasEastNeighbor(int x, int y)
+        {
+            return GetEastOf(x, y) != null;
+        }
 
         #region Init
 
@@ -137,7 +152,7 @@ namespace NecromindUI.Presenters.Admin
 
         private void GetStartTile()
         {
-            _currentTile = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _locX, _locY);
+            _currentTile = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _x, _y);
         }
 
         private MapTileModel GetNorthOf(int locX, int locY)
@@ -181,26 +196,26 @@ namespace NecromindUI.Presenters.Admin
 
         private void SetStartTileCoordinates()
         {
-            _adminMap.LabX = _locX.ToString();
-            _adminMap.LabY = _locY.ToString();
+            _adminMap.LabX = _x.ToString();
+            _adminMap.LabY = _y.ToString();
         }
 
         private void SetNeighborhood()
         {
-            _northOfCurrent = GetNorthOf(_locX, _locY);
-            _southOfCurrent = GetSouthOf(_locX, _locY);
-            _westOfCurrent = GetWestOf(_locX, _locY);
-            _eastOfCurrent = GetEastOf(_locX, _locY);
+            _northOfCurrent = GetNorthOf(_x, _y);
+            _southOfCurrent = GetSouthOf(_x, _y);
+            _westOfCurrent = GetWestOf(_x, _y);
+            _eastOfCurrent = GetEastOf(_x, _y);
         }
 
         private void SetMovementBtns()
         {
             if (_currentTile == null)
             {
-                _adminMap.BtnIsNorthEnabled = _northOfCurrent != null;
-                _adminMap.BtnIsSouthEnabled = _southOfCurrent != null;
-                _adminMap.BtnIsWestEnabled = _westOfCurrent != null;
-                _adminMap.BtnIsEastEnabled = _eastOfCurrent != null;
+                _adminMap.BtnIsNorthEnabled = HasNorthNeighbor(_x, _y) || (HasNorthNeighbor(_x, _y - 1) || HasWestNeighbor(_x, _y - 1) || HasEastNeighbor(_x, _y - 1));
+                _adminMap.BtnIsSouthEnabled = HasSouthNeighbor(_x, _y) || (HasSouthNeighbor(_x, _y + 1) || HasWestNeighbor(_x, _y + 1) || HasEastNeighbor(_x, _y + 1));
+                _adminMap.BtnIsWestEnabled = HasWestNeighbor(_x, _y) || (HasWestNeighbor(_x - 1, _y) || HasNorthNeighbor(_x - 1, _y) || HasSouthNeighbor(_x - 1, _y));
+                _adminMap.BtnIsEastEnabled = HasEastNeighbor(_x, _y) || (HasEastNeighbor(_x + 1, _y) || HasNorthNeighbor(_x + 1, _y) || HasSouthNeighbor(_x + 1, _y));
             }
             else
             {
@@ -227,65 +242,65 @@ namespace NecromindUI.Presenters.Admin
 
         public void MoveNorth()
         {
-            _locY--;
-            _adminMap.LabY = _locY.ToString();
+            _y--;
+            _adminMap.LabY = _y.ToString();
 
             _southOfCurrent = _currentTile;
             _currentTile = _northOfCurrent;
 
             SetCurrentLocationStats();
 
-            _northOfCurrent = GetNorthOf(_locX, _locY);
-            _westOfCurrent = GetWestOf(_locX, _locY);
-            _eastOfCurrent = GetEastOf(_locX, _locY);
+            _northOfCurrent = GetNorthOf(_x, _y);
+            _westOfCurrent = GetWestOf(_x, _y);
+            _eastOfCurrent = GetEastOf(_x, _y);
             SetMovementBtns();
         }
 
         public void MoveSouth()
         {
-            _locY++;
-            _adminMap.LabY = _locY.ToString();
+            _y++;
+            _adminMap.LabY = _y.ToString();
 
             _northOfCurrent = _currentTile;
             _currentTile = _southOfCurrent;
 
             SetCurrentLocationStats();
 
-            _southOfCurrent = GetSouthOf(_locX, _locY);
-            _westOfCurrent = GetWestOf(_locX, _locY);
-            _eastOfCurrent = GetEastOf(_locX, _locY);
+            _southOfCurrent = GetSouthOf(_x, _y);
+            _westOfCurrent = GetWestOf(_x, _y);
+            _eastOfCurrent = GetEastOf(_x, _y);
             SetMovementBtns();
         }
 
         public void MoveWest()
         {
-            _locX--;
-            _adminMap.LabX = _locX.ToString();
+            _x--;
+            _adminMap.LabX = _x.ToString();
 
             _eastOfCurrent = _currentTile;
             _currentTile = _westOfCurrent;
 
             SetCurrentLocationStats();
 
-            _northOfCurrent = GetNorthOf(_locX, _locY);
-            _southOfCurrent = GetSouthOf(_locX, _locY);
-            _westOfCurrent = GetWestOf(_locX, _locY);
+            _northOfCurrent = GetNorthOf(_x, _y);
+            _southOfCurrent = GetSouthOf(_x, _y);
+            _westOfCurrent = GetWestOf(_x, _y);
             SetMovementBtns();
         }
 
         public void MoveEast()
         {
-            _locX++;
-            _adminMap.LabX = _locX.ToString();
+            _x++;
+            _adminMap.LabX = _x.ToString();
 
             _westOfCurrent = _currentTile;
             _currentTile = _eastOfCurrent;
 
             SetCurrentLocationStats();
 
-            _northOfCurrent = GetNorthOf(_locX, _locY);
-            _southOfCurrent = GetSouthOf(_locX, _locY);
-            _eastOfCurrent = GetEastOf(_locX, _locY);
+            _northOfCurrent = GetNorthOf(_x, _y);
+            _southOfCurrent = GetSouthOf(_x, _y);
+            _eastOfCurrent = GetEastOf(_x, _y);
             SetMovementBtns();
         }
 
