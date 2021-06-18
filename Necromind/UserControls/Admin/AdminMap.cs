@@ -231,6 +231,7 @@ namespace NecromindUI.UserControls.Admin
 
         private void BtnAttach_Click(object sender, EventArgs e)
         {
+            _presenter.AttachLocation();
         }
 
         private void BtnDetach_Click(object sender, EventArgs e)
@@ -239,6 +240,7 @@ namespace NecromindUI.UserControls.Admin
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
+            _presenter.Save();
         }
     }
 }

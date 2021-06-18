@@ -207,6 +207,7 @@ namespace NecromindUI.UserControls.Admin
             this.labJumpX.TabIndex = 43;
             this.labJumpX.Text = "X:";
             this.labJumpX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labJumpX.Visible = false;
             // 
             // labJumpY
             // 
@@ -217,6 +218,7 @@ namespace NecromindUI.UserControls.Admin
             this.labJumpY.TabIndex = 44;
             this.labJumpY.Text = "Y:";
             this.labJumpY.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labJumpY.Visible = false;
             // 
             // tbJumpX
             // 
@@ -228,6 +230,7 @@ namespace NecromindUI.UserControls.Admin
             this.tbJumpX.Size = new System.Drawing.Size(50, 22);
             this.tbJumpX.TabIndex = 45;
             this.tbJumpX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbJumpX.Visible = false;
             // 
             // tbJumpY
             // 
@@ -239,6 +242,7 @@ namespace NecromindUI.UserControls.Admin
             this.tbJumpY.Size = new System.Drawing.Size(50, 22);
             this.tbJumpY.TabIndex = 46;
             this.tbJumpY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbJumpY.Visible = false;
             // 
             // btnSave
             // 
@@ -274,6 +278,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnJump.TabStop = false;
             this.btnJump.Text = "Jump";
             this.btnJump.UseVisualStyleBackColor = false;
+            this.btnJump.Visible = false;
             // 
             // btnAttach
             // 
@@ -309,6 +314,7 @@ namespace NecromindUI.UserControls.Admin
             this.btnDetach.TabStop = false;
             this.btnDetach.Text = "Detach";
             this.btnDetach.UseVisualStyleBackColor = false;
+            this.btnDetach.Visible = false;
             this.btnDetach.Click += new System.EventHandler(this.BtnDetach_Click);
             // 
             // labCurrent
