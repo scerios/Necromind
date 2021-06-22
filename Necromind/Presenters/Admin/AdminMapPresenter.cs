@@ -91,26 +91,6 @@ namespace NecromindUI.Presenters.Admin
             _mongoConnector.TryUpsertRecord(DBConfig.MapTilesCollection, _currentTile.Id, _currentTile);
         }
 
-        private bool HasNorthNeighbor(int x, int y)
-        {
-            return GetNorthOf(x, y) != null;
-        }
-
-        private bool HasSouthNeighbor(int x, int y)
-        {
-            return GetSouthOf(x, y) != null;
-        }
-
-        private bool HasWestNeighbor(int x, int y)
-        {
-            return GetWestOf(x, y) != null;
-        }
-
-        private bool HasEastNeighbor(int x, int y)
-        {
-            return GetEastOf(x, y) != null;
-        }
-
         #region Init
 
         private void LoadLocations()
@@ -212,10 +192,10 @@ namespace NecromindUI.Presenters.Admin
         {
             if (_currentTile == null)
             {
-                _adminMap.BtnIsNorthEnabled = HasNorthNeighbor(_x, _y) || (HasNorthNeighbor(_x, _y - 1) || HasWestNeighbor(_x, _y - 1) || HasEastNeighbor(_x, _y - 1));
-                _adminMap.BtnIsSouthEnabled = HasSouthNeighbor(_x, _y) || (HasSouthNeighbor(_x, _y + 1) || HasWestNeighbor(_x, _y + 1) || HasEastNeighbor(_x, _y + 1));
-                _adminMap.BtnIsWestEnabled = HasWestNeighbor(_x, _y) || (HasWestNeighbor(_x - 1, _y) || HasNorthNeighbor(_x - 1, _y) || HasSouthNeighbor(_x - 1, _y));
-                _adminMap.BtnIsEastEnabled = HasEastNeighbor(_x, _y) || (HasEastNeighbor(_x + 1, _y) || HasNorthNeighbor(_x + 1, _y) || HasSouthNeighbor(_x + 1, _y));
+                _adminMap.BtnIsNorthEnabled = HasNorthNeighbor(_x, _y) || DoesNorthOfCurrentHasAnyNeighbor();
+                _adminMap.BtnIsSouthEnabled = HasSouthNeighbor(_x, _y) || DoesSouthOfCurrentHasAnyNeighbor();
+                _adminMap.BtnIsWestEnabled = HasWestNeighbor(_x, _y) || DoesWestOfCurrentHasAnyNeighbor();
+                _adminMap.BtnIsEastEnabled = HasEastNeighbor(_x, _y) || DoesEastOfCurrentHasAnyNeighbor();
             }
             else
             {
@@ -237,6 +217,50 @@ namespace NecromindUI.Presenters.Admin
         }
 
         #endregion Setters
+
+        #region Check
+
+        private bool HasNorthNeighbor(int x, int y)
+        {
+            return GetNorthOf(x, y) != null;
+        }
+
+        private bool HasSouthNeighbor(int x, int y)
+        {
+            return GetSouthOf(x, y) != null;
+        }
+
+        private bool HasWestNeighbor(int x, int y)
+        {
+            return GetWestOf(x, y) != null;
+        }
+
+        private bool HasEastNeighbor(int x, int y)
+        {
+            return GetEastOf(x, y) != null;
+        }
+
+        private bool DoesNorthOfCurrentHasAnyNeighbor()
+        {
+            return HasNorthNeighbor(_x, _y - 1) || HasWestNeighbor(_x, _y - 1) || HasEastNeighbor(_x, _y - 1);
+        }
+
+        private bool DoesSouthOfCurrentHasAnyNeighbor()
+        {
+            return HasSouthNeighbor(_x, _y + 1) || HasWestNeighbor(_x, _y + 1) || HasEastNeighbor(_x, _y + 1);
+        }
+
+        private bool DoesWestOfCurrentHasAnyNeighbor()
+        {
+            return HasWestNeighbor(_x - 1, _y) || HasNorthNeighbor(_x - 1, _y) || HasSouthNeighbor(_x - 1, _y);
+        }
+
+        private bool DoesEastOfCurrentHasAnyNeighbor()
+        {
+            return HasEastNeighbor(_x + 1, _y) || HasNorthNeighbor(_x + 1, _y) || HasSouthNeighbor(_x + 1, _y);
+        }
+
+        #endregion Check
 
         #region Movement
 
