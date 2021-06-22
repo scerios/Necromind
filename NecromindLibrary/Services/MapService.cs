@@ -16,10 +16,11 @@ namespace NecromindLibrary.Services
         private MapTileModel _southOfCurrent;
         private MapTileModel _westOfCurrent;
         private MapTileModel _eastOfCurrent;
-        private int _x;
-        private int _y;
 
+        private int _x;
         public int X => _x;
+
+        private int _y;
         public int Y => _y;
 
         public MapService()
@@ -109,6 +110,8 @@ namespace NecromindLibrary.Services
 
         #endregion Getters
 
+        #region Setters
+
         public void SetStartTile()
         {
             _current = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _x, _y);
@@ -126,6 +129,8 @@ namespace NecromindLibrary.Services
         {
             _current = new MapTileModel();
         }
+
+        #endregion Setters
 
         #region Checks
 
