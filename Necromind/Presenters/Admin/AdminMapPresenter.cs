@@ -1,6 +1,7 @@
 ﻿using NecromindLibrary.Config;
 using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
+using NecromindLibrary.Services;
 using NecromindUI.Views.Admin;
 using System;
 using System.Collections.Generic;
@@ -12,25 +13,18 @@ namespace NecromindUI.Presenters.Admin
     {
         #region Properties
 
-        private readonly MongoConnector _mongoConnector;
         private readonly IAdminMap _adminMap;
+        private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
         private readonly BindingSource _bsLocations = new BindingSource();
+        private readonly MapService _mapService = new MapService();
         private List<LocationModel> _locations;
         private LocationModel _location;
-        private MapTileModel _currentTile;
-        private MapTileModel _northOfCurrent;
-        private MapTileModel _southOfCurrent;
-        private MapTileModel _westOfCurrent;
-        private MapTileModel _eastOfCurrent;
-        private int _x = 0;
-        private int _y = 0;
 
         #endregion Properties
 
         public AdminMapPresenter(IAdminMap adminMap)
         {
             _adminMap = adminMap;
-            _mongoConnector = MongoConnector.GetInstance();
         }
 
         public void LoadData()
@@ -41,8 +35,7 @@ namespace NecromindUI.Presenters.Admin
             ClearLocationSelection();
             ClearEditFields();
 
-            GetStartTile();
-            SetStartTileCoordinates();
+            SetCoordinates();
             SetNeighborhood();
             SetCurrentLocationStats();
             SetMovementBtns();
@@ -64,13 +57,13 @@ namespace NecromindUI.Presenters.Admin
         {
             TryInitNewMapTile();
 
-            _currentTile.LocationId = _location.Id;
+            _mapService.Current.LocationId = _location.Id;
             _adminMap.BtnIsSaveEnabled = true;
         }
 
         public void Save()
         {
-            if (_mongoConnector.GetRecordById<MapTileModel>(DBConfig.MapTilesCollection, _currentTile.Id.ToString()) == null)
+            if (_mongoConnector.GetRecordById<MapTileModel>(DBConfig.MapTilesCollection, _mapService.GetCurrentTilesId().ToString()) == null)
                 CreateMapTile();
             else
                 UpdateMapTile();
@@ -80,15 +73,15 @@ namespace NecromindUI.Presenters.Admin
 
         private void CreateMapTile()
         {
-            _currentTile.X = Int32.Parse(_adminMap.LabX);
-            _currentTile.Y = Int32.Parse(_adminMap.LabY);
+            _mapService.Current.X = Int32.Parse(_adminMap.LabX);
+            _mapService.Current.Y = Int32.Parse(_adminMap.LabY);
 
-            _mongoConnector.TryCreateNewRecord(DBConfig.MapTilesCollection, _currentTile);
+            _mongoConnector.TryCreateNewRecord(DBConfig.MapTilesCollection, _mapService.Current);
         }
 
         private void UpdateMapTile()
         {
-            _mongoConnector.TryUpsertRecord(DBConfig.MapTilesCollection, _currentTile.Id, _currentTile);
+            _mongoConnector.TryUpsertRecord(DBConfig.MapTilesCollection, _mapService.GetCurrentTilesId(), _mapService.Current);
         }
 
         #region Init
@@ -107,8 +100,8 @@ namespace NecromindUI.Presenters.Admin
 
         private void TryInitNewMapTile()
         {
-            if (_currentTile == null)
-                _currentTile = new MapTileModel();
+            if (_mapService.Current == null)
+                _mapService.InitCurrentAsNewTile();
         }
 
         #endregion Init
@@ -119,40 +112,15 @@ namespace NecromindUI.Presenters.Admin
         {
             LocationModel location = null;
 
-            if (_currentTile.LocationId != null)
+            if (_mapService.Current.LocationId != null)
             {
-                location = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _currentTile.LocationId.ToString());
+                location = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _mapService.Current.LocationId.ToString());
             }
 
             if (location != null)
             {
                 _location = location;
             }
-        }
-
-        private void GetStartTile()
-        {
-            _currentTile = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _x, _y);
-        }
-
-        private MapTileModel GetNorthOf(int locX, int locY)
-        {
-            return _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, locX, locY - 1);
-        }
-
-        private MapTileModel GetSouthOf(int locX, int locY)
-        {
-            return _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, locX, locY + 1);
-        }
-
-        private MapTileModel GetWestOf(int locX, int locY)
-        {
-            return _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, locX - 1, locY);
-        }
-
-        private MapTileModel GetEastOf(int locX, int locY)
-        {
-            return _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, locX + 1, locY);
         }
 
         #endregion Getters
@@ -174,28 +142,25 @@ namespace NecromindUI.Presenters.Admin
             }
         }
 
-        private void SetStartTileCoordinates()
+        private void SetCoordinates()
         {
-            _adminMap.LabX = _x.ToString();
-            _adminMap.LabY = _y.ToString();
+            _adminMap.LabX = _mapService.X.ToString();
+            _adminMap.LabY = _mapService.Y.ToString();
         }
 
         private void SetNeighborhood()
         {
-            _northOfCurrent = GetNorthOf(_x, _y);
-            _southOfCurrent = GetSouthOf(_x, _y);
-            _westOfCurrent = GetWestOf(_x, _y);
-            _eastOfCurrent = GetEastOf(_x, _y);
+            _mapService.SetNeighborhood();
         }
 
         private void SetMovementBtns()
         {
-            if (_currentTile == null)
+            if (_mapService.Current == null)
             {
-                _adminMap.BtnIsNorthEnabled = HasNorthNeighbor(_x, _y) || DoesNorthOfCurrentHasAnyNeighbor();
-                _adminMap.BtnIsSouthEnabled = HasSouthNeighbor(_x, _y) || DoesSouthOfCurrentHasAnyNeighbor();
-                _adminMap.BtnIsWestEnabled = HasWestNeighbor(_x, _y) || DoesWestOfCurrentHasAnyNeighbor();
-                _adminMap.BtnIsEastEnabled = HasEastNeighbor(_x, _y) || DoesEastOfCurrentHasAnyNeighbor();
+                _adminMap.BtnIsNorthEnabled = _mapService.DoesCurrentHasNorthNeighbor() || _mapService.DoesNorthOfCurrentHasOtherNeighbor();
+                _adminMap.BtnIsSouthEnabled = _mapService.DoesCurrentHasSouthNeighbor() || _mapService.DoesSouthOfCurrentHasOtherNeighbor();
+                _adminMap.BtnIsWestEnabled = _mapService.DoesCurrentHasWestNeighbor() || _mapService.DoesWestOfCurrentHasOtherNeighbor();
+                _adminMap.BtnIsEastEnabled = _mapService.DoesCurrentHasEastNeighbor() || _mapService.DoesEastOfCurrentHasOtherNeighbor();
             }
             else
             {
@@ -208,7 +173,7 @@ namespace NecromindUI.Presenters.Admin
 
         private void SetCurrentLocationStats()
         {
-            if (_currentTile != null)
+            if (_mapService.Current != null)
                 GetTilesLocation();
             else
                 _location = null;
@@ -218,113 +183,41 @@ namespace NecromindUI.Presenters.Admin
 
         #endregion Setters
 
-        #region Check
-
-        private bool HasNorthNeighbor(int x, int y)
-        {
-            return GetNorthOf(x, y) != null;
-        }
-
-        private bool HasSouthNeighbor(int x, int y)
-        {
-            return GetSouthOf(x, y) != null;
-        }
-
-        private bool HasWestNeighbor(int x, int y)
-        {
-            return GetWestOf(x, y) != null;
-        }
-
-        private bool HasEastNeighbor(int x, int y)
-        {
-            return GetEastOf(x, y) != null;
-        }
-
-        private bool DoesNorthOfCurrentHasAnyNeighbor()
-        {
-            return HasNorthNeighbor(_x, _y - 1) || HasWestNeighbor(_x, _y - 1) || HasEastNeighbor(_x, _y - 1);
-        }
-
-        private bool DoesSouthOfCurrentHasAnyNeighbor()
-        {
-            return HasSouthNeighbor(_x, _y + 1) || HasWestNeighbor(_x, _y + 1) || HasEastNeighbor(_x, _y + 1);
-        }
-
-        private bool DoesWestOfCurrentHasAnyNeighbor()
-        {
-            return HasWestNeighbor(_x - 1, _y) || HasNorthNeighbor(_x - 1, _y) || HasSouthNeighbor(_x - 1, _y);
-        }
-
-        private bool DoesEastOfCurrentHasAnyNeighbor()
-        {
-            return HasEastNeighbor(_x + 1, _y) || HasNorthNeighbor(_x + 1, _y) || HasSouthNeighbor(_x + 1, _y);
-        }
-
-        #endregion Check
-
         #region Movement
 
         public void MoveNorth()
         {
-            _y--;
-            _adminMap.LabY = _y.ToString();
-
-            _southOfCurrent = _currentTile;
-            _currentTile = _northOfCurrent;
+            _mapService.MoveNorth();
+            _adminMap.LabY = _mapService.Y.ToString();
 
             SetCurrentLocationStats();
-
-            _northOfCurrent = GetNorthOf(_x, _y);
-            _westOfCurrent = GetWestOf(_x, _y);
-            _eastOfCurrent = GetEastOf(_x, _y);
             SetMovementBtns();
         }
 
         public void MoveSouth()
         {
-            _y++;
-            _adminMap.LabY = _y.ToString();
-
-            _northOfCurrent = _currentTile;
-            _currentTile = _southOfCurrent;
+            _mapService.MoveSouth();
+            _adminMap.LabY = _mapService.Y.ToString();
 
             SetCurrentLocationStats();
-
-            _southOfCurrent = GetSouthOf(_x, _y);
-            _westOfCurrent = GetWestOf(_x, _y);
-            _eastOfCurrent = GetEastOf(_x, _y);
             SetMovementBtns();
         }
 
         public void MoveWest()
         {
-            _x--;
-            _adminMap.LabX = _x.ToString();
-
-            _eastOfCurrent = _currentTile;
-            _currentTile = _westOfCurrent;
+            _mapService.MoveWest();
+            _adminMap.LabX = _mapService.X.ToString();
 
             SetCurrentLocationStats();
-
-            _northOfCurrent = GetNorthOf(_x, _y);
-            _southOfCurrent = GetSouthOf(_x, _y);
-            _westOfCurrent = GetWestOf(_x, _y);
             SetMovementBtns();
         }
 
         public void MoveEast()
         {
-            _x++;
-            _adminMap.LabX = _x.ToString();
-
-            _westOfCurrent = _currentTile;
-            _currentTile = _eastOfCurrent;
+            _mapService.MoveEast();
+            _adminMap.LabX = _mapService.X.ToString();
 
             SetCurrentLocationStats();
-
-            _northOfCurrent = GetNorthOf(_x, _y);
-            _southOfCurrent = GetSouthOf(_x, _y);
-            _eastOfCurrent = GetEastOf(_x, _y);
             SetMovementBtns();
         }
 
