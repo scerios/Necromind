@@ -58,7 +58,8 @@ namespace NecromindUI.Presenters.Admin
             TryInitNewMapTile();
 
             _mapService.Current.LocationId = _location.Id;
-            _adminMap.BtnIsSaveEnabled = true;
+
+            EnableSaveBtn();
         }
 
         public void Save()
@@ -98,17 +99,9 @@ namespace NecromindUI.Presenters.Admin
             _adminMap.LbLocations.DisplayMember = "Name";
         }
 
-        private void TryInitNewMapTile()
-        {
-            if (_mapService.Current == null)
-                _mapService.InitCurrentAsNewTile();
-        }
-
         #endregion Init
 
-        #region Getters
-
-        private void GetTilesLocation()
+        private void TryGetCurrentTilesLocation()
         {
             LocationModel location = null;
 
@@ -123,7 +116,11 @@ namespace NecromindUI.Presenters.Admin
             }
         }
 
-        #endregion Getters
+        private void TryInitNewMapTile()
+        {
+            if (_mapService.Current == null)
+                _mapService.InitCurrentAsNewTile();
+        }
 
         #region Setters
 
@@ -174,11 +171,26 @@ namespace NecromindUI.Presenters.Admin
         private void SetCurrentLocationStats()
         {
             if (_mapService.Current != null)
-                GetTilesLocation();
+                TryGetCurrentTilesLocation();
             else
                 _location = null;
 
             SetLocationStats();
+        }
+
+        private void EnableSaveBtn()
+        {
+            _adminMap.BtnIsSaveEnabled = true;
+        }
+
+        private void DisableSaveBtn()
+        {
+            _adminMap.BtnIsSaveEnabled = false;
+        }
+
+        private void DisableAttachBtn()
+        {
+            _adminMap.BtnIsAttachEnabled = false;
         }
 
         #endregion Setters
@@ -187,6 +199,10 @@ namespace NecromindUI.Presenters.Admin
 
         public void MoveNorth()
         {
+            ClearLocationSelection();
+            DisableAttachBtn();
+            DisableSaveBtn();
+
             _mapService.MoveNorth();
             _adminMap.LabY = _mapService.Y.ToString();
 
@@ -196,6 +212,10 @@ namespace NecromindUI.Presenters.Admin
 
         public void MoveSouth()
         {
+            ClearLocationSelection();
+            DisableAttachBtn();
+            DisableSaveBtn();
+
             _mapService.MoveSouth();
             _adminMap.LabY = _mapService.Y.ToString();
 
@@ -205,6 +225,10 @@ namespace NecromindUI.Presenters.Admin
 
         public void MoveWest()
         {
+            ClearLocationSelection();
+            DisableAttachBtn();
+            DisableSaveBtn();
+
             _mapService.MoveWest();
             _adminMap.LabX = _mapService.X.ToString();
 
@@ -214,6 +238,10 @@ namespace NecromindUI.Presenters.Admin
 
         public void MoveEast()
         {
+            ClearLocationSelection();
+            DisableAttachBtn();
+            DisableSaveBtn();
+
             _mapService.MoveEast();
             _adminMap.LabX = _mapService.X.ToString();
 
