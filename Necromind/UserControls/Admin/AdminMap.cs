@@ -186,9 +186,24 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
+        public bool BtnIsDelEnabled
+        {
+            get => btnDel.Enabled;
+
+            set
+            {
+                btnDel.Enabled = value;
+            }
+        }
+
         public ListBox LbLocations
         {
             get => lbLocations;
+        }
+
+        public Timer TimMap
+        {
+            get => TimMap;
         }
 
         #endregion Properties
@@ -241,6 +256,14 @@ namespace NecromindUI.UserControls.Admin
         private void BtnSave_Click(object sender, EventArgs e)
         {
             _presenter.Save();
+        }
+
+        private void BtnDel_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void TimHide_Tick(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -29,6 +29,7 @@ namespace NecromindUI.UserControls.Admin
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbLocations = new System.Windows.Forms.ListBox();
             this.panMovement = new System.Windows.Forms.Panel();
             this.btnSouth = new System.Windows.Forms.Button();
@@ -58,6 +59,9 @@ namespace NecromindUI.UserControls.Admin
             this.labHostileTick = new System.Windows.Forms.Label();
             this.labAccessibleCross = new System.Windows.Forms.Label();
             this.labHostileCross = new System.Windows.Forms.Label();
+            this.btnDel = new System.Windows.Forms.Button();
+            this.labMap = new System.Windows.Forms.Label();
+            this.timHide = new System.Windows.Forms.Timer(this.components);
             this.panMovement.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -441,11 +445,47 @@ namespace NecromindUI.UserControls.Admin
             this.labHostileCross.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.labHostileCross.Visible = false;
             // 
+            // btnDel
+            // 
+            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.btnDel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDel.Enabled = false;
+            this.btnDel.FlatAppearance.BorderSize = 0;
+            this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDel.ForeColor = System.Drawing.Color.Black;
+            this.btnDel.Location = new System.Drawing.Point(564, 480);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(100, 25);
+            this.btnDel.TabIndex = 66;
+            this.btnDel.TabStop = false;
+            this.btnDel.Text = "Delete";
+            this.btnDel.UseVisualStyleBackColor = false;
+            this.btnDel.Click += new System.EventHandler(this.BtnDel_Click);
+            // 
+            // labMap
+            // 
+            this.labMap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labMap.AutoSize = true;
+            this.labMap.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labMap.Location = new System.Drawing.Point(684, 484);
+            this.labMap.Name = "labMap";
+            this.labMap.Size = new System.Drawing.Size(0, 16);
+            this.labMap.TabIndex = 67;
+            this.labMap.Visible = false;
+            // 
+            // timHide
+            // 
+            this.timHide.Interval = 3000;
+            this.timHide.Tick += new System.EventHandler(this.TimHide_Tick);
+            // 
             // AdminMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.Controls.Add(this.labMap);
+            this.Controls.Add(this.btnDel);
             this.Controls.Add(this.labHostileCross);
             this.Controls.Add(this.labAccessibleCross);
             this.Controls.Add(this.labHostileTick);
@@ -512,5 +552,8 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.Label labHostileTick;
         private System.Windows.Forms.Label labAccessibleCross;
         private System.Windows.Forms.Label labHostileCross;
+        private System.Windows.Forms.Button btnDel;
+        private System.Windows.Forms.Label labMap;
+        private System.Windows.Forms.Timer timHide;
     }
 }
