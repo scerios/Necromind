@@ -8,9 +8,13 @@ namespace NecromindLibrary.Services
     public class MapService
     {
         protected readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
-        protected MapTileModel _current;
 
+        protected MapTileModel _current;
         public MapTileModel Current => _current;
+
+        protected LocationModel _location;
+
+        public LocationModel Location => _location;
 
         protected MapTileModel _northOfCurrent;
         protected MapTileModel _southOfCurrent;
@@ -99,6 +103,11 @@ namespace NecromindLibrary.Services
         #endregion Getters
 
         #region Setters
+
+        public void SetLocation(LocationModel location)
+        {
+            _location = location;
+        }
 
         public void SetStartTile()
         {
