@@ -13,14 +13,22 @@ namespace NecromindUI.Presenters.Game
     {
         private readonly IGameMain _gameMain;
         private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
-        public Dictionary<Keys, Action> UserInputKeys = new Dictionary<Keys, Action>();
+
+        private Dictionary<Keys, Action> _userInputActions = new Dictionary<Keys, Action>();
+        public Dictionary<Keys, Action> UserInputActions => _userInputActions;
+
+        private MessageLogger _msgLogger = MessageLogger.GetInstance();
+        public MessageLogger MsgLogger => _msgLogger;
+
         private MapService _mapService = new MapService();
+        public MapService MapService => _mapService;
+
         private HeroModel _hero;
 
         public GameMainPresenter(IGameMain gameMain)
         {
             _gameMain = gameMain;
-            SetUserInputActions();
+            //SetUserInputActions();
         }
 
         public void InitUIFor(HeroModel hero)
@@ -38,14 +46,17 @@ namespace NecromindUI.Presenters.Game
 
         public void AppendEventLog(string msg)
         {
-            _gameMain.EventLog.Text = _gameMain.EventLog + "\n" + TextService.FormatEventMsg(msg);
+            _gameMain.EventLog.Text = _gameMain.EventLog.Text + "\n" + TextService.FormatEventMsg(msg);
             ScrollEventLogToBottom();
         }
 
-        public void SetLocationName(string name)
+        public void SetLocationName()
         {
-            _gameMain.CurrentLocation = name;
+            _gameMain.CurrentLocation = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _mapService.Current.LocationId.ToString()).Name;
         }
+
+        public string GetCurrentLocationDesc() =>
+            _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _mapService.Current.LocationId.ToString()).Description;
 
         public void TogglePanExitVisibility()
         {
@@ -72,10 +83,10 @@ namespace NecromindUI.Presenters.Game
 
         private void SetUserInputActions()
         {
-            UserInputKeys.Add(Keys.Up, () => _mapService.MoveNorth());
-            UserInputKeys.Add(Keys.Down, () => _mapService.MoveSouth());
-            UserInputKeys.Add(Keys.Left, () => _mapService.MoveWest());
-            UserInputKeys.Add(Keys.Right, () => _mapService.MoveEast());
+            _userInputActions.Add(Keys.Up, () => _mapService.MoveNorth());
+            _userInputActions.Add(Keys.Down, () => _mapService.MoveSouth());
+            _userInputActions.Add(Keys.Left, () => _mapService.MoveWest());
+            _userInputActions.Add(Keys.Right, () => _mapService.MoveEast());
         }
 
         private void SetHeroStats()

@@ -149,6 +149,7 @@
     </Compile>
     <Compile Include="Config\DBConfig.cs" />
     <Compile Include="Config\UISettings.cs" />
+    <Compile Include="EventArgs\GameMessageEventArgs.cs" />
     <Compile Include="GlobalConfig.cs" />
     <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\BaseCharacterModel.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="Services\GameMechanisms\ITrader.cs" />
     <Compile Include="Services\MapService.cs" />
     <Compile Include="Services\MapServiceAdmin.cs" />
+    <Compile Include="Services\MessageLogger.cs" />
     <Compile Include="Services\TextService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\MongoConnector.cs" />

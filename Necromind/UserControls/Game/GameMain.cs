@@ -1,4 +1,5 @@
-﻿using NecromindLibrary.Models;
+﻿using NecromindLibrary.EventArgs;
+using NecromindLibrary.Models;
 using NecromindUI.Presenters.Game;
 using NecromindUI.Views.Game;
 using System;
@@ -87,6 +88,7 @@ namespace NecromindUI.UserControls.Game
             _presenter = new GameMainPresenter(this);
             _gameFriendlyInteraction = new GameFriendlyInteraction();
             _gameEnemyInteraction = new GameEnemyInteraction();
+            _presenter.MsgLogger.OnMessageRaised += GameMessageRaised;
             StartGame(hero);
         }
 
@@ -140,23 +142,13 @@ namespace NecromindUI.UserControls.Game
         private void StartGame(HeroModel hero)
         {
             InitUIFor(hero);
-            SetLocationName("Town Square");
-            SetEventLog("You are in the town square");
+            _presenter.SetLocationName();
+            _presenter.MsgLogger.RaiseMessage(_presenter.GetCurrentLocationDesc());
         }
 
         private void InitUIFor(HeroModel hero)
         {
             _presenter.InitUIFor(hero);
-        }
-
-        private void SetLocationName(string name)
-        {
-            _presenter.SetLocationName(name);
-        }
-
-        private void SetEventLog(string msg)
-        {
-            _presenter.SetEventLog(msg);
         }
 
         private void ShowFriendlyUI()
@@ -181,10 +173,15 @@ namespace NecromindUI.UserControls.Game
 
         private void GameMain_KeyDown(object sender, KeyEventArgs e)
         {
-            if (_presenter.UserInputKeys.ContainsKey(e.KeyCode))
+            if (_presenter.UserInputActions.ContainsKey(e.KeyCode))
             {
-                _presenter.UserInputKeys[e.KeyCode].Invoke();
+                _presenter.UserInputActions[e.KeyCode].Invoke();
             }
+        }
+
+        private void GameMessageRaised(object sender, GameMessageEventArgs e)
+        {
+            _presenter.AppendEventLog(e.Message);
         }
     }
 }
