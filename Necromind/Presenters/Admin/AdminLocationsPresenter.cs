@@ -424,6 +424,7 @@ namespace NecromindUI.Presenters.Admin
             _bsLocations.ResetBindings(false);
 
             ClearEditFields();
+            ClearLocationSelection();
         }
 
         private void UpdateUIAfterDelete()
@@ -434,6 +435,7 @@ namespace NecromindUI.Presenters.Admin
             _bsLocations.ResetBindings(false);
 
             ClearEditFields();
+            ClearLocationSelection();
         }
 
         #endregion Update
