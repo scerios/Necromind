@@ -90,6 +90,66 @@ namespace NecromindUI.Presenters.Admin
             SetMovementBtns();
         }
 
+        #region Movement
+
+        public void MoveNorth()
+        {
+            ClearLocationSelection();
+            DisableAttachBtn();
+            DisableSaveBtn();
+
+            _mapService.MoveNorth();
+            _adminMap.LabY = _mapService.Y.ToString();
+
+            ToggleDelBtn();
+            SetCurrentLocationStats();
+            SetMovementBtns();
+        }
+
+        public void MoveSouth()
+        {
+            ClearLocationSelection();
+            DisableAttachBtn();
+            DisableSaveBtn();
+
+            _mapService.MoveSouth();
+            _adminMap.LabY = _mapService.Y.ToString();
+
+            ToggleDelBtn();
+            SetCurrentLocationStats();
+            SetMovementBtns();
+        }
+
+        public void MoveWest()
+        {
+            ClearLocationSelection();
+            DisableAttachBtn();
+            DisableSaveBtn();
+
+            _mapService.MoveWest();
+            _adminMap.LabX = _mapService.X.ToString();
+
+            ToggleDelBtn();
+            SetCurrentLocationStats();
+            SetMovementBtns();
+        }
+
+        public void MoveEast()
+        {
+            ClearLocationSelection();
+            DisableAttachBtn();
+            DisableSaveBtn();
+
+            _mapService.MoveEast();
+            _adminMap.LabX = _mapService.X.ToString();
+
+            ToggleDelBtn();
+            SetCurrentLocationStats();
+            SetMovementBtns();
+        }
+
+        #endregion Movement
+
         private void CreateMapTile()
         {
             string position = $"({ _mapService.X }, { _mapService.Y })";
@@ -133,16 +193,13 @@ namespace NecromindUI.Presenters.Admin
 
         private void TryGetCurrentTilesLocation()
         {
-            LocationModel location = null;
-
             if (_mapService.Current.LocationId != null)
             {
-                location = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _mapService.Current.LocationId.ToString());
+                _mapService.SetLocation(_mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _mapService.Current.LocationId.ToString()));
             }
-
-            if (location != null)
+            else
             {
-                _mapService.SetLocation(location);
+                _mapService.SetLocation(null);
             }
         }
 
@@ -233,6 +290,8 @@ namespace NecromindUI.Presenters.Admin
 
         #endregion Setters
 
+        #region Alert
+
         private void AlertSuccess(string name, string modification)
         {
             _adminMap.LabMapEdit.Text = $"{ name } { modification } successfully!";
@@ -249,65 +308,7 @@ namespace NecromindUI.Presenters.Admin
             _adminMap.TimHide.Start();
         }
 
-        #region Movement
-
-        public void MoveNorth()
-        {
-            ClearLocationSelection();
-            DisableAttachBtn();
-            DisableSaveBtn();
-
-            _mapService.MoveNorth();
-            _adminMap.LabY = _mapService.Y.ToString();
-
-            ToggleDelBtn();
-            SetCurrentLocationStats();
-            SetMovementBtns();
-        }
-
-        public void MoveSouth()
-        {
-            ClearLocationSelection();
-            DisableAttachBtn();
-            DisableSaveBtn();
-
-            _mapService.MoveSouth();
-            _adminMap.LabY = _mapService.Y.ToString();
-
-            ToggleDelBtn();
-            SetCurrentLocationStats();
-            SetMovementBtns();
-        }
-
-        public void MoveWest()
-        {
-            ClearLocationSelection();
-            DisableAttachBtn();
-            DisableSaveBtn();
-
-            _mapService.MoveWest();
-            _adminMap.LabX = _mapService.X.ToString();
-
-            ToggleDelBtn();
-            SetCurrentLocationStats();
-            SetMovementBtns();
-        }
-
-        public void MoveEast()
-        {
-            ClearLocationSelection();
-            DisableAttachBtn();
-            DisableSaveBtn();
-
-            _mapService.MoveEast();
-            _adminMap.LabX = _mapService.X.ToString();
-
-            ToggleDelBtn();
-            SetCurrentLocationStats();
-            SetMovementBtns();
-        }
-
-        #endregion Movement
+        #endregion Alert
 
         #region Clear
 

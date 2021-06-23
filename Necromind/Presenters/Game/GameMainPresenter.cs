@@ -52,11 +52,11 @@ namespace NecromindUI.Presenters.Game
 
         public void SetLocationName()
         {
-            _gameMain.CurrentLocation = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _mapService.Current.LocationId.ToString()).Name;
+            _gameMain.CurrentLocation = _mapService.Location.Name;
         }
 
         public string GetCurrentLocationDesc() =>
-            _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _mapService.Current.LocationId.ToString()).Description;
+            _mapService.Location.Description;
 
         public void TogglePanExitVisibility()
         {
