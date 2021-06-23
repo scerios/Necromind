@@ -21,7 +21,9 @@ namespace NecromindUI.Views.Admin
         bool BtnIsAttachEnabled { get; set; }
         bool BtnIsDetachEnabled { get; set; }
         bool BtnIsSaveEnabled { get; set; }
+        bool BtnIsDelEnabled { get; set; }
 
         ListBox LbLocations { get; }
+        Timer TimMap { get; }
     }
 }
