@@ -189,7 +189,7 @@ namespace NecromindUI.UserControls.Admin
             // cbCreateIsHostile
             // 
             this.cbCreateIsHostile.AutoSize = true;
-            this.cbCreateIsHostile.Location = new System.Drawing.Point(365, 182);
+            this.cbCreateIsHostile.Location = new System.Drawing.Point(367, 182);
             this.cbCreateIsHostile.Name = "cbCreateIsHostile";
             this.cbCreateIsHostile.Size = new System.Drawing.Size(15, 14);
             this.cbCreateIsHostile.TabIndex = 49;
@@ -324,7 +324,7 @@ namespace NecromindUI.UserControls.Admin
             // cbEditIsAccessible
             // 
             this.cbEditIsAccessible.AutoSize = true;
-            this.cbEditIsAccessible.Location = new System.Drawing.Point(307, 182);
+            this.cbEditIsAccessible.Location = new System.Drawing.Point(317, 182);
             this.cbEditIsAccessible.Name = "cbEditIsAccessible";
             this.cbEditIsAccessible.Size = new System.Drawing.Size(15, 14);
             this.cbEditIsAccessible.TabIndex = 56;
@@ -415,7 +415,7 @@ namespace NecromindUI.UserControls.Admin
             // cbEditIsHostile
             // 
             this.cbEditIsHostile.AutoSize = true;
-            this.cbEditIsHostile.Location = new System.Drawing.Point(505, 182);
+            this.cbEditIsHostile.Location = new System.Drawing.Point(522, 182);
             this.cbEditIsHostile.Name = "cbEditIsHostile";
             this.cbEditIsHostile.Size = new System.Drawing.Size(15, 14);
             this.cbEditIsHostile.TabIndex = 53;
@@ -477,7 +477,7 @@ namespace NecromindUI.UserControls.Admin
             this.tbEditDescription.Location = new System.Drawing.Point(285, 47);
             this.tbEditDescription.Multiline = true;
             this.tbEditDescription.Name = "tbEditDescription";
-            this.tbEditDescription.Size = new System.Drawing.Size(235, 122);
+            this.tbEditDescription.Size = new System.Drawing.Size(250, 122);
             this.tbEditDescription.TabIndex = 44;
             this.tbEditDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -496,7 +496,7 @@ namespace NecromindUI.UserControls.Admin
             // 
             this.labIsHostileR.AutoSize = true;
             this.labIsHostileR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(64)))), ((int)(((byte)(50)))));
-            this.labIsHostileR.Location = new System.Drawing.Point(376, 180);
+            this.labIsHostileR.Location = new System.Drawing.Point(395, 180);
             this.labIsHostileR.Name = "labIsHostileR";
             this.labIsHostileR.Size = new System.Drawing.Size(72, 16);
             this.labIsHostileR.TabIndex = 39;
