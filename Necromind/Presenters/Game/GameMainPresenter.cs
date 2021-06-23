@@ -3,19 +3,24 @@ using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
 using NecromindLibrary.Services;
 using NecromindUI.Views.Game;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace NecromindUI.Presenters.Game
 {
     public class GameMainPresenter
     {
-        private readonly MongoConnector _mongoConnector;
         private readonly IGameMain _gameMain;
+        private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
+        public Dictionary<Keys, Action> UserInputKeys = new Dictionary<Keys, Action>();
+        private MapService _mapService = new MapService();
         private HeroModel _hero;
 
         public GameMainPresenter(IGameMain gameMain)
         {
             _gameMain = gameMain;
-            _mongoConnector = MongoConnector.GetInstance();
+            SetUserInputActions();
         }
 
         public void InitUIFor(HeroModel hero)
@@ -63,6 +68,14 @@ namespace NecromindUI.Presenters.Game
         public void ShowFriendlyUI()
         {
             // TODO - Add logic to show friendly UI.
+        }
+
+        private void SetUserInputActions()
+        {
+            UserInputKeys.Add(Keys.Up, () => _mapService.MoveNorth());
+            UserInputKeys.Add(Keys.Down, () => _mapService.MoveSouth());
+            UserInputKeys.Add(Keys.Left, () => _mapService.MoveWest());
+            UserInputKeys.Add(Keys.Right, () => _mapService.MoveEast());
         }
 
         private void SetHeroStats()

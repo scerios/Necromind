@@ -106,7 +106,7 @@ namespace NecromindUI.UserControls.Game
             _presenter.TogglePanExitVisibility();
         }
 
-        private void BtnNorth_Click(object sender, EventArgs e)
+        public void BtnNorth_Click(object sender, EventArgs e)
         {
             // TODO - Implement move north logic.
         }
@@ -177,6 +177,14 @@ namespace NecromindUI.UserControls.Game
         private void HideEnemyUI()
         {
             DeactivateView(panInteraction, _gameEnemyInteraction);
+        }
+
+        private void GameMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (_presenter.UserInputKeys.ContainsKey(e.KeyCode))
+            {
+                _presenter.UserInputKeys[e.KeyCode].Invoke();
+            }
         }
     }
 }
