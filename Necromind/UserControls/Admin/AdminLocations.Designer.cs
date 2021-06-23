@@ -95,7 +95,7 @@ namespace NecromindUI.UserControls.Admin
             // cbCreateIsAccessible
             // 
             this.cbCreateIsAccessible.AutoSize = true;
-            this.cbCreateIsAccessible.Location = new System.Drawing.Point(365, 182);
+            this.cbCreateIsAccessible.Location = new System.Drawing.Point(158, 182);
             this.cbCreateIsAccessible.Name = "cbCreateIsAccessible";
             this.cbCreateIsAccessible.Size = new System.Drawing.Size(15, 14);
             this.cbCreateIsAccessible.TabIndex = 52;
@@ -105,7 +105,7 @@ namespace NecromindUI.UserControls.Admin
             // 
             this.labIsAccessibleL.AutoSize = true;
             this.labIsAccessibleL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(64)))), ((int)(((byte)(50)))));
-            this.labIsAccessibleL.Location = new System.Drawing.Point(231, 180);
+            this.labIsAccessibleL.Location = new System.Drawing.Point(20, 180);
             this.labIsAccessibleL.Name = "labIsAccessibleL";
             this.labIsAccessibleL.Size = new System.Drawing.Size(96, 16);
             this.labIsAccessibleL.TabIndex = 51;
@@ -186,7 +186,7 @@ namespace NecromindUI.UserControls.Admin
             // cbCreateIsHostile
             // 
             this.cbCreateIsHostile.AutoSize = true;
-            this.cbCreateIsHostile.Location = new System.Drawing.Point(158, 182);
+            this.cbCreateIsHostile.Location = new System.Drawing.Point(365, 182);
             this.cbCreateIsHostile.Name = "cbCreateIsHostile";
             this.cbCreateIsHostile.Size = new System.Drawing.Size(15, 14);
             this.cbCreateIsHostile.TabIndex = 49;
@@ -250,7 +250,7 @@ namespace NecromindUI.UserControls.Admin
             // 
             this.labIsHostileL.AutoSize = true;
             this.labIsHostileL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(64)))), ((int)(((byte)(50)))));
-            this.labIsHostileL.Location = new System.Drawing.Point(20, 180);
+            this.labIsHostileL.Location = new System.Drawing.Point(235, 180);
             this.labIsHostileL.Name = "labIsHostileL";
             this.labIsHostileL.Size = new System.Drawing.Size(72, 16);
             this.labIsHostileL.TabIndex = 36;
@@ -320,7 +320,7 @@ namespace NecromindUI.UserControls.Admin
             // cbEditIsAccessible
             // 
             this.cbEditIsAccessible.AutoSize = true;
-            this.cbEditIsAccessible.Location = new System.Drawing.Point(505, 182);
+            this.cbEditIsAccessible.Location = new System.Drawing.Point(307, 182);
             this.cbEditIsAccessible.Name = "cbEditIsAccessible";
             this.cbEditIsAccessible.Size = new System.Drawing.Size(15, 14);
             this.cbEditIsAccessible.TabIndex = 56;
@@ -330,7 +330,7 @@ namespace NecromindUI.UserControls.Admin
             // 
             this.labIsAccessibleR.AutoSize = true;
             this.labIsAccessibleR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(64)))), ((int)(((byte)(50)))));
-            this.labIsAccessibleR.Location = new System.Drawing.Point(367, 180);
+            this.labIsAccessibleR.Location = new System.Drawing.Point(176, 180);
             this.labIsAccessibleR.Name = "labIsAccessibleR";
             this.labIsAccessibleR.Size = new System.Drawing.Size(96, 16);
             this.labIsAccessibleR.TabIndex = 55;
@@ -411,7 +411,7 @@ namespace NecromindUI.UserControls.Admin
             // cbEditIsHostile
             // 
             this.cbEditIsHostile.AutoSize = true;
-            this.cbEditIsHostile.Location = new System.Drawing.Point(307, 182);
+            this.cbEditIsHostile.Location = new System.Drawing.Point(505, 182);
             this.cbEditIsHostile.Name = "cbEditIsHostile";
             this.cbEditIsHostile.Size = new System.Drawing.Size(15, 14);
             this.cbEditIsHostile.TabIndex = 53;
@@ -492,7 +492,7 @@ namespace NecromindUI.UserControls.Admin
             // 
             this.labIsHostileR.AutoSize = true;
             this.labIsHostileR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(64)))), ((int)(((byte)(50)))));
-            this.labIsHostileR.Location = new System.Drawing.Point(176, 180);
+            this.labIsHostileR.Location = new System.Drawing.Point(376, 180);
             this.labIsHostileR.Name = "labIsHostileR";
             this.labIsHostileR.Size = new System.Drawing.Size(72, 16);
             this.labIsHostileR.TabIndex = 39;
