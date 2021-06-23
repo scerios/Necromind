@@ -72,6 +72,17 @@ namespace NecromindUI.Presenters.Admin
             SetMovementBtns();
         }
 
+        public void Delete()
+        {
+            _mongoConnector.TryDeleteRecordById<MapTileModel>(DBConfig.MapTilesCollection, _mapService.Current.Id);
+
+            _mapService.DeleteMap();
+            ToggleDelBtn();
+            ClearLocationSelection();
+            ClearEditFields();
+            SetMovementBtns();
+        }
+
         private void CreateMapTile()
         {
             _mapService.Current.X = Int32.Parse(_adminMap.LabX);
@@ -193,6 +204,14 @@ namespace NecromindUI.Presenters.Admin
             _adminMap.BtnIsAttachEnabled = false;
         }
 
+        private void ToggleDelBtn()
+        {
+            if (_mapService.Current != null)
+                _adminMap.BtnIsDelEnabled = true;
+            else
+                _adminMap.BtnIsDelEnabled = false;
+        }
+
         #endregion Setters
 
         #region Movement
@@ -206,6 +225,7 @@ namespace NecromindUI.Presenters.Admin
             _mapService.MoveNorth();
             _adminMap.LabY = _mapService.Y.ToString();
 
+            ToggleDelBtn();
             SetCurrentLocationStats();
             SetMovementBtns();
         }
@@ -219,6 +239,7 @@ namespace NecromindUI.Presenters.Admin
             _mapService.MoveSouth();
             _adminMap.LabY = _mapService.Y.ToString();
 
+            ToggleDelBtn();
             SetCurrentLocationStats();
             SetMovementBtns();
         }
@@ -232,6 +253,7 @@ namespace NecromindUI.Presenters.Admin
             _mapService.MoveWest();
             _adminMap.LabX = _mapService.X.ToString();
 
+            ToggleDelBtn();
             SetCurrentLocationStats();
             SetMovementBtns();
         }
@@ -245,6 +267,7 @@ namespace NecromindUI.Presenters.Admin
             _mapService.MoveEast();
             _adminMap.LabX = _mapService.X.ToString();
 
+            ToggleDelBtn();
             SetCurrentLocationStats();
             SetMovementBtns();
         }
