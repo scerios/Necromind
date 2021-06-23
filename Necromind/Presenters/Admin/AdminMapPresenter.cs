@@ -69,12 +69,20 @@ namespace NecromindUI.Presenters.Admin
             else
                 UpdateMapTile();
 
+            ClearLocationSelection();
+            DisableAttachBtn();
+            DisableSaveBtn();
+            ToggleDelBtn();
+
             SetMovementBtns();
         }
 
         public void Delete()
         {
-            _mongoConnector.TryDeleteRecordById<MapTileModel>(DBConfig.MapTilesCollection, _mapService.Current.Id);
+            if (_mongoConnector.TryDeleteRecordById<MapTileModel>(DBConfig.MapTilesCollection, _mapService.Current.Id))
+            {
+                AlertSuccess($"({ _mapService.X }, { _mapService.Y })", "deleted");
+            }
 
             _mapService.DeleteMap();
             ToggleDelBtn();
@@ -85,15 +93,27 @@ namespace NecromindUI.Presenters.Admin
 
         private void CreateMapTile()
         {
+            string position = $"({ _mapService.X }, { _mapService.Y })";
+            string modification = "created";
+
             _mapService.Current.X = Int32.Parse(_adminMap.LabX);
             _mapService.Current.Y = Int32.Parse(_adminMap.LabY);
 
-            _mongoConnector.TryCreateNewRecord(DBConfig.MapTilesCollection, _mapService.Current);
+            if (_mongoConnector.TryCreateNewRecord(DBConfig.MapTilesCollection, _mapService.Current))
+                AlertSuccess(position, modification);
+            else
+                AlertFail(position, modification);
         }
 
         private void UpdateMapTile()
         {
-            _mongoConnector.TryUpsertRecord(DBConfig.MapTilesCollection, _mapService.GetCurrentTilesId(), _mapService.Current);
+            string position = $"({ _mapService.X }, { _mapService.Y })";
+            string modification = "updated";
+
+            if (_mongoConnector.TryUpsertRecord(DBConfig.MapTilesCollection, _mapService.GetCurrentTilesId(), _mapService.Current))
+                AlertSuccess(position, modification);
+            else
+                AlertFail(position, modification);
         }
 
         #region Init
@@ -213,6 +233,22 @@ namespace NecromindUI.Presenters.Admin
         }
 
         #endregion Setters
+
+        private void AlertSuccess(string name, string modification)
+        {
+            _adminMap.LabMapEdit.Text = $"{ name } { modification } successfully!";
+            _adminMap.LabMapEdit.ForeColor = UISettings.SuccessColor;
+            _adminMap.LabMapEdit.Visible = true;
+            _adminMap.TimHide.Start();
+        }
+
+        private void AlertFail(string name, string modification)
+        {
+            _adminMap.LabMapEdit.Text = $"Failed to { modification } { name }!";
+            _adminMap.LabMapEdit.ForeColor = UISettings.ErrorColor;
+            _adminMap.LabMapEdit.Visible = true;
+            _adminMap.TimHide.Start();
+        }
 
         #region Movement
 

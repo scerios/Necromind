@@ -24,6 +24,6 @@ namespace NecromindUI.Views.Admin
         bool BtnIsDelEnabled { get; set; }
         Label LabMapEdit { get; }
         ListBox LbLocations { get; }
-        Timer TimMap { get; }
+        Timer TimHide { get; }
     }
 }

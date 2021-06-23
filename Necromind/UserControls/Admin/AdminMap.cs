@@ -214,9 +214,9 @@ namespace NecromindUI.UserControls.Admin
             get => lbLocations;
         }
 
-        public Timer TimMap
+        public Timer TimHide
         {
-            get => TimMap;
+            get => timHide;
         }
 
         #endregion Properties
@@ -279,7 +279,7 @@ namespace NecromindUI.UserControls.Admin
         private void TimHide_Tick(object sender, EventArgs e)
         {
             LabMapEdit.Visible = false;
-            TimMap.Stop();
+            TimHide.Stop();
         }
     }
 }
