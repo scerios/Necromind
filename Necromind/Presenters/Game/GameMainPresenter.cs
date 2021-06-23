@@ -28,7 +28,7 @@ namespace NecromindUI.Presenters.Game
         public GameMainPresenter(IGameMain gameMain)
         {
             _gameMain = gameMain;
-            //SetUserInputActions();
+            SetUserInputActions();
         }
 
         public void StartGame(HeroModel hero)
@@ -87,10 +87,10 @@ namespace NecromindUI.Presenters.Game
 
         private void SetUserInputActions()
         {
-            _userInputActions.Add(Keys.Up, () => _mapService.MoveNorth());
-            _userInputActions.Add(Keys.Down, () => _mapService.MoveSouth());
-            _userInputActions.Add(Keys.Left, () => _mapService.MoveWest());
-            _userInputActions.Add(Keys.Right, () => _mapService.MoveEast());
+            _userInputActions.Add(Keys.W, () => _mapService.MoveNorth());
+            _userInputActions.Add(Keys.S, () => _mapService.MoveSouth());
+            _userInputActions.Add(Keys.A, () => _mapService.MoveWest());
+            _userInputActions.Add(Keys.D, () => _mapService.MoveEast());
         }
 
         private void SetHeroStats()

@@ -91,6 +91,7 @@ namespace NecromindUI.UserControls.Game
             _gameEnemyInteraction = new GameEnemyInteraction();
 
             _presenter.MsgLogger.OnMessageRaised += GameMessageRaised;
+            _presenter.MsgLogger.OnMessageAppend += GameMessageAppend;
             _presenter.StartGame(hero);
         }
 
@@ -170,6 +171,11 @@ namespace NecromindUI.UserControls.Game
         }
 
         private void GameMessageRaised(object sender, GameMessageEventArgs e)
+        {
+            _presenter.SetEventLog(e.Message);
+        }
+
+        private void GameMessageAppend(object sender, GameMessageEventArgs e)
         {
             _presenter.AppendEventLog(e.Message);
         }
