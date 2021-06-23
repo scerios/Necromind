@@ -13,6 +13,8 @@ namespace NecromindLibrary.Services
 
         public event EventHandler<GameMessageEventArgs> OnMessageRaised;
 
+        public event EventHandler<GameMessageEventArgs> OnMessageAppend;
+
         public static MessageLogger GetInstance()
         {
             if (_instance == null)
@@ -26,6 +28,11 @@ namespace NecromindLibrary.Services
         public void RaiseMessage(string message)
         {
             OnMessageRaised?.Invoke(this, new GameMessageEventArgs(message));
+        }
+
+        public void AppendMessage(string message)
+        {
+            OnMessageAppend?.Invoke(this, new GameMessageEventArgs(message));
         }
     }
 }
