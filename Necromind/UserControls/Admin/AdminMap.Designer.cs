@@ -60,7 +60,7 @@ namespace NecromindUI.UserControls.Admin
             this.labAccessibleCross = new System.Windows.Forms.Label();
             this.labHostileCross = new System.Windows.Forms.Label();
             this.btnDel = new System.Windows.Forms.Button();
-            this.labMap = new System.Windows.Forms.Label();
+            this.labMapEdit = new System.Windows.Forms.Label();
             this.timHide = new System.Windows.Forms.Timer(this.components);
             this.panMovement.SuspendLayout();
             this.SuspendLayout();
@@ -463,16 +463,16 @@ namespace NecromindUI.UserControls.Admin
             this.btnDel.UseVisualStyleBackColor = false;
             this.btnDel.Click += new System.EventHandler(this.BtnDel_Click);
             // 
-            // labMap
+            // labMapEdit
             // 
-            this.labMap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.labMap.AutoSize = true;
-            this.labMap.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labMap.Location = new System.Drawing.Point(684, 484);
-            this.labMap.Name = "labMap";
-            this.labMap.Size = new System.Drawing.Size(0, 16);
-            this.labMap.TabIndex = 67;
-            this.labMap.Visible = false;
+            this.labMapEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labMapEdit.AutoSize = true;
+            this.labMapEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labMapEdit.Location = new System.Drawing.Point(684, 484);
+            this.labMapEdit.Name = "labMapEdit";
+            this.labMapEdit.Size = new System.Drawing.Size(0, 16);
+            this.labMapEdit.TabIndex = 67;
+            this.labMapEdit.Visible = false;
             // 
             // timHide
             // 
@@ -484,7 +484,7 @@ namespace NecromindUI.UserControls.Admin
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.Controls.Add(this.labMap);
+            this.Controls.Add(this.labMapEdit);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.labHostileCross);
             this.Controls.Add(this.labAccessibleCross);
@@ -553,7 +553,7 @@ namespace NecromindUI.UserControls.Admin
         private System.Windows.Forms.Label labAccessibleCross;
         private System.Windows.Forms.Label labHostileCross;
         private System.Windows.Forms.Button btnDel;
-        private System.Windows.Forms.Label labMap;
+        private System.Windows.Forms.Label labMapEdit;
         private System.Windows.Forms.Timer timHide;
     }
 }

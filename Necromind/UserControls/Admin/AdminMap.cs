@@ -11,6 +11,8 @@ namespace NecromindUI.UserControls.Admin
 
         private readonly AdminMapPresenter _presenter;
 
+        #region Label
+
         public string LabX
         {
             get => labXValue.Text;
@@ -51,37 +53,6 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
-        public string TbJumpX
-        {
-            get => tbJumpX.Text;
-
-            set
-            {
-                tbJumpX.Text = value;
-            }
-        }
-
-        public string TbJumpY
-        {
-            get => tbJumpY.Text;
-
-            set
-            {
-                tbJumpY.Text = value;
-            }
-        }
-
-        public bool IndicatorsOff
-        {
-            set
-            {
-                labAccessibleCross.Visible = false;
-                labAccessibleTick.Visible = false;
-                labHostileCross.Visible = false;
-                labHostileTick.Visible = false;
-            }
-        }
-
         public bool LabIsAccessible
         {
             set
@@ -115,6 +86,41 @@ namespace NecromindUI.UserControls.Admin
                 }
             }
         }
+
+        #endregion Label
+
+        public string TbJumpX
+        {
+            get => tbJumpX.Text;
+
+            set
+            {
+                tbJumpX.Text = value;
+            }
+        }
+
+        public string TbJumpY
+        {
+            get => tbJumpY.Text;
+
+            set
+            {
+                tbJumpY.Text = value;
+            }
+        }
+
+        public bool IndicatorsOff
+        {
+            set
+            {
+                labAccessibleCross.Visible = false;
+                labAccessibleTick.Visible = false;
+                labHostileCross.Visible = false;
+                labHostileTick.Visible = false;
+            }
+        }
+
+        #region Button
 
         public bool BtnIsNorthEnabled
         {
@@ -196,6 +202,13 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
+        #endregion Button
+
+        public Label LabMapEdit
+        {
+            get => labMapEdit;
+        }
+
         public ListBox LbLocations
         {
             get => lbLocations;
@@ -264,6 +277,8 @@ namespace NecromindUI.UserControls.Admin
 
         private void TimHide_Tick(object sender, EventArgs e)
         {
+            LabMapEdit.Visible = false;
+            TimMap.Stop();
         }
     }
 }
