@@ -7,20 +7,20 @@ namespace NecromindLibrary.Services
 {
     public class MapService
     {
-        private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
-        private MapTileModel _current;
+        protected readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
+        protected MapTileModel _current;
 
         public MapTileModel Current => _current;
 
-        private MapTileModel _northOfCurrent;
-        private MapTileModel _southOfCurrent;
-        private MapTileModel _westOfCurrent;
-        private MapTileModel _eastOfCurrent;
+        protected MapTileModel _northOfCurrent;
+        protected MapTileModel _southOfCurrent;
+        protected MapTileModel _westOfCurrent;
+        protected MapTileModel _eastOfCurrent;
 
-        private int _x;
+        protected int _x;
         public int X => _x;
 
-        private int _y;
+        protected int _y;
         public int Y => _y;
 
         public MapService()
@@ -84,18 +84,6 @@ namespace NecromindLibrary.Services
         public Guid GetCurrentTilesId() =>
             _current.Id;
 
-        public MapTileModel GetNorthOf(int x, int y) =>
-            _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, x, y - 1);
-
-        public MapTileModel GetSouthOf(int x, int y) =>
-            _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, x, y + 1);
-
-        public MapTileModel GetWestOf(int x, int y) =>
-            _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, x - 1, y);
-
-        public MapTileModel GetEastOf(int x, int y) =>
-            _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, x + 1, y);
-
         public MapTileModel GetNorthOfCurrent() =>
             _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _x, _y - 1);
 
@@ -125,55 +113,21 @@ namespace NecromindLibrary.Services
             _eastOfCurrent = GetEastOfCurrent();
         }
 
-        public void InitCurrentAsNewTile()
-        {
-            _current = new MapTileModel();
-        }
-
-        public void DeleteMap()
-        {
-            _current = null;
-        }
-
         #endregion Setters
 
         #region Checks
 
-        public bool HasNorthNeighbor(int x, int y) =>
-            GetNorthOf(x, y) != null;
-
-        public bool HasSouthNeighbor(int x, int y) =>
-            GetSouthOf(x, y) != null;
-
-        public bool HasWestNeighbor(int x, int y) =>
-            GetWestOf(x, y) != null;
-
-        public bool HasEastNeighbor(int x, int y) =>
-            GetEastOf(x, y) != null;
-
         public bool DoesCurrentHasNorthNeighbor() =>
-            GetNorthOfCurrent() != null;
+            _northOfCurrent != null;
 
         public bool DoesCurrentHasSouthNeighbor() =>
-            GetSouthOfCurrent() != null;
+            _southOfCurrent != null;
 
         public bool DoesCurrentHasWestNeighbor() =>
-            GetWestOfCurrent() != null;
+            _westOfCurrent != null;
 
         public bool DoesCurrentHasEastNeighbor() =>
-            GetEastOfCurrent() != null;
-
-        public bool DoesNorthOfCurrentHasOtherNeighbor() =>
-            HasNorthNeighbor(_x, _y - 1) || HasWestNeighbor(_x, _y - 1) || HasEastNeighbor(_x, _y - 1);
-
-        public bool DoesSouthOfCurrentHasOtherNeighbor() =>
-            HasSouthNeighbor(_x, _y + 1) || HasWestNeighbor(_x, _y + 1) || HasEastNeighbor(_x, _y + 1);
-
-        public bool DoesWestOfCurrentHasOtherNeighbor() =>
-            HasWestNeighbor(_x - 1, _y) || HasNorthNeighbor(_x - 1, _y) || HasSouthNeighbor(_x - 1, _y);
-
-        public bool DoesEastOfCurrentHasOtherNeighbor() =>
-            HasEastNeighbor(_x + 1, _y) || HasNorthNeighbor(_x + 1, _y) || HasSouthNeighbor(_x + 1, _y);
+            _eastOfCurrent != null;
 
         #endregion Checks
     }
