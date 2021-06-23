@@ -110,7 +110,7 @@ namespace NecromindUI.UserControls.Game
             _presenter.TogglePanExitVisibility();
         }
 
-        public void BtnNorth_Click(object sender, EventArgs e)
+        private void BtnNorth_Click(object sender, EventArgs e)
         {
             // TODO - Implement move north logic.
         }
