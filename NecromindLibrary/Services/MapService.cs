@@ -130,6 +130,11 @@ namespace NecromindLibrary.Services
             _current = new MapTileModel();
         }
 
+        public void DeleteMap()
+        {
+            _current = null;
+        }
+
         #endregion Setters
 
         #region Checks
