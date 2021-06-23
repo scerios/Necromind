@@ -112,6 +112,7 @@ namespace NecromindLibrary.Services
         public void SetStartTile()
         {
             _current = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _x, _y);
+            SetLocation(_mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _current.LocationId.ToString()));
         }
 
         public void SetNeighborhood()
