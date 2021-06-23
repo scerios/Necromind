@@ -11,9 +11,9 @@ namespace NecromindUI.Presenters.Admin
 {
     public class AdminEnemiesPresenter
     {
-        private readonly string _combinedName = "CombinedName";
-        private readonly MongoConnector _mongoConnector;
         private readonly IAdminEnemies _adminEnemies;
+        private readonly string _listboxDisplayMember = "CombinedName";
+        private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
         private readonly BindingSource _bsEnemies = new BindingSource();
         private List<EnemyModel> _enemies;
         private EnemyModel _enemy;
@@ -21,7 +21,6 @@ namespace NecromindUI.Presenters.Admin
         public AdminEnemiesPresenter(IAdminEnemies adminEnemies)
         {
             _adminEnemies = adminEnemies;
-            _mongoConnector = MongoConnector.GetInstance();
         }
 
         public void LoadData()
@@ -273,7 +272,7 @@ namespace NecromindUI.Presenters.Admin
         {
             _bsEnemies.DataSource = _enemies;
             _adminEnemies.LbEnemies.DataSource = _bsEnemies;
-            _adminEnemies.LbEnemies.DisplayMember = _combinedName;
+            _adminEnemies.LbEnemies.DisplayMember = _listboxDisplayMember;
         }
 
         #region Alerts

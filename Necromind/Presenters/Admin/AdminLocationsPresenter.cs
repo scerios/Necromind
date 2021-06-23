@@ -13,9 +13,9 @@ namespace NecromindUI.Presenters.Admin
     {
         #region Properties
 
-        private readonly string _combinedName = "CombinedName";
-        private readonly MongoConnector _mongoConnector;
+        private readonly string _listboxDisplayMember = "CombinedName";
         private readonly IAdminLocations _adminLocations;
+        private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
         private readonly BindingSource _bsLocations = new BindingSource();
         private readonly BindingSource _bsCreateEnemies = new BindingSource();
         private readonly BindingSource _bsCreateAddedEnemies = new BindingSource();
@@ -35,7 +35,6 @@ namespace NecromindUI.Presenters.Admin
         public AdminLocationsPresenter(IAdminLocations adminLocations)
         {
             _adminLocations = adminLocations;
-            _mongoConnector = MongoConnector.GetInstance();
         }
 
         public void LoadData()
@@ -198,28 +197,28 @@ namespace NecromindUI.Presenters.Admin
             _createEnemies = _enemies;
             _bsCreateEnemies.DataSource = _createEnemies;
             _adminLocations.LbCreateEnemies.DataSource = _bsCreateEnemies;
-            _adminLocations.LbCreateEnemies.DisplayMember = _combinedName;
+            _adminLocations.LbCreateEnemies.DisplayMember = _listboxDisplayMember;
         }
 
         private void BindCreateEnemiesAdded()
         {
             _bsCreateAddedEnemies.DataSource = _createAddedEnemies;
             _adminLocations.LbCreateAddedEnemies.DataSource = _bsCreateAddedEnemies;
-            _adminLocations.LbCreateAddedEnemies.DisplayMember = _combinedName;
+            _adminLocations.LbCreateAddedEnemies.DisplayMember = _listboxDisplayMember;
         }
 
         private void BindEditEnemies()
         {
             _bsEditEnemies.DataSource = _editEnemies;
             _adminLocations.LbEditEnemies.DataSource = _bsEditEnemies;
-            _adminLocations.LbEditEnemies.DisplayMember = _combinedName;
+            _adminLocations.LbEditEnemies.DisplayMember = _listboxDisplayMember;
         }
 
         private void BindEditEnemiesAdded()
         {
             _bsEditAddedEnemies.DataSource = _editAddedEnemies;
             _adminLocations.LbEditAddedEnemies.DataSource = _bsEditAddedEnemies;
-            _adminLocations.LbEditAddedEnemies.DisplayMember = _combinedName;
+            _adminLocations.LbEditAddedEnemies.DisplayMember = _listboxDisplayMember;
         }
 
         #endregion Resource binding

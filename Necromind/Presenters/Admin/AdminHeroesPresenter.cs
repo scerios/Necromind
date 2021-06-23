@@ -11,8 +11,8 @@ namespace NecromindUI.Presenters.Admin
 {
     public class AdminHeroesPresenter
     {
-        private readonly MongoConnector _mongoConnector;
         private readonly IAdminHeroes _adminHeroes;
+        private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
         private readonly BindingSource _bsHeroes = new BindingSource();
         private BindingList<HeroModel> _heroes;
         private HeroModel _hero;
@@ -20,7 +20,6 @@ namespace NecromindUI.Presenters.Admin
         public AdminHeroesPresenter(IAdminHeroes adminHeroes)
         {
             _adminHeroes = adminHeroes;
-            _mongoConnector = MongoConnector.GetInstance();
         }
 
         public void LoadData()
