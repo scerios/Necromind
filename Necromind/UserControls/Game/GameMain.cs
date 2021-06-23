@@ -85,11 +85,13 @@ namespace NecromindUI.UserControls.Game
         public GameMain(HeroModel hero)
         {
             InitializeComponent();
+
             _presenter = new GameMainPresenter(this);
             _gameFriendlyInteraction = new GameFriendlyInteraction();
             _gameEnemyInteraction = new GameEnemyInteraction();
+
             _presenter.MsgLogger.OnMessageRaised += GameMessageRaised;
-            StartGame(hero);
+            _presenter.StartGame(hero);
         }
 
         public void ToggleExitPanVisibility()
@@ -137,18 +139,6 @@ namespace NecromindUI.UserControls.Game
         private void DeactivateView(Panel panel, UserControl view)
         {
             panel.Controls.Remove(view);
-        }
-
-        private void StartGame(HeroModel hero)
-        {
-            InitUIFor(hero);
-            _presenter.SetLocationName();
-            _presenter.MsgLogger.RaiseMessage(_presenter.GetCurrentLocationDesc());
-        }
-
-        private void InitUIFor(HeroModel hero)
-        {
-            _presenter.InitUIFor(hero);
         }
 
         private void ShowFriendlyUI()

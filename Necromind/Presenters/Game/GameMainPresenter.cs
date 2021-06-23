@@ -14,13 +14,13 @@ namespace NecromindUI.Presenters.Game
         private readonly IGameMain _gameMain;
         private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
 
-        private Dictionary<Keys, Action> _userInputActions = new Dictionary<Keys, Action>();
+        private readonly Dictionary<Keys, Action> _userInputActions = new Dictionary<Keys, Action>();
         public Dictionary<Keys, Action> UserInputActions => _userInputActions;
 
-        private MessageLogger _msgLogger = MessageLogger.GetInstance();
+        private readonly MessageLogger _msgLogger = MessageLogger.GetInstance();
         public MessageLogger MsgLogger => _msgLogger;
 
-        private MapService _mapService = new MapService();
+        private readonly MapService _mapService = new MapService();
         public MapService MapService => _mapService;
 
         private HeroModel _hero;
@@ -31,9 +31,13 @@ namespace NecromindUI.Presenters.Game
             //SetUserInputActions();
         }
 
-        public void InitUIFor(HeroModel hero)
+        public void StartGame(HeroModel hero)
         {
             _hero = hero;
+
+            _msgLogger.RaiseMessage(GetCurrentLocationDesc());
+
+            SetLocationName();
             SetHeroStats();
             SetHeroLabelDatabindings();
         }
