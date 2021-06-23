@@ -273,6 +273,7 @@ namespace NecromindUI.UserControls.Admin
 
         private void BtnDel_Click(object sender, EventArgs e)
         {
+            _presenter.Delete();
         }
 
         private void TimHide_Tick(object sender, EventArgs e)
