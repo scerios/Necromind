@@ -18,7 +18,6 @@ namespace NecromindUI.Presenters.Admin
         private readonly BindingSource _bsLocations = new BindingSource();
         private readonly MapServiceAdmin _mapService = new MapServiceAdmin();
         private List<LocationModel> _locations;
-        private LocationModel _location;
 
         #endregion Properties
 
@@ -47,7 +46,7 @@ namespace NecromindUI.Presenters.Admin
 
             if (selectedIndex >= 0)
             {
-                _location = _locations[selectedIndex];
+                _mapService.SetLocation(_locations[selectedIndex]);
                 SetLocationStats();
                 _adminMap.BtnIsAttachEnabled = true;
             }
@@ -57,7 +56,7 @@ namespace NecromindUI.Presenters.Admin
         {
             TryInitNewMapTile();
 
-            _mapService.Current.LocationId = _location.Id;
+            _mapService.Current.LocationId = _mapService.Location.Id;
 
             EnableSaveBtn();
         }
@@ -143,7 +142,7 @@ namespace NecromindUI.Presenters.Admin
 
             if (location != null)
             {
-                _location = location;
+                _mapService.SetLocation(location);
             }
         }
 
@@ -157,12 +156,12 @@ namespace NecromindUI.Presenters.Admin
 
         private void SetLocationStats()
         {
-            if (_location != null)
+            if (_mapService.Location != null)
             {
-                _adminMap.LabLocName = _location.Name;
-                _adminMap.LabLocDescription = _location.Description;
-                _adminMap.LabIsAccessible = _location.IsAccessible;
-                _adminMap.LabIsHostile = _location.IsHostile;
+                _adminMap.LabLocName = _mapService.Location.Name;
+                _adminMap.LabLocDescription = _mapService.Location.Description;
+                _adminMap.LabIsAccessible = _mapService.Location.IsAccessible;
+                _adminMap.LabIsHostile = _mapService.Location.IsHostile;
             }
             else
             {
@@ -204,7 +203,7 @@ namespace NecromindUI.Presenters.Admin
             if (_mapService.Current != null)
                 TryGetCurrentTilesLocation();
             else
-                _location = null;
+                _mapService.SetLocation(null);
 
             SetLocationStats();
         }
