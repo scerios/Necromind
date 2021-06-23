@@ -1,6 +1,7 @@
 ﻿using NecromindLibrary.Config;
 using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
+using NecromindLibrary.Services;
 using NecromindUI.Views.Admin;
 using System;
 using System.Collections.Generic;
@@ -158,18 +159,18 @@ namespace NecromindUI.Presenters.Admin
 
         public bool AreCreateFieldsValid()
         {
-            return _adminLocations.TbCreateName.Length > 0 && _adminLocations.TbCreateDescription.Length > 0;
+            _adminLocations.LabNameCError = !ValidationService.IsValidName(_adminLocations.TbCreateName);
+            return !_adminLocations.LabNameCError;
         }
 
         public bool AreEditFieldsValid()
         {
-            return _adminLocations.TbEditName.Length > 0 && _adminLocations.TbEditDescription.Length > 0;
+            _adminLocations.LabNameMError = !ValidationService.IsValidName(_adminLocations.TbEditName);
+            return !_adminLocations.LabNameMError;
         }
 
-        public bool IsLocationSelected()
-        {
-            return _location != null;
-        }
+        public bool IsLocationSelected() =>
+            _location != null;
 
         #region Resource binding
 

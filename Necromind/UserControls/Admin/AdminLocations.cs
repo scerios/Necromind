@@ -109,6 +109,26 @@ namespace NecromindUI.UserControls.Admin
             }
         }
 
+        public bool LabNameCError
+        {
+            get => labNameCError.Visible;
+
+            set
+            {
+                labNameCError.Visible = value;
+            }
+        }
+
+        public bool LabNameMError
+        {
+            get => labNameMError.Visible;
+
+            set
+            {
+                labNameMError.Visible = value;
+            }
+        }
+
         public ListBox LbLocations
         {
             get => lbLocations;
