@@ -13,17 +13,14 @@ namespace NecromindUI.Presenters.Game
     {
         private readonly IGameMain _gameMain;
         private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
+        private readonly MapService _mapService = new MapService();
+        private HeroModel _hero;
 
         private readonly Dictionary<Keys, Action> _userInputActions = new Dictionary<Keys, Action>();
         public Dictionary<Keys, Action> UserInputActions => _userInputActions;
 
         private readonly MessageLogger _msgLogger = MessageLogger.GetInstance();
         public MessageLogger MsgLogger => _msgLogger;
-
-        private readonly MapService _mapService = new MapService();
-        public MapService MapService => _mapService;
-
-        private HeroModel _hero;
 
         public GameMainPresenter(IGameMain gameMain)
         {
@@ -39,7 +36,10 @@ namespace NecromindUI.Presenters.Game
 
             SetLocationName();
             SetHeroStats();
+
             SetHeroLabelDatabindings();
+            _mapService.SetNeighborhood();
+            SetMovementBtns();
         }
 
         public void SetEventLog(string msg)
@@ -52,11 +52,6 @@ namespace NecromindUI.Presenters.Game
         {
             _gameMain.EventLog.Text = _gameMain.EventLog.Text + "\n" + TextService.FormatEventMsg(msg);
             ScrollEventLogToBottom();
-        }
-
-        public void SetLocationName()
-        {
-            _gameMain.CurrentLocation = _mapService.Location.Name;
         }
 
         public string GetCurrentLocationDesc() =>
@@ -78,6 +73,7 @@ namespace NecromindUI.Presenters.Game
         {
             _mongoConnector.TryUpsertRecord(DBConfig.HeroesCollection, _hero.Id, _hero);
             ClearHeroLabelDatabindings();
+            ClearLocationDataBinding();
         }
 
         public void ShowFriendlyUI()
@@ -85,12 +81,63 @@ namespace NecromindUI.Presenters.Game
             // TODO - Add logic to show friendly UI.
         }
 
+        #region Movement
+
+        public void MoveNorth()
+        {
+            if (_gameMain.BtnIsNorthEnabled)
+            {
+                _mapService.MoveNorth();
+                SetLocationName();
+                SetMovementBtns();
+            }
+        }
+
+        public void MoveSouth()
+        {
+            if (_gameMain.BtnIsSouthEnabled)
+            {
+                _mapService.MoveSouth();
+                SetLocationName();
+                SetMovementBtns();
+            }
+        }
+
+        public void MoveWest()
+        {
+            if (_gameMain.BtnIsWestEnabled)
+            {
+                _mapService.MoveWest();
+                SetLocationName();
+                SetMovementBtns();
+            }
+        }
+
+        public void MoveEast()
+        {
+            if (_gameMain.BtnIsEastEnabled)
+            {
+                _mapService.MoveEast();
+                SetLocationName();
+                SetMovementBtns();
+            }
+        }
+
+        #endregion Movement
+
+        #region Setters
+
         private void SetUserInputActions()
         {
-            _userInputActions.Add(Keys.W, () => _mapService.MoveNorth());
-            _userInputActions.Add(Keys.S, () => _mapService.MoveSouth());
-            _userInputActions.Add(Keys.A, () => _mapService.MoveWest());
-            _userInputActions.Add(Keys.D, () => _mapService.MoveEast());
+            _userInputActions.Add(Keys.W, () => MoveNorth());
+            _userInputActions.Add(Keys.S, () => MoveSouth());
+            _userInputActions.Add(Keys.A, () => MoveWest());
+            _userInputActions.Add(Keys.D, () => MoveEast());
+        }
+
+        private void SetLocationName()
+        {
+            _gameMain.LabLocationName.Text = _mapService.Location.Name;
         }
 
         private void SetHeroStats()
@@ -116,6 +163,18 @@ namespace NecromindUI.Presenters.Game
             _gameMain.LabLvl.DataBindings.Add("Text", _hero, "Lvl");
         }
 
+        private void SetMovementBtns()
+        {
+            _gameMain.BtnIsNorthEnabled = _mapService.DoesCurrentHasNorthNeighbor() && _mapService.IsNorthOfCurrentAccessible();
+            _gameMain.BtnIsSouthEnabled = _mapService.DoesCurrentHasSouthNeighbor() && _mapService.IsSouthOfCurrentAccessible();
+            _gameMain.BtnIsWestEnabled = _mapService.DoesCurrentHasWestNeighbor() && _mapService.IsWestOfCurrentAccessible();
+            _gameMain.BtnIsEastEnabled = _mapService.DoesCurrentHasEastNeighbor() && _mapService.IsEastOfCurrentAccessible();
+        }
+
+        #endregion Setters
+
+        #region Clear
+
         private void ClearHeroLabelDatabindings()
         {
             _gameMain.LabHealthMax.DataBindings.Clear();
@@ -126,6 +185,13 @@ namespace NecromindUI.Presenters.Game
             _gameMain.LabGold.DataBindings.Clear();
             _gameMain.LabLvl.DataBindings.Clear();
         }
+
+        private void ClearLocationDataBinding()
+        {
+            _gameMain.LabLocationName.DataBindings.Clear();
+        }
+
+        #endregion Clear
 
         private void ScrollEventLogToBottom()
         {
