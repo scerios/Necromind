@@ -54,9 +54,9 @@ namespace NecromindLibrary.Services
             _southOfCurrent = _current;
             _current = _northOfCurrent;
 
-            _northOfCurrent = GetNorthOfCurrent();
-            _westOfCurrent = GetWestOfCurrent();
-            _eastOfCurrent = GetEastOfCurrent();
+            GetNorthOfCurrent();
+            GetWestOfCurrent();
+            GetEastOfCurrent();
 
             SetCurrentTilesLocation();
         }
@@ -67,9 +67,9 @@ namespace NecromindLibrary.Services
             _northOfCurrent = _current;
             _current = _southOfCurrent;
 
-            _southOfCurrent = GetSouthOfCurrent();
-            _westOfCurrent = GetWestOfCurrent();
-            _eastOfCurrent = GetEastOfCurrent();
+            GetSouthOfCurrent();
+            GetWestOfCurrent();
+            GetEastOfCurrent();
 
             SetCurrentTilesLocation();
         }
@@ -80,9 +80,9 @@ namespace NecromindLibrary.Services
             _eastOfCurrent = _current;
             _current = _westOfCurrent;
 
-            _northOfCurrent = GetNorthOfCurrent();
-            _southOfCurrent = GetSouthOfCurrent();
-            _westOfCurrent = GetWestOfCurrent();
+            GetNorthOfCurrent();
+            GetSouthOfCurrent();
+            GetWestOfCurrent();
 
             SetCurrentTilesLocation();
         }
@@ -93,9 +93,9 @@ namespace NecromindLibrary.Services
             _westOfCurrent = _current;
             _current = _eastOfCurrent;
 
-            _northOfCurrent = GetNorthOfCurrent();
-            _southOfCurrent = GetSouthOfCurrent();
-            _eastOfCurrent = GetEastOfCurrent();
+            GetNorthOfCurrent();
+            GetSouthOfCurrent();
+            GetEastOfCurrent();
 
             SetCurrentTilesLocation();
         }
@@ -107,34 +107,42 @@ namespace NecromindLibrary.Services
         public Guid GetCurrentTilesId() =>
             _current.Id;
 
-        public MapTileModel GetNorthOfCurrent() =>
-            _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _x, _y - 1);
+        private void GetNorthOfCurrent()
+        {
+            _northOfCurrent = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _x, _y - 1);
+        }
 
-        public MapTileModel GetSouthOfCurrent() =>
-            _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _x, _y + 1);
+        private void GetSouthOfCurrent()
+        {
+            _southOfCurrent = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _x, _y + 1);
+        }
 
-        public MapTileModel GetWestOfCurrent() =>
-            _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _x - 1, _y);
+        private void GetWestOfCurrent()
+        {
+            _westOfCurrent = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _x - 1, _y);
+        }
 
-        public MapTileModel GetEastOfCurrent() =>
-            _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _x + 1, _y);
+        private void GetEastOfCurrent()
+        {
+            _eastOfCurrent = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _x + 1, _y);
+        }
 
-        public void GetNorthLocationOfCurrent()
+        private void GetNorthLocationOfCurrent()
         {
             _northLocationOfCurrent = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _northOfCurrent.LocationId.ToString());
         }
 
-        public void GetSouthLocationOfCurrent()
+        private void GetSouthLocationOfCurrent()
         {
             _northLocationOfCurrent = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _southOfCurrent.LocationId.ToString());
         }
 
-        public void GetWestLocationOfCurrent()
+        private void GetWestLocationOfCurrent()
         {
             _northLocationOfCurrent = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _westOfCurrent.LocationId.ToString());
         }
 
-        public void GetEastLocationOfCurrent()
+        private void GetEastLocationOfCurrent()
         {
             _northLocationOfCurrent = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _eastOfCurrent.LocationId.ToString());
         }
@@ -164,10 +172,10 @@ namespace NecromindLibrary.Services
 
         public void SetNeighborhood()
         {
-            _northOfCurrent = GetNorthOfCurrent();
-            _southOfCurrent = GetSouthOfCurrent();
-            _westOfCurrent = GetWestOfCurrent();
-            _eastOfCurrent = GetEastOfCurrent();
+            GetNorthOfCurrent();
+            GetSouthOfCurrent();
+            GetWestOfCurrent();
+            GetEastOfCurrent();
         }
 
         public void SetNeighborhoodLocations()
