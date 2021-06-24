@@ -53,7 +53,7 @@ namespace NecromindUI.Presenters.Game
             _gameMain.EventLog.SelectionLength = 0;
 
             _gameMain.EventLog.SelectionColor = color;
-            _gameMain.EventLog.AppendText(TextService.FormatEventMsg(msg));
+            _gameMain.EventLog.AppendText(msg);
             _gameMain.EventLog.SelectionColor = _gameMain.EventLog.ForeColor;
             ScrollEventLogToBottom();
         }
@@ -64,7 +64,7 @@ namespace NecromindUI.Presenters.Game
             _gameMain.EventLog.SelectionLength = 0;
 
             _gameMain.EventLog.SelectionColor = color;
-            _gameMain.EventLog.AppendText("\n" + TextService.FormatEventMsg(msg));
+            _gameMain.EventLog.AppendText("\n" + msg);
             _gameMain.EventLog.SelectionColor = _gameMain.EventLog.ForeColor;
             ScrollEventLogToBottom();
         }
@@ -74,10 +74,17 @@ namespace NecromindUI.Presenters.Game
 
         public string GetSurroundingLocationsNames()
         {
-            string north = _mapService.NorthLocationOfCurrent != null ? _mapService.NorthLocationOfCurrent.Name : UNDER_CONSTRUCTION;
-            string south = _mapService.SouthLocationOfCurrent != null ? _mapService.SouthLocationOfCurrent.Name : UNDER_CONSTRUCTION;
-            string west = _mapService.WestLocationOfCurrent != null ? _mapService.WestLocationOfCurrent.Name : UNDER_CONSTRUCTION;
-            string east = _mapService.EastLocationOfCurrent != null ? _mapService.EastLocationOfCurrent.Name : UNDER_CONSTRUCTION;
+            string north = _mapService.NorthLocationOfCurrent != null ?
+                $"{ _mapService.NorthLocationOfCurrent.Name } - { _mapService.NorthLocationOfCurrent.Description }" : UNDER_CONSTRUCTION;
+
+            string south = _mapService.SouthLocationOfCurrent != null ?
+                $"{ _mapService.SouthLocationOfCurrent.Name } - { _mapService.SouthLocationOfCurrent.Description }" : UNDER_CONSTRUCTION;
+
+            string west = _mapService.WestLocationOfCurrent != null ?
+                $"{ _mapService.WestLocationOfCurrent.Name } - { _mapService.WestLocationOfCurrent.Description }" : UNDER_CONSTRUCTION;
+
+            string east = _mapService.EastLocationOfCurrent != null ?
+                $"{ _mapService.EastLocationOfCurrent.Name } - { _mapService.EastLocationOfCurrent.Description }" : UNDER_CONSTRUCTION;
 
             return $"North: { north }\nSouth: { south }\nWest: { west }\nEast: { east }";
         }
