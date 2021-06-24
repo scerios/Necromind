@@ -36,7 +36,7 @@ namespace NecromindUI.Presenters.Admin
 
             SetCoordinates();
             SetNeighborhood();
-            SetCurrentLocationStats();
+            SetLocationStats();
             SetMovementBtns();
         }
 
@@ -102,7 +102,7 @@ namespace NecromindUI.Presenters.Admin
             _adminMap.LabY = _mapService.Y.ToString();
 
             ToggleDelBtn();
-            SetCurrentLocationStats();
+            SetLocationStats();
             SetMovementBtns();
         }
 
@@ -116,7 +116,7 @@ namespace NecromindUI.Presenters.Admin
             _adminMap.LabY = _mapService.Y.ToString();
 
             ToggleDelBtn();
-            SetCurrentLocationStats();
+            SetLocationStats();
             SetMovementBtns();
         }
 
@@ -130,7 +130,7 @@ namespace NecromindUI.Presenters.Admin
             _adminMap.LabX = _mapService.X.ToString();
 
             ToggleDelBtn();
-            SetCurrentLocationStats();
+            SetLocationStats();
             SetMovementBtns();
         }
 
@@ -144,7 +144,7 @@ namespace NecromindUI.Presenters.Admin
             _adminMap.LabX = _mapService.X.ToString();
 
             ToggleDelBtn();
-            SetCurrentLocationStats();
+            SetLocationStats();
             SetMovementBtns();
         }
 
@@ -191,18 +191,6 @@ namespace NecromindUI.Presenters.Admin
 
         #endregion Init
 
-        private void TryGetCurrentTilesLocation()
-        {
-            if (_mapService.Current.LocationId != null)
-            {
-                _mapService.SetLocation(_mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _mapService.Current.LocationId.ToString()));
-            }
-            else
-            {
-                _mapService.SetLocation(null);
-            }
-        }
-
         private void TryInitNewMapTile()
         {
             if (_mapService.Current == null)
@@ -226,15 +214,15 @@ namespace NecromindUI.Presenters.Admin
             }
         }
 
+        private void SetNeighborhood()
+        {
+            _mapService.SetNeighborhood();
+        }
+
         private void SetCoordinates()
         {
             _adminMap.LabX = _mapService.X.ToString();
             _adminMap.LabY = _mapService.Y.ToString();
-        }
-
-        private void SetNeighborhood()
-        {
-            _mapService.SetNeighborhood();
         }
 
         private void SetMovementBtns()
@@ -253,16 +241,6 @@ namespace NecromindUI.Presenters.Admin
                 _adminMap.BtnIsWestEnabled = true;
                 _adminMap.BtnIsEastEnabled = true;
             }
-        }
-
-        private void SetCurrentLocationStats()
-        {
-            if (_mapService.Current != null)
-                TryGetCurrentTilesLocation();
-            else
-                _mapService.SetLocation(null);
-
-            SetLocationStats();
         }
 
         private void EnableSaveBtn()
