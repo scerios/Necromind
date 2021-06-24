@@ -107,7 +107,7 @@ namespace NecromindUI.UserControls.Menu
                     btnLocY,
                     UISettings.BtnFontSizeSmall,
                     UISettings.ValueColor,
-                    UISettings.TextColor,
+                    UISettings.TextColorDefault,
                     FlatStyle.Flat,
                     ContentAlignment.MiddleCenter
                 );
