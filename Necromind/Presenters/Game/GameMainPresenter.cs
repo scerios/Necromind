@@ -40,6 +40,7 @@ namespace NecromindUI.Presenters.Game
 
             SetHeroLabelDatabindings();
             _mapService.SetNeighborhood();
+            _mapService.SetNeighborhoodLocations();
             SetMovementBtns();
         }
 
