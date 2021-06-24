@@ -54,11 +54,18 @@ namespace NecromindLibrary.Services
             _southOfCurrent = _current;
             _current = _northOfCurrent;
 
+            _southLocationOfCurrent = _location;
+            _location = _northLocationOfCurrent;
+
+            SetCurrentTilesLocation();
+
             GetNorthOfCurrent();
             GetWestOfCurrent();
             GetEastOfCurrent();
 
-            SetCurrentTilesLocation();
+            SetNorthLocationOfCurrent();
+            SetWestLocationOfCurrent();
+            SetEastLocationOfCurrent();
         }
 
         public void MoveSouth()
@@ -67,11 +74,18 @@ namespace NecromindLibrary.Services
             _northOfCurrent = _current;
             _current = _southOfCurrent;
 
+            _northLocationOfCurrent = _location;
+            _location = _southLocationOfCurrent;
+
+            SetCurrentTilesLocation();
+
             GetSouthOfCurrent();
             GetWestOfCurrent();
             GetEastOfCurrent();
 
-            SetCurrentTilesLocation();
+            SetSouthLocationOfCurrent();
+            SetWestLocationOfCurrent();
+            SetEastLocationOfCurrent();
         }
 
         public void MoveWest()
@@ -80,11 +94,18 @@ namespace NecromindLibrary.Services
             _eastOfCurrent = _current;
             _current = _westOfCurrent;
 
+            _eastLocationOfCurrent = _location;
+            _location = _westLocationOfCurrent;
+
+            SetCurrentTilesLocation();
+
             GetNorthOfCurrent();
             GetSouthOfCurrent();
             GetWestOfCurrent();
 
-            SetCurrentTilesLocation();
+            SetNorthLocationOfCurrent();
+            SetSouthLocationOfCurrent();
+            SetWestLocationOfCurrent();
         }
 
         public void MoveEast()
@@ -93,11 +114,18 @@ namespace NecromindLibrary.Services
             _westOfCurrent = _current;
             _current = _eastOfCurrent;
 
+            _westLocationOfCurrent = _location;
+            _location = _eastLocationOfCurrent;
+
+            SetCurrentTilesLocation();
+
             GetNorthOfCurrent();
             GetSouthOfCurrent();
             GetEastOfCurrent();
 
-            SetCurrentTilesLocation();
+            SetNorthLocationOfCurrent();
+            SetSouthLocationOfCurrent();
+            SetEastLocationOfCurrent();
         }
 
         #endregion Movement
@@ -127,24 +155,36 @@ namespace NecromindLibrary.Services
             _eastOfCurrent = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _x + 1, _y);
         }
 
-        private void GetNorthLocationOfCurrent()
+        private void SetNorthLocationOfCurrent()
         {
-            _northLocationOfCurrent = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _northOfCurrent.LocationId.ToString());
+            if (_northOfCurrent != null && _northOfCurrent.LocationId != null)
+                _northLocationOfCurrent = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _northOfCurrent.LocationId.ToString());
+            else
+                _northLocationOfCurrent = null;
         }
 
-        private void GetSouthLocationOfCurrent()
+        private void SetSouthLocationOfCurrent()
         {
-            _northLocationOfCurrent = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _southOfCurrent.LocationId.ToString());
+            if (_southOfCurrent != null && _southOfCurrent.LocationId != null)
+                _southLocationOfCurrent = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _southOfCurrent.LocationId.ToString());
+            else
+                _southLocationOfCurrent = null;
         }
 
-        private void GetWestLocationOfCurrent()
+        private void SetWestLocationOfCurrent()
         {
-            _northLocationOfCurrent = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _westOfCurrent.LocationId.ToString());
+            if (_westOfCurrent != null && _westOfCurrent.LocationId != null)
+                _westLocationOfCurrent = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _westOfCurrent.LocationId.ToString());
+            else
+                _westLocationOfCurrent = null;
         }
 
-        private void GetEastLocationOfCurrent()
+        private void SetEastLocationOfCurrent()
         {
-            _northLocationOfCurrent = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _eastOfCurrent.LocationId.ToString());
+            if (_eastOfCurrent != null && _eastOfCurrent.LocationId != null)
+                _eastLocationOfCurrent = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _eastOfCurrent.LocationId.ToString());
+            else
+                _eastLocationOfCurrent = null;
         }
 
         #endregion Getters
@@ -172,10 +212,10 @@ namespace NecromindLibrary.Services
 
         public void SetNeighborhoodLocations()
         {
-            GetNorthLocationOfCurrent();
-            GetSouthLocationOfCurrent();
-            GetWestLocationOfCurrent();
-            GetEastLocationOfCurrent();
+            SetNorthLocationOfCurrent();
+            SetSouthLocationOfCurrent();
+            SetWestLocationOfCurrent();
+            SetEastLocationOfCurrent();
         }
 
         private void SetCurrentTilesLocation()
