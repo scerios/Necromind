@@ -91,7 +91,7 @@ namespace NecromindUI.UserControls.Game
             this.rtbEventLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.rtbEventLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtbEventLog.Cursor = System.Windows.Forms.Cursors.Default;
-            this.rtbEventLog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.rtbEventLog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
             this.rtbEventLog.Location = new System.Drawing.Point(30, 0);
             this.rtbEventLog.Name = "rtbEventLog";
             this.rtbEventLog.ReadOnly = true;

@@ -26,7 +26,7 @@ namespace NecromindLibrary.Services
             return _instance;
         }
 
-        public void RaiseMessage(string message, Color color)
+        public void SetMessage(string message, Color color)
         {
             OnMessageRaised?.Invoke(this, new GameMessageEventArgs(message, color));
         }
