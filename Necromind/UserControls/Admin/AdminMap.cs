@@ -234,8 +234,7 @@ namespace NecromindUI.UserControls.Admin
 
         private void LbLocations_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lbLocations.Focused)
-                _presenter.SetSelectedLocationStats();
+            _presenter.SetSelectedLocationStats();
         }
 
         private void BtnNorth_Click(object sender, EventArgs e)
