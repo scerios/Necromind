@@ -1,5 +1,6 @@
 ﻿using NecromindLibrary.EventArgs;
 using System;
+using System.Drawing;
 
 namespace NecromindLibrary.Services
 {
@@ -25,14 +26,14 @@ namespace NecromindLibrary.Services
             return _instance;
         }
 
-        public void RaiseMessage(string message)
+        public void RaiseMessage(string message, Color color)
         {
-            OnMessageRaised?.Invoke(this, new GameMessageEventArgs(message));
+            OnMessageRaised?.Invoke(this, new GameMessageEventArgs(message, color));
         }
 
-        public void AppendMessage(string message)
+        public void AppendMessage(string message, Color color)
         {
-            OnMessageAppend?.Invoke(this, new GameMessageEventArgs(message));
+            OnMessageAppend?.Invoke(this, new GameMessageEventArgs(message, color));
         }
     }
 }
