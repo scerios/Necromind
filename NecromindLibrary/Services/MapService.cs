@@ -46,6 +46,8 @@ namespace NecromindLibrary.Services
             _northOfCurrent = GetNorthOfCurrent();
             _westOfCurrent = GetWestOfCurrent();
             _eastOfCurrent = GetEastOfCurrent();
+
+            SetCurrentTilesLocation();
         }
 
         public void MoveSouth()
@@ -57,6 +59,8 @@ namespace NecromindLibrary.Services
             _southOfCurrent = GetSouthOfCurrent();
             _westOfCurrent = GetWestOfCurrent();
             _eastOfCurrent = GetEastOfCurrent();
+
+            SetCurrentTilesLocation();
         }
 
         public void MoveWest()
@@ -68,6 +72,8 @@ namespace NecromindLibrary.Services
             _northOfCurrent = GetNorthOfCurrent();
             _southOfCurrent = GetSouthOfCurrent();
             _westOfCurrent = GetWestOfCurrent();
+
+            SetCurrentTilesLocation();
         }
 
         public void MoveEast()
@@ -79,6 +85,8 @@ namespace NecromindLibrary.Services
             _northOfCurrent = GetNorthOfCurrent();
             _southOfCurrent = GetSouthOfCurrent();
             _eastOfCurrent = GetEastOfCurrent();
+
+            SetCurrentTilesLocation();
         }
 
         #endregion Movement
@@ -107,6 +115,14 @@ namespace NecromindLibrary.Services
         public void SetLocation(LocationModel location)
         {
             _location = location;
+        }
+
+        private void SetCurrentTilesLocation()
+        {
+            if (_current != null && _current.LocationId != null)
+                SetLocation(_mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _current.LocationId.ToString()));
+            else
+                SetLocation(null);
         }
 
         public void SetStartTile()
