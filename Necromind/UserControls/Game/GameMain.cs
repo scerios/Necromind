@@ -22,12 +22,43 @@ namespace NecromindUI.UserControls.Game
             }
         }
 
-        public string CurrentLocation
+        public bool BtnIsNorthEnabled
         {
-            get => labLocation.Text;
+            get => btnNorth.Enabled;
+
             set
             {
-                labLocation.Text = value;
+                btnNorth.Enabled = value;
+            }
+        }
+
+        public bool BtnIsSouthEnabled
+        {
+            get => btnSouth.Enabled;
+
+            set
+            {
+                btnSouth.Enabled = value;
+            }
+        }
+
+        public bool BtnIsWestEnabled
+        {
+            get => btnWest.Enabled;
+
+            set
+            {
+                btnWest.Enabled = value;
+            }
+        }
+
+        public bool BtnIsEastEnabled
+        {
+            get => btnEast.Enabled;
+
+            set
+            {
+                btnEast.Enabled = value;
             }
         }
 
@@ -43,6 +74,11 @@ namespace NecromindUI.UserControls.Game
         public RichTextBox EventLog
         {
             get => rtbEventLog;
+        }
+
+        public Label LabLocationName
+        {
+            get => labLocation;
         }
 
         public Label LabHealthMax
