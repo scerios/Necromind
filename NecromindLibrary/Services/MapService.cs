@@ -156,14 +156,6 @@ namespace NecromindLibrary.Services
             _location = location;
         }
 
-        private void SetCurrentTilesLocation()
-        {
-            if (_current != null && _current.LocationId != null)
-                SetCurrentLocation(_mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _current.LocationId.ToString()));
-            else
-                SetCurrentLocation(null);
-        }
-
         public void SetStartTile()
         {
             _current = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _x, _y);
@@ -186,6 +178,14 @@ namespace NecromindLibrary.Services
             GetEastLocationOfCurrent();
         }
 
+        private void SetCurrentTilesLocation()
+        {
+            if (_current != null && _current.LocationId != null)
+                SetCurrentLocation(_mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _current.LocationId.ToString()));
+            else
+                SetCurrentLocation(null);
+        }
+
         #endregion Setters
 
         #region Checks
@@ -204,22 +204,22 @@ namespace NecromindLibrary.Services
 
         public bool IsNorthOfCurrentAccessible()
         {
-            return _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _northOfCurrent.LocationId.ToString()).IsAccessible;
+            return _northLocationOfCurrent.IsAccessible;
         }
 
         public bool IsSouthOfCurrentAccessible()
         {
-            return _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _southOfCurrent.LocationId.ToString()).IsAccessible;
+            return _southLocationOfCurrent.IsAccessible;
         }
 
         public bool IsWestOfCurrentAccessible()
         {
-            return _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _westOfCurrent.LocationId.ToString()).IsAccessible;
+            return _westLocationOfCurrent.IsAccessible;
         }
 
         public bool IsEastOfCurrentAccessible()
         {
-            return _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _eastOfCurrent.LocationId.ToString()).IsAccessible;
+            return _eastLocationOfCurrent.IsAccessible;
         }
 
         #endregion Checks
