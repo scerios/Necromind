@@ -155,6 +155,26 @@ namespace NecromindLibrary.Services
         public bool DoesCurrentHasEastNeighbor() =>
             _eastOfCurrent != null;
 
+        public bool IsNorthOfCurrentAccessible()
+        {
+            return _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _northOfCurrent.LocationId.ToString()).IsAccessible;
+        }
+
+        public bool IsSouthOfCurrentAccessible()
+        {
+            return _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _southOfCurrent.LocationId.ToString()).IsAccessible;
+        }
+
+        public bool IsWestOfCurrentAccessible()
+        {
+            return _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _westOfCurrent.LocationId.ToString()).IsAccessible;
+        }
+
+        public bool IsEastOfCurrentAccessible()
+        {
+            return _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _eastOfCurrent.LocationId.ToString()).IsAccessible;
+        }
+
         #endregion Checks
     }
 }
