@@ -24,11 +24,11 @@ namespace NecromindUI.Presenters.Admin
 
         public void LoadData()
         {
-            LoadAllHeroes();
+            LoadHeroes();
             BindHeroes();
         }
 
-        public void GetSelectedHeroStats()
+        public void SetSelectedHeroStats()
         {
             var selectedIndex = _adminHeroes.LbHeroes.SelectedIndex;
 
@@ -147,7 +147,7 @@ namespace NecromindUI.Presenters.Admin
             _adminHeroes.TimHide.Start();
         }
 
-        private void LoadAllHeroes()
+        private void LoadHeroes()
         {
             _heroes = new BindingList<HeroModel>(_mongoConnector.GetAllRecords<HeroModel>(DBConfig.HeroesCollection));
         }

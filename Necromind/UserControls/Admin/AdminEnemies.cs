@@ -380,7 +380,7 @@ namespace NecromindUI.UserControls.Admin
 
         private void LbEnemies_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _presenter.GetSelectedEnemyStats();
+            _presenter.SetSelectedEnemyStats();
         }
 
         #endregion Methods

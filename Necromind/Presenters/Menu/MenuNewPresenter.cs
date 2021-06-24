@@ -9,13 +9,12 @@ namespace NecromindUI.Presenters.Menu
 {
     public class MenuNewPresenter
     {
-        private readonly MongoConnector _connector;
         private readonly IMenuNew _menuNew;
+        private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
 
         public MenuNewPresenter(IMenuNew menuNew)
         {
             _menuNew = menuNew;
-            _connector = MongoConnector.GetInstance();
         }
 
         public bool TryCreateHero()
@@ -66,13 +65,13 @@ namespace NecromindUI.Presenters.Menu
 
         private bool IsHeroNameAvailable()
         {
-            var heroes = _connector.GetAllRecords<HeroModel>(DBConfig.HeroesCollection);
+            var heroes = _mongoConnector.GetAllRecords<HeroModel>(DBConfig.HeroesCollection);
 
             return !ValidationService.IsHeroNameAlreadyRegistered(heroes, _menuNew.HeroName);
         }
 
         private bool IsHeroCreated() =>
-            _connector.TryCreateNewRecord(DBConfig.HeroesCollection, new HeroModel(_menuNew.HeroName));
+            _mongoConnector.TryCreateNewRecord(DBConfig.HeroesCollection, new HeroModel(_menuNew.HeroName));
 
         private bool IsHeroNameValid() =>
             ValidationService.IsValidName(_menuNew.HeroName);

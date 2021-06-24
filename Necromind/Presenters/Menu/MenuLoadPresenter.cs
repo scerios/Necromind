@@ -10,14 +10,13 @@ namespace NecromindUI.Presenters.Menu
 {
     public class MenuLoadPresenter
     {
-        private readonly MongoConnector _mongoConnector;
         private readonly IMenuLoad _menuLoad;
+        private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
         public Guid HeroToDelId;
 
         public MenuLoadPresenter(IMenuLoad menuLoad)
         {
             _menuLoad = menuLoad;
-            _mongoConnector = MongoConnector.GetInstance();
         }
 
         public List<HeroModel> GetAllHeroes(string collectionName)

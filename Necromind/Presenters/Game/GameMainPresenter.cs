@@ -12,6 +12,8 @@ namespace NecromindUI.Presenters.Game
 {
     public class GameMainPresenter
     {
+        // TODO - Figure out fight logic.
+
         private const string UNDER_CONSTRUCTION = "A magical barrier blocks the way.";
         private readonly IGameMain _gameMain;
         private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
@@ -46,6 +48,8 @@ namespace NecromindUI.Presenters.Game
             _msgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
         }
 
+        #region Event log
+
         public void SetEventLog(string msg, Color color)
         {
             _gameMain.EventLog.Clear();
@@ -69,25 +73,7 @@ namespace NecromindUI.Presenters.Game
             ScrollEventLogToBottom();
         }
 
-        public string GetCurrentLocationDesc() =>
-            _mapService.Location.Description;
-
-        public string GetSurroundingLocationsNames()
-        {
-            string north = _mapService.NorthLocationOfCurrent != null ?
-                $"{ _mapService.NorthLocationOfCurrent.Name } - { _mapService.NorthLocationOfCurrent.Description }" : UNDER_CONSTRUCTION;
-
-            string south = _mapService.SouthLocationOfCurrent != null ?
-                $"{ _mapService.SouthLocationOfCurrent.Name } - { _mapService.SouthLocationOfCurrent.Description }" : UNDER_CONSTRUCTION;
-
-            string west = _mapService.WestLocationOfCurrent != null ?
-                $"{ _mapService.WestLocationOfCurrent.Name } - { _mapService.WestLocationOfCurrent.Description }" : UNDER_CONSTRUCTION;
-
-            string east = _mapService.EastLocationOfCurrent != null ?
-                $"{ _mapService.EastLocationOfCurrent.Name } - { _mapService.EastLocationOfCurrent.Description }" : UNDER_CONSTRUCTION;
-
-            return $"North: { north }\nSouth: { south }\nWest: { west }\nEast: { east }";
-        }
+        #endregion Event log
 
         public void TogglePanExitVisibility()
         {
@@ -168,6 +154,30 @@ namespace NecromindUI.Presenters.Game
         }
 
         #endregion Movement
+
+        #region Getters
+
+        private string GetCurrentLocationDesc() =>
+            _mapService.Location.Description;
+
+        private string GetSurroundingLocationsNames()
+        {
+            string north = _mapService.NorthLocationOfCurrent != null ?
+                $"{ _mapService.NorthLocationOfCurrent.Name } - { _mapService.NorthLocationOfCurrent.Description }" : UNDER_CONSTRUCTION;
+
+            string south = _mapService.SouthLocationOfCurrent != null ?
+                $"{ _mapService.SouthLocationOfCurrent.Name } - { _mapService.SouthLocationOfCurrent.Description }" : UNDER_CONSTRUCTION;
+
+            string west = _mapService.WestLocationOfCurrent != null ?
+                $"{ _mapService.WestLocationOfCurrent.Name } - { _mapService.WestLocationOfCurrent.Description }" : UNDER_CONSTRUCTION;
+
+            string east = _mapService.EastLocationOfCurrent != null ?
+                $"{ _mapService.EastLocationOfCurrent.Name } - { _mapService.EastLocationOfCurrent.Description }" : UNDER_CONSTRUCTION;
+
+            return $"North: { north }\nSouth: { south }\nWest: { west }\nEast: { east }";
+        }
+
+        #endregion Getters
 
         #region Setters
 

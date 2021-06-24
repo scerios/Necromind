@@ -8,12 +8,11 @@ namespace Necromind.Presenters.Menu
     public class MenuAdminPresenter
     {
         private readonly IMenuAdmin _menuAdmin;
-        private readonly MongoConnector _mongoConnector;
+        private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
 
         public MenuAdminPresenter(IMenuAdmin menuAdmin)
         {
             _menuAdmin = menuAdmin;
-            _mongoConnector = MongoConnector.GetInstance();
         }
 
         public bool IsPasswordCorrect()

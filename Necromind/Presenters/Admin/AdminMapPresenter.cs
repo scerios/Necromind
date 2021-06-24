@@ -175,8 +175,6 @@ namespace NecromindUI.Presenters.Admin
                 AlertFail(position, modification);
         }
 
-        #region Init
-
         private void LoadLocations()
         {
             _locations = _mongoConnector.GetAllRecords<LocationModel>(DBConfig.LocationsCollection);
@@ -189,15 +187,38 @@ namespace NecromindUI.Presenters.Admin
             _adminMap.LbLocations.DisplayMember = "Name";
         }
 
-        #endregion Init
-
         private void TryInitNewMapTile()
         {
             if (_mapService.Current == null)
                 _mapService.InitCurrentAsNewTile();
         }
 
-        #region Setters
+        private void SetNeighborhood()
+        {
+            _mapService.SetNeighborhood();
+        }
+
+        #region Alert
+
+        private void AlertSuccess(string name, string modification)
+        {
+            _adminMap.LabMapEdit.Text = $"{ name } { modification } successfully!";
+            _adminMap.LabMapEdit.ForeColor = UISettings.SuccessColor;
+            _adminMap.LabMapEdit.Visible = true;
+            _adminMap.TimHide.Start();
+        }
+
+        private void AlertFail(string name, string modification)
+        {
+            _adminMap.LabMapEdit.Text = $"Failed to { modification } { name }!";
+            _adminMap.LabMapEdit.ForeColor = UISettings.ErrorColor;
+            _adminMap.LabMapEdit.Visible = true;
+            _adminMap.TimHide.Start();
+        }
+
+        #endregion Alert
+
+        #region UI modifications
 
         private void SetLocationStats()
         {
@@ -212,11 +233,6 @@ namespace NecromindUI.Presenters.Admin
             {
                 ClearEditFields();
             }
-        }
-
-        private void SetNeighborhood()
-        {
-            _mapService.SetNeighborhood();
         }
 
         private void SetCoordinates()
@@ -266,30 +282,6 @@ namespace NecromindUI.Presenters.Admin
                 _adminMap.BtnIsDelEnabled = false;
         }
 
-        #endregion Setters
-
-        #region Alert
-
-        private void AlertSuccess(string name, string modification)
-        {
-            _adminMap.LabMapEdit.Text = $"{ name } { modification } successfully!";
-            _adminMap.LabMapEdit.ForeColor = UISettings.SuccessColor;
-            _adminMap.LabMapEdit.Visible = true;
-            _adminMap.TimHide.Start();
-        }
-
-        private void AlertFail(string name, string modification)
-        {
-            _adminMap.LabMapEdit.Text = $"Failed to { modification } { name }!";
-            _adminMap.LabMapEdit.ForeColor = UISettings.ErrorColor;
-            _adminMap.LabMapEdit.Visible = true;
-            _adminMap.TimHide.Start();
-        }
-
-        #endregion Alert
-
-        #region Clear
-
         private void ClearLocationSelection()
         {
             _adminMap.LbLocations.ClearSelected();
@@ -303,6 +295,6 @@ namespace NecromindUI.Presenters.Admin
             _adminMap.IndicatorsOff = true;
         }
 
-        #endregion Clear
+        #endregion UI modifications
     }
 }

@@ -25,11 +25,11 @@ namespace NecromindUI.Presenters.Admin
 
         public void LoadData()
         {
-            LoadAllEnemies();
+            LoadEnemies();
             BindEnemies();
         }
 
-        public void GetSelectedEnemyStats()
+        public void SetSelectedEnemyStats()
         {
             var selectedIndex = _adminEnemies.LbEnemies.SelectedIndex;
 
@@ -263,7 +263,7 @@ namespace NecromindUI.Presenters.Admin
 
         #endregion Modify errors
 
-        private void LoadAllEnemies()
+        private void LoadEnemies()
         {
             _enemies = _mongoConnector.GetAllRecords<EnemyModel>(DBConfig.EnemiesCollection);
         }

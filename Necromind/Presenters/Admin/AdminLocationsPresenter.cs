@@ -47,7 +47,7 @@ namespace NecromindUI.Presenters.Admin
             ClearEditFields();
         }
 
-        public void GetSelectedLocationStats()
+        public void SetSelectedLocationStats()
         {
             var selectedIndex = _adminLocations.LbLocations.SelectedIndex;
 
@@ -224,7 +224,7 @@ namespace NecromindUI.Presenters.Admin
 
         #endregion Resource binding
 
-        #region Load
+        #region Loads
 
         private void LoadLocations()
         {
@@ -246,9 +246,9 @@ namespace NecromindUI.Presenters.Admin
             SetEditEnemiesBy(enemyIds.Where(i => !_enemyIds.Contains(i)));
         }
 
-        #endregion Load
+        #endregion Loads
 
-        #region Clear
+        #region Clears
 
         private void ClearLocation()
         {
@@ -272,25 +272,9 @@ namespace NecromindUI.Presenters.Admin
             _adminLocations.LbEditAddedEnemies.ClearSelected();
         }
 
-        private void ClearCreateFields()
-        {
-            _adminLocations.TbCreateName = "";
-            _adminLocations.TbCreateDescription = "";
-            _adminLocations.CbCreateIsHostile = false;
-            _adminLocations.CbCreateIsAccessible = false;
-        }
+        #endregion Clears
 
-        private void ClearEditFields()
-        {
-            _adminLocations.TbEditName = "";
-            _adminLocations.TbEditDescription = "";
-            _adminLocations.CbEditIsHostile = false;
-            _adminLocations.CbEditIsAccessible = false;
-        }
-
-        #endregion Clear
-
-        #region Alert
+        #region Alerts
 
         private void AlertCreateSuccess(string msg)
         {
@@ -330,7 +314,7 @@ namespace NecromindUI.Presenters.Admin
             timer.Start();
         }
 
-        #endregion Alert
+        #endregion Alerts
 
         private void AddEnemiesToLocation(List<EnemyModel> enemies)
         {
@@ -340,7 +324,7 @@ namespace NecromindUI.Presenters.Admin
             }
         }
 
-        #region Set
+        #region Setters
 
         private void SetEditAddedEnemies()
         {
@@ -392,9 +376,25 @@ namespace NecromindUI.Presenters.Admin
             }
         }
 
-        #endregion Set
+        #endregion Setters
 
-        #region Update
+        #region UI modifications
+
+        private void ClearCreateFields()
+        {
+            _adminLocations.TbCreateName = "";
+            _adminLocations.TbCreateDescription = "";
+            _adminLocations.CbCreateIsHostile = false;
+            _adminLocations.CbCreateIsAccessible = false;
+        }
+
+        private void ClearEditFields()
+        {
+            _adminLocations.TbEditName = "";
+            _adminLocations.TbEditDescription = "";
+            _adminLocations.CbEditIsHostile = false;
+            _adminLocations.CbEditIsAccessible = false;
+        }
 
         private void UpdateUIAfterCreate()
         {
@@ -438,6 +438,6 @@ namespace NecromindUI.Presenters.Admin
             ClearLocationSelection();
         }
 
-        #endregion Update
+        #endregion UI modifications
     }
 }

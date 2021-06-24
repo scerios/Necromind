@@ -275,7 +275,7 @@ namespace NecromindUI.UserControls.Admin
 
         private void LbLocations_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _presenter.GetSelectedLocationStats();
+            _presenter.SetSelectedLocationStats();
         }
 
         private void LbEditEnemies_SelectedIndexChanged(object sender, EventArgs e)
