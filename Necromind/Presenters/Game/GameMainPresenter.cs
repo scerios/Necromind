@@ -12,6 +12,7 @@ namespace NecromindUI.Presenters.Game
 {
     public class GameMainPresenter
     {
+        private const string UNDER_CONSTRUCTION = "A magical barrier blocks the way.";
         private readonly IGameMain _gameMain;
         private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
         private readonly MapService _mapService = new MapService();
@@ -33,15 +34,16 @@ namespace NecromindUI.Presenters.Game
         {
             _hero = hero;
 
-            _msgLogger.RaiseMessage(GetCurrentLocationDesc(), UISettings.TextColor);
-
             SetLocationName();
             SetHeroStats();
-
             SetHeroLabelDatabindings();
+
             _mapService.SetNeighborhood();
             _mapService.SetNeighborhoodLocations();
             SetMovementBtns();
+
+            _msgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
+            _msgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
         }
 
         public void SetEventLog(string msg, Color color)
@@ -69,6 +71,16 @@ namespace NecromindUI.Presenters.Game
 
         public string GetCurrentLocationDesc() =>
             _mapService.Location.Description;
+
+        public string GetSurroundingLocationsNames()
+        {
+            string north = _mapService.NorthLocationOfCurrent != null ? _mapService.NorthLocationOfCurrent.Name : UNDER_CONSTRUCTION;
+            string south = _mapService.SouthLocationOfCurrent != null ? _mapService.SouthLocationOfCurrent.Name : UNDER_CONSTRUCTION;
+            string west = _mapService.WestLocationOfCurrent != null ? _mapService.WestLocationOfCurrent.Name : UNDER_CONSTRUCTION;
+            string east = _mapService.EastLocationOfCurrent != null ? _mapService.EastLocationOfCurrent.Name : UNDER_CONSTRUCTION;
+
+            return $"North: { north }\nSouth: { south }\nWest: { west }\nEast: { east }";
+        }
 
         public void TogglePanExitVisibility()
         {
@@ -101,7 +113,8 @@ namespace NecromindUI.Presenters.Game
             if (_gameMain.BtnIsNorthEnabled)
             {
                 _mapService.MoveNorth();
-                _msgLogger.AppendMessage(GetCurrentLocationDesc(), UISettings.TextColor);
+                _msgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
+                _msgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
 
                 SetLocationName();
                 SetMovementBtns();
@@ -113,7 +126,8 @@ namespace NecromindUI.Presenters.Game
             if (_gameMain.BtnIsSouthEnabled)
             {
                 _mapService.MoveSouth();
-                _msgLogger.AppendMessage(GetCurrentLocationDesc(), UISettings.TextColor);
+                _msgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
+                _msgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
 
                 SetLocationName();
                 SetMovementBtns();
@@ -125,7 +139,8 @@ namespace NecromindUI.Presenters.Game
             if (_gameMain.BtnIsWestEnabled)
             {
                 _mapService.MoveWest();
-                _msgLogger.AppendMessage(GetCurrentLocationDesc(), UISettings.TextColor);
+                _msgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
+                _msgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
 
                 SetLocationName();
                 SetMovementBtns();
@@ -137,7 +152,8 @@ namespace NecromindUI.Presenters.Game
             if (_gameMain.BtnIsEastEnabled)
             {
                 _mapService.MoveEast();
-                _msgLogger.AppendMessage(GetCurrentLocationDesc(), UISettings.TextColor);
+                _msgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
+                _msgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
 
                 SetLocationName();
                 SetMovementBtns();
