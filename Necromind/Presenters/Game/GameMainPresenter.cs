@@ -5,6 +5,7 @@ using NecromindLibrary.Services;
 using NecromindUI.Views.Game;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace NecromindUI.Presenters.Game
@@ -32,7 +33,7 @@ namespace NecromindUI.Presenters.Game
         {
             _hero = hero;
 
-            _msgLogger.RaiseMessage(GetCurrentLocationDesc());
+            _msgLogger.RaiseMessage(GetCurrentLocationDesc(), UISettings.TextColor);
 
             SetLocationName();
             SetHeroStats();
@@ -42,15 +43,26 @@ namespace NecromindUI.Presenters.Game
             SetMovementBtns();
         }
 
-        public void SetEventLog(string msg)
+        public void SetEventLog(string msg, Color color)
         {
-            _gameMain.EventLog.Text = TextService.FormatEventMsg(msg);
+            _gameMain.EventLog.Clear();
+            _gameMain.EventLog.SelectionStart = _gameMain.EventLog.TextLength;
+            _gameMain.EventLog.SelectionLength = 0;
+
+            _gameMain.EventLog.SelectionColor = color;
+            _gameMain.EventLog.AppendText(TextService.FormatEventMsg(msg));
+            _gameMain.EventLog.SelectionColor = _gameMain.EventLog.ForeColor;
             ScrollEventLogToBottom();
         }
 
-        public void AppendEventLog(string msg)
+        public void AppendEventLog(string msg, Color color)
         {
-            _gameMain.EventLog.Text = _gameMain.EventLog.Text + "\n" + TextService.FormatEventMsg(msg);
+            _gameMain.EventLog.SelectionStart = _gameMain.EventLog.TextLength;
+            _gameMain.EventLog.SelectionLength = 0;
+
+            _gameMain.EventLog.SelectionColor = color;
+            _gameMain.EventLog.AppendText("\n" + TextService.FormatEventMsg(msg));
+            _gameMain.EventLog.SelectionColor = _gameMain.EventLog.ForeColor;
             ScrollEventLogToBottom();
         }
 
@@ -88,6 +100,8 @@ namespace NecromindUI.Presenters.Game
             if (_gameMain.BtnIsNorthEnabled)
             {
                 _mapService.MoveNorth();
+                _msgLogger.AppendMessage(GetCurrentLocationDesc(), UISettings.TextColor);
+
                 SetLocationName();
                 SetMovementBtns();
             }
@@ -98,6 +112,8 @@ namespace NecromindUI.Presenters.Game
             if (_gameMain.BtnIsSouthEnabled)
             {
                 _mapService.MoveSouth();
+                _msgLogger.AppendMessage(GetCurrentLocationDesc(), UISettings.TextColor);
+
                 SetLocationName();
                 SetMovementBtns();
             }
@@ -108,6 +124,8 @@ namespace NecromindUI.Presenters.Game
             if (_gameMain.BtnIsWestEnabled)
             {
                 _mapService.MoveWest();
+                _msgLogger.AppendMessage(GetCurrentLocationDesc(), UISettings.TextColor);
+
                 SetLocationName();
                 SetMovementBtns();
             }
@@ -118,6 +136,8 @@ namespace NecromindUI.Presenters.Game
             if (_gameMain.BtnIsEastEnabled)
             {
                 _mapService.MoveEast();
+                _msgLogger.AppendMessage(GetCurrentLocationDesc(), UISettings.TextColor);
+
                 SetLocationName();
                 SetMovementBtns();
             }

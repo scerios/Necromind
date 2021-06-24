@@ -208,12 +208,12 @@ namespace NecromindUI.UserControls.Game
 
         private void GameMessageRaised(object sender, GameMessageEventArgs e)
         {
-            _presenter.SetEventLog(e.Message);
+            _presenter.SetEventLog(e.Message, e.Color);
         }
 
         private void GameMessageAppend(object sender, GameMessageEventArgs e)
         {
-            _presenter.AppendEventLog(e.Message);
+            _presenter.AppendEventLog(e.Message, e.Color);
         }
     }
 }
