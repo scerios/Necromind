@@ -46,7 +46,7 @@ namespace NecromindUI.Presenters.Admin
 
             if (selectedIndex >= 0)
             {
-                _mapService.SetLocation(_locations[selectedIndex]);
+                _mapService.SetCurrentLocation(_locations[selectedIndex]);
                 SetLocationStats();
                 _adminMap.BtnIsAttachEnabled = true;
             }
