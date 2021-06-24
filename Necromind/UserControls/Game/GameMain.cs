@@ -149,22 +149,22 @@ namespace NecromindUI.UserControls.Game
 
         private void BtnNorth_Click(object sender, EventArgs e)
         {
-            // TODO - Implement move north logic.
+            _presenter.MoveNorth();
         }
 
         private void BtnSouth_Click(object sender, EventArgs e)
         {
-            // TODO - Implement move south logic.
+            _presenter.MoveSouth();
         }
 
         private void BtnWest_Click(object sender, EventArgs e)
         {
-            // TODO - Implement move west logic.
+            _presenter.MoveWest();
         }
 
         private void BtnEast_Click(object sender, EventArgs e)
         {
-            // TODO - Implement move east logic.
+            _presenter.MoveEast();
         }
 
         private void ActivateView(Panel panel, UserControl view)
