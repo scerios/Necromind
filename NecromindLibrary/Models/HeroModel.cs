@@ -91,27 +91,27 @@ namespace NecromindLibrary.Models
             }
         }
 
-        private int _locationX;
+        private int _posX;
 
         [BsonIgnore]
         public int PosX
         {
-            get => _locationX;
+            get => _posX;
             private set
             {
-                _locationX = value;
+                _posX = value;
             }
         }
 
-        private int _locationY;
+        private int _posY;
 
         [BsonIgnore]
         public int PosY
         {
-            get => _locationY;
+            get => _posY;
             private set
             {
-                _locationY = value;
+                _posY = value;
             }
         }
 
