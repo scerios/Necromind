@@ -30,5 +30,16 @@ namespace NecromindLibrary.Services
 
             return button;
         }
+
+        public static Panel CreateMapPanel(int locX, int locY, int posX, int posY, Color backColor)
+        {
+            Panel panel = new Panel();
+            panel.Name = "pan" + posX + "I" + posY;
+            panel.Location = new Point(locX, locY);
+            panel.BackColor = backColor;
+            panel.Size = new Size(UISettings.MapTileSize, UISettings.MapTileSize);
+
+            return panel;
+        }
     }
 }
