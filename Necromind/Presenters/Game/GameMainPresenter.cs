@@ -18,13 +18,9 @@ namespace NecromindUI.Presenters.Game
         private readonly IGameMain _gameMain;
         private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
         private readonly MapService _mapService = new MapService();
+        public readonly Dictionary<Keys, Action> UserInputActions = new Dictionary<Keys, Action>();
+        public readonly MessageLogger MsgLogger = MessageLogger.GetInstance();
         private HeroModel _hero;
-
-        private readonly Dictionary<Keys, Action> _userInputActions = new Dictionary<Keys, Action>();
-        public Dictionary<Keys, Action> UserInputActions => _userInputActions;
-
-        private readonly MessageLogger _msgLogger = MessageLogger.GetInstance();
-        public MessageLogger MsgLogger => _msgLogger;
 
         public GameMainPresenter(IGameMain gameMain)
         {
@@ -44,8 +40,8 @@ namespace NecromindUI.Presenters.Game
             _mapService.SetNeighborhoodLocations();
             SetMovementBtns();
 
-            _msgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
-            _msgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
+            MsgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
+            MsgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
         }
 
         #region Event log
@@ -106,8 +102,8 @@ namespace NecromindUI.Presenters.Game
             if (_gameMain.BtnIsNorthEnabled)
             {
                 _mapService.MoveNorth();
-                _msgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
-                _msgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
+                MsgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
+                MsgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
 
                 SetLocationName();
                 SetMovementBtns();
@@ -119,8 +115,8 @@ namespace NecromindUI.Presenters.Game
             if (_gameMain.BtnIsSouthEnabled)
             {
                 _mapService.MoveSouth();
-                _msgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
-                _msgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
+                MsgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
+                MsgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
 
                 SetLocationName();
                 SetMovementBtns();
@@ -132,8 +128,8 @@ namespace NecromindUI.Presenters.Game
             if (_gameMain.BtnIsWestEnabled)
             {
                 _mapService.MoveWest();
-                _msgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
-                _msgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
+                MsgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
+                MsgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
 
                 SetLocationName();
                 SetMovementBtns();
@@ -145,8 +141,8 @@ namespace NecromindUI.Presenters.Game
             if (_gameMain.BtnIsEastEnabled)
             {
                 _mapService.MoveEast();
-                _msgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
-                _msgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
+                MsgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
+                MsgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
 
                 SetLocationName();
                 SetMovementBtns();
@@ -183,10 +179,10 @@ namespace NecromindUI.Presenters.Game
 
         private void SetUserInputActions()
         {
-            _userInputActions.Add(Keys.W, () => MoveNorth());
-            _userInputActions.Add(Keys.S, () => MoveSouth());
-            _userInputActions.Add(Keys.A, () => MoveWest());
-            _userInputActions.Add(Keys.D, () => MoveEast());
+            UserInputActions.Add(Keys.W, () => MoveNorth());
+            UserInputActions.Add(Keys.S, () => MoveSouth());
+            UserInputActions.Add(Keys.A, () => MoveWest());
+            UserInputActions.Add(Keys.D, () => MoveEast());
         }
 
         private void SetLocationName()
