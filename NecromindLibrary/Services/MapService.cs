@@ -43,10 +43,10 @@ namespace NecromindLibrary.Services
         protected int _y;
         public int Y => _y;
 
-        public MapService(List<Panel> map)
+        public MapService(int x, int y, List<Panel> map)
         {
-            _x = 0;
-            _y = 0;
+            _x = x;
+            _y = y;
             _map = map;
 
             SetStartTile();

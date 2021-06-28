@@ -10,7 +10,7 @@ namespace NecromindLibrary.Services
 {
     public class MapServiceAdmin : MapService
     {
-        public MapServiceAdmin(List<Panel> map) : base(map)
+        public MapServiceAdmin(List<Panel> map) : base(0, 0, map)
         {
         }
 

@@ -19,7 +19,7 @@ namespace NecromindUI.UserControls.Game
         private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
         private readonly List<Panel> _map = new List<Panel>();
 
-        public bool IsPanExitVisible
+        public bool PanIsExitVisible
         {
             get => panExit.Visible;
             set
@@ -129,13 +129,19 @@ namespace NecromindUI.UserControls.Game
             LoadMap();
             InitializeComponent();
 
-            _presenter = new GameMainPresenter(this, _map);
+            _presenter = new GameMainPresenter(this, hero, _map);
             _gameFriendlyInteraction = new GameFriendlyInteraction();
             _gameEnemyInteraction = new GameEnemyInteraction();
 
             _presenter.MsgLogger.OnMessageRaised += GameMessageRaised;
             _presenter.MsgLogger.OnMessageAppend += GameMessageAppend;
-            _presenter.StartGame(hero);
+
+            hero.MovedNorth += MoveNorth;
+            hero.MovedSouth += MoveSouth;
+            hero.MovedWest += MoveWest;
+            hero.MovedEast += MoveEast;
+
+            _presenter.StartGame();
         }
 
         public void ToggleExitPanVisibility()
@@ -259,6 +265,26 @@ namespace NecromindUI.UserControls.Game
         private void GameMessageAppend(object sender, GameMessageEventArgs e)
         {
             _presenter.AppendEventLog(e.Message, e.Color);
+        }
+
+        private void MoveNorth(object sender, EventArgs e)
+        {
+            _presenter.MoveNorth();
+        }
+
+        private void MoveSouth(object sender, EventArgs e)
+        {
+            _presenter.MoveSouth();
+        }
+
+        private void MoveWest(object sender, EventArgs e)
+        {
+            _presenter.MoveWest();
+        }
+
+        private void MoveEast(object sender, EventArgs e)
+        {
+            _presenter.MoveEast();
         }
     }
 }

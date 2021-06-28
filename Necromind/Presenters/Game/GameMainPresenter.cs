@@ -20,19 +20,18 @@ namespace NecromindUI.Presenters.Game
         private readonly MapService _mapService;
         public readonly Dictionary<Keys, Action> UserInputActions = new Dictionary<Keys, Action>();
         public readonly MessageLogger MsgLogger = MessageLogger.GetInstance();
-        private HeroModel _hero;
+        private readonly HeroModel _hero;
 
-        public GameMainPresenter(IGameMain gameMain, List<Panel> map)
+        public GameMainPresenter(IGameMain gameMain, HeroModel hero, List<Panel> map)
         {
             _gameMain = gameMain;
-            _mapService = new MapService(map);
+            _hero = hero;
+            _mapService = new MapService(_hero.PosX, _hero.PosY, map);
             SetUserInputActions();
         }
 
-        public void StartGame(HeroModel hero)
+        public void StartGame()
         {
-            _hero = hero;
-
             SetLocationName();
             SetHeroStats();
             SetHeroLabelDatabindings();
@@ -74,13 +73,13 @@ namespace NecromindUI.Presenters.Game
 
         public void TogglePanExitVisibility()
         {
-            if (_gameMain.IsPanExitVisible)
+            if (_gameMain.PanIsExitVisible)
             {
-                _gameMain.IsPanExitVisible = false;
+                _gameMain.PanIsExitVisible = false;
             }
             else
             {
-                _gameMain.IsPanExitVisible = true;
+                _gameMain.PanIsExitVisible = true;
             }
         }
 
@@ -94,6 +93,10 @@ namespace NecromindUI.Presenters.Game
         public void ShowFriendlyUI()
         {
             // TODO - Add logic to show friendly UI.
+        }
+
+        public void ShowEnemyUI()
+        {
         }
 
         #region Movement
@@ -180,10 +183,10 @@ namespace NecromindUI.Presenters.Game
 
         private void SetUserInputActions()
         {
-            UserInputActions.Add(Keys.W, () => MoveNorth());
-            UserInputActions.Add(Keys.S, () => MoveSouth());
-            UserInputActions.Add(Keys.A, () => MoveWest());
-            UserInputActions.Add(Keys.D, () => MoveEast());
+            UserInputActions.Add(Keys.W, () => _hero.MoveNorth());
+            UserInputActions.Add(Keys.S, () => _hero.MoveSouth());
+            UserInputActions.Add(Keys.A, () => _hero.MoveWest());
+            UserInputActions.Add(Keys.D, () => _hero.MoveEast());
         }
 
         private void SetLocationName()
