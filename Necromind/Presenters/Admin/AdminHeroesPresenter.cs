@@ -14,8 +14,8 @@ namespace NecromindUI.Presenters.Admin
         private readonly IAdminHeroes _adminHeroes;
         private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
         private readonly BindingSource _bsHeroes = new BindingSource();
-        private BindingList<HeroModel> _heroes;
-        private HeroModel _hero;
+        private BindingList<HeroAdminModel> _heroes;
+        private HeroAdminModel _hero;
 
         public AdminHeroesPresenter(IAdminHeroes adminHeroes)
         {
@@ -149,7 +149,7 @@ namespace NecromindUI.Presenters.Admin
 
         private void LoadHeroes()
         {
-            _heroes = new BindingList<HeroModel>(_mongoConnector.GetAllRecords<HeroModel>(DBConfig.HeroesCollection));
+            _heroes = new BindingList<HeroAdminModel>(_mongoConnector.GetAllRecords<HeroAdminModel>(DBConfig.HeroesCollection));
         }
 
         private void BindHeroes()

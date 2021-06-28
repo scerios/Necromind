@@ -15,8 +15,8 @@ namespace NecromindUI.Presenters.Admin
         private readonly string _listboxDisplayMember = "CombinedName";
         private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
         private readonly BindingSource _bsEnemies = new BindingSource();
-        private List<EnemyModel> _enemies;
-        private EnemyModel _enemy;
+        private List<EnemyAdminModel> _enemies;
+        private EnemyAdminModel _enemy;
 
         public AdminEnemiesPresenter(IAdminEnemies adminEnemies)
         {
@@ -265,7 +265,7 @@ namespace NecromindUI.Presenters.Admin
 
         private void LoadEnemies()
         {
-            _enemies = _mongoConnector.GetAllRecords<EnemyModel>(DBConfig.EnemiesCollection);
+            _enemies = _mongoConnector.GetAllRecords<EnemyAdminModel>(DBConfig.EnemiesCollection);
         }
 
         private void BindEnemies()
@@ -321,7 +321,7 @@ namespace NecromindUI.Presenters.Admin
 
         private void SetCreateEnemyProperties()
         {
-            _enemy = new EnemyModel();
+            _enemy = new EnemyAdminModel();
             _enemy.AdminSetName(_adminEnemies.TbCreateName);
             _enemy.AdminSetLvl(_adminEnemies.TbCreateLvl);
             _enemy.AdminSetGold(_adminEnemies.TbCreateGold);

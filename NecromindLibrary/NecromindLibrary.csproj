@@ -153,7 +153,9 @@
     <Compile Include="GlobalConfig.cs" />
     <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\BaseCharacterModel.cs" />
+    <Compile Include="Models\EnemyAdminModel.cs" />
     <Compile Include="Models\EnemyModel.cs" />
+    <Compile Include="Models\HeroAdminModel.cs" />
     <Compile Include="Models\HeroModel.cs" />
     <Compile Include="Models\LocationModel.cs" />
     <Compile Include="Models\MapTileModel.cs" />
