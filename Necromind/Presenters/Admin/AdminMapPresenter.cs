@@ -58,6 +58,7 @@ namespace NecromindUI.Presenters.Admin
             TryInitNewMapTile();
 
             _mapService.Current.LocationId = _mapService.Location.Id;
+            AlertSuccess($"{ _adminMap.LabLocName }", "attached");
 
             EnableSaveBtn();
         }
@@ -68,6 +69,8 @@ namespace NecromindUI.Presenters.Admin
                 CreateMapTile();
             else
                 UpdateMapTile();
+
+            _mapService.SetMapColor();
 
             ClearLocationSelection();
             DisableAttachBtn();
@@ -82,13 +85,17 @@ namespace NecromindUI.Presenters.Admin
             if (_mongoConnector.TryDeleteRecordById<MapTileModel>(DBConfig.MapTilesCollection, _mapService.Current.Id))
             {
                 AlertSuccess($"({ _mapService.X }, { _mapService.Y })", "deleted");
-            }
 
-            _mapService.DeleteMap();
-            ToggleDelBtn();
-            ClearLocationSelection();
-            ClearEditFields();
-            SetMovementBtns();
+                _mapService.DeleteMap();
+                _mapService.SetMapColor();
+
+                ToggleDelBtn();
+                ClearLocationSelection();
+                ClearEditFields();
+                SetMovementBtns();
+            }
+            else
+                AlertFail($"({ _mapService.X }, { _mapService.Y })", "delete");
         }
 
         #region Movement
