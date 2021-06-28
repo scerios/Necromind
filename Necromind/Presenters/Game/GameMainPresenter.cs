@@ -17,14 +17,15 @@ namespace NecromindUI.Presenters.Game
         private const string UNDER_CONSTRUCTION = "A magical barrier blocks the way.";
         private readonly IGameMain _gameMain;
         private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
-        private readonly MapService _mapService = new MapService();
+        private readonly MapService _mapService;
         public readonly Dictionary<Keys, Action> UserInputActions = new Dictionary<Keys, Action>();
         public readonly MessageLogger MsgLogger = MessageLogger.GetInstance();
         private HeroModel _hero;
 
-        public GameMainPresenter(IGameMain gameMain)
+        public GameMainPresenter(IGameMain gameMain, List<Panel> map)
         {
             _gameMain = gameMain;
+            _mapService = new MapService(map);
             SetUserInputActions();
         }
 

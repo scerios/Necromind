@@ -16,14 +16,15 @@ namespace NecromindUI.Presenters.Admin
         private readonly IAdminMap _adminMap;
         private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
         private readonly BindingSource _bsLocations = new BindingSource();
-        private readonly MapServiceAdmin _mapService = new MapServiceAdmin();
+        private readonly MapServiceAdmin _mapService;
         private List<LocationModel> _locations;
 
         #endregion Properties
 
-        public AdminMapPresenter(IAdminMap adminMap)
+        public AdminMapPresenter(IAdminMap adminMap, List<Panel> map)
         {
             _adminMap = adminMap;
+            _mapService = new MapServiceAdmin(map);
         }
 
         public void LoadData()

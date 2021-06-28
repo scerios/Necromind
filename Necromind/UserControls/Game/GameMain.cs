@@ -1,8 +1,12 @@
-﻿using NecromindLibrary.EventArgs;
+﻿using NecromindLibrary.Config;
+using NecromindLibrary.EventArgs;
 using NecromindLibrary.Models;
+using NecromindLibrary.Repository;
+using NecromindLibrary.Services;
 using NecromindUI.Presenters.Game;
 using NecromindUI.Views.Game;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace NecromindUI.UserControls.Game
@@ -12,6 +16,8 @@ namespace NecromindUI.UserControls.Game
         private readonly GameMainPresenter _presenter;
         private readonly GameFriendlyInteraction _gameFriendlyInteraction;
         private readonly GameEnemyInteraction _gameEnemyInteraction;
+        private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
+        private readonly List<Panel> _map = new List<Panel>();
 
         public bool IsPanExitVisible
         {
@@ -121,8 +127,9 @@ namespace NecromindUI.UserControls.Game
         public GameMain(HeroModel hero)
         {
             InitializeComponent();
+            LoadMap();
 
-            _presenter = new GameMainPresenter(this);
+            _presenter = new GameMainPresenter(this, _map);
             _gameFriendlyInteraction = new GameFriendlyInteraction();
             _gameEnemyInteraction = new GameEnemyInteraction();
 
@@ -134,6 +141,41 @@ namespace NecromindUI.UserControls.Game
         public void ToggleExitPanVisibility()
         {
             _presenter.TogglePanExitVisibility();
+        }
+
+        private void LoadMap()
+        {
+            int locY = 10;
+
+            for (int i = -10; i <= 10; i++)
+            {
+                int locX = 250;
+                locY += UISettings.MapTileSize;
+
+                for (int j = -10; j <= 10; j++)
+                {
+                    var tile = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, j, i);
+
+                    locX += UISettings.MapTileSize;
+
+                    if (tile == null)
+                        Controls.Add(UIService.CreateMapPanel(locX, locY, j, i, UISettings.EmptyTileColor));
+                    else
+                    {
+                        var location = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, tile.LocationId.ToString());
+
+                        if (!location.IsAccessible)
+                            Controls.Add(UIService.CreateMapPanel(locX, locY, j, i, UISettings.UnaccessibleTileColor));
+
+                        if (location.IsHostile)
+                            Controls.Add(UIService.CreateMapPanel(locX, locY, j, i, UISettings.ErrorColor));
+                        else
+                            Controls.Add(UIService.CreateMapPanel(locX, locY, j, i, UISettings.SuccessColor));
+                    }
+
+                    _map.Add((Panel)Controls.Find("pan" + j + "I" + i, false)[0]);
+                }
+            }
         }
 
         private void BtnSaveExit_Click(object sender, EventArgs e)

@@ -1,6 +1,11 @@
-﻿using NecromindUI.Presenters.Admin;
+﻿using NecromindLibrary.Config;
+using NecromindLibrary.Models;
+using NecromindLibrary.Repository;
+using NecromindLibrary.Services;
+using NecromindUI.Presenters.Admin;
 using NecromindUI.Views.Admin;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace NecromindUI.UserControls.Admin
@@ -10,6 +15,8 @@ namespace NecromindUI.UserControls.Admin
         #region Properties
 
         private readonly AdminMapPresenter _presenter;
+        private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
+        private readonly List<Panel> _map = new List<Panel>();
 
         #region Label
 
@@ -224,12 +231,49 @@ namespace NecromindUI.UserControls.Admin
         public AdminMap()
         {
             InitializeComponent();
-            _presenter = new AdminMapPresenter(this);
+            LoadMap();
+
+            _presenter = new AdminMapPresenter(this, _map);
         }
 
         public void LoadData()
         {
             _presenter.LoadData();
+        }
+
+        private void LoadMap()
+        {
+            int locY = 240;
+
+            for (int i = -10; i <= 10; i++)
+            {
+                int locX = 10;
+                locY += UISettings.MapTileSize;
+
+                for (int j = -10; j <= 10; j++)
+                {
+                    var tile = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, j, i);
+
+                    locX += UISettings.MapTileSize;
+
+                    if (tile == null)
+                        Controls.Add(UIService.CreateMapPanel(locX, locY, j, i, UISettings.EmptyTileColor));
+                    else
+                    {
+                        var location = _mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, tile.LocationId.ToString());
+
+                        if (!location.IsAccessible)
+                            Controls.Add(UIService.CreateMapPanel(locX, locY, j, i, UISettings.UnaccessibleTileColor));
+
+                        if (location.IsHostile)
+                            Controls.Add(UIService.CreateMapPanel(locX, locY, j, i, UISettings.ErrorColor));
+                        else
+                            Controls.Add(UIService.CreateMapPanel(locX, locY, j, i, UISettings.SuccessColor));
+                    }
+
+                    _map.Add((Panel)Controls.Find("pan" + j + "I" + i, false)[0]);
+                }
+            }
         }
 
         private void LbLocations_SelectedIndexChanged(object sender, EventArgs e)
