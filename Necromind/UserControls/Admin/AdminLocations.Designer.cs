@@ -31,6 +31,7 @@ namespace NecromindUI.UserControls.Admin
         {
             this.components = new System.ComponentModel.Container();
             this.panCreate = new System.Windows.Forms.Panel();
+            this.labNameCError = new System.Windows.Forms.Label();
             this.cbCreateIsAccessible = new System.Windows.Forms.CheckBox();
             this.labIsAccessibleL = new System.Windows.Forms.Label();
             this.panCreateEnemies = new System.Windows.Forms.Panel();
@@ -50,6 +51,7 @@ namespace NecromindUI.UserControls.Admin
             this.timHideAdd = new System.Windows.Forms.Timer(this.components);
             this.timHideEdit = new System.Windows.Forms.Timer(this.components);
             this.panEdit = new System.Windows.Forms.Panel();
+            this.labNameMError = new System.Windows.Forms.Label();
             this.cbEditIsAccessible = new System.Windows.Forms.CheckBox();
             this.labIsAccessibleR = new System.Windows.Forms.Label();
             this.panEditEnemies = new System.Windows.Forms.Panel();
@@ -67,8 +69,6 @@ namespace NecromindUI.UserControls.Admin
             this.labDescriptionR = new System.Windows.Forms.Label();
             this.labNameR = new System.Windows.Forms.Label();
             this.lbLocations = new System.Windows.Forms.ListBox();
-            this.labNameCError = new System.Windows.Forms.Label();
-            this.labNameMError = new System.Windows.Forms.Label();
             this.panCreate.SuspendLayout();
             this.panCreateEnemies.SuspendLayout();
             this.panEdit.SuspendLayout();
@@ -94,6 +94,18 @@ namespace NecromindUI.UserControls.Admin
             this.panCreate.Name = "panCreate";
             this.panCreate.Size = new System.Drawing.Size(1084, 260);
             this.panCreate.TabIndex = 0;
+            // 
+            // labNameCError
+            // 
+            this.labNameCError.AutoSize = true;
+            this.labNameCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labNameCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labNameCError.Location = new System.Drawing.Point(261, 20);
+            this.labNameCError.Name = "labNameCError";
+            this.labNameCError.Size = new System.Drawing.Size(112, 16);
+            this.labNameCError.TabIndex = 53;
+            this.labNameCError.Text = "Invalid name.";
+            this.labNameCError.Visible = false;
             // 
             // cbCreateIsAccessible
             // 
@@ -201,10 +213,9 @@ namespace NecromindUI.UserControls.Admin
             this.labEnemyAdd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labEnemyAdd.AutoSize = true;
             this.labEnemyAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labEnemyAdd.Location = new System.Drawing.Point(684, 219);
-            this.labEnemyAdd.MinimumSize = new System.Drawing.Size(260, 0);
+            this.labEnemyAdd.Location = new System.Drawing.Point(20, 219);
             this.labEnemyAdd.Name = "labEnemyAdd";
-            this.labEnemyAdd.Size = new System.Drawing.Size(260, 16);
+            this.labEnemyAdd.Size = new System.Drawing.Size(0, 16);
             this.labEnemyAdd.TabIndex = 48;
             this.labEnemyAdd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labEnemyAdd.Visible = false;
@@ -321,6 +332,18 @@ namespace NecromindUI.UserControls.Admin
             this.panEdit.Size = new System.Drawing.Size(1084, 260);
             this.panEdit.TabIndex = 3;
             // 
+            // labNameMError
+            // 
+            this.labNameMError.AutoSize = true;
+            this.labNameMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labNameMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.labNameMError.Location = new System.Drawing.Point(416, 20);
+            this.labNameMError.Name = "labNameMError";
+            this.labNameMError.Size = new System.Drawing.Size(112, 16);
+            this.labNameMError.TabIndex = 57;
+            this.labNameMError.Text = "Invalid name.";
+            this.labNameMError.Visible = false;
+            // 
             // cbEditIsAccessible
             // 
             this.cbEditIsAccessible.AutoSize = true;
@@ -427,10 +450,9 @@ namespace NecromindUI.UserControls.Admin
             this.labEnemyEdit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labEnemyEdit.AutoSize = true;
             this.labEnemyEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labEnemyEdit.Location = new System.Drawing.Point(684, 219);
-            this.labEnemyEdit.MinimumSize = new System.Drawing.Size(260, 0);
+            this.labEnemyEdit.Location = new System.Drawing.Point(20, 219);
             this.labEnemyEdit.Name = "labEnemyEdit";
-            this.labEnemyEdit.Size = new System.Drawing.Size(260, 16);
+            this.labEnemyEdit.Size = new System.Drawing.Size(0, 16);
             this.labEnemyEdit.TabIndex = 52;
             this.labEnemyEdit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labEnemyEdit.Visible = false;
@@ -534,30 +556,6 @@ namespace NecromindUI.UserControls.Admin
             this.lbLocations.Size = new System.Drawing.Size(150, 180);
             this.lbLocations.TabIndex = 36;
             this.lbLocations.SelectedIndexChanged += new System.EventHandler(this.LbLocations_SelectedIndexChanged);
-            // 
-            // labNameCError
-            // 
-            this.labNameCError.AutoSize = true;
-            this.labNameCError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labNameCError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.labNameCError.Location = new System.Drawing.Point(261, 20);
-            this.labNameCError.Name = "labNameCError";
-            this.labNameCError.Size = new System.Drawing.Size(112, 16);
-            this.labNameCError.TabIndex = 53;
-            this.labNameCError.Text = "Invalid name.";
-            this.labNameCError.Visible = false;
-            // 
-            // labNameMError
-            // 
-            this.labNameMError.AutoSize = true;
-            this.labNameMError.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labNameMError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.labNameMError.Location = new System.Drawing.Point(416, 20);
-            this.labNameMError.Name = "labNameMError";
-            this.labNameMError.Size = new System.Drawing.Size(112, 16);
-            this.labNameMError.TabIndex = 57;
-            this.labNameMError.Text = "Invalid name.";
-            this.labNameMError.Visible = false;
             // 
             // AdminLocations
             // 

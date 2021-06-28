@@ -216,7 +216,7 @@ namespace NecromindUI.UserControls.Admin
             this.labHeroEdit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labHeroEdit.AutoSize = true;
             this.labHeroEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labHeroEdit.Location = new System.Drawing.Point(700, 486);
+            this.labHeroEdit.Location = new System.Drawing.Point(20, 486);
             this.labHeroEdit.Name = "labHeroEdit";
             this.labHeroEdit.Size = new System.Drawing.Size(0, 16);
             this.labHeroEdit.TabIndex = 19;

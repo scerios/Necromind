@@ -468,7 +468,7 @@ namespace NecromindUI.UserControls.Admin
             this.labMapEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labMapEdit.AutoSize = true;
             this.labMapEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labMapEdit.Location = new System.Drawing.Point(684, 484);
+            this.labMapEdit.Location = new System.Drawing.Point(20, 484);
             this.labMapEdit.Name = "labMapEdit";
             this.labMapEdit.Size = new System.Drawing.Size(0, 16);
             this.labMapEdit.TabIndex = 67;

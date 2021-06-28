@@ -189,7 +189,7 @@ namespace NecromindUI.UserControls.Admin
             this.labEnemyAdd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labEnemyAdd.AutoSize = true;
             this.labEnemyAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labEnemyAdd.Location = new System.Drawing.Point(700, 219);
+            this.labEnemyAdd.Location = new System.Drawing.Point(20, 219);
             this.labEnemyAdd.Name = "labEnemyAdd";
             this.labEnemyAdd.Size = new System.Drawing.Size(0, 16);
             this.labEnemyAdd.TabIndex = 33;
@@ -477,7 +477,7 @@ namespace NecromindUI.UserControls.Admin
             this.labEnemyEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labEnemyEdit.AutoSize = true;
             this.labEnemyEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labEnemyEdit.Location = new System.Drawing.Point(684, 219);
+            this.labEnemyEdit.Location = new System.Drawing.Point(20, 219);
             this.labEnemyEdit.Name = "labEnemyEdit";
             this.labEnemyEdit.Size = new System.Drawing.Size(0, 16);
             this.labEnemyEdit.TabIndex = 35;
