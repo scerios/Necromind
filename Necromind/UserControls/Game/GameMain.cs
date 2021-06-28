@@ -143,6 +143,10 @@ namespace NecromindUI.UserControls.Game
             _gameFriendlyInteraction = new GameFriendlyInteraction();
             _gameEnemyInteraction = new GameEnemyInteraction();
 
+            _presenter.FriendlyUIShown += ShowFriendlyUI;
+            _presenter.FriendlyUIHidden += HideFriendlyUI;
+            _presenter.EnemyUIShown += ShowEnemyUI;
+            _presenter.EnemyUIHidden += HideEnemyUI;
             _presenter.MsgLogger.OnMessageRaised += GameMessageRaised;
             _presenter.MsgLogger.OnMessageAppend += GameMessageAppend;
 
@@ -239,22 +243,22 @@ namespace NecromindUI.UserControls.Game
             panel.Controls.Remove(view);
         }
 
-        private void ShowFriendlyUI()
+        private void ShowFriendlyUI(object sender, EventArgs e)
         {
             ActivateView(panInteraction, _gameFriendlyInteraction);
         }
 
-        private void HideFriendlyUI()
+        private void HideFriendlyUI(object sender, EventArgs e)
         {
             DeactivateView(panInteraction, _gameFriendlyInteraction);
         }
 
-        private void ShowEnemyUI()
+        private void ShowEnemyUI(object sender, EventArgs e)
         {
             ActivateView(panInteraction, _gameEnemyInteraction);
         }
 
-        private void HideEnemyUI()
+        private void HideEnemyUI(object sender, EventArgs e)
         {
             DeactivateView(panInteraction, _gameEnemyInteraction);
         }

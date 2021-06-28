@@ -22,12 +22,20 @@ namespace NecromindUI.Presenters.Game
         public readonly MessageLogger MsgLogger = MessageLogger.GetInstance();
         private readonly HeroModel _hero;
 
+        public event EventHandler FriendlyUIShown;
+
+        public event EventHandler FriendlyUIHidden;
+
+        public event EventHandler EnemyUIShown;
+
+        public event EventHandler EnemyUIHidden;
+
         public GameMainPresenter(IGameMain gameMain, HeroModel hero, List<Panel> map)
         {
             _gameMain = gameMain;
             _hero = hero;
             _mapService = new MapService(_hero.PosX, _hero.PosY, map);
-            SetUserInputActions();
+            EnableUserInputActions();
         }
 
         public void StartGame()
@@ -95,8 +103,19 @@ namespace NecromindUI.Presenters.Game
             // TODO - Add logic to show friendly UI.
         }
 
+        public void HideFriendlyUI()
+        {
+            FriendlyUIHidden?.Invoke(this, new EventArgs());
+        }
+
         public void ShowEnemyUI()
         {
+            EnemyUIShown?.Invoke(this, new EventArgs());
+        }
+
+        public void HideEnemyUI()
+        {
+            EnemyUIHidden?.Invoke(this, new EventArgs());
         }
 
         #region Movement
@@ -109,8 +128,8 @@ namespace NecromindUI.Presenters.Game
                 MsgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
                 MsgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
 
+                CheckForEnemy();
                 SetLocationName();
-                SetMovementBtns();
             }
         }
 
@@ -122,8 +141,8 @@ namespace NecromindUI.Presenters.Game
                 MsgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
                 MsgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
 
+                CheckForEnemy();
                 SetLocationName();
-                SetMovementBtns();
             }
         }
 
@@ -135,8 +154,8 @@ namespace NecromindUI.Presenters.Game
                 MsgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
                 MsgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
 
+                CheckForEnemy();
                 SetLocationName();
-                SetMovementBtns();
             }
         }
 
@@ -148,9 +167,27 @@ namespace NecromindUI.Presenters.Game
                 MsgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
                 MsgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
 
+                CheckForEnemy();
                 SetLocationName();
-                SetMovementBtns();
             }
+        }
+
+        private void CheckForEnemy()
+        {
+            if (IsTileHostileAndEnemyAppears())
+                InitFight();
+            else
+                SetMovementBtns();
+        }
+
+        private bool IsTileHostileAndEnemyAppears() =>
+            _mapService.Location.IsHostile && RandomGeneratorService.IsEnemySpawned();
+
+        private void InitFight()
+        {
+            DisableUserInputActions();
+            DisableMovementBtns();
+            ShowEnemyUI();
         }
 
         #endregion Movement
@@ -181,12 +218,17 @@ namespace NecromindUI.Presenters.Game
 
         #region Setters
 
-        private void SetUserInputActions()
+        private void EnableUserInputActions()
         {
             UserInputActions.Add(Keys.W, () => _hero.MoveNorth());
             UserInputActions.Add(Keys.S, () => _hero.MoveSouth());
             UserInputActions.Add(Keys.A, () => _hero.MoveWest());
             UserInputActions.Add(Keys.D, () => _hero.MoveEast());
+        }
+
+        private void DisableUserInputActions()
+        {
+            UserInputActions.Clear();
         }
 
         private void SetLocationName()
@@ -223,6 +265,14 @@ namespace NecromindUI.Presenters.Game
             _gameMain.BtnIsSouthEnabled = _mapService.DoesCurrentHasSouthNeighbor() && _mapService.IsSouthOfCurrentAccessible();
             _gameMain.BtnIsWestEnabled = _mapService.DoesCurrentHasWestNeighbor() && _mapService.IsWestOfCurrentAccessible();
             _gameMain.BtnIsEastEnabled = _mapService.DoesCurrentHasEastNeighbor() && _mapService.IsEastOfCurrentAccessible();
+        }
+
+        private void DisableMovementBtns()
+        {
+            _gameMain.BtnIsNorthEnabled = false;
+            _gameMain.BtnIsSouthEnabled = false;
+            _gameMain.BtnIsWestEnabled = false;
+            _gameMain.BtnIsEastEnabled = false;
         }
 
         #endregion Setters
