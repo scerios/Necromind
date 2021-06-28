@@ -1,23 +1,22 @@
-﻿using NecromindLibrary.Services;
-using NecromindLibrary.Services.GameMechanisms;
+﻿using NecromindLibrary.Services.GameMechanisms;
 using System;
 
 namespace NecromindLibrary.Models
 {
-    public class EnemyModel : BaseCharacterModel, IFighter, IAdminSetter
+    public class EnemyModel : BaseCharacterModel, IFighter
     {
-        private string _combinedName;
+        protected string _combinedName;
 
         public string CombinedName
         {
             get => _combinedName;
-            private set
+            protected set
             {
                 _combinedName = value;
             }
         }
 
-        private int _dmgMin;
+        protected int _dmgMin;
 
         public int DmgMin
         {
@@ -29,7 +28,7 @@ namespace NecromindLibrary.Models
             }
         }
 
-        private int _dmgMax;
+        protected int _dmgMax;
 
         public int DmgMax
         {
@@ -41,7 +40,7 @@ namespace NecromindLibrary.Models
             }
         }
 
-        private int _def;
+        protected int _def;
 
         public int Def
         {
@@ -53,7 +52,7 @@ namespace NecromindLibrary.Models
             }
         }
 
-        private int _health;
+        protected int _health;
 
         public int Health
         {
@@ -65,7 +64,7 @@ namespace NecromindLibrary.Models
             }
         }
 
-        private int _healthMax;
+        protected int _healthMax;
 
         public int HealthMax
         {
@@ -131,48 +130,6 @@ namespace NecromindLibrary.Models
 
             var traderPlayer = enemy as ITrader;
             traderPlayer.RecieveGold(Gold);
-        }
-
-        public void AdminSetName(string name)
-        {
-            Name = name;
-        }
-
-        public void AdminSetGold(string gold)
-        {
-            _gold = Int32.Parse(gold);
-        }
-
-        public void AdminSetLvl(string lvl)
-        {
-            _lvl = Int32.Parse(lvl);
-        }
-
-        public void AdminSetDmgMin(string dmg)
-        {
-            _dmgMin = Int32.Parse(dmg);
-        }
-
-        public void AdminSetDmgMax(string dmg)
-        {
-            _dmgMax = Int32.Parse(dmg);
-        }
-
-        public void AdminSetDef(string def)
-        {
-            _def = Int32.Parse(def);
-        }
-
-        public void AdminSetHealth(string health)
-        {
-            var healthAsInt = Int32.Parse(health);
-            _healthMax = healthAsInt;
-            _health = healthAsInt;
-        }
-
-        public void AdminSetCombinedName()
-        {
-            CombinedName = Name + " " + Lvl;
         }
     }
 }

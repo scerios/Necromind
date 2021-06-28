@@ -1,13 +1,12 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
-using NecromindLibrary.Services;
 using NecromindLibrary.Services.GameMechanisms;
 using System;
 
 namespace NecromindLibrary.Models
 {
-    public class HeroModel : BaseCharacterModel, IPlayer, IAdminSetter
+    public class HeroModel : BaseCharacterModel, IPlayer
     {
-        private int _dmgMin;
+        protected int _dmgMin;
 
         public int DmgMin
         {
@@ -19,7 +18,7 @@ namespace NecromindLibrary.Models
             }
         }
 
-        private int _dmgMax;
+        protected int _dmgMax;
 
         public int DmgMax
         {
@@ -31,7 +30,7 @@ namespace NecromindLibrary.Models
             }
         }
 
-        private int _def;
+        protected int _def;
 
         public int Def
         {
@@ -43,7 +42,7 @@ namespace NecromindLibrary.Models
             }
         }
 
-        private int _health;
+        protected int _health;
 
         public int Health
         {
@@ -55,7 +54,7 @@ namespace NecromindLibrary.Models
             }
         }
 
-        private int _healthMax;
+        protected int _healthMax;
 
         public int HealthMax
         {
@@ -67,7 +66,7 @@ namespace NecromindLibrary.Models
             }
         }
 
-        private int _experiencePoints;
+        protected int _experiencePoints;
 
         public int ExperiencePoints
         {
@@ -79,7 +78,7 @@ namespace NecromindLibrary.Models
             }
         }
 
-        private int _nextLvlAt;
+        protected int _nextLvlAt;
 
         public int NextLvlAt
         {
@@ -91,7 +90,7 @@ namespace NecromindLibrary.Models
             }
         }
 
-        private int _posX;
+        protected int _posX;
 
         [BsonIgnore]
         public int PosX
@@ -103,7 +102,7 @@ namespace NecromindLibrary.Models
             }
         }
 
-        private int _posY;
+        protected int _posY;
 
         [BsonIgnore]
         public int PosY
@@ -113,6 +112,10 @@ namespace NecromindLibrary.Models
             {
                 _posY = value;
             }
+        }
+
+        protected HeroModel()
+        {
         }
 
         public HeroModel(string name)
@@ -197,43 +200,6 @@ namespace NecromindLibrary.Models
         public void RecieveGold(int amount)
         {
             Gold += amount;
-        }
-
-        public void AdminSetName(string name)
-        {
-            Name = name;
-        }
-
-        public void AdminSetGold(string gold)
-        {
-            _gold = Int32.Parse(gold);
-        }
-
-        public void AdminSetLvl(string lvl)
-        {
-            _lvl = Int32.Parse(lvl);
-        }
-
-        public void AdminSetDmgMin(string dmg)
-        {
-            _dmgMin = Int32.Parse(dmg);
-        }
-
-        public void AdminSetDmgMax(string dmg)
-        {
-            _dmgMax = Int32.Parse(dmg);
-        }
-
-        public void AdminSetDef(string def)
-        {
-            _def = Int32.Parse(def);
-        }
-
-        public void AdminSetHealth(string health)
-        {
-            var healthAsInt = Int32.Parse(health);
-            _healthMax = healthAsInt;
-            _health = healthAsInt;
         }
 
         public void MoveNorth()
