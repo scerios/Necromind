@@ -180,8 +180,11 @@ namespace NecromindUI.UserControls.Game
 
         private void BtnSaveExit_Click(object sender, EventArgs e)
         {
-            BtnBackToMenu?.Invoke(sender, e);
             _presenter.SaveAndExitGame();
+            _presenter.MsgLogger.OnMessageRaised -= GameMessageRaised;
+            _presenter.MsgLogger.OnMessageAppend -= GameMessageAppend;
+
+            BtnBackToMenu?.Invoke(sender, e);
         }
 
         private void BtnContinue_Click(object sender, EventArgs e)
