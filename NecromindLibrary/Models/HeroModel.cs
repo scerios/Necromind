@@ -94,7 +94,7 @@ namespace NecromindLibrary.Models
         private int _locationX;
 
         [BsonIgnore]
-        public int LocationX
+        public int PosX
         {
             get => _locationX;
             private set
@@ -106,7 +106,7 @@ namespace NecromindLibrary.Models
         private int _locationY;
 
         [BsonIgnore]
-        public int LocationY
+        public int PosY
         {
             get => _locationY;
             private set
@@ -238,22 +238,22 @@ namespace NecromindLibrary.Models
 
         public void MoveNorth()
         {
-            LocationY--;
+            PosY--;
         }
 
         public void MoveSouth()
         {
-            LocationY++;
+            PosY++;
         }
 
         public void MoveEast()
         {
-            LocationX--;
+            PosX--;
         }
 
         public void MoveWest()
         {
-            LocationX++;
+            PosX++;
         }
     }
 }

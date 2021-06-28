@@ -4,9 +4,9 @@ namespace NecromindLibrary.Services.GameMechanisms
 {
     public interface IMobile
     {
-        int LocationX { get; }
+        int PosX { get; }
 
-        int LocationY { get; }
+        int PosY { get; }
 
         void MoveNorth();
 
