@@ -1,11 +1,17 @@
 ﻿using NecromindLibrary.Config;
 using NecromindLibrary.Models;
 using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace NecromindLibrary.Services
 {
     public class MapServiceAdmin : MapService
     {
+        public MapServiceAdmin(List<Panel> map) : base(map)
+        {
+        }
+
         public void InitCurrentAsNewTile()
         {
             _current = new MapTileModel();

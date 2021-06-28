@@ -2,6 +2,9 @@
 using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace NecromindLibrary.Services
 {
@@ -32,16 +35,19 @@ namespace NecromindLibrary.Services
         private LocationModel _eastLocationOfCurrent;
         public LocationModel EastLocationOfCurrent => _eastLocationOfCurrent;
 
+        protected readonly List<Panel> _map;
+
         protected int _x;
         public int X => _x;
 
         protected int _y;
         public int Y => _y;
 
-        public MapService()
+        public MapService(List<Panel> map)
         {
             _x = 0;
             _y = 0;
+            _map = map;
 
             SetStartTile();
         }
@@ -50,6 +56,8 @@ namespace NecromindLibrary.Services
 
         public void MoveNorth()
         {
+            FadeHighLightOnCoordinate(_x, _y);
+
             _y--;
             _southOfCurrent = _current;
             _current = _northOfCurrent;
@@ -57,6 +65,7 @@ namespace NecromindLibrary.Services
             _southLocationOfCurrent = _location;
             _location = _northLocationOfCurrent;
 
+            HighlightMapByCoordinate(_x, _y);
             SetCurrentTilesLocation();
 
             GetNorthOfCurrent();
@@ -70,6 +79,7 @@ namespace NecromindLibrary.Services
 
         public void MoveSouth()
         {
+            FadeHighLightOnCoordinate(_x, _y);
             _y++;
             _northOfCurrent = _current;
             _current = _southOfCurrent;
@@ -77,6 +87,7 @@ namespace NecromindLibrary.Services
             _northLocationOfCurrent = _location;
             _location = _southLocationOfCurrent;
 
+            HighlightMapByCoordinate(_x, _y);
             SetCurrentTilesLocation();
 
             GetSouthOfCurrent();
@@ -90,6 +101,7 @@ namespace NecromindLibrary.Services
 
         public void MoveWest()
         {
+            FadeHighLightOnCoordinate(_x, _y);
             _x--;
             _eastOfCurrent = _current;
             _current = _westOfCurrent;
@@ -97,6 +109,7 @@ namespace NecromindLibrary.Services
             _eastLocationOfCurrent = _location;
             _location = _westLocationOfCurrent;
 
+            HighlightMapByCoordinate(_x, _y);
             SetCurrentTilesLocation();
 
             GetNorthOfCurrent();
@@ -110,6 +123,7 @@ namespace NecromindLibrary.Services
 
         public void MoveEast()
         {
+            FadeHighLightOnCoordinate(_x, _y);
             _x++;
             _westOfCurrent = _current;
             _current = _eastOfCurrent;
@@ -117,6 +131,7 @@ namespace NecromindLibrary.Services
             _westLocationOfCurrent = _location;
             _location = _eastLocationOfCurrent;
 
+            HighlightMapByCoordinate(_x, _y);
             SetCurrentTilesLocation();
 
             GetNorthOfCurrent();
@@ -200,6 +215,7 @@ namespace NecromindLibrary.Services
         {
             _current = _mongoConnector.GetTileByCoordinates(DBConfig.MapTilesCollection, _x, _y);
             SetCurrentLocation(_mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _current.LocationId.ToString()));
+            HighlightMapByCoordinate(_x, _y);
         }
 
         public void SetNeighborhood()
@@ -224,6 +240,18 @@ namespace NecromindLibrary.Services
                 SetCurrentLocation(_mongoConnector.GetRecordById<LocationModel>(DBConfig.LocationsCollection, _current.LocationId.ToString()));
             else
                 SetCurrentLocation(null);
+        }
+
+        private void HighlightMapByCoordinate(int x, int y)
+        {
+            var map = _map.Single(i => i.Name == "pan" + x + "I" + y);
+            map.BorderStyle = BorderStyle.FixedSingle;
+        }
+
+        private void FadeHighLightOnCoordinate(int x, int y)
+        {
+            var map = _map.Single(i => i.Name == "pan" + x + "I" + y);
+            map.BorderStyle = BorderStyle.None;
         }
 
         #endregion Setters
