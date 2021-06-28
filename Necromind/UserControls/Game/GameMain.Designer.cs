@@ -72,7 +72,7 @@ namespace NecromindUI.UserControls.Game
             this.panBottom.Controls.Add(this.panEventLog);
             this.panBottom.Controls.Add(this.panMovement);
             this.panBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panBottom.Location = new System.Drawing.Point(0, 411);
+            this.panBottom.Location = new System.Drawing.Point(0, 467);
             this.panBottom.Name = "panBottom";
             this.panBottom.Size = new System.Drawing.Size(1084, 250);
             this.panBottom.TabIndex = 0;
@@ -431,7 +431,7 @@ namespace NecromindUI.UserControls.Game
             // panInteraction
             // 
             this.panInteraction.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panInteraction.Location = new System.Drawing.Point(0, 346);
+            this.panInteraction.Location = new System.Drawing.Point(0, 402);
             this.panInteraction.Name = "panInteraction";
             this.panInteraction.Size = new System.Drawing.Size(1084, 65);
             this.panInteraction.TabIndex = 26;
@@ -441,7 +441,7 @@ namespace NecromindUI.UserControls.Game
             this.panTarget.Dock = System.Windows.Forms.DockStyle.Right;
             this.panTarget.Location = new System.Drawing.Point(542, 20);
             this.panTarget.Name = "panTarget";
-            this.panTarget.Size = new System.Drawing.Size(542, 326);
+            this.panTarget.Size = new System.Drawing.Size(542, 382);
             this.panTarget.TabIndex = 27;
             // 
             // GameMain
@@ -459,7 +459,7 @@ namespace NecromindUI.UserControls.Game
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameMain";
-            this.Size = new System.Drawing.Size(1084, 661);
+            this.Size = new System.Drawing.Size(1084, 717);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameMain_KeyDown);
             this.panBottom.ResumeLayout(false);
             this.panEventLog.ResumeLayout(false);
