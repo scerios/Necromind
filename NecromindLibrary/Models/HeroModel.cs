@@ -90,7 +90,7 @@ namespace NecromindLibrary.Models
             }
         }
 
-        protected int _posX;
+        protected int _posX = 0;
 
         [BsonIgnore]
         public int PosX
@@ -102,7 +102,7 @@ namespace NecromindLibrary.Models
             }
         }
 
-        protected int _posY;
+        protected int _posY = 0;
 
         [BsonIgnore]
         public int PosY
@@ -117,6 +117,14 @@ namespace NecromindLibrary.Models
         protected HeroModel()
         {
         }
+
+        public event EventHandler MovedNorth;
+
+        public event EventHandler MovedSouth;
+
+        public event EventHandler MovedWest;
+
+        public event EventHandler MovedEast;
 
         public HeroModel(string name)
         {
@@ -205,21 +213,25 @@ namespace NecromindLibrary.Models
         public void MoveNorth()
         {
             PosY--;
+            MovedNorth?.Invoke(this, new System.EventArgs());
         }
 
         public void MoveSouth()
         {
             PosY++;
-        }
-
-        public void MoveEast()
-        {
-            PosX--;
+            MovedSouth?.Invoke(this, new System.EventArgs());
         }
 
         public void MoveWest()
         {
+            PosX--;
+            MovedWest?.Invoke(this, new System.EventArgs());
+        }
+
+        public void MoveEast()
+        {
             PosX++;
+            MovedEast?.Invoke(this, new System.EventArgs());
         }
     }
 }
