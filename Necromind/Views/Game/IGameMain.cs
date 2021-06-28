@@ -4,7 +4,8 @@ namespace NecromindUI.Views.Game
 {
     public interface IGameMain
     {
-        bool IsPanExitVisible { get; set; }
+        bool PanIsExitVisible { get; set; }
+        bool PanIsInteractionVisible { get; set; }
         bool BtnIsNorthEnabled { get; set; }
         bool BtnIsSouthEnabled { get; set; }
         bool BtnIsWestEnabled { get; set; }
