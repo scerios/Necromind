@@ -126,8 +126,8 @@ namespace NecromindUI.UserControls.Game
 
         public GameMain(HeroModel hero)
         {
-            InitializeComponent();
             LoadMap();
+            InitializeComponent();
 
             _presenter = new GameMainPresenter(this, _map);
             _gameFriendlyInteraction = new GameFriendlyInteraction();
