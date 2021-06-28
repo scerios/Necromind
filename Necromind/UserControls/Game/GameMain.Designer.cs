@@ -39,7 +39,7 @@ namespace NecromindUI.UserControls.Game
             this.btnNorth = new System.Windows.Forms.Button();
             this.panHero = new System.Windows.Forms.Panel();
             this.labDmgMaxValue = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labDash = new System.Windows.Forms.Label();
             this.labSlash = new System.Windows.Forms.Label();
             this.labHealthValue = new System.Windows.Forms.Label();
             this.labDefValue = new System.Windows.Forms.Label();
@@ -192,7 +192,7 @@ namespace NecromindUI.UserControls.Game
             // panHero
             // 
             this.panHero.Controls.Add(this.labDmgMaxValue);
-            this.panHero.Controls.Add(this.label1);
+            this.panHero.Controls.Add(this.labDash);
             this.panHero.Controls.Add(this.labSlash);
             this.panHero.Controls.Add(this.labHealthValue);
             this.panHero.Controls.Add(this.labDefValue);
@@ -205,7 +205,7 @@ namespace NecromindUI.UserControls.Game
             this.panHero.Controls.Add(this.labDef);
             this.panHero.Controls.Add(this.labDmg);
             this.panHero.Controls.Add(this.labHealth);
-            this.panHero.Location = new System.Drawing.Point(30, 50);
+            this.panHero.Location = new System.Drawing.Point(250, 50);
             this.panHero.Name = "panHero";
             this.panHero.Size = new System.Drawing.Size(210, 140);
             this.panHero.TabIndex = 1;
@@ -219,15 +219,15 @@ namespace NecromindUI.UserControls.Game
             this.labDmgMaxValue.TabIndex = 35;
             this.labDmgMaxValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // labDash
             // 
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(135, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(15, 20);
-            this.label1.TabIndex = 34;
-            this.label1.Text = "-";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labDash.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this.labDash.Location = new System.Drawing.Point(135, 35);
+            this.labDash.Name = "labDash";
+            this.labDash.Size = new System.Drawing.Size(15, 20);
+            this.labDash.TabIndex = 34;
+            this.labDash.Text = "-";
+            this.labDash.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labSlash
             // 
@@ -361,7 +361,7 @@ namespace NecromindUI.UserControls.Game
             this.labName.AutoSize = true;
             this.labName.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this.labName.Location = new System.Drawing.Point(30, 30);
+            this.labName.Location = new System.Drawing.Point(250, 30);
             this.labName.MinimumSize = new System.Drawing.Size(210, 0);
             this.labName.Name = "labName";
             this.labName.Size = new System.Drawing.Size(210, 18);
@@ -504,6 +504,6 @@ namespace NecromindUI.UserControls.Game
         private System.Windows.Forms.Panel panInteraction;
         private System.Windows.Forms.Panel panTarget;
         private System.Windows.Forms.Label labDmgMaxValue;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labDash;
     }
 }

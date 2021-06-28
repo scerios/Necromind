@@ -149,7 +149,7 @@ namespace NecromindUI.UserControls.Game
 
             for (int i = -10; i <= 10; i++)
             {
-                int locX = 250;
+                int locX = 10;
                 locY += UISettings.MapTileSize;
 
                 for (int j = -10; j <= 10; j++)
