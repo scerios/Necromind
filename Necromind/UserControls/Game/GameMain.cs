@@ -28,6 +28,16 @@ namespace NecromindUI.UserControls.Game
             }
         }
 
+        public bool PanIsInteractionVisible
+        {
+            get => panInteraction.Visible;
+
+            set
+            {
+                panInteraction.Visible = value;
+            }
+        }
+
         public bool BtnIsNorthEnabled
         {
             get => btnNorth.Enabled;
