@@ -2,6 +2,8 @@
 using NecromindLibrary.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace NecromindLibrary.Services
@@ -20,6 +22,23 @@ namespace NecromindLibrary.Services
         public void DeleteMap()
         {
             _current = null;
+        }
+
+        public void SetMapColor()
+        {
+            if (Location.IsAccessible)
+                SetMapColorBy(_x, _y, UISettings.UnaccessibleTileColor);
+
+            if (Location.IsHostile)
+                SetMapColorBy(_x, _y, UISettings.ErrorColor);
+            else
+                SetMapColorBy(_x, _y, UISettings.SuccessColor);
+        }
+
+        public void SetMapColorBy(int x, int y, Color color)
+        {
+            var map = _map.Single(i => i.Name == "pan" + x + "I" + y);
+            map.BackColor = color;
         }
 
         #region Checks
