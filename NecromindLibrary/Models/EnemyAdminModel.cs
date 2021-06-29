@@ -72,5 +72,10 @@ namespace NecromindLibrary.Models
             _healthMax = health;
             _health = health;
         }
+
+        public void AdminSetCombinedName()
+        {
+            CombinedName = Name + " " + Lvl;
+        }
     }
 }
