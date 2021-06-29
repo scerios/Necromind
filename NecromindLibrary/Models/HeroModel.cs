@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
+using NecromindLibrary.Services;
 using NecromindLibrary.Services.GameMechanisms;
 using System;
 
@@ -51,6 +52,9 @@ namespace NecromindLibrary.Models
             {
                 _health = value;
                 OnPropertyChanged();
+
+                if (_health < 1)
+                    Die();
             }
         }
 
@@ -139,27 +143,31 @@ namespace NecromindLibrary.Models
             NextLvlAt = 1000;
         }
 
-        public void Attack(IFighter enemy)
+        public int Attack(IFighter enemy)
         {
-            enemy.TakeDmgFrom(this);
+            var dmg = RandomGeneratorService.CalculateRandomAttackDmg(DmgMin, DmgMax);
+            enemy.TakeDmg(dmg);
+
+            return dmg;
         }
 
-        public void TakeDmgFrom(IFighter enemy)
+        public int TakeDmg(int dmg)
         {
-            var rng = new Random();
-            var rawDmg = rng.Next(enemy.DmgMin, enemy.DmgMax);
-            Health -= rawDmg - Def;
+            var actualDmg = dmg - Def;
+            Health -= actualDmg;
 
-            if (Health < 1)
-            {
-                DieBy(enemy);
-            }
+            return actualDmg;
         }
 
-        public void DieBy(IFighter enemy)
+        public int Fortify()
         {
-            // TODO - Implement die logic.
-            throw new NotImplementedException();
+            // TODO - Figure out how fortify should work.
+            return 2;
+        }
+
+        public void Die()
+        {
+            // TODO - Figure out how death should work.
         }
 
         public void Heal(int amount)

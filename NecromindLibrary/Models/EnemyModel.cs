@@ -1,4 +1,5 @@
-﻿using NecromindLibrary.Services.GameMechanisms;
+﻿using NecromindLibrary.Services;
+using NecromindLibrary.Services.GameMechanisms;
 using System;
 
 namespace NecromindLibrary.Models
@@ -61,6 +62,9 @@ namespace NecromindLibrary.Models
             {
                 _health = value;
                 OnPropertyChanged();
+
+                if (_health < 1)
+                    Die();
             }
         }
 
@@ -86,7 +90,7 @@ namespace NecromindLibrary.Models
             Lvl = 1;
             DmgMin = 8;
             DmgMax = 15;
-            Def = 4;
+            Def = 5;
             Health = 30;
             HealthMax = 30;
             CombinedName = Name + " " + Lvl;
@@ -106,30 +110,29 @@ namespace NecromindLibrary.Models
             CombinedName = Name + " " + Lvl;
         }
 
-        public void Attack(IFighter enemy)
+        public int Attack(IFighter enemy)
         {
-            enemy.TakeDmgFrom(this);
+            var dmg = RandomGeneratorService.CalculateRandomAttackDmg(DmgMin, DmgMax);
+            enemy.TakeDmg(dmg);
+
+            return dmg;
         }
 
-        public void TakeDmgFrom(IFighter enemy)
+        public int TakeDmg(int dmg)
         {
-            var rng = new Random();
-            var rawDmg = rng.Next(enemy.DmgMin, enemy.DmgMax);
-            Health -= rawDmg - Def;
+            var actualDmg = dmg - Def;
+            Health -= actualDmg;
 
-            if (Health < 1)
-            {
-                DieBy(enemy);
-            }
+            return actualDmg;
         }
 
-        public void DieBy(IFighter enemy)
+        public int Fortify()
         {
-            var levelablePlayer = enemy as ILevelable;
-            levelablePlayer.GainExperience(Lvl);
+            return 0;
+        }
 
-            var traderPlayer = enemy as ITrader;
-            traderPlayer.RecieveGold(Gold);
+        public void Die()
+        {
         }
     }
 }

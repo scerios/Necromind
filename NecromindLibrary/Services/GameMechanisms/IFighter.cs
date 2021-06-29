@@ -36,17 +36,22 @@ namespace NecromindLibrary.Services.GameMechanisms
         /// Performs an attack against the target.
         /// </summary>
         /// <param name="enemy">An enemy which can fight.</param>
-        void Attack(IFighter enemy);
+        int Attack(IFighter enemy);
 
         /// <summary>
-        /// Takes dmg from the incoming attack.
+        /// Takes incoming damage by the given amount.
         /// </summary>
-        /// <param name="enemy">The enemy which attacks.</param>
-        void TakeDmgFrom(IFighter enemy);
+        /// <param name="dmg">The actual incoming damage.</param>
+        int TakeDmg(int dmg);
+
+        /// <summary>
+        /// Setup a defensive stance and by raising awareness it gives extra Def.
+        /// </summary>
+        int Fortify();
 
         /// <summary>
         /// When healthpoints reach 0, the character dies.
         /// </summary>
-        void DieBy(IFighter enemy);
+        void Die();
     }
 }

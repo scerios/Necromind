@@ -5,6 +5,10 @@ namespace NecromindLibrary.Models
 {
     public class HeroAdminModel : HeroModel, IAdminSetter
     {
+        public HeroAdminModel(string name) : base(name)
+        {
+        }
+
         public void AdminSetName(string name)
         {
             Name = name;
