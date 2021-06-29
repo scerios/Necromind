@@ -46,10 +46,9 @@ namespace NecromindUI.Presenters.Game
 
             _mapService.SetNeighborhood();
             _mapService.SetNeighborhoodLocations();
-            SetMovementBtns();
 
-            MsgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
-            MsgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
+            SetMovementBtns();
+            SetEventLogInfo();
         }
 
         #region Event log
@@ -125,9 +124,8 @@ namespace NecromindUI.Presenters.Game
             if (_gameMain.BtnIsNorthEnabled)
             {
                 _mapService.MoveNorth();
-                MsgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
-                MsgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
 
+                SetEventLogInfo();
                 CheckForEnemy();
                 SetLocationName();
             }
@@ -138,9 +136,8 @@ namespace NecromindUI.Presenters.Game
             if (_gameMain.BtnIsSouthEnabled)
             {
                 _mapService.MoveSouth();
-                MsgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
-                MsgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
 
+                SetEventLogInfo();
                 CheckForEnemy();
                 SetLocationName();
             }
@@ -151,9 +148,8 @@ namespace NecromindUI.Presenters.Game
             if (_gameMain.BtnIsWestEnabled)
             {
                 _mapService.MoveWest();
-                MsgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
-                MsgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
 
+                SetEventLogInfo();
                 CheckForEnemy();
                 SetLocationName();
             }
@@ -164,9 +160,8 @@ namespace NecromindUI.Presenters.Game
             if (_gameMain.BtnIsEastEnabled)
             {
                 _mapService.MoveEast();
-                MsgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
-                MsgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
 
+                SetEventLogInfo();
                 CheckForEnemy();
                 SetLocationName();
             }
@@ -187,6 +182,7 @@ namespace NecromindUI.Presenters.Game
         {
             DisableUserInputActions();
             DisableMovementBtns();
+
             ShowEnemyUI();
         }
 
@@ -273,6 +269,12 @@ namespace NecromindUI.Presenters.Game
             _gameMain.BtnIsSouthEnabled = false;
             _gameMain.BtnIsWestEnabled = false;
             _gameMain.BtnIsEastEnabled = false;
+        }
+
+        private void SetEventLogInfo()
+        {
+            MsgLogger.SetMessage(GetCurrentLocationDesc(), UISettings.TextColorDefault);
+            MsgLogger.AppendMessage($"\n{ GetSurroundingLocationsNames() }", UISettings.TextColorInfo);
         }
 
         #endregion Setters
