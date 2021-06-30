@@ -148,17 +148,8 @@ namespace NecromindUI.UserControls.Game
             _gameFriendlyInteraction = new GameFriendlyInteraction();
             _gameEnemyInteraction = new GameEnemyInteraction();
 
-            _presenter.FriendlyUIShown += ShowFriendlyUI;
-            _presenter.FriendlyUIHidden += HideFriendlyUI;
-            _presenter.EnemyUIShown += ShowEnemyUI;
-            _presenter.EnemyUIHidden += HideEnemyUI;
-            _presenter.MsgLogger.OnMessageRaised += GameMessageRaised;
-            _presenter.MsgLogger.OnMessageAppend += GameMessageAppend;
-
-            hero.MovedNorth += MoveNorth;
-            hero.MovedSouth += MoveSouth;
-            hero.MovedWest += MoveWest;
-            hero.MovedEast += MoveEast;
+            SetPresenterEventListeners();
+            SetHerosEventListeners(hero);
 
             _presenter.StartGame();
         }
@@ -201,6 +192,24 @@ namespace NecromindUI.UserControls.Game
                     _map.Add((Panel)Controls.Find("pan" + j + "I" + i, false)[0]);
                 }
             }
+        }
+
+        private void SetPresenterEventListeners()
+        {
+            _presenter.FriendlyUIShown += ShowFriendlyUI;
+            _presenter.FriendlyUIHidden += HideFriendlyUI;
+            _presenter.EnemyUIShown += ShowEnemyUI;
+            _presenter.EnemyUIHidden += HideEnemyUI;
+            _presenter.MsgLogger.OnMessageRaised += GameMessageRaised;
+            _presenter.MsgLogger.OnMessageAppend += GameMessageAppend;
+        }
+
+        private void SetHerosEventListeners(HeroModel hero)
+        {
+            hero.MovedNorth += MoveNorth;
+            hero.MovedSouth += MoveSouth;
+            hero.MovedWest += MoveWest;
+            hero.MovedEast += MoveEast;
         }
 
         private void BtnSaveExit_Click(object sender, EventArgs e)
