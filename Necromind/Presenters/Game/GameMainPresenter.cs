@@ -18,9 +18,11 @@ namespace NecromindUI.Presenters.Game
         private readonly IGameMain _gameMain;
         private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
         private readonly MapService _mapService;
+        private BattleService _fightService;
         public readonly Dictionary<Keys, Action> UserInputActions = new Dictionary<Keys, Action>();
         public readonly MessageLogger MsgLogger = MessageLogger.GetInstance();
         private readonly HeroModel _hero;
+        private EnemyModel _enemy;
 
         public event EventHandler FriendlyUIShown;
 
@@ -35,7 +37,7 @@ namespace NecromindUI.Presenters.Game
             _gameMain = gameMain;
             _hero = hero;
             _mapService = new MapService(_hero.PosX, _hero.PosY, map);
-            EnableUserInputActions();
+            //EnableUserInputActions();
         }
 
         public void StartGame()
@@ -180,8 +182,12 @@ namespace NecromindUI.Presenters.Game
 
         private void InitFight()
         {
-            DisableUserInputActions();
+            //DisableUserInputActions();
             DisableMovementBtns();
+
+            _enemy = _mongoConnector.GetRecordById<EnemyModel>(DBConfig.EnemiesCollection, RandomGeneratorService.GetRandomEnemyId(_mapService.Location.Enemies).ToString());
+
+            _fightService = new BattleService(_hero, _enemy);
 
             ShowEnemyUI();
         }

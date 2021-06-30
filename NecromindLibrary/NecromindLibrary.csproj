@@ -161,6 +161,7 @@
     <Compile Include="Models\MapTileModel.cs" />
     <Compile Include="Models\PlayerModel.cs" />
     <Compile Include="Repository\IDataConnection.cs" />
+    <Compile Include="Services\BattleService.cs" />
     <Compile Include="Services\IAdminSetter.cs" />
     <Compile Include="Services\GameMechanisms\IConsumer.cs" />
     <Compile Include="Services\GameMechanisms\IFighter.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Services\MapService.cs" />
     <Compile Include="Services\MapServiceAdmin.cs" />
     <Compile Include="Services\MessageLogger.cs" />
+    <Compile Include="Services\RandomGeneratorService.cs" />
     <Compile Include="Services\TextService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\MongoConnector.cs" />
