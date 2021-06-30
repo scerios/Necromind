@@ -341,5 +341,10 @@ namespace NecromindUI.UserControls.Game
         {
             _presenter.MoveEast();
         }
+
+        private void BtnAttack_Click(object sender, EventArgs e)
+        {
+            _presenter.Attack();
+        }
     }
 }

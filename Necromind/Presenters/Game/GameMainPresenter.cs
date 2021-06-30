@@ -140,31 +140,6 @@ namespace NecromindUI.Presenters.Game
             }
         }
 
-        private void CheckForEnemy()
-        {
-            if (IsTileHostileAndEnemyAppears())
-                InitFight();
-            else
-                SetMovementBtns();
-        }
-
-        private bool IsTileHostileAndEnemyAppears() =>
-            _mapService.Location.IsHostile && RandomGeneratorService.IsEnemySpawned();
-
-        private void InitFight()
-        {
-            //DisableUserInputActions();
-            DisableMovementBtns();
-
-            _enemy = _mongoConnector.GetRecordById<EnemyModel>(DBConfig.EnemiesCollection, RandomGeneratorService.GetRandomEnemyId(_mapService.Location.Enemies).ToString());
-
-            _battleService = new BattleService(_hero, _enemy);
-
-            TogglePanTargetVisibility();
-            TogglePanHostileInteractionVisibility();
-            SetHostileTargetDataBindings();
-        }
-
         #endregion Movement
 
         #region Getters
@@ -206,11 +181,6 @@ namespace NecromindUI.Presenters.Game
             UserInputActions.Clear();
         }
 
-        private void SetLocationName()
-        {
-            _gameMain.LabLocationName.Text = _mapService.Location.Name;
-        }
-
         private void SetHeroDatabindings()
         {
             _gameMain.HeroName = _hero.Name;
@@ -233,22 +203,6 @@ namespace NecromindUI.Presenters.Game
             _gameMain.LabTargetDef.DataBindings.Add("Text", _enemy, "Def");
             _gameMain.LabTargetGold.DataBindings.Add("Text", _enemy, "Gold");
             _gameMain.LabTargetLvl.DataBindings.Add("Text", _enemy, "Lvl");
-        }
-
-        private void SetMovementBtns()
-        {
-            _gameMain.BtnIsNorthEnabled = _mapService.DoesCurrentHasNorthNeighbor() && _mapService.IsNorthOfCurrentAccessible();
-            _gameMain.BtnIsSouthEnabled = _mapService.DoesCurrentHasSouthNeighbor() && _mapService.IsSouthOfCurrentAccessible();
-            _gameMain.BtnIsWestEnabled = _mapService.DoesCurrentHasWestNeighbor() && _mapService.IsWestOfCurrentAccessible();
-            _gameMain.BtnIsEastEnabled = _mapService.DoesCurrentHasEastNeighbor() && _mapService.IsEastOfCurrentAccessible();
-        }
-
-        private void DisableMovementBtns()
-        {
-            _gameMain.BtnIsNorthEnabled = false;
-            _gameMain.BtnIsSouthEnabled = false;
-            _gameMain.BtnIsWestEnabled = false;
-            _gameMain.BtnIsEastEnabled = false;
         }
 
         private void SetEventLogInfo()
@@ -290,6 +244,63 @@ namespace NecromindUI.Presenters.Game
 
         #endregion Clear
 
+        #region Battle
+
+        public void Attack()
+        {
+            _battleService.AttackOpponent();
+        }
+
+        private void CheckForEnemy()
+        {
+            if (IsTileHostileAndEnemyAppears())
+                InitFight();
+            else
+                SetMovementBtns();
+        }
+
+        private bool IsTileHostileAndEnemyAppears() =>
+            _mapService.Location.IsHostile && RandomGeneratorService.IsEnemySpawned();
+
+        private void InitFight()
+        {
+            //DisableUserInputActions();
+            DisableMovementBtns();
+
+            _enemy = _mongoConnector.GetRecordById<EnemyModel>(DBConfig.EnemiesCollection, RandomGeneratorService.GetRandomEnemyId(_mapService.Location.Enemies).ToString());
+
+            _battleService = new BattleService(_hero, _enemy);
+
+            TogglePanTargetVisibility();
+            TogglePanHostileInteractionVisibility();
+            SetHostileTargetDataBindings();
+        }
+
+        #endregion Battle
+
+        #region UI Modifications
+
+        private void SetLocationName()
+        {
+            _gameMain.LabLocationName.Text = _mapService.Location.Name;
+        }
+
+        private void SetMovementBtns()
+        {
+            _gameMain.BtnIsNorthEnabled = _mapService.DoesCurrentHasNorthNeighbor() && _mapService.IsNorthOfCurrentAccessible();
+            _gameMain.BtnIsSouthEnabled = _mapService.DoesCurrentHasSouthNeighbor() && _mapService.IsSouthOfCurrentAccessible();
+            _gameMain.BtnIsWestEnabled = _mapService.DoesCurrentHasWestNeighbor() && _mapService.IsWestOfCurrentAccessible();
+            _gameMain.BtnIsEastEnabled = _mapService.DoesCurrentHasEastNeighbor() && _mapService.IsEastOfCurrentAccessible();
+        }
+
+        private void DisableMovementBtns()
+        {
+            _gameMain.BtnIsNorthEnabled = false;
+            _gameMain.BtnIsSouthEnabled = false;
+            _gameMain.BtnIsWestEnabled = false;
+            _gameMain.BtnIsEastEnabled = false;
+        }
+
         private void TogglePanTargetVisibility()
         {
             if (_gameMain.PanTarget.Visible)
@@ -319,5 +330,7 @@ namespace NecromindUI.Presenters.Game
             _gameMain.EventLog.SelectionStart = _gameMain.EventLog.Text.Length;
             _gameMain.EventLog.ScrollToCaret();
         }
+
+        #endregion UI Modifications
     }
 }
