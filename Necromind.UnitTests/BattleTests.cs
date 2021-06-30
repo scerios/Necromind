@@ -6,14 +6,17 @@ namespace Necromind.UnitTests
 {
     public class BattleTests
     {
-        private HeroModel _hero;
-        private EnemyModel _enemy;
+        private HeroAdminModel _hero;
+        private EnemyAdminModel _enemy;
 
         [SetUp]
         public void Setup()
         {
-            _hero = new HeroModel("hero");
-            _enemy = new EnemyModel();
+            _hero = new HeroAdminModel("hero");
+            _enemy = new EnemyAdminModel();
+
+            _hero.AdminSetDmgMin(10);
+            _enemy.AdminSetDef(0);
         }
 
         [Test]
@@ -21,7 +24,7 @@ namespace Necromind.UnitTests
         {
             _hero.Attack(_enemy);
 
-            Assert.That(_enemy.Health, Is.InRange(24, 29));
+            Assert.That(_enemy.Health, Is.EqualTo(20));
         }
 
         [Test]
@@ -30,7 +33,7 @@ namespace Necromind.UnitTests
             _hero.Attack(_enemy);
             _hero.Attack(_enemy);
 
-            Assert.That(_enemy.Health, Is.InRange(18, 28));
+            Assert.That(_enemy.Health, Is.EqualTo(10));
         }
     }
 }

@@ -12,16 +12,14 @@ namespace Necromind.UnitTests
         [SetUp]
         public void Setup()
         {
-            _hero = new HeroModel("hero");
-            _enemy = new EnemyModel();
+            _hero = new HeroAdminModel("hero");
+            _enemy = new EnemyAdminModel();
         }
 
         [Test]
         public void Consume_Heal()
         {
-            var heroOriginalHP = _hero.Health;
-
-            _hero.TakeDmgFrom(_enemy);
+            _hero.TakeDmg(10);
             _hero.Heal(5);
 
             Assert.That(_hero.Health, Is.InRange(95, 100));
@@ -30,10 +28,10 @@ namespace Necromind.UnitTests
         [Test]
         public void Consume_FullyHeal()
         {
-            _hero.TakeDmgFrom(_enemy);
-            _hero.TakeDmgFrom(_enemy);
-            _hero.TakeDmgFrom(_enemy);
-            _hero.TakeDmgFrom(_enemy);
+            _hero.TakeDmg(10);
+            _hero.TakeDmg(10);
+            _hero.TakeDmg(10);
+            _hero.TakeDmg(10);
             _hero.FullyHeal();
 
             Assert.That(_hero.Health, Is.EqualTo(_hero.HealthMax));
