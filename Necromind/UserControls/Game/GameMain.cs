@@ -25,6 +25,11 @@ namespace NecromindUI.UserControls.Game
             set
             {
                 panExit.Visible = value;
+
+                if (value)
+                    panExit.BringToFront();
+                else
+                    panExit.SendToBack();
             }
         }
 
