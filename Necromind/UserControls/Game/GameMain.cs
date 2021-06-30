@@ -85,10 +85,10 @@ namespace NecromindUI.UserControls.Game
 
         public string HeroName
         {
-            get => labName.Text;
+            get => labHeroName.Text;
             set
             {
-                labName.Text = value;
+                labHeroName.Text = value;
             }
         }
 
@@ -104,37 +104,37 @@ namespace NecromindUI.UserControls.Game
 
         public Label LabHealthMax
         {
-            get => labHealthMaxValue;
+            get => labHeroHealthMax;
         }
 
         public Label LabHealth
         {
-            get => labHealthValue;
+            get => labHeroHealth;
         }
 
         public Label LabDmgMin
         {
-            get => labDmgMinValue;
+            get => labHeroDmgMin;
         }
 
         public Label LabDmgMax
         {
-            get => labDmgMaxValue;
+            get => labHeroDmgMax;
         }
 
         public Label LabDef
         {
-            get => labDefValue;
+            get => labHeroDef;
         }
 
         public Label LabGold
         {
-            get => labGoldValue;
+            get => labHeroGold;
         }
 
         public Label LabLvl
         {
-            get => labLvlValue;
+            get => labHeroLvl;
         }
 
         public event EventHandler OnSaveExitClick;
