@@ -43,8 +43,7 @@ namespace NecromindUI.Presenters.Game
         public void StartGame()
         {
             SetLocationName();
-            SetHeroStats();
-            SetHeroLabelDatabindings();
+            SetHeroDatabindings();
 
             _mapService.SetNeighborhood();
             _mapService.SetNeighborhoodLocations();
@@ -95,7 +94,7 @@ namespace NecromindUI.Presenters.Game
         public void SaveAndExitGame()
         {
             _mongoConnector.TryUpsertRecord(DBConfig.HeroesCollection, _hero.Id, _hero);
-            ClearHeroLabelDatabindings();
+            ClearHeroDatabindings();
             ClearLocationDataBinding();
         }
 
@@ -190,6 +189,7 @@ namespace NecromindUI.Presenters.Game
             _fightService = new BattleService(_hero, _enemy);
 
             ShowEnemyUI();
+            SetHostileTargetDataBindings();
         }
 
         #endregion Movement
@@ -238,19 +238,7 @@ namespace NecromindUI.Presenters.Game
             _gameMain.LabLocationName.Text = _mapService.Location.Name;
         }
 
-        private void SetHeroStats()
-        {
-            _gameMain.HeroName = _hero.Name;
-            _gameMain.LabHeroHealthMax.Text = _hero.HealthMax.ToString();
-            _gameMain.LabHeroHealth.Text = _hero.Health.ToString();
-            _gameMain.LabHeroDmgMin.Text = _hero.DmgMin.ToString();
-            _gameMain.LabHeroDmgMax.Text = _hero.DmgMax.ToString();
-            _gameMain.LabHeroDef.Text = _hero.Def.ToString();
-            _gameMain.LabHeroGold.Text = _hero.Gold.ToString();
-            _gameMain.LabHeroLvl.Text = _hero.Lvl.ToString();
-        }
-
-        private void SetHeroLabelDatabindings()
+        private void SetHeroDatabindings()
         {
             _gameMain.LabHeroHealthMax.DataBindings.Add("Text", _hero, "HealthMax");
             _gameMain.LabHeroHealth.DataBindings.Add("Text", _hero, "Health");
@@ -259,6 +247,17 @@ namespace NecromindUI.Presenters.Game
             _gameMain.LabHeroDef.DataBindings.Add("Text", _hero, "Def");
             _gameMain.LabHeroGold.DataBindings.Add("Text", _hero, "Gold");
             _gameMain.LabHeroLvl.DataBindings.Add("Text", _hero, "Lvl");
+        }
+
+        private void SetHostileTargetDataBindings()
+        {
+            _gameMain.LabTargetHealthMax.DataBindings.Add("Text", _enemy, "HealthMax");
+            _gameMain.LabTargetHealth.DataBindings.Add("Text", _enemy, "Health");
+            _gameMain.LabTargetDmgMin.DataBindings.Add("Text", _enemy, "DmgMin");
+            _gameMain.LabTargetDmgMax.DataBindings.Add("Text", _enemy, "DmgMax");
+            _gameMain.LabTargetDef.DataBindings.Add("Text", _enemy, "Def");
+            _gameMain.LabTargetGold.DataBindings.Add("Text", _enemy, "Gold");
+            _gameMain.LabTargetLvl.DataBindings.Add("Text", _enemy, "Lvl");
         }
 
         private void SetMovementBtns()
@@ -287,7 +286,7 @@ namespace NecromindUI.Presenters.Game
 
         #region Clear
 
-        private void ClearHeroLabelDatabindings()
+        private void ClearHeroDatabindings()
         {
             _gameMain.LabHeroHealthMax.DataBindings.Clear();
             _gameMain.LabHeroHealth.DataBindings.Clear();
@@ -301,6 +300,17 @@ namespace NecromindUI.Presenters.Game
         private void ClearLocationDataBinding()
         {
             _gameMain.LabLocationName.DataBindings.Clear();
+        }
+
+        private void ClearHostileTargetDataBindings()
+        {
+            _gameMain.LabTargetHealthMax.DataBindings.Clear();
+            _gameMain.LabTargetHealth.DataBindings.Clear();
+            _gameMain.LabTargetDmgMin.DataBindings.Clear();
+            _gameMain.LabTargetDmgMax.DataBindings.Clear();
+            _gameMain.LabTargetDef.DataBindings.Clear();
+            _gameMain.LabTargetGold.DataBindings.Clear();
+            _gameMain.LabTargetLvl.DataBindings.Clear();
         }
 
         #endregion Clear
