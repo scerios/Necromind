@@ -6,7 +6,7 @@ namespace NecromindLibrary.Services
 {
     public class BattleService
     {
-        private MessageLogger _msgLogger = MessageLogger.GetInstance();
+        private readonly MessageLogger _msgLogger = MessageLogger.GetInstance();
         private readonly HeroModel _hero;
         private readonly EnemyModel _enemy;
 
