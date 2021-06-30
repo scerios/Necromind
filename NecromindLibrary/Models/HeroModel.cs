@@ -150,7 +150,7 @@ namespace NecromindLibrary.Models
             HealthMax = 100;
             DmgMin = 5;
             DmgMax = 10;
-            Def = 5;
+            Def = 2;
             Lvl = 1;
             ExperiencePoints = 1;
             NextLvlAt = 1000;
