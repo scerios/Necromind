@@ -18,19 +18,11 @@ namespace NecromindUI.Presenters.Game
         private readonly IGameMain _gameMain;
         private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
         private readonly MapService _mapService;
-        private BattleService _fightService;
+        private BattleService _battleService;
         public readonly Dictionary<Keys, Action> UserInputActions = new Dictionary<Keys, Action>();
         public readonly MessageLogger MsgLogger = MessageLogger.GetInstance();
         private readonly HeroModel _hero;
         private EnemyModel _enemy;
-
-        public event EventHandler FriendlyUIShown;
-
-        public event EventHandler FriendlyUIHidden;
-
-        public event EventHandler EnemyUIShown;
-
-        public event EventHandler EnemyUIHidden;
 
         public GameMainPresenter(IGameMain gameMain, HeroModel hero, List<Panel> map)
         {
@@ -96,26 +88,6 @@ namespace NecromindUI.Presenters.Game
             _mongoConnector.TryUpsertRecord(DBConfig.HeroesCollection, _hero.Id, _hero);
             ClearHeroDatabindings();
             ClearLocationDataBinding();
-        }
-
-        public void ShowFriendlyUI()
-        {
-            // TODO - Add logic to show friendly UI.
-        }
-
-        public void HideFriendlyUI()
-        {
-            FriendlyUIHidden?.Invoke(this, new EventArgs());
-        }
-
-        public void ShowEnemyUI()
-        {
-            EnemyUIShown?.Invoke(this, new EventArgs());
-        }
-
-        public void HideEnemyUI()
-        {
-            EnemyUIHidden?.Invoke(this, new EventArgs());
         }
 
         #region Movement
@@ -186,9 +158,10 @@ namespace NecromindUI.Presenters.Game
 
             _enemy = _mongoConnector.GetRecordById<EnemyModel>(DBConfig.EnemiesCollection, RandomGeneratorService.GetRandomEnemyId(_mapService.Location.Enemies).ToString());
 
-            _fightService = new BattleService(_hero, _enemy);
+            _battleService = new BattleService(_hero, _enemy);
 
-            ShowEnemyUI();
+            TogglePanTargetVisibility();
+            TogglePanHostileInteractionVisibility();
             SetHostileTargetDataBindings();
         }
 
@@ -240,6 +213,7 @@ namespace NecromindUI.Presenters.Game
 
         private void SetHeroDatabindings()
         {
+            _gameMain.HeroName = _hero.Name;
             _gameMain.LabHeroHealthMax.DataBindings.Add("Text", _hero, "HealthMax");
             _gameMain.LabHeroHealth.DataBindings.Add("Text", _hero, "Health");
             _gameMain.LabHeroDmgMin.DataBindings.Add("Text", _hero, "DmgMin");
@@ -251,6 +225,7 @@ namespace NecromindUI.Presenters.Game
 
         private void SetHostileTargetDataBindings()
         {
+            _gameMain.TargetName = _enemy.Name;
             _gameMain.LabTargetHealthMax.DataBindings.Add("Text", _enemy, "HealthMax");
             _gameMain.LabTargetHealth.DataBindings.Add("Text", _enemy, "Health");
             _gameMain.LabTargetDmgMin.DataBindings.Add("Text", _enemy, "DmgMin");
@@ -314,6 +289,30 @@ namespace NecromindUI.Presenters.Game
         }
 
         #endregion Clear
+
+        private void TogglePanTargetVisibility()
+        {
+            if (_gameMain.PanTarget.Visible)
+                _gameMain.PanTarget.Visible = false;
+            else
+                _gameMain.PanTarget.Visible = true;
+        }
+
+        private void TogglePanFriendlyInteractionVisibility()
+        {
+            if (_gameMain.PanFriendlyInteraction.Visible)
+                _gameMain.PanFriendlyInteraction.Visible = false;
+            else
+                _gameMain.PanFriendlyInteraction.Visible = true;
+        }
+
+        private void TogglePanHostileInteractionVisibility()
+        {
+            if (_gameMain.PanHostileInteraction.Visible)
+                _gameMain.PanHostileInteraction.Visible = false;
+            else
+                _gameMain.PanHostileInteraction.Visible = true;
+        }
 
         private void ScrollEventLogToBottom()
         {

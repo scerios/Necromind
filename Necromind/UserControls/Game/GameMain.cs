@@ -16,8 +16,6 @@ namespace NecromindUI.UserControls.Game
         #region Properties
 
         private readonly GameMainPresenter _presenter;
-        private readonly GameFriendlyInteraction _gameFriendlyInteraction;
-        private readonly GameEnemyInteraction _gameEnemyInteraction;
         private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
         private readonly List<Panel> _map = new List<Panel>();
 
@@ -34,16 +32,6 @@ namespace NecromindUI.UserControls.Game
                     panExit.BringToFront();
                 else
                     panExit.SendToBack();
-            }
-        }
-
-        public bool PanIsInteractionVisible
-        {
-            get => panInteraction.Visible;
-
-            set
-            {
-                panInteraction.Visible = value;
             }
         }
 
@@ -89,23 +77,19 @@ namespace NecromindUI.UserControls.Game
 
         #endregion Bools
 
-        public string HeroName
+        public Panel PanTarget
         {
-            get => labHeroName.Text;
-            set
-            {
-                labHeroName.Text = value;
-            }
+            get => panTarget;
         }
 
-        public string TargetName
+        public Panel PanFriendlyInteraction
         {
-            get => labTargetName.Text;
+            get => panFriendlyInteraction;
+        }
 
-            set
-            {
-                labTargetName.Text = value;
-            }
+        public Panel PanHostileInteraction
+        {
+            get => panHostileInteraction;
         }
 
         public RichTextBox EventLog
@@ -119,6 +103,15 @@ namespace NecromindUI.UserControls.Game
         }
 
         #region Hero
+
+        public string HeroName
+        {
+            get => labHeroName.Text;
+            set
+            {
+                labHeroName.Text = value;
+            }
+        }
 
         public Label LabHeroHealthMax
         {
@@ -158,6 +151,16 @@ namespace NecromindUI.UserControls.Game
         #endregion Hero
 
         #region Target
+
+        public string TargetName
+        {
+            get => labTargetName.Text;
+
+            set
+            {
+                labTargetName.Text = value;
+            }
+        }
 
         public Label LabTargetHealthMax
         {
@@ -206,8 +209,6 @@ namespace NecromindUI.UserControls.Game
             InitializeComponent();
 
             _presenter = new GameMainPresenter(this, hero, _map);
-            _gameFriendlyInteraction = new GameFriendlyInteraction();
-            _gameEnemyInteraction = new GameEnemyInteraction();
 
             SetPresenterEventListeners();
             SetHerosEventListeners(hero);
@@ -257,10 +258,6 @@ namespace NecromindUI.UserControls.Game
 
         private void SetPresenterEventListeners()
         {
-            _presenter.FriendlyUIShown += ShowFriendlyUI;
-            _presenter.FriendlyUIHidden += HideFriendlyUI;
-            _presenter.EnemyUIShown += ShowEnemyUI;
-            _presenter.EnemyUIHidden += HideEnemyUI;
             _presenter.MsgLogger.OnMessageRaised += GameMessageRaised;
             _presenter.MsgLogger.OnMessageAppend += GameMessageAppend;
         }
@@ -305,37 +302,6 @@ namespace NecromindUI.UserControls.Game
         private void BtnEast_Click(object sender, EventArgs e)
         {
             _presenter.MoveEast();
-        }
-
-        private void ActivateView(Panel panel, UserControl view)
-        {
-            panel.Controls.Add(view);
-            view.BringToFront();
-        }
-
-        private void DeactivateView(Panel panel, UserControl view)
-        {
-            panel.Controls.Remove(view);
-        }
-
-        private void ShowFriendlyUI(object sender, EventArgs e)
-        {
-            ActivateView(panInteraction, _gameFriendlyInteraction);
-        }
-
-        private void HideFriendlyUI(object sender, EventArgs e)
-        {
-            DeactivateView(panInteraction, _gameFriendlyInteraction);
-        }
-
-        private void ShowEnemyUI(object sender, EventArgs e)
-        {
-            ActivateView(panInteraction, _gameEnemyInteraction);
-        }
-
-        private void HideEnemyUI(object sender, EventArgs e)
-        {
-            DeactivateView(panInteraction, _gameEnemyInteraction);
         }
 
         private void GameMain_KeyDown(object sender, KeyEventArgs e)

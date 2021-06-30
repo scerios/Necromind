@@ -86,18 +86,6 @@
     <Compile Include="UserControls\Admin\AdminMap.Designer.cs">
       <DependentUpon>AdminMap.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Game\GameEnemyInteraction.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\Game\GameEnemyInteraction.Designer.cs">
-      <DependentUpon>GameEnemyInteraction.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\Game\GameFriendlyInteraction.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\Game\GameFriendlyInteraction.Designer.cs">
-      <DependentUpon>GameFriendlyInteraction.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\Game\GameMain.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -159,12 +147,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Admin\AdminMap.resx">
       <DependentUpon>AdminMap.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Game\GameEnemyInteraction.resx">
-      <DependentUpon>GameEnemyInteraction.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Game\GameFriendlyInteraction.resx">
-      <DependentUpon>GameFriendlyInteraction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Game\GameMain.resx">
       <DependentUpon>GameMain.cs</DependentUpon>

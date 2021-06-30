@@ -58,7 +58,11 @@ namespace NecromindUI.UserControls.Game
             this.btnSaveExit = new System.Windows.Forms.Button();
             this.btnContinue = new System.Windows.Forms.Button();
             this.labExitQuestion = new System.Windows.Forms.Label();
-            this.panInteraction = new System.Windows.Forms.Panel();
+            this.panHostileInteraction = new System.Windows.Forms.Panel();
+            this.btnUse = new System.Windows.Forms.Button();
+            this.btnRetreat = new System.Windows.Forms.Button();
+            this.btnAttack = new System.Windows.Forms.Button();
+            this.btnFortify = new System.Windows.Forms.Button();
             this.labTargetName = new System.Windows.Forms.Label();
             this.panTarget = new System.Windows.Forms.Panel();
             this.labTargetDmgMax = new System.Windows.Forms.Label();
@@ -75,12 +79,21 @@ namespace NecromindUI.UserControls.Game
             this.labTDef = new System.Windows.Forms.Label();
             this.labTDmg = new System.Windows.Forms.Label();
             this.labTHealth = new System.Windows.Forms.Label();
+            this.panFriendlyInteraction = new System.Windows.Forms.Panel();
+            this.btnAccept = new System.Windows.Forms.Button();
+            this.btnSell = new System.Windows.Forms.Button();
+            this.btnBuy = new System.Windows.Forms.Button();
+            this.btnQuest = new System.Windows.Forms.Button();
+            this.btnTrade = new System.Windows.Forms.Button();
+            this.btnTalk = new System.Windows.Forms.Button();
             this.panBottom.SuspendLayout();
             this.panEventLog.SuspendLayout();
             this.panMovement.SuspendLayout();
             this.panHero.SuspendLayout();
             this.panExit.SuspendLayout();
+            this.panHostileInteraction.SuspendLayout();
             this.panTarget.SuspendLayout();
+            this.panFriendlyInteraction.SuspendLayout();
             this.SuspendLayout();
             // 
             // panBottom
@@ -444,13 +457,87 @@ namespace NecromindUI.UserControls.Game
             this.labExitQuestion.Text = "Are you sure you want to quit?";
             this.labExitQuestion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panInteraction
+            // panHostileInteraction
             // 
-            this.panInteraction.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panInteraction.Location = new System.Drawing.Point(0, 402);
-            this.panInteraction.Name = "panInteraction";
-            this.panInteraction.Size = new System.Drawing.Size(1084, 65);
-            this.panInteraction.TabIndex = 26;
+            this.panHostileInteraction.Controls.Add(this.btnUse);
+            this.panHostileInteraction.Controls.Add(this.btnRetreat);
+            this.panHostileInteraction.Controls.Add(this.btnAttack);
+            this.panHostileInteraction.Controls.Add(this.btnFortify);
+            this.panHostileInteraction.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panHostileInteraction.Location = new System.Drawing.Point(0, 402);
+            this.panHostileInteraction.Name = "panHostileInteraction";
+            this.panHostileInteraction.Size = new System.Drawing.Size(1084, 65);
+            this.panHostileInteraction.TabIndex = 26;
+            this.panHostileInteraction.Visible = false;
+            // 
+            // btnUse
+            // 
+            this.btnUse.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnUse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
+            this.btnUse.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUse.Enabled = false;
+            this.btnUse.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
+            this.btnUse.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
+            this.btnUse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnUse.Location = new System.Drawing.Point(859, 20);
+            this.btnUse.Name = "btnUse";
+            this.btnUse.Size = new System.Drawing.Size(100, 25);
+            this.btnUse.TabIndex = 17;
+            this.btnUse.TabStop = false;
+            this.btnUse.Text = "Use";
+            this.btnUse.UseVisualStyleBackColor = false;
+            // 
+            // btnRetreat
+            // 
+            this.btnRetreat.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnRetreat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
+            this.btnRetreat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRetreat.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
+            this.btnRetreat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.btnRetreat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRetreat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnRetreat.Location = new System.Drawing.Point(375, 20);
+            this.btnRetreat.Name = "btnRetreat";
+            this.btnRetreat.Size = new System.Drawing.Size(100, 25);
+            this.btnRetreat.TabIndex = 16;
+            this.btnRetreat.TabStop = false;
+            this.btnRetreat.Text = "Retreat";
+            this.btnRetreat.UseVisualStyleBackColor = false;
+            // 
+            // btnAttack
+            // 
+            this.btnAttack.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnAttack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
+            this.btnAttack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAttack.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
+            this.btnAttack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.btnAttack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAttack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnAttack.Location = new System.Drawing.Point(125, 20);
+            this.btnAttack.Name = "btnAttack";
+            this.btnAttack.Size = new System.Drawing.Size(100, 25);
+            this.btnAttack.TabIndex = 15;
+            this.btnAttack.TabStop = false;
+            this.btnAttack.Text = "Attack";
+            this.btnAttack.UseVisualStyleBackColor = false;
+            // 
+            // btnFortify
+            // 
+            this.btnFortify.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnFortify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
+            this.btnFortify.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFortify.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
+            this.btnFortify.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
+            this.btnFortify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFortify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnFortify.Location = new System.Drawing.Point(619, 20);
+            this.btnFortify.Name = "btnFortify";
+            this.btnFortify.Size = new System.Drawing.Size(100, 25);
+            this.btnFortify.TabIndex = 14;
+            this.btnFortify.TabStop = false;
+            this.btnFortify.Text = "Fortify";
+            this.btnFortify.UseVisualStyleBackColor = false;
             // 
             // labTargetName
             // 
@@ -484,6 +571,7 @@ namespace NecromindUI.UserControls.Game
             this.panTarget.Name = "panTarget";
             this.panTarget.Size = new System.Drawing.Size(210, 140);
             this.panTarget.TabIndex = 28;
+            this.panTarget.Visible = false;
             // 
             // labTargetDmgMax
             // 
@@ -618,15 +706,132 @@ namespace NecromindUI.UserControls.Game
             this.labTHealth.Text = "Health:";
             this.labTHealth.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // panFriendlyInteraction
+            // 
+            this.panFriendlyInteraction.Controls.Add(this.btnAccept);
+            this.panFriendlyInteraction.Controls.Add(this.btnSell);
+            this.panFriendlyInteraction.Controls.Add(this.btnBuy);
+            this.panFriendlyInteraction.Controls.Add(this.btnQuest);
+            this.panFriendlyInteraction.Controls.Add(this.btnTrade);
+            this.panFriendlyInteraction.Controls.Add(this.btnTalk);
+            this.panFriendlyInteraction.Location = new System.Drawing.Point(0, 402);
+            this.panFriendlyInteraction.Name = "panFriendlyInteraction";
+            this.panFriendlyInteraction.Size = new System.Drawing.Size(1084, 65);
+            this.panFriendlyInteraction.TabIndex = 29;
+            this.panFriendlyInteraction.Visible = false;
+            // 
+            // btnAccept
+            // 
+            this.btnAccept.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnAccept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
+            this.btnAccept.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAccept.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
+            this.btnAccept.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
+            this.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccept.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnAccept.Location = new System.Drawing.Point(944, 20);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(100, 25);
+            this.btnAccept.TabIndex = 17;
+            this.btnAccept.TabStop = false;
+            this.btnAccept.Text = "Accept";
+            this.btnAccept.UseVisualStyleBackColor = false;
+            // 
+            // btnSell
+            // 
+            this.btnSell.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnSell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
+            this.btnSell.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSell.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
+            this.btnSell.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.btnSell.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnSell.Location = new System.Drawing.Point(764, 20);
+            this.btnSell.Name = "btnSell";
+            this.btnSell.Size = new System.Drawing.Size(100, 25);
+            this.btnSell.TabIndex = 16;
+            this.btnSell.TabStop = false;
+            this.btnSell.Text = "Sell";
+            this.btnSell.UseVisualStyleBackColor = false;
+            // 
+            // btnBuy
+            // 
+            this.btnBuy.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnBuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
+            this.btnBuy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuy.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
+            this.btnBuy.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
+            this.btnBuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnBuy.Location = new System.Drawing.Point(584, 20);
+            this.btnBuy.Name = "btnBuy";
+            this.btnBuy.Size = new System.Drawing.Size(100, 25);
+            this.btnBuy.TabIndex = 15;
+            this.btnBuy.TabStop = false;
+            this.btnBuy.Text = "Buy";
+            this.btnBuy.UseVisualStyleBackColor = false;
+            // 
+            // btnQuest
+            // 
+            this.btnQuest.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnQuest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
+            this.btnQuest.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuest.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
+            this.btnQuest.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(52)))), ((int)(((byte)(82)))));
+            this.btnQuest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnQuest.Location = new System.Drawing.Point(400, 20);
+            this.btnQuest.Name = "btnQuest";
+            this.btnQuest.Size = new System.Drawing.Size(100, 25);
+            this.btnQuest.TabIndex = 14;
+            this.btnQuest.TabStop = false;
+            this.btnQuest.Text = "Quest";
+            this.btnQuest.UseVisualStyleBackColor = false;
+            // 
+            // btnTrade
+            // 
+            this.btnTrade.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnTrade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
+            this.btnTrade.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTrade.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
+            this.btnTrade.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(52)))), ((int)(((byte)(82)))));
+            this.btnTrade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTrade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnTrade.Location = new System.Drawing.Point(220, 20);
+            this.btnTrade.Name = "btnTrade";
+            this.btnTrade.Size = new System.Drawing.Size(100, 25);
+            this.btnTrade.TabIndex = 13;
+            this.btnTrade.TabStop = false;
+            this.btnTrade.Text = "Trade";
+            this.btnTrade.UseVisualStyleBackColor = false;
+            // 
+            // btnTalk
+            // 
+            this.btnTalk.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnTalk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
+            this.btnTalk.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTalk.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
+            this.btnTalk.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(52)))), ((int)(((byte)(82)))));
+            this.btnTalk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTalk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnTalk.Location = new System.Drawing.Point(40, 20);
+            this.btnTalk.Name = "btnTalk";
+            this.btnTalk.Size = new System.Drawing.Size(100, 25);
+            this.btnTalk.TabIndex = 12;
+            this.btnTalk.TabStop = false;
+            this.btnTalk.Text = "Talk";
+            this.btnTalk.UseVisualStyleBackColor = false;
+            // 
             // GameMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.Controls.Add(this.panFriendlyInteraction);
             this.Controls.Add(this.panTarget);
             this.Controls.Add(this.labTargetName);
             this.Controls.Add(this.panExit);
-            this.Controls.Add(this.panInteraction);
+            this.Controls.Add(this.panHostileInteraction);
             this.Controls.Add(this.labHeroName);
             this.Controls.Add(this.labLocation);
             this.Controls.Add(this.panHero);
@@ -642,7 +847,9 @@ namespace NecromindUI.UserControls.Game
             this.panHero.ResumeLayout(false);
             this.panExit.ResumeLayout(false);
             this.panExit.PerformLayout();
+            this.panHostileInteraction.ResumeLayout(false);
             this.panTarget.ResumeLayout(false);
+            this.panFriendlyInteraction.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -677,7 +884,7 @@ namespace NecromindUI.UserControls.Game
         private System.Windows.Forms.Button btnEast;
         private System.Windows.Forms.Button btnWest;
         private System.Windows.Forms.Button btnNorth;
-        private System.Windows.Forms.Panel panInteraction;
+        private System.Windows.Forms.Panel panHostileInteraction;
         private System.Windows.Forms.Label labHeroDmgMax;
         private System.Windows.Forms.Label labHDash;
         private System.Windows.Forms.Label labTargetName;
@@ -696,5 +903,16 @@ namespace NecromindUI.UserControls.Game
         private System.Windows.Forms.Label labTDef;
         private System.Windows.Forms.Label labTDmg;
         private System.Windows.Forms.Label labTHealth;
+        private System.Windows.Forms.Button btnUse;
+        private System.Windows.Forms.Button btnRetreat;
+        private System.Windows.Forms.Button btnAttack;
+        private System.Windows.Forms.Button btnFortify;
+        private System.Windows.Forms.Panel panFriendlyInteraction;
+        private System.Windows.Forms.Button btnAccept;
+        private System.Windows.Forms.Button btnSell;
+        private System.Windows.Forms.Button btnBuy;
+        private System.Windows.Forms.Button btnQuest;
+        private System.Windows.Forms.Button btnTrade;
+        private System.Windows.Forms.Button btnTalk;
     }
 }
