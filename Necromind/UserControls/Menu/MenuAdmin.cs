@@ -56,7 +56,7 @@ namespace NecromindUI.UserControls.Menu
             get => panSettings;
         }
 
-        public event EventHandler BtnBackCLick;
+        public event EventHandler OnBackCLick;
 
         public MenuAdmin()
         {
@@ -73,12 +73,12 @@ namespace NecromindUI.UserControls.Menu
             _adminMap = new AdminMap();
         }
 
-        private void SetControlsEvents()
+        private void SetControlsEventListeners()
         {
-            _controls.BtnHeroesClick += new EventHandler(AdminControls_BtnHeroesClick);
-            _controls.BtnEnemiesClick += new EventHandler(AdminControls_BtnEnemiesClick);
-            _controls.BtnLocationsClick += new EventHandler(AdminControls_BtnLocationsClick);
-            _controls.BtnMapClick += new EventHandler(AdminControls_BtnMapClick);
+            _controls.OnHeroesClick += new EventHandler(AdminControls_BtnHeroesClick);
+            _controls.OnEnemiesClick += new EventHandler(AdminControls_BtnEnemiesClick);
+            _controls.OnLocationsClick += new EventHandler(AdminControls_BtnLocationsClick);
+            _controls.OnMapClick += new EventHandler(AdminControls_BtnMapClick);
         }
 
         private void TbPassword_KeyUp(object sender, KeyEventArgs e)
@@ -91,7 +91,7 @@ namespace NecromindUI.UserControls.Menu
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            BtnBackCLick?.Invoke(this, e);
+            OnBackCLick?.Invoke(this, e);
         }
 
         private void BtnEnter_Click(object sender, EventArgs e)
@@ -99,7 +99,7 @@ namespace NecromindUI.UserControls.Menu
             if (_presenter.IsPasswordCorrect())
             {
                 SetAdminLayer();
-                SetControlsEvents();
+                SetControlsEventListeners();
                 ActivateMainView(PanControls, _controls);
             }
 

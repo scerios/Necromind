@@ -5,15 +5,15 @@ namespace NecromindUI.UserControls.Admin
 {
     public partial class AdminControls : UserControl
     {
-        public event EventHandler BtnMapClick;
+        public event EventHandler OnMapClick;
 
-        public event EventHandler BtnLocationsClick;
+        public event EventHandler OnLocationsClick;
 
-        public event EventHandler BtnHeroesClick;
+        public event EventHandler OnHeroesClick;
 
-        public event EventHandler BtnVendorsClick;
+        public event EventHandler OnVendorsClick;
 
-        public event EventHandler BtnEnemiesClick;
+        public event EventHandler OnEnemiesClick;
 
         public AdminControls()
         {
@@ -22,27 +22,27 @@ namespace NecromindUI.UserControls.Admin
 
         private void BtnMaps_Click(object sender, EventArgs e)
         {
-            BtnMapClick?.Invoke(this, e);
+            OnMapClick?.Invoke(this, e);
         }
 
         private void BtnLocations_Click(object sender, EventArgs e)
         {
-            BtnLocationsClick?.Invoke(this, e);
+            OnLocationsClick?.Invoke(this, e);
         }
 
         private void BtnHeroes_Click(object sender, EventArgs e)
         {
-            BtnHeroesClick?.Invoke(this, e);
+            OnHeroesClick?.Invoke(this, e);
         }
 
         private void BtnVendors_Click(object sender, EventArgs e)
         {
-            BtnVendorsClick?.Invoke(this, e);
+            OnVendorsClick?.Invoke(this, e);
         }
 
         private void BtnEnemies_Click(object sender, EventArgs e)
         {
-            BtnEnemiesClick?.Invoke(this, e);
+            OnEnemiesClick?.Invoke(this, e);
         }
     }
 }

@@ -51,7 +51,7 @@ namespace NecromindUI
                 {
                     _menuAdmin = new MenuAdmin();
                     _menuAdmin.tbPassword.Focus();
-                    _menuAdmin.BtnBackCLick += new EventHandler(MenuAdmin_BtnBackClick);
+                    _menuAdmin.OnBackCLick += new EventHandler(MenuAdmin_BtnBackClick);
 
                     ActivateView(_menuAdmin);
                 }
@@ -64,8 +64,8 @@ namespace NecromindUI
             ActivateView(_menuNew);
             _menuNew.tbHeroName.Focus();
 
-            _menuNew.BtnBackClick += new EventHandler(MenuNew_BtnBackClick);
-            _menuNew.BtnGoToMenuLoadClick += new EventHandler(MenuNew_BtnGoToMenuLoadClick);
+            _menuNew.OnBackClick += new EventHandler(MenuNew_BtnBackClick);
+            _menuNew.OnGoToMenuLoadClick += new EventHandler(MenuNew_BtnGoToMenuLoadClick);
         }
 
         private void MenuNew_BtnBackClick(object sender, EventArgs e)
@@ -86,9 +86,9 @@ namespace NecromindUI
             ActivateView(_menuLoad);
             _menuLoad.LoadHeroes();
 
-            _menuLoad.BtnBackClick += new EventHandler(MenuLoad_BtnBackClick);
-            _menuLoad.BtnDelHeroClick += new EventHandler(MenuLoad_BtnDelHeroClick);
-            _menuLoad.BtnLoadHeroClick += new EventHandler(GameMainLoad);
+            _menuLoad.OnBackClick += new EventHandler(MenuLoad_BtnBackClick);
+            _menuLoad.OnDelHeroClick += new EventHandler(MenuLoad_BtnDelHeroClick);
+            _menuLoad.OnLoadHeroClick += new EventHandler(GameMainLoad);
         }
 
         private void MenuLoad_BtnBackClick(object sender, EventArgs e)
@@ -108,10 +108,10 @@ namespace NecromindUI
             _gameMain = new GameMain(PlayerModel.Hero);
             ActivateView(_gameMain);
 
-            _gameMain.BtnBackToMenu += new EventHandler(GameMain_BtnBackToMenu);
+            _gameMain.OnSaveExitClick += new EventHandler(GameMain_BtnSaveExitClick);
         }
 
-        private void GameMain_BtnBackToMenu(object sender, EventArgs e)
+        private void GameMain_BtnSaveExitClick(object sender, EventArgs e)
         {
             DeactivateView(_gameMain);
             _gameMain = null;

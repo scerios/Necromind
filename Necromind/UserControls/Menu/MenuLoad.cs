@@ -76,11 +76,11 @@ namespace NecromindUI.UserControls.Menu
             }
         }
 
-        public event EventHandler BtnBackClick;
+        public event EventHandler OnBackClick;
 
-        public event EventHandler BtnDelHeroClick;
+        public event EventHandler OnDelHeroClick;
 
-        public event EventHandler BtnLoadHeroClick;
+        public event EventHandler OnLoadHeroClick;
 
         public MenuLoad()
         {
@@ -117,7 +117,7 @@ namespace NecromindUI.UserControls.Menu
                 btnLoadHero.Click += (sender, e) =>
                 {
                     PlayerModel.Hero = hero;
-                    BtnLoadHeroClick?.Invoke(sender, e);
+                    OnLoadHeroClick?.Invoke(sender, e);
                 };
 
                 Button btnDelHero = UIService.CreateButton(
@@ -148,7 +148,7 @@ namespace NecromindUI.UserControls.Menu
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            BtnBackClick?.Invoke(this, e);
+            OnBackClick?.Invoke(this, e);
         }
 
         private void BtnErrorClose_Click(object sender, EventArgs e)
@@ -159,7 +159,7 @@ namespace NecromindUI.UserControls.Menu
         private void BtnDelHero_Click(object sender, EventArgs e)
         {
             _presenter.DeleteHero();
-            BtnDelHeroClick?.Invoke(this, e);
+            OnDelHeroClick?.Invoke(this, e);
         }
 
         private void BtnDelClose_Click(object sender, EventArgs e)

@@ -45,9 +45,9 @@ namespace NecromindUI.UserControls.Menu
             }
         }
 
-        public event EventHandler BtnBackClick;
+        public event EventHandler OnBackClick;
 
-        public event EventHandler BtnGoToMenuLoadClick;
+        public event EventHandler OnGoToMenuLoadClick;
 
         public MenuNew()
         {
@@ -65,14 +65,14 @@ namespace NecromindUI.UserControls.Menu
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            BtnBackClick?.Invoke(this, e);
+            OnBackClick?.Invoke(this, e);
         }
 
         private void BtnCreateNewHero_Click(object sender, EventArgs e)
         {
             if (_presenter.TryCreateHero())
             {
-                BtnGoToMenuLoadClick?.Invoke(this, e);
+                OnGoToMenuLoadClick?.Invoke(this, e);
             }
         }
 

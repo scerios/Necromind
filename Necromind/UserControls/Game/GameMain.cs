@@ -137,7 +137,7 @@ namespace NecromindUI.UserControls.Game
             get => labLvlValue;
         }
 
-        public event EventHandler BtnBackToMenu;
+        public event EventHandler OnSaveExitClick;
 
         public GameMain(HeroModel hero)
         {
@@ -218,7 +218,7 @@ namespace NecromindUI.UserControls.Game
             _presenter.MsgLogger.OnMessageRaised -= GameMessageRaised;
             _presenter.MsgLogger.OnMessageAppend -= GameMessageAppend;
 
-            BtnBackToMenu?.Invoke(sender, e);
+            OnSaveExitClick?.Invoke(sender, e);
         }
 
         private void BtnContinue_Click(object sender, EventArgs e)
