@@ -258,7 +258,7 @@ namespace NecromindUI.UserControls.Game
 
         private void SetPresenterEventListeners()
         {
-            _presenter.MsgLogger.OnMessageRaised += GameMessageRaised;
+            _presenter.MsgLogger.OnMessageSet += GameMessageSet;
             _presenter.MsgLogger.OnMessageAppend += GameMessageAppend;
         }
 
@@ -273,7 +273,7 @@ namespace NecromindUI.UserControls.Game
         private void BtnSaveExit_Click(object sender, EventArgs e)
         {
             _presenter.SaveAndExitGame();
-            _presenter.MsgLogger.OnMessageRaised -= GameMessageRaised;
+            _presenter.MsgLogger.OnMessageSet -= GameMessageSet;
             _presenter.MsgLogger.OnMessageAppend -= GameMessageAppend;
 
             OnSaveExitClick?.Invoke(sender, e);
@@ -312,7 +312,7 @@ namespace NecromindUI.UserControls.Game
             }
         }
 
-        private void GameMessageRaised(object sender, GameMessageEventArgs e)
+        private void GameMessageSet(object sender, GameMessageEventArgs e)
         {
             _presenter.SetEventLog(e.Message, e.Color);
         }

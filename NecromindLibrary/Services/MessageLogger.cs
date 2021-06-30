@@ -12,7 +12,7 @@ namespace NecromindLibrary.Services
         {
         }
 
-        public event EventHandler<GameMessageEventArgs> OnMessageRaised;
+        public event EventHandler<GameMessageEventArgs> OnMessageSet;
 
         public event EventHandler<GameMessageEventArgs> OnMessageAppend;
 
@@ -28,7 +28,7 @@ namespace NecromindLibrary.Services
 
         public void SetMessage(string message, Color color)
         {
-            OnMessageRaised?.Invoke(this, new GameMessageEventArgs(message, color));
+            OnMessageSet?.Invoke(this, new GameMessageEventArgs(message, color));
         }
 
         public void AppendMessage(string message, Color color)
