@@ -51,6 +51,7 @@ namespace NecromindUI.UserControls.Game
             this.btnFortify.TabStop = false;
             this.btnFortify.Text = "Fortify";
             this.btnFortify.UseVisualStyleBackColor = false;
+            this.btnFortify.Click += new System.EventHandler(this.BtnFortify_Click);
             // 
             // btnAttack
             // 
@@ -68,6 +69,7 @@ namespace NecromindUI.UserControls.Game
             this.btnAttack.TabStop = false;
             this.btnAttack.Text = "Attack";
             this.btnAttack.UseVisualStyleBackColor = false;
+            this.btnAttack.Click += new System.EventHandler(this.BtnAttack_Click);
             // 
             // btnRetreat
             // 
@@ -85,12 +87,14 @@ namespace NecromindUI.UserControls.Game
             this.btnRetreat.TabStop = false;
             this.btnRetreat.Text = "Retreat";
             this.btnRetreat.UseVisualStyleBackColor = false;
+            this.btnRetreat.Click += new System.EventHandler(this.BtnRetreat_Click);
             // 
             // btnUse
             // 
             this.btnUse.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnUse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
             this.btnUse.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUse.Enabled = false;
             this.btnUse.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(22)))), ((int)(((byte)(62)))));
             this.btnUse.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(176)))), ((int)(((byte)(76)))));
             this.btnUse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -113,7 +117,7 @@ namespace NecromindUI.UserControls.Game
             this.Controls.Add(this.btnAttack);
             this.Controls.Add(this.btnFortify);
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameEnemyInteraction";
             this.Size = new System.Drawing.Size(1084, 65);
             this.ResumeLayout(false);
