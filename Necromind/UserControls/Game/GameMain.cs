@@ -201,7 +201,7 @@ namespace NecromindUI.UserControls.Game
 
         #endregion Properties
 
-        public event EventHandler OnSaveExitClick;
+        public event EventHandler OnSaveExitClicked;
 
         public GameMain(HeroModel hero)
         {
@@ -264,10 +264,10 @@ namespace NecromindUI.UserControls.Game
 
         private void SetHerosEventListeners(HeroModel hero)
         {
-            hero.OnMoveNorth += BtnNorth_Click;
-            hero.OnMoveSouth += BtnSouth_Click;
-            hero.OnMoveWest += BtnWest_Click;
-            hero.OnMoveEast += BtnEast_Click;
+            hero.OnMovedNorth += BtnNorth_Click;
+            hero.OnMovedSouth += BtnSouth_Click;
+            hero.OnMovedWest += BtnWest_Click;
+            hero.OnMovedEast += BtnEast_Click;
         }
 
         private void BtnSaveExit_Click(object sender, EventArgs e)
@@ -276,7 +276,7 @@ namespace NecromindUI.UserControls.Game
             _presenter.MsgLogger.OnMessageSet -= GameMessageSet;
             _presenter.MsgLogger.OnMessageAppend -= GameMessageAppend;
 
-            OnSaveExitClick?.Invoke(sender, e);
+            OnSaveExitClicked?.Invoke(sender, e);
         }
 
         private void BtnContinue_Click(object sender, EventArgs e)

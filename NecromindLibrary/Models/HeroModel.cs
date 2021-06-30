@@ -135,13 +135,13 @@ namespace NecromindLibrary.Models
         {
         }
 
-        public event EventHandler OnMoveNorth;
+        public event EventHandler OnMovedNorth;
 
-        public event EventHandler OnMoveSouth;
+        public event EventHandler OnMovedSouth;
 
-        public event EventHandler OnMoveWest;
+        public event EventHandler OnMovedWest;
 
-        public event EventHandler OnMoveEast;
+        public event EventHandler OnMovedEast;
 
         public HeroModel(string name)
         {
@@ -239,25 +239,25 @@ namespace NecromindLibrary.Models
         public void MoveNorth()
         {
             PosY--;
-            OnMoveNorth?.Invoke(this, new System.EventArgs());
+            OnMovedNorth?.Invoke(this, new System.EventArgs());
         }
 
         public void MoveSouth()
         {
             PosY++;
-            OnMoveSouth?.Invoke(this, new System.EventArgs());
+            OnMovedSouth?.Invoke(this, new System.EventArgs());
         }
 
         public void MoveWest()
         {
             PosX--;
-            OnMoveWest?.Invoke(this, new System.EventArgs());
+            OnMovedWest?.Invoke(this, new System.EventArgs());
         }
 
         public void MoveEast()
         {
             PosX++;
-            OnMoveEast?.Invoke(this, new System.EventArgs());
+            OnMovedEast?.Invoke(this, new System.EventArgs());
         }
     }
 }

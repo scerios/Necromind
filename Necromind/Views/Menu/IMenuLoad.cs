@@ -4,6 +4,6 @@ namespace NecromindUI.Views.Menu
 {
     public interface IMenuLoad : IError, IConfirmDelete
     {
-        event EventHandler OnLoadHeroClick;
+        event EventHandler OnLoadHeroClicked;
     }
 }
