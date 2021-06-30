@@ -12,7 +12,7 @@ namespace NecromindLibrary.Services
             _rng.Next(1, 100 / SPAWN_CHANCE_PERCENT) == 1;
 
         public static Guid GetRandomEnemyId(List<Guid> enemies) =>
-            enemies[_rng.Next(1, enemies.Count)];
+            enemies[_rng.Next(0, enemies.Count)];
 
         public static int CalculateRandomAttackDmg(int dmgMin, int dmgMax) =>
             _rng.Next(dmgMin, dmgMax + 1);
