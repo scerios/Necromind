@@ -264,10 +264,10 @@ namespace NecromindUI.UserControls.Game
 
         private void SetHerosEventListeners(HeroModel hero)
         {
-            hero.MovedNorth += MoveNorth;
-            hero.MovedSouth += MoveSouth;
-            hero.MovedWest += MoveWest;
-            hero.MovedEast += MoveEast;
+            hero.OnMoveNorth += BtnNorth_Click;
+            hero.OnMoveSouth += BtnSouth_Click;
+            hero.OnMoveWest += BtnWest_Click;
+            hero.OnMoveEast += BtnEast_Click;
         }
 
         private void BtnSaveExit_Click(object sender, EventArgs e)
@@ -320,26 +320,6 @@ namespace NecromindUI.UserControls.Game
         private void GameMessageAppend(object sender, GameMessageEventArgs e)
         {
             _presenter.AppendEventLog(e.Message, e.Color);
-        }
-
-        private void MoveNorth(object sender, EventArgs e)
-        {
-            _presenter.MoveNorth();
-        }
-
-        private void MoveSouth(object sender, EventArgs e)
-        {
-            _presenter.MoveSouth();
-        }
-
-        private void MoveWest(object sender, EventArgs e)
-        {
-            _presenter.MoveWest();
-        }
-
-        private void MoveEast(object sender, EventArgs e)
-        {
-            _presenter.MoveEast();
         }
 
         private void BtnAttack_Click(object sender, EventArgs e)
