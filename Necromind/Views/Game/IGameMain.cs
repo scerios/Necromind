@@ -11,15 +11,22 @@ namespace NecromindUI.Views.Game
         bool BtnIsWestEnabled { get; set; }
         bool BtnIsEastEnabled { get; set; }
         string HeroName { get; set; }
+        string TargetName { get; set; }
         RichTextBox EventLog { get; }
         Label LabLocationName { get; }
-
-        Label LabHealthMax { get; }
-        Label LabHealth { get; }
-        Label LabDmgMin { get; }
-        Label LabDmgMax { get; }
-        Label LabDef { get; }
-        Label LabGold { get; }
-        Label LabLvl { get; }
+        Label LabHeroHealthMax { get; }
+        Label LabHeroHealth { get; }
+        Label LabHeroDmgMin { get; }
+        Label LabHeroDmgMax { get; }
+        Label LabHeroDef { get; }
+        Label LabHeroGold { get; }
+        Label LabHeroLvl { get; }
+        Label LabTargetHealthMax { get; }
+        Label LabTargetHealth { get; }
+        Label LabTargetDmgMin { get; }
+        Label LabTargetDmgMax { get; }
+        Label LabTargetDef { get; }
+        Label LabTargetGold { get; }
+        Label LabTargetLvl { get; }
     }
 }

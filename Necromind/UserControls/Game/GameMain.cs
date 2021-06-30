@@ -13,11 +13,15 @@ namespace NecromindUI.UserControls.Game
 {
     public partial class GameMain : UserControl, IGameMain
     {
+        #region Properties
+
         private readonly GameMainPresenter _presenter;
         private readonly GameFriendlyInteraction _gameFriendlyInteraction;
         private readonly GameEnemyInteraction _gameEnemyInteraction;
         private readonly MongoConnector _mongoConnector = MongoConnector.GetInstance();
         private readonly List<Panel> _map = new List<Panel>();
+
+        #region Bools
 
         public bool PanIsExitVisible
         {
@@ -83,12 +87,24 @@ namespace NecromindUI.UserControls.Game
             }
         }
 
+        #endregion Bools
+
         public string HeroName
         {
             get => labHeroName.Text;
             set
             {
                 labHeroName.Text = value;
+            }
+        }
+
+        public string TargetName
+        {
+            get => labTargetName.Text;
+
+            set
+            {
+                labTargetName.Text = value;
             }
         }
 
@@ -102,40 +118,85 @@ namespace NecromindUI.UserControls.Game
             get => labLocation;
         }
 
-        public Label LabHealthMax
+        #region Hero
+
+        public Label LabHeroHealthMax
         {
             get => labHeroHealthMax;
         }
 
-        public Label LabHealth
+        public Label LabHeroHealth
         {
             get => labHeroHealth;
         }
 
-        public Label LabDmgMin
+        public Label LabHeroDmgMin
         {
             get => labHeroDmgMin;
         }
 
-        public Label LabDmgMax
+        public Label LabHeroDmgMax
         {
             get => labHeroDmgMax;
         }
 
-        public Label LabDef
+        public Label LabHeroDef
         {
             get => labHeroDef;
         }
 
-        public Label LabGold
+        public Label LabHeroGold
         {
             get => labHeroGold;
         }
 
-        public Label LabLvl
+        public Label LabHeroLvl
         {
             get => labHeroLvl;
         }
+
+        #endregion Hero
+
+        #region Target
+
+        public Label LabTargetHealthMax
+        {
+            get => labTargetHealthMax;
+        }
+
+        public Label LabTargetHealth
+        {
+            get => labTargetHealth;
+        }
+
+        public Label LabTargetDmgMin
+        {
+            get => labTargetDmgMin;
+        }
+
+        public Label LabTargetDmgMax
+        {
+            get => labTargetDmgMax;
+        }
+
+        public Label LabTargetDef
+        {
+            get => labTargetDef;
+        }
+
+        public Label LabTargetGold
+        {
+            get => labTargetGold;
+        }
+
+        public Label LabTargetLvl
+        {
+            get => labTargetLvl;
+        }
+
+        #endregion Target
+
+        #endregion Properties
 
         public event EventHandler OnSaveExitClick;
 

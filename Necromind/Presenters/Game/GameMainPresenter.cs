@@ -241,24 +241,24 @@ namespace NecromindUI.Presenters.Game
         private void SetHeroStats()
         {
             _gameMain.HeroName = _hero.Name;
-            _gameMain.LabHealthMax.Text = _hero.HealthMax.ToString();
-            _gameMain.LabHealth.Text = _hero.Health.ToString();
-            _gameMain.LabDmgMin.Text = _hero.DmgMin.ToString();
-            _gameMain.LabDmgMax.Text = _hero.DmgMax.ToString();
-            _gameMain.LabDef.Text = _hero.Def.ToString();
-            _gameMain.LabGold.Text = _hero.Gold.ToString();
-            _gameMain.LabLvl.Text = _hero.Lvl.ToString();
+            _gameMain.LabHeroHealthMax.Text = _hero.HealthMax.ToString();
+            _gameMain.LabHeroHealth.Text = _hero.Health.ToString();
+            _gameMain.LabHeroDmgMin.Text = _hero.DmgMin.ToString();
+            _gameMain.LabHeroDmgMax.Text = _hero.DmgMax.ToString();
+            _gameMain.LabHeroDef.Text = _hero.Def.ToString();
+            _gameMain.LabHeroGold.Text = _hero.Gold.ToString();
+            _gameMain.LabHeroLvl.Text = _hero.Lvl.ToString();
         }
 
         private void SetHeroLabelDatabindings()
         {
-            _gameMain.LabHealthMax.DataBindings.Add("Text", _hero, "HealthMax");
-            _gameMain.LabHealth.DataBindings.Add("Text", _hero, "Health");
-            _gameMain.LabDmgMin.DataBindings.Add("Text", _hero, "DmgMin");
-            _gameMain.LabDmgMax.DataBindings.Add("Text", _hero, "DmgMax");
-            _gameMain.LabDef.DataBindings.Add("Text", _hero, "Def");
-            _gameMain.LabGold.DataBindings.Add("Text", _hero, "Gold");
-            _gameMain.LabLvl.DataBindings.Add("Text", _hero, "Lvl");
+            _gameMain.LabHeroHealthMax.DataBindings.Add("Text", _hero, "HealthMax");
+            _gameMain.LabHeroHealth.DataBindings.Add("Text", _hero, "Health");
+            _gameMain.LabHeroDmgMin.DataBindings.Add("Text", _hero, "DmgMin");
+            _gameMain.LabHeroDmgMax.DataBindings.Add("Text", _hero, "DmgMax");
+            _gameMain.LabHeroDef.DataBindings.Add("Text", _hero, "Def");
+            _gameMain.LabHeroGold.DataBindings.Add("Text", _hero, "Gold");
+            _gameMain.LabHeroLvl.DataBindings.Add("Text", _hero, "Lvl");
         }
 
         private void SetMovementBtns()
@@ -289,13 +289,13 @@ namespace NecromindUI.Presenters.Game
 
         private void ClearHeroLabelDatabindings()
         {
-            _gameMain.LabHealthMax.DataBindings.Clear();
-            _gameMain.LabHealth.DataBindings.Clear();
-            _gameMain.LabDmgMin.DataBindings.Clear();
-            _gameMain.LabDmgMax.DataBindings.Clear();
-            _gameMain.LabDef.DataBindings.Clear();
-            _gameMain.LabGold.DataBindings.Clear();
-            _gameMain.LabLvl.DataBindings.Clear();
+            _gameMain.LabHeroHealthMax.DataBindings.Clear();
+            _gameMain.LabHeroHealth.DataBindings.Clear();
+            _gameMain.LabHeroDmgMin.DataBindings.Clear();
+            _gameMain.LabHeroDmgMax.DataBindings.Clear();
+            _gameMain.LabHeroDef.DataBindings.Clear();
+            _gameMain.LabHeroGold.DataBindings.Clear();
+            _gameMain.LabHeroLvl.DataBindings.Clear();
         }
 
         private void ClearLocationDataBinding()
