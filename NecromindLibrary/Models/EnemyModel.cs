@@ -91,8 +91,11 @@ namespace NecromindLibrary.Models
             private set
             {
                 _isAlive = value;
+                OnDeath?.Invoke(this, new System.EventArgs());
             }
         }
+
+        public event EventHandler OnDeath;
 
         /// <summary>
         /// This constructor is for testing purposes.
