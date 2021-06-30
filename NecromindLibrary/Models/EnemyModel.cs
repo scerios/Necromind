@@ -1,4 +1,5 @@
-﻿using NecromindLibrary.Services;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using NecromindLibrary.Services;
 using NecromindLibrary.Services.GameMechanisms;
 using System;
 
@@ -80,6 +81,19 @@ namespace NecromindLibrary.Models
             }
         }
 
+        private bool _isAlive = true;
+
+        [BsonIgnore]
+        public bool IsAlive
+        {
+            get => _isAlive;
+
+            private set
+            {
+                _isAlive = value;
+            }
+        }
+
         /// <summary>
         /// This constructor is for testing purposes.
         /// </summary>
@@ -110,18 +124,23 @@ namespace NecromindLibrary.Models
             CombinedName = Name + " " + Lvl;
         }
 
-        public int Attack(IFighter enemy)
-        {
-            var dmg = RandomGeneratorService.CalculateRandomAttackDmg(DmgMin, DmgMax);
-            enemy.TakeDmg(dmg);
-
-            return dmg;
-        }
+        public int Attack(IFighter enemy) =>
+            enemy.TakeDmg(RandomGeneratorService.CalculateRandomAttackDmg(DmgMin, DmgMax));
 
         public int TakeDmg(int dmg)
         {
-            var actualDmg = dmg - Def;
-            Health -= actualDmg;
+            var actualDmg = 0;
+
+            if (dmg - Def > 0)
+                actualDmg = dmg - Def;
+
+            if (Health - actualDmg <= 0)
+            {
+                Health = 0;
+                IsAlive = false;
+            }
+            else
+                Health -= actualDmg;
 
             return actualDmg;
         }
