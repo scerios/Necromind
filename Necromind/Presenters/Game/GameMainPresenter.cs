@@ -1,4 +1,5 @@
 ﻿using NecromindLibrary.Config;
+using NecromindLibrary.EventArgs;
 using NecromindLibrary.Models;
 using NecromindLibrary.Repository;
 using NecromindLibrary.Services;
@@ -24,6 +25,8 @@ namespace NecromindUI.Presenters.Game
         private readonly HeroModel _hero;
         private EnemyModel _enemy;
 
+        public event EventHandler<EnemyEventArgs> OnEnemyAppeared;
+
         public GameMainPresenter(IGameMain gameMain, HeroModel hero, List<Panel> map)
         {
             _gameMain = gameMain;
@@ -42,6 +45,17 @@ namespace NecromindUI.Presenters.Game
 
             SetMovementBtns();
             SetEventLogInfo();
+        }
+
+        public void EndBattle()
+        {
+            _enemy = null;
+
+            TogglePanTargetVisibility();
+            TogglePanHostileInteractionVisibility();
+            ClearHostileTargetDataBindings();
+
+            SetMovementBtns();
         }
 
         #region Event log
@@ -233,6 +247,7 @@ namespace NecromindUI.Presenters.Game
 
         private void ClearHostileTargetDataBindings()
         {
+            _gameMain.TargetName = "";
             _gameMain.LabTargetHealthMax.DataBindings.Clear();
             _gameMain.LabTargetHealth.DataBindings.Clear();
             _gameMain.LabTargetDmgMin.DataBindings.Clear();
@@ -254,7 +269,7 @@ namespace NecromindUI.Presenters.Game
         private void CheckForEnemy()
         {
             if (IsTileHostileAndEnemyAppears())
-                InitFight();
+                InitBattle();
             else
                 SetMovementBtns();
         }
@@ -262,7 +277,7 @@ namespace NecromindUI.Presenters.Game
         private bool IsTileHostileAndEnemyAppears() =>
             _mapService.Location.IsHostile && RandomGeneratorService.IsEnemySpawned();
 
-        private void InitFight()
+        private void InitBattle()
         {
             //DisableUserInputActions();
             DisableMovementBtns();
@@ -274,6 +289,8 @@ namespace NecromindUI.Presenters.Game
             TogglePanTargetVisibility();
             TogglePanHostileInteractionVisibility();
             SetHostileTargetDataBindings();
+
+            OnEnemyAppeared?.Invoke(this, new EnemyEventArgs(_enemy));
         }
 
         #endregion Battle

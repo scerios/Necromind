@@ -260,6 +260,7 @@ namespace NecromindUI.UserControls.Game
         {
             _presenter.MsgLogger.OnMessageSet += GameMessageSet;
             _presenter.MsgLogger.OnMessageAppend += GameMessageAppend;
+            _presenter.OnEnemyAppeared += EnemyAppeared;
         }
 
         private void SetHerosEventListeners(HeroModel hero)
@@ -304,6 +305,11 @@ namespace NecromindUI.UserControls.Game
             _presenter.MoveEast();
         }
 
+        private void BtnAttack_Click(object sender, EventArgs e)
+        {
+            _presenter.Attack();
+        }
+
         private void GameMain_KeyDown(object sender, KeyEventArgs e)
         {
             if (_presenter.UserInputActions.ContainsKey(e.KeyCode))
@@ -322,9 +328,15 @@ namespace NecromindUI.UserControls.Game
             _presenter.AppendEventLog(e.Message, e.Color);
         }
 
-        private void BtnAttack_Click(object sender, EventArgs e)
+        private void EnemyAppeared(object sender, EnemyEventArgs e)
         {
-            _presenter.Attack();
+            var enemy = e.Enemy;
+            enemy.OnDeath += EnemyDied;
+        }
+
+        private void EnemyDied(object sender, EventArgs e)
+        {
+            _presenter.EndBattle();
         }
     }
 }

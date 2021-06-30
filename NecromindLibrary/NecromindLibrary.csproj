@@ -149,6 +149,7 @@
     </Compile>
     <Compile Include="Config\DBConfig.cs" />
     <Compile Include="Config\UISettings.cs" />
+    <Compile Include="EventArgs\EnemyEventArgs.cs" />
     <Compile Include="EventArgs\GameMessageEventArgs.cs" />
     <Compile Include="GlobalConfig.cs" />
     <Compile Include="Models\AdminModel.cs" />
