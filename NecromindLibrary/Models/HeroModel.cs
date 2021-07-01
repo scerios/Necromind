@@ -131,8 +131,18 @@ namespace NecromindLibrary.Models
             }
         }
 
-        [BsonIgnore]
         private int _originalDef;
+
+        [BsonIgnore]
+        public int OriginalDef
+        {
+            get => _originalDef;
+
+            private set
+            {
+                _originalDef = value;
+            }
+        }
 
         protected HeroModel()
         {
@@ -145,6 +155,8 @@ namespace NecromindLibrary.Models
         public event EventHandler OnMovedWest;
 
         public event EventHandler OnMovedEast;
+
+        public event EventHandler OnRested;
 
         public HeroModel(string name)
         {
@@ -180,9 +192,14 @@ namespace NecromindLibrary.Models
             return actualDmg;
         }
 
+        public void SetOriginalDef()
+        {
+            OriginalDef = Def;
+        }
+
         public int Fortify()
         {
-            _originalDef = Def;
+            OriginalDef = Def;
 
             var extraDef = Def / 2;
             Def += extraDef;
@@ -192,7 +209,12 @@ namespace NecromindLibrary.Models
 
         public void EndFortification()
         {
-            Def = _originalDef;
+            Def = OriginalDef;
+        }
+
+        public void BecomeRested()
+        {
+            OnRested?.Invoke(this, new System.EventArgs());
         }
 
         public void Die()
