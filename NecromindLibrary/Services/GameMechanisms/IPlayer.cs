@@ -2,7 +2,7 @@
 
 namespace NecromindLibrary.Services.GameMechanisms
 {
-    public interface IPlayer : IFighter, IConsumer, ILevelable, ITrader, IMobile
+    public interface IPlayer : IAttacker, IDefender, IConsumer, ILevelable, ITrader, IMobile
     {
     }
 }
