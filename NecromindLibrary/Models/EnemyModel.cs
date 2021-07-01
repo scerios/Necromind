@@ -5,7 +5,7 @@ using System;
 
 namespace NecromindLibrary.Models
 {
-    public class EnemyModel : BaseCharacterModel, IFighter
+    public class EnemyModel : BaseCharacterModel, IAttacker
     {
         protected string _combinedName;
 
@@ -127,7 +127,7 @@ namespace NecromindLibrary.Models
             CombinedName = Name + " " + Lvl;
         }
 
-        public int Attack(IFighter enemy) =>
+        public int Attack(IAttacker enemy) =>
             enemy.TakeDmg(RandomGeneratorService.CalculateRandomAttackDmg(DmgMin, DmgMax));
 
         public int TakeDmg(int dmg)
@@ -146,11 +146,6 @@ namespace NecromindLibrary.Models
                 Health -= actualDmg;
 
             return actualDmg;
-        }
-
-        public int Fortify()
-        {
-            return 0;
         }
 
         public void Die()
