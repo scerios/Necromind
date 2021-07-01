@@ -9,6 +9,7 @@ namespace NecromindUI.Views.Game
         bool BtnIsSouthEnabled { get; set; }
         bool BtnIsWestEnabled { get; set; }
         bool BtnIsEastEnabled { get; set; }
+        bool BtnIsFortifyEnabled { get; set; }
         string HeroName { get; set; }
         string TargetName { get; set; }
         Panel PanTarget { get; }
