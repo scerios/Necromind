@@ -131,6 +131,19 @@ namespace NecromindLibrary.Models
             }
         }
 
+        private bool _isRested = true;
+
+        [BsonIgnore]
+        public bool IsRested
+        {
+            get => _isRested;
+
+            private set
+            {
+                _isRested = value;
+            }
+        }
+
         private int _originalDef;
 
         [BsonIgnore]
@@ -210,10 +223,12 @@ namespace NecromindLibrary.Models
         public void EndFortification()
         {
             Def = OriginalDef;
+            IsRested = false;
         }
 
         public void BecomeRested()
         {
+            IsRested = true;
             OnRested?.Invoke(this, new System.EventArgs());
         }
 
