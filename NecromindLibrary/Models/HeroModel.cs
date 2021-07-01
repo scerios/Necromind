@@ -131,6 +131,9 @@ namespace NecromindLibrary.Models
             }
         }
 
+        [BsonIgnore]
+        private int _originalDef;
+
         protected HeroModel()
         {
         }
@@ -156,7 +159,7 @@ namespace NecromindLibrary.Models
             NextLvlAt = 1000;
         }
 
-        public int Attack(IFighter enemy) =>
+        public int Attack(IAttacker enemy) =>
             enemy.TakeDmg(RandomGeneratorService.CalculateRandomAttackDmg(DmgMin, DmgMax));
 
         public int TakeDmg(int dmg)
@@ -179,8 +182,17 @@ namespace NecromindLibrary.Models
 
         public int Fortify()
         {
-            // TODO - Figure out how fortify should work.
-            return 2;
+            _originalDef = Def;
+
+            var extraDef = Def / 2;
+            Def += extraDef;
+
+            return extraDef;
+        }
+
+        public void EndFortification()
+        {
+            Def = _originalDef;
         }
 
         public void Die()
