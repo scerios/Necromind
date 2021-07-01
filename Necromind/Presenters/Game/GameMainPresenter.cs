@@ -47,10 +47,27 @@ namespace NecromindUI.Presenters.Game
             SetEventLogInfo();
         }
 
+        public void Attack()
+        {
+            _battleService.AttackOpponent();
+        }
+
+        public void Fortify()
+        {
+            _battleService.Fortify();
+            _gameMain.BtnIsFortifyEnabled = false;
+        }
+
+        public void BecomeRested()
+        {
+            EnableBtnFortify();
+        }
+
         public void EndBattle()
         {
             _enemy = null;
 
+            EnableBtnFortify();
             TogglePanTargetVisibility();
             TogglePanHostileInteractionVisibility();
             ClearHostileTargetDataBindings();
@@ -195,6 +212,11 @@ namespace NecromindUI.Presenters.Game
             UserInputActions.Clear();
         }
 
+        private void EnableBtnFortify()
+        {
+            _gameMain.BtnIsFortifyEnabled = true;
+        }
+
         private void SetHeroDatabindings()
         {
             _gameMain.HeroName = _hero.Name;
@@ -260,11 +282,6 @@ namespace NecromindUI.Presenters.Game
         #endregion Clear
 
         #region Battle
-
-        public void Attack()
-        {
-            _battleService.AttackOpponent();
-        }
 
         private void CheckForEnemy()
         {

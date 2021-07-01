@@ -75,6 +75,16 @@ namespace NecromindUI.UserControls.Game
             }
         }
 
+        public bool BtnIsFortifyEnabled
+        {
+            get => btnFortify.Enabled;
+
+            set
+            {
+                btnFortify.Enabled = value;
+            }
+        }
+
         #endregion Bools
 
         public Panel PanTarget
@@ -269,6 +279,7 @@ namespace NecromindUI.UserControls.Game
             hero.OnMovedSouth += BtnSouth_Click;
             hero.OnMovedWest += BtnWest_Click;
             hero.OnMovedEast += BtnEast_Click;
+            hero.OnRested += BecomeRested;
         }
 
         private void BtnSaveExit_Click(object sender, EventArgs e)
@@ -337,6 +348,16 @@ namespace NecromindUI.UserControls.Game
         private void EnemyDied(object sender, EventArgs e)
         {
             _presenter.EndBattle();
+        }
+
+        private void BtnFortify_Click(object sender, EventArgs e)
+        {
+            _presenter.Fortify();
+        }
+
+        private void BecomeRested(object sender, EventArgs e)
+        {
+            _presenter.BecomeRested();
         }
     }
 }

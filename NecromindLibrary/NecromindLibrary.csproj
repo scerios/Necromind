@@ -163,9 +163,10 @@
     <Compile Include="Models\PlayerModel.cs" />
     <Compile Include="Repository\IDataConnection.cs" />
     <Compile Include="Services\BattleService.cs" />
+    <Compile Include="Services\GameMechanisms\IDefender.cs" />
     <Compile Include="Services\IAdminSetter.cs" />
     <Compile Include="Services\GameMechanisms\IConsumer.cs" />
-    <Compile Include="Services\GameMechanisms\IFighter.cs" />
+    <Compile Include="Services\GameMechanisms\IAttacker.cs" />
     <Compile Include="Services\GameMechanisms\ILevelable.cs" />
     <Compile Include="Services\GameMechanisms\IMobile.cs" />
     <Compile Include="Services\GameMechanisms\IPlayer.cs" />

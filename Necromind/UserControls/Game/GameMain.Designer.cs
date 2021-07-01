@@ -539,6 +539,7 @@ namespace NecromindUI.UserControls.Game
             this.btnFortify.TabStop = false;
             this.btnFortify.Text = "Fortify";
             this.btnFortify.UseVisualStyleBackColor = false;
+            this.btnFortify.Click += new System.EventHandler(this.BtnFortify_Click);
             // 
             // labTargetName
             // 
